@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="PBSceneButton" customModule="Protocol_Bernardo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tpB-Am-dSH">
+                    <rect key="frame" x="18" y="45" width="375" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="371" id="AbC-Nr-Pce"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Scene Name" id="rAI-V1-ft5">
+                        <font key="font" metaFont="systemHeavy" size="22"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CfZ-w1-zA5">
+                    <rect key="frame" x="18" y="20" width="444" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="440" id="Ixi-pj-LlN"/>
+                    </constraints>
+                    <textFieldCell key="cell" selectable="YES" title="Scene Description" id="6kM-dP-4yh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y3T-sL-jf1">
+                    <rect key="frame" x="393" y="41" width="73" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="61" id="hlO-b7-fhS"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jAv-V0-S3F">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openScene:" target="c22-O7-iKe" id="kVh-ee-xuX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="tpB-Am-dSH" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="5Fw-QO-gP1"/>
+                <constraint firstAttribute="bottom" secondItem="CfZ-w1-zA5" secondAttribute="bottom" constant="20" symbolic="YES" id="5p5-rC-b4z"/>
+                <constraint firstItem="CfZ-w1-zA5" firstAttribute="top" secondItem="tpB-Am-dSH" secondAttribute="bottom" constant="8" id="Hgp-zv-Kee"/>
+                <constraint firstItem="Y3T-sL-jf1" firstAttribute="centerY" secondItem="tpB-Am-dSH" secondAttribute="centerY" id="erH-w1-Fc7"/>
+                <constraint firstItem="tpB-Am-dSH" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="i3G-OX-3pX"/>
+                <constraint firstAttribute="trailing" secondItem="CfZ-w1-zA5" secondAttribute="trailing" constant="20" symbolic="YES" id="l78-x9-5Vn"/>
+                <constraint firstAttribute="trailing" secondItem="Y3T-sL-jf1" secondAttribute="trailing" constant="20" symbolic="YES" id="oYu-dW-zeF"/>
+                <constraint firstItem="Y3T-sL-jf1" firstAttribute="leading" secondItem="tpB-Am-dSH" secondAttribute="trailing" constant="8" symbolic="YES" id="pOP-M6-bNh"/>
+                <constraint firstItem="CfZ-w1-zA5" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="qh3-kk-oZS"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                    <color key="value" name="labelColor" catalog="System" colorSpace="catalog"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="sceneDescriptionField" destination="CfZ-w1-zA5" id="f7A-Bu-TV6"/>
+                <outlet property="sceneNameField" destination="tpB-Am-dSH" id="Fnk-uw-cCi"/>
+            </connections>
+        </customView>
+    </objects>
+</document>

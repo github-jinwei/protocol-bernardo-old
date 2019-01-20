@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		396DDFC921F4285000628070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFC821F4285000628070 /* AppDelegate.swift */; };
-		396DDFCB21F4285000628070 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* ViewController.swift */; };
+		396DDFCB21F4285000628070 /* SceneSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* SceneSelectionController.swift */; };
 		396DDFCD21F4285200628070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCC21F4285200628070 /* Assets.xcassets */; };
-		396DDFD021F4285200628070 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCE21F4285200628070 /* Main.storyboard */; };
+		396DDFD021F4285200628070 /* SceneSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCE21F4285200628070 /* SceneSelection.storyboard */; };
 		396DDFDC21F4285200628070 /* Protocol_BernardoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFDB21F4285200628070 /* Protocol_BernardoTests.swift */; };
+		396DDFEB21F42A9000628070 /* ScenesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFEA21F42A9000628070 /* ScenesList.swift */; };
+		396DDFED21F42C4500628070 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFEC21F42C4500628070 /* Scene.swift */; };
+		396DDFEF21F42E2D00628070 /* PBSceneButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFEE21F42E2D00628070 /* PBSceneButton.xib */; };
+		396DDFF321F42FD000628070 /* PBSceneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFF221F42FD000628070 /* PBSceneButton.swift */; };
+		396DDFF721F4342700628070 /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFF621F4342700628070 /* NSView.swift */; };
+		39AF88AD21F4CF7E00A68993 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AC21F4CF7E00A68993 /* App.swift */; };
+		39AF88AF21F4D02100A68993 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AE21F4D02100A68993 /* Core.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,14 +34,21 @@
 /* Begin PBXFileReference section */
 		396DDFC521F4285000628070 /* Protocol Bernardo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Protocol Bernardo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DDFC821F4285000628070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		396DDFCA21F4285000628070 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		396DDFCA21F4285000628070 /* SceneSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSelectionController.swift; sourceTree = "<group>"; };
 		396DDFCC21F4285200628070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		396DDFCF21F4285200628070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		396DDFCF21F4285200628070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SceneSelection.storyboard; sourceTree = "<group>"; };
 		396DDFD121F4285200628070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396DDFD221F4285200628070 /* Protocol_Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Protocol_Bernardo.entitlements; sourceTree = "<group>"; };
 		396DDFD721F4285200628070 /* Protocol BernardoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Protocol BernardoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DDFDB21F4285200628070 /* Protocol_BernardoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_BernardoTests.swift; sourceTree = "<group>"; };
 		396DDFDD21F4285200628070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		396DDFEA21F42A9000628070 /* ScenesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesList.swift; sourceTree = "<group>"; };
+		396DDFEC21F42C4500628070 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		396DDFEE21F42E2D00628070 /* PBSceneButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBSceneButton.xib; sourceTree = "<group>"; };
+		396DDFF221F42FD000628070 /* PBSceneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBSceneButton.swift; sourceTree = "<group>"; };
+		396DDFF621F4342700628070 /* NSView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSView.swift; sourceTree = "<group>"; };
+		39AF88AC21F4CF7E00A68993 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		39AF88AE21F4D02100A68993 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +90,12 @@
 		396DDFC721F4285000628070 /* Protocol Bernardo */ = {
 			isa = PBXGroup;
 			children = (
+				39AF88AB21F4CF6E00A68993 /* Core */,
+				396DDFF421F4340B00628070 /* Utils */,
+				396DDFF021F42F8C00628070 /* UI */,
+				396DDFE621F42A2300628070 /* Scenes */,
 				396DDFC821F4285000628070 /* AppDelegate.swift */,
-				396DDFCA21F4285000628070 /* ViewController.swift */,
 				396DDFCC21F4285200628070 /* Assets.xcassets */,
-				396DDFCE21F4285200628070 /* Main.storyboard */,
 				396DDFD121F4285200628070 /* Info.plist */,
 				396DDFD221F4285200628070 /* Protocol_Bernardo.entitlements */,
 			);
@@ -93,6 +109,67 @@
 				396DDFDD21F4285200628070 /* Info.plist */,
 			);
 			path = "Protocol BernardoTests";
+			sourceTree = "<group>";
+		};
+		396DDFE621F42A2300628070 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFE721F42A2800628070 /* ScenesSelection */,
+				396DDFEA21F42A9000628070 /* ScenesList.swift */,
+				396DDFEC21F42C4500628070 /* Scene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		396DDFE721F42A2800628070 /* ScenesSelection */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFCA21F4285000628070 /* SceneSelectionController.swift */,
+				396DDFCE21F4285200628070 /* SceneSelection.storyboard */,
+			);
+			path = ScenesSelection;
+			sourceTree = "<group>";
+		};
+		396DDFF021F42F8C00628070 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFF121F42FA400628070 /* PBSceneButton */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		396DDFF121F42FA400628070 /* PBSceneButton */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFEE21F42E2D00628070 /* PBSceneButton.xib */,
+				396DDFF221F42FD000628070 /* PBSceneButton.swift */,
+			);
+			path = PBSceneButton;
+			sourceTree = "<group>";
+		};
+		396DDFF421F4340B00628070 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFF521F4341A00628070 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		396DDFF521F4341A00628070 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFF621F4342700628070 /* NSView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		39AF88AB21F4CF6E00A68993 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				39AF88AC21F4CF7E00A68993 /* App.swift */,
+				39AF88AE21F4D02100A68993 /* Core.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,8 +253,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396DDFEF21F42E2D00628070 /* PBSceneButton.xib in Resources */,
 				396DDFCD21F4285200628070 /* Assets.xcassets in Resources */,
-				396DDFD021F4285200628070 /* Main.storyboard in Resources */,
+				396DDFD021F4285200628070 /* SceneSelection.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +273,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396DDFCB21F4285000628070 /* ViewController.swift in Sources */,
+				396DDFF721F4342700628070 /* NSView.swift in Sources */,
+				396DDFF321F42FD000628070 /* PBSceneButton.swift in Sources */,
+				396DDFEB21F42A9000628070 /* ScenesList.swift in Sources */,
+				396DDFED21F42C4500628070 /* Scene.swift in Sources */,
+				396DDFCB21F4285000628070 /* SceneSelectionController.swift in Sources */,
+				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
+				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
 				396DDFC921F4285000628070 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,12 +303,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		396DDFCE21F4285200628070 /* Main.storyboard */ = {
+		396DDFCE21F4285200628070 /* SceneSelection.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				396DDFCF21F4285200628070 /* Base */,
 			);
-			name = Main.storyboard;
+			name = SceneSelection.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -358,7 +442,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "prismne.Protocol-Bernardo";
+				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -377,7 +461,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "prismne.Protocol-Bernardo";
+				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
