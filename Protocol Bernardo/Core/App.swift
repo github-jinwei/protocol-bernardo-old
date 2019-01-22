@@ -10,4 +10,6 @@ import Foundation
 
 struct App {
     static let core = Core()
+    
+    static let dae = DataAcquisitionEngine()
 }

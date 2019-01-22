@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SceneSelectorController.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-19.
@@ -8,11 +8,11 @@
 
 import Cocoa
 
-class SceneSelectionController: NSViewController, Scene {
+class SceneSelectorController: NSViewController {
     
     var sceneIndex: Int = -1
     
-    static let sceneName: String = "Scene Selection"
+    static let sceneName: String = "Scene Selector"
     
     static let sceneDescription: String = "Used to open new scenes"
 
@@ -20,6 +20,12 @@ class SceneSelectionController: NSViewController, Scene {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set the window title
+        self.view.window?.title = "Protocol Bernardo"
+        
+        // Register ourselves in the Core to allow for future reopening
+        App.core.registerSceneSelectorController(self)
 
         // View is loaded, lets load the scenes list and display it
         availableScenes.forEach {
@@ -34,7 +40,6 @@ class SceneSelectionController: NSViewController, Scene {
     }
     
     override func viewDidAppear() {
-        self.view.window?.title = "Protocol Bernardo"
     }
 }
 

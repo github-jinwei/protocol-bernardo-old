@@ -8,18 +8,37 @@
 
 import Foundation
 
+/// The application structure Core
 class Core {
     
-    internal var _scenes = [Scene]()
+    internal var _sceneSelectorController: SceneSelectorController!
+    
+    /// Used by the SceneSelectorController to register itself
+    ///
+    /// - Parameter controller: The SceneSelectorController
+    func registerSceneSelectorController(_ controller: SceneSelectorController) {
+        _sceneSelectorController = controller
+    }
+    
+    func openSceneSelector() {
+        _sceneSelectorController!.view.window!.windowController!.showWindow(nil)
+    }
+    
+    /// Array with all the currently opened scenes
+    internal var _scenes = [Int: Scene]()
+    
+    internal var _nextSceneIndex: Int = 0
     
     /// Instanciate and register a new scene
     ///
     /// - Parameter sceneType: The Type of the scene to create
     func makeScene(ofType sceneType: Scene.Type) {
-        var newScene = sceneType.init()
-        newScene.sceneIndex = _scenes.count
+        var newScene = sceneType.make()
+        newScene.sceneIndex = _nextSceneIndex
         
-        _scenes.append(newScene)
+        _scenes[_nextSceneIndex] = newScene
+        
+        _nextSceneIndex += 1
     }
     
     /// Deregister a scene. If the scene has no other references,
@@ -27,6 +46,10 @@ class Core {
     ///
     /// - Parameter sceneIndex: Index of the scene to remove
     func removeScene(withIndex sceneIndex: Int) {
-        _scenes.remove(at: sceneIndex)
+        _scenes.removeValue(forKey: sceneIndex)
+        
+        if(_scenes.count == 0) {
+            openSceneSelector()
+        }
     }
 }

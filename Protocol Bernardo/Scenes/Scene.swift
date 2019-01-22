@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import AppKit
 
 protocol Scene {
     /// Name of the scene, to display on the scene selection screen
@@ -17,16 +18,32 @@ protocol Scene {
     static var sceneDescription: String { get }
     
     /// Intializer called when the scene is loaded
-    init()
+    static func make() -> Scene
     
     /// Index of the scene inside the Core. This is used to properly remove the scene from the Core. This value should not be edited
-    var sceneIndex: Int { get set }
-    
-    func endScene()
+    var sceneIndex: Int! { get set }
 }
 
+// MARK: - Optionnal methods
 extension Scene {
     func endScene() {
         App.core.removeScene(withIndex: sceneIndex)
+    }
+}
+
+// MARK: - Windows handling
+extension Scene {
+    /// Create and open a window
+    ///
+    /// - Parameters:
+    ///   - storyboardName: Name of the storyboard the window is in
+    ///   - windowID: Identifier of the window
+    /// - Returns: The windowController of the newly created window
+    func makeWindow<WindowController: NSWindowController>(onStoryboard storyboardName: String, withIdentifier windowID: String) -> WindowController {
+        let storyboard = NSStoryboard(name: storyboardName, bundle: nil)
+        let windowController = storyboard.instantiateController(withIdentifier: windowID) as! WindowController
+        windowController.showWindow(nil)
+        
+        return windowController
     }
 }

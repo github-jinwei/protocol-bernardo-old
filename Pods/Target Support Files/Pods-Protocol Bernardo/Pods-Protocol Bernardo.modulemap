@@ -1,0 +1,6 @@
+framework module Pods_Protocol_Bernardo {
+  umbrella header "Pods-Protocol Bernardo-umbrella.h"
+
+  export *
+  module * { export * }
+}
