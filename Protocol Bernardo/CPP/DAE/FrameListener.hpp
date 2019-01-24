@@ -12,13 +12,13 @@
 #include <stdio.h>
 #include <ni2/OpenNI.h>
 
-class Kinect;
+class Device;
 
 class FrameListener: public openni::VideoStream::NewFrameListener {
     void onNewFrame(openni::VideoStream &stream);
 
 public:
-    Kinect * device;
+    Device * device;
 };
 
 #endif /* FrameListener_hpp */

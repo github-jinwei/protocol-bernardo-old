@@ -12,11 +12,9 @@
 #include <map>
 
 #include "DAEStatus.h"
-#include "Kinect.hpp"
+#include "Device.hpp"
 
 class DataAcquisitionEngine {
-    static DataAcquisitionEngine * _instance;
-    
 public:
     
     static DataAcquisitionEngine * getInstance() {
@@ -27,38 +25,38 @@ public:
     };
     
     /**
-     Holds a loop continuously checking for frame coming from the kinects
+     Holds a loop continuously checking for frame coming from the devices
      */
     void main();
     
     /**
-     Parse for any new kinects connected
+     Parse for any new devices connected
      */
-    void parseForKinects();
+    void parseForDevices();
     
     /**
-     Open the connection with the kinect specified
+     Open the connection with the device specified
 
-     @param serial Serial number of the Kinect to connect to
+     @param serial Serial number of the device to connect to
      */
-    void connectToKinect(const std::string &serial);
+    void connectToDevice(const std::string &serial);
     
     /**
-     Activate the kinect, effectively startint to stream from it
+     Activate the device, effectively startint to stream from it
 
-     @param serial Serial number of the Kinect
+     @param serial Serial number of the device
      */
-    void setKinectActive(const std::string &serial);
+    void setDeviceActive(const std::string &serial);
     
     /**
-     Stops streaming fron the Kinect. Streaming can be resumed if needed
+     Stops streaming fron the device. Streaming can be resumed if needed
 
-     @param serial Serial number of the kinect
+     @param serial Serial number of the device
      */
-    void setKinectIdle(const std::string &serial);
+    void setDeviceIdle(const std::string &serial);
     
     /**
-     Gets the status of all kinects
+     Gets the status of all devices
 
      @return The global status
      */
@@ -68,10 +66,13 @@ public:
     
 private:
     DataAcquisitionEngine() {}
+    static DataAcquisitionEngine * _instance;
+    static bool _openNIInitialized;
+    
     
     bool _running = true;
     
-    std::map<std::string, Kinect *> _kinects;
+    std::map<std::string, Device *> _devices;
 };
 
 #endif /* DataAcquisitionEngine_hpp */

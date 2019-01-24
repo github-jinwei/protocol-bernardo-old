@@ -15,7 +15,7 @@ class MovementsCollector: Scene {
     // MARK: Inherited elements
     var sceneIndex: Int!
     static var sceneName = "Movements Collector"
-    static var sceneDescription = "Gather people movements from connected Kinects"
+    static var sceneDescription = "Gather people movements from connected devices"
     
     static func make() -> Scene {
         return MovementsCollector()
@@ -45,8 +45,8 @@ class MovementsCollector: Scene {
         App.dae.start()
     }
     
-    func refreshKinectsList() {
-        App.dae.refreshKinectsList()
+    func refreshDevicesList() {
+        App.dae.refreshDevicesList()
     }
     
     func endScene() {
@@ -55,7 +55,7 @@ class MovementsCollector: Scene {
     }
     
     // ///////////////////
-    // MARK: Kinect Lifecycle
+    // MARK: Device Lifecycle
 }
 
 extension MovementsCollector: DataAcquisitionEngineDelegate {

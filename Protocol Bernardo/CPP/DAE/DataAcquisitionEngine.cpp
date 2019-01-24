@@ -14,12 +14,19 @@
 #include <string>
 
 #include <ni2/OpenNI.h>
+#include <nite2/NiTE.h>
 
 DataAcquisitionEngine * DataAcquisitionEngine::_instance;
+bool DataAcquisitionEngine::_openNIInitialized = false;
 
 void DataAcquisitionEngine::main() {
     // Init OpenNI
-    openni::OpenNI::initialize();
+    
+    if(!DataAcquisitionEngine::_openNIInitialized) {
+        openni::OpenNI::initialize();
+        DataAcquisitionEngine::_openNIInitialized = true;
+    }
+    
     std::string initMessage(openni::OpenNI::getExtendedError());
     
     if(initMessage.size() > 0) {
@@ -28,29 +35,35 @@ void DataAcquisitionEngine::main() {
         throw "Could not itialize OpenNI";
     }
     
+    nite::Status status = nite::NiTE::initialize();
+    if(status != nite::STATUS_OK)
+        std::cout << "NiTE Error" << std::endl;
+    else
+        std::cout << "NiTE Init OK" << std::endl;
+    
     // Execute a first parse
-    parseForKinects();
+    parseForDevices();
 
     // And now start the loop
-    while (_running) {
-        for (std::pair<std::string, Kinect *> kinectReference : _kinects) {
-            Kinect * kinect = kinectReference.second;
-            
-            // Make sure we are not handlign a kinect being loaded/offloaded
-            if(kinect == NULL)
-                continue;
-            
-            
-        }
-        
-        unsigned int microseconds = 250;
-        usleep(microseconds);
-    }
+//    while (_running) {
+//        for (std::pair<std::string, Device *> deviceReference : _devices) {
+//            Device * device = deviceReference.second;
+//            
+//            // Make sure we are not handlign a devicebeing loaded/offloaded
+//            if(device == NULL)
+//                continue;
+//            
+//            device->readUserFrame();
+//        }
+//        
+//        unsigned int microseconds = 250;
+//        usleep(microseconds);
+//    }
     
     // The loop has ended, we are closing the DAE.
 }
 
-void DataAcquisitionEngine::parseForKinects() {
+void DataAcquisitionEngine::parseForDevices() {
     // Get all available devices
     openni::Array<openni::DeviceInfo> availableDevices;
     openni::OpenNI::enumerateDevices(&availableDevices);
@@ -72,68 +85,66 @@ void DataAcquisitionEngine::parseForKinects() {
         
         // Check the serial isn't already stored
         if(std::find(foundSerials.begin(), foundSerials.end(), serial) != foundSerials.end()) {
-            // Serial already stored, ignore kinect
+            // Serial already stored, ignore device
             continue;
         }
         
-        std::cout << availableDevices[i].getUri() << std::endl;
-        
         // Mark the device as found and register it
         foundSerials.push_back(serial);
-        Kinect * kinect = new Kinect(availableDevices[i], serial);
-        _kinects[serial] = kinect;
+        Device * device = new Device(availableDevices[i], serial);
+        _devices[serial] = device;
     }
     
-    // Now, check for missing kinects
-    for(auto it = _kinects.cbegin(); it != _kinects.cend();) {
-        // Was the kinect serial found when parsing ?
+    // Now, check for missing devices
+    for(auto it = _devices.cbegin(); it != _devices.cend();) {
+        // Was the device serial found when parsing ?
         if(std::find(foundSerials.begin(), foundSerials.end(), it->first) != foundSerials.end()) {
             ++it;
-            continue; // Kinect connected
+            continue; // Device connected
         }
 
-        // Kinect is no longer here, remove it
+        // Device is no longer here, remove it
         delete it->second;
-        _kinects.erase(it++);
+        _devices.erase(it++);
     }
 }
 
-void DataAcquisitionEngine::connectToKinect(const std::string &serial) {
-    // Make sure the kinect specified is available
-    if(_kinects.count(serial) == 0)
+void DataAcquisitionEngine::connectToDevice(const std::string &serial) {
+    // Make sure the device specified is available
+    if(_devices.count(serial) == 0)
         return; // Do nothing
     
-    _kinects[serial]->connect();
+    _devices[serial]->connect();
 }
 
-void DataAcquisitionEngine::setKinectActive(const std::string &serial) {
-    // Make sure the kinect specified is available
-    if(_kinects.count(serial) == 0)
+void DataAcquisitionEngine::setDeviceActive(const std::string &serial) {
+    // Make sure the device specified is available
+    if(_devices.count(serial) == 0)
         return; // Do nothing
     
-    _kinects[serial]->setActive();
+    _devices[serial]->setActive();
 }
 
-void DataAcquisitionEngine::setKinectIdle(const std::string &serial) {
-    // Make sure the kinect specified is available
-    if(_kinects.count(serial) == 0)
+void DataAcquisitionEngine::setDeviceIdle(const std::string &serial) {
+    // Make sure the device specified is available
+    if(_devices.count(serial) == 0)
         return; // Do nothing
     
-    _kinects[serial]->setIdle();
+    _devices[serial]->setIdle();
 }
 
 DAEStatus * DataAcquisitionEngine::getStatus() {
     DAEStatus * status = new DAEStatus();
     
-    status->kinectCount = (unsigned int)_kinects.size();
+    status->deviceCount = (unsigned int)_devices.size();
     
-    // Allocate space to store the kinect states (C-style baby)
-    status->_kinectStatus = (KinectStatus *)malloc(sizeof(KinectStatus) * status->kinectCount);
+    // Allocate space to store the device states (C-style baby)
+    status->_deviceStatus = (DeviceStatus *)malloc(sizeof(DeviceStatus) * status->deviceCount);
     
     int i = 0;
-    for (std::pair<std::string, Kinect *> kinectReference : _kinects) {
-        Kinect * kinect = kinectReference.second;
-        status->_kinectStatus[i] = kinect->getState();
+    for (std::pair<std::string, Device *> deviceReference : _devices) {
+        Device * device = deviceReference.second;
+        status->_deviceStatus[i] = device->getState();
         ++i;
     }
     
@@ -142,10 +153,12 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
 
 DataAcquisitionEngine::~DataAcquisitionEngine() {
     _running = false;
-    
+
     // Let's free all the devices
-    for (std::pair<std::string, Kinect *> kinectReference : _kinects) {
-        Kinect * kinect = kinectReference.second;
-        delete kinect;
+    for (std::pair<std::string, Device *> deviceReference : _devices) {
+        Device * device = deviceReference.second;
+        delete device;
     }
+    
+    nite::NiTE::shutdown();
 }

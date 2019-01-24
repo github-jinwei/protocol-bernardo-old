@@ -8,11 +8,11 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="PBKinectRow" customModule="Protocol_Bernardo" customModuleProvider="target">
+        <customView id="c22-O7-iKe" customClass="PBDeviceRow" customModule="Protocol_Bernardo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="440" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box title="Kinect #1" translatesAutoresizingMaskIntoConstraints="NO" id="sJy-U2-gVQ">
+                <box title="Device #0" translatesAutoresizingMaskIntoConstraints="NO" id="sJy-U2-gVQ">
                     <rect key="frame" x="-3" y="16" width="446" height="75"/>
                     <view key="contentView" id="el0-Hy-qyc">
                         <rect key="frame" x="3" y="3" width="440" height="57"/>
@@ -35,7 +35,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1h5-af-B1n">
                                         <rect key="frame" x="-2" y="0.0" width="79" height="14"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Serial Number" id="z4e-fc-EVv">
-                                            <font key="font" metaFont="system" size="11"/>
+                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>

@@ -12,7 +12,7 @@ import AppKit
 class MovementsCollectorViewController: NSViewController {
     
     weak var movementsCollector: MovementsCollector?
-    @IBOutlet weak var kinectsList: NSStackView!
+    @IBOutlet weak var devicesList: NSStackView!
     
     var _isAcquiring = false
     
@@ -24,80 +24,81 @@ class MovementsCollectorViewController: NSViewController {
         super.viewDidAppear()
     }
     
-    @IBAction func refreshKinectsList(_ sender: Any) {
-        movementsCollector?.refreshKinectsList();
+    @IBAction func refreshDevicesList(_ sender: Any) {
+        movementsCollector?.refreshDevicesList();
     }
     
     /// Called to pass a new status to the interface
     ///
     /// - Parameter status: The DAE status
     func statusUpdate(_ status: DAEStatus) {
-        if(status.kinectCount != kinectsList.views.count) {
-            reloadKinectsList(withStatus: status)
+        if(status.deviceCount != devicesList.views.count) {
+            reloadDevicesList(withStatus: status)
             return
         }
         
-        kinectsList.views.forEach { view in
-            let kinectView = view as! PBKinectRow
-            let serial = kinectView.serial!
-            let kinect = status.kinects[serial]!
+        devicesList.views.forEach { view in
+            let deviceView = view as! PBDeviceRow
+            let serial = deviceView.serial!
+            let device = status.devices[serial]!
             
             // Update in the values
-            setViewValues(kinectView: kinectView, kinect: kinect)
+            setViewValues(deviceView: deviceView, device: device)
         }
     }
     
-    /// Regenerate all the kinect views
+    /// Regenerate all the device views
     ///
     /// - Parameter status: The new status to generate from
-    func reloadKinectsList(withStatus status: DAEStatus) {
+    func reloadDevicesList(withStatus status: DAEStatus) {
         // Remove previously added view
-        kinectsList.views.forEach { $0.removeFromSuperview() }
+        devicesList.views.forEach { $0.removeFromSuperview() }
         
-        status.kinects.forEach { serial, kinect in
-            let kinectView: PBKinectRow = NSView.make(fromNib: "PBKinectRow", owner: nil)
+        status.devices.forEach { serial, device in
+            let deviceView: PBDeviceRow = NSView.make(fromNib: "PBDeviceRow", owner: nil)
             
             // Values that will not change
-            kinectView.serial = serial
-            kinectView.outletBox.title = "Kinect #\(kinectsList.views.count + 1)"
+            deviceView.serial = serial
+            deviceView.outletBox.title = "Device #\(devicesList.views.count + 1)"
             
             // Insert the view in the stack
-            kinectsList.addView(kinectView, in: .top)
+            devicesList.addView(deviceView, in: .top)
             
             // Fill in the values
-            setViewValues(kinectView: kinectView, kinect: kinect)
+            setViewValues(deviceView: deviceView, device: device)
         }
     }
     
-    func setViewValues(kinectView: PBKinectRow, kinect: KinectStatus) {
-        kinectView.serialField.stringValue = kinect.serial
-        kinectView.statusField.stringValue = stateLabel(kinect.state)
+    func setViewValues(deviceView: PBDeviceRow, device: DeviceStatus) {
+        deviceView.deviceNameField.stringValue = device.name
+        deviceView.serialField.stringValue = device.serial
+        deviceView.statusField.stringValue = stateLabel(device.state)
         
-        switch kinect.state.rawValue {
+        switch device.state.rawValue {
         case 1: // Connecting
-            kinectView.actionButton.isEnabled = true;
-            kinectView.actionButton.title = "Connect"
+            deviceView.actionButton.isEnabled = true;
+            deviceView.actionButton.title = "Connect"
         case 2: // Connecting
-            kinectView.actionButton.isEnabled = false;
+            deviceView.actionButton.isEnabled = false;
         case 3: // Ready
-            kinectView.actionButton.isEnabled = true;
-            kinectView.actionButton.title = "Activate"
+            deviceView.actionButton.isEnabled = true;
+            deviceView.actionButton.title = "Activate"
         case 4: // Active
-            kinectView.actionButton.isEnabled = true;
-            kinectView.actionButton.title = "Pause"
+            deviceView.actionButton.isEnabled = true;
+            deviceView.actionButton.title = "Pause"
         case 5: // Closing
-            kinectView.actionButton.isEnabled = false;
+            deviceView.actionButton.isEnabled = false;
         default: // Errored
-            kinectView.actionButton.isEnabled = false;
-            kinectView.actionButton.title = "Errored"
+            deviceView.actionButton.isEnabled = false;
+            deviceView.actionButton.title = "Errored"
         }
     }
     
-    /// Gets the label for the kinect state
+    /// Gets the label for the device state
     ///
-    /// - Parameter state: State of the kinect
+    /// - Parameter state: State of the device
     /// - Returns: Label for the state
-    func stateLabel(_ state: KinectState) -> String {
+    func stateLabel(_ state: DeviceState) -> String {
         switch state.rawValue {
         case 1: return "Idle"
         case 2: return "Connecting"

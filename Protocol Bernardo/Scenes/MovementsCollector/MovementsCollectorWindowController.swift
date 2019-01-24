@@ -15,6 +15,7 @@ class MovementsCollectorWindowController: NSWindowController {
     
     override func windowDidLoad() {
         window!.delegate = self
+        window!.title = "Movements Collector"
     }
 }
 

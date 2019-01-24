@@ -43,37 +43,37 @@ class DataAcquisitionEngine {
     ///
     /// - Parameter repeater: The wrepeater
     func fetchStatus(_ repeater: Repeater) {
-        _engineStatus = DAEGetStatus()!.pointee
-        delegate?.dae(self, statusUpdated: _engineStatus!)
+        self._engineStatus = DAEGetStatus()!.pointee
+        self.delegate?.dae(self, statusUpdated: self._engineStatus!)
     }
     
-    func toggleKinectStatus(withSerial serial: String) {
-        guard let kinect = _engineStatus.kinects[serial] else {
+    func toggleDeviceStatus(withSerial serial: String) {
+        guard let device = _engineStatus.devices[serial] else {
             return
         }
         
-        switch kinect.state.rawValue {
-        case 1: connect(toKinect: serial)
-        case 3: activate(kinect: serial)
-        case 4: pause(kinect: serial)
+        switch device.state.rawValue {
+        case 1: connect(toDevice: serial)
+        case 3: activate(device: serial)
+        case 4: pause(device: serial)
         default: return
         }
     }
     
-    func refreshKinectsList() {
-        DAEParseForKinects()
+    func refreshDevicesList() {
+        DAEParseForDevices()
     }
     
-    func connect(toKinect kinectSerial: String) {
-        DAEConnectToKinect(kinectSerial.CString())
+    func connect(toDevice deviceSerial: String) {
+        DAEConnectToDevice(deviceSerial.CString())
     }
     
-    func activate(kinect kinectSerial: String) {
-        DAESetKinectActive(kinectSerial.CString())
+    func activate(device deviceSerial: String) {
+        DAESetDeviceActive(deviceSerial.CString())
     }
     
-    func pause(kinect kinectSerial: String) {
-        DAESetKinectIdle(kinectSerial.CString())
+    func pause(device deviceSerial: String) {
+        DAESetDeviceIdle(deviceSerial.CString())
     }
     
     func end() {

@@ -9,18 +9,25 @@
 #ifndef DAEStatus_h
 #define DAEStatus_h
 
-#include "KinectStatus.h"
+#include "DeviceState.h"
 
-struct KinectStatus {
+struct User {
+};
+
+struct DeviceStatus {
+    char _name[256];
     char _serial[256];
-    KinectState state;
+    DeviceState state;
+    
+    unsigned int userCount;
+    struct User * _users;
 };
 
 typedef struct DAEStatus DAEStatus;
 
 struct DAEStatus {
-    unsigned int kinectCount;
-    struct KinectStatus * _kinectStatus;
+    unsigned int deviceCount;
+    struct DeviceStatus * _deviceStatus;
 };
 
 

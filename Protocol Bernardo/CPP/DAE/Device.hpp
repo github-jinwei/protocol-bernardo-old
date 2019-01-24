@@ -1,23 +1,25 @@
 //
-//  Kinect.hpp
+//  Device.hpp
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-21.
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#ifndef Kinect_hpp
-#define Kinect_hpp
+#ifndef Device_hpp
+#define Device_hpp
 
 #include <iostream>
 #include <string>
 
 #include <ni2/OpenNI.h>
+#include <nite2/NiTE.h>
 
 #include "DAEStatus.h"
 #include "FrameListener.hpp"
+#include "UserFrameListener.hpp"
 
-class Kinect {
+class Device {
 public:
     /**
      Instanciate the device
@@ -25,19 +27,19 @@ public:
      @param device The device info object provided by OpenNI
      @param serial The serial number of the device
      */
-    Kinect(const openni::DeviceInfo &device, const std::string &serial):
+    Device(const openni::DeviceInfo &device, const std::string &serial):
         _name(std::string(device.getName())),
         _serial(serial),
         _uri(std::string(device.getUri())) {}
     
     /**
-     Open a connection with the kinect, properly initializing this class.
+     Open a connection with the device, properly initializing this class.
      You still need to call `setActive` to start getting frames
      */
     void connect();
     
     /**
-     Starts streaming from the kinect
+     Starts streaming from the device
      */
     void setActive();
     
@@ -60,12 +62,23 @@ public:
      */
     void storeDepthFrame(openni::VideoFrameRef * frame);
     
+    
+    void readUserFrame();
+    
     /**
-     Provide a structure depicting the current state of the kinect
+     Receive a user frame provided by the user tracker.
 
-     @return The kinect state
+     @param userFrame The latest user frame
      */
-    KinectStatus getState();
+    void onUserFrame(nite::UserTrackerFrameRef * userFrame);
+    
+    
+    /**
+     Provide a structure depicting the current state of the device
+
+     @return The device state
+     */
+    DeviceStatus getState();
     
     /**
      Gives the name of the device
@@ -88,7 +101,7 @@ public:
      */
     inline std::string getSerial() { return _serial; }
     
-    ~Kinect();
+    ~Device();
     
 private:
     std::string _name;
@@ -106,7 +119,11 @@ private:
     FrameListener _colorStreamListener;
     FrameListener _depthStreamListener;
     
-    KinectState _state = KinectState::IDLE;
+    DeviceState _state = DeviceState::IDLE;
+    
+    nite::UserTracker _userTracker;
+    nite::UserTrackerFrameRef * _userFrame;
+    UserFrameListener _userFrameListener;
 };
 
-#endif /* Kinect_hpp */
+#endif /* Device_hpp */

@@ -1,5 +1,5 @@
 //
-//  PBKinectRow.swift
+//  PBDeviceRow.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-22.
@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-class PBKinectRow: NSView {
+class PBDeviceRow: NSView {
     var serial:String!
     
     @IBOutlet weak var outletBox: NSBox!
@@ -20,7 +20,7 @@ class PBKinectRow: NSView {
     @IBOutlet weak var quickLookButton: NSButton!
     
     @IBAction func toggleState(_ sender: AnyObject) {
-        App.dae.toggleKinectStatus(withSerial: serial)
+        App.dae.toggleDeviceStatus(withSerial: serial)
     }
     
     @IBAction func openQuickLook(_ sender: AnyObject) { }

@@ -52,7 +52,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="refreshKinectsList:" target="och-mK-cQM" id="5Bq-7L-AxB"/>
+                                    <action selector="refreshDevicesList:" target="och-mK-cQM" id="5Bq-7L-AxB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="kinectsList" destination="zcW-8B-vaX" id="afG-Eb-rNl"/>
+                        <outlet property="devicesList" destination="zcW-8B-vaX" id="afG-Eb-rNl"/>
                     </connections>
                 </viewController>
                 <customObject id="OPB-xZ-zLT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

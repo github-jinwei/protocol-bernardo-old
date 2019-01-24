@@ -17,23 +17,23 @@ void DAEPrepare() {
     App->dae->main();
 }
 
-void DAEParseForKinects() {
-    App->dae->parseForKinects();
+void DAEParseForDevices() {
+    App->dae->parseForDevices();
 }
 
-void DAEConnectToKinect(const char * c_serial) {
+void DAEConnectToDevice(const char * c_serial) {
     std::string serial = c_serial;
-    App->dae->connectToKinect(serial);
+    App->dae->connectToDevice(serial);
 }
 
-void DAESetKinectActive(const char * c_serial) {
+void DAESetDeviceActive(const char * c_serial) {
     std::string serial = c_serial;
-    App->dae->setKinectActive(serial);
+    App->dae->setDeviceActive(serial);
 }
 
-void DAESetKinectIdle(const char * c_serial) {
+void DAESetDeviceIdle(const char * c_serial) {
     std::string serial = c_serial;
-    App->dae->setKinectIdle(serial);
+    App->dae->setDeviceIdle(serial);
 }
 
 void DAEEndAcquisition() {

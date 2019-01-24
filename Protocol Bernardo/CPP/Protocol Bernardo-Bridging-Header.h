@@ -13,8 +13,8 @@
 DAEStatus * DAEGetStatus();
 
 void DAEPrepare();
-void DAEParseForKinects();
-void DAEConnectToKinect(const char * c_serial);
-void DAESetKinectActive(const char * c_serial);
-void DAESetKinectIdle(const char * c_serial);
+void DAEParseForDevices();
+void DAEConnectToDevice(const char * c_serial);
+void DAESetDeviceActive(const char * c_serial);
+void DAESetDeviceIdle(const char * c_serial);
 void DAEEndAcquisition();
