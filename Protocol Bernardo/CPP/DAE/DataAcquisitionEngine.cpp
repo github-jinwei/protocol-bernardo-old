@@ -10,80 +10,77 @@
 #include <iostream>
 #include <cstdlib>
 #include <signal.h>
-#include <opencv2/opencv.hpp>
+#include <regex>
+#include <string>
 
+#include <ni2/OpenNI.h>
+
+DataAcquisitionEngine * DataAcquisitionEngine::_instance;
 
 void DataAcquisitionEngine::main() {
-    //Start by setting up the log level
-    libfreenect2::setGlobalLogger(
-        libfreenect2::createConsoleLogger(
-            libfreenect2::Logger::Debug
-        )
-    );
+    // Init OpenNI
+    openni::OpenNI::initialize();
+    std::string initMessage(openni::OpenNI::getExtendedError());
+    
+    if(initMessage.size() > 0) {
+        // An error occured while initializing OpenNI
+        std::cout << initMessage << std::endl;
+        throw "Could not itialize OpenNI";
+    }
     
     // Execute a first parse
     parseForKinects();
-    
-    cv::Mat rgbmat, depthmat, depthmatUndistorted, irmat, rgbd, rgbd2;
-    
+
     // And now start the loop
     while (_running) {
         for (std::pair<std::string, Kinect *> kinectReference : _kinects) {
             Kinect * kinect = kinectReference.second;
-            libfreenect2::FrameMap * frames;
             
             // Make sure we are not handlign a kinect being loaded/offloaded
             if(kinect == NULL)
                 continue;
             
-            frames = kinect->getFrames();
             
-            // Sometimes there is no frames
-            if(frames == nullptr)
-                continue;
-            
-            // Do something with the frames
-            std::cout << "Has frames" << std::endl;
-            
-            // Get the frames
-//            libfreenect2::Frame *rgb = (*frames)[libfreenect2::Frame::Color];
-//            libfreenect2::Frame *ir = (*frames)[libfreenect2::Frame::Ir];
-//            libfreenect2::Frame *depth = (*frames)[libfreenect2::Frame::Depth];
-//
-//            cv::Mat(rgb->height, rgb->width, CV_8UC4, rgb->data).copyTo(rgbmat);
-//            cv::Mat(ir->height, ir->width, CV_32FC1, ir->data).copyTo(irmat);
-//            cv::Mat(depth->height, depth->width, CV_32FC1, depth->data).copyTo(depthmat);
-            
-            
-            kinect->freeFrames(*frames);
         }
+        
+        unsigned int microseconds = 250;
+        usleep(microseconds);
     }
     
     // The loop has ended, we are closing the DAE.
 }
 
 void DataAcquisitionEngine::parseForKinects() {
-    // Do we have any device ?
-    int availableDevices = _freenect2.enumerateDevices();
-    if(availableDevices == 0)
-    {
-        std::cout << "no device connected!" << std::endl;
-    }
+    // Get all available devices
+    openni::Array<openni::DeviceInfo> availableDevices;
+    openni::OpenNI::enumerateDevices(&availableDevices);
     
     std::vector<std::string> foundSerials;
     
-    // Iterate on each device
-    for(int i = 0; i < availableDevices; ++i) {
-        // Get its serial
-        std::string serial = _freenect2.getDeviceSerialNumber(i);
+    // The serial extraction regex
+    std::regex regex("serial=(.*?)&");
+    
+    for (int i = 0; i < availableDevices.getSize(); ++i) {
+        // Get the device URI
+        const std::string uri(availableDevices[i].getUri());
+        
+        // Extract its serial
+        std::smatch match;
+        if (!std::regex_search(uri.begin(), uri.end(), match, regex))
+            continue;
+        std::string serial = match[1];
+        
+        // Check the serial isn't already stored
+        if(std::find(foundSerials.begin(), foundSerials.end(), serial) != foundSerials.end()) {
+            // Serial already stored, ignore kinect
+            continue;
+        }
+        
+        std::cout << availableDevices[i].getUri() << std::endl;
+        
+        // Mark the device as found and register it
         foundSerials.push_back(serial);
-        
-        // Is this device already registered ?
-        if(_kinects.count(serial) == 1)
-            continue; // Kinect already registered
-        
-        // Let's register it
-        Kinect * kinect = new Kinect(serial);
+        Kinect * kinect = new Kinect(availableDevices[i], serial);
         _kinects[serial] = kinect;
     }
     
@@ -94,13 +91,11 @@ void DataAcquisitionEngine::parseForKinects() {
             ++it;
             continue; // Kinect connected
         }
-        
+
         // Kinect is no longer here, remove it
         delete it->second;
         _kinects.erase(it++);
     }
-    
-    std::cout << _kinects.size() << std::endl;
 }
 
 void DataAcquisitionEngine::connectToKinect(const std::string &serial) {
@@ -108,7 +103,7 @@ void DataAcquisitionEngine::connectToKinect(const std::string &serial) {
     if(_kinects.count(serial) == 0)
         return; // Do nothing
     
-    _kinects[serial]->connect(&_freenect2);
+    _kinects[serial]->connect();
 }
 
 void DataAcquisitionEngine::setKinectActive(const std::string &serial) {
@@ -148,50 +143,9 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
 DataAcquisitionEngine::~DataAcquisitionEngine() {
     _running = false;
     
-    // Let's free all the kinect
+    // Let's free all the devices
     for (std::pair<std::string, Kinect *> kinectReference : _kinects) {
         Kinect * kinect = kinectReference.second;
         delete kinect;
     }
 }
-
-//
-//void DataAcquisitionEngine::startAcquisition() {
-//    // Begin streaming from the device
-//    if(!device->startStreams(false, true)) {
-//        _status->state = DAEState::ERROR;
-//        return;
-//    }
-//
-//    // Print connected device informations
-////    std::cout << "device serial: " << device->getSerialNumber() << std::endl;
-////    std::cout << "device firmware: " << device->getFirmwareVersion() << std::endl;
-//
-//    libfreenect2::FrameMap frames;
-//
-////    libfreenect2::Registration* registration = new libfreenect2::Registration(device->getIrCameraParams(), device->getColorCameraParams());
-////    libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
-//
-//    _status->state = DAEState::ACQUIRING;
-//
-//    while(_status->state == DAEState::ACQUIRING)
-//    {
-//        if (!listener->waitForNewFrame(frames, 10 * 1000)) // 10 sconds
-//        {
-//            std::cout << "timeout!" << std::endl;
-//            return;
-//        }
-//
-//        std::cout << "Frames received" << std::endl;
-//
-////        libfreenect2::Frame * rgb = frames[libfreenect2::Frame::Color];
-//        libfreenect2::Frame * ir = frames[libfreenect2::Frame::Ir];
-//        libfreenect2::Frame * depth = frames[libfreenect2::Frame::Depth];
-//
-////        registration->apply(rgb, depth, &undistorted, &registered);
-//
-//        listener->release(frames);
-//    }
-//
-//    device->stop();
-//}

@@ -8,20 +8,58 @@
 
 #include "Kinect.hpp"
 
-void Kinect::connect(libfreenect2::Freenect2 * freenect2) {
+void Kinect::connect() {
     _state = KinectState::CONNECTING;
     
-    _pipeline = new libfreenect2::OpenCLPacketPipeline();
-    _device = freenect2->openDevice(_serial, _pipeline);
+    // Open the device
+    if (_device.open(_uri.c_str()) != openni::STATUS_OK)
+    {
+        printf("Coudle not open the device:\n%s\n", openni::OpenNI::getExtendedError());
+        _state = KinectState::ERROR;
+        return;
+    }
     
-    int frameTypes = 0 | libfreenect2::Frame::Color |
-                         libfreenect2::Frame::Ir    |
-                         libfreenect2::Frame::Depth;
+    // ////////////////////////
+    // Create the color stream
+    if(_colorStream.create(_device, openni::SENSOR_COLOR) != openni::STATUS_OK) {
+        printf("Coudle not create the color stream:\n%s\n", openni::OpenNI::getExtendedError());
+        _state = KinectState::ERROR;
+        return;
+    }
     
-    _listener = new libfreenect2::SyncMultiFrameListener(frameTypes);
-    _device->setColorFrameListener(_listener);
-    _device->setIrAndDepthFrameListener(_listener);
+    // Set its properties
+    openni::VideoMode colorVideoMode;
+    colorVideoMode.setResolution(640, 480);
+    colorVideoMode.setFps(30);
+    colorVideoMode.setPixelFormat(openni::PIXEL_FORMAT_RGB888);
+    _colorStream.setVideoMode(colorVideoMode);
+    _colorStreamListener.device = this;
+    _colorStream.addNewFrameListener(&_colorStreamListener);
     
+    
+    // ////////////////////////
+    // Create the depth stream
+    
+    if(_depthStream.create(_device, openni::SENSOR_DEPTH) != openni::STATUS_OK) {
+        printf("Coudle not create the color stream:\n%s\n", openni::OpenNI::getExtendedError());
+        _state = KinectState::ERROR;
+        return;
+    }
+    
+    // Set its properties
+    openni::VideoMode depthVideoMode;
+    depthVideoMode.setResolution(640, 480);
+    depthVideoMode.setFps(30);
+    depthVideoMode.setPixelFormat(openni::PIXEL_FORMAT_DEPTH_1_MM);
+    _depthStream.setVideoMode(depthVideoMode);
+    _depthStreamListener.device = this;
+    _depthStream.addNewFrameListener(&_depthStreamListener);
+    
+    
+    // Set the registration mode
+    _device.setImageRegistrationMode(openni::IMAGE_REGISTRATION_DEPTH_TO_COLOR);
+    
+    // Mark the kinect as ready
     _state = KinectState::READY;
 }
 
@@ -29,35 +67,41 @@ void Kinect::setActive() {
     // Do nothing if the kinect is not ready to stream
     if(_state != KinectState::READY)
         return;
+
+    // Start the streams
+    if(_colorStream.start() != openni::STATUS_OK) {
+        _state = KinectState::ERROR;
+        return;
+    }
     
-    // Start streaming
-    int success = _device->start();
+    if(_depthStream.start() != openni::STATUS_OK) {
+        _state = KinectState::ERROR;
+        return;
+    }
     
-    // Update the kinect status accordingly
-    _state = success ? KinectState::ACTIVE : KinectState::ERROR;
+    _state = KinectState::ACTIVE;
 }
 
 void Kinect::setIdle() {
-    // Make sure we only pause an active Kinect
     if(_state == KinectState::ACTIVE) {
-        _device->stop();
+        _colorStream.stop();
+        _depthStream.stop();
         _state = KinectState::READY;
     }
 }
 
-libfreenect2::FrameMap * Kinect::getFrames() {
-    // Are we in an active state
-    if(_state != KinectState::ACTIVE)
-        return nullptr;
+void Kinect::storeColorFrame(openni::VideoFrameRef *frame) {
+    if(_colorFrame != nullptr)
+        delete _colorFrame;
     
-    // Do we have any frame ?
-    if(!_listener->hasNewFrame())
-        return nullptr;
+    _colorFrame = frame;
+}
+
+void Kinect::storeDepthFrame(openni::VideoFrameRef *frame) {
+    if(_depthFrame != nullptr)
+        delete _depthFrame;
     
-    libfreenect2::FrameMap * frames = new libfreenect2::FrameMap();
-    _listener->waitForNewFrame(*frames);
-    
-    return frames;
+    _depthFrame = frame;
 }
 
 KinectStatus Kinect::getState() {
@@ -78,13 +122,15 @@ Kinect::~Kinect() {
         return;
     }
     
+    // Mark the kinect as closing
     _state = KinectState::CLOSING;
     
-    // Close the connection
-    _device->close();
+    // Properly free resources
+    _colorStream.destroy();
+    _depthStream.destroy();
     
-    // Free what needs to be
-    delete _listener;
-    delete _device;
-    // Pipeline deleted by the device directly
+    delete _colorFrame;
+    delete _depthFrame;
+    
+    _device.close();
 }

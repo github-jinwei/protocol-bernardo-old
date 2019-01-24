@@ -9,17 +9,22 @@
 #ifndef DataAcquisitionEngine_hpp
 #define DataAcquisitionEngine_hpp
 
-#include <libfreenect2/libfreenect2.hpp>
-#include <libfreenect2/frame_listener_impl.h>
-#include <libfreenect2/registration.h>
-#include <libfreenect2/packet_pipeline.h>
-#include <libfreenect2/logger.h>
+#include <map>
 
 #include "DAEStatus.h"
 #include "Kinect.hpp"
 
 class DataAcquisitionEngine {
+    static DataAcquisitionEngine * _instance;
+    
 public:
+    
+    static DataAcquisitionEngine * getInstance() {
+        if(!_instance)
+            _instance = new DataAcquisitionEngine();
+        
+        return _instance;
+    };
     
     /**
      Holds a loop continuously checking for frame coming from the kinects
@@ -62,9 +67,9 @@ public:
     ~DataAcquisitionEngine();
     
 private:
-    bool _running = true;
+    DataAcquisitionEngine() {}
     
-    libfreenect2::Freenect2 _freenect2;
+    bool _running = true;
     
     std::map<std::string, Kinect *> _kinects;
 };

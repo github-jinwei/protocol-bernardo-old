@@ -13,7 +13,7 @@
 #include "DataAcquisitionEngine.hpp"
 
 void DAEPrepare() {
-    App->dae = new DataAcquisitionEngine();
+    App->dae = DataAcquisitionEngine::getInstance();
     App->dae->main();
 }
 

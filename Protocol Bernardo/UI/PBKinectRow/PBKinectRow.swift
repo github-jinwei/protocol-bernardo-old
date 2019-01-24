@@ -13,6 +13,7 @@ class PBKinectRow: NSView {
     var serial:String!
     
     @IBOutlet weak var outletBox: NSBox!
+    @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet weak var serialField: NSTextField!
     @IBOutlet weak var statusField: NSTextField!
     @IBOutlet weak var actionButton: NSButton!
