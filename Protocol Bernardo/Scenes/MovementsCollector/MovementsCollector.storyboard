@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="vz8-WA-rTm">
+            <objects>
+                <windowController storyboardIdentifier="MovementsCollectorWindow" id="fsL-Iw-xmW" customClass="MovementsCollectorWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hoh-9m-8vD">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="372" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <connections>
+                            <outlet property="delegate" destination="fsL-Iw-xmW" id="Lwf-WW-JGE"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="och-mK-cQM" kind="relationship" relationship="window.shadowedContentViewController" id="jdK-DJ-vlt"/>
+                    </connections>
+                </windowController>
+                <customObject id="wyN-ny-ZAu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="-58"/>
+        </scene>
+        <!--Movements Collector View Controller-->
+        <scene sceneID="i2l-AD-mbo">
+            <objects>
+                <viewController id="och-mK-cQM" customClass="MovementsCollectorViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="R5G-UH-u4a">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="337"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WxO-ie-Dhx">
+                                <rect key="frame" x="18" y="290" width="234" height="27"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Movements Collector" id="ocJ-mN-8IL">
+                                    <font key="font" metaFont="systemHeavy" size="22"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcW-8B-vaX">
+                                <rect key="frame" x="20" y="0.0" width="440" height="282"/>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saJ-hv-DLg">
+                                <rect key="frame" x="379" y="283" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DAG-UM-vB2">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="refreshKinectsList:" target="och-mK-cQM" id="5Bq-7L-AxB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="saJ-hv-DLg" secondAttribute="trailing" constant="20" id="Cua-VA-2dC"/>
+                            <constraint firstItem="WxO-ie-Dhx" firstAttribute="top" secondItem="R5G-UH-u4a" secondAttribute="top" constant="20" id="HWt-wg-faV"/>
+                            <constraint firstItem="zcW-8B-vaX" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="Ndl-ev-LkC"/>
+                            <constraint firstItem="saJ-hv-DLg" firstAttribute="bottom" secondItem="WxO-ie-Dhx" secondAttribute="bottom" id="SQN-ks-JXn"/>
+                            <constraint firstItem="zcW-8B-vaX" firstAttribute="top" secondItem="WxO-ie-Dhx" secondAttribute="bottom" constant="8" id="ZqW-zb-7CI"/>
+                            <constraint firstAttribute="trailing" secondItem="zcW-8B-vaX" secondAttribute="trailing" constant="20" id="blh-DJ-yjs"/>
+                            <constraint firstItem="WxO-ie-Dhx" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="iWj-2b-don"/>
+                            <constraint firstAttribute="bottom" secondItem="zcW-8B-vaX" secondAttribute="bottom" id="lvc-NB-QfY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="kinectsList" destination="zcW-8B-vaX" id="afG-Eb-rNl"/>
+                    </connections>
+                </viewController>
+                <customObject id="OPB-xZ-zLT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="437.5"/>
+        </scene>
+    </scenes>
+</document>
