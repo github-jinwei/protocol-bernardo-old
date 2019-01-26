@@ -61,6 +61,9 @@ class MovementsCollectorViewController: NSViewController {
             // Insert the view in the stack
             devicesList.addView(deviceView, in: .top)            
         }
+        
+        // Resize the window to match the devices list
+        view.window?.setContentSize(view.fittingSize)
     }
 }
 

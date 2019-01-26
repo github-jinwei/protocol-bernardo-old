@@ -53,6 +53,7 @@ void DataAcquisitionEngine::stop() {
 }
 
 void DataAcquisitionEngine::parseForDevices() {
+    std::cout << "Parsing" << std::endl;
     // Get all the available devices
     openni::Array<openni::DeviceInfo> availableDevices;
     openni::OpenNI::enumerateDevices(&availableDevices);

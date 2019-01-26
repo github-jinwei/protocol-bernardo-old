@@ -26,6 +26,8 @@ class PBDeviceDetails: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.wantsLayer = true;
+        
         popover.delegate = self
     }
     

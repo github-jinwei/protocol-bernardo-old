@@ -11,8 +11,7 @@
                 <windowController storyboardIdentifier="MovementsCollectorWindow" id="fsL-Iw-xmW" customClass="MovementsCollectorWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hoh-9m-8vD">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="372" width="480" height="270"/>
+                        <rect key="contentRect" x="294" y="372" width="480" height="63"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
                         <connections>
                             <outlet property="delegate" destination="fsL-Iw-xmW" id="Lwf-WW-JGE"/>
@@ -44,7 +43,7 @@
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saJ-hv-DLg">
                                 <rect key="frame" x="379" y="283" width="87" height="32"/>
-                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DAG-UM-vB2">
+                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DAG-UM-vB2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -53,13 +52,13 @@
                                 </connections>
                             </button>
                             <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8qo-hn-5zd">
-                                <rect key="frame" x="20" y="0.0" width="440" height="282"/>
+                                <rect key="frame" x="20" y="20" width="440" height="262"/>
                             </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="saJ-hv-DLg" secondAttribute="trailing" constant="20" id="Cua-VA-2dC"/>
                             <constraint firstItem="WxO-ie-Dhx" firstAttribute="top" secondItem="R5G-UH-u4a" secondAttribute="top" constant="20" id="HWt-wg-faV"/>
-                            <constraint firstAttribute="bottom" secondItem="8qo-hn-5zd" secondAttribute="bottom" id="QQb-Fj-uXu"/>
+                            <constraint firstAttribute="bottom" secondItem="8qo-hn-5zd" secondAttribute="bottom" constant="20" id="QQb-Fj-uXu"/>
                             <constraint firstItem="saJ-hv-DLg" firstAttribute="bottom" secondItem="WxO-ie-Dhx" secondAttribute="bottom" id="SQN-ks-JXn"/>
                             <constraint firstAttribute="trailing" secondItem="8qo-hn-5zd" secondAttribute="trailing" constant="20" id="WIs-Gl-f7u"/>
                             <constraint firstItem="8qo-hn-5zd" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="gKy-td-rlL"/>

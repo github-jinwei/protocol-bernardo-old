@@ -18,9 +18,6 @@ class SceneSelectorController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the window title
-        self.view.window?.title = "Protocol Bernardo"
-        
         // Register ourselves in the Core to allow for future reopening
         App.core.registerSceneSelectorController(self)
 
@@ -34,6 +31,16 @@ class SceneSelectorController: NSViewController {
             
             scenesList.addView(sceneView, in: .top)
         }
+        
+        (scenesList.views.first as! PBSceneButton).separatorLine.removeFromSuperview()
+    }
+    
+    override func viewDidAppear() {
+        // Set the window title
+        self.view.window?.title = "Protocol Bernardo"
+        
+        // And the window size
+        view.window!.setContentSize(scenesList.fittingSize)
     }
 }
 

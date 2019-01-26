@@ -47,32 +47,28 @@
                         <action selector="openScene:" target="c22-O7-iKe" id="kVh-ee-xuX"/>
                     </connections>
                 </button>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ars-4X-XcN">
+                    <rect key="frame" x="20" y="89" width="440" height="5"/>
+                </box>
             </subviews>
             <constraints>
                 <constraint firstItem="tpB-Am-dSH" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="5Fw-QO-gP1"/>
                 <constraint firstAttribute="bottom" secondItem="CfZ-w1-zA5" secondAttribute="bottom" constant="20" symbolic="YES" id="5p5-rC-b4z"/>
+                <constraint firstItem="ars-4X-XcN" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="8tc-3h-b12"/>
                 <constraint firstItem="CfZ-w1-zA5" firstAttribute="top" secondItem="tpB-Am-dSH" secondAttribute="bottom" constant="8" id="Hgp-zv-Kee"/>
+                <constraint firstAttribute="trailing" secondItem="ars-4X-XcN" secondAttribute="trailing" constant="20" id="UI4-Mg-jW6"/>
                 <constraint firstItem="Y3T-sL-jf1" firstAttribute="centerY" secondItem="tpB-Am-dSH" secondAttribute="centerY" id="erH-w1-Fc7"/>
                 <constraint firstItem="tpB-Am-dSH" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="i3G-OX-3pX"/>
+                <constraint firstItem="ars-4X-XcN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="iJv-i2-TC5"/>
                 <constraint firstAttribute="trailing" secondItem="CfZ-w1-zA5" secondAttribute="trailing" constant="20" symbolic="YES" id="l78-x9-5Vn"/>
                 <constraint firstAttribute="trailing" secondItem="Y3T-sL-jf1" secondAttribute="trailing" constant="20" symbolic="YES" id="oYu-dW-zeF"/>
                 <constraint firstItem="Y3T-sL-jf1" firstAttribute="leading" secondItem="tpB-Am-dSH" secondAttribute="trailing" constant="8" symbolic="YES" id="pOP-M6-bNh"/>
                 <constraint firstItem="CfZ-w1-zA5" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="qh3-kk-oZS"/>
             </constraints>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                    <real key="value" value="1"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                    <color key="value" name="labelColor" catalog="System" colorSpace="catalog"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <real key="value" value="5"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="sceneDescriptionField" destination="CfZ-w1-zA5" id="f7A-Bu-TV6"/>
                 <outlet property="sceneNameField" destination="tpB-Am-dSH" id="Fnk-uw-cCi"/>
+                <outlet property="separatorLine" destination="ars-4X-XcN" id="A8O-E2-NlC"/>
             </connections>
         </customView>
     </objects>

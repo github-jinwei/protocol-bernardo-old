@@ -13,8 +13,9 @@ class PBSceneButton: NSView {
     /** The Type of the scene this view opens */
     var sceneType: Scene.Type!
     
-    @IBOutlet var sceneNameField: NSTextField!
-    @IBOutlet var sceneDescriptionField: NSTextField!
+    @IBOutlet weak var separatorLine: NSBox!
+    @IBOutlet weak var sceneNameField: NSTextField!
+    @IBOutlet weak var sceneDescriptionField: NSTextField!
     
     /// Open the scene represented by this view
     ///

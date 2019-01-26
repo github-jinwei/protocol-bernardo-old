@@ -125,15 +125,15 @@
             </connections>
             <point key="canvasLocation" x="139" y="299"/>
         </customView>
-        <customView id="3YE-qF-5GA" userLabel="Device Details">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+        <customView misplaced="YES" id="3YE-qF-5GA" userLabel="Device Details">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="394"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="qLh-nG-ESG">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="272"/>
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="394"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yb9-4M-82r">
-                            <rect key="frame" x="18" y="152" width="47" height="17"/>
+                            <rect key="frame" x="18" y="274" width="47" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Users :" id="SCQ-LK-ksD">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -141,7 +141,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zis-Ji-ble">
-                            <rect key="frame" x="71" y="152" width="13" height="17"/>
+                            <rect key="frame" x="71" y="274" width="13" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="0" id="3lb-gm-74I">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -149,7 +149,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pD8-lU-NeS">
-                            <rect key="frame" x="71" y="177" width="85" height="17"/>
+                            <rect key="frame" x="71" y="299" width="85" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Device state" id="SmF-gy-9if">
                                 <font key="font" metaFont="systemBold"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -157,13 +157,13 @@
                             </textFieldCell>
                         </textField>
                         <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fRH-vi-hfb">
-                            <rect key="frame" x="20" y="200" width="75" height="5"/>
+                            <rect key="frame" x="20" y="322" width="75" height="5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="v8w-uD-hNF"/>
                             </constraints>
                         </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="geW-7R-ppC">
-                            <rect key="frame" x="18" y="177" width="47" height="17"/>
+                            <rect key="frame" x="18" y="299" width="47" height="17"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="State :" id="ifm-aA-Km0">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -171,7 +171,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wdw-sm-wjf">
-                            <rect key="frame" x="18" y="211" width="79" height="14"/>
+                            <rect key="frame" x="18" y="333" width="79" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Serial Number" id="pTC-6e-W83">
                                 <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -179,7 +179,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="abb-pf-TpG">
-                            <rect key="frame" x="18" y="230" width="118" height="22"/>
+                            <rect key="frame" x="18" y="352" width="118" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="114" id="IdI-RQ-1V6"/>
                             </constraints>
@@ -211,8 +211,11 @@
                         <constraint firstItem="geW-7R-ppC" firstAttribute="leading" secondItem="qLh-nG-ESG" secondAttribute="leading" constant="20" id="wMs-kB-42y"/>
                     </constraints>
                 </customView>
-                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flf-4o-KsQ">
-                    <rect key="frame" x="200" y="0.0" width="280" height="272"/>
+                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flf-4o-KsQ">
+                    <rect key="frame" x="200" y="0.0" width="0.0" height="394"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="dNi-Jz-UZ6"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <constraints>
@@ -224,7 +227,7 @@
                 <constraint firstItem="flf-4o-KsQ" firstAttribute="leading" secondItem="qLh-nG-ESG" secondAttribute="trailing" id="zFm-xV-SNn"/>
                 <constraint firstItem="flf-4o-KsQ" firstAttribute="top" secondItem="3YE-qF-5GA" secondAttribute="top" id="zgI-lo-UIa"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="521"/>
+            <point key="canvasLocation" x="176.5" y="582"/>
         </customView>
         <viewController id="g3I-hZ-M6B" userLabel="Popover View Controller" customClass="PBDeviceDetails" customModule="Protocol_Bernardo" customModuleProvider="target">
             <connections>
@@ -335,7 +338,7 @@
                 <outlet property="userPosYField" destination="IoU-hm-1h7" id="w96-qc-431"/>
                 <outlet property="userPosZField" destination="6VS-HP-8WM" id="eXz-f5-8NT"/>
             </connections>
-            <point key="canvasLocation" x="541" y="460"/>
+            <point key="canvasLocation" x="600" y="307"/>
         </customView>
     </objects>
     <resources>
