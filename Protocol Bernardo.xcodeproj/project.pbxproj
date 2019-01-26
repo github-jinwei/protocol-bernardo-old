@@ -45,7 +45,6 @@
 		396DDFCB21F4285000628070 /* SceneSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* SceneSelectorController.swift */; };
 		396DDFCD21F4285200628070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCC21F4285200628070 /* Assets.xcassets */; };
 		396DDFD021F4285200628070 /* SceneSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCE21F4285200628070 /* SceneSelector.storyboard */; };
-		396DDFDC21F4285200628070 /* Protocol_BernardoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFDB21F4285200628070 /* Protocol_BernardoTests.swift */; };
 		396DDFEB21F42A9000628070 /* AvailableScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFEA21F42A9000628070 /* AvailableScenes.swift */; };
 		396DDFED21F42C4500628070 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFEC21F42C4500628070 /* Scene.swift */; };
 		396DDFEF21F42E2D00628070 /* PBSceneButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFEE21F42E2D00628070 /* PBSceneButton.xib */; };
@@ -59,18 +58,7 @@
 		39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* DAEStatus.swift */; };
 		39E3121621F779A0006569F1 /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* DeviceStatus.swift */; };
 		893947630B24A07E433454FB /* Pods_Protocol_Bernardo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */; };
-		F74FF46B3BA5E4659893510E /* Pods_Protocol_BernardoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046B85E386FE09C1B177F45B /* Pods_Protocol_BernardoTests.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		396DDFD821F4285200628070 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 396DDFBD21F4285000628070 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 396DDFC421F4285000628070;
-			remoteInfo = "Protocol Bernardo";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3968FCC521FB5829005EAA4C /* NiTE Files */ = {
@@ -273,9 +261,6 @@
 		396DDFCC21F4285200628070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		396DDFCF21F4285200628070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SceneSelector.storyboard; sourceTree = "<group>"; };
 		396DDFD121F4285200628070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		396DDFD721F4285200628070 /* Protocol BernardoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Protocol BernardoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		396DDFDB21F4285200628070 /* Protocol_BernardoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol_BernardoTests.swift; sourceTree = "<group>"; };
-		396DDFDD21F4285200628070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396DDFEA21F42A9000628070 /* AvailableScenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableScenes.swift; sourceTree = "<group>"; };
 		396DDFEC21F42C4500628070 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		396DDFEE21F42E2D00628070 /* PBSceneButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBSceneButton.xib; sourceTree = "<group>"; };
@@ -312,14 +297,6 @@
 				395E0F1721F93E030097D992 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
 				39589E6321FA5E3F006BEAC6 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
 				893947630B24A07E433454FB /* Pods_Protocol_Bernardo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		396DDFD421F4285200628070 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F74FF46B3BA5E4659893510E /* Pods_Protocol_BernardoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				396DDFC721F4285000628070 /* Protocol Bernardo */,
-				396DDFDA21F4285200628070 /* Protocol BernardoTests */,
 				396DDFC621F4285000628070 /* Products */,
 				398B65D821F64C5600F6D1FC /* Frameworks */,
 				19F3F63DC7FFB06856CA4300 /* Pods */,
@@ -489,7 +465,6 @@
 			isa = PBXGroup;
 			children = (
 				396DDFC521F4285000628070 /* Protocol Bernardo.app */,
-				396DDFD721F4285200628070 /* Protocol BernardoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -508,15 +483,6 @@
 				396DDFD121F4285200628070 /* Info.plist */,
 			);
 			path = "Protocol Bernardo";
-			sourceTree = "<group>";
-		};
-		396DDFDA21F4285200628070 /* Protocol BernardoTests */ = {
-			isa = PBXGroup;
-			children = (
-				396DDFDB21F4285200628070 /* Protocol_BernardoTests.swift */,
-				396DDFDD21F4285200628070 /* Info.plist */,
-			);
-			path = "Protocol BernardoTests";
 			sourceTree = "<group>";
 		};
 		396DDFE621F42A2300628070 /* Scenes */ = {
@@ -711,26 +677,6 @@
 			productReference = 396DDFC521F4285000628070 /* Protocol Bernardo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		396DDFD621F4285200628070 /* Protocol BernardoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 396DDFE321F4285200628070 /* Build configuration list for PBXNativeTarget "Protocol BernardoTests" */;
-			buildPhases = (
-				B4CCD26A6D69FF89DA18C85B /* [CP] Check Pods Manifest.lock */,
-				396DDFD321F4285200628070 /* Sources */,
-				396DDFD421F4285200628070 /* Frameworks */,
-				396DDFD521F4285200628070 /* Resources */,
-				13DBF11AEEBE0842C6A1CE6E /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				396DDFD921F4285200628070 /* PBXTargetDependency */,
-			);
-			name = "Protocol BernardoTests";
-			productName = "Protocol BernardoTests";
-			productReference = 396DDFD721F4285200628070 /* Protocol BernardoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -750,10 +696,6 @@
 							};
 						};
 					};
-					396DDFD621F4285200628070 = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 396DDFC421F4285000628070;
-					};
 				};
 			};
 			buildConfigurationList = 396DDFC021F4285000628070 /* Build configuration list for PBXProject "Protocol Bernardo" */;
@@ -770,7 +712,6 @@
 			projectRoot = "";
 			targets = (
 				396DDFC421F4285000628070 /* Protocol Bernardo */,
-				396DDFD621F4285200628070 /* Protocol BernardoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -785,13 +726,6 @@
 				396DDFD021F4285200628070 /* SceneSelector.storyboard in Resources */,
 				390D0DB721F502170032CA23 /* MovementsCollector.storyboard in Resources */,
 				3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		396DDFD521F4285200628070 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,28 +754,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		13DBF11AEEBE0842C6A1CE6E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Repeat/Repeat.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Repeat.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		48B1039FCFCC7E0E313ABDD4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -862,28 +774,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4CCD26A6D69FF89DA18C85B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Protocol BernardoTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -921,23 +811,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		396DDFD321F4285200628070 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				396DDFDC21F4285200628070 /* Protocol_BernardoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		396DDFD921F4285200628070 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 396DDFC421F4285000628070 /* Protocol Bernardo */;
-			targetProxy = 396DDFD821F4285200628070 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		396DDFCE21F4285200628070 /* SceneSelector.storyboard */ = {
@@ -1147,50 +1021,6 @@
 			};
 			name = Release;
 		};
-		396DDFE421F4285200628070 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FC16C30A804C5686E883755 /* Pods-Protocol BernardoTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KJ993GM677;
-				INFOPLIST_FILE = "Protocol BernardoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "prismne.Protocol-BernardoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Protocol Bernardo.app/Contents/MacOS/Protocol Bernardo";
-			};
-			name = Debug;
-		};
-		396DDFE521F4285200628070 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AD18919927E8DB868C1271B /* Pods-Protocol BernardoTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KJ993GM677;
-				INFOPLIST_FILE = "Protocol BernardoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "prismne.Protocol-BernardoTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Protocol Bernardo.app/Contents/MacOS/Protocol Bernardo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1208,15 +1038,6 @@
 			buildConfigurations = (
 				396DDFE121F4285200628070 /* Debug */,
 				396DDFE221F4285200628070 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		396DDFE321F4285200628070 /* Build configuration list for PBXNativeTarget "Protocol BernardoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				396DDFE421F4285200628070 /* Debug */,
-				396DDFE521F4285200628070 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
