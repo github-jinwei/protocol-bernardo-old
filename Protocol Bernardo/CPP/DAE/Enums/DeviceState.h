@@ -9,7 +9,7 @@
 #ifndef DeviceState_h
 #define DeviceState_h
 
-typedef enum Devi`ceState {
+typedef enum DeviceState {
     ERROR = 0,
     IDLE = 1,
     CONNECTING = 2,
