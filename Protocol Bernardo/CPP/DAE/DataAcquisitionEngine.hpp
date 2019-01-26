@@ -27,7 +27,12 @@ public:
     /**
      Holds a loop continuously checking for frame coming from the devices
      */
-    void main();
+    void start();
+    
+    /**
+     Stop all acquisition, disconnect from everuy device.
+     */
+    void stop();
     
     /**
      Parse for any new devices connected
@@ -68,7 +73,6 @@ private:
     DataAcquisitionEngine() {}
     static DataAcquisitionEngine * _instance;
     static bool _openNIInitialized;
-    
     
     bool _running = true;
     

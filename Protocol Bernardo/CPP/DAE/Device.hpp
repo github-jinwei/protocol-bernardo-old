@@ -17,7 +17,7 @@
 
 #include "DAEStatus.h"
 #include "FrameListener.hpp"
-#include "UserFrameListener.hpp"
+#include "UsersTracker.hpp"
 
 class Device {
 public:
@@ -62,23 +62,19 @@ public:
      */
     void storeDepthFrame(openni::VideoFrameRef * frame);
     
-    
-    void readUserFrame();
-    
     /**
-     Receive a user frame provided by the user tracker.
+     Gives the current state of the device
 
-     @param userFrame The latest user frame
+     @return The device state
      */
-    void onUserFrame(nite::UserTrackerFrameRef * userFrame);
-    
+    inline DeviceState getState() { return _state; }
     
     /**
      Provide a structure depicting the current state of the device
 
      @return The device state
      */
-    DeviceStatus getState();
+    DeviceStatus getStatus();
     
     /**
      Gives the name of the device
@@ -101,6 +97,8 @@ public:
      */
     inline std::string getSerial() { return _serial; }
     
+    inline nite::UserTracker * getRigTracker() { return &_rigTracker; }
+    
     ~Device();
     
 private:
@@ -121,9 +119,9 @@ private:
     
     DeviceState _state = DeviceState::IDLE;
     
-    nite::UserTracker _userTracker;
+    nite::UserTracker _rigTracker;
     nite::UserTrackerFrameRef * _userFrame;
-    UserFrameListener _userFrameListener;
+    UsersTracker _usersTracker;
 };
 
 #endif /* Device_hpp */

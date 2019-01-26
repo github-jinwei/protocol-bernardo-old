@@ -8,9 +8,9 @@
 /**
  DAE C Interfaces
  */
-#include "DAEStatus.h"
+#include "DAE/Structs/DAEStatus.h"
 
-DAEStatus * DAEGetStatus();
+struct DAEStatus * DAEGetStatus();
 
 void DAEPrepare();
 void DAEParseForDevices();

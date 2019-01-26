@@ -17,11 +17,9 @@ void FrameListener::onNewFrame(openni::VideoStream &stream) {
     
     switch (sensorType) {
         case openni::SENSOR_COLOR:
-            std::cout << "Received COLOR frame" << std::endl;
             device->storeColorFrame(frame);
             break;
         case openni::SENSOR_DEPTH:
-            std::cout << "Received DEPTH frame" << std::endl;
             device->storeDepthFrame(frame);
             break;
         default:

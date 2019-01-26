@@ -31,4 +31,25 @@ extension DeviceStatus {
             }
         }
     }
+    
+    // List all the users in a Swift friendly format
+    var users: [User] {
+        get {
+            var users = [User]()
+            
+            var pointer = _users
+            
+            for i in 0..<userCount {
+                let user = pointer!.pointee
+                
+                users.append(user)
+                
+                if i + 1 < userCount {
+                    pointer = pointer?.successor()
+                }
+            }
+            
+            return users
+        }
+    }
 }

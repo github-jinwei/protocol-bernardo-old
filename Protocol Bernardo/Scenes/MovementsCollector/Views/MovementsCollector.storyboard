@@ -42,9 +42,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcW-8B-vaX">
-                                <rect key="frame" x="20" y="0.0" width="440" height="282"/>
-                            </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saJ-hv-DLg">
                                 <rect key="frame" x="379" y="283" width="87" height="32"/>
                                 <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DAG-UM-vB2">
@@ -55,20 +52,23 @@
                                     <action selector="refreshDevicesList:" target="och-mK-cQM" id="5Bq-7L-AxB"/>
                                 </connections>
                             </button>
+                            <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8qo-hn-5zd">
+                                <rect key="frame" x="20" y="0.0" width="440" height="282"/>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="saJ-hv-DLg" secondAttribute="trailing" constant="20" id="Cua-VA-2dC"/>
                             <constraint firstItem="WxO-ie-Dhx" firstAttribute="top" secondItem="R5G-UH-u4a" secondAttribute="top" constant="20" id="HWt-wg-faV"/>
-                            <constraint firstItem="zcW-8B-vaX" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="Ndl-ev-LkC"/>
+                            <constraint firstAttribute="bottom" secondItem="8qo-hn-5zd" secondAttribute="bottom" id="QQb-Fj-uXu"/>
                             <constraint firstItem="saJ-hv-DLg" firstAttribute="bottom" secondItem="WxO-ie-Dhx" secondAttribute="bottom" id="SQN-ks-JXn"/>
-                            <constraint firstItem="zcW-8B-vaX" firstAttribute="top" secondItem="WxO-ie-Dhx" secondAttribute="bottom" constant="8" id="ZqW-zb-7CI"/>
-                            <constraint firstAttribute="trailing" secondItem="zcW-8B-vaX" secondAttribute="trailing" constant="20" id="blh-DJ-yjs"/>
+                            <constraint firstAttribute="trailing" secondItem="8qo-hn-5zd" secondAttribute="trailing" constant="20" id="WIs-Gl-f7u"/>
+                            <constraint firstItem="8qo-hn-5zd" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="gKy-td-rlL"/>
+                            <constraint firstItem="8qo-hn-5zd" firstAttribute="top" secondItem="WxO-ie-Dhx" secondAttribute="bottom" constant="8" id="h03-7A-T3M"/>
                             <constraint firstItem="WxO-ie-Dhx" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="iWj-2b-don"/>
-                            <constraint firstAttribute="bottom" secondItem="zcW-8B-vaX" secondAttribute="bottom" id="lvc-NB-QfY"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="devicesList" destination="zcW-8B-vaX" id="afG-Eb-rNl"/>
+                        <outlet property="devicesList" destination="8qo-hn-5zd" id="u5K-e6-cBW"/>
                     </connections>
                 </viewController>
                 <customObject id="OPB-xZ-zLT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

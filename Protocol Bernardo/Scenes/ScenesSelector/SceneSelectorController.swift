@@ -8,14 +8,11 @@
 
 import Cocoa
 
+/// The `Scene Selector` is the first window that appears at the start of the app.
+///
+/// It displays a list of the scene the user can start. These scenes are defined
+/// in the `availableScenes` array, and must conform the `Scene` protocol.
 class SceneSelectorController: NSViewController {
-    
-    var sceneIndex: Int = -1
-    
-    static let sceneName: String = "Scene Selector"
-    
-    static let sceneDescription: String = "Used to open new scenes"
-
     @IBOutlet weak var scenesList: NSStackView!
     
     override func viewDidLoad() {
@@ -37,9 +34,6 @@ class SceneSelectorController: NSViewController {
             
             scenesList.addView(sceneView, in: .top)
         }
-    }
-    
-    override func viewDidAppear() {
     }
 }
 

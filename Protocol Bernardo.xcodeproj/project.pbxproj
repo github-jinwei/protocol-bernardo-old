@@ -18,27 +18,29 @@
 		3929615A21F8E1BE0064B808 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39E3120521F6D078006569F1 /* Device.cpp */; };
 		39589E4721FA14D3006BEAC6 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 392960B521F7D0460064B808 /* libOpenNI2.dylib */; };
 		39589E4B21FA27C6006BEAC6 /* FrameListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39589E4921FA27C6006BEAC6 /* FrameListener.cpp */; };
-		39589E5221FA3DB5006BEAC6 /* NiTE2 in Resources */ = {isa = PBXBuildFile; fileRef = 39589E4C21FA3DB4006BEAC6 /* NiTE2 */; };
 		39589E5321FA3DB5006BEAC6 /* libfreenect2-openni2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39589E4D21FA3DB4006BEAC6 /* libfreenect2-openni2.0.dylib */; };
-		39589E5421FA3DB5006BEAC6 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39589E4E21FA3DB4006BEAC6 /* libNiTE2.dylib */; };
-		39589E5521FA3DB5006BEAC6 /* com.primesense.nite.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 39589E4F21FA3DB4006BEAC6 /* com.primesense.nite.jar */; };
-		39589E5621FA3DB5006BEAC6 /* NiTE.ini in Resources */ = {isa = PBXBuildFile; fileRef = 39589E5021FA3DB5006BEAC6 /* NiTE.ini */; };
-		39589E5721FA3DB5006BEAC6 /* libNiTE2.jni.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39589E5121FA3DB5006BEAC6 /* libNiTE2.jni.dylib */; };
-		39589E5821FA3DBC006BEAC6 /* com.primesense.nite.jar in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39589E4F21FA3DB4006BEAC6 /* com.primesense.nite.jar */; };
-		39589E5921FA3DBC006BEAC6 /* libfreenect2-openni2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39589E4D21FA3DB4006BEAC6 /* libfreenect2-openni2.0.dylib */; };
-		39589E5A21FA3DBC006BEAC6 /* libNiTE2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39589E4E21FA3DB4006BEAC6 /* libNiTE2.dylib */; };
-		39589E5B21FA3DBC006BEAC6 /* libNiTE2.jni.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39589E5121FA3DB5006BEAC6 /* libNiTE2.jni.dylib */; };
-		39589E5C21FA3DBC006BEAC6 /* NiTE.ini in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39589E5021FA3DB5006BEAC6 /* NiTE.ini */; };
-		39589E5D21FA3DBC006BEAC6 /* NiTE2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39589E4C21FA3DB4006BEAC6 /* NiTE2 */; };
-		39589E6021FA57BC006BEAC6 /* UserFrameListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39589E5E21FA57BC006BEAC6 /* UserFrameListener.cpp */; };
+		39589E5821FA3DBC006BEAC6 /* com.primesense.nite.jar in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E4F21FA3DB4006BEAC6 /* com.primesense.nite.jar */; };
+		39589E5921FA3DBC006BEAC6 /* libfreenect2-openni2.0.dylib in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E4D21FA3DB4006BEAC6 /* libfreenect2-openni2.0.dylib */; };
+		39589E5B21FA3DBC006BEAC6 /* libNiTE2.jni.dylib in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E5121FA3DB5006BEAC6 /* libNiTE2.jni.dylib */; };
+		39589E5C21FA3DBC006BEAC6 /* NiTE.ini in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E5021FA3DB5006BEAC6 /* NiTE.ini */; };
+		39589E5D21FA3DBC006BEAC6 /* NiTE2 in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E4C21FA3DB4006BEAC6 /* NiTE2 */; };
+		39589E6021FA57BC006BEAC6 /* UsersTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39589E5E21FA57BC006BEAC6 /* UsersTracker.cpp */; };
 		39589E6321FA5E3F006BEAC6 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
 		395E0F0E21F927850097D992 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */; };
 		395E0F1721F93E030097D992 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
-		395E0F5A21FA0E230097D992 /* libOpenNI2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 395E0F5221FA0E170097D992 /* libOpenNI2.dylib */; };
-		395E0F5B21FA0E230097D992 /* libOpenNI2.jni.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 395E0F5021FA0E170097D992 /* libOpenNI2.jni.dylib */; };
-		395E0F5C21FA0E230097D992 /* OpenNI.ini in CopyFiles */ = {isa = PBXBuildFile; fileRef = 395E0F5121FA0E170097D992 /* OpenNI.ini */; };
-		395E0F5D21FA0E230097D992 /* OpenNI2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 395E0F5321FA0E170097D992 /* OpenNI2 */; };
-		395E0F5E21FA0E230097D992 /* org.openni.jar in CopyFiles */ = {isa = PBXBuildFile; fileRef = 395E0F5421FA0E170097D992 /* org.openni.jar */; };
+		395E0F5A21FA0E230097D992 /* libOpenNI2.dylib in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 395E0F5221FA0E170097D992 /* libOpenNI2.dylib */; };
+		395E0F5B21FA0E230097D992 /* libOpenNI2.jni.dylib in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 395E0F5021FA0E170097D992 /* libOpenNI2.jni.dylib */; };
+		395E0F5C21FA0E230097D992 /* OpenNI.ini in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 395E0F5121FA0E170097D992 /* OpenNI.ini */; };
+		395E0F5D21FA0E230097D992 /* OpenNI2 in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 395E0F5321FA0E170097D992 /* OpenNI2 */; };
+		395E0F5E21FA0E230097D992 /* org.openni.jar in OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 395E0F5421FA0E170097D992 /* org.openni.jar */; };
+		3968FCC421FA8D40005EAA4C /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */; };
+		3968FCC621FB584B005EAA4C /* com.primesense.nite.jar in NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E4F21FA3DB4006BEAC6 /* com.primesense.nite.jar */; };
+		3968FCC721FB584B005EAA4C /* NiTE.ini in NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E5021FA3DB5006BEAC6 /* NiTE.ini */; };
+		3968FCC821FB584B005EAA4C /* NiTE2 in NiTE Files */ = {isa = PBXBuildFile; fileRef = 39589E4C21FA3DB4006BEAC6 /* NiTE2 */; };
+		3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968FCD521FB82B5005EAA4C /* PBDeviceRow.xib */; };
+		3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCD821FB88E0005EAA4C /* PBDeviceDetails.swift */; };
+		3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */; };
+		3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetails.swift */; };
 		396DDFC921F4285000628070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFC821F4285000628070 /* AppDelegate.swift */; };
 		396DDFCB21F4285000628070 /* SceneSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* SceneSelectorController.swift */; };
 		396DDFCD21F4285200628070 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCC21F4285200628070 /* Assets.xcassets */; };
@@ -52,7 +54,6 @@
 		39AF88AD21F4CF7E00A68993 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AC21F4CF7E00A68993 /* App.swift */; };
 		39AF88AF21F4D02100A68993 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AE21F4D02100A68993 /* Core.swift */; };
 		39E070C121F8FBFC0094AC1B /* libfreenect2.0.2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 398B660C21F653A800F6D1FC /* libfreenect2.0.2.0.dylib */; };
-		39E3120D21F6E8F9006569F1 /* PBDeviceRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39E3120C21F6E8F9006569F1 /* PBDeviceRow.xib */; };
 		39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */; };
 		39E3121221F6F1C5006569F1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121121F6F1C5006569F1 /* String.swift */; };
 		39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* DAEStatus.swift */; };
@@ -72,24 +73,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3983D9CE21F8FF8100C49CEF /* CopyFiles */ = {
+		3968FCC521FB5829005EAA4C /* NiTE Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				3968FCC621FB584B005EAA4C /* com.primesense.nite.jar in NiTE Files */,
+				3968FCC721FB584B005EAA4C /* NiTE.ini in NiTE Files */,
+				3968FCC821FB584B005EAA4C /* NiTE2 in NiTE Files */,
+			);
+			name = "NiTE Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3983D9CE21F8FF8100C49CEF /* OpenNI/NiTE Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				39589E5821FA3DBC006BEAC6 /* com.primesense.nite.jar in CopyFiles */,
-				39589E5921FA3DBC006BEAC6 /* libfreenect2-openni2.0.dylib in CopyFiles */,
-				39589E5A21FA3DBC006BEAC6 /* libNiTE2.dylib in CopyFiles */,
-				39589E5B21FA3DBC006BEAC6 /* libNiTE2.jni.dylib in CopyFiles */,
-				39589E5C21FA3DBC006BEAC6 /* NiTE.ini in CopyFiles */,
-				39589E5D21FA3DBC006BEAC6 /* NiTE2 in CopyFiles */,
-				395E0F5A21FA0E230097D992 /* libOpenNI2.dylib in CopyFiles */,
-				395E0F5B21FA0E230097D992 /* libOpenNI2.jni.dylib in CopyFiles */,
-				395E0F5C21FA0E230097D992 /* OpenNI.ini in CopyFiles */,
-				395E0F5D21FA0E230097D992 /* OpenNI2 in CopyFiles */,
-				395E0F5E21FA0E230097D992 /* org.openni.jar in CopyFiles */,
+				39589E5821FA3DBC006BEAC6 /* com.primesense.nite.jar in OpenNI/NiTE Files */,
+				39589E5921FA3DBC006BEAC6 /* libfreenect2-openni2.0.dylib in OpenNI/NiTE Files */,
+				39589E5B21FA3DBC006BEAC6 /* libNiTE2.jni.dylib in OpenNI/NiTE Files */,
+				39589E5C21FA3DBC006BEAC6 /* NiTE.ini in OpenNI/NiTE Files */,
+				39589E5D21FA3DBC006BEAC6 /* NiTE2 in OpenNI/NiTE Files */,
+				395E0F5A21FA0E230097D992 /* libOpenNI2.dylib in OpenNI/NiTE Files */,
+				395E0F5B21FA0E230097D992 /* libOpenNI2.jni.dylib in OpenNI/NiTE Files */,
+				395E0F5C21FA0E230097D992 /* OpenNI.ini in OpenNI/NiTE Files */,
+				395E0F5D21FA0E230097D992 /* OpenNI2 in OpenNI/NiTE Files */,
+				395E0F5E21FA0E230097D992 /* org.openni.jar in OpenNI/NiTE Files */,
 			);
+			name = "OpenNI/NiTE Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		398B65DD21F64CD600F6D1FC /* Embed Libraries */ = {
@@ -217,8 +231,8 @@
 		39589E4F21FA3DB4006BEAC6 /* com.primesense.nite.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = com.primesense.nite.jar; sourceTree = "<group>"; };
 		39589E5021FA3DB5006BEAC6 /* NiTE.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NiTE.ini; sourceTree = "<group>"; };
 		39589E5121FA3DB5006BEAC6 /* libNiTE2.jni.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libNiTE2.jni.dylib; sourceTree = "<group>"; };
-		39589E5E21FA57BC006BEAC6 /* UserFrameListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UserFrameListener.cpp; sourceTree = "<group>"; };
-		39589E5F21FA57BC006BEAC6 /* UserFrameListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UserFrameListener.hpp; sourceTree = "<group>"; };
+		39589E5E21FA57BC006BEAC6 /* UsersTracker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UsersTracker.cpp; sourceTree = "<group>"; };
+		39589E5F21FA57BC006BEAC6 /* UsersTracker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UsersTracker.hpp; sourceTree = "<group>"; };
 		395E0F0C21F924880097D992 /* libopenpose.1.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenpose.1.4.0.dylib; path = ../../../../../usr/local/lib/libopenpose.1.4.0.dylib; sourceTree = "<group>"; };
 		395E0F0F21F92D340097D992 /* libgflags.2.2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgflags.2.2.2.dylib; path = ../../../../../usr/local/Cellar/gflags/2.2.2/lib/libgflags.2.2.2.dylib; sourceTree = "<group>"; };
 		395E0F1821F949DF0097D992 /* libopenpose_3d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenpose_3d.dylib; path = ../../../../../usr/local/lib/libopenpose_3d.dylib; sourceTree = "<group>"; };
@@ -242,6 +256,17 @@
 		395E0F5221FA0E170097D992 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI2.dylib; sourceTree = "<group>"; };
 		395E0F5321FA0E170097D992 /* OpenNI2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenNI2; sourceTree = "<group>"; };
 		395E0F5421FA0E170097D992 /* org.openni.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = org.openni.jar; sourceTree = "<group>"; };
+		3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../../../../../usr/local/lib/libNiTE2.dylib; sourceTree = "<group>"; };
+		3968FCCB21FB67DF005EAA4C /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		3968FCCE21FB68B7005EAA4C /* UserState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserState.h; sourceTree = "<group>"; };
+		3968FCCF21FB6B2D005EAA4C /* Skeleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
+		3968FCD021FB6DDD005EAA4C /* Joint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Joint.h; sourceTree = "<group>"; };
+		3968FCD121FB6EAE005EAA4C /* Quaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
+		3968FCD221FB6EEB005EAA4C /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		3968FCD521FB82B5005EAA4C /* PBDeviceRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBDeviceRow.xib; sourceTree = "<group>"; };
+		3968FCD821FB88E0005EAA4C /* PBDeviceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceDetails.swift; sourceTree = "<group>"; };
+		3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceDetailsPopover.swift; sourceTree = "<group>"; };
+		3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBTrackedUserDetails.swift; sourceTree = "<group>"; };
 		396DDFC521F4285000628070 /* Protocol Bernardo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Protocol Bernardo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DDFC821F4285000628070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396DDFCA21F4285000628070 /* SceneSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSelectorController.swift; sourceTree = "<group>"; };
@@ -266,7 +291,6 @@
 		39E3120521F6D078006569F1 /* Device.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Device.cpp; sourceTree = "<group>"; };
 		39E3120621F6D078006569F1 /* Device.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Device.hpp; sourceTree = "<group>"; };
 		39E3120B21F6D7BF006569F1 /* DeviceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceState.h; sourceTree = "<group>"; };
-		39E3120C21F6E8F9006569F1 /* PBDeviceRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PBDeviceRow.xib; sourceTree = "<group>"; };
 		39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceRow.swift; sourceTree = "<group>"; };
 		39E3121121F6F1C5006569F1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		39E3121321F777F6006569F1 /* DAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEStatus.swift; sourceTree = "<group>"; };
@@ -280,15 +304,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39589E6321FA5E3F006BEAC6 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
-				39589E5721FA3DB5006BEAC6 /* libNiTE2.jni.dylib in Frameworks */,
-				39589E5521FA3DB5006BEAC6 /* com.primesense.nite.jar in Frameworks */,
-				39589E4721FA14D3006BEAC6 /* libOpenNI2.dylib in Frameworks */,
-				39E070C121F8FBFC0094AC1B /* libfreenect2.0.2.0.dylib in Frameworks */,
-				395E0F0E21F927850097D992 /* libopencv_core.4.0.1.dylib in Frameworks */,
-				39589E5421FA3DB5006BEAC6 /* libNiTE2.dylib in Frameworks */,
+				3968FCC421FA8D40005EAA4C /* libNiTE2.dylib in Frameworks */,
 				39589E5321FA3DB5006BEAC6 /* libfreenect2-openni2.0.dylib in Frameworks */,
+				39E070C121F8FBFC0094AC1B /* libfreenect2.0.2.0.dylib in Frameworks */,
+				39589E4721FA14D3006BEAC6 /* libOpenNI2.dylib in Frameworks */,
+				395E0F0E21F927850097D992 /* libopencv_core.4.0.1.dylib in Frameworks */,
 				395E0F1721F93E030097D992 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
+				39589E6321FA5E3F006BEAC6 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
 				893947630B24A07E433454FB /* Pods_Protocol_Bernardo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,10 +340,8 @@
 		390D0DB321F4FBE10032CA23 /* MovementsCollector */ = {
 			isa = PBXGroup;
 			children = (
-				39589E6121FA5ADB006BEAC6 /* Views */,
 				390D0DB421F4FECF0032CA23 /* MovementsCollector.swift */,
-				390D0DB821F509C90032CA23 /* MovementsCollectorWindowController.swift */,
-				390C265E21F66EFB00E7FEAE /* MovementsCollectorViewController.swift */,
+				39589E6121FA5ADB006BEAC6 /* Views */,
 			);
 			path = MovementsCollector;
 			sourceTree = "<group>";
@@ -358,18 +378,18 @@
 		390D0DC621F566510032CA23 /* DAE */ = {
 			isa = PBXGroup;
 			children = (
+				3968FCCD21FB68A1005EAA4C /* Enums */,
+				3968FCC921FB67B4005EAA4C /* Structs */,
 				39E3120221F6CE98006569F1 /* DAE-Bridging.cpp */,
 				39E3120321F6CE98006569F1 /* DAE-Bridging.hpp */,
-				39E311FC21F6A46D006569F1 /* DAEStatus.h */,
 				390D0DC221F5293E0032CA23 /* DataAcquisitionEngine.cpp */,
 				390D0DC321F5293E0032CA23 /* DataAcquisitionEngine.hpp */,
 				39589E4921FA27C6006BEAC6 /* FrameListener.cpp */,
 				39589E4A21FA27C6006BEAC6 /* FrameListener.hpp */,
 				39E3120521F6D078006569F1 /* Device.cpp */,
 				39E3120621F6D078006569F1 /* Device.hpp */,
-				39E3120B21F6D7BF006569F1 /* DeviceState.h */,
-				39589E5E21FA57BC006BEAC6 /* UserFrameListener.cpp */,
-				39589E5F21FA57BC006BEAC6 /* UserFrameListener.hpp */,
+				39589E5E21FA57BC006BEAC6 /* UsersTracker.cpp */,
+				39589E5F21FA57BC006BEAC6 /* UsersTracker.hpp */,
 			);
 			path = DAE;
 			sourceTree = "<group>";
@@ -378,7 +398,9 @@
 			isa = PBXGroup;
 			children = (
 				390D0DB621F502170032CA23 /* MovementsCollector.storyboard */,
-				39E3120E21F6E900006569F1 /* PBDeviceRow */,
+				390C265E21F66EFB00E7FEAE /* MovementsCollectorViewController.swift */,
+				390D0DB821F509C90032CA23 /* MovementsCollectorWindowController.swift */,
+				3968FCD721FB8350005EAA4C /* UI */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -399,6 +421,40 @@
 				395E0F5421FA0E170097D992 /* org.openni.jar */,
 			);
 			path = Lib;
+			sourceTree = "<group>";
+		};
+		3968FCC921FB67B4005EAA4C /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				39E311FC21F6A46D006569F1 /* DAEStatus.h */,
+				3968FCCB21FB67DF005EAA4C /* User.h */,
+				3968FCCF21FB6B2D005EAA4C /* Skeleton.h */,
+				3968FCD021FB6DDD005EAA4C /* Joint.h */,
+				3968FCD121FB6EAE005EAA4C /* Quaternion.h */,
+				3968FCD221FB6EEB005EAA4C /* Position.h */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		3968FCCD21FB68A1005EAA4C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				39E3120B21F6D7BF006569F1 /* DeviceState.h */,
+				3968FCCE21FB68B7005EAA4C /* UserState.h */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		3968FCD721FB8350005EAA4C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3968FCD821FB88E0005EAA4C /* PBDeviceDetails.swift */,
+				3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */,
+				39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */,
+				3968FCD521FB82B5005EAA4C /* PBDeviceRow.xib */,
+				3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetails.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		396DDFBC21F4285000628070 = {
@@ -504,6 +560,7 @@
 		398B65D821F64C5600F6D1FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */,
 				395E0F1821F949DF0097D992 /* libopenpose_3d.dylib */,
 				395E0F1F21F949DF0097D992 /* libopenpose_calibration.dylib */,
 				395E0F1E21F949DF0097D992 /* libopenpose_core.dylib */,
@@ -629,15 +686,6 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		39E3120E21F6E900006569F1 /* PBDeviceRow */ = {
-			isa = PBXGroup;
-			children = (
-				39E3120C21F6E8F9006569F1 /* PBDeviceRow.xib */,
-				39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */,
-			);
-			path = PBDeviceRow;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -647,10 +695,11 @@
 			buildPhases = (
 				0F28B52CEA073233A32307B0 /* [CP] Check Pods Manifest.lock */,
 				396DDFC121F4285000628070 /* Sources */,
-				396DDFC221F4285000628070 /* Frameworks */,
 				396DDFC321F4285000628070 /* Resources */,
+				396DDFC221F4285000628070 /* Frameworks */,
 				398B65DD21F64CD600F6D1FC /* Embed Libraries */,
-				3983D9CE21F8FF8100C49CEF /* CopyFiles */,
+				3983D9CE21F8FF8100C49CEF /* OpenNI/NiTE Files */,
+				3968FCC521FB5829005EAA4C /* NiTE Files */,
 				48B1039FCFCC7E0E313ABDD4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -734,10 +783,8 @@
 				396DDFEF21F42E2D00628070 /* PBSceneButton.xib in Resources */,
 				396DDFCD21F4285200628070 /* Assets.xcassets in Resources */,
 				396DDFD021F4285200628070 /* SceneSelector.storyboard in Resources */,
-				39589E5621FA3DB5006BEAC6 /* NiTE.ini in Resources */,
-				39589E5221FA3DB5006BEAC6 /* NiTE2 in Resources */,
-				39E3120D21F6E8F9006569F1 /* PBDeviceRow.xib in Resources */,
 				390D0DB721F502170032CA23 /* MovementsCollector.storyboard in Resources */,
+				3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -852,9 +899,11 @@
 				396DDFF321F42FD000628070 /* PBSceneButton.swift in Sources */,
 				390D0DC021F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift in Sources */,
 				390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */,
+				3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */,
 				390D0DB521F4FECF0032CA23 /* MovementsCollector.swift in Sources */,
 				3929615821F8E1BE0064B808 /* DataAcquisitionEngine.cpp in Sources */,
 				396DDFEB21F42A9000628070 /* AvailableScenes.swift in Sources */,
+				3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */,
 				3929615A21F8E1BE0064B808 /* Device.cpp in Sources */,
 				396DDFED21F42C4500628070 /* Scene.swift in Sources */,
 				39589E4B21FA27C6006BEAC6 /* FrameListener.cpp in Sources */,
@@ -866,8 +915,9 @@
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
-				39589E6021FA57BC006BEAC6 /* UserFrameListener.cpp in Sources */,
+				39589E6021FA57BC006BEAC6 /* UsersTracker.cpp in Sources */,
 				396DDFC921F4285000628070 /* AppDelegate.swift in Sources */,
+				3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,6 +1096,7 @@
 					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
 					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
 					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1083,6 +1134,7 @@
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					"/usr/local/Cellar/openni2/2.2.0-debian/lib/ni2",
 					/usr/local/Cellar/gflags/2.2.2/lib,
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
 					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
 					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",
 					"$(PROJECT_DIR)/Protocol\\ Bernardo/Lib",

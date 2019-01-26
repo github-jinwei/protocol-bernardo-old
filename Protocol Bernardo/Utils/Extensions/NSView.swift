@@ -10,7 +10,7 @@ import Foundation
 import AppKit
 
 extension NSView {
-    static func make<T: NSView>(fromNib nibName: String, owner: AnyObject?) -> T {
+    static func make<T>(fromNib nibName: String, owner: AnyObject?) -> T {
         var instanciatedViews: NSArray? = []
         
         // Instanciate the views

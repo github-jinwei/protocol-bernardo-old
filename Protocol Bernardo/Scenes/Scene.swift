@@ -24,14 +24,20 @@ protocol Scene {
     var sceneIndex: Int! { get set }
 }
 
-// MARK: - Optionnal methods
+// MARK: - Prefill methods
 extension Scene {
+    /// This method properly remove the scene from the scene index.
+    ///
+    /// You do not need to implement this method, but if you do, make sure to call it at the end of your own implementation.
+    /// The removal of the scene from the scene also triggers its deinit, which you can use to properly
+    /// free what needs to be from your scene
     func endScene() {
+        // Remove the scene from the scenes index
         App.core.removeScene(withIndex: sceneIndex)
     }
 }
 
-// MARK: - Windows handling
+// MARK: - Convenient methods
 extension Scene {
     /// Create and open a window
     ///

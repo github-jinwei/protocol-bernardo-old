@@ -19,27 +19,21 @@
 DataAcquisitionEngine * DataAcquisitionEngine::_instance;
 bool DataAcquisitionEngine::_openNIInitialized = false;
 
-void DataAcquisitionEngine::main() {
+void DataAcquisitionEngine::start() {
     // Init OpenNI
-    
     if(!DataAcquisitionEngine::_openNIInitialized) {
-        openni::OpenNI::initialize();
+        if(openni::OpenNI::initialize() != openni::STATUS_OK) {
+            std::cout << openni::OpenNI::getExtendedError() << std::endl;
+            throw "Could not itialize OpenNI";
+        }
+        
         DataAcquisitionEngine::_openNIInitialized = true;
     }
     
-    std::string initMessage(openni::OpenNI::getExtendedError());
-    
-    if(initMessage.size() > 0) {
-        // An error occured while initializing OpenNI
-        std::cout << initMessage << std::endl;
-        throw "Could not itialize OpenNI";
+    // Init NiTE
+    if(nite::NiTE::initialize() != nite::STATUS_OK) {
+        throw "Could not itialize NiTE";
     }
-    
-    nite::Status status = nite::NiTE::initialize();
-    if(status != nite::STATUS_OK)
-        std::cout << "NiTE Error" << std::endl;
-    else
-        std::cout << "NiTE Init OK" << std::endl;
     
     // Execute a first parse
     parseForDevices();
@@ -63,24 +57,50 @@ void DataAcquisitionEngine::main() {
     // The loop has ended, we are closing the DAE.
 }
 
+void DataAcquisitionEngine::stop() {
+    if(!_running)
+        return;
+    
+    _running = false;
+    
+    // Let's free all the devices
+    for (std::pair<std::string, Device *> deviceReference : _devices) {
+        Device * device = deviceReference.second;
+        delete device;
+    }
+    
+    _devices.clear();
+    
+    // Stop NiTE
+    nite::NiTE::shutdown();
+}
+
 void DataAcquisitionEngine::parseForDevices() {
-    // Get all available devices
+    // Get all the available devices
     openni::Array<openni::DeviceInfo> availableDevices;
     openni::OpenNI::enumerateDevices(&availableDevices);
     
+    // `foundSerial` is used to track found devices, and match against
+    // currently loaded ones to track disconnections
     std::vector<std::string> foundSerials;
     
-    // The serial extraction regex
-    std::regex regex("serial=(.*?)&");
+    // The serial extraction regex.
+    // URI to the devices holds a serial parameter. We are using this
+    // regex to extract it, allowing for unique identifications of the kinects
+    std::regex regex("serial=(.*?)(&.*)?$");
     
+    // Parse all the detected devices
     for (int i = 0; i < availableDevices.getSize(); ++i) {
         // Get the device URI
         const std::string uri(availableDevices[i].getUri());
         
         // Extract its serial
         std::smatch match;
-        if (!std::regex_search(uri.begin(), uri.end(), match, regex))
+        if (!std::regex_search(uri.begin(), uri.end(), match, regex)) {
+            // Could not extract a serial, skip the device
+            std::cout << "Could not get serial for device : " << uri << std::endl;
             continue;
+        }
         std::string serial = match[1];
         
         // Check the serial isn't already stored
@@ -141,10 +161,11 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
     // Allocate space to store the device states (C-style baby)
     status->_deviceStatus = (DeviceStatus *)malloc(sizeof(DeviceStatus) * status->deviceCount);
     
+    // For each device currently stored, generate and store its status
     int i = 0;
     for (std::pair<std::string, Device *> deviceReference : _devices) {
         Device * device = deviceReference.second;
-        status->_deviceStatus[i] = device->getState();
+        status->_deviceStatus[i] = device->getStatus();
         ++i;
     }
     
@@ -152,13 +173,9 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
 }
 
 DataAcquisitionEngine::~DataAcquisitionEngine() {
-    _running = false;
-
-    // Let's free all the devices
-    for (std::pair<std::string, Device *> deviceReference : _devices) {
-        Device * device = deviceReference.second;
-        delete device;
-    }
+    stop();
     
-    nite::NiTE::shutdown();
+    // Ideally, stop OpenNI too, but this is causing a EXC_BAD_ACCESS,
+    // so we will not do it for now...
 }
+

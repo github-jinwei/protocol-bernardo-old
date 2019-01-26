@@ -64,10 +64,10 @@ void Device::connect() {
     _device.setImageRegistrationMode(openni::IMAGE_REGISTRATION_DEPTH_TO_COLOR);
     
     // Init the user tracker
-    _userTracker.create(&_device);
-    _userTracker.setSkeletonSmoothingFactor(.0f);
-    _userFrameListener.device = this;
-    _userTracker.addNewFrameListener(&_userFrameListener);
+    _rigTracker.create(&_device);
+    _rigTracker.setSkeletonSmoothingFactor(.0f);
+    _usersTracker._device = this;
+    _rigTracker.addNewFrameListener(&_usersTracker);
     
     // Mark the device as ready
     _state = DeviceState::READY;
@@ -116,39 +116,14 @@ void Device::storeDepthFrame(openni::VideoFrameRef *frame) {
     _depthFrame = frame;
 }
 
-void Device::readUserFrame() {
-    if(_state != DeviceState::ACTIVE)
-        return;
-}
-
-void Device::onUserFrame(nite::UserTrackerFrameRef *userFrame) {
-    _userFrame = userFrame;
-    
-    const nite::Array<nite::UserData>& users = _userFrame->getUsers();
-    for( int i = 0; i < users.getSize(); ++ i )
-    {
-        if(users[i].isNew()) {
-            std::cout << "Started tracking User #" << i << std::endl;
-            _userTracker.startSkeletonTracking(i);
-            continue;
-        }
-        
-        if(!users[i].isLost()) {
-            std::cout << "Stopped tracking User #" << i << std::endl;
-            _userTracker.stopSkeletonTracking(i);
-            continue;
-        }
-        
-        nite::Skeleton skeleton = users[i].getSkeleton();
-        std::cout << "HEADX " << skeleton.getJoint(nite::JOINT_HEAD).getPosition().x << std::endl;
-    }
-}
-
-DeviceStatus Device::getState() {
+DeviceStatus Device::getStatus() {
     DeviceStatus status;
     strcpy(status._name, _name.c_str());
     strcpy(status._serial, _serial.c_str());
     status.state = _state;
+    
+    status.userCount = (unsigned int) _usersTracker._users.size();
+    status._users = _usersTracker.getUsers();
     
     return status;
 }

@@ -10,10 +10,13 @@
 #define DAEStatus_h
 
 #include "DeviceState.h"
+#include "User.h"
 
-struct User {
-};
-
+/**
+ Representation of the status of a device.
+ 
+ Primarily used to retrieve a device status from Swift
+ */
 struct DeviceStatus {
     char _name[256];
     char _serial[256];
@@ -23,8 +26,11 @@ struct DeviceStatus {
     struct User * _users;
 };
 
-typedef struct DAEStatus DAEStatus;
-
+/**
+ Representation of the status of the DAE
+ 
+ Primarily used to retrieve a device status from Swift
+ */
 struct DAEStatus {
     unsigned int deviceCount;
     struct DeviceStatus * _deviceStatus;

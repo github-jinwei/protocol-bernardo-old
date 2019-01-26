@@ -53,9 +53,6 @@ class MovementsCollector: Scene {
         App.dae.end()
         (self as Scene).endScene()
     }
-    
-    // ///////////////////
-    // MARK: Device Lifecycle
 }
 
 extension MovementsCollector: DataAcquisitionEngineDelegate {

@@ -14,7 +14,7 @@
 
 void DAEPrepare() {
     App->dae = DataAcquisitionEngine::getInstance();
-    App->dae->main();
+    App->dae->start();
 }
 
 void DAEParseForDevices() {
@@ -37,8 +37,7 @@ void DAESetDeviceIdle(const char * c_serial) {
 }
 
 void DAEEndAcquisition() {
-    delete App->dae;
-    App->dae = nullptr;
+    App->dae->stop();
 }
 
 DAEStatus * DAEGetStatus() {
