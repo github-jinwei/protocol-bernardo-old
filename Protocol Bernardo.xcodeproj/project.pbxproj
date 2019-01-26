@@ -357,10 +357,9 @@
 		390D0DBB21F511680032CA23 /* DataAcquisitionEngine */ = {
 			isa = PBXGroup;
 			children = (
+				3968FCDE21FD0386005EAA4C /* Extensions */,
 				390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */,
 				390D0DBF21F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift */,
-				39E3121321F777F6006569F1 /* DAEStatus.swift */,
-				39E3121521F779A0006569F1 /* DeviceStatus.swift */,
 			);
 			path = DataAcquisitionEngine;
 			sourceTree = "<group>";
@@ -457,6 +456,24 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		3968FCDE21FD0386005EAA4C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				39E3121521F779A0006569F1 /* DeviceStatus.swift */,
+				39E3121321F777F6006569F1 /* DAEStatus.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3968FCDF21FD067B005EAA4C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFEE21F42E2D00628070 /* PBSceneButton.xib */,
+				396DDFF221F42FD000628070 /* PBSceneButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		396DDFBC21F4285000628070 = {
 			isa = PBXGroup;
 			children = (
@@ -486,7 +503,6 @@
 				390D0DBA21F511630032CA23 /* Engines */,
 				39AF88AB21F4CF6E00A68993 /* Core */,
 				396DDFF421F4340B00628070 /* Utils */,
-				396DDFF021F42F8C00628070 /* UI */,
 				396DDFE621F42A2300628070 /* Scenes */,
 				396DDFCC21F4285200628070 /* Assets.xcassets */,
 				396DDFD121F4285200628070 /* Info.plist */,
@@ -517,27 +533,11 @@
 		396DDFE721F42A2800628070 /* ScenesSelector */ = {
 			isa = PBXGroup;
 			children = (
+				3968FCDF21FD067B005EAA4C /* UI */,
 				396DDFCA21F4285000628070 /* SceneSelectorController.swift */,
 				396DDFCE21F4285200628070 /* SceneSelector.storyboard */,
 			);
 			path = ScenesSelector;
-			sourceTree = "<group>";
-		};
-		396DDFF021F42F8C00628070 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				396DDFF121F42FA400628070 /* PBSceneButton */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
-		396DDFF121F42FA400628070 /* PBSceneButton */ = {
-			isa = PBXGroup;
-			children = (
-				396DDFEE21F42E2D00628070 /* PBSceneButton.xib */,
-				396DDFF221F42FD000628070 /* PBSceneButton.swift */,
-			);
-			path = PBSceneButton;
 			sourceTree = "<group>";
 		};
 		396DDFF421F4340B00628070 /* Utils */ = {

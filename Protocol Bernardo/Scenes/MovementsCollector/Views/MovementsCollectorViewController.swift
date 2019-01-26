@@ -10,20 +10,13 @@ import Foundation
 import AppKit
 
 class MovementsCollectorViewController: NSViewController {
-    
+    /// Reference to the movements collector scene
     weak var movementsCollector: MovementsCollector?
     @IBOutlet weak var devicesList: NSStackView!
     
-    var _isAcquiring = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-    }
-    
+    /// Asks for a refresh of the available devices list
+    ///
+    /// - Parameter sender: _
     @IBAction func refreshDevicesList(_ sender: Any) {
         movementsCollector?.refreshDevicesList();
     }
@@ -43,7 +36,7 @@ class MovementsCollectorViewController: NSViewController {
             let device = status.devices[serial]!
             
             // Update in the values
-            deviceView.setValues(withDevice: device)
+            deviceView.update(deviceValues: device)
         }
     }
     
@@ -63,7 +56,7 @@ class MovementsCollectorViewController: NSViewController {
             deviceView.outletBox.title = "Device #\(devicesList.views.count + 1)"
             
             // Fill in the values
-            deviceView.setValues(withDevice: device)
+            deviceView.update(deviceValues: device)
             
             // Insert the view in the stack
             devicesList.addView(deviceView, in: .top)            

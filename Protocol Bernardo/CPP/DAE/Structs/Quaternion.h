@@ -9,6 +9,9 @@
 #ifndef Quaternion_h
 #define Quaternion_h
 
+/**
+ Represent a 3D orientation
+ */
 struct Quaternion {
     float x;
     float y;

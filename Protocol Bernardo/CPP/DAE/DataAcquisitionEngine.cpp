@@ -37,32 +37,9 @@ void DataAcquisitionEngine::start() {
     
     // Execute a first parse
     parseForDevices();
-
-    // And now start the loop
-//    while (_running) {
-//        for (std::pair<std::string, Device *> deviceReference : _devices) {
-//            Device * device = deviceReference.second;
-//            
-//            // Make sure we are not handlign a devicebeing loaded/offloaded
-//            if(device == NULL)
-//                continue;
-//            
-//            device->readUserFrame();
-//        }
-//        
-//        unsigned int microseconds = 250;
-//        usleep(microseconds);
-//    }
-    
-    // The loop has ended, we are closing the DAE.
 }
 
 void DataAcquisitionEngine::stop() {
-    if(!_running)
-        return;
-    
-    _running = false;
-    
     // Let's free all the devices
     for (std::pair<std::string, Device *> deviceReference : _devices) {
         Device * device = deviceReference.second;

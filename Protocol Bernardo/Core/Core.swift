@@ -10,7 +10,7 @@ import Foundation
 
 /// The application structure Core
 class Core {
-    
+    /// Reference to the SceneSelectorController
     internal var _sceneSelectorController: SceneSelectorController!
     
     /// Used by the SceneSelectorController to register itself
@@ -27,6 +27,7 @@ class Core {
     /// Array with all the currently opened scenes
     internal var _scenes = [Int: Scene]()
     
+    /// The index of the next scene that will be added
     internal var _nextSceneIndex: Int = 0
     
     /// Instanciate and register a new scene

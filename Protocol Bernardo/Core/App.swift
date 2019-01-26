@@ -9,7 +9,9 @@
 import Foundation
 
 struct App {
+    /// The application core, handling the scenes
     static let core = Core()
     
+    /// The Data Acquisition Engine
     static let dae = DataAcquisitionEngine()
 }

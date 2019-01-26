@@ -123,6 +123,7 @@
                 <outlet property="serialField" destination="DkE-UN-H18" id="tds-7w-3wy"/>
                 <outlet property="statusField" destination="06t-fr-XQM" id="hUS-9V-nmq"/>
             </connections>
+            <point key="canvasLocation" x="139" y="299"/>
         </customView>
         <customView id="3YE-qF-5GA" userLabel="Device Details">
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
@@ -223,7 +224,7 @@
                 <constraint firstItem="flf-4o-KsQ" firstAttribute="leading" secondItem="qLh-nG-ESG" secondAttribute="trailing" id="zFm-xV-SNn"/>
                 <constraint firstItem="flf-4o-KsQ" firstAttribute="top" secondItem="3YE-qF-5GA" secondAttribute="top" id="zgI-lo-UIa"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="460"/>
+            <point key="canvasLocation" x="139" y="521"/>
         </customView>
         <viewController id="g3I-hZ-M6B" userLabel="Popover View Controller" customClass="PBDeviceDetails" customModule="Protocol_Bernardo" customModuleProvider="target">
             <connections>

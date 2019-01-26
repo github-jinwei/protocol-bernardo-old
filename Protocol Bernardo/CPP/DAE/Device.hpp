@@ -97,6 +97,11 @@ public:
      */
     inline std::string getSerial() { return _serial; }
     
+    /**
+     Gives the rig tracker used by this device
+
+     @return The device's rig tracker
+     */
     inline nite::UserTracker * getRigTracker() { return &_rigTracker; }
     
     ~Device();
@@ -109,18 +114,25 @@ private:
     openni::Device _device;
     
     openni::VideoStream _colorStream;
+    
+    /** The latest color frame received */
     openni::VideoFrameRef * _colorFrame = nullptr;
     
     openni::VideoStream _depthStream;
+    
+    /** The latest color depth received */
     openni::VideoFrameRef * _depthFrame = nullptr;
     
     FrameListener _colorStreamListener;
     FrameListener _depthStreamListener;
     
-    DeviceState _state = DeviceState::IDLE;
+    DeviceState _state = DeviceState::DEVICE_IDLE;
     
     nite::UserTracker _rigTracker;
+    
+    /** The latest user frame received */
     nite::UserTrackerFrameRef * _userFrame;
+    
     UsersTracker _usersTracker;
 };
 

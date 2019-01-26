@@ -13,7 +13,7 @@ void UsersTracker::onNewFrame(nite::UserTracker &userTracker) {
     // Is the device even active ? The user tracker starts on creation
     // even though the device is not active. So make sure here we are not
     // parsing it for nothing
-    if(_device->getState() != DeviceState::ACTIVE)
+    if(_device->getState() != DeviceState::DEVICE_ACTIVE)
         return;
     
     // Retrieve the frame

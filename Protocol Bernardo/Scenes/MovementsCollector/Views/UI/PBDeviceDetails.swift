@@ -29,30 +29,40 @@ class PBDeviceDetails: NSViewController {
         popover.delegate = self
     }
     
-    func setValues(withDevice device: DeviceStatus) {
+    /// Update the view valus using the given DeviceStatus
+    ///
+    /// - Parameter device: the device status
+    func update(deviceValues device: DeviceStatus) {
         // Update the view values
         deviceNameField.stringValue = device.name
         serialField.stringValue = device.serial
         deviceStateField.stringValue = refRow.getStateLabel(device.state)
         usersCountField.intValue = Int32(Int(device.userCount))
         
+        update(users: device.users)
+    }
+    
+    /// Update the users views
+    ///
+    /// - Parameter users: list of tracked
+    internal func update(users: [User]) {
         // Update tracked users views values
         var receivedIDs = [Int16]()
         
         // for each tracked user
-        device.users.forEach { user in
+        users.forEach { user in
             receivedIDs.append(user.userID)
             
             guard let userView = userDetailsViews[user.userID] else {
                 // This is a new user, let's give it a view
                 let userView:PBTrackedUserDetails = NSView.make(fromNib: "PBDeviceRow", owner: nil)
                 userDetailsViews[user.userID] = userView
-                userView.setValues(forUser: user)
+                userView.update(userValues: user)
                 usersDetailsStackView.addView(userView, in: .trailing)
                 return
             }
             
-            userView.setValues(forUser: user)
+            userView.update(userValues: user)
         }
         
         // Remove users
@@ -69,6 +79,7 @@ class PBDeviceDetails: NSViewController {
     }
 }
 
+// MARK: - NSPopoverDelegate
 extension PBDeviceDetails: NSPopoverDelegate {
     func popoverShouldDetach(_ popover: NSPopover) -> Bool {
         return true

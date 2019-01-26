@@ -19,6 +19,7 @@ class MovementsCollectorWindowController: NSWindowController {
     }
 }
 
+// MARK: - NSWindowDelegate
 extension MovementsCollectorWindowController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         movementsCollector.endScene()

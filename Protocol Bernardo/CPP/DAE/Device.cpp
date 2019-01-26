@@ -10,13 +10,13 @@
 #include <opencv2/opencv.hpp>
 
 void Device::connect() {
-    _state = DeviceState::CONNECTING;
+    _state = DeviceState::DEVICE_CONNECTING;
     
     // Open the device
     if (_device.open(_uri.c_str()) != openni::STATUS_OK)
     {
         printf("Coudle not open the device:\n%s\n", openni::OpenNI::getExtendedError());
-        _state = DeviceState::ERROR;
+        _state = DeviceState::DEVCICE_ERROR;
         return;
     }
     
@@ -26,7 +26,7 @@ void Device::connect() {
     // Create the color stream
     if(_colorStream.create(_device, openni::SENSOR_COLOR) != openni::STATUS_OK) {
         printf("Coudle not create the color stream:\n%s\n", openni::OpenNI::getExtendedError());
-        _state = DeviceState::ERROR;
+        _state = DeviceState::DEVCICE_ERROR;
         return;
     }
     
@@ -46,7 +46,7 @@ void Device::connect() {
     
     if(_depthStream.create(_device, openni::SENSOR_DEPTH) != openni::STATUS_OK) {
         printf("Coudle not create the color stream:\n%s\n", openni::OpenNI::getExtendedError());
-        _state = DeviceState::ERROR;
+        _state = DeviceState::DEVCICE_ERROR;
         return;
     }
     
@@ -70,35 +70,35 @@ void Device::connect() {
     _rigTracker.addNewFrameListener(&_usersTracker);
     
     // Mark the device as ready
-    _state = DeviceState::READY;
+    _state = DeviceState::DEVICE_READY;
     
 //    cv::namedWindow( "User Image",  cv::WINDOW_AUTOSIZE );
 }
 
 void Device::setActive() {
     // Do nothing if the device is not ready to stream
-    if(_state != DeviceState::READY)
+    if(_state != DeviceState::DEVICE_READY)
         return;
 
     // Start the streams
     if(_colorStream.start() != openni::STATUS_OK) {
-        _state = DeviceState::ERROR;
+        _state = DeviceState::DEVCICE_ERROR;
         return;
     }
     
     if(_depthStream.start() != openni::STATUS_OK) {
-        _state = DeviceState::ERROR;
+        _state = DeviceState::DEVCICE_ERROR;
         return;
     }
     
-    _state = DeviceState::ACTIVE;
+    _state = DeviceState::DEVICE_ACTIVE;
 }
 
 void Device::setIdle() {
-    if(_state == DeviceState::ACTIVE) {
+    if(_state == DeviceState::DEVICE_ACTIVE) {
         _colorStream.stop();
         _depthStream.stop();
-        _state = DeviceState::READY;
+        _state = DeviceState::DEVICE_READY;
     }
 }
 
@@ -134,12 +134,12 @@ Device::~Device() {
     setIdle();
     
     // There is nothing to free if the device wasn't connected
-    if(_state == DeviceState::IDLE) {
+    if(_state == DeviceState::DEVICE_IDLE) {
         return;
     }
     
     // Mark the device as closing
-    _state = DeviceState::CLOSING;
+    _state = DeviceState::DEVICE_CLOSING;
     
     // Properly free resources
     _colorStream.destroy();

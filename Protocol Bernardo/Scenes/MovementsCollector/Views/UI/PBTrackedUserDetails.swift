@@ -16,7 +16,10 @@ class PBTrackedUserDetails: NSView {
     @IBOutlet weak var userPosYField: NSTextField!
     @IBOutlet weak var userPosZField: NSTextField!
     
-    func setValues(forUser user: User) {
+    /// Update the user values
+    ///
+    /// - Parameter user:
+    func update(userValues user: User) {
         userIDField.stringValue = "User #\(user.userID)"
         trackingStatusField.stringValue = getLabel(forState: user.state)
     
@@ -32,6 +35,10 @@ class PBTrackedUserDetails: NSView {
         userPosZField.floatValue = user.skeleton.torso.position.z
     }
     
+    /// Gets the label matching the user state
+    ///
+    /// - Parameter state: A user state
+    /// - Returns: The corresponding label
     func getLabel(forState state: UserState) -> String {
         switch state {
         case USER_TRACKED: return "Tracking"

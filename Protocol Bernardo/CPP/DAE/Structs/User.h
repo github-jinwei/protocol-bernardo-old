@@ -12,12 +12,20 @@
 #include "../Enums/UserState.h"
 #include "Skeleton.h"
 
+/**
+ Represent a user tracked by a device
+ */
 struct User {
+    /** The userID for the user, given by NiTE */
     short int /* nite::UserId */ userID;
+    
+    /** The state of this user */
     UserState state;
     
+    /** The skeleton of the user. Irrevelant is the user state isn't USER_TRACKED */
     struct Skeleton skeleton;
     
+    /** The center of mass of the user. Irrevelant is the user state isn't USER_TRACKED  */
     struct Position centerOfMass;
 };
 

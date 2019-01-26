@@ -12,11 +12,20 @@
 #include "Quaternion.h"
 #include "Position.h"
 
+/**
+ Represent a Joint on a skeleton.
+ */
 struct Joint {
+    /** The current orientation of the joint */
     struct Quaternion orientation;
+    
+    /** The confidence of NiTE when giving the orientation */
     float orientationConfidence;
     
+    /** The position in 3D and 2D space of the Joint */
     struct Position position;
+    
+    /** The confidence of NiTe when giving the position */
     float positionConfidence;
 };
 

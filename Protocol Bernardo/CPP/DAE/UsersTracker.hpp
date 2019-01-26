@@ -29,14 +29,15 @@ public:
     User * getUsers();
     
 private:
-    // Be friend with the device class so it can simply set itself as a reference here.
-    // And nonetheless, the RigsTracker will always be used as a property of a device.
-    // and fuck off by the way.
+    /** Be friend with the device class so it can simply set itself as a reference here.
+     and nonetheless, the UsersTracker will always be used as a property of a device.
+     And fuck off by the way. */
     friend Device;
     
     // The device this tracker is linked to
     Device * _device;
     
+    /** All the tracked users */
     std::map<nite::UserId, User *> _users;
     
     /**
@@ -55,6 +56,12 @@ private:
      */
     std::string getStatusLabel(const nite::SkeletonState &skeletonState);
     
+    /**
+     Transforms nite::SkeletonJoint to a Joint which conforms to C.
+
+     @param joint The nite joint to transform
+     @return The newly created joint reflecting the given nite joint
+     */
     Joint niteJointToCJoint(const nite::SkeletonJoint &joint);
     
     /**
@@ -65,6 +72,12 @@ private:
      */
     Position P3FtoPosition(const nite::Point3f &p3f);
     
+    /**
+     Create a Quaternion reflecting the given nite::Quaternion.
+
+     @param quaternion The nite Quaternion
+     @return The newly created Quaternion reflecting the given nite Quaternion
+     */
     Quaternion niteQuaternionToCQuaternion(const nite::Quaternion &quaternion);
     
 };

@@ -45,16 +45,19 @@ class MovementsCollector: Scene {
         App.dae.start()
     }
     
+    /// Asks the DAE to refresh the available devices list
     func refreshDevicesList() {
         App.dae.refreshDevicesList()
     }
     
+    /// Ends the DAE activities before closing the scene
     func endScene() {
         App.dae.end()
         (self as Scene).endScene()
     }
 }
 
+// MARK: - DataAcquisitionEngineDelegate
 extension MovementsCollector: DataAcquisitionEngineDelegate {
     func dae(_ dae: DataAcquisitionEngine, statusUpdated status: DAEStatus) {
         DispatchQueue.main.async {

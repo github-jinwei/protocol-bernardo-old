@@ -25,7 +25,7 @@ public:
     };
     
     /**
-     Holds a loop continuously checking for frame coming from the devices
+     Init necessary drivers and execute a first parse for devices
      */
     void start();
     
@@ -72,10 +72,11 @@ public:
 private:
     DataAcquisitionEngine() {}
     static DataAcquisitionEngine * _instance;
+    
+    /** Tell if OpenNI has already been initialized or not */
     static bool _openNIInitialized;
     
-    bool _running = true;
-    
+    /** All the available devices */
     std::map<std::string, Device *> _devices;
 };
 

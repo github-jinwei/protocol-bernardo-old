@@ -11,6 +11,10 @@
 
 #include "Joint.h"
 
+/**
+ Represent a user skeleton/rig. Holds all the joints composing it
+ Its values are irrelevant is the user state isn't USER_TRACKED
+ */
 struct Skeleton {
     struct Joint head;
     struct Joint neck;

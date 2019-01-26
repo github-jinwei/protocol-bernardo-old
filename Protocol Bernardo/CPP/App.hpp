@@ -13,9 +13,11 @@
 
 class AppStruct {
 public:
+    /** The Data Acquisition Engine */
     DataAcquisitionEngine * dae;
 };
 
+/** The Application global object */
 AppStruct * App = new AppStruct();
 
 #endif /* CApp_h */

@@ -18,11 +18,19 @@
  Primarily used to retrieve a device status from Swift
  */
 struct DeviceStatus {
+    /** Name of the device (C String) */
     char _name[256];
+    
+    /** Serial of the device (C String) */
     char _serial[256];
+    
+    /** The current state of the device */
     DeviceState state;
     
+    /** The number of users this device is currently tracking */
     unsigned int userCount;
+    
+    /** All the users tracked by the device */
     struct User * _users;
 };
 
@@ -32,7 +40,10 @@ struct DeviceStatus {
  Primarily used to retrieve a device status from Swift
  */
 struct DAEStatus {
+    /** The number of devices available */
     unsigned int deviceCount;
+    
+    /** The status for every available device */
     struct DeviceStatus * _deviceStatus;
 };
 

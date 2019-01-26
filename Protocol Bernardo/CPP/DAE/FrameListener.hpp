@@ -15,9 +15,15 @@
 class Device;
 
 class FrameListener: public openni::VideoStream::NewFrameListener {
+    /**
+     Called by NiTE every time a new video frame is available from a stream
+
+     @param stream The strean who has an available frame
+     */
     void onNewFrame(openni::VideoStream &stream);
 
 public:
+    /** Reference to the device */
     Device * device;
 };
 
