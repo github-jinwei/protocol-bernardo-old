@@ -1,5 +1,5 @@
 //
-//  MovementsCollectorViewController.swift
+//  PositionsCollectorViewController.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-21.
@@ -8,9 +8,9 @@
 
 import AppKit
 
-class MovementsCollectorViewController: NSViewController {
+class PositionsCollectorViewController: NSViewController {
     /// Reference to the movements collector scene
-    weak var movementsCollector: MovementsCollector?
+    weak var movementsCollector: PositionsCollector?
     @IBOutlet weak var devicesList: NSStackView!
     
     /// Asks for a refresh of the available devices list

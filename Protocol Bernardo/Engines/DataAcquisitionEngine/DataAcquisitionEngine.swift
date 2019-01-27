@@ -49,6 +49,8 @@ class DataAcquisitionEngine {
     /// - Parameter repeater: The wrepeater
     func fetchStatus(_ repeater: Repeater) {
         _engineStatus = DAEGetStatus()!.pointee
+        
+        // move the users information from the engine status to the users list
     }
     
     /// Changes the device status to its next possible state

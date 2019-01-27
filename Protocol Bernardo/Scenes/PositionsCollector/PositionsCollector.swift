@@ -1,5 +1,5 @@
 //
-//  MovementsCollector.swift
+//  PositionsCollector.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-20.
@@ -9,24 +9,24 @@
 import AppKit
 import Repeat
 
-class MovementsCollector: Scene {
+class PositionsCollector: Scene {
     // /////////////////////////
     // MARK: Inherited elements
     var sceneIndex: Int!
-    static var sceneName = "Movements Collector"
-    static var sceneDescription = "Gather people movements from connected devices"
+    static var sceneName = "Positions Collector"
+    static var sceneDescription = "Gather users positions from connected devices"
     
     static func make() -> Scene {
-        return MovementsCollector()
+        return PositionsCollector()
     }
     
     // MARK: Properties
     
     /// The window handled by this scene
-    internal var _windowController: MovementsCollectorWindowController!
+    internal var _windowController: PositionsCollectorWindowController!
     
     /// The main viewController
-    internal weak var _viewController: MovementsCollectorViewController!
+    internal weak var _viewController: PositionsCollectorViewController!
     
     /// The closing timer (Used for cosmetics)
     internal var _closingTimer: Repeater?
@@ -34,9 +34,9 @@ class MovementsCollector: Scene {
     /// Create the window for interactions and init the dae
     init() {
         // Create the window
-        _windowController = makeWindow(onStoryboard: "MovementsCollector", withIdentifier: "MovementsCollectorWindow")
+        _windowController = makeWindow(onStoryboard: "PositionsCollector", withIdentifier: "PositionsCollectorWindow")
         _windowController.movementsCollector = self
-        _viewController = _windowController.contentViewController! as? MovementsCollectorViewController
+        _viewController = _windowController.contentViewController! as? PositionsCollectorViewController
         _viewController.movementsCollector = self
         
         // Init the DAE on the CPP side
@@ -57,7 +57,7 @@ class MovementsCollector: Scene {
 }
 
 // MARK: - DataAcquisitionEngineDelegate
-extension MovementsCollector: DataAcquisitionEngineDelegate {
+extension PositionsCollector: DataAcquisitionEngineDelegate {
     func dae(_ dae: DataAcquisitionEngine, statusUpdated status: DAEStatus) {
         DispatchQueue.main.async {
            self._viewController.statusUpdate(status);

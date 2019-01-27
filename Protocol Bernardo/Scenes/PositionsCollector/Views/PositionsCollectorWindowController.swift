@@ -1,5 +1,5 @@
 //
-//  MovementsCollectorWindowController.swift
+//  PositionsCollectorWindowController.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-20.
@@ -9,18 +9,18 @@
 import Foundation
 import AppKit
 
-class MovementsCollectorWindowController: NSWindowController {
+class PositionsCollectorWindowController: NSWindowController {
     
-    weak var movementsCollector: MovementsCollector!
+    weak var movementsCollector: PositionsCollector!
     
     override func windowDidLoad() {
         window!.delegate = self
-        window!.title = "Movements Collector"
+        window!.title = "Positions Collector"
     }
 }
 
 // MARK: - NSWindowDelegate
-extension MovementsCollectorWindowController: NSWindowDelegate {
+extension PositionsCollectorWindowController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         movementsCollector.endScene()
     }

@@ -11,7 +11,7 @@ import AppKit
 class PBDeviceRow: NSView {
 
     /// Reference to the upper view
-    weak var topController: MovementsCollectorViewController!
+    weak var topController: PositionsCollectorViewController!
     
     /// The serial of this device
     var serial:String!

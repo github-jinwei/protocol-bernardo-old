@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		390C265F21F66EFB00E7FEAE /* MovementsCollectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C265E21F66EFB00E7FEAE /* MovementsCollectorViewController.swift */; };
-		390D0DB521F4FECF0032CA23 /* MovementsCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DB421F4FECF0032CA23 /* MovementsCollector.swift */; };
-		390D0DB721F502170032CA23 /* MovementsCollector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D0DB621F502170032CA23 /* MovementsCollector.storyboard */; };
-		390D0DB921F509C90032CA23 /* MovementsCollectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DB821F509C90032CA23 /* MovementsCollectorWindowController.swift */; };
+		390C265F21F66EFB00E7FEAE /* PositionsCollectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C265E21F66EFB00E7FEAE /* PositionsCollectorViewController.swift */; };
+		390D0DB521F4FECF0032CA23 /* PositionsCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DB421F4FECF0032CA23 /* PositionsCollector.swift */; };
+		390D0DB721F502170032CA23 /* PositionsCollector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D0DB621F502170032CA23 /* PositionsCollector.storyboard */; };
+		390D0DB921F509C90032CA23 /* PositionsCollectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DB821F509C90032CA23 /* PositionsCollectorWindowController.swift */; };
 		390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */; };
 		390D0DC021F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBF21F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift */; };
 		3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968FCD521FB82B5005EAA4C /* PBDeviceRow.xib */; };
@@ -107,10 +107,10 @@
 		1AD18919927E8DB868C1271B /* Pods-Protocol BernardoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol BernardoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.release.xcconfig"; sourceTree = "<group>"; };
 		2E884ECCA75A8FC5014A93D2 /* Pods-Protocol Bernardo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.release.xcconfig"; sourceTree = "<group>"; };
 		2FC16C30A804C5686E883755 /* Pods-Protocol BernardoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol BernardoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		390C265E21F66EFB00E7FEAE /* MovementsCollectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsCollectorViewController.swift; sourceTree = "<group>"; };
-		390D0DB421F4FECF0032CA23 /* MovementsCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsCollector.swift; sourceTree = "<group>"; };
-		390D0DB621F502170032CA23 /* MovementsCollector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovementsCollector.storyboard; sourceTree = "<group>"; };
-		390D0DB821F509C90032CA23 /* MovementsCollectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementsCollectorWindowController.swift; sourceTree = "<group>"; };
+		390C265E21F66EFB00E7FEAE /* PositionsCollectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsCollectorViewController.swift; sourceTree = "<group>"; };
+		390D0DB421F4FECF0032CA23 /* PositionsCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsCollector.swift; sourceTree = "<group>"; };
+		390D0DB621F502170032CA23 /* PositionsCollector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PositionsCollector.storyboard; sourceTree = "<group>"; };
+		390D0DB821F509C90032CA23 /* PositionsCollectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsCollectorWindowController.swift; sourceTree = "<group>"; };
 		390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngine.swift; sourceTree = "<group>"; };
 		390D0DBF21F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngineDelegate.swift; sourceTree = "<group>"; };
 		390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Protocol Bernardo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -286,13 +286,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		390D0DB321F4FBE10032CA23 /* MovementsCollector */ = {
+		390D0DB321F4FBE10032CA23 /* PositionsCollector */ = {
 			isa = PBXGroup;
 			children = (
-				390D0DB421F4FECF0032CA23 /* MovementsCollector.swift */,
+				390D0DB421F4FECF0032CA23 /* PositionsCollector.swift */,
 				39589E6121FA5ADB006BEAC6 /* Views */,
 			);
-			path = MovementsCollector;
+			path = PositionsCollector;
 			sourceTree = "<group>";
 		};
 		390D0DBA21F511630032CA23 /* Engines */ = {
@@ -316,9 +316,9 @@
 		39589E6121FA5ADB006BEAC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				390D0DB621F502170032CA23 /* MovementsCollector.storyboard */,
-				390C265E21F66EFB00E7FEAE /* MovementsCollectorViewController.swift */,
-				390D0DB821F509C90032CA23 /* MovementsCollectorWindowController.swift */,
+				390D0DB621F502170032CA23 /* PositionsCollector.storyboard */,
+				390C265E21F66EFB00E7FEAE /* PositionsCollectorViewController.swift */,
+				390D0DB821F509C90032CA23 /* PositionsCollectorWindowController.swift */,
 				3968FCD721FB8350005EAA4C /* UI */,
 			);
 			path = Views;
@@ -392,7 +392,7 @@
 		396DDFE621F42A2300628070 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				390D0DB321F4FBE10032CA23 /* MovementsCollector */,
+				390D0DB321F4FBE10032CA23 /* PositionsCollector */,
 				396DDFE721F42A2800628070 /* ScenesSelector */,
 				396DDFEA21F42A9000628070 /* AvailableScenes.swift */,
 				396DDFEC21F42C4500628070 /* Scene.swift */,
@@ -668,7 +668,7 @@
 				397B648821FD323400A71E58 /* Assets.xcassets in Resources */,
 				396DDFEF21F42E2D00628070 /* PBSceneButton.xib in Resources */,
 				396DDFD021F4285200628070 /* SceneSelector.storyboard in Resources */,
-				390D0DB721F502170032CA23 /* MovementsCollector.storyboard in Resources */,
+				390D0DB721F502170032CA23 /* PositionsCollector.storyboard in Resources */,
 				3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,21 +745,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				390C265F21F66EFB00E7FEAE /* MovementsCollectorViewController.swift in Sources */,
+				390C265F21F66EFB00E7FEAE /* PositionsCollectorViewController.swift in Sources */,
 				39E3121621F779A0006569F1 /* DeviceStatus.swift in Sources */,
 				396DDFF321F42FD000628070 /* PBSceneButton.swift in Sources */,
 				390D0DC021F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift in Sources */,
 				397E685B21FE50E600FFA678 /* NSNib.swift in Sources */,
 				390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */,
 				3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */,
-				390D0DB521F4FECF0032CA23 /* MovementsCollector.swift in Sources */,
+				390D0DB521F4FECF0032CA23 /* PositionsCollector.swift in Sources */,
 				396DDFEB21F42A9000628070 /* AvailableScenes.swift in Sources */,
 				3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */,
 				396DDFED21F42C4500628070 /* Scene.swift in Sources */,
 				39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */,
 				396DDFCB21F4285000628070 /* SceneSelectorController.swift in Sources */,
 				39E3121221F6F1C5006569F1 /* String.swift in Sources */,
-				390D0DB921F509C90032CA23 /* MovementsCollectorWindowController.swift in Sources */,
+				390D0DB921F509C90032CA23 /* PositionsCollectorWindowController.swift in Sources */,
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
