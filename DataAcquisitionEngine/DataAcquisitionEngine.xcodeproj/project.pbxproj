@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		397B63B821FD28AE00A71E58 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B63B721FD28AD00A71E58 /* libNiTE2.dylib */; };
+		397B63BA21FD28B800A71E58 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B63B921FD28B800A71E58 /* libOpenNI2.dylib */; };
+		397B63C021FD294D00A71E58 /* App.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63BF21FD294D00A71E58 /* App.hpp */; };
+		397B63D521FD29A300A71E58 /* UsersTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 397B63C121FD29A300A71E58 /* UsersTracker.cpp */; };
+		397B63D721FD29A300A71E58 /* FrameListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 397B63C321FD29A300A71E58 /* FrameListener.cpp */; };
+		397B63D821FD29A300A71E58 /* Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 397B63C421FD29A300A71E58 /* Device.cpp */; };
+		397B63D921FD29A300A71E58 /* DataAcquisitionEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63C521FD29A300A71E58 /* DataAcquisitionEngine.hpp */; };
+		397B63DA21FD29A300A71E58 /* DataAcquisitionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 397B63C621FD29A300A71E58 /* DataAcquisitionEngine.cpp */; };
+		397B63DB21FD29A300A71E58 /* DAE-Bridging.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63C721FD29A300A71E58 /* DAE-Bridging.h */; };
+		397B63DC21FD29A300A71E58 /* FrameListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63C821FD29A300A71E58 /* FrameListener.hpp */; };
+		397B63DD21FD29A300A71E58 /* DeviceState.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CA21FD29A300A71E58 /* DeviceState.h */; };
+		397B63DE21FD29A300A71E58 /* UserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CB21FD29A300A71E58 /* UserState.h */; };
+		397B63DF21FD29A300A71E58 /* Joint.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CD21FD29A300A71E58 /* Joint.h */; };
+		397B63E021FD29A300A71E58 /* Quaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CE21FD29A300A71E58 /* Quaternion.h */; };
+		397B63E121FD29A300A71E58 /* Skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CF21FD29A300A71E58 /* Skeleton.h */; };
+		397B63E221FD29A300A71E58 /* DAEStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D021FD29A300A71E58 /* DAEStatus.h */; };
+		397B63E321FD29A300A71E58 /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D121FD29A300A71E58 /* User.h */; };
+		397B63E421FD29A300A71E58 /* Position.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D221FD29A300A71E58 /* Position.h */; };
+		397B63E521FD29A300A71E58 /* UsersTracker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D321FD29A300A71E58 /* UsersTracker.hpp */; };
+		397B63E621FD29A300A71E58 /* Device.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D421FD29A300A71E58 /* Device.hpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		397B63A921FD288800A71E58 /* libDataAcquisitionEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDataAcquisitionEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		397B63B721FD28AD00A71E58 /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../../../../../../usr/local/lib/libNiTE2.dylib; sourceTree = "<group>"; };
+		397B63B921FD28B800A71E58 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
+		397B63BB21FD28CA00A71E58 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.a; sourceTree = "<group>"; };
+		397B63BF21FD294D00A71E58 /* App.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		397B63C121FD29A300A71E58 /* UsersTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UsersTracker.cpp; path = DAE/UsersTracker.cpp; sourceTree = "<group>"; };
+		397B63C321FD29A300A71E58 /* FrameListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FrameListener.cpp; path = DAE/FrameListener.cpp; sourceTree = "<group>"; };
+		397B63C421FD29A300A71E58 /* Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Device.cpp; path = DAE/Device.cpp; sourceTree = "<group>"; };
+		397B63C521FD29A300A71E58 /* DataAcquisitionEngine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DataAcquisitionEngine.hpp; path = DAE/DataAcquisitionEngine.hpp; sourceTree = "<group>"; };
+		397B63C621FD29A300A71E58 /* DataAcquisitionEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DataAcquisitionEngine.cpp; path = DAE/DataAcquisitionEngine.cpp; sourceTree = "<group>"; };
+		397B63C721FD29A300A71E58 /* DAE-Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DAE-Bridging.h"; path = "DAE/DAE-Bridging.h"; sourceTree = "<group>"; };
+		397B63C821FD29A300A71E58 /* FrameListener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = FrameListener.hpp; path = DAE/FrameListener.hpp; sourceTree = "<group>"; };
+		397B63CA21FD29A300A71E58 /* DeviceState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceState.h; sourceTree = "<group>"; };
+		397B63CB21FD29A300A71E58 /* UserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserState.h; sourceTree = "<group>"; };
+		397B63CD21FD29A300A71E58 /* Joint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joint.h; sourceTree = "<group>"; };
+		397B63CE21FD29A300A71E58 /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
+		397B63CF21FD29A300A71E58 /* Skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
+		397B63D021FD29A300A71E58 /* DAEStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEStatus.h; sourceTree = "<group>"; };
+		397B63D121FD29A300A71E58 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		397B63D221FD29A300A71E58 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
+		397B63D321FD29A300A71E58 /* UsersTracker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UsersTracker.hpp; path = DAE/UsersTracker.hpp; sourceTree = "<group>"; };
+		397B63D421FD29A300A71E58 /* Device.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Device.hpp; path = DAE/Device.hpp; sourceTree = "<group>"; };
+		397B63EA21FD2AD200A71E58 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		397B63A721FD288800A71E58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397B63BA21FD28B800A71E58 /* libOpenNI2.dylib in Frameworks */,
+				397B63B821FD28AE00A71E58 /* libNiTE2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		397B63A021FD288800A71E58 = {
+			isa = PBXGroup;
+			children = (
+				397B63BD21FD291000A71E58 /* Sources */,
+				397B63AA21FD288800A71E58 /* Products */,
+				397B63B621FD28AD00A71E58 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		397B63AA21FD288800A71E58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				397B63A921FD288800A71E58 /* libDataAcquisitionEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		397B63B621FD28AD00A71E58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				397B63EA21FD2AD200A71E58 /* libc++.tbd */,
+				397B63BB21FD28CA00A71E58 /* libopencv_core.a */,
+				397B63B921FD28B800A71E58 /* libOpenNI2.dylib */,
+				397B63B721FD28AD00A71E58 /* libNiTE2.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		397B63BD21FD291000A71E58 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				397B63C721FD29A300A71E58 /* DAE-Bridging.h */,
+				397B63C621FD29A300A71E58 /* DataAcquisitionEngine.cpp */,
+				397B63C521FD29A300A71E58 /* DataAcquisitionEngine.hpp */,
+				397B63C421FD29A300A71E58 /* Device.cpp */,
+				397B63D421FD29A300A71E58 /* Device.hpp */,
+				397B63C921FD29A300A71E58 /* Enums */,
+				397B63C321FD29A300A71E58 /* FrameListener.cpp */,
+				397B63C821FD29A300A71E58 /* FrameListener.hpp */,
+				397B63CC21FD29A300A71E58 /* Structs */,
+				397B63C121FD29A300A71E58 /* UsersTracker.cpp */,
+				397B63D321FD29A300A71E58 /* UsersTracker.hpp */,
+				397B63BF21FD294D00A71E58 /* App.hpp */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		397B63C921FD29A300A71E58 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				397B63CA21FD29A300A71E58 /* DeviceState.h */,
+				397B63CB21FD29A300A71E58 /* UserState.h */,
+			);
+			name = Enums;
+			path = DAE/Enums;
+			sourceTree = "<group>";
+		};
+		397B63CC21FD29A300A71E58 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				397B63CD21FD29A300A71E58 /* Joint.h */,
+				397B63CE21FD29A300A71E58 /* Quaternion.h */,
+				397B63CF21FD29A300A71E58 /* Skeleton.h */,
+				397B63D021FD29A300A71E58 /* DAEStatus.h */,
+				397B63D121FD29A300A71E58 /* User.h */,
+				397B63D221FD29A300A71E58 /* Position.h */,
+			);
+			name = Structs;
+			path = DAE/Structs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		397B63A521FD288800A71E58 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397B63E321FD29A300A71E58 /* User.h in Headers */,
+				397B63E021FD29A300A71E58 /* Quaternion.h in Headers */,
+				397B63E621FD29A300A71E58 /* Device.hpp in Headers */,
+				397B63DC21FD29A300A71E58 /* FrameListener.hpp in Headers */,
+				397B63DD21FD29A300A71E58 /* DeviceState.h in Headers */,
+				397B63E121FD29A300A71E58 /* Skeleton.h in Headers */,
+				397B63E421FD29A300A71E58 /* Position.h in Headers */,
+				397B63DF21FD29A300A71E58 /* Joint.h in Headers */,
+				397B63E221FD29A300A71E58 /* DAEStatus.h in Headers */,
+				397B63D921FD29A300A71E58 /* DataAcquisitionEngine.hpp in Headers */,
+				397B63DB21FD29A300A71E58 /* DAE-Bridging.h in Headers */,
+				397B63C021FD294D00A71E58 /* App.hpp in Headers */,
+				397B63E521FD29A300A71E58 /* UsersTracker.hpp in Headers */,
+				397B63DE21FD29A300A71E58 /* UserState.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		397B63A821FD288800A71E58 /* DataAcquisitionEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 397B63AD21FD288800A71E58 /* Build configuration list for PBXNativeTarget "DataAcquisitionEngine" */;
+			buildPhases = (
+				397B63A521FD288800A71E58 /* Headers */,
+				397B63A621FD288800A71E58 /* Sources */,
+				397B63A721FD288800A71E58 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataAcquisitionEngine;
+			productName = DataAcquisitionEngine;
+			productReference = 397B63A921FD288800A71E58 /* libDataAcquisitionEngine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		397B63A121FD288800A71E58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Prisme;
+				TargetAttributes = {
+					397B63A821FD288800A71E58 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 397B63A421FD288800A71E58 /* Build configuration list for PBXProject "DataAcquisitionEngine" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 397B63A021FD288800A71E58;
+			productRefGroup = 397B63AA21FD288800A71E58 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				397B63A821FD288800A71E58 /* DataAcquisitionEngine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		397B63A621FD288800A71E58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				397B63DA21FD29A300A71E58 /* DataAcquisitionEngine.cpp in Sources */,
+				397B63D521FD29A300A71E58 /* UsersTracker.cpp in Sources */,
+				397B63D721FD29A300A71E58 /* FrameListener.cpp in Sources */,
+				397B63D821FD29A300A71E58 /* Device.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		397B63AB21FD288800A71E58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		397B63AC21FD288800A71E58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		397B63AE21FD288800A71E58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/opencv4/,
+					/usr/local/include/ni2/,
+					/usr/local/include/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/Cellar/openni2/2.2.0-debian/lib/ni2",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		397B63AF21FD288800A71E58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/opencv4/,
+					/usr/local/include/ni2/,
+					/usr/local/include/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/local/Cellar/openni2/2.2.0-debian/lib/ni2",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		397B63A421FD288800A71E58 /* Build configuration list for PBXProject "DataAcquisitionEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				397B63AB21FD288800A71E58 /* Debug */,
+				397B63AC21FD288800A71E58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		397B63AD21FD288800A71E58 /* Build configuration list for PBXNativeTarget "DataAcquisitionEngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				397B63AE21FD288800A71E58 /* Debug */,
+				397B63AF21FD288800A71E58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 397B63A121FD288800A71E58 /* Project object */;
+}
