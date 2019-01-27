@@ -247,6 +247,7 @@
 		397B648421FD322700A71E58 /* NiTE2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = NiTE2; sourceTree = "<group>"; };
 		397B648521FD322700A71E58 /* OpenNI2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenNI2; sourceTree = "<group>"; };
 		397E685A21FE50E600FFA678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
+		397E685C21FE57D700FFA678 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		398B660C21F653A800F6D1FC /* libfreenect2.0.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect2.0.2.0.dylib; path = ../../../../../usr/local/lib/libfreenect2.0.2.0.dylib; sourceTree = "<group>"; };
 		398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Protocol Bernardo.entitlements"; sourceTree = "<group>"; };
 		39AF88AC21F4CF7E00A68993 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -357,6 +358,7 @@
 		396DDFBC21F4285000628070 = {
 			isa = PBXGroup;
 			children = (
+				397E685C21FE57D700FFA678 /* README.md */,
 				397B63B021FD288800A71E58 /* DataAcquisitionEngine.xcodeproj */,
 				396DDFC721F4285000628070 /* Protocol Bernardo */,
 				396DDFC621F4285000628070 /* Products */,
