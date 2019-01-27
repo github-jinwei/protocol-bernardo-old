@@ -24,15 +24,15 @@ class PBTrackedUserDetails: NSView {
         trackingStatusField.stringValue = getLabel(forState: user.state)
     
         guard user.state == USER_TRACKED else {
-            userPosXField.floatValue = 0.0
-            userPosYField.floatValue = 0.0
-            userPosZField.floatValue = 0.0
+            userPosXField.intValue = 0
+            userPosYField.intValue = 0
+            userPosZField.intValue = 0
             return
         }
         
-        userPosXField.floatValue = user.skeleton.torso.position.x
-        userPosYField.floatValue = user.skeleton.torso.position.y
-        userPosZField.floatValue = user.skeleton.torso.position.z
+        userPosXField.intValue = Int32(user.centerOfMass.x)
+        userPosYField.intValue = Int32(user.centerOfMass.y)
+        userPosZField.intValue = Int32(user.centerOfMass.z)
     }
     
     /// Gets the label matching the user state

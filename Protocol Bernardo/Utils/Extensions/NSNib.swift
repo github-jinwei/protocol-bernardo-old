@@ -1,15 +1,14 @@
 //
-//  NSView.swift
+//  NSNib.swift
 //  Protocol Bernardo
 //
-//  Created by Valentin Dufois on 2019-01-19.
+//  Created by Valentin Dufois on 2019-01-27.
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-import Foundation
 import AppKit
 
-extension NSView {
+extension NSNib {
     static func make<T>(fromNib nibName: String, owner: AnyObject?) -> T {
         var instanciatedViews: NSArray? = []
         

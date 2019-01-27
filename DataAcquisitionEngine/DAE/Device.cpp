@@ -64,7 +64,7 @@ void Device::connect() {
     
     // Init the user tracker
     _rigTracker.create(&_device);
-    _rigTracker.setSkeletonSmoothingFactor(.0f);
+    _rigTracker.setSkeletonSmoothingFactor(.5f);
     _usersTracker._device = this;
     _rigTracker.addNewFrameListener(&_usersTracker);
     

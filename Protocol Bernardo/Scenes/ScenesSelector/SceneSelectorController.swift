@@ -23,7 +23,7 @@ class SceneSelectorController: NSViewController {
 
         // View is loaded, lets load the scenes list and display it
         availableScenes.forEach {
-            let sceneView: PBSceneButton = NSView.make(fromNib: "PBSceneButton", owner: nil)
+            let sceneView: PBSceneButton = NSNib.make(fromNib: "PBSceneButton", owner: nil)
             
             sceneView.sceneNameField.stringValue = $0.sceneName
             sceneView.sceneDescriptionField.stringValue = $0.sceneDescription

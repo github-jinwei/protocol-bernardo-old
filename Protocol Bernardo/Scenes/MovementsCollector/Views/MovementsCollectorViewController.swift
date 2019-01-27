@@ -47,7 +47,7 @@ class MovementsCollectorViewController: NSViewController {
         devicesList.views.forEach { $0.removeFromSuperview() }
         
         status.devices.forEach { serial, device in
-            let deviceView: PBDeviceRow = NSView.make(fromNib: "PBDeviceRow", owner: nil)
+            let deviceView: PBDeviceRow = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
             
             // Values that will not change
             deviceView.topController = self
