@@ -20,6 +20,8 @@ class PositionsCollector: Scene {
         return PositionsCollector()
     }
     
+    
+    // /////////////////
     // MARK: Properties
     
     /// The window handled by this scene
@@ -30,6 +32,10 @@ class PositionsCollector: Scene {
     
     /// The closing timer (Used for cosmetics)
     internal var _closingTimer: Repeater?
+    
+    
+    // ////////////////
+    // Scene Lifecycle
     
     /// Create the window for interactions and init the dae
     init() {
