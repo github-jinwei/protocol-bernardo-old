@@ -15,7 +15,7 @@
 
 #include "Structs/User.h"
 
-class Device;
+class PhysicalDevice;
 
 class UsersTracker: public nite::UserTracker::NewFrameListener {
 public:
@@ -32,10 +32,10 @@ private:
     /** Be friend with the device class so it can simply set itself as a reference here.
      and nonetheless, the UsersTracker will always be used as a property of a device.
      And fuck off by the way. */
-    friend Device;
+    friend PhysicalDevice;
     
     // The device this tracker is linked to
-    Device * _device;
+    PhysicalDevice * _device;
     
     /** All the tracked users */
     std::map<nite::UserId, User *> _users;

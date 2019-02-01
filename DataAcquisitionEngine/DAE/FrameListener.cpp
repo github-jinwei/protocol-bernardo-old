@@ -7,7 +7,7 @@
 //
 
 #include "FrameListener.hpp"
-#include "Device.hpp"
+#include "PhysicalDevice.hpp"
 
 void FrameListener::onNewFrame(openni::VideoStream &stream) {
     openni::VideoFrameRef * frame = new openni::VideoFrameRef();

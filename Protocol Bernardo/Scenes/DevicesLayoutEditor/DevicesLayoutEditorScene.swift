@@ -1,5 +1,5 @@
 //
-//  DevicesLayoutEditor.swift
+//  DevicesLayoutEditorScene.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-27.
@@ -8,7 +8,7 @@
 
 import AppKit
 
-class DevicesLayoutEditor: NSWindowController {
+class DevicesLayoutEditorScene: NSWindowController {
     // ////////////////////////////////////
     // MARK: Inherited elements from Scene
     var sceneIndex: Int!
@@ -39,16 +39,16 @@ class DevicesLayoutEditor: NSWindowController {
 }
 
 // MARK: - NSWindowDelegate
-extension DevicesLayoutEditor: NSWindowDelegate {
+extension DevicesLayoutEditorScene: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         endScene()
     }
 }
 
-extension DevicesLayoutEditor: Scene {
+extension DevicesLayoutEditorScene: Scene {
     static func make() -> Scene {
-        let storyboard = NSStoryboard(name: "DevicesLayoutEditor", bundle: nil)
-        let window = storyboard.instantiateInitialController() as! DevicesLayoutEditor
+        let storyboard = NSStoryboard(name: "LayoutEditor", bundle: nil)
+        let window = storyboard.instantiateInitialController() as! DevicesLayoutEditorScene
         window.showWindow(nil)
         
         return window

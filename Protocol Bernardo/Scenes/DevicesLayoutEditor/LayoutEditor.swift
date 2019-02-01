@@ -13,7 +13,7 @@ class LayoutEditor: NSViewController {
     // ////////////////////////
     // MARK: - Base properties
     /// Reference to the scene window
-    weak var window: DevicesLayoutEditor!
+    weak var window: DevicesLayoutEditorScene!
     
     /// Reference to the sidebar
     weak var sidebar: LayoutEditorSidebar!
@@ -30,6 +30,8 @@ class LayoutEditor: NSViewController {
     /// The layout, inited as empty
     internal var _layout = DevicesLayout()
     
+    var elements: [LayoutElement] { return _layout.elements }
+    
     /// The SKScene used by the editor
     internal var _scene: SKScene!
     
@@ -42,13 +44,29 @@ class LayoutEditor: NSViewController {
     var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
     
     /// The currently selected node, might be null
-    var selectedNode: LayoutElement? {
+    weak var selectedNode: LayoutElement? {
         willSet(node) {
+            if selectedNode === node { return }
+            
             // Deselect the currently selected node (if any) before moving on
             selectedNode?.deselect()
             node?.select()
+            
+            // Clear the sidebar
+            sidebar.clear()
+            
+            if node != nil {
+                // Display the parameters for the selected element
+                sidebar.displayParameters(ofElement: node!)
+            }
         }
     }
+    
+    
+    // //////////////////////////////////
+    // MARK: Keyboard listener properties
+    
+    var shiftPressed: Bool = false
 }
 
 
@@ -88,7 +106,7 @@ extension LayoutEditor {
 
 
 // ////////////////////////////////
-// MARK: - Scene elements creation
+// MARK: - Scene elements lifecycle
 extension LayoutEditor {
     /// Creates a new device and insert it in the layout
     func addDevice() {
@@ -97,26 +115,10 @@ extension LayoutEditor {
         _layout.elements.append(device)
         selectedNode = device
     }
-}
-
-
-// ///////////////////
-// MARK: - User Events
-extension LayoutEditor {
-    override func mouseDown(with event: NSEvent) {
-        // If we received this event, it means a click was made on nothing.
-        // Let's deselect the possibly selected node
-        selectedNode = nil
-    }
     
-    override func scrollWheel(with event: NSEvent) {
-        root.position.x += event.scrollingDeltaX
-        root.position.y -= event.scrollingDeltaY
-    }
-    
-    override func magnify(with event: NSEvent) {
-        let scale = (root.xScale + event.magnification).clamped(to: 0.25...1)
-        root.xScale = scale
-        root.yScale = scale
+    func remove(element: LayoutElement) {
+        _layout.elements.remove(at: _layout.elements.firstIndex(where: {
+            $0 === element
+        })!)
     }
 }

@@ -19,7 +19,7 @@
 #include "FrameListener.hpp"
 #include "UsersTracker.hpp"
 
-class Device {
+class PhysicalDevice {
 public:
     /**
      Instanciate the device
@@ -27,7 +27,7 @@ public:
      @param device The device info object provided by OpenNI
      @param serial The serial number of the device
      */
-    Device(const openni::DeviceInfo &device, const std::string &serial):
+    PhysicalDevice(const openni::DeviceInfo &device, const std::string &serial):
         _name(std::string(device.getName())),
         _serial(serial),
         _uri(std::string(device.getUri())) {}
@@ -104,7 +104,7 @@ public:
      */
     inline nite::UserTracker * getRigTracker() { return &_rigTracker; }
     
-    ~Device();
+    ~PhysicalDevice();
     
 private:
     std::string _name;

@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <ni2/OpenNI.h>
 
-class Device;
+class PhysicalDevice;
 
 class FrameListener: public openni::VideoStream::NewFrameListener {
     /**
@@ -24,7 +24,7 @@ class FrameListener: public openni::VideoStream::NewFrameListener {
 
 public:
     /** Reference to the device */
-    Device * device;
+    PhysicalDevice * device;
 };
 
 #endif /* FrameListener_hpp */

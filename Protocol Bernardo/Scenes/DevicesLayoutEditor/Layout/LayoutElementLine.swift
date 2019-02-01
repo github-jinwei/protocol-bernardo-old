@@ -6,10 +6,24 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 /// A Layout Line is used to adds marks on the layout and ease its comprehension.
 class LayoutElementLine: LayoutElement {
+    func mouseDragged(with event: NSEvent) {
+        
+    }
+    
+    func getParametersController() -> NSViewController {
+        return NSViewController(nibName: nil, bundle: nil)
+    }
+    
+    var name: String? = "Line"
+    
+    func keyDown(with event: NSEvent) {
+        
+    }
+    
     func select() {
         
     }
@@ -18,7 +32,6 @@ class LayoutElementLine: LayoutElement {
         
     }
     
-    var name: String = "Line"
     
     var type: LayoutElementType = .line
     

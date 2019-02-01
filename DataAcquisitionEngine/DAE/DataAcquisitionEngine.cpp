@@ -43,8 +43,8 @@ void DataAcquisitionEngine::start() {
 
 void DataAcquisitionEngine::stop() {
     // Let's free all the devices
-    for (std::pair<std::string, Device *> deviceReference : _devices) {
-        Device * device = deviceReference.second;
+    for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
+        PhysicalDevice * device = deviceReference.second;
         delete device;
     }
     
@@ -91,7 +91,7 @@ void DataAcquisitionEngine::parseForDevices() {
         
         // Mark the device as found and register it
         foundSerials.push_back(serial);
-        Device * device = new Device(availableDevices[i], serial);
+        PhysicalDevice * device = new PhysicalDevice(availableDevices[i], serial);
         _devices[serial] = device;
     }
     
@@ -143,8 +143,8 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
     
     // For each device currently stored, generate and store its status
     int i = 0;
-    for (std::pair<std::string, Device *> deviceReference : _devices) {
-        Device * device = deviceReference.second;
+    for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
+        PhysicalDevice * device = deviceReference.second;
         status->_deviceStatus[i] = device->getStatus();
         ++i;
     }

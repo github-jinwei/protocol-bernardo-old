@@ -7,7 +7,7 @@
 //
 
 #include "UsersTracker.hpp"
-#include "Device.hpp"
+#include "PhysicalDevice.hpp"
 
 void UsersTracker::onNewFrame(nite::UserTracker &userTracker) {
     // Is the device even active ? The user tracker starts on creation

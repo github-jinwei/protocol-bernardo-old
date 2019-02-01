@@ -12,7 +12,7 @@
 #include <map>
 
 #include "DAEStatus.h"
-#include "Device.hpp"
+#include "PhysicalDevice.hpp"
 
 class DataAcquisitionEngine {
 public:
@@ -77,7 +77,7 @@ private:
     static bool _openNIInitialized;
     
     /** All the available devices */
-    std::map<std::string, Device *> _devices;
+    std::map<std::string, PhysicalDevice *> _devices;
 };
 
 extern "C" {

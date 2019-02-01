@@ -13,32 +13,50 @@ class LayoutElementDevice: SKNode {
     
     // /////////////////////////
     // MARK: - Device properties
-    // var name: String? = "Device"
+    
+    override var name: String? {
+        didSet {
+            _deviceLabel?.text = name
+        }
+    }
     
     var type: LayoutElementType = .device
     
     /// Position of the device in the layout. This position represent the device
     /// coordinates origin when it generate users positions
-    // var position
+//    var position: CGPoint
     
     /// The device position height.
-    var height: Int = 600
+    var height: CGFloat = 60.0
     
     /// Orientation of the device along the Z (Vertical) Axis, in degrees
     var orientation: CGFloat = 0 {
         didSet {
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2) + orientation
+            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
         }
     }
     
     /// The horizontal field of view of the device, in degrees
-    var horizontalFOV: CGFloat = 70
+    var horizontalFOV: CGFloat = 70 {
+        didSet {
+            _captationArea.path = captationArea()
+            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
+        }
+    }
     
     /// The minimum distance to be from the device to be``` able to be detected (in cm)
-    var minimumCaptationDistance: Int = 50
+    var minimumCaptationDistance: CGFloat = 50 {
+        didSet {
+            _captationArea.path = captationArea()
+        }
+    }
     
     /// The maximum distance to be from the device to be able to be detected (in cm)
-    var maximumCaptationDistance: Int = 450
+    var maximumCaptationDistance: CGFloat = 450{
+        didSet {
+            _captationArea.path = captationArea()
+        }
+    }
     
     
     // //////////////////////////
@@ -63,22 +81,48 @@ class LayoutElementDevice: SKNode {
     
     /// Tell is the device is currently selected
     internal var _isSelected: Bool = false
-}
-
-// MARK: - LayoutElement methods
-extension LayoutElementDevice: LayoutElement {
     
+    
+    // ////////////////////////////////
+    // MARK: - Sidebar Properties view
+    
+    /// Reference to the device parameters view when it is available
+    internal lazy var _parametersController: PBDevicePropertiesController = {
+        let storyboard = NSStoryboard(name: "LayoutEditor", bundle: nil)
+        var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBDevicePropertiesController
+        controller.device = self
+        
+        return controller
+    }()
 }
 
 
-// //////////////////////
-// MARK: - SKNode methods
+// /////////////////////
+// MARK: - LayoutElement
+extension LayoutElementDevice: LayoutElement {
+    /// Returns the controller allowing for fine tuning of the
+    /// device parameter
+    ///
+    /// - Returns: A view controller
+    func getParametersController() -> NSViewController {
+       return _parametersController
+    }
+    
+    /// Update the position values for the device on the parameters view
+    func updatePositionOnParameters() {
+        _parametersController.set(position: position)
+    }
+}
+
+
+// ///////////////////
+// MARK: - Initializer
 extension LayoutElementDevice {
     convenience init(withEditor editor: LayoutEditor, withExistingDevice device: Any?) {
         self.init()
         
         self.name = "Device"
-        isUserInteractionEnabled = true
+        isUserInteractionEnabled = false
         
         _editor = editor
         
@@ -117,32 +161,57 @@ extension LayoutElementDevice {
         
         // ...
     }
-    
-    override func mouseDown(with event: NSEvent) {
-        // Make sure the clicked event is in the correct area
-        guard cursorInTriggerArea(forEvent: event) else {
-            markAsIdle()
-            return
-        }
-        
-        markAsSelected()
-    }
-    
-    
+}
+
+
+// ///////////////////
+// MARK: - User events
+extension LayoutElementDevice {
     override func mouseDragged(with event: NSEvent) {
-        guard cursorInTriggerArea(forEvent: event) else {
+        guard locationInTriggerArea(forEvent: event) else {
             markAsIdle()
+            super.mouseDragged(with: event)
             return
         }
         
-        self.position.x += event.deltaX
-        self.position.y -= event.deltaY
+        self.position.x += (event.deltaX / _editor.root.xScale)
+        self.position.y -= (event.deltaY / _editor.root.yScale)
+        
+        updatePositionOnParameters()
     }
     
+    override func keyDown(with event: NSEvent) {
+        // Make sure we only aknowledge keyboard events when we are selected
+        guard _isSelected else {
+            return
+        }
+        
+        let translateAmount:CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
+        
+        switch event.keyCode {
+        case Keycode.delete: delete()
+        case Keycode.upArrow: position.y += translateAmount
+        case Keycode.downArrow: position.y -= translateAmount
+        case Keycode.rightArrow: position.x += translateAmount
+        case Keycode.leftArrow: position.x -= translateAmount
+        default: return
+        }
+        
+        updatePositionOnParameters()
+    }
+}
+
+    
+// ////////////////////
+// MARK: - Device state
+extension LayoutElementDevice {
+    /// Change the device state to selected
     internal func markAsSelected() {
         _editor.selectedNode = self
     }
     
+    /// Update the device state to reflect is selected state.
+    /// You should not called this method directly. Use `markAsSelected` instead.
     func select() {
         _isSelected = true
         
@@ -150,21 +219,28 @@ extension LayoutElementDevice {
         setSelectedAppearance()
     }
     
+    /// Change the device state to idle
     internal func markAsIdle() {
         _editor.selectedNode = nil
     }
     
+    /// Update the device state to reflect is deselected state.
+    /// You should not called this method directly. Use `markAsIdle` instead.
     func deselect() {
         _isSelected = false
         
         // Update appearance to reflect change
         setIdleAppearance()
     }
-    
-    func remove() {
+
+    /// Delete the device, removes it from the layout and fron the view
+    func delete() {
         // Asks the user before going further obviously
         
         // ...
+        
+        markAsIdle()
+        _editor.remove(element: self)
         
         self.removeAllChildren()
         self.removeFromParent()
@@ -175,6 +251,9 @@ extension LayoutElementDevice {
 // /////////////////////
 // MARK: - SKNode utils
 extension LayoutElementDevice {
+    /// Update the device appearance to reflect its idle state
+    ///
+    /// This also reflects the default state of the device on the scene
     func setIdleAppearance() {
         _deviceSprite.color = NSColor(calibratedWhite: 0, alpha: 0.9)
         _deviceLabel.fontColor = NSColor(calibratedWhite: 0, alpha: 0.8)
@@ -185,6 +264,7 @@ extension LayoutElementDevice {
         _captationArea.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
     }
     
+    /// Update the device appearance to reflect its selected state
     func setSelectedAppearance() {
         // _deviceSprite.color = NSColor(_highlightColor, alpha: 0.9)
         
@@ -219,12 +299,12 @@ extension LayoutElementDevice {
         return path
     }
     
-    /// Tell if the cursor described bhy the given mouse event falls inside the
+    /// Tell if the cursor described by the given mouse event falls inside the
     /// device trigger areas
     ///
     /// - Parameter event: Mouse event
     /// - Returns: True if the cursor is inside the trigger area, false otherwise
-    func cursorInTriggerArea(forEvent event: NSEvent) -> Bool {
+    func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
         let clickLocationCaptationArea = event.location(in: _captationArea)
         let clickLocationCenterArea = event.location(in: _centerCircle)
         

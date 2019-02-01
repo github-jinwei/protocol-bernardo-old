@@ -6,9 +6,9 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#include "Device.hpp"
+#include "PhysicalDevice.hpp"
 
-void Device::connect() {
+void PhysicalDevice::connect() {
     _state = DeviceState::DEVICE_CONNECTING;
     
     // Open the device
@@ -74,7 +74,7 @@ void Device::connect() {
 //    cv::namedWindow( "User Image",  cv::WINDOW_AUTOSIZE );
 }
 
-void Device::setActive() {
+void PhysicalDevice::setActive() {
     // Do nothing if the device is not ready to stream
     if(_state != DeviceState::DEVICE_READY)
         return;
@@ -93,7 +93,7 @@ void Device::setActive() {
     _state = DeviceState::DEVICE_ACTIVE;
 }
 
-void Device::setIdle() {
+void PhysicalDevice::setIdle() {
     if(_state == DeviceState::DEVICE_ACTIVE) {
         _colorStream.stop();
         _depthStream.stop();
@@ -101,21 +101,21 @@ void Device::setIdle() {
     }
 }
 
-void Device::storeColorFrame(openni::VideoFrameRef *frame) {
+void PhysicalDevice::storeColorFrame(openni::VideoFrameRef *frame) {
     if(_colorFrame != nullptr)
         delete _colorFrame;
     
     _colorFrame = frame;
 }
 
-void Device::storeDepthFrame(openni::VideoFrameRef *frame) {
+void PhysicalDevice::storeDepthFrame(openni::VideoFrameRef *frame) {
     if(_depthFrame != nullptr)
         delete _depthFrame;
     
     _depthFrame = frame;
 }
 
-DeviceStatus Device::getStatus() {
+DeviceStatus PhysicalDevice::getStatus() {
     DeviceStatus status;
     strcpy(status._name, _name.c_str());
     strcpy(status._serial, _serial.c_str());
@@ -128,7 +128,7 @@ DeviceStatus Device::getStatus() {
 }
 
 
-Device::~Device() {
+PhysicalDevice::~PhysicalDevice() {
     // Start by making sure the device is idle
     setIdle();
     

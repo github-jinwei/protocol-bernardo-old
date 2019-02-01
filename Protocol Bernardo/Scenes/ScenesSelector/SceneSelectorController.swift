@@ -18,6 +18,8 @@ class SceneSelectorController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.set(true, forKey: "NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints")
+        
         // Register ourselves in the Core to allow for future reopening
         App.core.registerSceneSelectorController(self)
 

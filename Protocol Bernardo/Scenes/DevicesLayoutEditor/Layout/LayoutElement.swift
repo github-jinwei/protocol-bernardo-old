@@ -7,8 +7,12 @@
 //
 
 import SpriteKit
+import AppKit
 
 protocol LayoutElement: AnyObject {
+    /// Name of the element
+    var name: String? { get set }
+    
     /// Type of the element
     var type: LayoutElementType { get }
     
@@ -17,10 +21,25 @@ protocol LayoutElement: AnyObject {
     
     /// Called by a user event to deselect the element
     func deselect()
+    
+    /// Allows the element to receive keyDown events
+    ///
+    /// - Parameter event: a KeyDown event
+    func keyDown(with event: NSEvent)
+    
+    func mouseDragged(with event: NSEvent)
+    
+    func getParametersController() -> NSViewController
+    
+    func locationInTriggerArea(forEvent event: NSEvent) -> Bool
 }
 
 extension LayoutElement {
     internal var _highlightColor: NSColor {
         return NSColor.selectedMenuItemColor
+    }
+    
+    func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
+        return false
     }
 }
