@@ -12,7 +12,8 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // Assing the main menu to our app
+        (aNotification.object as! NSApplication).mainMenu = NSNib.make(fromNib: "MainMenu", owner: nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

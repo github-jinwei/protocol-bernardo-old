@@ -10,6 +10,5 @@ import Foundation
 
 /// List of all the scene that can be instanciated from the `Open Scene` window
 let availableScenes: Array<Scene.Type> = [
-    PositionsCollector.self,
-    DevicesLayoutEditorScene.self,
+    LayoutEditorScene.self,
 ]

@@ -68,7 +68,7 @@ class DevicesLayoutView: SKView {
     ///
     /// - Parameter event:
     /// - Returns: All the elements hit by the event
-    internal func getElementsAtPoint(forEvent event: NSEvent) -> [LayoutElement] {
+    internal func getElementsAtPoint(forEvent event: NSEvent) -> [LayoutEditorElement] {
         return editor.elements.filter { element in
             return element.locationInTriggerArea(forEvent: event)
         }

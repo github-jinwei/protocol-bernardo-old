@@ -8,9 +8,9 @@
 
 import AppKit
 
-class PositionsCollectorViewController: NSViewController {
+class DevicesSceneViewController: NSViewController {
     /// Reference to the movements collector scene
-    weak var movementsCollector: PositionsCollector?
+    weak var movementsCollector: DevicesScene?
     @IBOutlet weak var devicesList: NSStackView!
     
     /// Asks for a refresh of the available devices list

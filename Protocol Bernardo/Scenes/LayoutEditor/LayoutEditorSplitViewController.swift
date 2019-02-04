@@ -12,7 +12,7 @@ class LayoutEditorSplitViewController: NSSplitViewController {
     // ///////////
     // Properties
     
-    var window: DevicesLayoutEditorScene!
+    var window: LayoutEditorScene!
     
     @IBOutlet weak var editorSplitViewItem: NSSplitViewItem!
     @IBOutlet weak var sidebarSplitViewItem: NSSplitViewItem!

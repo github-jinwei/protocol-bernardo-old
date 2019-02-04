@@ -20,7 +20,7 @@ class LayoutEditorSidebar: NSViewController {
         view.subviews[0].removeFromSuperview()
     }
     
-    func displayParameters(ofElement element: LayoutElement) {
+    func displayParameters(ofElement element: LayoutEditorElement) {
         let elementParametersView: NSViewController = element.getParametersController()
         elementParametersView.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(elementParametersView)

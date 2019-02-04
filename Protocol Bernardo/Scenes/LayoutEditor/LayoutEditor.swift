@@ -13,7 +13,7 @@ class LayoutEditor: NSViewController {
     // ////////////////////////
     // MARK: - Base properties
     /// Reference to the scene window
-    weak var window: DevicesLayoutEditorScene!
+    weak var window: LayoutEditorScene!
     
     /// Reference to the sidebar
     weak var sidebar: LayoutEditorSidebar!
@@ -27,14 +27,13 @@ class LayoutEditor: NSViewController {
     // //////////////////////////
     // MARK: - Layout properties
     
-    /// The layout, inited as empty
-    internal var _layout = DevicesLayout()
-    
-    var elements: [LayoutElement] { return _layout.elements }
+    /// The layout, initialized as empty
+    internal var _layout: Layout = App.layoutEngine.newLayout()
     
     /// The SKScene used by the editor
     internal var _scene: SKScene!
     
+    /// Convenient access to the 'root' node of the scene
     var root: SKNode { return _scene.childNode(withName: "root")! }
     
     /// The scene front layer, holding the device objects
@@ -43,8 +42,11 @@ class LayoutEditor: NSViewController {
     /// The scene back layer, holding the decorations objects
     var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
     
+    // List of all the elements nodes in the scene
+    var elements = [LayoutEditorElement]()
+    
     /// The currently selected node, might be null
-    weak var selectedNode: LayoutElement? {
+    weak var selectedNode: LayoutEditorElement? {
         willSet(node) {
             if selectedNode === node { return }
             
@@ -61,12 +63,6 @@ class LayoutEditor: NSViewController {
             }
         }
     }
-    
-    
-    // //////////////////////////////////
-    // MARK: Keyboard listener properties
-    
-    var shiftPressed: Bool = false
 }
 
 
@@ -76,7 +72,7 @@ extension LayoutEditor {
     override func viewDidAppear() {
         // Start with a blank layout
         
-        // Open welcome screen
+        // Open welcome screen on editor open
         performSegue(withIdentifier: "openWelcomeModal", sender: self)
         
         // Set up the scene view
@@ -108,17 +104,27 @@ extension LayoutEditor {
 // ////////////////////////////////
 // MARK: - Scene elements lifecycle
 extension LayoutEditor {
-    /// Creates a new device and insert it in the layout
-    func addDevice() {
-        let device = LayoutElementDevice(withEditor: self,
-                                         withExistingDevice: nil)
-        _layout.elements.append(device)
-        selectedNode = device
+    /// Creates a new node for a new device and insert it in the layotu
+    func createDevice() {
+        let deviceNode = LayoutEditorDevice(withEditor: self,
+                                            forDevice: _layout.createDevice())
+        elements.append(deviceNode)
+        
+        selectedNode = deviceNode
     }
     
-    func remove(element: LayoutElement) {
-        _layout.elements.remove(at: _layout.elements.firstIndex(where: {
+    /// Removes the given node fromn the layout and the SKScene
+    ///
+    /// - Parameter element: The device node holding the node to remove
+    func removeDevice(element: LayoutEditorDevice) {
+        // Remove from the layout
+        _layout.removeElement(element.device)
+        
+        // Remove from our internal list
+        elements.removeAll {
             $0 === element
-        })!)
+        }
+        
+        // The node removes itself from the scene
     }
 }

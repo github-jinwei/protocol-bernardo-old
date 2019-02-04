@@ -9,7 +9,7 @@
 import AppKit
 import Repeat
 
-class PositionsCollector: Scene {
+class DevicesScene: Scene {
     // /////////////////////////
     // MARK: Inherited elements
     var sceneIndex: Int!
@@ -17,7 +17,7 @@ class PositionsCollector: Scene {
     static var sceneDescription = "Gather users positions from connected devices"
     
     static func make() -> Scene {
-        return PositionsCollector()
+        return DevicesScene()
     }
     
     
@@ -25,10 +25,10 @@ class PositionsCollector: Scene {
     // MARK: Properties
     
     /// The window handled by this scene
-    internal var _windowController: PositionsCollectorWindowController!
+    internal var _windowController: DevicesSceneWindowController!
     
     /// The main viewController
-    internal weak var _viewController: PositionsCollectorViewController!
+    internal weak var _viewController: DevicesSceneViewController!
     
     /// The closing timer (Used for cosmetics)
     internal var _closingTimer: Repeater?
@@ -40,9 +40,9 @@ class PositionsCollector: Scene {
     /// Create the window for interactions and init the dae
     init() {
         // Create the window
-        _windowController = makeWindow(onStoryboard: "PositionsCollector", withIdentifier: "PositionsCollectorWindow")
+        _windowController = makeWindow(onStoryboard: "DevicesScene", withIdentifier: "DevicesSceneWindow")
         _windowController.movementsCollector = self
-        _viewController = _windowController.contentViewController! as? PositionsCollectorViewController
+        _viewController = _windowController.contentViewController! as? DevicesSceneViewController
         _viewController.movementsCollector = self
         
         // Init the DAE on the CPP side
@@ -63,7 +63,7 @@ class PositionsCollector: Scene {
 }
 
 // MARK: - DataAcquisitionEngineDelegate
-extension PositionsCollector: DataAcquisitionEngineDelegate {
+extension DevicesScene: DataAcquisitionEngineDelegate {
     func dae(_ dae: DataAcquisitionEngine, statusUpdated status: DAEStatus) {
         DispatchQueue.main.async {
            self._viewController.statusUpdate(status);

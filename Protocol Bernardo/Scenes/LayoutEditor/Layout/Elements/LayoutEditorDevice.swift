@@ -9,29 +9,36 @@
 import SpriteKit
 
 /// A Layout device represent a real-world acquisition device
-class LayoutElementDevice: SKNode {
+class LayoutEditorDevice: SKNode {
     
-    // /////////////////////////
-    // MARK: - Device properties
+    /// The device this node is representing
+    var device: Device!
+    
+    // ////////////////////////////////
+    // MARK: - Device properties remap
     
     override var name: String? {
         didSet {
+            device.name = name
             _deviceLabel?.text = name
         }
     }
     
-    var type: LayoutElementType = .device
-    
     /// Position of the device in the layout. This position represent the device
     /// coordinates origin when it generate users positions
-//    var position: CGPoint
+    //  var position: CGPoint
     
     /// The device position height.
-    var height: CGFloat = 60.0
+    var height: CGFloat = 60.0 {
+        didSet {
+            device.height = height
+        }
+    }
     
     /// Orientation of the device along the Z (Vertical) Axis, in degrees
     var orientation: CGFloat = 0 {
         didSet {
+            device.orientation = orientation
             _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
         }
     }
@@ -39,6 +46,7 @@ class LayoutElementDevice: SKNode {
     /// The horizontal field of view of the device, in degrees
     var horizontalFOV: CGFloat = 70 {
         didSet {
+            device.horizontalFOV = horizontalFOV
             _captationArea.path = captationArea()
             _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
         }
@@ -47,6 +55,7 @@ class LayoutElementDevice: SKNode {
     /// The minimum distance to be from the device to be``` able to be detected (in cm)
     var minimumCaptationDistance: CGFloat = 50 {
         didSet {
+            device.minimumCaptationDistance = minimumCaptationDistance
             _captationArea.path = captationArea()
         }
     }
@@ -54,6 +63,7 @@ class LayoutElementDevice: SKNode {
     /// The maximum distance to be from the device to be able to be detected (in cm)
     var maximumCaptationDistance: CGFloat = 450{
         didSet {
+            device.maximumCaptationDistance = maximumCaptationDistance
             _captationArea.path = captationArea()
         }
     }
@@ -87,9 +97,9 @@ class LayoutElementDevice: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    internal lazy var _parametersController: PBDevicePropertiesController = {
+    internal lazy var _parametersController: PBLayoutDevicePropertiesController = {
         let storyboard = NSStoryboard(name: "LayoutEditor", bundle: nil)
-        var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBDevicePropertiesController
+        var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBLayoutDevicePropertiesController
         controller.device = self
         
         return controller
@@ -99,7 +109,7 @@ class LayoutElementDevice: SKNode {
 
 // /////////////////////
 // MARK: - LayoutElement
-extension LayoutElementDevice: LayoutElement {
+extension LayoutEditorDevice: LayoutEditorElement {
     /// Returns the controller allowing for fine tuning of the
     /// device parameter
     ///
@@ -117,9 +127,11 @@ extension LayoutElementDevice: LayoutElement {
 
 // ///////////////////
 // MARK: - Initializer
-extension LayoutElementDevice {
-    convenience init(withEditor editor: LayoutEditor, withExistingDevice device: Any?) {
+extension LayoutEditorDevice {
+    convenience init(withEditor editor: LayoutEditor, forDevice device: Device) {
         self.init()
+        
+        self.device = device
         
         self.name = "Device"
         isUserInteractionEnabled = false
@@ -166,7 +178,7 @@ extension LayoutElementDevice {
 
 // ///////////////////
 // MARK: - User events
-extension LayoutElementDevice {
+extension LayoutEditorDevice {
     override func mouseDragged(with event: NSEvent) {
         guard locationInTriggerArea(forEvent: event) else {
             markAsIdle()
@@ -178,6 +190,7 @@ extension LayoutElementDevice {
         self.position.y -= (event.deltaY / _editor.root.yScale)
         
         updatePositionOnParameters()
+        device.position = position
     }
     
     override func keyDown(with event: NSEvent) {
@@ -198,13 +211,14 @@ extension LayoutElementDevice {
         }
         
         updatePositionOnParameters()
+        device.position = position
     }
 }
 
     
 // ////////////////////
 // MARK: - Device state
-extension LayoutElementDevice {
+extension LayoutEditorDevice {
     /// Change the device state to selected
     internal func markAsSelected() {
         _editor.selectedNode = self
@@ -240,7 +254,7 @@ extension LayoutElementDevice {
         // ...
         
         markAsIdle()
-        _editor.remove(element: self)
+        _editor.removeDevice(element: self)
         
         self.removeAllChildren()
         self.removeFromParent()
@@ -250,7 +264,7 @@ extension LayoutElementDevice {
 
 // /////////////////////
 // MARK: - SKNode utils
-extension LayoutElementDevice {
+extension LayoutEditorDevice {
     /// Update the device appearance to reflect its idle state
     ///
     /// This also reflects the default state of the device on the scene

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DevicesLayout {
+class Layout: Codable {
     /// Name of the layout
     var layoutName: String = "Layout" {
         didSet { modified = true }
@@ -25,5 +25,23 @@ class DevicesLayout {
     /// All the elements composing the layout
     var elements = [LayoutElement]() {
         didSet { modified = true }
+    }
+}
+
+
+// /////////////////////////////
+// MARK: - Actions on the layout
+extension Layout {
+    func createDevice() -> Device {
+        let device = Device()
+        elements.append(device)
+        
+        return device
+    }
+    
+    func removeElement(_ element: LayoutElement) {
+        elements.removeAll {
+            $0 === element
+        }
     }
 }

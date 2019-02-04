@@ -31,7 +31,28 @@ class WelcomeViewController: NSViewController {
     ///
     /// - Parameter sender: The button
     @IBAction func openLayoutAction(_ sender: Any) {
-        // Open file
+        // Asks the user for an existing layout
+        let dialog = NSOpenPanel()
+        dialog.title                   = "Select a Layout to open";
+        dialog.showsResizeIndicator    = true;
+        dialog.showsHiddenFiles        = false;
+        dialog.canChooseDirectories    = true;
+        dialog.canCreateDirectories    = false;
+        dialog.allowsMultipleSelection = false;
+        dialog.allowedFileTypes        = ["pblayout"];
+        
+        guard dialog.runModal() == .OK else {
+            return
+        }
+        
+        guard let layoutURL = dialog.url else {
+            return
+        }
+        
+        App.layoutEngine.openLayout(at: layoutURL)
+        
+        
+        
         // Pass it to the editor
         dismiss(nil)
     }

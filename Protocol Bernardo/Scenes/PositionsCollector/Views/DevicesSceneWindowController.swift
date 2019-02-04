@@ -9,9 +9,9 @@
 import Foundation
 import AppKit
 
-class PositionsCollectorWindowController: NSWindowController {
+class DevicesSceneWindowController: NSWindowController {
     
-    weak var movementsCollector: PositionsCollector!
+    weak var movementsCollector: DevicesScene!
     
     override func windowDidLoad() {
         window!.delegate = self
@@ -20,7 +20,7 @@ class PositionsCollectorWindowController: NSWindowController {
 }
 
 // MARK: - NSWindowDelegate
-extension PositionsCollectorWindowController: NSWindowDelegate {
+extension DevicesSceneWindowController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         movementsCollector.endScene()
     }

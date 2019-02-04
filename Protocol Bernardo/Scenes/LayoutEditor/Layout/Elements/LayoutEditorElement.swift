@@ -9,12 +9,9 @@
 import SpriteKit
 import AppKit
 
-protocol LayoutElement: AnyObject {
+protocol LayoutEditorElement: AnyObject {
     /// Name of the element
     var name: String? { get set }
-    
-    /// Type of the element
-    var type: LayoutElementType { get }
     
     /// Called by a user event to mark the element as selected
     func select()
@@ -27,14 +24,24 @@ protocol LayoutElement: AnyObject {
     /// - Parameter event: a KeyDown event
     func keyDown(with event: NSEvent)
     
+    /// Allos the user to drag the element around
+    ///
+    /// - Parameter event:
     func mouseDragged(with event: NSEvent)
     
+    /// Gives the viewController holding the parameters view for the element
+    ///
+    /// - Returns:
     func getParametersController() -> NSViewController
     
+    /// Tell if the location of the given event hit the element
+    ///
+    /// - Parameter event:
+    /// - Returns: true if hit, false otherwise
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool
 }
 
-extension LayoutElement {
+extension LayoutEditorElement {
     internal var _highlightColor: NSColor {
         return NSColor.selectedMenuItemColor
     }

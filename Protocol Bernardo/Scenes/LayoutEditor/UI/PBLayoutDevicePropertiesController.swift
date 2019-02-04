@@ -8,9 +8,9 @@
 
 import AppKit
 
-class PBDevicePropertiesController: NSViewController {
+class PBLayoutDevicePropertiesController: NSViewController {
     
-    var device: LayoutElementDevice?
+    var device: LayoutEditorDevice?
     
     @IBOutlet weak var nameField: NSTextField!
     

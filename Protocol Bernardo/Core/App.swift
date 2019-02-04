@@ -14,4 +14,6 @@ struct App {
     
     /// The Data Acquisition Engine
     static let dae = DataAcquisitionEngine()
+    
+    static let layoutEngine = LayoutEngine()
 }

@@ -11,12 +11,12 @@ import Foundation
 /// The application structure Core
 class Core {
     /// Reference to the SceneSelectorController
-    internal var _sceneSelectorController: SceneSelectorController!
+    internal var _sceneSelectorController: WelcomeSceneViewController!
     
     /// Used by the SceneSelectorController to register itself
     ///
     /// - Parameter controller: The SceneSelectorController
-    func registerSceneSelectorController(_ controller: SceneSelectorController) {
+    func registerSceneSelectorController(_ controller: WelcomeSceneViewController) {
         _sceneSelectorController = controller
     }
     

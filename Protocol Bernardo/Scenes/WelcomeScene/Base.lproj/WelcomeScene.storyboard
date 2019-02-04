@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Protocol_Bernardo" customModuleProvider="target"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6"/>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+            </objects>
+            <point key="canvasLocation" x="76" y="-104"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="R2V-B0-nI4">
+            <objects>
+                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Welcome to Protocol Bernardo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA" userLabel="Protocol Bernardo">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <rect key="contentRect" x="727" y="511" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="BtT-hE-XfD" kind="relationship" relationship="window.shadowedContentViewController" id="rMv-Ks-QCC"/>
+                    </connections>
+                </windowController>
+                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="250"/>
+        </scene>
+        <!--Welcome Scene View Controller-->
+        <scene sceneID="zGY-ke-JGS">
+            <objects>
+                <viewController id="BtT-hE-XfD" customClass="WelcomeSceneViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="k2x-72-vnn">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KeB-VM-gBQ">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RjY-Jt-6Yv">
+                                <rect key="frame" x="75" y="22" width="330" height="54"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Protocol Bernardo" id="CGz-GK-nw5">
+                                    <font key="font" metaFont="systemThin" size="45"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="RjY-Jt-6Yv" firstAttribute="centerX" secondItem="k2x-72-vnn" secondAttribute="centerX" id="0AB-Tn-EEY"/>
+                            <constraint firstItem="KeB-VM-gBQ" firstAttribute="width" secondItem="k2x-72-vnn" secondAttribute="width" id="6y4-eF-yQI"/>
+                            <constraint firstAttribute="bottom" secondItem="KeB-VM-gBQ" secondAttribute="bottom" id="J8r-qx-DKe"/>
+                            <constraint firstItem="RjY-Jt-6Yv" firstAttribute="top" secondItem="k2x-72-vnn" secondAttribute="top" constant="20" id="N9u-YZ-B3n"/>
+                            <constraint firstItem="KeB-VM-gBQ" firstAttribute="centerX" secondItem="k2x-72-vnn" secondAttribute="centerX" id="RLZ-rJ-Rgv"/>
+                            <constraint firstItem="KeB-VM-gBQ" firstAttribute="top" secondItem="RjY-Jt-6Yv" secondAttribute="bottom" constant="22" id="gKI-1p-38t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scenesList" destination="KeB-VM-gBQ" id="w2X-7b-owr"/>
+                    </connections>
+                </viewController>
+                <customObject id="B4X-RT-bxu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="567"/>
+        </scene>
+    </scenes>
+</document>

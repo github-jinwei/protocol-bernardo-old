@@ -8,7 +8,7 @@
         <!--Devices Layout Window-->
         <scene sceneID="LCH-Av-DmZ">
             <objects>
-                <windowController id="z0f-Va-BWi" userLabel="Devices Layout Window" customClass="DevicesLayoutEditorScene" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="z0f-Va-BWi" userLabel="Devices Layout Window" customClass="LayoutEditorScene" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IfL-Pf-Uly">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -92,12 +92,12 @@
             </objects>
             <point key="canvasLocation" x="438" y="1141"/>
         </scene>
-        <!--Device Properties Controller-->
+        <!--Layout Device Properties Controller-->
         <scene sceneID="Wbb-G4-onv">
             <objects>
                 <customObject id="ijs-Qb-doU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="K04-Kh-qyY"/>
-                <viewController storyboardIdentifier="deviceParametersController" id="6rc-uw-BXq" customClass="PBDevicePropertiesController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="deviceParametersController" id="6rc-uw-BXq" customClass="PBLayoutDevicePropertiesController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Cpe-qb-sDg">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="258"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -700,22 +700,22 @@
             <objects>
                 <viewController id="hue-Tr-Rz0" userLabel="Welcome View" customClass="WelcomeViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="gdv-rE-5fB">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="184"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="167"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hkf-2R-zJt">
-                                <rect key="frame" x="18" y="137" width="168" height="27"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Devices Layout" id="wF3-gR-wj8">
+                                <rect key="frame" x="18" y="120" width="147" height="27"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Layout Editor" id="wF3-gR-wj8">
                                     <font key="font" metaFont="systemHeavy" size="22"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eWl-LU-6ac">
-                                <rect key="frame" x="18" y="61" width="444" height="68"/>
+                                <rect key="frame" x="18" y="61" width="444" height="51"/>
                                 <textFieldCell key="cell" selectable="YES" id="a9O-n4-s7U">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">When specifying the layout in which the devices are placed, the application is able to follow a user accross multiple camera. The more precise a layout is, the more efficient user tracking accross multiple devices will be.</string>
+                                    <string key="title">By specifying the layout in which the devices are placed, the application is able to follow a user accross multiple camera. The more precise a layout is, the more efficient user tracking will be.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>

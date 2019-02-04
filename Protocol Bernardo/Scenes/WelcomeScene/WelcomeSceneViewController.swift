@@ -12,7 +12,7 @@ import Cocoa
 ///
 /// It displays a list of the scene the user can start. These scenes are defined
 /// in the `availableScenes` array, and must conform the `Scene` protocol.
-class SceneSelectorController: NSViewController {
+class WelcomeSceneViewController: NSViewController {
     @IBOutlet weak var scenesList: NSStackView!
     
     override func viewDidLoad() {
@@ -34,15 +34,10 @@ class SceneSelectorController: NSViewController {
             scenesList.addView(sceneView, in: .top)
         }
         
-        (scenesList.views.first as! PBSceneButton).separatorLine.removeFromSuperview()
+//        (scenesList.views.first as! PBSceneButton).separatorLine.removeFromSuperview()
     }
     
     override func viewDidAppear() {
-        // Set the window title
-        self.view.window?.title = "Protocol Bernardo"
-        
-        // And the window size
-        view.window!.setContentSize(scenesList.fittingSize)
     }
 }
 

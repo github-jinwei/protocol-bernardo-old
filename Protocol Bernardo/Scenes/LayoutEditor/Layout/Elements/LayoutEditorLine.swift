@@ -9,7 +9,7 @@
 import SpriteKit
 
 /// A Layout Line is used to adds marks on the layout and ease its comprehension.
-class LayoutElementLine: LayoutElement {
+class LayoutEditorLine: LayoutEditorElement {
     func mouseDragged(with event: NSEvent) {
         
     }
@@ -31,9 +31,6 @@ class LayoutElementLine: LayoutElement {
     func deselect() {
         
     }
-    
-    
-    var type: LayoutElementType = .line
     
     /// The line weight
     var weight: Int = 1

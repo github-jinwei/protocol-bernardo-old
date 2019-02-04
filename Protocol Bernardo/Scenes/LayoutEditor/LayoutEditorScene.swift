@@ -8,11 +8,11 @@
 
 import AppKit
 
-class DevicesLayoutEditorScene: NSWindowController {
+class LayoutEditorScene: NSWindowController {
     // ////////////////////////////////////
     // MARK: Inherited elements from Scene
     var sceneIndex: Int!
-    static var sceneName = "Devices Layout Editor"
+    static var sceneName = "Layout Editor"
     static var sceneDescription = "Create and edit devices layout to map real-world installations."
     
     // /////////////////
@@ -34,21 +34,21 @@ class DevicesLayoutEditorScene: NSWindowController {
     // MARK: - Toolbar Actions
     
     @IBAction func addDevice(_ sender: NSToolbarItem) {
-        _editor.addDevice()
+        _editor.createDevice()
     }
 }
 
 // MARK: - NSWindowDelegate
-extension DevicesLayoutEditorScene: NSWindowDelegate {
+extension LayoutEditorScene: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         endScene()
     }
 }
 
-extension DevicesLayoutEditorScene: Scene {
+extension LayoutEditorScene: Scene {
     static func make() -> Scene {
         let storyboard = NSStoryboard(name: "LayoutEditor", bundle: nil)
-        let window = storyboard.instantiateInitialController() as! DevicesLayoutEditorScene
+        let window = storyboard.instantiateInitialController() as! LayoutEditorScene
         window.showWindow(nil)
         
         return window
