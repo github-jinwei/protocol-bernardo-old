@@ -12,7 +12,7 @@ class LayoutEditorSplitViewController: NSSplitViewController {
     // ///////////
     // Properties
     
-    var window: LayoutEditorScene!
+    var window: LayoutWindowController!
     
     @IBOutlet weak var editorSplitViewItem: NSSplitViewItem!
     @IBOutlet weak var sidebarSplitViewItem: NSSplitViewItem!
@@ -29,7 +29,12 @@ class LayoutEditorSplitViewController: NSSplitViewController {
     // View Lifecycle
     
     override func viewDidAppear() {
-        editor.window = window
         editor.sidebar = sidebar
+        
+        sidebar.editor = editor
+    }
+    
+    func setLayout(_ layout: Layout) {
+        editor.setLayout(layout)
     }
 }

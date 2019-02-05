@@ -604,6 +604,12 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="D7S-qD-R6w"/>
+                            <menuItem title="Welcome to Protocol Bernardo" keyEquivalent="0" id="CMa-wO-lcn">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="openDevicesScene:" target="0Wy-jj-9dO" id="DUJ-sS-I4r"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Devices" keyEquivalent="1" id="d32-i8-ewE">
                                 <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                 <connections>

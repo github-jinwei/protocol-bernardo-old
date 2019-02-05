@@ -12,8 +12,6 @@ import SpriteKit
 class LayoutEditor: NSViewController {
     // ////////////////////////
     // MARK: - Base properties
-    /// Reference to the scene window
-    weak var window: LayoutEditorScene!
     
     /// Reference to the sidebar
     weak var sidebar: LayoutEditorSidebar!
@@ -28,7 +26,7 @@ class LayoutEditor: NSViewController {
     // MARK: - Layout properties
     
     /// The layout, initialized as empty
-    internal var _layout: Layout = App.layoutEngine.newLayout()
+    internal var _layout: Layout!
     
     /// The SKScene used by the editor
     internal var _scene: SKScene!
@@ -72,9 +70,6 @@ extension LayoutEditor {
     override func viewDidAppear() {
         // Start with a blank layout
         
-        // Open welcome screen on editor open
-        performSegue(withIdentifier: "openWelcomeModal", sender: self)
-        
         // Set up the scene view
         _sceneView.editor = self
         _sceneView.allowsTransparency = true
@@ -82,21 +77,17 @@ extension LayoutEditor {
         // Create the scene
         _scene = SKScene(fileNamed: "LayoutEditor")
         
-        // And display it
+        // Display it
         _sceneView.presentScene(_scene)
-    }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if(segue.destinationController is WelcomeViewController) {
-            let welcomeView = segue.destinationController as! WelcomeViewController
-            
-            welcomeView.editor = self
+        
+        // Parse layout to create nodes for existing elements
+        _layout.devices.forEach {
+            createNodeForExistingDevice($0)
         }
     }
     
-    /// Tell the window to end the scene
-    func close() {
-        window.endScene()
+    func setLayout(_ layout: Layout) {
+        _layout = layout
     }
 }
 
@@ -113,16 +104,25 @@ extension LayoutEditor {
         selectedNode = deviceNode
     }
     
+    /// Create the node for an existing device
+    ///
+    /// - Parameter device: The device to create a node for
+    func createNodeForExistingDevice(_ device: Device) {
+        let deviceNode = LayoutEditorDevice(withEditor: self,
+                                            forDevice: device)
+        elements.append(deviceNode)
+    }
+    
     /// Removes the given node fromn the layout and the SKScene
     ///
     /// - Parameter element: The device node holding the node to remove
-    func removeDevice(element: LayoutEditorDevice) {
+    func remove(device: LayoutEditorDevice) {
         // Remove from the layout
-        _layout.removeElement(element.device)
+        _layout.remove(device: device.device)
         
         // Remove from our internal list
         elements.removeAll {
-            $0 === element
+            $0 === device
         }
         
         // The node removes itself from the scene

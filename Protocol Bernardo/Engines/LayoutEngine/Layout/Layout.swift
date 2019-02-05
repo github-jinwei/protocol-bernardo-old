@@ -8,24 +8,9 @@
 
 import Foundation
 
-class Layout: Codable {
-    /// Name of the layout
-    var layoutName: String = "Layout" {
-        didSet { modified = true }
-    }
-    
-    /// Where the layout is saved on the user file system
-    ///
-    /// A nil value means the layout is new and has never been saved
-    var layoutSavePath: String? = nil
-    
-    /// Tell if the layout has beem modified since its last save or creation
-    var modified: Bool = false
-    
+class Layout: Codable {    
     /// All the elements composing the layout
-    var elements = [LayoutElement]() {
-        didSet { modified = true }
-    }
+    var devices = [Device]()
 }
 
 
@@ -34,14 +19,14 @@ class Layout: Codable {
 extension Layout {
     func createDevice() -> Device {
         let device = Device()
-        elements.append(device)
+        devices.append(device)
         
         return device
     }
     
-    func removeElement(_ element: LayoutElement) {
-        elements.removeAll {
-            $0 === element
+    func remove(device: Device) {
+        devices.removeAll {
+            $0 === device
         }
     }
 }

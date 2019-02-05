@@ -8,7 +8,7 @@
 
 import AppKit
 
-class LayoutEditorScene: NSWindowController {
+class LayoutEditorScene {
     // ////////////////////////////////////
     // MARK: Inherited elements from Scene
     var sceneIndex: Int!
@@ -18,39 +18,23 @@ class LayoutEditorScene: NSWindowController {
     // /////////////////
     // MARK: - Properties
     
-    internal var _editor: LayoutEditor {
-        return (contentViewController as! LayoutEditorSplitViewController).editor
-    }
-    
+    var _document: LayoutDocument!
     
     // ////////////////
     // Scene Lifecycle
     
-    override func windowDidLoad() {
-        (contentViewController as! LayoutEditorSplitViewController).window = self
-    }
-    
-    // ///////////////////////
-    // MARK: - Toolbar Actions
-    
-    @IBAction func addDevice(_ sender: NSToolbarItem) {
-        _editor.createDevice()
-    }
-}
-
-// MARK: - NSWindowDelegate
-extension LayoutEditorScene: NSWindowDelegate {
-    func windowWillClose(_ notification: Notification) {
-        endScene()
-    }
 }
 
 extension LayoutEditorScene: Scene {
     static func make() -> Scene {
-        let storyboard = NSStoryboard(name: "LayoutEditor", bundle: nil)
-        let window = storyboard.instantiateInitialController() as! LayoutEditorScene
-        window.showWindow(nil)
-        
-        return window
+        return LayoutEditorScene()
+    }
+    
+    /// Sets the layout document to work with
+    ///
+    /// - Parameter document:
+    func setLayoutDocument(_ document: LayoutDocument) {
+        _document = document
+//        LayoutDocument.opentin
     }
 }

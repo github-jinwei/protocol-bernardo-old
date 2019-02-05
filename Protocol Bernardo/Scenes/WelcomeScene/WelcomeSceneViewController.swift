@@ -13,31 +13,30 @@ import Cocoa
 /// It displays a list of the scene the user can start. These scenes are defined
 /// in the `availableScenes` array, and must conform the `Scene` protocol.
 class WelcomeSceneViewController: NSViewController {
-    @IBOutlet weak var scenesList: NSStackView!
+    
+    @IBOutlet var visualEffectView: NSVisualEffectView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        UserDefaults.standard.set(true, forKey: "NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints")
-        
-        // Register ourselves in the Core to allow for future reopening
-        App.core.registerSceneSelectorController(self)
-
-        // View is loaded, lets load the scenes list and display it
-        availableScenes.forEach {
-            let sceneView: PBSceneButton = NSNib.make(fromNib: "PBSceneButton", owner: nil)
-            
-            sceneView.sceneNameField.stringValue = $0.sceneName
-            sceneView.sceneDescriptionField.stringValue = $0.sceneDescription
-            sceneView.sceneType = $0
-            
-            scenesList.addView(sceneView, in: .top)
-        }
-        
-//        (scenesList.views.first as! PBSceneButton).separatorLine.removeFromSuperview()
     }
     
     override func viewDidAppear() {
+    }
+    
+    @IBAction func newLayout(_ sender: Any) {
+        App.layoutEngine.newLayout()
+    }
+    
+    @IBAction func openLayout(_ sender: Any) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseDirectories = false
+        openPanel.allowedFileTypes = ["pblayout"]
+        openPanel.runModal()
+        
+        guard let fileURL = openPanel.url else { return }
+        
+        App.layoutEngine.openLayout(at: fileURL)
     }
 }
 

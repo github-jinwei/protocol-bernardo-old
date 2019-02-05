@@ -8,7 +8,9 @@
 
 import Foundation
 
-class Device: LayoutElement {
+class Device: Codable {
+    var name: String = "Device"
+    
     var horizontalFOV: CGFloat = 70.0
     
     var minimumCaptationDistance: CGFloat = 50.0

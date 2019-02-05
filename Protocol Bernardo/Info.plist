@@ -26,7 +26,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>1</integer>
 			<key>NSDocumentClass</key>
-			<string>LayoutDocument</string>
+			<string>$(PRODUCT_MODULE_NAME).LayoutDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

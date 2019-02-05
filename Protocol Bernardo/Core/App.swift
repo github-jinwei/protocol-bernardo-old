@@ -6,7 +6,7 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 struct App {
     /// The application core, handling the scenes
@@ -16,4 +16,6 @@ struct App {
     static let dae = DataAcquisitionEngine()
     
     static let layoutEngine = LayoutEngine()
+    
+    static let documentsController = NSDocumentController()
 }

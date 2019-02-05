@@ -24,9 +24,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Welcome to Protocol Bernardo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA" userLabel="Protocol Bernardo">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                    <window key="window" title="Welcome to Protocol Bernardo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="IQv-IB-iLA" userLabel="Protocol Bernardo">
+                        <windowStyleMask key="styleMask" closable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="727" y="511" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <connections>
@@ -45,38 +46,233 @@
         <scene sceneID="zGY-ke-JGS">
             <objects>
                 <viewController id="BtT-hE-XfD" customClass="WelcomeSceneViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="k2x-72-vnn">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="96"/>
+                    <visualEffectView key="view" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="uxX-Mb-mzu">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="580"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KeB-VM-gBQ">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="0.0"/>
-                            </stackView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RjY-Jt-6Yv">
-                                <rect key="frame" x="75" y="22" width="330" height="54"/>
+                                <rect key="frame" x="60" y="506" width="330" height="54"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Protocol Bernardo" id="CGz-GK-nw5">
                                     <font key="font" metaFont="systemThin" size="45"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPL-3A-no9">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="484"/>
+                                <subviews>
+                                    <customView horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="UE0-cB-HZ7">
+                                        <rect key="frame" x="0.0" y="317" width="450" height="167"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gWb-rV-US3">
+                                                <rect key="frame" x="18" y="120" width="375" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="371" id="IDk-W3-KF3"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Layout" id="0FR-zZ-8tq">
+                                                    <font key="font" metaFont="systemHeavy" size="22"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-x4-jGJ">
+                                                <rect key="frame" x="256" y="13" width="180" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Open Existing Layout..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6nr-Dh-ex7">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openLayout:" target="BtT-hE-XfD" id="OuJ-bM-wEK"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YlS-uL-y7U">
+                                                <rect key="frame" x="148" y="13" width="108" height="32"/>
+                                                <buttonCell key="cell" type="push" title="New layout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L9e-VB-AFg">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="newLayout:" target="BtT-hE-XfD" id="SjZ-R7-wne"/>
+                                                </connections>
+                                            </button>
+                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="AC3-NH-lEE">
+                                                <rect key="frame" x="0.0" y="164" width="450" height="5"/>
+                                            </box>
+                                            <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="eZS-cb-lie">
+                                                <rect key="frame" x="18" y="61" width="414" height="51"/>
+                                                <textFieldCell key="cell" selectable="YES" id="m2E-h7-lit">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">A layout is a representation of a real-world installation using mulitple tracking devices. They allow for user tracking accross multiple devices.</string>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ecN-x4-jGJ" firstAttribute="top" secondItem="eZS-cb-lie" secondAttribute="bottom" constant="20" id="0i2-KZ-uLW"/>
+                                            <constraint firstItem="eZS-cb-lie" firstAttribute="top" secondItem="gWb-rV-US3" secondAttribute="bottom" constant="8" id="2aZ-li-GmV"/>
+                                            <constraint firstItem="gWb-rV-US3" firstAttribute="leading" secondItem="UE0-cB-HZ7" secondAttribute="leading" constant="20" id="2cW-14-3gi"/>
+                                            <constraint firstItem="gWb-rV-US3" firstAttribute="top" secondItem="UE0-cB-HZ7" secondAttribute="top" constant="20" id="7zt-6E-sjx"/>
+                                            <constraint firstAttribute="bottom" secondItem="ecN-x4-jGJ" secondAttribute="bottom" constant="20" symbolic="YES" id="FnH-6S-JDh"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gWb-rV-US3" secondAttribute="trailing" constant="20" symbolic="YES" id="Le7-fK-UfJ"/>
+                                            <constraint firstItem="eZS-cb-lie" firstAttribute="leading" secondItem="UE0-cB-HZ7" secondAttribute="leading" constant="20" id="M7O-m8-3Q2"/>
+                                            <constraint firstAttribute="trailing" secondItem="ecN-x4-jGJ" secondAttribute="trailing" constant="20" id="V1v-eG-V7V"/>
+                                            <constraint firstItem="ecN-x4-jGJ" firstAttribute="centerY" secondItem="YlS-uL-y7U" secondAttribute="centerY" id="Xsg-LC-4PK"/>
+                                            <constraint firstItem="AC3-NH-lEE" firstAttribute="leading" secondItem="UE0-cB-HZ7" secondAttribute="leading" id="clp-gx-oc4"/>
+                                            <constraint firstAttribute="trailing" secondItem="AC3-NH-lEE" secondAttribute="trailing" id="ha8-Zg-lCQ"/>
+                                            <constraint firstItem="YlS-uL-y7U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UE0-cB-HZ7" secondAttribute="leading" constant="20" symbolic="YES" id="iiR-oX-Eeo"/>
+                                            <constraint firstItem="AC3-NH-lEE" firstAttribute="top" secondItem="UE0-cB-HZ7" secondAttribute="top" id="npc-x7-xLt"/>
+                                            <constraint firstAttribute="trailing" secondItem="eZS-cb-lie" secondAttribute="trailing" constant="20" id="pBV-q6-8FY"/>
+                                            <constraint firstItem="ecN-x4-jGJ" firstAttribute="leading" secondItem="YlS-uL-y7U" secondAttribute="trailing" constant="12" symbolic="YES" id="uqd-Nw-nyU"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="p1m-fp-nxn">
+                                        <rect key="frame" x="0.0" y="150" width="450" height="167"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HYO-Uh-KRD">
+                                                <rect key="frame" x="18" y="120" width="85" height="27"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Display" id="7Jj-Yg-60k">
+                                                    <font key="font" metaFont="systemHeavy" size="22"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1L8-30-8e0">
+                                                <rect key="frame" x="218" y="13" width="218" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Open Display Configuration..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qUg-LL-ola">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openLayout:" target="BtT-hE-XfD" id="xpZ-hE-QJQ"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ucw-dz-yUZ">
+                                                <rect key="frame" x="17" y="13" width="201" height="32"/>
+                                                <buttonCell key="cell" type="push" title="New Display Configuration" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sCH-g6-T75">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="newLayout:" target="BtT-hE-XfD" id="pY5-rz-9sM"/>
+                                                </connections>
+                                            </button>
+                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="5gd-pp-6IW">
+                                                <rect key="frame" x="0.0" y="164" width="450" height="5"/>
+                                            </box>
+                                            <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8L7-ap-eEE">
+                                                <rect key="frame" x="18" y="61" width="414" height="51"/>
+                                                <textFieldCell key="cell" selectable="YES" id="MfM-p0-kp4">
+                                                    <font key="font" metaFont="system"/>
+                                                    <string key="title">A display is used to display a rendered scene. A display can be configured to display only a portion of the scene, allowing for display chaining.</string>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5gd-pp-6IW" firstAttribute="top" secondItem="p1m-fp-nxn" secondAttribute="top" id="39g-7Y-OuK"/>
+                                            <constraint firstItem="HYO-Uh-KRD" firstAttribute="top" secondItem="p1m-fp-nxn" secondAttribute="top" constant="20" id="8qR-UZ-irT"/>
+                                            <constraint firstAttribute="trailing" secondItem="8L7-ap-eEE" secondAttribute="trailing" constant="20" id="Dq8-sV-B5E"/>
+                                            <constraint firstAttribute="trailing" secondItem="5gd-pp-6IW" secondAttribute="trailing" id="FV7-cS-hLw"/>
+                                            <constraint firstItem="8L7-ap-eEE" firstAttribute="leading" secondItem="p1m-fp-nxn" secondAttribute="leading" constant="20" id="JpG-nT-bD3"/>
+                                            <constraint firstItem="1L8-30-8e0" firstAttribute="centerY" secondItem="ucw-dz-yUZ" secondAttribute="centerY" id="KnM-Xr-xib"/>
+                                            <constraint firstItem="1L8-30-8e0" firstAttribute="top" secondItem="8L7-ap-eEE" secondAttribute="bottom" constant="20" id="MvJ-44-bJI"/>
+                                            <constraint firstAttribute="trailing" secondItem="1L8-30-8e0" secondAttribute="trailing" constant="20" id="PKL-Lg-U0a"/>
+                                            <constraint firstItem="5gd-pp-6IW" firstAttribute="leading" secondItem="p1m-fp-nxn" secondAttribute="leading" id="Vqh-Yg-GXQ"/>
+                                            <constraint firstItem="8L7-ap-eEE" firstAttribute="top" secondItem="HYO-Uh-KRD" secondAttribute="bottom" constant="8" id="XGR-RR-FB5"/>
+                                            <constraint firstAttribute="bottom" secondItem="1L8-30-8e0" secondAttribute="bottom" constant="20" symbolic="YES" id="YkC-Gz-uTq"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HYO-Uh-KRD" secondAttribute="trailing" constant="20" symbolic="YES" id="am0-wt-uTq"/>
+                                            <constraint firstItem="ucw-dz-yUZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="p1m-fp-nxn" secondAttribute="leading" constant="20" symbolic="YES" id="gpC-C3-eF9"/>
+                                            <constraint firstItem="HYO-Uh-KRD" firstAttribute="leading" secondItem="p1m-fp-nxn" secondAttribute="leading" constant="20" id="hh4-Ol-FJG"/>
+                                            <constraint firstItem="1L8-30-8e0" firstAttribute="leading" secondItem="ucw-dz-yUZ" secondAttribute="trailing" constant="12" symbolic="YES" id="uzZ-ls-Ezv"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="NP1-sL-fe4">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="150"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="v1W-uh-5BT">
+                                                <rect key="frame" x="18" y="103" width="375" height="27"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="371" id="bwh-HW-mte"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Syncing" id="iy4-1E-vlf">
+                                                    <font key="font" metaFont="systemHeavy" size="22"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tpm-fR-11i">
+                                                <rect key="frame" x="314" y="13" width="122" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start Syncing" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m9u-0B-5Ru">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openLayout:" target="BtT-hE-XfD" id="6my-Bv-MDl"/>
+                                                </connections>
+                                            </button>
+                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2Mb-Y0-HIT">
+                                                <rect key="frame" x="0.0" y="147" width="450" height="5"/>
+                                            </box>
+                                            <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="O1B-9c-dnH">
+                                                <rect key="frame" x="18" y="61" width="414" height="34"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Configure and enable data exchange between other instances of Protocol Bernardo on other machines on the same network." id="wN6-Xm-Coa">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="tpm-fR-11i" firstAttribute="top" secondItem="O1B-9c-dnH" secondAttribute="bottom" constant="20" id="4Qx-Xk-fhz"/>
+                                            <constraint firstItem="O1B-9c-dnH" firstAttribute="top" secondItem="v1W-uh-5BT" secondAttribute="bottom" constant="8" id="5cd-Ee-ULn"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Mb-Y0-HIT" secondAttribute="trailing" id="A6c-qq-eRk"/>
+                                            <constraint firstItem="2Mb-Y0-HIT" firstAttribute="leading" secondItem="NP1-sL-fe4" secondAttribute="leading" id="AKI-Ze-FI7"/>
+                                            <constraint firstItem="O1B-9c-dnH" firstAttribute="leading" secondItem="NP1-sL-fe4" secondAttribute="leading" constant="20" id="LZk-Lk-N3u"/>
+                                            <constraint firstItem="2Mb-Y0-HIT" firstAttribute="top" secondItem="NP1-sL-fe4" secondAttribute="top" id="Rz5-32-x9y"/>
+                                            <constraint firstAttribute="trailing" secondItem="O1B-9c-dnH" secondAttribute="trailing" constant="20" id="YFP-A6-xPW"/>
+                                            <constraint firstAttribute="bottom" secondItem="tpm-fR-11i" secondAttribute="bottom" constant="20" symbolic="YES" id="bfy-9G-GYq"/>
+                                            <constraint firstItem="v1W-uh-5BT" firstAttribute="leading" secondItem="NP1-sL-fe4" secondAttribute="leading" constant="20" id="c7c-ZH-5g8"/>
+                                            <constraint firstItem="v1W-uh-5BT" firstAttribute="top" secondItem="NP1-sL-fe4" secondAttribute="top" constant="20" id="jvW-5l-V36"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v1W-uh-5BT" secondAttribute="trailing" constant="20" symbolic="YES" id="kmy-vh-w0V"/>
+                                            <constraint firstAttribute="trailing" secondItem="tpm-fR-11i" secondAttribute="trailing" constant="20" id="l3c-AM-77c"/>
+                                            <constraint firstItem="tpm-fR-11i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NP1-sL-fe4" secondAttribute="leading" constant="20" symbolic="YES" id="vFn-0X-ZZK"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="UE0-cB-HZ7" firstAttribute="leading" secondItem="TPL-3A-no9" secondAttribute="leading" id="2Ol-nr-PGi"/>
+                                    <constraint firstAttribute="trailing" secondItem="UE0-cB-HZ7" secondAttribute="trailing" id="ZuN-C0-Rzd"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="RjY-Jt-6Yv" firstAttribute="centerX" secondItem="k2x-72-vnn" secondAttribute="centerX" id="0AB-Tn-EEY"/>
-                            <constraint firstItem="KeB-VM-gBQ" firstAttribute="width" secondItem="k2x-72-vnn" secondAttribute="width" id="6y4-eF-yQI"/>
-                            <constraint firstAttribute="bottom" secondItem="KeB-VM-gBQ" secondAttribute="bottom" id="J8r-qx-DKe"/>
-                            <constraint firstItem="RjY-Jt-6Yv" firstAttribute="top" secondItem="k2x-72-vnn" secondAttribute="top" constant="20" id="N9u-YZ-B3n"/>
-                            <constraint firstItem="KeB-VM-gBQ" firstAttribute="centerX" secondItem="k2x-72-vnn" secondAttribute="centerX" id="RLZ-rJ-Rgv"/>
-                            <constraint firstItem="KeB-VM-gBQ" firstAttribute="top" secondItem="RjY-Jt-6Yv" secondAttribute="bottom" constant="22" id="gKI-1p-38t"/>
+                            <constraint firstItem="TPL-3A-no9" firstAttribute="top" secondItem="RjY-Jt-6Yv" secondAttribute="bottom" constant="22" id="08Z-OH-MBK"/>
+                            <constraint firstItem="TPL-3A-no9" firstAttribute="width" secondItem="uxX-Mb-mzu" secondAttribute="width" id="TBv-Bv-xYG"/>
+                            <constraint firstItem="RjY-Jt-6Yv" firstAttribute="top" secondItem="uxX-Mb-mzu" secondAttribute="top" constant="20" id="deg-86-5Km"/>
+                            <constraint firstItem="RjY-Jt-6Yv" firstAttribute="centerX" secondItem="uxX-Mb-mzu" secondAttribute="centerX" id="sOk-Iy-BZB"/>
+                            <constraint firstAttribute="bottom" secondItem="TPL-3A-no9" secondAttribute="bottom" id="sbh-r6-Oz0"/>
+                            <constraint firstItem="TPL-3A-no9" firstAttribute="centerX" secondItem="uxX-Mb-mzu" secondAttribute="centerX" id="slq-Bf-6m0"/>
                         </constraints>
-                    </view>
+                    </visualEffectView>
                     <connections>
-                        <outlet property="scenesList" destination="KeB-VM-gBQ" id="w2X-7b-owr"/>
+                        <outlet property="visualEffectView" destination="uxX-Mb-mzu" id="crK-DU-rev"/>
                     </connections>
                 </viewController>
                 <customObject id="B4X-RT-bxu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="567"/>
+            <point key="canvasLocation" x="75" y="917.5"/>
         </scene>
     </scenes>
 </document>

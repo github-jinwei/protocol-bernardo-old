@@ -19,7 +19,7 @@ class LayoutEditorDevice: SKNode {
     
     override var name: String? {
         didSet {
-            device.name = name
+            device.name = name!
             _deviceLabel?.text = name
         }
     }
@@ -131,12 +131,22 @@ extension LayoutEditorDevice {
     convenience init(withEditor editor: LayoutEditor, forDevice device: Device) {
         self.init()
         
+        _editor = editor
+        
+        // Set the represented device
         self.device = device
         
-        self.name = "Device"
+        // copy the values from the device to ourselves
+        self.name = device.name
+        self.horizontalFOV = device.horizontalFOV
+        self.minimumCaptationDistance = device.minimumCaptationDistance
+        self.maximumCaptationDistance = device.maximumCaptationDistance
+        self.position = device.position
+        self.orientation = device.orientation
+        self.height = device.height
+    
+        // Set up the node
         isUserInteractionEnabled = false
-        
-        _editor = editor
         
         // Build the device sprite node
         _deviceSprite = SKSpriteNode(imageNamed: "Device")
@@ -168,10 +178,6 @@ extension LayoutEditorDevice {
         
         // And insert ourselves
         _editor.frontLayer.addChild(self)
-        
-        // Do we represent an existing device ?
-        
-        // ...
     }
 }
 
@@ -254,7 +260,7 @@ extension LayoutEditorDevice {
         // ...
         
         markAsIdle()
-        _editor.removeDevice(element: self)
+        _editor.remove(device: self)
         
         self.removeAllChildren()
         self.removeFromParent()

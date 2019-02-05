@@ -21,7 +21,7 @@ class Core {
     }
     
     func openSceneSelector() {
-        _sceneSelectorController!.view.window!.windowController!.showWindow(nil)
+        _sceneSelectorController?.view.window!.windowController?.showWindow(nil)
     }
     
     /// Array with all the currently opened scenes
@@ -33,13 +33,15 @@ class Core {
     /// Instanciate and register a new scene
     ///
     /// - Parameter sceneType: The Type of the scene to create
-    func makeScene(ofType sceneType: Scene.Type) {
+    func makeScene(ofType sceneType: Scene.Type) -> Scene {
         var newScene = sceneType.make()
         newScene.sceneIndex = _nextSceneIndex
         
         _scenes[_nextSceneIndex] = newScene
         
         _nextSceneIndex += 1
+        
+        return newScene
     }
     
     /// Deregister a scene. If the scene has no other references,

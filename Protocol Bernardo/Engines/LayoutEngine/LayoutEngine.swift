@@ -9,12 +9,18 @@
 import AppKit
 
 class LayoutEngine {
-    func newLayout() -> Layout {
-        return Layout()
+    func newLayout() {
+        let newDocument = try! App.documentsController.openUntitledDocumentAndDisplay(true) as! LayoutDocument
+        
+        let layoutScene = App.core.makeScene(ofType: LayoutEditorScene.self) as! LayoutEditorScene
+        layoutScene.setLayoutDocument(newDocument)
+        
     }
     
-    func openLayout(at url: URL) -> Layout? {
-        try! LayoutDocument(contentsOf: url, ofType: "pb.layout")
-        return nil
+    func openLayout(at url: URL) {
+        App.documentsController.openDocument(withContentsOf: url, display: true) { document, _, _ in
+            let layoutScene = App.core.makeScene(ofType: LayoutEditorScene.self) as! LayoutEditorScene
+            layoutScene.setLayoutDocument(document! as! LayoutDocument)
+        }
     }
 }
