@@ -21,14 +21,14 @@
                                 <toolbarItem implicitItemIdentifier="E9FA4A5A-136A-4E48-913A-CCF2193A51A3" label="" paletteLabel="" sizingBehavior="auto" id="WiB-BI-Kiy">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="hLq-CL-cMy">
-                                        <rect key="frame" x="0.0" y="14" width="248" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="240" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="oHM-m4-Gbh">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment label="Edit" width="80" selected="YES"/>
-                                                <segment label="Calibrate" width="80" tag="1"/>
-                                                <segment label="Track" width="80" tag="2"/>
+                                                <segment label="Edit" width="78" selected="YES"/>
+                                                <segment label="Calibrate" width="77" tag="1"/>
+                                                <segment label="Track" width="77" tag="2"/>
                                             </segments>
                                         </segmentedCell>
                                         <connections>

@@ -9,6 +9,10 @@
 import AppKit
 
 class MainMenu: NSMenu {
+    @IBAction func openWelcomeScene(_ sender: Any?) {
+        NSApplication.shared.windows[0].windowController?.showWindow(nil)
+    }
+    
     @IBAction func openDevicesScene(_ sender: Any?) {
         App.core.makeScene(ofType: DevicesScene.self)
     }

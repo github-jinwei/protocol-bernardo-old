@@ -33,8 +33,6 @@
 			<array>
 				<string>pbdeviceslayout</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>PBLayoutIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>Protocol Bernardo Captation Devices</string>
 			<key>CFBundleTypeRole</key>
@@ -85,12 +83,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Protocol Bernardo Layout</string>
-			<key>UTTypeIconFile</key>
-			<string>PBLayoutIcon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.prisme.pb.layout</string>
-			<key>UTTypeReferenceURL</key>
-			<string></string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>

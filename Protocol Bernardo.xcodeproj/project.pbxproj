@@ -62,6 +62,7 @@
 		39B5575E220006600021BFDA /* PBPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575D220006600021BFDA /* PBPoint.swift */; };
 		39B55760220008430021BFDA /* deg2rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575F220008430021BFDA /* deg2rad.swift */; };
 		39B5576222000FC70021BFDA /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5576122000FC70021BFDA /* NSColor.swift */; };
+		39D558AD220919CA00916AAA /* PBLayoutIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39D558AC220919CA00916AAA /* PBLayoutIcon.icns */; };
 		39DFBDDF2208A7AF00A7B9BD /* LayoutDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */; };
 		39DFBDE72208B09700A7B9BD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DFBDE62208B09700A7B9BD /* MainMenu.xib */; };
 		39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */; };
@@ -293,6 +294,7 @@
 		39B5575D220006600021BFDA /* PBPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBPoint.swift; sourceTree = "<group>"; };
 		39B5575F220008430021BFDA /* deg2rad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deg2rad.swift; sourceTree = "<group>"; };
 		39B5576122000FC70021BFDA /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
+		39D558AC220919CA00916AAA /* PBLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutIcon.icns; sourceTree = "<group>"; };
 		39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDocument.swift; sourceTree = "<group>"; };
 		39DFBDE62208B09700A7B9BD /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -443,15 +445,13 @@
 		396DDFC721F4285000628070 /* Protocol Bernardo */ = {
 			isa = PBXGroup;
 			children = (
+				39D558AE220919D900916AAA /* Resources */,
 				397B644F21FD321800A71E58 /* Lib */,
-				398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */,
 				390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */,
 				390D0DBA21F511630032CA23 /* Engines */,
 				39AF88AB21F4CF6E00A68993 /* Core */,
 				396DDFF421F4340B00628070 /* Utils */,
 				396DDFE621F42A2300628070 /* Scenes */,
-				396DDFCC21F4285200628070 /* Assets.xcassets */,
-				396DDFD121F4285200628070 /* Info.plist */,
 			);
 			path = "Protocol Bernardo";
 			sourceTree = "<group>";
@@ -686,6 +686,17 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		39D558AE220919D900916AAA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				396DDFCC21F4285200628070 /* Assets.xcassets */,
+				39D558AC220919CA00916AAA /* PBLayoutIcon.icns */,
+				396DDFD121F4285200628070 /* Info.plist */,
+				398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		39DFBDE82208B3EF00A7B9BD /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -786,6 +797,7 @@
 				39A1E70321FE67FE003162FE /* LayoutEditor.storyboard in Resources */,
 				396DDFD021F4285200628070 /* WelcomeScene.storyboard in Resources */,
 				390D0DB721F502170032CA23 /* DevicesScene.storyboard in Resources */,
+				39D558AD220919CA00916AAA /* PBLayoutIcon.icns in Resources */,
 				3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */,
 				39DFBDE72208B09700A7B9BD /* MainMenu.xib in Resources */,
 			);

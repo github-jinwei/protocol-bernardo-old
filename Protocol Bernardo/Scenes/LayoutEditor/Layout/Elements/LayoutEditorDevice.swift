@@ -165,7 +165,7 @@ extension LayoutEditorDevice {
         
         // Build the captation area node
         _captationArea = SKShapeNode(path: captationArea())
-        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2)
+        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
         
         // Give them their idle style
         setIdleAppearance()
@@ -205,6 +205,25 @@ extension LayoutEditorDevice {
             return
         }
         
+        
+        
+        switch event.keyCode {
+        case Keycode.delete: delete()
+        case Keycode.upArrow: translateWithEvent(event)
+        case Keycode.downArrow: translateWithEvent(event)
+        case Keycode.rightArrow: translateWithEvent(event)
+        case Keycode.leftArrow: translateWithEvent(event)
+        case Keycode.d:
+            if event.modifierFlags.contains(.command) {
+                duplicate()
+            }
+        default: break
+        }
+        
+        
+    }
+    
+    internal func translateWithEvent(_ event: NSEvent) {
         let translateAmount:CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
         
         switch event.keyCode {
@@ -213,11 +232,19 @@ extension LayoutEditorDevice {
         case Keycode.downArrow: position.y -= translateAmount
         case Keycode.rightArrow: position.x += translateAmount
         case Keycode.leftArrow: position.x -= translateAmount
-        default: return
+        default: break
         }
         
         updatePositionOnParameters()
         device.position = position
+    }
+    
+    /// Duplicate the current node, and insert it in the layout and the scene
+    internal func duplicate() {
+        let newDevice = Device(from: device)
+        
+        _editor._layout.devices.append(newDevice)
+        _editor.createNodeForExistingDevice(newDevice)
     }
 }
 

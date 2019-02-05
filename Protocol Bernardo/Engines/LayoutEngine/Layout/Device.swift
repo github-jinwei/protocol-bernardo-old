@@ -23,3 +23,17 @@ class Device: Codable {
     
     var height: CGFloat = 60.0
 }
+
+extension Device {
+    convenience init(from device: Device) {
+        self.init()
+        
+        self.name = device.name
+        self.horizontalFOV = device.horizontalFOV
+        self.minimumCaptationDistance = device.minimumCaptationDistance
+        self.maximumCaptationDistance = device.maximumCaptationDistance
+        self.position = device.position
+        self.orientation = device.orientation
+        self.height = device.height
+    }
+}
