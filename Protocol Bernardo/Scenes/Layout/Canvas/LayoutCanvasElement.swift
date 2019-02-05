@@ -9,7 +9,10 @@
 import SpriteKit
 import AppKit
 
-protocol LayoutEditorElement: AnyObject {
+protocol LayoutCanvasElement: AnyObject {
+    /// The element delegate
+    var delegate: LayoutCanvasElementDelegate? { get set }
+    
     /// Name of the element
     var name: String? { get set }
     
@@ -41,12 +44,17 @@ protocol LayoutEditorElement: AnyObject {
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool
 }
 
-extension LayoutEditorElement {
-    internal var _highlightColor: NSColor {
-        return NSColor.selectedMenuItemColor
-    }
-    
+// MARK: - Default Implementations
+extension LayoutCanvasElement {
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
         return false
+    }
+}
+
+// MARK: - Useful methods
+extension LayoutCanvasElement {
+    /// Gives the highlight color for the current MacOS Style
+    internal var _highlightColor: NSColor {
+        return NSColor.selectedMenuItemColor
     }
 }

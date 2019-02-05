@@ -9,7 +9,9 @@
 import SpriteKit
 
 /// A Layout Line is used to adds marks on the layout and ease its comprehension.
-class LayoutEditorLine: LayoutEditorElement {
+class LayoutCanvasLine: LayoutCanvasElement {
+    var delegate: LayoutCanvasElementDelegate?
+    
     func mouseDragged(with event: NSEvent) {
         
     }

@@ -11,17 +11,17 @@ import Foundation
 /// The application structure Core
 class Core {
     /// Reference to the SceneSelectorController
-    internal var _sceneSelectorController: WelcomeSceneViewController!
+    internal var _welcomeScene: WelcomeSceneViewController!
     
     /// Used by the SceneSelectorController to register itself
     ///
     /// - Parameter controller: The SceneSelectorController
-    func registerSceneSelectorController(_ controller: WelcomeSceneViewController) {
-        _sceneSelectorController = controller
+    func registerWelcomeScene(_ controller: WelcomeSceneViewController) {
+        _welcomeScene = controller
     }
     
-    func openSceneSelector() {
-        _sceneSelectorController?.view.window!.windowController?.showWindow(nil)
+    func showWelcomeScene() {
+        _welcomeScene?.view.window!.windowController?.showWindow(nil)
     }
     
     /// Array with all the currently opened scenes
@@ -33,15 +33,13 @@ class Core {
     /// Instanciate and register a new scene
     ///
     /// - Parameter sceneType: The Type of the scene to create
-    func makeScene(ofType sceneType: Scene.Type) -> Scene {
+    func makeScene(ofType sceneType: Scene.Type) {
         var newScene = sceneType.make()
         newScene.sceneIndex = _nextSceneIndex
         
         _scenes[_nextSceneIndex] = newScene
         
         _nextSceneIndex += 1
-        
-        return newScene
     }
     
     /// Deregister a scene. If the scene has no other references,
@@ -52,7 +50,7 @@ class Core {
         _scenes.removeValue(forKey: sceneIndex)
         
         if(_scenes.count == 0) {
-            openSceneSelector()
+            showWelcomeScene()
         }
     }
 }

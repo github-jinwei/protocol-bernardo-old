@@ -1,5 +1,5 @@
 //
-//  LayoutElementDevice.swift
+//  LayoutCanvasDevice.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-27.
@@ -9,10 +9,13 @@
 import SpriteKit
 
 /// A Layout device represent a real-world acquisition device
-class LayoutEditorDevice: SKNode {
+class LayoutCanvasDevice: SKNode {
     
     /// The device this node is representing
-    var device: Device!
+    weak var device: Device!
+    
+    /// The element's delegate
+    weak var delegate: LayoutCanvasElementDelegate?
     
     // ////////////////////////////////
     // MARK: - Device properties remap
@@ -21,6 +24,9 @@ class LayoutEditorDevice: SKNode {
         didSet {
             device.name = name!
             _deviceLabel?.text = name
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
         }
     }
     
@@ -32,6 +38,9 @@ class LayoutEditorDevice: SKNode {
     var height: CGFloat = 60.0 {
         didSet {
             device.height = height
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
         }
     }
     
@@ -40,6 +49,9 @@ class LayoutEditorDevice: SKNode {
         didSet {
             device.orientation = orientation
             _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
         }
     }
     
@@ -49,6 +61,9 @@ class LayoutEditorDevice: SKNode {
             device.horizontalFOV = horizontalFOV
             _captationArea.path = captationArea()
             _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
         }
     }
     
@@ -57,6 +72,9 @@ class LayoutEditorDevice: SKNode {
         didSet {
             device.minimumCaptationDistance = minimumCaptationDistance
             _captationArea.path = captationArea()
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
         }
     }
     
@@ -65,6 +83,9 @@ class LayoutEditorDevice: SKNode {
         didSet {
             device.maximumCaptationDistance = maximumCaptationDistance
             _captationArea.path = captationArea()
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
         }
     }
     
@@ -75,7 +96,7 @@ class LayoutEditorDevice: SKNode {
     /// Reference to the parent node
     ///
     /// Reference is weak to prevent circular referencing
-    internal weak var _editor: LayoutEditor!
+    internal weak var _canvas: LayoutCanvas!
     
     /// The sprite node holding the device image
     internal var _deviceSprite: SKSpriteNode!
@@ -97,9 +118,9 @@ class LayoutEditorDevice: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    internal lazy var _parametersController: PBLayoutDevicePropertiesController = {
-        let storyboard = NSStoryboard(name: "LayoutEditor", bundle: nil)
-        var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBLayoutDevicePropertiesController
+    internal lazy var _parametersController: PBLayoutCanvasDevicePropertiesController = {
+        let storyboard = NSStoryboard(name: "Layout", bundle: nil)
+        var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBLayoutCanvasDevicePropertiesController
         controller.device = self
         
         return controller
@@ -109,7 +130,7 @@ class LayoutEditorDevice: SKNode {
 
 // /////////////////////
 // MARK: - LayoutElement
-extension LayoutEditorDevice: LayoutEditorElement {
+extension LayoutCanvasDevice: LayoutCanvasElement {
     /// Returns the controller allowing for fine tuning of the
     /// device parameter
     ///
@@ -127,11 +148,16 @@ extension LayoutEditorDevice: LayoutEditorElement {
 
 // ///////////////////
 // MARK: - Initializer
-extension LayoutEditorDevice {
-    convenience init(withEditor editor: LayoutEditor, forDevice device: Device) {
+extension LayoutCanvasDevice {
+    /// Initialize a Device node
+    ///
+    /// - Parameters:
+    ///   - canvas: The canvas on which the node should be inserted
+    ///   - device: The device the node will represent
+    convenience init(onCanvas canvas: LayoutCanvas, forDevice device: Device) {
         self.init()
         
-        _editor = editor
+        _canvas = canvas
         
         // Set the represented device
         self.device = device
@@ -177,14 +203,22 @@ extension LayoutEditorDevice {
         self.addChild(_deviceLabel)
         
         // And insert ourselves
-        _editor.frontLayer.addChild(self)
+        _canvas.frontLayer.addChild(self)
+    }
+    
+    /// Duplicate the current node, and insert it in the layout and the scene
+    internal func duplicate() {
+        let newDevice = Device(from: device)
+        
+        _canvas._layout.devices.append(newDevice)
+        _canvas.createNodeForExistingDevice(newDevice)
     }
 }
 
 
 // ///////////////////
 // MARK: - User events
-extension LayoutEditorDevice {
+extension LayoutCanvasDevice {
     override func mouseDragged(with event: NSEvent) {
         guard locationInTriggerArea(forEvent: event) else {
             markAsIdle()
@@ -192,11 +226,13 @@ extension LayoutEditorDevice {
             return
         }
         
-        self.position.x += (event.deltaX / _editor.root.xScale)
-        self.position.y -= (event.deltaY / _editor.root.yScale)
+        self.position.x += (event.deltaX / _canvas.root.xScale)
+        self.position.y -= (event.deltaY / _canvas.root.yScale)
         
         updatePositionOnParameters()
         device.position = position
+        
+        delegate?.elementDidChange(self)
     }
     
     override func keyDown(with event: NSEvent) {
@@ -205,8 +241,7 @@ extension LayoutEditorDevice {
             return
         }
         
-        
-        
+        // Act according to the pressed key
         switch event.keyCode {
         case Keycode.delete: delete()
         case Keycode.upArrow: translateWithEvent(event)
@@ -219,10 +254,11 @@ extension LayoutEditorDevice {
             }
         default: break
         }
-        
-        
     }
     
+    /// Translate the node by the amount specified by the given MouseDragged event
+    ///
+    /// - Parameter event:
     internal func translateWithEvent(_ event: NSEvent) {
         let translateAmount:CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
         
@@ -237,24 +273,18 @@ extension LayoutEditorDevice {
         
         updatePositionOnParameters()
         device.position = position
-    }
-    
-    /// Duplicate the current node, and insert it in the layout and the scene
-    internal func duplicate() {
-        let newDevice = Device(from: device)
         
-        _editor._layout.devices.append(newDevice)
-        _editor.createNodeForExistingDevice(newDevice)
+        delegate?.elementDidChange(self)
     }
 }
 
     
 // ////////////////////
 // MARK: - Device state
-extension LayoutEditorDevice {
+extension LayoutCanvasDevice {
     /// Change the device state to selected
     internal func markAsSelected() {
-        _editor.selectedNode = self
+        _canvas.selectedNode = self
     }
     
     /// Update the device state to reflect is selected state.
@@ -268,7 +298,7 @@ extension LayoutEditorDevice {
     
     /// Change the device state to idle
     internal func markAsIdle() {
-        _editor.selectedNode = nil
+        _canvas.selectedNode = nil
     }
     
     /// Update the device state to reflect is deselected state.
@@ -284,20 +314,33 @@ extension LayoutEditorDevice {
     func delete() {
         // Asks the user before going further obviously
         
-        // ...
+        let confirmModal = NSAlert()
+        confirmModal.alertStyle = .warning
+        confirmModal.messageText = "Are you sure you want to delete this device ?"
+        confirmModal.addButton(withTitle: "Delete Device")
+        confirmModal.addButton(withTitle: "Cancel")
         
-        markAsIdle()
-        _editor.remove(device: self)
-        
-        self.removeAllChildren()
-        self.removeFromParent()
+        confirmModal.beginSheetModal(for: _canvas._sceneView.window!) { response in
+            guard response == NSApplication.ModalResponse.alertFirstButtonReturn else {
+                // Alert was canceled, do nothing
+                return
+            }
+            
+            self.delegate?.elementWillBeRemoved(self)
+            
+            self.markAsIdle()
+            self._canvas.remove(device: self)
+            
+            self.removeAllChildren()
+            self.removeFromParent()
+        }
     }
 }
 
 
 // /////////////////////
 // MARK: - SKNode utils
-extension LayoutEditorDevice {
+extension LayoutCanvasDevice {
     /// Update the device appearance to reflect its idle state
     ///
     /// This also reflects the default state of the device on the scene
@@ -354,7 +397,7 @@ extension LayoutEditorDevice {
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
         let clickLocationCaptationArea = event.location(in: _captationArea)
         let clickLocationCenterArea = event.location(in: _centerCircle)
-        
+     
         if(_captationArea.path!.contains(clickLocationCaptationArea) ||
             _centerCircle.contains(clickLocationCenterArea)) {
             return true

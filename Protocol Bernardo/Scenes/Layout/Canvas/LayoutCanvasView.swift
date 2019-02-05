@@ -1,5 +1,5 @@
 //
-//  DevicesLayoutView.swift
+//  LayoutCanvasView.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-29.
@@ -9,8 +9,8 @@
 import SpriteKit
 
 // Represent the view holding the spriteKit Scene, primarly used for event handling
-class DevicesLayoutView: SKView {
-    var editor: LayoutEditor!
+class LayoutCanvasView: SKView {
+    var canvas: LayoutCanvas!
     
     override func mouseDown(with event: NSEvent) {
         super.mouseDown(with: event)
@@ -18,44 +18,47 @@ class DevicesLayoutView: SKView {
         let elements = getElementsAtPoint(forEvent: event)
         
         guard elements.count > 0 else {
-            editor.selectedNode = nil
+            canvas.selectedNode = nil
             return
         }
         
-        editor.selectedNode = elements.last!
+        canvas.selectedNode = elements.last!
     }
     
     override func mouseUp(with event: NSEvent) {
-        editor?.mouseUp(with: event)
+        canvas?.mouseUp(with: event)
         super.mouseUp(with: event)
     }
     
     override func mouseDragged(with event: NSEvent) {
-        editor.selectedNode?.mouseDragged(with: event)
+        canvas.selectedNode?.mouseDragged(with: event)
         super.mouseDragged(with: event)
     }
     
     override func scrollWheel(with event: NSEvent) {
         super.scrollWheel(with: event)
         
-        editor.root.position.x += event.scrollingDeltaX
-        editor.root.position.y -= event.scrollingDeltaY
+        canvas.root.position.x += event.scrollingDeltaX
+        canvas.root.position.y -= event.scrollingDeltaY
     }
     
     override func magnify(with event: NSEvent) {
         super.magnify(with: event)
         
         // Scale the scene
-        let scale = (editor.root.xScale + event.magnification).clamped(to: 0.25...1)
-        editor.root.xScale = scale
-        editor.root.yScale = scale
+        let scale = (canvas.root.xScale + event.magnification).clamped(to: 0.25...1)
+        canvas.root.xScale = scale
+        canvas.root.yScale = scale
     }
     
     override func keyDown(with event: NSEvent) {
         super.keyDown(with: event)
         
+        // Make sure the canvas is editable
+        guard canvas.editable else { return }
+        
         // Simply pass the event to the selected node
-        editor?.selectedNode?.keyDown(with: event)
+        canvas?.selectedNode?.keyDown(with: event)
     }
     
     override func keyUp(with event: NSEvent) {
@@ -68,8 +71,8 @@ class DevicesLayoutView: SKView {
     ///
     /// - Parameter event:
     /// - Returns: All the elements hit by the event
-    internal func getElementsAtPoint(forEvent event: NSEvent) -> [LayoutEditorElement] {
-        return editor.elements.filter { element in
+    internal func getElementsAtPoint(forEvent event: NSEvent) -> [LayoutCanvasElement] {
+        return canvas.elements.filter { element in
             return element.locationInTriggerArea(forEvent: event)
         }
     }

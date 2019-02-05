@@ -9,7 +9,7 @@
         <scene sceneID="LCH-Av-DmZ">
             <objects>
                 <windowController id="z0f-Va-BWi" userLabel="Devices Layout Window" customClass="LayoutWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="IfL-Pf-Uly">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="IfL-Pf-Uly">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="480" height="270"/>
@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="-46" y="14"/>
         </scene>
-        <!--Layout Editor Split View Controller-->
+        <!--Layout Split View Controller-->
         <scene sceneID="Q0P-Do-mUp">
             <objects>
-                <splitViewController id="joy-8q-fi3" customClass="LayoutEditorSplitViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="joy-8q-fi3" customClass="LayoutSplitViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="n7g-Td-SHG"/>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="fMb-ol-eoc"/>
@@ -89,7 +89,7 @@
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="editorSplitViewItem" destination="n7g-Td-SHG" id="LoY-fI-QIs"/>
+                        <outlet property="canvasSplitViewItem" destination="n7g-Td-SHG" id="LoY-fI-QIs"/>
                         <outlet property="sidebarSplitViewItem" destination="fMb-ol-eoc" id="g1z-3n-otw"/>
                         <outlet property="splitView" destination="aDd-ni-JuW" id="okT-8x-dLj"/>
                         <segue destination="59d-0Q-iNK" kind="relationship" relationship="splitItems" id="Nc8-gj-N58"/>
@@ -209,12 +209,12 @@
             </objects>
             <point key="canvasLocation" x="438" y="1141"/>
         </scene>
-        <!--Layout Device Properties Controller-->
+        <!--Layout Canvas Device Properties Controller-->
         <scene sceneID="Wbb-G4-onv">
             <objects>
                 <customObject id="ijs-Qb-doU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="K04-Kh-qyY"/>
-                <viewController storyboardIdentifier="deviceParametersController" id="6rc-uw-BXq" customClass="PBLayoutDevicePropertiesController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="deviceParametersController" id="6rc-uw-BXq" customClass="PBLayoutCanvasDevicePropertiesController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Cpe-qb-sDg">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="258"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -796,11 +796,11 @@
             </objects>
             <point key="canvasLocation" x="708" y="923"/>
         </scene>
-        <!--Layout Editor-->
+        <!--Layout Canvas-->
         <scene sceneID="Vjd-O6-htn">
             <objects>
-                <viewController id="59d-0Q-iNK" customClass="LayoutEditor" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="9Zz-uV-I2a" customClass="DevicesLayoutView" customModule="Protocol_Bernardo" customModuleProvider="target">
+                <viewController id="59d-0Q-iNK" customClass="LayoutCanvas" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="9Zz-uV-I2a" customClass="LayoutCanvasView" customModule="Protocol_Bernardo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1060" height="694"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>

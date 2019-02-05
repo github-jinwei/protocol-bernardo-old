@@ -21,7 +21,7 @@ class PBDeviceDetails: NSViewController {
     
     @IBOutlet weak var usersDetailsStackView: NSStackView!
     
-    var userDetailsViews = [Int16: PBTrackedUserDetails]()
+    var userDetailsViews = [Int16: PBTrackedUserDetailsExcerpt]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class PBDeviceDetails: NSViewController {
             
             guard let userView = userDetailsViews[user.userID] else {
                 // This is a new user, let's give it a view
-                let userView:PBTrackedUserDetails = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
+                let userView:PBTrackedUserDetailsExcerpt = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
                 userDetailsViews[user.userID] = userView
                 userView.update(userValues: user)
                 usersDetailsStackView.addView(userView, in: .trailing)

@@ -1,5 +1,5 @@
 //
-//  LayoutEditor.swift
+//  LayoutCanvas.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-27.
@@ -9,26 +9,26 @@
 import AppKit
 import SpriteKit
 
-class LayoutEditor: NSViewController {
+/// This view represent the given layout using a SpriteKitScene
+class LayoutCanvas: NSViewController {
     // ////////////////////////
     // MARK: - Base properties
     
-    /// Reference to the sidebar
-    weak var sidebar: LayoutEditorSidebar!
-    
     /// The scene view
-    internal var _sceneView: DevicesLayoutView {
-        return view as! DevicesLayoutView
+    internal var _sceneView: LayoutCanvasView {
+        return view as! LayoutCanvasView
     }
+    
+    weak var delegate: LayoutCanvasDelegate?
     
     
     // //////////////////////////
-    // MARK: - Layout properties
+    // MARK: - Canvas properties
     
     /// The layout, initialized as empty
-    internal var _layout: Layout!
+    internal weak var _layout: Layout!
     
-    /// The SKScene used by the editor
+    /// The SKScene used by the canvas
     internal var _scene: SKScene!
     
     /// Convenient access to the 'root' node of the scene
@@ -41,41 +41,41 @@ class LayoutEditor: NSViewController {
     var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
     
     // List of all the elements nodes in the scene
-    var elements = [LayoutEditorElement]()
+    var elements = [LayoutCanvasElement]()
     
     /// The currently selected node, might be null
-    weak var selectedNode: LayoutEditorElement? {
+    weak var selectedNode: LayoutCanvasElement? {
         willSet(node) {
             if selectedNode === node { return }
             
             // Deselect the currently selected node (if any) before moving on
             selectedNode?.deselect()
             node?.select()
-            
-            // Clear the sidebar
-            sidebar.clear()
-            
-            if node != nil {
-                // Display the parameters for the selected element
-                sidebar.displayParameters(ofElement: node!)
-            }
         }
     }
+    
+    
+    // /////////////////////
+    // MARK: - Canvas status
+    
+    var editable: Bool = true
+    
+    var edited: Bool = false
 }
 
 
 // /////////////////////////
 // MARK: - NSViewController
-extension LayoutEditor {
+extension LayoutCanvas {
     override func viewDidAppear() {
         // Start with a blank layout
         
         // Set up the scene view
-        _sceneView.editor = self
+        _sceneView.canvas = self
         _sceneView.allowsTransparency = true
         
         // Create the scene
-        _scene = SKScene(fileNamed: "LayoutEditor")
+        _scene = SKScene(fileNamed: "LayoutCanvas")
         
         // Display it
         _sceneView.presentScene(_scene)
@@ -94,29 +94,35 @@ extension LayoutEditor {
 
 // ////////////////////////////////
 // MARK: - Scene elements lifecycle
-extension LayoutEditor {
+extension LayoutCanvas {
     /// Creates a new node for a new device and insert it in the layotu
     func createDevice() {
-        let deviceNode = LayoutEditorDevice(withEditor: self,
+        let deviceNode = LayoutCanvasDevice(onCanvas: self,
                                             forDevice: _layout.createDevice())
+        deviceNode.delegate = self
         elements.append(deviceNode)
         
         selectedNode = deviceNode
+        
+        delegate?.canvasWasChanged(self)
     }
     
     /// Create the node for an existing device
     ///
     /// - Parameter device: The device to create a node for
     func createNodeForExistingDevice(_ device: Device) {
-        let deviceNode = LayoutEditorDevice(withEditor: self,
+        let deviceNode = LayoutCanvasDevice(onCanvas: self,
                                             forDevice: device)
+        deviceNode.delegate = self
         elements.append(deviceNode)
+        
+        delegate?.canvasWasChanged(self)
     }
     
     /// Removes the given node fromn the layout and the SKScene
     ///
     /// - Parameter element: The device node holding the node to remove
-    func remove(device: LayoutEditorDevice) {
+    func remove(device: LayoutCanvasDevice) {
         // Remove from the layout
         _layout.remove(device: device.device)
         
@@ -126,5 +132,16 @@ extension LayoutEditor {
         }
         
         // The node removes itself from the scene
+        delegate?.canvasWasChanged(self)
+    }
+}
+
+extension LayoutCanvas: LayoutCanvasElementDelegate {
+    func elementDidChange(_ element: LayoutCanvasElement) {
+        delegate?.canvasWasChanged(self)
+    }
+    
+    func elementWillBeRemoved(_ element: LayoutCanvasElement) {
+        delegate?.canvasWasChanged(self)
     }
 }

@@ -245,7 +245,7 @@
                 <outlet property="contentViewController" destination="g3I-hZ-M6B" id="PN8-Ya-jlc"/>
             </connections>
         </popover>
-        <customView id="zai-ni-jDB" userLabel="Detected User Details" customClass="PBTrackedUserDetails" customModule="Protocol_Bernardo" customModuleProvider="target">
+        <customView id="zai-ni-jDB" userLabel="Detected User Details" customClass="PBTrackedUserDetailsExcerpt" customModule="Protocol_Bernardo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="194" height="394"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>

@@ -8,7 +8,7 @@
 
 import AppKit
 
-class PBTrackedUserDetails: NSView {
+class PBTrackedUserDetailsExcerpt: NSView {
     
     @IBOutlet weak var userIDField: NSTextField!
     @IBOutlet weak var trackingStatusField: NSTextField!

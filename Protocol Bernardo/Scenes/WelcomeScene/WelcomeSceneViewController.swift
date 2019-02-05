@@ -8,24 +8,25 @@
 
 import Cocoa
 
-/// The `Scene Selector` is the first window that appears at the start of the app.
-///
-/// It displays a list of the scene the user can start. These scenes are defined
-/// in the `availableScenes` array, and must conform the `Scene` protocol.
 class WelcomeSceneViewController: NSViewController {
     
-    @IBOutlet var visualEffectView: NSVisualEffectView!
-    
     override func viewDidLoad() {
+        App.core.registerWelcomeScene(self)
     }
     
-    override func viewDidAppear() {
-    }
+    // ////////////
+    // MARK: Layout
     
+    /// Open a new, empty layout
+    ///
+    /// - Parameter sender:
     @IBAction func newLayout(_ sender: Any) {
         App.layoutEngine.newLayout()
     }
     
+    /// Asks the user to select an existing layout to open
+    ///
+    /// - Parameter sender:
     @IBAction func openLayout(_ sender: Any) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
@@ -38,5 +39,13 @@ class WelcomeSceneViewController: NSViewController {
         
         App.layoutEngine.openLayout(at: fileURL)
     }
+    
+    
+    // /////////////
+    // MARK: Display
+    
+    
+    // /////////////
+    // MARK: Syncing
 }
 

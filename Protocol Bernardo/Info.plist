@@ -108,6 +108,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Protocol Bernardo Captation Devices</string>
+			<key>UTTypeIconFile</key>
+			<string>PBDevicesLayoutIcon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.prisme.pb.layout.devices</string>
 			<key>UTTypeTagSpecification</key>

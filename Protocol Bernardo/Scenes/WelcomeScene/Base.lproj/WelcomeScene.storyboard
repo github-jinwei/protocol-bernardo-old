@@ -47,11 +47,11 @@
             <objects>
                 <viewController id="BtT-hE-XfD" customClass="WelcomeSceneViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <visualEffectView key="view" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="uxX-Mb-mzu">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="580"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="581"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RjY-Jt-6Yv">
-                                <rect key="frame" x="60" y="506" width="330" height="54"/>
+                                <rect key="frame" x="60" y="507" width="330" height="54"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Protocol Bernardo" id="CGz-GK-nw5">
                                     <font key="font" metaFont="systemThin" size="45"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -258,7 +258,7 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="TPL-3A-no9" firstAttribute="top" secondItem="RjY-Jt-6Yv" secondAttribute="bottom" constant="22" id="08Z-OH-MBK"/>
+                            <constraint firstItem="TPL-3A-no9" firstAttribute="top" secondItem="RjY-Jt-6Yv" secondAttribute="bottom" constant="23" id="08Z-OH-MBK"/>
                             <constraint firstItem="TPL-3A-no9" firstAttribute="width" secondItem="uxX-Mb-mzu" secondAttribute="width" id="TBv-Bv-xYG"/>
                             <constraint firstItem="RjY-Jt-6Yv" firstAttribute="top" secondItem="uxX-Mb-mzu" secondAttribute="top" constant="20" id="deg-86-5Km"/>
                             <constraint firstItem="RjY-Jt-6Yv" firstAttribute="centerX" secondItem="uxX-Mb-mzu" secondAttribute="centerX" id="sOk-Iy-BZB"/>
@@ -266,9 +266,6 @@
                             <constraint firstItem="TPL-3A-no9" firstAttribute="centerX" secondItem="uxX-Mb-mzu" secondAttribute="centerX" id="slq-Bf-6m0"/>
                         </constraints>
                     </visualEffectView>
-                    <connections>
-                        <outlet property="visualEffectView" destination="uxX-Mb-mzu" id="crK-DU-rev"/>
-                    </connections>
                 </viewController>
                 <customObject id="B4X-RT-bxu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

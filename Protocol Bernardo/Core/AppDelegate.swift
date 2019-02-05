@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func openSceneSelector(_ sender: Any) {
-        App.core.openSceneSelector()
+        App.core.showWelcomeScene()
     }
 }
 

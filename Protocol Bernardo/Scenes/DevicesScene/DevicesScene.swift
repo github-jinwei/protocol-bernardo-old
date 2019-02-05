@@ -1,5 +1,5 @@
 //
-//  PositionsCollector.swift
+//  DevicesScene.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-20.

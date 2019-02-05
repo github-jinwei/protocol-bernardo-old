@@ -9,6 +9,8 @@
 import AppKit
 
 class LayoutDocument: NSDocument {
+    weak var delegate: NSDocumentDelegate?
+    
     internal let _layoutFileName = "layout.pbdeviceslayout"
     
     internal var _layout:Layout = Layout()
@@ -48,7 +50,8 @@ extension LayoutDocument {
         do {
             try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         } catch {
-            Swift.print("Could not create layout package : \(error.localizedDescription)")
+            NSAlert(error: error).runModal()
+            return
         }
         
         // Now save the layout in it
@@ -57,8 +60,11 @@ extension LayoutDocument {
             let layoutData = try JSONEncoder().encode([_layout])
             try layoutData.write(to: layoutFileURL, options: [.atomicWrite])
         } catch {
-            Swift.print("Could not save the layout file : \(error.localizedDescription)")
+            NSAlert(error: error).runModal()
+            return
         }
+        
+        delegate?.document(self, didSave: true, contextInfo: nil)
     }
 }
 
@@ -68,7 +74,7 @@ extension LayoutDocument {
     override func makeWindowControllers() {
         // If the layout window is missing, let's create it
         if _layoutWindow == nil {
-            _layoutWindow = NSStoryboard(name: "LayoutEditor", bundle: nil).instantiateInitialController() as? LayoutWindowController
+            _layoutWindow = NSStoryboard(name: "Layout", bundle: nil).instantiateInitialController() as? LayoutWindowController
             self.addWindowController(_layoutWindow)
         }
     }
