@@ -13,9 +13,6 @@ protocol LayoutCanvasElement: AnyObject {
     /// The element delegate
     var delegate: LayoutCanvasElementDelegate? { get set }
     
-    /// Name of the element
-    var name: String? { get set }
-    
     /// Called by a user event to mark the element as selected
     func select()
     
@@ -37,10 +34,11 @@ protocol LayoutCanvasElement: AnyObject {
     /// - Returns:
     func getParametersController() -> NSViewController
     
-    /// Tell if the location of the given event hit the element
+    /// Tell if the cursor described by the given mouse event falls inside the
+    /// device trigger areas
     ///
-    /// - Parameter event:
-    /// - Returns: true if hit, false otherwise
+    /// - Parameter event: Mouse event
+    /// - Returns: True if the cursor is inside the trigger area, false otherwise
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool
 }
 

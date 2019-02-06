@@ -22,7 +22,7 @@ class LayoutWindowController: NSWindowController {
     override func windowDidLoad() {
         window?.delegate = self
         
-        (contentViewController as! LayoutSplitViewController).window = self
+            _controller.window = self
     }
     
     /// The document holding this window, and the one the window is representing
@@ -34,10 +34,19 @@ class LayoutWindowController: NSWindowController {
         }
     }
     
+    
+    // /////////////////////////
+    // MARK: - Convenient access
+    
+    internal var _controller: LayoutSplitViewController {
+        return contentViewController as! LayoutSplitViewController
+    }
+    
     /// The window document in the proper format
     var _layoutDocument: LayoutDocument {
         return self.document as! LayoutDocument
     }
+    
     
     // ///////////////////////
     // MARK: - Toolbar Actions
@@ -47,18 +56,9 @@ class LayoutWindowController: NSWindowController {
     /// - Parameter sender:
     @IBAction func switchInterface(_ sender: NSSegmentedControl) {
         switch sender.selectedSegment {
-        case 1:
-            // Set up for edition
-            print("Switching to Edition")
-            return
-        case 2:
-            // Set up for calibration
-            print("Switching to Calibration")
-            return
-        case 3:
-            // Set up for tracking
-            print("Switching to Tracking")
-            return
+        case 0: _controller.setToEditionConfiguration()
+        case 1: _controller.setToCalibrationConfiguration()
+        case 2: _controller.setToCalibrationConfiguration()
         default: break;
         }
     }

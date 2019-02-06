@@ -14,7 +14,6 @@ class LayoutCanvasDevice: SKNode {
     /// The device this node is representing
     weak var device: Device!
     
-    /// The element's delegate
     weak var delegate: LayoutCanvasElementDelegate?
     
     // ////////////////////////////////
@@ -30,9 +29,14 @@ class LayoutCanvasDevice: SKNode {
         }
     }
     
-    /// Position of the device in the layout. This position represent the device
-    /// coordinates origin when it generate users positions
-    //  var position: CGPoint
+    override var position: CGPoint {
+        didSet {
+            device.position = position
+            
+            // Tell the delegate
+            delegate?.elementDidChange(self)
+        }
+    }
     
     /// The device position height.
     var height: CGFloat = 60.0 {
@@ -220,22 +224,35 @@ extension LayoutCanvasDevice {
 // MARK: - User events
 extension LayoutCanvasDevice {
     override func mouseDragged(with event: NSEvent) {
+        // Check with our delegate if we can edit the node
+        guard delegate?.elementCanBeEdited(self) ?? false else {
+            return
+        }
+        
+        // Make sure the events concerns us
         guard locationInTriggerArea(forEvent: event) else {
             markAsIdle()
             super.mouseDragged(with: event)
             return
         }
         
+        // Adjust the node position accordingly
         self.position.x += (event.deltaX / _canvas.root.xScale)
         self.position.y -= (event.deltaY / _canvas.root.yScale)
         
+        // Update the represented device and the parameters view
         updatePositionOnParameters()
-        device.position = position
         
+        // Tell our delegate we got updated
         delegate?.elementDidChange(self)
     }
     
     override func keyDown(with event: NSEvent) {
+        // Check with our delegate if we can edit the node
+        guard delegate?.elementCanBeEdited(self) ?? false else {
+            return
+        }
+        
         // Make sure we only aknowledge keyboard events when we are selected
         guard _isSelected else {
             return
@@ -263,7 +280,6 @@ extension LayoutCanvasDevice {
         let translateAmount:CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
         
         switch event.keyCode {
-        case Keycode.delete: delete()
         case Keycode.upArrow: position.y += translateAmount
         case Keycode.downArrow: position.y -= translateAmount
         case Keycode.rightArrow: position.x += translateAmount
@@ -272,7 +288,6 @@ extension LayoutCanvasDevice {
         }
         
         updatePositionOnParameters()
-        device.position = position
         
         delegate?.elementDidChange(self)
     }

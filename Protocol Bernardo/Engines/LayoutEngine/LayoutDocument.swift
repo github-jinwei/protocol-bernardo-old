@@ -58,7 +58,7 @@ extension LayoutDocument {
         do {
             let layoutFileURL = url.appendingPathComponent("layout.pbdeviceslayout")
             let layoutData = try JSONEncoder().encode([_layout])
-            try layoutData.write(to: layoutFileURL, options: [.atomicWrite])
+            try layoutData.write(to: layoutFileURL, options: [])
         } catch {
             NSAlert(error: error).runModal()
             return

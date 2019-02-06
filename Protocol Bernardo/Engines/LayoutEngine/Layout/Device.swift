@@ -28,6 +28,8 @@ extension Device {
     convenience init(from device: Device) {
         self.init()
         
+        print(device.position)
+        
         self.name = device.name
         self.horizontalFOV = device.horizontalFOV
         self.minimumCaptationDistance = device.minimumCaptationDistance

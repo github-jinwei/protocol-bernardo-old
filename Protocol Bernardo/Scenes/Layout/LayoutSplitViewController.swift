@@ -9,36 +9,62 @@
 import AppKit
 
 class LayoutSplitViewController: NSSplitViewController {
-    // ///////////
-    // Properties
+    // //////////////////
+    // MARK: - Properties
     
+    /// Reference to the window
     weak var window: LayoutWindowController!
     
+    /// The canvas split view item
     @IBOutlet weak var canvasSplitViewItem: NSSplitViewItem!
+    
+    /// The sidebar split view item
     @IBOutlet weak var sidebarSplitViewItem: NSSplitViewItem!
     
-    var sidebar: LayoutEditorSidebar {
-        return sidebarSplitViewItem.viewController as! LayoutEditorSidebar
-    }
-    
-    var canvas: LayoutCanvas {
+    /// Convenient access to the canvas
+    internal var _canvas: LayoutCanvas {
         return canvasSplitViewItem.viewController as! LayoutCanvas
     }
     
-    // ///////////////
-    // View Lifecycle
+    /// Convenient access to the sidebar
+    internal var _sidebar: LayoutSidebar {
+        return sidebarSplitViewItem.viewController as! LayoutSidebar
+    }
+    
+    // //////////////////////
+    // MARK: - View Lifecycle
     
     override func viewDidAppear() {
-        canvas.delegate = self
+        _canvas.delegate = self
         
-        sidebar.canvas = canvas
+        _sidebar.canvas = _canvas
     }
     
     /// Set the current layout
     ///
     /// - Parameter layout:
     func setLayout(_ layout: Layout) {
-        canvas.setLayout(layout)
+        _canvas.setLayout(layout)
+    }
+    
+    
+    // ///////////////////////////////
+    // MARK: - Configuration switching
+    
+    /// Set the layout window configuration to Edition
+    func setToEditionConfiguration() {
+        _canvas.editable = true
+    }
+    
+    /// Set the layout window configuration to Calibration
+    func setToCalibrationConfiguration() {
+        _canvas.editable = false
+    }
+    
+    /// Set the layout window configuration to Tracking
+    func setToTrackingConfiguration() {
+        _canvas.editable = false
+        
     }
 }
 
@@ -48,11 +74,6 @@ extension LayoutSplitViewController: LayoutCanvasDelegate {
     }
     
     func canvas(_ canvas: LayoutCanvas, selectionChanged element: LayoutCanvasElement?) {
-        if element == nil {
-            sidebar.clear()
-            return
-        }
-        
-        sidebar.displayParameters(ofElement: element!)
+        _sidebar.setSelectedElement(element)
     }
 }

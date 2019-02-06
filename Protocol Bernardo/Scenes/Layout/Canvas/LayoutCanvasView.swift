@@ -46,7 +46,7 @@ class LayoutCanvasView: SKView {
         super.magnify(with: event)
         
         // Scale the scene
-        let scale = (canvas.root.xScale + event.magnification).clamped(to: 0.25...1)
+        let scale = (canvas.root.xScale + event.magnification).clamped(to: 0.25...1.25)
         canvas.root.xScale = scale
         canvas.root.yScale = scale
     }
@@ -72,7 +72,15 @@ class LayoutCanvasView: SKView {
     /// - Parameter event:
     /// - Returns: All the elements hit by the event
     internal func getElementsAtPoint(forEvent event: NSEvent) -> [LayoutCanvasElement] {
-        return canvas.elements.filter { element in
+        let frontElements = canvas.frontElements.filter { element in
+            return element.locationInTriggerArea(forEvent: event)
+        }
+        
+        if frontElements.count > 0 {
+            return frontElements
+        }
+        
+        return canvas.backElements.filter { element in
             return element.locationInTriggerArea(forEvent: event)
         }
     }

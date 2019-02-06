@@ -1,5 +1,5 @@
 //
-//  LayoutEditorSidebar.swift
+//  LayoutSidebarEdition.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-27.
@@ -8,35 +8,65 @@
 
 import AppKit
 
-class LayoutEditorSidebar: NSViewController {
+/// The edition sidebar, allowing the user to create new elements and
+/// fine tune an element parameters.
+class LayoutSidebarEdition: NSViewController {
+    // //////////////////
+    // MARK: - Properties
+    
     /// Reference to the LayoutEditor
     weak var canvas: LayoutCanvas?
-    
-    var isDisplayingParameters: Bool = false
-    
+
+    /// The view holding an element parameters view
     @IBOutlet weak var parametersViewHolder: NSView!
+    
+    
+    // /////////////////////////
+    // MARK: - Elements creation
     
     /// Tell the canvas to add a new device to the layout
     ///
     /// - Parameter sender:
     @IBAction func addDevice(_ sender: Any) {
+        print()
         canvas?.createDevice()
     }
     
-    /// Tell the canvas to add new line to the layout
+    /// Tell the canvas to add a new line to the layout
     ///
     /// - Parameter sender:
     @IBAction func addLine(_ sender: Any) {
-        // canvas?.createLine()
+         canvas?.createLine()
     }
     
+    // //////////////////
+    // MARK: - Others
+    
+    /// Remove the currently displayed element paremeters view
+    func clear() {
+        guard children.count > 0 else { return }
+        
+        removeChild(at: 0)
+        parametersViewHolder.subviews[0].removeFromSuperview()
+    }
+}
+
+
+// /////////////////////
+// MARK: - LayoutSidebar
+extension LayoutSidebarEdition: LayoutSidebar {
     /// Display the parameter views for the given elements
     ///
     /// - Parameter element: A Layout Canvas Element
-    func displayParameters(ofElement element: LayoutCanvasElement) {
-        if isDisplayingParameters {
+    func setSelectedElement(_ element: LayoutCanvasElement?) {
+        guard let element = element else {
             clear()
-            isDisplayingParameters = false
+            return
+        }
+        
+        // Are we already displaying something ? If so, clean
+        if parametersViewHolder.subviews.count > 0 {
+            clear()
         }
         
         let elementParametersView: NSViewController = element.getParametersController()
@@ -49,15 +79,5 @@ class LayoutEditorSidebar: NSViewController {
             elementParametersView.view.trailingAnchor.constraint(equalTo: parametersViewHolder.trailingAnchor, constant: 0),
             elementParametersView.view.topAnchor.constraint(equalTo: parametersViewHolder.topAnchor, constant: 3),
         ])
-        
-        isDisplayingParameters = true
-    }
-    
-    /// Remove the currently displayed element paremeters view
-    func clear() {
-        guard children.count > 0 else { return }
-        
-        removeChild(at: 0)
-        parametersViewHolder.subviews[0].removeFromSuperview()
     }
 }

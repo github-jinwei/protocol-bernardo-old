@@ -40,8 +40,11 @@ class LayoutCanvas: NSViewController {
     /// The scene back layer, holding the decorations objects
     var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
     
-    // List of all the elements nodes in the scene
-    var elements = [LayoutCanvasElement]()
+    // List of all the frontElements nodes in the scene
+    var frontElements = [LayoutCanvasElement]()
+    
+    // List of all the backElementlements nodes in the scene
+    var backElements = [LayoutCanvasElement]()
     
     /// The currently selected node, might be null
     weak var selectedNode: LayoutCanvasElement? {
@@ -51,6 +54,8 @@ class LayoutCanvas: NSViewController {
             // Deselect the currently selected node (if any) before moving on
             selectedNode?.deselect()
             node?.select()
+            
+            delegate?.canvas(self, selectionChanged: node)
         }
     }
     
@@ -58,9 +63,8 @@ class LayoutCanvas: NSViewController {
     // /////////////////////
     // MARK: - Canvas status
     
+    /// Tell if the canvas is editable
     var editable: Bool = true
-    
-    var edited: Bool = false
 }
 
 
@@ -84,8 +88,17 @@ extension LayoutCanvas {
         _layout.devices.forEach {
             createNodeForExistingDevice($0)
         }
+        
+        // Parse layout to create nodes for existing elements
+        _layout.decorations.forEach {
+            createNodeForExistingLine($0)
+        }
     }
     
+    /// Set the layout this canvas will represent.
+    /// The layout has to be called before the view appear
+    ///
+    /// - Parameter layout: _
     func setLayout(_ layout: Layout) {
         _layout = layout
     }
@@ -100,7 +113,7 @@ extension LayoutCanvas {
         let deviceNode = LayoutCanvasDevice(onCanvas: self,
                                             forDevice: _layout.createDevice())
         deviceNode.delegate = self
-        elements.append(deviceNode)
+        frontElements.append(deviceNode)
         
         selectedNode = deviceNode
         
@@ -114,21 +127,61 @@ extension LayoutCanvas {
         let deviceNode = LayoutCanvasDevice(onCanvas: self,
                                             forDevice: device)
         deviceNode.delegate = self
-        elements.append(deviceNode)
+        frontElements.append(deviceNode)
         
         delegate?.canvasWasChanged(self)
     }
     
-    /// Removes the given node fromn the layout and the SKScene
+    /// Creates a new node for a new device and insert it in the layotu
+    func createLine() {
+        let deviceNode = LayoutCanvasLine(onCanvas: self,
+                                          forLine: _layout.createLine())
+        deviceNode.delegate = self
+        backElements.append(deviceNode)
+        
+        selectedNode = deviceNode
+        
+        delegate?.canvasWasChanged(self)
+    }
+    
+    /// Create the node for an existing device
     ///
-    /// - Parameter element: The device node holding the node to remove
+    /// - Parameter device: The device to create a node for
+    func createNodeForExistingLine(_ line: Line) {
+        let lineNode = LayoutCanvasLine(onCanvas: self,
+                                        forLine: line)
+        lineNode.delegate = self
+        backElements.append(lineNode)
+        
+        delegate?.canvasWasChanged(self)
+    }
+    
+    /// Removes the given device from the layout and the SKScene
+    ///
+    /// - Parameter device: The device node holding the device to remove
     func remove(device: LayoutCanvasDevice) {
         // Remove from the layout
         _layout.remove(device: device.device)
         
         // Remove from our internal list
-        elements.removeAll {
+        frontElements.removeAll {
             $0 === device
+        }
+        
+        // The node removes itself from the scene
+        delegate?.canvasWasChanged(self)
+    }
+    
+    /// Removes the given line from the layout and the SKScene
+    ///
+    /// - Parameter element: The line node holding the line to remove
+    func remove(line: LayoutCanvasLine) {
+        // Remove from the layout
+        _layout.remove(line: line.line)
+        
+        // Remove from our internal list
+        backElements.removeAll {
+            $0 === line
         }
         
         // The node removes itself from the scene
@@ -143,5 +196,9 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
     
     func elementWillBeRemoved(_ element: LayoutCanvasElement) {
         delegate?.canvasWasChanged(self)
+    }
+    
+    func elementCanBeEdited(_ element: LayoutCanvasElement) -> Bool {
+        return self.editable
     }
 }
