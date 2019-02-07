@@ -11,7 +11,13 @@ import Cocoa
 class WelcomeSceneViewController: NSViewController {
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         App.core.registerWelcomeScene(self)
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window!.isMovableByWindowBackground = true
     }
     
     // ////////////
