@@ -10,7 +10,7 @@
 #define DAEStatus_h
 
 #include "../Enums/DeviceState.h"
-#include "User.h"
+#include "PhysicalUser.h"
 
 /**
  Representation of the status of a device.
@@ -31,7 +31,7 @@ struct DeviceStatus {
     unsigned int userCount;
     
     /** All the users tracked by the device */
-    struct User * _users;
+    struct PhysicalUser * _users;
 };
 
 /**

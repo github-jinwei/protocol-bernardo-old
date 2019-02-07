@@ -23,7 +23,7 @@ class LayoutCanvasLine: SKNode {
     /// The length of the line
     var size: CGFloat = 100.0 {
         didSet {
-            line.size = size
+            line.size = Double(size)
             
             // Update the shape
             _lineShape.path = getLineRectPath(width: size, height: weight)
@@ -37,7 +37,7 @@ class LayoutCanvasLine: SKNode {
     
     override var position: CGPoint {
         didSet {
-            line.position = position
+            line.position = Point(position)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -46,7 +46,7 @@ class LayoutCanvasLine: SKNode {
     
     var weight: CGFloat = 1.0 {
         didSet {
-            line.weight = weight
+            line.weight = Double(weight)
             
             // Update the shape
             _lineShape.path = getLineRectPath(width: size, height: weight)
@@ -60,7 +60,7 @@ class LayoutCanvasLine: SKNode {
     
     var orientation: CGFloat = 0.0 {
         didSet {
-            line.orientation = orientation
+            line.orientation = Double(orientation)
             
             self.zRotation = deg2rad(orientation)
             
@@ -133,10 +133,10 @@ extension LayoutCanvasLine {
         self.line = line
         
         // Copy the values from the line to ourselves
-        self.size = line.size
-        self.weight = line.weight
-        self.position = line.position
-        self.orientation = line.orientation
+        self.size = CGFloat(line.size)
+        self.weight = CGFloat(line.weight)
+        self.position = CGPoint(line.position)
+        self.orientation = CGFloat(line.orientation)
         
         // Set up the node
         isUserInteractionEnabled = false
@@ -165,7 +165,7 @@ extension LayoutCanvasLine {
     internal func duplicate() {
         let newLine = Line(from: line)
         
-        _canvas._layout.decorations.append(newLine)
+        _canvas.layout.decorations.append(newLine)
         _canvas.createNodeForExistingLine(newLine)
     }
 }

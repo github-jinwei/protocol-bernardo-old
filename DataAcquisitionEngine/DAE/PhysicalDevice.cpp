@@ -8,6 +8,11 @@
 
 #include "PhysicalDevice.hpp"
 
+// OpenCV Header
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+
 void PhysicalDevice::connect() {
     _state = DeviceState::DEVICE_CONNECTING;
     
@@ -71,7 +76,7 @@ void PhysicalDevice::connect() {
     // Mark the device as ready
     _state = DeviceState::DEVICE_READY;
     
-//    cv::namedWindow( "User Image",  cv::WINDOW_AUTOSIZE );
+//    cv::namedWindow(_serial, cv::WINDOW_AUTOSIZE);
 }
 
 void PhysicalDevice::setActive() {
@@ -123,6 +128,20 @@ DeviceStatus PhysicalDevice::getStatus() {
     
     status.userCount = (unsigned int) _usersTracker._users.size();
     status._users = _usersTracker.getUsers();
+    
+//    if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
+//
+//        cv::Mat cImageBGR;
+//        const cv::Mat mImageRGB(_colorFrame->getHeight(),
+//                                _colorFrame->getWidth(),
+//                                CV_8UC3,
+//                                (void*)_colorFrame->getData());
+//
+//        // p2c. convert form RGB to BGR
+//        cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
+//
+//        cv::imshow(_serial, cImageBGR );
+//    }
     
     return status;
 }

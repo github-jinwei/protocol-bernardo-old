@@ -11,7 +11,8 @@
                 <windowController storyboardIdentifier="DevicesSceneWindow" id="fsL-Iw-xmW" customClass="DevicesSceneWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hoh-9m-8vD">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="294" y="372" width="480" height="63"/>
+                        <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="736" width="480" height="63"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
                         <connections>
                             <outlet property="delegate" destination="fsL-Iw-xmW" id="Lwf-WW-JGE"/>

@@ -76,7 +76,8 @@ class LayoutCanvasView: SKView {
             return element.locationInTriggerArea(forEvent: event)
         }
         
-        if frontElements.count > 0 {
+        // Return here if we found a node, or if the canvas isn't editable
+        if frontElements.count > 0 || !canvas.editable {
             return frontElements
         }
         

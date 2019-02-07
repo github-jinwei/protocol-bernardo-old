@@ -26,7 +26,7 @@ class LayoutCanvas: NSViewController {
     // MARK: - Canvas properties
     
     /// The layout, initialized as empty
-    internal weak var _layout: Layout!
+    weak var layout: Layout!
     
     /// The SKScene used by the canvas
     internal var _scene: SKScene!
@@ -72,6 +72,7 @@ class LayoutCanvas: NSViewController {
 // MARK: - NSViewController
 extension LayoutCanvas {
     override func viewDidAppear() {
+        super.viewDidAppear()
         // Start with a blank layout
         
         // Set up the scene view
@@ -85,22 +86,14 @@ extension LayoutCanvas {
         _sceneView.presentScene(_scene)
         
         // Parse layout to create nodes for existing elements
-        _layout.devices.forEach {
+        layout.devices.forEach {
             createNodeForExistingDevice($0)
         }
         
         // Parse layout to create nodes for existing elements
-        _layout.decorations.forEach {
+        layout.decorations.forEach {
             createNodeForExistingLine($0)
         }
-    }
-    
-    /// Set the layout this canvas will represent.
-    /// The layout has to be called before the view appear
-    ///
-    /// - Parameter layout: _
-    func setLayout(_ layout: Layout) {
-        _layout = layout
     }
 }
 
@@ -111,7 +104,7 @@ extension LayoutCanvas {
     /// Creates a new node for a new device and insert it in the layotu
     func createDevice() {
         let deviceNode = LayoutCanvasDevice(onCanvas: self,
-                                            forDevice: _layout.createDevice())
+                                            forDevice: layout.createDevice())
         deviceNode.delegate = self
         frontElements.append(deviceNode)
         
@@ -135,7 +128,7 @@ extension LayoutCanvas {
     /// Creates a new node for a new device and insert it in the layotu
     func createLine() {
         let deviceNode = LayoutCanvasLine(onCanvas: self,
-                                          forLine: _layout.createLine())
+                                          forLine: layout.createLine())
         deviceNode.delegate = self
         backElements.append(deviceNode)
         
@@ -161,7 +154,7 @@ extension LayoutCanvas {
     /// - Parameter device: The device node holding the device to remove
     func remove(device: LayoutCanvasDevice) {
         // Remove from the layout
-        _layout.remove(device: device.device)
+        layout.remove(device: device.device)
         
         // Remove from our internal list
         frontElements.removeAll {
@@ -177,7 +170,7 @@ extension LayoutCanvas {
     /// - Parameter element: The line node holding the line to remove
     func remove(line: LayoutCanvasLine) {
         // Remove from the layout
-        _layout.remove(line: line.line)
+        layout.remove(line: line.line)
         
         // Remove from our internal list
         backElements.removeAll {

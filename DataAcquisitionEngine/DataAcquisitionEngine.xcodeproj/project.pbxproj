@@ -23,10 +23,13 @@
 		397B63E021FD29A300A71E58 /* Quaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CE21FD29A300A71E58 /* Quaternion.h */; };
 		397B63E121FD29A300A71E58 /* Skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63CF21FD29A300A71E58 /* Skeleton.h */; };
 		397B63E221FD29A300A71E58 /* DAEStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D021FD29A300A71E58 /* DAEStatus.h */; };
-		397B63E321FD29A300A71E58 /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D121FD29A300A71E58 /* User.h */; };
+		397B63E321FD29A300A71E58 /* PhysicalUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D121FD29A300A71E58 /* PhysicalUser.h */; };
 		397B63E421FD29A300A71E58 /* Position.h in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D221FD29A300A71E58 /* Position.h */; };
 		397B63E521FD29A300A71E58 /* UsersTracker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D321FD29A300A71E58 /* UsersTracker.hpp */; };
 		397B63E621FD29A300A71E58 /* PhysicalDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 397B63D421FD29A300A71E58 /* PhysicalDevice.hpp */; };
+		39DACC19220CBF95002E97F8 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DACC16220CBF95002E97F8 /* libopencv_core.4.0.1.dylib */; };
+		39DACC1A220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DACC17220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib */; };
+		39DACC1B220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DACC18220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,11 +51,14 @@
 		397B63CE21FD29A300A71E58 /* Quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
 		397B63CF21FD29A300A71E58 /* Skeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
 		397B63D021FD29A300A71E58 /* DAEStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEStatus.h; sourceTree = "<group>"; };
-		397B63D121FD29A300A71E58 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		397B63D121FD29A300A71E58 /* PhysicalUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicalUser.h; sourceTree = "<group>"; };
 		397B63D221FD29A300A71E58 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		397B63D321FD29A300A71E58 /* UsersTracker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = UsersTracker.hpp; path = DAE/UsersTracker.hpp; sourceTree = "<group>"; };
 		397B63D421FD29A300A71E58 /* PhysicalDevice.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = PhysicalDevice.hpp; path = DAE/PhysicalDevice.hpp; sourceTree = "<group>"; };
 		397B63EA21FD2AD200A71E58 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		39DACC16220CBF95002E97F8 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.4.0.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
+		39DACC17220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.4.0.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.4.0.1.dylib; sourceTree = "<group>"; };
+		39DACC18220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.4.0.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.4.0.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39DACC19220CBF95002E97F8 /* libopencv_core.4.0.1.dylib in Frameworks */,
+				39DACC1A220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
+				39DACC1B220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
 				397B63BA21FD28B800A71E58 /* libOpenNI2.dylib in Frameworks */,
 				397B63B821FD28AE00A71E58 /* libNiTE2.dylib in Frameworks */,
 			);
@@ -88,6 +97,9 @@
 		397B63B621FD28AD00A71E58 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39DACC16220CBF95002E97F8 /* libopencv_core.4.0.1.dylib */,
+				39DACC17220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib */,
+				39DACC18220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib */,
 				397B63EA21FD2AD200A71E58 /* libc++.tbd */,
 				397B63BB21FD28CA00A71E58 /* libopencv_core.a */,
 				397B63B921FD28B800A71E58 /* libOpenNI2.dylib */,
@@ -132,7 +144,7 @@
 				397B63CE21FD29A300A71E58 /* Quaternion.h */,
 				397B63CF21FD29A300A71E58 /* Skeleton.h */,
 				397B63D021FD29A300A71E58 /* DAEStatus.h */,
-				397B63D121FD29A300A71E58 /* User.h */,
+				397B63D121FD29A300A71E58 /* PhysicalUser.h */,
 				397B63D221FD29A300A71E58 /* Position.h */,
 			);
 			name = Structs;
@@ -146,7 +158,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				397B63E321FD29A300A71E58 /* User.h in Headers */,
+				397B63E321FD29A300A71E58 /* PhysicalUser.h in Headers */,
 				397B63E021FD29A300A71E58 /* Quaternion.h in Headers */,
 				397B63E621FD29A300A71E58 /* PhysicalDevice.hpp in Headers */,
 				397B63DC21FD29A300A71E58 /* FrameListener.hpp in Headers */,
@@ -356,6 +368,7 @@
 					"$(inherited)",
 					"/usr/local/Cellar/openni2/2.2.0-debian/lib/ni2",
 					/usr/local/Cellar/opencv/4.0.1/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -378,6 +391,7 @@
 					"$(inherited)",
 					"/usr/local/Cellar/openni2/2.2.0-debian/lib/ni2",
 					/usr/local/Cellar/opencv/4.0.1/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

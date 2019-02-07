@@ -20,6 +20,7 @@ class LayoutWindowController: NSWindowController {
     internal var _waitingToQuit: Bool = false
     
     override func windowDidLoad() {
+        super.windowDidLoad()
         window?.delegate = self
         
             _controller.window = self
@@ -29,8 +30,10 @@ class LayoutWindowController: NSWindowController {
     override var document: AnyObject? {
         didSet {
             if document == nil { return }
-            _layoutDocument.delegate = self
-            (contentViewController as! LayoutSplitViewController).setLayout(_layoutDocument.layout)
+            
+            layoutDocument.delegate = self
+            
+            fillCalibrationProfilesList()
         }
     }
     
@@ -43,13 +46,13 @@ class LayoutWindowController: NSWindowController {
     }
     
     /// The window document in the proper format
-    var _layoutDocument: LayoutDocument {
+    var layoutDocument: LayoutDocument {
         return self.document as! LayoutDocument
     }
     
     
-    // ///////////////////////
-    // MARK: - Toolbar Actions
+    // ///////////////
+    // MARK: - Toolbar
     
     /// Changes the Layout interface the desired configuration
     ///
@@ -62,6 +65,33 @@ class LayoutWindowController: NSWindowController {
         default: break;
         }
     }
+    
+    @IBOutlet weak var calibrationProfilesList: NSPopUpButton!
+    
+    internal func fillCalibrationProfilesList() {
+        var profiles = layoutDocument.availableCalibrations.map { url -> String in
+            let fileName = url.lastPathComponent
+            return String(fileName.split(separator: ".")[0])
+        }
+        
+        profiles.insert("No Profile", at: 0)
+        profiles.append("+ New Profile")
+        
+        calibrationProfilesList.removeAllItems()
+        calibrationProfilesList.addItems(withTitles: profiles)
+        
+        calibrationProfilesList.itemArray.first!.isEnabled = false
+    }
+    
+    func selectCalibrationProfile(withName name: String) {
+        calibrationProfilesList.selectItem(withTitle: name)
+        setCalibrationProfile(calibrationProfilesList)
+    }
+    
+    @IBAction func setCalibrationProfile(_ sender: NSPopUpButton) {
+        _controller.setCalibrationProfile(sender)
+    }
+    
 }
 
 extension LayoutWindowController: NSWindowDelegate {
@@ -87,7 +117,7 @@ extension LayoutWindowController: NSWindowDelegate {
             
             if res == .alertFirstButtonReturn {
                 self._waitingToQuit = true
-                self._layoutDocument.save(withDelegate: self, didSave: #selector(self.document(_:didSave:contextInfo:)), contextInfo: nil)
+                self.layoutDocument.save(withDelegate: self, didSave: #selector(self.document(_:didSave:contextInfo:)), contextInfo: nil)
                 return
             }
             

@@ -13,7 +13,7 @@
 #include <map>
 #include <nite2/NiTE.h>
 
-#include "Structs/User.h"
+#include "Structs/PhysicalUser.h"
 
 class PhysicalDevice;
 
@@ -26,7 +26,7 @@ public:
      */
     void onNewFrame(nite::UserTracker &userTracker);
     
-    User * getUsers();
+    PhysicalUser * getUsers();
     
 private:
     /** Be friend with the device class so it can simply set itself as a reference here.
@@ -38,7 +38,7 @@ private:
     PhysicalDevice * _device;
     
     /** All the tracked users */
-    std::map<nite::UserId, User *> _users;
+    std::map<nite::UserId, PhysicalUser *> _users;
     
     /**
      Receive a user frame provided by the user tracker.

@@ -16,14 +16,19 @@ class DataAcquisitionEngine {
     /// Delegate for events listening
     weak var delegate: DataAcquisitionEngineDelegate?
     
+    weak var observer: DataAcquisitionEngineObserver?
+    
     /// Holds the loop for the status fetcher
     internal var _statusFetcherLoop: Repeater?
     
     /// The engine state (internal)
-    internal var _engineStatus: DAEStatus! {
+    internal var _engineStatus: DAEStatus = DAEStatus(deviceCount: 0, _deviceStatus: nil) {
         didSet {
             // Tell the delegate the status has been updated
-            delegate?.dae(self, statusUpdated: self._engineStatus!)
+            delegate?.dae(self, statusUpdated: self._engineStatus)
+            observer?.dae(self, statusUpdated: self._engineStatus)
+            
+//            updateUsers()
         }
     }
     
@@ -34,6 +39,8 @@ class DataAcquisitionEngine {
     // MARK: Engine Lifecycle
     
     func start() {
+        guard _statusFetcherLoop == nil else { return }
+        
         // Init the DAE on the CPP side on another thread
         DispatchQueue.global(qos: .userInitiated).async {
             DAEPrepare();
@@ -48,9 +55,9 @@ class DataAcquisitionEngine {
     ///
     /// - Parameter repeater: The wrepeater
     func fetchStatus(_ repeater: Repeater) {
-        _engineStatus = DAEGetStatus()!.pointee
-        
-        // move the users information from the engine status to the users list
+//        DispatchQueue.main.async {
+            self._engineStatus = DAEGetStatus()!.pointee
+//        }
     }
     
     /// Changes the device status to its next possible state

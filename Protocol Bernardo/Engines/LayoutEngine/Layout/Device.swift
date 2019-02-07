@@ -9,19 +9,21 @@
 import Foundation
 
 class Device: Codable {
+    var uuid: String! = UUID().uuidString
+    
     var name: String = "Device"
     
-    var horizontalFOV: CGFloat = 70.0
+    var horizontalFOV: Double = 70.0
     
-    var minimumCaptationDistance: CGFloat = 50.0
+    var minimumCaptationDistance: Double = 50.0
     
-    var maximumCaptationDistance: CGFloat = 450.0
+    var maximumCaptationDistance: Double = 450.0
     
-    var position = CGPoint(x: 0, y: 0)
+    var position = Point(x: 0, y: 0)
     
-    var orientation: CGFloat = 0.0
+    var orientation: Double = 0.0
     
-    var height: CGFloat = 60.0
+    var height: Double = 60.0
 }
 
 extension Device {
@@ -30,6 +32,7 @@ extension Device {
         
         print(device.position)
         
+        self.uuid = device.uuid
         self.name = device.name
         self.horizontalFOV = device.horizontalFOV
         self.minimumCaptationDistance = device.minimumCaptationDistance

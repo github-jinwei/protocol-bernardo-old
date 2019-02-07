@@ -29,13 +29,13 @@ void UsersTracker::onNewFrame(nite::UserTracker &userTracker) {
     onUserFrame(userFrame);
 }
 
-User * UsersTracker::getUsers() {
+PhysicalUser * UsersTracker::getUsers() {
     // Allocate anough space for all the users
-    User * userList = (User *)malloc(sizeof(User) * _users.size());
+    PhysicalUser * userList = (PhysicalUser *)malloc(sizeof(PhysicalUser) * _users.size());
     
     // For each user, place a reference to it in the array
     int i = 0;
-    for(std::pair<nite::UserId, User *> userReference: _users) {
+    for(std::pair<nite::UserId, PhysicalUser *> userReference: _users) {
         userList[i] = *userReference.second;
         ++i;
     }
@@ -54,7 +54,7 @@ void UsersTracker::onUserFrame(nite::UserTrackerFrameRef * userFrame) {
         // Handle new users
         if(userData->isNew()) {
             // This is a new user, lets register it and start its skeleton tracking
-            User * user = new User();
+            PhysicalUser * user = new PhysicalUser();
             user->userID = userData->getId();
             user->state = UserState::USER_CALIBRATING;
             
@@ -66,7 +66,7 @@ void UsersTracker::onUserFrame(nite::UserTrackerFrameRef * userFrame) {
             continue;
         }
         
-        User * user = _users[userData->getId()];
+        PhysicalUser * user = _users[userData->getId()];
         
         // Handle leaving users
         if(userData->isLost()) {

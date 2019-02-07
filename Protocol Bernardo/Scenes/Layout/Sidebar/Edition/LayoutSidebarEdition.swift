@@ -28,7 +28,6 @@ class LayoutSidebarEdition: NSViewController {
     ///
     /// - Parameter sender:
     @IBAction func addDevice(_ sender: Any) {
-        print()
         canvas?.createDevice()
     }
     

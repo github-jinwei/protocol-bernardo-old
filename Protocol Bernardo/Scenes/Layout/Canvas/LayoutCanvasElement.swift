@@ -53,6 +53,6 @@ extension LayoutCanvasElement {
 extension LayoutCanvasElement {
     /// Gives the highlight color for the current MacOS Style
     internal var _highlightColor: NSColor {
-        return NSColor.selectedMenuItemColor
+        return NSColor.controlAccentColor
     }
 }

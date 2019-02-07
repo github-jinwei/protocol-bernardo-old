@@ -31,7 +31,7 @@ class LayoutCanvasDevice: SKNode {
     
     override var position: CGPoint {
         didSet {
-            device.position = position
+            device.position = Point(position)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -41,7 +41,7 @@ class LayoutCanvasDevice: SKNode {
     /// The device position height.
     var height: CGFloat = 60.0 {
         didSet {
-            device.height = height
+            device.height = Double(height)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -51,8 +51,10 @@ class LayoutCanvasDevice: SKNode {
     /// Orientation of the device along the Z (Vertical) Axis, in degrees
     var orientation: CGFloat = 0 {
         didSet {
-            device.orientation = orientation
+            device.orientation = Double(orientation)
             _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
+            
+            _usersNodesRoot.zRotation = orientation
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -62,7 +64,7 @@ class LayoutCanvasDevice: SKNode {
     /// The horizontal field of view of the device, in degrees
     var horizontalFOV: CGFloat = 70 {
         didSet {
-            device.horizontalFOV = horizontalFOV
+            device.horizontalFOV = Double(horizontalFOV)
             _captationArea.path = captationArea()
             _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
             
@@ -74,7 +76,7 @@ class LayoutCanvasDevice: SKNode {
     /// The minimum distance to be from the device to be``` able to be detected (in cm)
     var minimumCaptationDistance: CGFloat = 50 {
         didSet {
-            device.minimumCaptationDistance = minimumCaptationDistance
+            device.minimumCaptationDistance = Double(minimumCaptationDistance)
             _captationArea.path = captationArea()
             
             // Tell the delegate
@@ -85,7 +87,7 @@ class LayoutCanvasDevice: SKNode {
     /// The maximum distance to be from the device to be able to be detected (in cm)
     var maximumCaptationDistance: CGFloat = 450{
         didSet {
-            device.maximumCaptationDistance = maximumCaptationDistance
+            device.maximumCaptationDistance = Double(maximumCaptationDistance)
             _captationArea.path = captationArea()
             
             // Tell the delegate
@@ -116,6 +118,8 @@ class LayoutCanvasDevice: SKNode {
     
     /// Tell is the device is currently selected
     internal var _isSelected: Bool = false
+    
+    internal var _usersNodesRoot = SKNode()
     
     
     // ////////////////////////////////
@@ -168,12 +172,12 @@ extension LayoutCanvasDevice {
         
         // copy the values from the device to ourselves
         self.name = device.name
-        self.horizontalFOV = device.horizontalFOV
-        self.minimumCaptationDistance = device.minimumCaptationDistance
-        self.maximumCaptationDistance = device.maximumCaptationDistance
-        self.position = device.position
-        self.orientation = device.orientation
-        self.height = device.height
+        self.horizontalFOV = CGFloat(device.horizontalFOV)
+        self.minimumCaptationDistance = CGFloat(device.minimumCaptationDistance)
+        self.maximumCaptationDistance = CGFloat(device.maximumCaptationDistance)
+        self.position = CGPoint(device.position)
+        self.orientation = CGFloat(device.orientation)
+        self.height = CGFloat(device.height)
     
         // Set up the node
         isUserInteractionEnabled = false
@@ -214,7 +218,7 @@ extension LayoutCanvasDevice {
     internal func duplicate() {
         let newDevice = Device(from: device)
         
-        _canvas._layout.devices.append(newDevice)
+        _canvas.layout.devices.append(newDevice)
         _canvas.createNodeForExistingDevice(newDevice)
     }
 }

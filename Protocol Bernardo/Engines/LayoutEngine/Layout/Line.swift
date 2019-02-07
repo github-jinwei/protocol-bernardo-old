@@ -9,13 +9,13 @@
 import Foundation
 
 class Line: Codable {
-    var size: CGFloat = 100.0
+    var size: Double = 100.0
     
-    var weight: CGFloat = 1.0
+    var weight: Double = 1.0
     
-    var position = CGPoint(x: 0, y: 0)
+    var position = Point(x: 0.0, y: 0.0)
     
-    var orientation: CGFloat = 0.0
+    var orientation: Double = 0.0
 }
 
 

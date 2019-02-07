@@ -1,5 +1,5 @@
 //
-//  User.h
+//  PhysicalUser.h
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-25.
@@ -15,7 +15,7 @@
 /**
  Represent a user tracked by a device
  */
-struct User {
+struct PhysicalUser {
     /** The userID for the user, given by NiTE */
     short int /* nite::UserId */ userID;
     

@@ -19,7 +19,29 @@ class LayoutSplitViewController: NSSplitViewController {
     @IBOutlet weak var canvasSplitViewItem: NSSplitViewItem!
     
     /// The sidebar split view item
-    @IBOutlet weak var sidebarSplitViewItem: NSSplitViewItem!
+    @IBOutlet weak var sidebarTabViewItem: NSSplitViewItem!
+    
+    /// The layout document
+    var layoutDocument: LayoutDocument {
+        return window.layoutDocument
+    }
+    
+    /// The opened calibration profile, if any
+    var _calibrationDocument: LayoutCalibrationDocument?
+    
+    /// The opened calibration profile, if any
+    var calibrationDocument: LayoutCalibrationDocument? {
+        return _calibrationDocument
+    }
+    
+    
+    // ///////////////////////////////
+    // MARK: - Convenience properties
+    
+    /// Convenient access to the tab view controller
+    internal var _sidebarTabViewController: NSTabViewController {
+        return sidebarTabViewItem.viewController as! NSTabViewController
+    }
     
     /// Convenient access to the canvas
     internal var _canvas: LayoutCanvas {
@@ -28,23 +50,63 @@ class LayoutSplitViewController: NSSplitViewController {
     
     /// Convenient access to the sidebar
     internal var _sidebar: LayoutSidebar {
-        return sidebarSplitViewItem.viewController as! LayoutSidebar
+        return (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems[0].viewController as! LayoutSidebar
     }
+    
+    /// Convenient access to the layout storyboard
+    internal var _storyboard: NSStoryboard {
+        return NSStoryboard(name: "Layout", bundle: nil)
+    }
+    
     
     // //////////////////////
     // MARK: - View Lifecycle
     
-    override func viewDidAppear() {
-        _canvas.delegate = self
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        _sidebar.canvas = _canvas
+        sidebarTabViewItem.minimumThickness = 252
+        sidebarTabViewItem.maximumThickness = 252
     }
     
-    /// Set the current layout
-    ///
-    /// - Parameter layout:
-    func setLayout(_ layout: Layout) {
-        _canvas.setLayout(layout)
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        setToEditionConfiguration()
+        
+        _canvas.layout = (window.document as! LayoutDocument).layout
+        _canvas.delegate = self
+    }
+    
+    
+    // ///////////////////////////////
+    // MARK: - Calibration Profile
+    
+    func setCalibrationProfile(_ sender: NSPopUpButton) {
+        // Ignore if its the first element
+        if sender.indexOfSelectedItem == 0 { return }
+        
+        guard sender.indexOfSelectedItem + 1 == sender.itemArray.count else {
+            // The user selected an existing profile, let's open it
+            _calibrationDocument = layoutDocument.openCalibrationProfile(named: sender.titleOfSelectedItem!)
+            return
+        }
+        
+        // Asks the user to name the new profile
+        let sheet = self.storyboard!.instantiateController(withIdentifier: "newCalibrationProfileSheet") as! NewCalibrationProfilePanel
+        sheet.reference = self
+        
+        self.presentAsSheet(sheet)
+    }
+    
+    func createCalibrationProfile(named name: String) {
+        _calibrationDocument = layoutDocument.makeCalibrationProfile(withName: name)
+        
+        // Refresh the list of available profiles
+        window.fillCalibrationProfilesList()
+        
+        // And select the newly created profile
+        window.selectCalibrationProfile(withName: name)
     }
     
     
@@ -53,11 +115,23 @@ class LayoutSplitViewController: NSSplitViewController {
     
     /// Set the layout window configuration to Edition
     func setToEditionConfiguration() {
+        
+        _sidebarTabViewController.selectedTabViewItemIndex = 0
+        
+        _sidebar.canvas = _canvas
         _canvas.editable = true
     }
     
     /// Set the layout window configuration to Calibration
     func setToCalibrationConfiguration() {
+        
+        _sidebarTabViewController.selectedTabViewItemIndex = 1
+        
+        _sidebar.canvas = _canvas
+        let sidebar = _sidebarTabViewController.tabViewItems[1].viewController as! LayoutSidebarCalibration
+        sidebar.calibrationDocument = calibrationDocument
+        sidebar.layout = layoutDocument.layout
+        
         _canvas.editable = false
     }
     

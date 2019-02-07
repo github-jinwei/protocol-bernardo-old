@@ -38,7 +38,7 @@ class PBDeviceDetails: NSViewController {
         // Update the view values
         deviceNameField.stringValue = device.name
         serialField.stringValue = device.serial
-        deviceStateField.stringValue = refRow.getStateLabel(device.state)
+        deviceStateField.stringValue = device.stateLabel
         usersCountField.intValue = Int32(Int(device.userCount))
         
         update(users: device.users)
@@ -47,7 +47,7 @@ class PBDeviceDetails: NSViewController {
     /// Update the users views
     ///
     /// - Parameter users: list of tracked
-    internal func update(users: [User]) {
+    internal func update(users: [PhysicalUser]) {
         // Update tracked users views values
         var receivedIDs = [Int16]()
         

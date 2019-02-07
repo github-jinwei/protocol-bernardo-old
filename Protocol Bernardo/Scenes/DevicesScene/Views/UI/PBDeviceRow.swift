@@ -67,7 +67,7 @@ class PBDeviceRow: NSView {
         // Update the values
         deviceNameField.stringValue = device.name
         serialField.stringValue = device.serial
-        statusField.stringValue = getStateLabel(device.state)
+        statusField.stringValue = device.stateLabel
         
         // Update the button value and state based on the device's state
         switch device.state.rawValue {
@@ -91,20 +91,5 @@ class PBDeviceRow: NSView {
         
         // Tell the popover to update its values if it exists
         deviceDetailsPopover?.controller.update(deviceValues: device)
-    }
-    
-    /// Gets the label for the device state
-    ///
-    /// - Parameter state: State of the device
-    /// - Returns: Label for the state
-    func getStateLabel(_ state: DeviceState) -> String {
-        switch state.rawValue {
-        case 1: return "Idle"
-        case 2: return "Connecting"
-        case 3: return "Ready"
-        case 4: return "Active"
-        case 5: return "Closing"
-        default: return "Errored"
-        }
     }
 }

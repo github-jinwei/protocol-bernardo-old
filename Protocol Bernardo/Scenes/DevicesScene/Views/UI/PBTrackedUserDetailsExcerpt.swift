@@ -19,7 +19,7 @@ class PBTrackedUserDetailsExcerpt: NSView {
     /// Update the user values
     ///
     /// - Parameter user:
-    func update(userValues user: User) {
+    func update(userValues user: PhysicalUser) {
         userIDField.stringValue = "User #\(user.userID)"
         trackingStatusField.stringValue = getLabel(forState: user.state)
     
