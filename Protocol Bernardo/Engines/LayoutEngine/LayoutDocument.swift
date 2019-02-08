@@ -12,70 +12,73 @@ class LayoutDocument: NSDocument {
     /// The document delegate
     weak var delegate: NSDocumentDelegate?
     
-    /// The name of the devices layout stored in the bundle
-    internal let _layoutFileName = "layout.pbdeviceslayout"
-    
     /// The layout
-    internal var _layout:Layout = Layout()
+    var layout:Layout = Layout()
     
-    /// The layout
-    var layout: Layout {
-        return _layout
-    }
+    /// The calibration profiles
+    var calibrationsProfiles: [String: LayoutCalibration] = [:]
     
     /// The window controller managed by this document
     internal var _layoutWindow: LayoutWindowController! = nil
+    
+    func markAsEdited() {
+        _layoutWindow?.window!.isDocumentEdited = true
+    }
+    
+    var autosavesInPlace = true
 }
 
 // MARK: - Document IO
 extension LayoutDocument {
-    override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
-        // Make sure we selected a package
-        guard fileWrapper.isDirectory else {
-            Swift.print("Invalid Selection")
-            throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        }
+    /// Write the content of the package
+    ///
+    /// - Parameter typeName: _
+    /// - Returns: The FileWrapper to write
+    /// - Throws: _
+    override func fileWrapper(ofType typeName: String) throws -> FileWrapper {
+        let rootDir = FileWrapper(directoryWithFileWrappers: [:])
         
-        // Make sure there is a Layout File to read from
-        let hasLayoutFile: Bool = fileWrapper.fileWrappers!.contains {$0.key == _layoutFileName}
+        // Add the layout file wrapper
+        let layoutData = try! JSONEncoder().encode([layout])
+        rootDir.addRegularFile(withContents: layoutData, preferredFilename: "layout.pbdeviceslayout")
         
-        guard hasLayoutFile else {
-            Swift.print("Invalid PBLayout")
-            throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        }
-        
-        // Load the content of the layout and store it
-        let layoutData = fileWrapper.fileWrappers![_layoutFileName]!.regularFileContents!
-        
-        _layout = try! JSONDecoder().decode([Layout].self,
-                                            from: layoutData)[0]
-    }
-    
-    
-    override func write(to url: URL, ofType typeName: String) throws {
-        // Start by making sure our package directory exist
-        Swift.print(url)
-        
-        if !FileManager.default.fileExists(atPath: url.absoluteString) {
-            do {
-                try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                NSAlert(error: error).runModal()
-                return
-            }
-        }
-            
-        // Now save the layout in it
-        do {
-            let layoutFileURL = url.appendingPathComponent("layout.pbdeviceslayout")
-            let layoutData = try JSONEncoder().encode([_layout])
-            try layoutData.write(to: layoutFileURL, options: [])
-        } catch {
-            NSAlert(error: error).runModal()
-            return
+        // Add the calibrations profiles files wrapper
+        calibrationsProfiles.forEach { name, profile in
+            let calibrationData = try! JSONEncoder().encode([profile])
+            rootDir.addRegularFile(withContents: calibrationData, preferredFilename: "\(name).pblayoutcalibration")
         }
         
         delegate?.document(self, didSave: true, contextInfo: nil)
+        
+        return rootDir
+    }
+    
+    /// Read the content of the given filewrapper into memory
+    ///
+    /// - Parameters:
+    ///   - fileWrapper: FileWrapper of an existing package
+    ///   - typeName: _
+    /// - Throws: _
+    override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
+        // Parse all the files in the directory and load or store them based on their extension
+        fileWrapper.fileWrappers?.forEach { name, wrapper in
+            
+            switch name.fileExtension {
+            // Layout file
+            case "pbdeviceslayout":
+                let layoutData = wrapper.regularFileContents!
+                layout = try! JSONDecoder().decode([Layout].self, from: layoutData)[0]
+                
+            // Calibration file
+            case "pblayoutcalibration":
+                let calibrationData = wrapper.regularFileContents!
+                let calibrationProfile = try! JSONDecoder().decode([LayoutCalibration].self, from: calibrationData)[0]
+                calibrationsProfiles[name.fileNameWithoutExtension] = calibrationProfile
+                
+            // Unknown file extension, ignore
+            default: return
+            }
+        }
     }
 }
 
@@ -95,37 +98,10 @@ extension LayoutDocument {
 // ///////////////////
 // MARK: - Calibration
 extension LayoutDocument{
-    var availableCalibrations: [URL] {
-        guard let url = self.fileURL else {
-            return []
-        }
+    func makeCalibrationProfile(withName name: String) -> LayoutCalibration {
+        calibrationsProfiles[name] = LayoutCalibration(name: name)
+        markAsEdited()
         
-        let packageFiles = try! FileManager().contentsOfDirectory(at: url, includingPropertiesForKeys: [], options: [.skipsHiddenFiles, .skipsPackageDescendants, .skipsSubdirectoryDescendants])
-        
-        let calibrationFiles = packageFiles.filter { $0.pathExtension == "pblayoutcalibration" }
-        
-        return calibrationFiles
-    }
-    
-    func makeCalibrationProfile(withName name: String) -> LayoutCalibrationDocument {
-        let calibrationDocument = LayoutCalibrationDocument()
-        calibrationDocument.setLayoutDocument(self)
-        
-        let url = self.fileURL?.appendingPathComponent("\(name).pblayoutcalibration")
-        calibrationDocument.fileURL = url
-        
-        try! calibrationDocument.write(to: calibrationDocument.fileURL!, ofType: "com.prisme.pb.layout.calibration")
-        
-        return calibrationDocument
-    }
-    
-    /// Open the calibration profile for the given name (with extension) inside
-    /// the layout package
-    ///
-    /// - Parameter name: Name of the calibration profile
-    /// - Returns: The calibration profile
-    func openCalibrationProfile(named name: String) -> LayoutCalibrationDocument {
-        let url = self.fileURL!.appendingPathComponent("\(name).pblayoutcalibration")
-        return try! LayoutCalibrationDocument(contentsOf: url, ofType: "com.prisme.pb.layout.calibration")
+        return calibrationsProfiles[name]!
     }
 }

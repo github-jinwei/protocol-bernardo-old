@@ -69,12 +69,8 @@ class LayoutWindowController: NSWindowController {
     @IBOutlet weak var calibrationProfilesList: NSPopUpButton!
     
     internal func fillCalibrationProfilesList() {
-        var profiles = layoutDocument.availableCalibrations.map { url -> String in
-            let fileName = url.lastPathComponent
-            return String(fileName.split(separator: ".")[0])
-        }
-        
-        profiles.insert("No Profile", at: 0)
+        var profiles: [String] = ["No Profile"]
+        layoutDocument.calibrationsProfiles.forEach { profiles.append($0.key) }
         profiles.append("+ New Profile")
         
         calibrationProfilesList.removeAllItems()

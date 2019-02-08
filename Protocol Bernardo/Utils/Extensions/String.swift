@@ -15,4 +15,12 @@ extension String {
     func CString() -> UnsafePointer<Int8> {
         return (self as NSString).utf8String!
     }
+    
+    var fileExtension: String {
+        return String(self.split(separator: ".").last!)
+    }
+    
+    var fileNameWithoutExtension: String {
+        return String(self.split(separator: ".").first!)
+    }
 }

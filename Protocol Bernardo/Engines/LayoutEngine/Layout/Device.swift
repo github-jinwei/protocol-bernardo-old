@@ -30,9 +30,7 @@ extension Device {
     convenience init(from device: Device) {
         self.init()
         
-        print(device.position)
-        
-        self.uuid = device.uuid
+        self.uuid = UUID().uuidString
         self.name = device.name
         self.horizontalFOV = device.horizontalFOV
         self.minimumCaptationDistance = device.minimumCaptationDistance
@@ -40,5 +38,7 @@ extension Device {
         self.position = device.position
         self.orientation = device.orientation
         self.height = device.height
+        
+        print(device.uuid, self.uuid)
     }
 }

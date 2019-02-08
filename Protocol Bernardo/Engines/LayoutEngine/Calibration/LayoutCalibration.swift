@@ -9,5 +9,11 @@
 import Foundation
 
 class LayoutCalibration: Codable {
+    var name: String
+    
     var calibratedDevices: [String: CalibratedDevice] = [:]
+
+    init(name: String) {
+        self.name = name
+    }
 }

@@ -46,8 +46,7 @@
 		3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */; };
 		3989EAD722037C3F005CF113 /* NSStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD622037C3F005CF113 /* NSStepper.swift */; };
 		3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */; };
-		3997742E220B93CB00ED4B93 /* LayoutCalibrationDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742D220B93CB00ED4B93 /* LayoutCalibrationDocument.swift */; };
-		39977430220B94FB00ED4B93 /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* Calibration.swift */; };
+		39977430220B94FB00ED4B93 /* LayoutCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* LayoutCalibration.swift */; };
 		39977433220B955500ED4B93 /* CalibratedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977432220B955500ED4B93 /* CalibratedDevice.swift */; };
 		39977435220B961B00ED4B93 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977434220B961B00ED4B93 /* Point.swift */; };
 		39977437220B977800ED4B93 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977436220B977800ED4B93 /* CGPoint.swift */; };
@@ -304,8 +303,7 @@
 		398B660C21F653A800F6D1FC /* libfreenect2.0.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect2.0.2.0.dylib; path = ../../../../../usr/local/lib/libfreenect2.0.2.0.dylib; sourceTree = "<group>"; };
 		398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Protocol Bernardo.entitlements"; sourceTree = "<group>"; };
 		3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutCalibrationIcon.icns; sourceTree = "<group>"; };
-		3997742D220B93CB00ED4B93 /* LayoutCalibrationDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibrationDocument.swift; sourceTree = "<group>"; };
-		3997742F220B94FB00ED4B93 /* Calibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
+		3997742F220B94FB00ED4B93 /* LayoutCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibration.swift; sourceTree = "<group>"; };
 		39977432220B955500ED4B93 /* CalibratedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibratedDevice.swift; sourceTree = "<group>"; };
 		39977434220B961B00ED4B93 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		39977436220B977800ED4B93 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 				3997742A220B91C000ED4B93 /* Calibration */,
 				393B1ECC2204DCD700BC54D3 /* Layout */,
 				393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */,
-				3997742D220B93CB00ED4B93 /* LayoutCalibrationDocument.swift */,
 				39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */,
 			);
 			path = LayoutEngine;
@@ -696,7 +693,7 @@
 		3997742A220B91C000ED4B93 /* Calibration */ = {
 			isa = PBXGroup;
 			children = (
-				3997742F220B94FB00ED4B93 /* Calibration.swift */,
+				3997742F220B94FB00ED4B93 /* LayoutCalibration.swift */,
 				39977432220B955500ED4B93 /* CalibratedDevice.swift */,
 			);
 			path = Calibration;
@@ -982,7 +979,7 @@
 				39C1E8FF22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift in Sources */,
 				390D0DB521F4FECF0032CA23 /* DevicesScene.swift in Sources */,
 				39C1E8FB2209351900F53AC2 /* Scene.swift in Sources */,
-				39977430220B94FB00ED4B93 /* Calibration.swift in Sources */,
+				39977430220B94FB00ED4B93 /* LayoutCalibration.swift in Sources */,
 				397195C62200D38000F92C5C /* Keycode.swift in Sources */,
 				39A1E70E21FE7892003162FE /* LayoutCanvasElement.swift in Sources */,
 				3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */,
@@ -1001,7 +998,6 @@
 				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
-				3997742E220B93CB00ED4B93 /* LayoutCalibrationDocument.swift in Sources */,
 				39B5576222000FC70021BFDA /* NSColor.swift in Sources */,
 				396DDFC921F4285000628070 /* AppDelegate.swift in Sources */,
 				39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */,

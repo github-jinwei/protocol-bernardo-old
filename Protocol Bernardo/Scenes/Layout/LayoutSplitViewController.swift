@@ -27,12 +27,7 @@ class LayoutSplitViewController: NSSplitViewController {
     }
     
     /// The opened calibration profile, if any
-    var _calibrationDocument: LayoutCalibrationDocument?
-    
-    /// The opened calibration profile, if any
-    var calibrationDocument: LayoutCalibrationDocument? {
-        return _calibrationDocument
-    }
+    var calibrationProfile: LayoutCalibration?
     
     
     // ///////////////////////////////
@@ -88,7 +83,7 @@ class LayoutSplitViewController: NSSplitViewController {
         
         guard sender.indexOfSelectedItem + 1 == sender.itemArray.count else {
             // The user selected an existing profile, let's open it
-            _calibrationDocument = layoutDocument.openCalibrationProfile(named: sender.titleOfSelectedItem!)
+            calibrationProfile = layoutDocument.calibrationsProfiles[sender.titleOfSelectedItem!]!
             return
         }
         
@@ -100,7 +95,7 @@ class LayoutSplitViewController: NSSplitViewController {
     }
     
     func createCalibrationProfile(named name: String) {
-        _calibrationDocument = layoutDocument.makeCalibrationProfile(withName: name)
+        calibrationProfile = layoutDocument.makeCalibrationProfile(withName: name)
         
         // Refresh the list of available profiles
         window.fillCalibrationProfilesList()
@@ -129,8 +124,9 @@ class LayoutSplitViewController: NSSplitViewController {
         
         _sidebar.canvas = _canvas
         let sidebar = _sidebarTabViewController.tabViewItems[1].viewController as! LayoutSidebarCalibration
-        sidebar.calibrationDocument = calibrationDocument
+        sidebar.profile = calibrationProfile
         sidebar.layout = layoutDocument.layout
+        sidebar.document = layoutDocument
         
         _canvas.editable = false
     }

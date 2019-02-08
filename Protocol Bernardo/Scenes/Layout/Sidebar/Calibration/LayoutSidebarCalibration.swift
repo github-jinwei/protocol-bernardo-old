@@ -12,14 +12,13 @@ class LayoutSidebarCalibration: NSViewController {
     // //////////////////
     // MARK: - References
     
+    weak var document: LayoutDocument?
+    
     /// Reference to the layout
     weak var layout: Layout!
     
-    /// Reference to the calibration document currently open,
-    /// might be nil
-    weak var calibrationDocument: LayoutCalibrationDocument!
-    
-    var profile: LayoutCalibration { return calibrationDocument.calibration }
+    /// Reference to the calibration profile currently open, might be nil
+    weak var profile: LayoutCalibration!
     
     /// Reference to the canvas
     weak var canvas: LayoutCanvas!
@@ -73,13 +72,13 @@ class LayoutSidebarCalibration: NSViewController {
         super.viewDidAppear()
         clearAndDisableAll()
         
-        if calibrationDocument == nil {
+        if profile == nil {
             profileNameField.stringValue = "No Profile"
             return
         }
         
         // Set the profile calibration name
-        profileNameField.stringValue = String(calibrationDocument.displayName.split(separator: ".")[0]).capitalized
+        profileNameField.stringValue = profile.name.capitalized
 
         // Fill the devices list
         devicesList.removeAllItems()
@@ -88,8 +87,6 @@ class LayoutSidebarCalibration: NSViewController {
             devicesList.addItem(withTitle: device.name)
         }
         devicesList.isEnabled = true
-//
-//        setDeviceToCalibrate(devicesList)
     }
     
     @IBAction func openDevices(_ sender: Any) {
@@ -121,6 +118,7 @@ extension LayoutSidebarCalibration {
         
         // Get the device calibration
         let calibratedDevice = profile.calibratedDevices[deviceUUID]!
+        calibratedDevice.document = document
         
         // Reset the physical devices list
         physicalDevicesList.removeAllItems()
@@ -131,6 +129,9 @@ extension LayoutSidebarCalibration {
         App.dae.status.devices.forEach { serial, device in
             physicalDevicesList.addItem(withTitle: serial)
         }
+        
+        // And activate it
+        physicalDevicesList.isEnabled = true
         
         // And select the physical device if one is already associated
         if calibratedDevice.physicalDeviceSerial != nil {
@@ -149,8 +150,11 @@ extension LayoutSidebarCalibration {
         // Make sure the placeholder isn't the one selected
         guard physicalDevicesList.indexOfSelectedItem > 0 else { return }
         
-        // Get the calibrated device
-        let calibratedDevice = profile.calibratedDevices[devicesList.titleOfSelectedItem!]!
+        // Get the device ant the calibrated device
+        let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
+        let calibratedDevice = profile.calibratedDevices[device.uuid]!
+        
+        calibratedDevice.physicalDeviceSerial = physicalDevicesList.titleOfSelectedItem!
         
         // Activate the isReference toggle and set its value
         referenceDeviceToggle.isEnabled = true
@@ -159,15 +163,38 @@ extension LayoutSidebarCalibration {
         // If this device is marked as reference, do nothing more
         guard referenceDeviceToggle.state == .off else { return }
         
+        setReferenceState(referenceDeviceToggle)
+    }
+    
+    @IBAction func setReferenceState(_ sender: NSButton) {
+        clearAndDisableReferencePanel()
+        clearAndDisableCalibrationPanel()
+        
+        // Get the device and the calibrated device
+        let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
+        let calibratedDevice = profile.calibratedDevices[device.uuid]!
+        
+        calibratedDevice.isReference = referenceDeviceToggle.state == .on
+        
+        // If this device is marked as reference, do nothing more
+        guard referenceDeviceToggle.state == .off else { return }
+        
+        referenceDevicesList.removeAllItems()
+        referenceDevicesList.addItem(withTitle: "---")
+        
+        referenceDevicesList.isEnabled = true
+        
         // Fill the calibrate against list
         layout.devices.forEach { device in
             guard device.uuid != calibratedDevice.layoutDeviceUUID else { return }
             
             referenceDevicesList.addItem(withTitle: device.name)
             
-            if !profile.calibratedDevices[device.uuid]!.isReference &&
-                !profile.calibratedDevices[device.uuid]!.isCalibrated {
+            let cDevice = profile.calibratedDevices[device.uuid]
+            
+            if cDevice == nil || (!cDevice!.isReference && !cDevice!.isCalibrated) {
                 referenceDevicesList.itemArray.last!.isEnabled = false
+                referenceDevicesList.itemArray.last!.title += " (Not Calibrated)"
             }
         }
     }
