@@ -108,6 +108,7 @@ extension LayoutSidebarCalibration {
         
         /// Get the device uuid
         let deviceUUID = layout.devices[devicesList.indexOfSelectedItem - 1].uuid!
+        canvas.selectDevice(withName: devicesList.titleOfSelectedItem!)
         
         /// If this device isn't part of the calibration profile, add it
         if !profile.calibratedDevices.keys.contains(deviceUUID) {
@@ -219,6 +220,18 @@ extension LayoutSidebarCalibration: DataAcquisitionEngineObserver {
 }
 
 
+extension LayoutSidebarCalibration: LayoutSidebar {
+    func setSelectedElement(_ element: LayoutCanvasElement?) {
+        guard let device = element as? LayoutCanvasDevice else { return }
+        
+        guard device.name! != devicesList.titleOfSelectedItem! else { return }
+        
+        devicesList.selectItem(withTitle: device.name!)
+        setDeviceToCalibrate(devicesList)
+    }
+}
+
+
 // /////////////////
 // MARK: - Clearing
 extension LayoutSidebarCalibration {
@@ -232,7 +245,7 @@ extension LayoutSidebarCalibration {
         physicalDevicesList.removeAllItems()
         physicalDevicesList.isEnabled = false
         
-        physicalDeviceStatus.stringValue = ""
+        physicalDeviceStatus.stringValue = "-"
         
         referenceDeviceToggle.state = .off
         referenceDeviceToggle.isEnabled = false
@@ -242,15 +255,15 @@ extension LayoutSidebarCalibration {
         referenceDevicesList.removeAllItems()
         referenceDevicesList.isEnabled = false
         
-        referenceDeviceStatus.stringValue = ""
+        referenceDeviceStatus.stringValue = "-"
     }
     
     func clearAndDisableCalibrationPanel() {
-        deltaXLabel.stringValue = ""
-        deltaYLabel.stringValue = ""
-        deltaHeightLabel.stringValue = ""
-        deltaOrientationLabel.stringValue = ""
+        deltaXLabel.stringValue = "-"
+        deltaYLabel.stringValue = "-"
+        deltaHeightLabel.stringValue = "-"
+        deltaOrientationLabel.stringValue = "-"
         
-        calibrationStatus.stringValue = ""
+        calibrationStatus.stringValue = "-"
     }
 }

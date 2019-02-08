@@ -41,13 +41,13 @@ class LayoutCanvas: NSViewController {
     var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
     
     // List of all the frontElements nodes in the scene
-    var frontElements = [LayoutCanvasElement]()
+    var frontElements = [LayoutCanvasDevice]()
     
     // List of all the backElementlements nodes in the scene
     var backElements = [LayoutCanvasElement]()
     
     /// The currently selected node, might be null
-    weak var selectedNode: LayoutCanvasElement? {
+    var selectedNode: LayoutCanvasElement? {
         willSet(node) {
             if selectedNode === node { return }
             
@@ -94,6 +94,11 @@ extension LayoutCanvas {
         layout.decorations.forEach {
             createNodeForExistingLine($0)
         }
+    }
+    
+    func selectDevice(withName deviceName: String) {
+        let deviceNode = frontElements.filter({ $0.name! == deviceName }).first
+        deviceNode?.markAsSelected()
     }
 }
 

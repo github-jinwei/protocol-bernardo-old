@@ -45,7 +45,8 @@ class LayoutSplitViewController: NSSplitViewController {
     
     /// Convenient access to the sidebar
     internal var _sidebar: LayoutSidebar {
-        return (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems[0].viewController as! LayoutSidebar
+        let tabIndex = (sidebarTabViewItem.viewController as! NSTabViewController).selectedTabViewItemIndex
+        return (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems[tabIndex].viewController as! LayoutSidebar
     }
     
     /// Convenient access to the layout storyboard

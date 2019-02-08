@@ -21,6 +21,10 @@ class CalibratedDevice: Codable {
         didSet { document?.markAsEdited() }
     }
     
+    var referenceDeviceUUID: String? {
+        didSet { document?.markAsEdited() }
+    }
+    
     var positionDelta = Point(x: 0.0, y: 0.0) {
         didSet { document?.markAsEdited() }
     }

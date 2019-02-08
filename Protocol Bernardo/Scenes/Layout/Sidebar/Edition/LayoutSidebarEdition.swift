@@ -15,7 +15,7 @@ class LayoutSidebarEdition: NSViewController {
     // MARK: - Properties
     
     /// Reference to the LayoutEditor
-    weak var canvas: LayoutCanvas?
+    weak var canvas: LayoutCanvas!
 
     /// The view holding an element parameters view
     @IBOutlet weak var parametersViewHolder: NSView!

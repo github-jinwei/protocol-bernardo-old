@@ -9,7 +9,7 @@
 import Foundation
 
 protocol LayoutSidebar: AnyObject {
-    var canvas: LayoutCanvas? { get set }
+    var canvas: LayoutCanvas! { get set }
     
     /// Used to tell the sidebar that a new element has been selected
     ///
