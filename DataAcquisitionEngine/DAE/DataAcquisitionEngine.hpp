@@ -13,6 +13,8 @@
 
 #include "DAEStatus.h"
 #include "PhysicalDevice.hpp"
+#include "DeviceConnectionListener.hpp"
+#include "DeviceDisconnectionListener.hpp"
 
 class DataAcquisitionEngine {
 public:
@@ -38,6 +40,20 @@ public:
      Parse for any new devices connected
      */
     void parseForDevices();
+    
+    /**
+     Called by the deviceConnectionListener everytime a device is connected
+
+     @param deviceInfo The connected device info
+     */
+    void onNewDevice(const openni::DeviceInfo * deviceInfo);
+    
+    /**
+     Called by the deviceDisconnectionListener everytime a device is disconnected
+     
+     @param deviceInfo The disconnected device info
+     */
+    void onDeviceDisconnected(const openni::DeviceInfo * deviceInfo);
     
     /**
      Open the connection with the device specified
@@ -78,13 +94,26 @@ private:
     
     /** All the available devices */
     std::map<std::string, PhysicalDevice *> _devices;
+
+    /** New device connection listener */
+    DeviceConnectionListener _connectionListener;
+    
+    /** Device disconnection listener */
+    DeviceDisconnectionListener _disconnectionListener;
+    
+    /**
+     Extract the serial of a device from its URI
+
+     @param deviceInfo DeviceInfo for the device as given by OpenNI
+     @return The device's serial
+     */
+    std::string getDeviceSerial(const openni::DeviceInfo * deviceInfo);
 };
 
 extern "C" {
     struct DAEStatus * DAEGetStatus();
 
     void DAEPrepare();
-    void DAEParseForDevices();
     void DAEConnectToDevice(const char * c_serial);
     void DAESetDeviceActive(const char * c_serial);
     void DAESetDeviceIdle(const char * c_serial);

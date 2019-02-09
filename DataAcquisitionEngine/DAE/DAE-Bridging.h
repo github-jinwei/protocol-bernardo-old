@@ -14,7 +14,6 @@
 struct DAEStatus * DAEGetStatus();
 
 void DAEPrepare();
-void DAEParseForDevices();
 void DAEConnectToDevice(const char * c_serial);
 void DAESetDeviceActive(const char * c_serial);
 void DAESetDeviceIdle(const char * c_serial);

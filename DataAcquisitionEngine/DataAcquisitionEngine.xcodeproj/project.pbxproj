@@ -30,6 +30,10 @@
 		39DACC19220CBF95002E97F8 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DACC16220CBF95002E97F8 /* libopencv_core.4.0.1.dylib */; };
 		39DACC1A220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DACC17220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib */; };
 		39DACC1B220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DACC18220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib */; };
+		39DACC23220F4613002E97F8 /* DeviceConnectionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC21220F4613002E97F8 /* DeviceConnectionListener.cpp */; };
+		39DACC24220F4613002E97F8 /* DeviceConnectionListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39DACC22220F4613002E97F8 /* DeviceConnectionListener.hpp */; };
+		39DACC2B220F496A002E97F8 /* DeviceDisconnectionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC29220F4969002E97F8 /* DeviceDisconnectionListener.cpp */; };
+		39DACC2C220F496A002E97F8 /* DeviceDisconnectionListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39DACC2A220F4969002E97F8 /* DeviceDisconnectionListener.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +63,10 @@
 		39DACC16220CBF95002E97F8 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.4.0.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
 		39DACC17220CBF95002E97F8 /* libopencv_highgui.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.4.0.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.4.0.1.dylib; sourceTree = "<group>"; };
 		39DACC18220CBF95002E97F8 /* libopencv_imgproc.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.4.0.1.dylib; path = ../../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.4.0.1.dylib; sourceTree = "<group>"; };
+		39DACC21220F4613002E97F8 /* DeviceConnectionListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceConnectionListener.cpp; path = DAE/DeviceConnectionListener.cpp; sourceTree = "<group>"; };
+		39DACC22220F4613002E97F8 /* DeviceConnectionListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = DeviceConnectionListener.hpp; path = DAE/DeviceConnectionListener.hpp; sourceTree = "<group>"; };
+		39DACC29220F4969002E97F8 /* DeviceDisconnectionListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeviceDisconnectionListener.cpp; path = DAE/DeviceDisconnectionListener.cpp; sourceTree = "<group>"; };
+		39DACC2A220F4969002E97F8 /* DeviceDisconnectionListener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceDisconnectionListener.hpp; path = DAE/DeviceDisconnectionListener.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,18 +119,22 @@
 		397B63BD21FD291000A71E58 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				397B63BF21FD294D00A71E58 /* App.hpp */,
 				397B63C721FD29A300A71E58 /* DAE-Bridging.h */,
 				397B63C621FD29A300A71E58 /* DataAcquisitionEngine.cpp */,
 				397B63C521FD29A300A71E58 /* DataAcquisitionEngine.hpp */,
-				397B63C421FD29A300A71E58 /* PhysicalDevice.cpp */,
-				397B63D421FD29A300A71E58 /* PhysicalDevice.hpp */,
+				39DACC21220F4613002E97F8 /* DeviceConnectionListener.cpp */,
+				39DACC22220F4613002E97F8 /* DeviceConnectionListener.hpp */,
+				39DACC29220F4969002E97F8 /* DeviceDisconnectionListener.cpp */,
+				39DACC2A220F4969002E97F8 /* DeviceDisconnectionListener.hpp */,
 				397B63C921FD29A300A71E58 /* Enums */,
 				397B63C321FD29A300A71E58 /* FrameListener.cpp */,
 				397B63C821FD29A300A71E58 /* FrameListener.hpp */,
+				397B63C421FD29A300A71E58 /* PhysicalDevice.cpp */,
+				397B63D421FD29A300A71E58 /* PhysicalDevice.hpp */,
 				397B63CC21FD29A300A71E58 /* Structs */,
 				397B63C121FD29A300A71E58 /* UsersTracker.cpp */,
 				397B63D321FD29A300A71E58 /* UsersTracker.hpp */,
-				397B63BF21FD294D00A71E58 /* App.hpp */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -163,11 +175,13 @@
 				397B63E621FD29A300A71E58 /* PhysicalDevice.hpp in Headers */,
 				397B63DC21FD29A300A71E58 /* FrameListener.hpp in Headers */,
 				397B63DD21FD29A300A71E58 /* DeviceState.h in Headers */,
+				39DACC24220F4613002E97F8 /* DeviceConnectionListener.hpp in Headers */,
 				397B63E121FD29A300A71E58 /* Skeleton.h in Headers */,
 				397B63E421FD29A300A71E58 /* Position.h in Headers */,
 				397B63DF21FD29A300A71E58 /* Joint.h in Headers */,
 				397B63E221FD29A300A71E58 /* DAEStatus.h in Headers */,
 				397B63D921FD29A300A71E58 /* DataAcquisitionEngine.hpp in Headers */,
+				39DACC2C220F496A002E97F8 /* DeviceDisconnectionListener.hpp in Headers */,
 				397B63DB21FD29A300A71E58 /* DAE-Bridging.h in Headers */,
 				397B63C021FD294D00A71E58 /* App.hpp in Headers */,
 				397B63E521FD29A300A71E58 /* UsersTracker.hpp in Headers */,
@@ -231,6 +245,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39DACC2B220F496A002E97F8 /* DeviceDisconnectionListener.cpp in Sources */,
+				39DACC23220F4613002E97F8 /* DeviceConnectionListener.cpp in Sources */,
 				3920FD242203EC62004D9D49 /* PhysicalDevice.cpp in Sources */,
 				397B63DA21FD29A300A71E58 /* DataAcquisitionEngine.cpp in Sources */,
 				397B63D521FD29A300A71E58 /* UsersTracker.cpp in Sources */,

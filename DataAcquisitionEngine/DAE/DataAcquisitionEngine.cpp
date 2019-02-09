@@ -32,6 +32,13 @@ void DataAcquisitionEngine::start() {
         DataAcquisitionEngine::_openNIInitialized = true;
     }
     
+    // Add our event listeners to OpenNI
+    _connectionListener.dae = this;
+    _disconnectionListener.dae = this;
+    
+    openni::OpenNI::addDeviceConnectedListener(&_connectionListener);
+    openni::OpenNI::addDeviceDisconnectedListener(&_disconnectionListener);
+    
     // Init NiTE
     if(nite::NiTE::initialize() != nite::STATUS_OK) {
         throw "Could not itialize NiTE";
@@ -55,58 +62,48 @@ void DataAcquisitionEngine::stop() {
 }
 
 void DataAcquisitionEngine::parseForDevices() {
-    std::cout << "Parsing" << std::endl;
     // Get all the available devices
     openni::Array<openni::DeviceInfo> availableDevices;
     openni::OpenNI::enumerateDevices(&availableDevices);
     
-    // `foundSerial` is used to track found devices, and match against
-    // currently loaded ones to track disconnections
-    std::vector<std::string> foundSerials;
-    
-    // The serial extraction regex.
-    // URI to the devices holds a serial parameter. We are using this
-    // regex to extract it, allowing for unique identifications of the kinects
-    std::regex regex("serial=(.*?)(&.*)?$");
-    
     // Parse all the detected devices
     for (int i = 0; i < availableDevices.getSize(); ++i) {
-        // Get the device URI
-        const std::string uri(availableDevices[i].getUri());
-        
-        // Extract its serial
-        std::smatch match;
-        if (!std::regex_search(uri.begin(), uri.end(), match, regex)) {
-            // Could not extract a serial, skip the device
-            std::cout << "Could not get serial for device : " << uri << std::endl;
-            continue;
-        }
-        std::string serial = match[1];
-        
-        // Check the serial isn't already stored
-        if(std::find(foundSerials.begin(), foundSerials.end(), serial) != foundSerials.end()) {
-            // Serial already stored, ignore device
-            continue;
-        }
-        
-        // Mark the device as found and register it
-        foundSerials.push_back(serial);
-        PhysicalDevice * device = new PhysicalDevice(availableDevices[i], serial);
-        _devices[serial] = device;
+        onNewDevice(&availableDevices[i]);
+    }
+}
+
+void DataAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInfo) {
+    // Get the device serial
+    std::string serial = getDeviceSerial(deviceInfo);
+    
+    // Check the serial isn't empty
+    if(serial.size() == 0) {
+        return;
     }
     
-    // Now, check for missing devices
-    for(auto it = _devices.cbegin(); it != _devices.cend();) {
-        // Was the device serial found when parsing ?
-        if(std::find(foundSerials.begin(), foundSerials.end(), it->first) != foundSerials.end()) {
-            ++it;
-            continue; // Device connected
-        }
-
-        // Device is no longer here, remove it
-        delete it->second;
-        _devices.erase(it++);
+    // Check the serial isn't already stored
+    if(_devices.find(serial) != _devices.end()) {
+        // Serial already stored, ignore device
+        return;
     }
+    
+    // Register the device
+    PhysicalDevice * device = new PhysicalDevice(*deviceInfo, serial);
+    _devices[serial] = device;
+}
+
+void DataAcquisitionEngine::onDeviceDisconnected(const openni::DeviceInfo * deviceInfo) {
+    // Get the device serial
+    std::string serial = getDeviceSerial(deviceInfo);
+    
+    // Check the serial isn't empty
+    if(serial.size() == 0) {
+        return;
+    }
+    
+    // Erase and remove the device from the list
+    delete _devices[serial];
+    _devices.erase(serial);
 }
 
 void DataAcquisitionEngine::connectToDevice(const std::string &serial) {
@@ -159,16 +156,33 @@ DataAcquisitionEngine::~DataAcquisitionEngine() {
     // so we will not do it for now...
 }
 
+std::string DataAcquisitionEngine::getDeviceSerial(const openni::DeviceInfo * deviceInfo) {
+    // Get the device URI
+    const std::string uri(deviceInfo->getUri());
+    
+    // The serial extraction regex.
+    // URI to the devices holds a serial parameter. We are using this
+    // regex to extract it, allowing for unique identifications of the kinects
+    std::regex regex("serial=(.*?)(&.*)?$");
+    
+    // Extract its serial
+    std::smatch match;
+    if (!std::regex_search(uri.begin(), uri.end(), match, regex)) {
+        // Could not extract a serial, skip the device
+        std::cout << "Could not get serial for device : " << uri << std::endl;
+        return "";
+    }
+    
+    // mathc[1] is the serial
+    return match[1];
+}
+
 
 // C Access
 
 void DAEPrepare() {
     App->dae = DataAcquisitionEngine::getInstance();
     App->dae->start();
-}
-
-void DAEParseForDevices() {
-    App->dae->parseForDevices();
 }
 
 void DAEConnectToDevice(const char * c_serial) {
