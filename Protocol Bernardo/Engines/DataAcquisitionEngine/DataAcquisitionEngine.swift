@@ -10,30 +10,40 @@ import Foundation
 import Repeat
 
 class DataAcquisitionEngine {
+    
     // ////////////////
-    // MARK: Properties
+    // MARK: Delegates
     
     /// Delegate for events listening
-    weak var delegate: DataAcquisitionEngineDelegate?
+    internal var observers: [DataAcquisitionEngineObserver] = []
     
-    weak var observer: DataAcquisitionEngineObserver?
+    /// Add a new observer to the DAE. Observers are kept as strong references,
+    /// you need to remove them to prevent memory leaks
+    ///
+    /// - Parameter observer: The observer to add
+    func addObsever(_ observer: DataAcquisitionEngineObserver) {
+        observers.append(observer)
+    }
+    
+    /// Removes the given oberserver from the list of obervers
+    ///
+    /// - Parameter observer: The observer to remove
+    func removeObserver(_ observer: DataAcquisitionEngineObserver) {
+        observers.removeAll{ $0 === observer }
+    }
+    
+    // ////////////////
+    // MARK: Properties
     
     /// Holds the loop for the status fetcher
     internal var _statusFetcherLoop: Repeater?
     
-    /// The engine state (internal)
-    internal var _engineStatus: DAEStatus = DAEStatus(deviceCount: 0, _deviceStatus: nil) {
+    /// The devices handled by the engine
+    var devices: [String: DeviceStatus] = [:] {
         didSet {
-            // Tell the delegate the status has been updated
-            delegate?.dae(self, statusUpdated: self._engineStatus)
-            observer?.dae(self, statusUpdated: self._engineStatus)
-            
-//            updateUsers()
+            observers.forEach { $0.dae(self, devicesStatusUpdated: devices)  }
         }
     }
-    
-    /// The engine state
-    var status: DAEStatus! { return _engineStatus }
     
     // //////////////////////
     // MARK: Engine Lifecycle
@@ -55,9 +65,26 @@ class DataAcquisitionEngine {
     ///
     /// - Parameter repeater: The wrepeater
     func fetchStatus(_ repeater: Repeater) {
-//        DispatchQueue.main.async {
-            self._engineStatus = DAEGetStatus()!.pointee
-//        }
+        #if DEVICE_LIVE_VIEW
+        
+        DispatchQueue.main.async {
+            let status = DAEGetStatus()
+            self._engineStatus = status!.pointee
+        
+            // Free the used memory
+            status?.deallocate()
+        }
+        
+        #else
+        
+        // Get the engine status
+        let statusPointer = DAEGetStatus()
+        
+        // Copy informations from the status pointer to our own struct
+        devices = statusPointer!.pointee.copyAndDeallocate()
+        statusPointer?.deallocate()
+        
+        #endif
     }
     
     /// Changes the device status to its next possible state
@@ -65,7 +92,7 @@ class DataAcquisitionEngine {
     /// - Parameter serial: The serial of the device
     func toggleDeviceStatus(withSerial serial: String) {
         // Make sure the serial is a valid one
-        guard let device = _engineStatus.devices[serial] else {
+        guard let device = devices[serial] else {
             return
         }
         
@@ -76,11 +103,6 @@ class DataAcquisitionEngine {
         case DEVICE_ACTIVE: pause(device: serial)
         default: return
         }
-    }
-    
-    /// Refresh the available devices list
-    func refreshDevicesList() {
-        DAEParseForDevices()
     }
     
     /// Tries to connect to the device

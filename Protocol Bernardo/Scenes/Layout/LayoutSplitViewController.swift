@@ -27,7 +27,13 @@ class LayoutSplitViewController: NSSplitViewController {
     }
     
     /// The opened calibration profile, if any
-    var calibrationProfile: LayoutCalibration?
+    var calibrationProfile: LayoutCalibrationProfile? {
+        didSet {
+            _canvas.calibrationProfile = calibrationProfile
+            App.usersEngine.profile = calibrationProfile
+            App.usersEngine.layout = layoutDocument.layout
+        }
+    }
     
     
     // ///////////////////////////////
@@ -60,9 +66,9 @@ class LayoutSplitViewController: NSSplitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         sidebarTabViewItem.minimumThickness = 252
-        sidebarTabViewItem.maximumThickness = 252
+//        sidebarTabViewItem.maximumThickness = 252
     }
     
     override func viewDidAppear() {
@@ -120,6 +126,8 @@ class LayoutSplitViewController: NSSplitViewController {
     
     /// Set the layout window configuration to Calibration
     func setToCalibrationConfiguration() {
+        
+        _canvas.selectedNode = nil
         
         _sidebarTabViewController.selectedTabViewItemIndex = 1
         

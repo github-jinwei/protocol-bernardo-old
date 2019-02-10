@@ -74,7 +74,7 @@ public:
 
      @return The device state
      */
-    DeviceStatus getStatus();
+    DAEDeviceStatus getStatus();
     
     /**
      Gives the name of the device

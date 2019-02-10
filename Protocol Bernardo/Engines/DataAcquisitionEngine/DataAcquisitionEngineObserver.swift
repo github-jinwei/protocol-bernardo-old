@@ -14,5 +14,5 @@ protocol DataAcquisitionEngineObserver: AnyObject {
     /// - Parameters:
     ///   - dae: The current DAE
     ///   - newState: The new state of the DAE
-    func dae(_ dae: DataAcquisitionEngine, statusUpdated status: DAEStatus)
+    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: [String: DeviceStatus])
 }

@@ -13,18 +13,11 @@ class DevicesSceneViewController: NSViewController {
     weak var movementsCollector: DevicesScene?
     @IBOutlet weak var devicesList: NSStackView!
     
-    /// Asks for a refresh of the available devices list
-    ///
-    /// - Parameter sender: _
-    @IBAction func refreshDevicesList(_ sender: Any) {
-        movementsCollector?.refreshDevicesList();
-    }
-    
     /// Called to pass a new status to the interface
     ///
     /// - Parameter status: The DAE status
-    func statusUpdate(_ status: DAEStatus) {
-        if(status.deviceCount != devicesList.views.count) {
+    func statusUpdate(_ status: [String: DeviceStatus]) {
+        if(status.count != devicesList.views.count) {
             reloadDevicesList(withStatus: status)
             return
         }
@@ -32,7 +25,7 @@ class DevicesSceneViewController: NSViewController {
         devicesList.views.forEach { view in
             let deviceView = view as! PBDeviceRow
             let serial = deviceView.serial!
-            let device = status.devices[serial]!
+            let device = status[serial]!
             
             // Update in the values
             deviceView.update(deviceValues: device)
@@ -42,11 +35,11 @@ class DevicesSceneViewController: NSViewController {
     /// Regenerate all the device views
     ///
     /// - Parameter status: The new status to generate from
-    func reloadDevicesList(withStatus status: DAEStatus) {
+    func reloadDevicesList(withStatus status: [String: DeviceStatus]) {
         // Remove previously added view
         devicesList.views.forEach { $0.removeFromSuperview() }
         
-        status.devices.forEach { serial, device in
+        status.forEach { serial, device in
             let deviceView: PBDeviceRow = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
             
             // Values that will not change

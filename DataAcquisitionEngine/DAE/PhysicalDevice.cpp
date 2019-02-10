@@ -69,7 +69,7 @@ void PhysicalDevice::connect() {
     
     // Init the user tracker
     _rigTracker.create(&_device);
-    _rigTracker.setSkeletonSmoothingFactor(.5f);
+    _rigTracker.setSkeletonSmoothingFactor(.25f);
     _usersTracker._device = this;
     _rigTracker.addNewFrameListener(&_usersTracker);
     
@@ -120,8 +120,8 @@ void PhysicalDevice::storeDepthFrame(openni::VideoFrameRef *frame) {
     _depthFrame = frame;
 }
 
-DeviceStatus PhysicalDevice::getStatus() {
-    DeviceStatus status;
+DAEDeviceStatus PhysicalDevice::getStatus() {
+    DAEDeviceStatus status;
     strcpy(status._name, _name.c_str());
     strcpy(status._serial, _serial.c_str());
     status.state = _state;
@@ -129,19 +129,21 @@ DeviceStatus PhysicalDevice::getStatus() {
     status.userCount = (unsigned int) _usersTracker._users.size();
     status._users = _usersTracker.getUsers();
     
-//    if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
-//
-//        cv::Mat cImageBGR;
-//        const cv::Mat mImageRGB(_colorFrame->getHeight(),
-//                                _colorFrame->getWidth(),
-//                                CV_8UC3,
-//                                (void*)_colorFrame->getData());
-//
-//        // p2c. convert form RGB to BGR
-//        cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
-//
-//        cv::imshow(_serial, cImageBGR );
-//    }
+#ifdef DEVICE_LIVE_VIEW
+    if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
+
+        cv::Mat cImageBGR;
+        const cv::Mat mImageRGB(_colorFrame->getHeight(),
+                                _colorFrame->getWidth(),
+                                CV_8UC3,
+                                (void*)_colorFrame->getData());
+
+        // p2c. convert form RGB to BGR
+        cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
+
+        cv::imshow(_serial, cImageBGR );
+    }
+#endif /** DEVICE_LIVE_VIEW */
     
     return status;
 }

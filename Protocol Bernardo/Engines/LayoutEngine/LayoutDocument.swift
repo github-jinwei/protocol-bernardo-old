@@ -16,7 +16,7 @@ class LayoutDocument: NSDocument {
     var layout:Layout = Layout()
     
     /// The calibration profiles
-    var calibrationsProfiles: [String: LayoutCalibration] = [:]
+    var calibrationsProfiles: [String: LayoutCalibrationProfile] = [:]
     
     /// The window controller managed by this document
     internal var _layoutWindow: LayoutWindowController! = nil
@@ -72,12 +72,21 @@ extension LayoutDocument {
             // Calibration file
             case "pblayoutcalibration":
                 let calibrationData = wrapper.regularFileContents!
-                let calibrationProfile = try! JSONDecoder().decode([LayoutCalibration].self, from: calibrationData)[0]
+                let calibrationProfile = try! JSONDecoder().decode([LayoutCalibrationProfile].self, from: calibrationData)[0]
                 calibrationsProfiles[name.fileNameWithoutExtension] = calibrationProfile
                 
             // Unknown file extension, ignore
             default: return
             }
+        }
+        
+        postOpenOperations()
+    }
+    
+    func postOpenOperations() {
+        // Add a reference to this document on each calibration profile
+        calibrationsProfiles.forEach { profileName, profile in
+            profile.document = self
         }
     }
 }
@@ -98,8 +107,8 @@ extension LayoutDocument {
 // ///////////////////
 // MARK: - Calibration
 extension LayoutDocument{
-    func makeCalibrationProfile(withName name: String) -> LayoutCalibration {
-        calibrationsProfiles[name] = LayoutCalibration(name: name)
+    func makeCalibrationProfile(withName name: String) -> LayoutCalibrationProfile {
+        calibrationsProfiles[name] = LayoutCalibrationProfile(name: name)
         markAsEdited()
         
         return calibrationsProfiles[name]!

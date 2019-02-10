@@ -12,7 +12,8 @@
 		390D0DB721F502170032CA23 /* DevicesScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D0DB621F502170032CA23 /* DevicesScene.storyboard */; };
 		390D0DB921F509C90032CA23 /* DevicesSceneWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DB821F509C90032CA23 /* DevicesSceneWindowController.swift */; };
 		390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */; };
-		390D0DC021F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBF21F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift */; };
+		39379A0E220FA220004C3815 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A0D220FA220004C3815 /* Position.swift */; };
+		39379A12220FE496004C3815 /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* DeviceStatus.swift */; };
 		393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ECD2204DD0100BC54D3 /* Device.swift */; };
 		393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */; };
 		3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968FCD521FB82B5005EAA4C /* PBDeviceRow.xib */; };
@@ -46,8 +47,8 @@
 		3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */; };
 		3989EAD722037C3F005CF113 /* NSStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD622037C3F005CF113 /* NSStepper.swift */; };
 		3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */; };
-		39977430220B94FB00ED4B93 /* LayoutCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* LayoutCalibration.swift */; };
-		39977433220B955500ED4B93 /* CalibratedDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977432220B955500ED4B93 /* CalibratedDevice.swift */; };
+		39977430220B94FB00ED4B93 /* LayoutCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */; };
+		39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */; };
 		39977435220B961B00ED4B93 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977434220B961B00ED4B93 /* Point.swift */; };
 		39977437220B977800ED4B93 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977436220B977800ED4B93 /* CGPoint.swift */; };
 		3997743D220BB0E500ED4B93 /* LayoutSidebarCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */; };
@@ -62,14 +63,12 @@
 		39A1E71821FEC08C003162FE /* LayoutCanvas.sks in Resources */ = {isa = PBXBuildFile; fileRef = 39A1E71721FEC08C003162FE /* LayoutCanvas.sks */; };
 		39AF88AD21F4CF7E00A68993 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AC21F4CF7E00A68993 /* App.swift */; };
 		39AF88AF21F4D02100A68993 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AE21F4D02100A68993 /* Core.swift */; };
-		39B5575E220006600021BFDA /* PBPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575D220006600021BFDA /* PBPoint.swift */; };
 		39B55760220008430021BFDA /* deg2rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575F220008430021BFDA /* deg2rad.swift */; };
 		39B5576222000FC70021BFDA /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5576122000FC70021BFDA /* NSColor.swift */; };
 		39C1E8FB2209351900F53AC2 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FA2209351900F53AC2 /* Scene.swift */; };
 		39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */; };
 		39C1E8FF22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */; };
 		39C1E901220A05AF00F53AC2 /* NSDocumentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E900220A05AF00F53AC2 /* NSDocumentDelegate.swift */; };
-		39C1E903220A1EB700F53AC2 /* LayoutConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E902220A1EB700F53AC2 /* LayoutConfiguration.swift */; };
 		39C1E907220A201A00F53AC2 /* LayoutSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */; };
 		39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */; };
 		39C1E90D220A37F300F53AC2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90C220A37F300F53AC2 /* Line.swift */; };
@@ -79,13 +78,15 @@
 		39DACC1D220CC02D002E97F8 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
 		39DACC1E220CC02D002E97F8 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
 		39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */; };
+		39DACC30220F5475002E97F8 /* UsersEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC2F220F5475002E97F8 /* UsersEngine.swift */; };
+		39DACC34220F663F002E97F8 /* LayoutCanvasUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */; };
 		39DFBDDF2208A7AF00A7B9BD /* LayoutDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */; };
 		39DFBDE72208B09700A7B9BD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DFBDE62208B09700A7B9BD /* MainMenu.xib */; };
 		39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */; };
 		39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */; };
 		39E3121221F6F1C5006569F1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121121F6F1C5006569F1 /* String.swift */; };
 		39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* DAEStatus.swift */; };
-		39E3121621F779A0006569F1 /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* DeviceStatus.swift */; };
+		39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */; };
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
 		39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */; };
 /* End PBXBuildFile section */
@@ -160,7 +161,6 @@
 		390D0DB621F502170032CA23 /* DevicesScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DevicesScene.storyboard; sourceTree = "<group>"; };
 		390D0DB821F509C90032CA23 /* DevicesSceneWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesSceneWindowController.swift; sourceTree = "<group>"; };
 		390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngine.swift; sourceTree = "<group>"; };
-		390D0DBF21F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngineDelegate.swift; sourceTree = "<group>"; };
 		390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Protocol Bernardo-Bridging-Header.h"; sourceTree = "<group>"; };
 		3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
 		3929600421F7BFEF0064B808 /* libopencv_hfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_hfs.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_hfs.a; sourceTree = "<group>"; };
@@ -252,6 +252,8 @@
 		3929605A21F7BFF40064B808 /* libopencv_datasets.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_datasets.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_datasets.a; sourceTree = "<group>"; };
 		392960B221F7CFDB0064B808 /* libfreenect2-openni2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libfreenect2-openni2.0.dylib"; path = "../../../../../usr/local/lib/libfreenect2-openni2.0.dylib"; sourceTree = "<group>"; };
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
+		39379A0D220FA220004C3815 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		39379A11220FE496004C3815 /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
 		393B1ECD2204DD0100BC54D3 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
 		395E0F0C21F924880097D992 /* libopenpose.1.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenpose.1.4.0.dylib; path = ../../../../../usr/local/lib/libopenpose.1.4.0.dylib; sourceTree = "<group>"; };
@@ -303,8 +305,8 @@
 		398B660C21F653A800F6D1FC /* libfreenect2.0.2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreenect2.0.2.0.dylib; path = ../../../../../usr/local/lib/libfreenect2.0.2.0.dylib; sourceTree = "<group>"; };
 		398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Protocol Bernardo.entitlements"; sourceTree = "<group>"; };
 		3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutCalibrationIcon.icns; sourceTree = "<group>"; };
-		3997742F220B94FB00ED4B93 /* LayoutCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibration.swift; sourceTree = "<group>"; };
-		39977432220B955500ED4B93 /* CalibratedDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibratedDevice.swift; sourceTree = "<group>"; };
+		3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibrationProfile.swift; sourceTree = "<group>"; };
+		39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCalibrationProfile.swift; sourceTree = "<group>"; };
 		39977434220B961B00ED4B93 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		39977436220B977800ED4B93 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebarCalibration.swift; sourceTree = "<group>"; };
@@ -319,27 +321,27 @@
 		39A1E71721FEC08C003162FE /* LayoutCanvas.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LayoutCanvas.sks; sourceTree = "<group>"; };
 		39AF88AC21F4CF7E00A68993 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		39AF88AE21F4D02100A68993 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
-		39B5575D220006600021BFDA /* PBPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBPoint.swift; sourceTree = "<group>"; };
 		39B5575F220008430021BFDA /* deg2rad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deg2rad.swift; sourceTree = "<group>"; };
 		39B5576122000FC70021BFDA /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		39C1E8FA2209351900F53AC2 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasDelegate.swift; sourceTree = "<group>"; };
 		39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasElementDelegate.swift; sourceTree = "<group>"; };
 		39C1E900220A05AF00F53AC2 /* NSDocumentDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDocumentDelegate.swift; sourceTree = "<group>"; };
-		39C1E902220A1EB700F53AC2 /* LayoutConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConfiguration.swift; sourceTree = "<group>"; };
 		39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebar.swift; sourceTree = "<group>"; };
 		39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLayoutCanvasLinePropertiesController.swift; sourceTree = "<group>"; };
 		39C1E90C220A37F300F53AC2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		39D558AC220919CA00916AAA /* PBLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutIcon.icns; sourceTree = "<group>"; };
 		39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBDevicesLayoutIcon.icns; sourceTree = "<group>"; };
 		39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngineObserver.swift; sourceTree = "<group>"; };
+		39DACC2F220F5475002E97F8 /* UsersEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEngine.swift; sourceTree = "<group>"; };
+		39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasUser.swift; sourceTree = "<group>"; };
 		39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDocument.swift; sourceTree = "<group>"; };
 		39DFBDE62208B09700A7B9BD /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceRow.swift; sourceTree = "<group>"; };
 		39E3121121F6F1C5006569F1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		39E3121321F777F6006569F1 /* DAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEStatus.swift; sourceTree = "<group>"; };
-		39E3121521F779A0006569F1 /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
+		39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEDeviceStatus.swift; sourceTree = "<group>"; };
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfilePanel.swift; sourceTree = "<group>"; };
 		8A3C96C47318A5A246F5A95A /* Pods-Protocol Bernardo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 		390D0DBA21F511630032CA23 /* Engines */ = {
 			isa = PBXGroup;
 			children = (
+				39DACC2D220F5453002E97F8 /* UsersEngine */,
 				393B1ECB2204DCA800BC54D3 /* LayoutEngine */,
 				390D0DBB21F511680032CA23 /* DataAcquisitionEngine */,
 			);
@@ -399,9 +402,8 @@
 			children = (
 				3968FCDE21FD0386005EAA4C /* Extensions */,
 				390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */,
-				390D0DBF21F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift */,
 				39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */,
-				39E8BA7E220BC0440021DC34 /* User.swift */,
+				39379A11220FE496004C3815 /* DeviceStatus.swift */,
 			);
 			path = DataAcquisitionEngine;
 			sourceTree = "<group>";
@@ -453,7 +455,7 @@
 		3968FCDE21FD0386005EAA4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				39E3121521F779A0006569F1 /* DeviceStatus.swift */,
+				39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */,
 				39E3121321F777F6006569F1 /* DAEStatus.swift */,
 			);
 			path = Extensions;
@@ -520,7 +522,6 @@
 				396DDFF521F4341A00628070 /* Extensions */,
 				397195C52200D38000F92C5C /* Keycode.swift */,
 				39C1E900220A05AF00F53AC2 /* NSDocumentDelegate.swift */,
-				39B5575D220006600021BFDA /* PBPoint.swift */,
 				39977434220B961B00ED4B93 /* Point.swift */,
 			);
 			path = Utils;
@@ -535,6 +536,7 @@
 				397E685A21FE50E600FFA678 /* NSNib.swift */,
 				3989EAD622037C3F005CF113 /* NSStepper.swift */,
 				39E3121121F6F1C5006569F1 /* String.swift */,
+				39379A0D220FA220004C3815 /* Position.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -693,8 +695,8 @@
 		3997742A220B91C000ED4B93 /* Calibration */ = {
 			isa = PBXGroup;
 			children = (
-				3997742F220B94FB00ED4B93 /* LayoutCalibration.swift */,
-				39977432220B955500ED4B93 /* CalibratedDevice.swift */,
+				3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */,
+				39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */,
 			);
 			path = Calibration;
 			sourceTree = "<group>";
@@ -704,7 +706,6 @@
 			children = (
 				39A1E70C21FE7871003162FE /* Canvas */,
 				39A1E6FE21FE67FE003162FE /* Layout.storyboard */,
-				39C1E902220A1EB700F53AC2 /* LayoutConfiguration.swift */,
 				39A1E70021FE67FE003162FE /* LayoutSplitViewController.swift */,
 				396C48522208FDBA000AA888 /* LayoutWindowController.swift */,
 				39C1E904220A1F3B00F53AC2 /* Sidebar */,
@@ -722,6 +723,7 @@
 				39A1E70D21FE7892003162FE /* LayoutCanvasElement.swift */,
 				39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */,
 				39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */,
+				39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */,
 				397195C12200219000F92C5C /* LayoutCanvasView.swift */,
 			);
 			path = Canvas;
@@ -769,6 +771,15 @@
 				398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		39DACC2D220F5453002E97F8 /* UsersEngine */ = {
+			isa = PBXGroup;
+			children = (
+				39DACC2F220F5475002E97F8 /* UsersEngine.swift */,
+				39E8BA7E220BC0440021DC34 /* User.swift */,
+			);
+			path = UsersEngine;
 			sourceTree = "<group>";
 		};
 		39DFBDE82208B3EF00A7B9BD /* MainMenu */ = {
@@ -957,8 +968,7 @@
 				393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */,
 				39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */,
 				39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */,
-				39E3121621F779A0006569F1 /* DeviceStatus.swift in Sources */,
-				39B5575E220006600021BFDA /* PBPoint.swift in Sources */,
+				39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */,
 				39A1E70521FE67FE003162FE /* LayoutSplitViewController.swift in Sources */,
 				39A1E70B21FE77A3003162FE /* Layout.swift in Sources */,
 				39A1E70921FE6C3D003162FE /* LayoutCanvas.swift in Sources */,
@@ -967,24 +977,25 @@
 				3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */,
 				39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
 				39977437220B977800ED4B93 /* CGPoint.swift in Sources */,
+				39379A12220FE496004C3815 /* DeviceStatus.swift in Sources */,
 				39C1E901220A05AF00F53AC2 /* NSDocumentDelegate.swift in Sources */,
 				39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */,
-				390D0DC021F5258C0032CA23 /* DataAcquisitionEngineDelegate.swift in Sources */,
 				397E685B21FE50E600FFA678 /* NSNib.swift in Sources */,
 				396C48532208FDBA000AA888 /* LayoutWindowController.swift in Sources */,
-				39C1E903220A1EB700F53AC2 /* LayoutConfiguration.swift in Sources */,
+				39DACC34220F663F002E97F8 /* LayoutCanvasUser.swift in Sources */,
+				39DACC30220F5475002E97F8 /* UsersEngine.swift in Sources */,
 				3997743D220BB0E500ED4B93 /* LayoutSidebarCalibration.swift in Sources */,
 				390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */,
 				3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */,
 				39C1E8FF22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift in Sources */,
 				390D0DB521F4FECF0032CA23 /* DevicesScene.swift in Sources */,
 				39C1E8FB2209351900F53AC2 /* Scene.swift in Sources */,
-				39977430220B94FB00ED4B93 /* LayoutCalibration.swift in Sources */,
+				39977430220B94FB00ED4B93 /* LayoutCalibrationProfile.swift in Sources */,
 				397195C62200D38000F92C5C /* Keycode.swift in Sources */,
 				39A1E70E21FE7892003162FE /* LayoutCanvasElement.swift in Sources */,
 				3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */,
 				39E8BA7F220BC0440021DC34 /* User.swift in Sources */,
-				39977433220B955500ED4B93 /* CalibratedDevice.swift in Sources */,
+				39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */,
 				39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */,
 				397195C22200219000F92C5C /* LayoutCanvasView.swift in Sources */,
 				396DDFCB21F4285000628070 /* WelcomeSceneViewController.swift in Sources */,
@@ -996,6 +1007,7 @@
 				390D0DB921F509C90032CA23 /* DevicesSceneWindowController.swift in Sources */,
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
 				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
+				39379A0E220FA220004C3815 /* Position.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
 				39B5576222000FC70021BFDA /* NSColor.swift in Sources */,

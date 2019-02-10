@@ -52,9 +52,7 @@ class LayoutCanvasDevice: SKNode {
     var orientation: CGFloat = 0 {
         didSet {
             device.orientation = Double(orientation)
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
-            
-            _usersNodesRoot.zRotation = orientation
+            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 - orientation + 90)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -66,7 +64,7 @@ class LayoutCanvasDevice: SKNode {
         didSet {
             device.horizontalFOV = Double(horizontalFOV)
             _captationArea.path = captationArea()
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
+            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 - orientation + 90)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -118,8 +116,6 @@ class LayoutCanvasDevice: SKNode {
     
     /// Tell is the device is currently selected
     internal var _isSelected: Bool = false
-    
-    internal var _usersNodesRoot = SKNode()
     
     
     // ////////////////////////////////
@@ -199,7 +195,7 @@ extension LayoutCanvasDevice {
         
         // Build the captation area node
         _captationArea = SKShapeNode(path: captationArea())
-        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation)
+        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 - orientation + 90)
         
         // Give them their idle style
         setIdleAppearance()
@@ -221,6 +217,10 @@ extension LayoutCanvasDevice {
         _canvas.layout.devices.append(newDevice)
         _canvas.createNodeForExistingDevice(newDevice)
     }
+}
+
+extension LayoutCanvasDevice {
+    func update() { }
 }
 
 

@@ -18,7 +18,7 @@ class LayoutSidebarCalibration: NSViewController {
     weak var layout: Layout!
     
     /// Reference to the calibration profile currently open, might be nil
-    weak var profile: LayoutCalibration!
+    weak var profile: LayoutCalibrationProfile!
     
     /// Reference to the canvas
     weak var canvas: LayoutCanvas!
@@ -64,7 +64,7 @@ class LayoutSidebarCalibration: NSViewController {
     
     override func viewDidLoad() {
         // Place ourselves as the dae observer and start it if needed
-        App.dae.observer = self
+        App.dae.addObsever(self)
         App.dae.start()
     }
     
@@ -92,6 +92,10 @@ class LayoutSidebarCalibration: NSViewController {
     @IBAction func openDevices(_ sender: Any) {
         App.core.makeScene(ofType: DevicesScene.self)
     }
+    
+    deinit {
+        App.dae.removeObserver(self)
+    }
 }
 
 
@@ -104,22 +108,18 @@ extension LayoutSidebarCalibration {
         // Start by cleaning the panel
          clearAndDisableAll()
         
-        guard devicesList.indexOfSelectedItem > 0 else { return }
+        guard devicesList.indexOfSelectedItem > 0 else {
+            canvas.selectedNode = nil
+            return;
+        }
         
         /// Get the device uuid
         let deviceUUID = layout.devices[devicesList.indexOfSelectedItem - 1].uuid!
         canvas.selectDevice(withName: devicesList.titleOfSelectedItem!)
         
-        /// If this device isn't part of the calibration profile, add it
-        if !profile.calibratedDevices.keys.contains(deviceUUID) {
-            // Device is not in the calibration profile, insert it
-            profile.calibratedDevices[deviceUUID] = CalibratedDevice()
-            profile.calibratedDevices[deviceUUID]!.layoutDeviceUUID = deviceUUID
-        }
-        
-        // Get the device calibration
-        let calibratedDevice = profile.calibratedDevices[deviceUUID]!
-        calibratedDevice.document = document
+        // Get the device profile or create a new one if needed
+        let calibratedDevice = profile.device(forUUID: deviceUUID) ??
+                               profile.addDevice(withUUID: deviceUUID)
         
         // Reset the physical devices list
         physicalDevicesList.removeAllItems()
@@ -127,18 +127,28 @@ extension LayoutSidebarCalibration {
         physicalDevicesList.selectItem(at: 0)
         
         // Fill it with available devices list
-        App.dae.status.devices.forEach { serial, device in
+        App.dae.devices.forEach { serial, device in
             physicalDevicesList.addItem(withTitle: serial)
         }
         
         // And activate it
         physicalDevicesList.isEnabled = true
         
-        // And select the physical device if one is already associated
-        if calibratedDevice.physicalDeviceSerial != nil {
-            physicalDevicesList.selectItem(withTitle: calibratedDevice.physicalDeviceSerial!)
-            setPhysicalDevice(physicalDevicesList)
+        // Make sure this device as an associated physical device, otherwise stop here
+        guard let physicalDeviceSerial = calibratedDevice.physicalDeviceSerial else { return }
+        
+        // If the specified device is missing, add a row for it and specify it is missing
+        if physicalDevicesList.item(withTitle: physicalDeviceSerial) == nil {
+            let deviceLine = "\(physicalDeviceSerial) (Not Connected)"
+            physicalDevicesList.addItem(withTitle: deviceLine)
+            physicalDevicesList.selectItem(withTitle: deviceLine)
+            physicalDevicesList.itemArray.last!.isEnabled = false
+            
+            return
         }
+        
+        physicalDevicesList.selectItem(withTitle: physicalDeviceSerial)
+        setPhysicalDevice(physicalDevicesList)
     }
     
     @IBAction func setPhysicalDevice(_ sender: NSPopUpButton) {
@@ -151,9 +161,9 @@ extension LayoutSidebarCalibration {
         // Make sure the placeholder isn't the one selected
         guard physicalDevicesList.indexOfSelectedItem > 0 else { return }
         
-        // Get the device ant the calibrated device
+        // Get the device and the calibrated device
         let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
-        let calibratedDevice = profile.calibratedDevices[device.uuid]!
+        let calibratedDevice = profile.device(forUUID: device.uuid)!
         
         calibratedDevice.physicalDeviceSerial = physicalDevicesList.titleOfSelectedItem!
         
@@ -173,7 +183,7 @@ extension LayoutSidebarCalibration {
         
         // Get the device and the calibrated device
         let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
-        let calibratedDevice = profile.calibratedDevices[device.uuid]!
+        let calibratedDevice = profile.device(forUUID: device.uuid)!
         
         calibratedDevice.isReference = referenceDeviceToggle.state == .on
         
@@ -191,7 +201,7 @@ extension LayoutSidebarCalibration {
             
             referenceDevicesList.addItem(withTitle: device.name)
             
-            let cDevice = profile.calibratedDevices[device.uuid]
+            let cDevice = profile.device(forUUID: device.uuid)
             
             if cDevice == nil || (!cDevice!.isReference && !cDevice!.isCalibrated) {
                 referenceDevicesList.itemArray.last!.isEnabled = false
@@ -205,16 +215,25 @@ extension LayoutSidebarCalibration {
 // /////////////////////////////////////
 // MARK: - DataAcquisitionEngineObserver
 extension LayoutSidebarCalibration: DataAcquisitionEngineObserver {
-    func dae(_ dae: DataAcquisitionEngine, statusUpdated status: DAEStatus) {
+    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: [String: DeviceStatus]) {
         DispatchQueue.main.async {
+            // Is there a selected physical device ?
             guard self.physicalDevicesList.indexOfSelectedItem > 0 else { return }
             
-            self.physicalDeviceStatus.stringValue =
-                status.devices[self.physicalDevicesList.titleOfSelectedItem!]!.stateLabel
+            // Is this device connected ?
+            guard let physicalDevice = devices[self.physicalDevicesList.titleOfSelectedItem!] else { return }
             
+            // Display the state of the device
+            self.physicalDeviceStatus.stringValue = physicalDevice.stateLabel
+            
+            // Is there a reference device selected ?
             guard self.referenceDevicesList.indexOfSelectedItem > 0 else { return }
             
-            self.referenceDeviceStatus.stringValue = status.devices[self.referenceDevicesList.titleOfSelectedItem!]!.stateLabel
+            // Is this device connected ?
+            guard let referenceDevice = devices[self.referenceDevicesList.titleOfSelectedItem!] else { return }
+            
+            // Display the state of this device
+            self.referenceDeviceStatus.stringValue = referenceDevice.stateLabel
         }
     }
 }
@@ -222,9 +241,13 @@ extension LayoutSidebarCalibration: DataAcquisitionEngineObserver {
 
 extension LayoutSidebarCalibration: LayoutSidebar {
     func setSelectedElement(_ element: LayoutCanvasElement?) {
-        guard let device = element as? LayoutCanvasDevice else { return }
+        guard let device = element as? LayoutCanvasDevice else {
+            devicesList.selectItem(at: 0)
+            setDeviceToCalibrate(devicesList)
+            return
+        }
         
-        guard device.name! != devicesList.titleOfSelectedItem! else { return }
+        guard device.name! != devicesList.titleOfSelectedItem else { return }
         
         devicesList.selectItem(withTitle: device.name!)
         setDeviceToCalibrate(devicesList)

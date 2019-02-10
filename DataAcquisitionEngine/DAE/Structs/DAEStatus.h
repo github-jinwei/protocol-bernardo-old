@@ -17,7 +17,7 @@
  
  Primarily used to retrieve a device status from Swift
  */
-struct DeviceStatus {
+struct DAEDeviceStatus {
     /** Name of the device (C String) */
     char _name[256];
     
@@ -44,7 +44,7 @@ struct DAEStatus {
     unsigned int deviceCount;
     
     /** The status for every available device */
-    struct DeviceStatus * _deviceStatus;
+    struct DAEDeviceStatus * _deviceStatus;
 };
 
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension DeviceStatus {
+extension DAEDeviceStatus {
     /// Returns the device serial in as a swift string
     var serial: String {
         get {
@@ -50,18 +50,6 @@ extension DeviceStatus {
             }
             
             return users
-        }
-    }
-    
-    
-    var stateLabel: String {
-        switch state.rawValue {
-        case 1: return "Idle"
-        case 2: return "Connecting"
-        case 3: return "Ready"
-        case 4: return "Active"
-        case 5: return "Closing"
-        default: return "Errored"
         }
     }
 }

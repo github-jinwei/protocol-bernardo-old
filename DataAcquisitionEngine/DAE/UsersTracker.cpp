@@ -27,6 +27,8 @@ void UsersTracker::onNewFrame(nite::UserTracker &userTracker) {
     
     // Then, start working with the frame
     onUserFrame(userFrame);
+    
+    delete userFrame;
 }
 
 PhysicalUser * UsersTracker::getUsers() {
@@ -109,7 +111,7 @@ void UsersTracker::onUserFrame(nite::UserTrackerFrameRef * userFrame) {
         
         user->state = UserState::USER_TRACKED;
         
-        // If we are here, it means the user is beiing actively tracked. Let's update its structure.
+        // If we are here, it means the user is being actively tracked. Let's update its structure.
         user->centerOfMass = P3FtoPosition(userData->getCenterOfMass());
         
         // Update the skeleton and all its joint coordinates

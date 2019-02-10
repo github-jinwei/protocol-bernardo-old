@@ -10,28 +10,32 @@ import Foundation
 
 extension DAEStatus {
     /// List of all the devices in a Swift friendly format
-    var devices: [String: DeviceStatus] {
-        get {
-            // The map
-            var devicesMap = [String: DeviceStatus]()
+    func copyAndDeallocate() -> [String: DeviceStatus] {
+        // The map
+        var devicesMap = [String: DeviceStatus]()
 
-            // Pointer used for parsing
-            var pointer = _deviceStatus
+        // Pointer used for parsing
+        var pointer = _deviceStatus
+        
+        // Loop on each device
+        for i in 0..<deviceCount {
+            let daeDeviceStatus = pointer!.pointee
             
-            // Loop on each device
-            for i in 0..<deviceCount {
-                let deviceStatus = pointer!.pointee
-                
-                // Insert in the map
-                devicesMap[deviceStatus.serial] = deviceStatus
-                
-                // Check if we can advance
-                if i + 1 < deviceCount {
-                    pointer = pointer?.successor()
-                }
+            // Insert in the map
+            devicesMap[daeDeviceStatus.serial] = DeviceStatus(from: daeDeviceStatus)
+            
+            // Free it
+            daeDeviceStatus._users.deallocate()
+            
+            // Check if we can advance
+            if i + 1 < deviceCount {
+                pointer = pointer?.successor()
             }
-            
-            return devicesMap
         }
+        
+        // Free the array
+        _deviceStatus.deallocate()
+        
+        return devicesMap
     }
 }

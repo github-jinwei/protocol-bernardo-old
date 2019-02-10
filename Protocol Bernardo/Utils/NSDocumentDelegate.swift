@@ -9,5 +9,11 @@
 import AppKit
 
 protocol NSDocumentDelegate: AnyObject {
+    /// tell the receiver the document has just finished a save operation
+    ///
+    /// - Parameters:
+    ///   - doc: The document
+    ///   - didSave: True if the document was saved, false otherwise
+    ///   - contextInfo: _
     func document(_ doc: NSDocument, didSave: Bool, contextInfo: UnsafeRawPointer?)
 }

@@ -46,13 +46,8 @@ class DevicesScene: Scene {
         _viewController.movementsCollector = self
         
         // Init the DAE on the CPP side
-        App.dae.delegate = self
+        App.dae.addObsever(self)
         App.dae.start()
-    }
-    
-    /// Asks the DAE to refresh the available devices list
-    func refreshDevicesList() {
-        App.dae.refreshDevicesList()
     }
     
     /// Ends the DAE activities before closing the scene
@@ -60,13 +55,17 @@ class DevicesScene: Scene {
         App.dae.end()
         (self as Scene).endScene()
     }
+    
+    deinit {
+        App.dae.removeObserver(self)
+    }
 }
 
 // MARK: - DataAcquisitionEngineDelegate
-extension DevicesScene: DataAcquisitionEngineDelegate {
-    func dae(_ dae: DataAcquisitionEngine, statusUpdated status: DAEStatus) {
+extension DevicesScene: DataAcquisitionEngineObserver {
+    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: [String: DeviceStatus]) {
         DispatchQueue.main.async {
-           self._viewController.statusUpdate(status);
+           self._viewController.statusUpdate(devices);
         }
     }
 }

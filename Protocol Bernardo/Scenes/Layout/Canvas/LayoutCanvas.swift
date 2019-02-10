@@ -40,6 +40,9 @@ class LayoutCanvas: NSViewController {
     /// The scene back layer, holding the decorations objects
     var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
     
+    /// The scene front layer, holding the device objects
+    var usersLayer: SKNode { return _scene.childNode(withName: "root/usersLayer")! }
+    
     // List of all the frontElements nodes in the scene
     var frontElements = [LayoutCanvasDevice]()
     
@@ -48,16 +51,18 @@ class LayoutCanvas: NSViewController {
     
     /// The currently selected node, might be null
     var selectedNode: LayoutCanvasElement? {
-        willSet(node) {
-            if selectedNode === node { return }
+        didSet {
+            if selectedNode === oldValue { return }
             
             // Deselect the currently selected node (if any) before moving on
-            selectedNode?.deselect()
-            node?.select()
+            oldValue?.deselect()
+            selectedNode?.select()
             
-            delegate?.canvas(self, selectionChanged: node)
+            delegate?.canvas(self, selectionChanged: selectedNode)
         }
     }
+    
+    weak var calibrationProfile: LayoutCalibrationProfile?
     
     
     // /////////////////////
@@ -81,6 +86,7 @@ extension LayoutCanvas {
         
         // Create the scene
         _scene = SKScene(fileNamed: "LayoutCanvas")
+        _scene.delegate = self
         
         // Display it
         _sceneView.presentScene(_scene)
@@ -198,5 +204,24 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
     
     func elementCanBeEdited(_ element: LayoutCanvasElement) -> Bool {
         return self.editable
+    }
+}
+
+extension LayoutCanvas: SKSceneDelegate {
+    func update(_ currentTime: TimeInterval, for scene: SKScene) {
+        // Call the update method of each device
+        frontElements.forEach { $0.update() }
+        
+        // Update the users array
+        usersLayer.removeAllChildren()
+        
+        // For all actively tracked users
+        App.usersEngine.allUsers.forEach { user in
+            // Create a node for it
+            let userNode = LayoutCanvasUser(user: user)
+            
+            // And display it
+            usersLayer.addChild(userNode)
+        }
     }
 }

@@ -22,3 +22,9 @@ struct Point: Codable {
         self.y = Double(point.y)
     }
 }
+
+extension Point {
+    static func + (left: Point, right: Point) -> Point {
+        return Point(x: left.x + right.x, y: left.y + right.y)
+    }
+}

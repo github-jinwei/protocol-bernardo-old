@@ -20,6 +20,9 @@ class Layout: Codable {
 // /////////////////////////////
 // MARK: - Actions on the layout
 extension Layout {
+    /// Create a new device on the layout and returns it
+    ///
+    /// - Returns: The newly created device
     func createDevice() -> Device {
         let device = Device()
         devices.append(device)
@@ -27,6 +30,9 @@ extension Layout {
         return device
     }
     
+    /// Create a new line on the layout and returns it
+    ///
+    /// - Returns: The newly created line
     func createLine() -> Line {
         let line = Line()
         decorations.append(line)
@@ -34,15 +40,34 @@ extension Layout {
         return line
     }
     
+    /// Remove the given device from the layout
+    ///
+    /// - Parameter device: The device to remove
     func remove(device: Device) {
         devices.removeAll {
             $0 === device
         }
     }
     
+    /// Remove the given line from the layout
+    ///
+    /// - Parameter line: The line to remove
     func remove(line: Line) {
         decorations.removeAll {
             $0 === line
         }
+    }
+}
+
+extension Layout {
+    /// Return the device on the layout with the corresponding UUID
+    /// If no device matches the given UUID, returns nil
+    ///
+    /// - Parameter deviceUUID: A layout device UUID
+    /// - Returns: The layout device
+    func device(withUUID deviceUUID: String) -> Device? {
+        let foundDevices = devices.filter { $0.uuid == deviceUUID }
+        guard foundDevices.count == 1 else { return nil }
+        return foundDevices[0]
     }
 }

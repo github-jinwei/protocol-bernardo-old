@@ -40,6 +40,9 @@ protocol LayoutCanvasElement: AnyObject {
     /// - Parameter event: Mouse event
     /// - Returns: True if the cursor is inside the trigger area, false otherwise
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool
+    
+    /// Call on the update part of the frame rendering by the scene
+    func update()
 }
 
 // MARK: - Default Implementations
@@ -47,6 +50,8 @@ extension LayoutCanvasElement {
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
         return false
     }
+    
+    func update() { }
 }
 
 // MARK: - Useful methods

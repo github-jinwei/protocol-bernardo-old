@@ -136,7 +136,7 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
     status->deviceCount = (unsigned int)_devices.size();
     
     // Allocate space to store the device states (C-style baby)
-    status->_deviceStatus = (DeviceStatus *)malloc(sizeof(DeviceStatus) * status->deviceCount);
+    status->_deviceStatus = (DAEDeviceStatus *)malloc(sizeof(DAEDeviceStatus) * status->deviceCount);
     
     // For each device currently stored, generate and store its status
     int i = 0;

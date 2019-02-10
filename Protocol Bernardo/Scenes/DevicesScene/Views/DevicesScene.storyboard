@@ -42,25 +42,13 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saJ-hv-DLg">
-                                <rect key="frame" x="379" y="283" width="87" height="32"/>
-                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DAG-UM-vB2">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="refreshDevicesList:" target="och-mK-cQM" id="5Bq-7L-AxB"/>
-                                </connections>
-                            </button>
                             <stackView orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8qo-hn-5zd">
                                 <rect key="frame" x="20" y="20" width="440" height="262"/>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="saJ-hv-DLg" secondAttribute="trailing" constant="20" id="Cua-VA-2dC"/>
                             <constraint firstItem="WxO-ie-Dhx" firstAttribute="top" secondItem="R5G-UH-u4a" secondAttribute="top" constant="20" id="HWt-wg-faV"/>
                             <constraint firstAttribute="bottom" secondItem="8qo-hn-5zd" secondAttribute="bottom" constant="20" id="QQb-Fj-uXu"/>
-                            <constraint firstItem="saJ-hv-DLg" firstAttribute="bottom" secondItem="WxO-ie-Dhx" secondAttribute="bottom" id="SQN-ks-JXn"/>
                             <constraint firstAttribute="trailing" secondItem="8qo-hn-5zd" secondAttribute="trailing" constant="20" id="WIs-Gl-f7u"/>
                             <constraint firstItem="8qo-hn-5zd" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="gKy-td-rlL"/>
                             <constraint firstItem="8qo-hn-5zd" firstAttribute="top" secondItem="WxO-ie-Dhx" secondAttribute="bottom" constant="8" id="h03-7A-T3M"/>

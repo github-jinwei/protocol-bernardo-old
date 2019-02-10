@@ -17,5 +17,8 @@ struct App {
     
     static let layoutEngine = LayoutEngine()
     
+    static let usersEngine = UsersEngine()
+    
+    
     static let documentsController = NSDocumentController()
 }
