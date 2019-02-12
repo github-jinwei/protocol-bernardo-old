@@ -21,6 +21,9 @@
 		3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */; };
 		3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */; };
 		396C48532208FDBA000AA888 /* LayoutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C48522208FDBA000AA888 /* LayoutWindowController.swift */; };
+		396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */; };
+		396CF35822110EC10049E091 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35722110EC10049E091 /* Queue.swift */; };
+		396CF35A2212037E0049E091 /* CalibrationDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF3592212037E0049E091 /* CalibrationDeltas.swift */; };
 		396DDFC921F4285000628070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFC821F4285000628070 /* AppDelegate.swift */; };
 		396DDFCB21F4285000628070 /* WelcomeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* WelcomeSceneViewController.swift */; };
 		396DDFD021F4285200628070 /* WelcomeScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCE21F4285200628070 /* WelcomeScene.storyboard */; };
@@ -63,7 +66,7 @@
 		39A1E71821FEC08C003162FE /* LayoutCanvas.sks in Resources */ = {isa = PBXBuildFile; fileRef = 39A1E71721FEC08C003162FE /* LayoutCanvas.sks */; };
 		39AF88AD21F4CF7E00A68993 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AC21F4CF7E00A68993 /* App.swift */; };
 		39AF88AF21F4D02100A68993 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AE21F4D02100A68993 /* Core.swift */; };
-		39B55760220008430021BFDA /* deg2rad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575F220008430021BFDA /* deg2rad.swift */; };
+		39B55760220008430021BFDA /* maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575F220008430021BFDA /* maths.swift */; };
 		39B5576222000FC70021BFDA /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5576122000FC70021BFDA /* NSColor.swift */; };
 		39C1E8FB2209351900F53AC2 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FA2209351900F53AC2 /* Scene.swift */; };
 		39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */; };
@@ -280,6 +283,9 @@
 		3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceDetailsPopover.swift; sourceTree = "<group>"; };
 		3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBTrackedUserDetailsExcerpt.swift; sourceTree = "<group>"; };
 		396C48522208FDBA000AA888 /* LayoutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowController.swift; sourceTree = "<group>"; };
+		396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltasCalculator.swift; sourceTree = "<group>"; };
+		396CF35722110EC10049E091 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		396CF3592212037E0049E091 /* CalibrationDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltas.swift; sourceTree = "<group>"; };
 		396DDFC521F4285000628070 /* Protocol Bernardo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Protocol Bernardo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DDFC821F4285000628070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396DDFCA21F4285000628070 /* WelcomeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSceneViewController.swift; sourceTree = "<group>"; };
@@ -321,7 +327,7 @@
 		39A1E71721FEC08C003162FE /* LayoutCanvas.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LayoutCanvas.sks; sourceTree = "<group>"; };
 		39AF88AC21F4CF7E00A68993 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		39AF88AE21F4D02100A68993 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
-		39B5575F220008430021BFDA /* deg2rad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deg2rad.swift; sourceTree = "<group>"; };
+		39B5575F220008430021BFDA /* maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maths.swift; sourceTree = "<group>"; };
 		39B5576122000FC70021BFDA /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		39C1E8FA2209351900F53AC2 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasDelegate.swift; sourceTree = "<group>"; };
@@ -518,11 +524,12 @@
 		396DDFF421F4340B00628070 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				39B5575F220008430021BFDA /* deg2rad.swift */,
+				39B5575F220008430021BFDA /* maths.swift */,
 				396DDFF521F4341A00628070 /* Extensions */,
 				397195C52200D38000F92C5C /* Keycode.swift */,
 				39C1E900220A05AF00F53AC2 /* NSDocumentDelegate.swift */,
 				39977434220B961B00ED4B93 /* Point.swift */,
+				396CF35722110EC10049E091 /* Queue.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -688,6 +695,8 @@
 			children = (
 				3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */,
 				39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */,
+				396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */,
+				396CF3592212037E0049E091 /* CalibrationDeltas.swift */,
 			);
 			path = Calibration;
 			sourceTree = "<group>";
@@ -967,6 +976,7 @@
 				390C265F21F66EFB00E7FEAE /* DevicesSceneViewController.swift in Sources */,
 				393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */,
 				39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */,
+				396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */,
 				39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */,
 				39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */,
 				39A1E70521FE67FE003162FE /* LayoutSplitViewController.swift in Sources */,
@@ -987,6 +997,7 @@
 				3997743D220BB0E500ED4B93 /* LayoutSidebarCalibration.swift in Sources */,
 				390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */,
 				3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */,
+				396CF35A2212037E0049E091 /* CalibrationDeltas.swift in Sources */,
 				39C1E8FF22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift in Sources */,
 				390D0DB521F4FECF0032CA23 /* DevicesScene.swift in Sources */,
 				39C1E8FB2209351900F53AC2 /* Scene.swift in Sources */,
@@ -1005,6 +1016,7 @@
 				39C1E90D220A37F300F53AC2 /* Line.swift in Sources */,
 				39E3121221F6F1C5006569F1 /* String.swift in Sources */,
 				390D0DB921F509C90032CA23 /* DevicesSceneWindowController.swift in Sources */,
+				396CF35822110EC10049E091 /* Queue.swift in Sources */,
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
 				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
 				39379A0E220FA220004C3815 /* Position.swift in Sources */,
@@ -1015,7 +1027,7 @@
 				39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */,
 				3989EAD722037C3F005CF113 /* NSStepper.swift in Sources */,
 				39977435220B961B00ED4B93 /* Point.swift in Sources */,
-				39B55760220008430021BFDA /* deg2rad.swift in Sources */,
+				39B55760220008430021BFDA /* maths.swift in Sources */,
 				3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

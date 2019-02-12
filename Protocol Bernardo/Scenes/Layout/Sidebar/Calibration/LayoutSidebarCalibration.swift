@@ -47,6 +47,9 @@ class LayoutSidebarCalibration: NSViewController {
     /// Status of the selected reference device
     @IBOutlet weak var referenceDeviceStatus: NSTextField!
     
+    /// Device postion delta Orientation
+    @IBOutlet weak var deltaOrientationLabel: NSTextField!
+    
     /// Device postion delta X
     @IBOutlet weak var deltaXLabel: NSTextField!
     
@@ -56,11 +59,20 @@ class LayoutSidebarCalibration: NSViewController {
     /// Device postion delta Height
     @IBOutlet weak var deltaHeightLabel: NSTextField!
     
-    /// Device postion delta Orientation
-    @IBOutlet weak var deltaOrientationLabel: NSTextField!
-    
     /// Device calibration status
     @IBOutlet weak var calibrationStatus: NSTextField!
+    
+    
+    
+    // //////////////////////
+    // MARK: - Properties
+    
+    /// User position registered on the previous frame on the device being calibrated
+    var deltasCalculator = CalibrationDeltasCalculator()
+    
+    
+    // //////////////////////
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         // Place ourselves as the dae observer and start it if needed
@@ -206,8 +218,18 @@ extension LayoutSidebarCalibration {
             if cDevice == nil || (!cDevice!.isReference && !cDevice!.isCalibrated) {
                 referenceDevicesList.itemArray.last!.isEnabled = false
                 referenceDevicesList.itemArray.last!.title += " (Not Calibrated)"
+                return
             }
         }
+    }
+    
+    @IBAction func setReferenceDevice(_ sender: NSPopUpButton) {
+        clearAndDisableCalibrationPanel()
+        
+        // Make sure a correct item was selected
+        guard referenceDevicesList.indexOfSelectedItem > 0 else { return }
+        
+        
     }
 }
 
@@ -234,6 +256,34 @@ extension LayoutSidebarCalibration: DataAcquisitionEngineObserver {
             
             // Display the state of this device
             self.referenceDeviceStatus.stringValue = referenceDevice.stateLabel
+            
+            // If there is at least one user tracked by each device
+            guard physicalDevice.users.count > 0 &&
+                  referenceDevice.users.count > 0 else { return }
+            
+            // Make sure their first users are beiing tracked
+            guard physicalDevice.users[0].state == USER_TRACKED &&
+                referenceDevice.users[0].state == USER_TRACKED else { return }
+            
+            // Add them to the deltas calculator
+            self.deltasCalculator.insert(calibrationPosition: physicalDevice.users[0].centerOfMass,
+                                    referencePosition: referenceDevice.users[0].centerOfMass)
+            
+            // get the deltas
+            let deltas = self.deltasCalculator.getDeltas()
+            
+            self.deltaOrientationLabel.floatValue = deltas?.orientation ?? 0.0
+            
+            guard self.deltaOrientationLabel.floatValue < 3.0 else {
+                self.deltaXLabel.stringValue = "-"
+                self.deltaYLabel.stringValue = "-"
+                self.deltaHeightLabel.stringValue = "-"
+                return
+            }
+            
+            self.deltaXLabel.floatValue = deltas?.xPosition ?? 0.0
+            self.deltaYLabel.floatValue = deltas?.yPosition ?? 0.0
+            self.deltaHeightLabel.floatValue = deltas?.height ?? 0.0
         }
     }
 }
@@ -288,5 +338,7 @@ extension LayoutSidebarCalibration {
         deltaOrientationLabel.stringValue = "-"
         
         calibrationStatus.stringValue = "-"
+        
+        deltasCalculator.reset()
     }
 }

@@ -52,7 +52,7 @@ class LayoutCanvasDevice: SKNode {
     var orientation: CGFloat = 0 {
         didSet {
             device.orientation = Double(orientation)
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 - orientation + 90)
+            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -64,7 +64,7 @@ class LayoutCanvasDevice: SKNode {
         didSet {
             device.horizontalFOV = Double(horizontalFOV)
             _captationArea.path = captationArea()
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 - orientation + 90)
+            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -195,7 +195,7 @@ extension LayoutCanvasDevice {
         
         // Build the captation area node
         _captationArea = SKShapeNode(path: captationArea())
-        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 - orientation + 90)
+        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
         
         // Give them their idle style
         setIdleAppearance()

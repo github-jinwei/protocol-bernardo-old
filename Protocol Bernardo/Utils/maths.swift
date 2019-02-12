@@ -1,5 +1,5 @@
 //
-//  deg2rad.swift
+//  maths.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-28.
@@ -22,4 +22,22 @@ internal func deg2rad(_ degrees: CGFloat) -> CGFloat {
 /// - Returns: The angle in radians
 internal func deg2rad(_ degrees: Float) -> Float {
     return degrees * .pi / 180.0
+}
+
+
+
+/// Returns the absolute value of the given position
+///
+/// - Parameter position: _
+/// - Returns: _
+internal func abs(_ position: Position) -> Position {
+    var pos = Position()
+    pos.x = abs(position.x)
+    pos.y = abs(position.y)
+    pos.z = abs(position.z)
+    
+    pos.x2D = abs(position.x2D)
+    pos.x2D = abs(position.x2D)
+    
+    return pos
 }
