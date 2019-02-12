@@ -59,10 +59,20 @@ class LayoutSidebarCalibration: NSViewController {
     /// Device postion delta Height
     @IBOutlet weak var deltaHeightLabel: NSTextField!
     
-    /// Device calibration status
-    @IBOutlet weak var calibrationStatus: NSTextField!
+    /// Button used to store a calibration profile deltas
+    @IBOutlet weak var storeDeltasButton: NSButton!
     
+    /// Currently stored orientation delta in the profile
+    @IBOutlet weak var storedOrientationDelta: NSTextField!
     
+    /// Currently stored X delta in the profile
+    @IBOutlet weak var storedXDelta: NSTextField!
+    
+    /// Currently stored Y delta in the profile
+    @IBOutlet weak var storedYDelta: NSTextField!
+    
+    /// Currently stored height delta in the profile
+    @IBOutlet weak var storedHeightDelta: NSTextField!
     
     // //////////////////////
     // MARK: - Properties
@@ -132,6 +142,8 @@ extension LayoutSidebarCalibration {
         // Get the device profile or create a new one if needed
         let calibratedDevice = profile.device(forUUID: deviceUUID) ??
                                profile.addDevice(withUUID: deviceUUID)
+        
+        displayDeltas(forProfile: calibratedDevice)
         
         // Reset the physical devices list
         physicalDevicesList.removeAllItems()
@@ -226,10 +238,26 @@ extension LayoutSidebarCalibration {
     @IBAction func setReferenceDevice(_ sender: NSPopUpButton) {
         clearAndDisableCalibrationPanel()
         
-        // Make sure a correct item was selected
         guard referenceDevicesList.indexOfSelectedItem > 0 else { return }
         
+        storeDeltasButton.isEnabled = true
+    }
+    
+    @IBAction func storeDeltas(_ sender: NSButton) {
+        // Get the device and the calibrated device
+        let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
+        let calibratedDevice = profile.device(forUUID: device.uuid)!
         
+        // Store the shown deltas in the calibration profile
+        calibratedDevice.orientationDelta = deltaOrientationLabel.doubleValue
+        calibratedDevice.positionDelta.x = deltaXLabel.doubleValue
+        calibratedDevice.positionDelta.y = deltaYLabel.doubleValue
+        calibratedDevice.heightDelta = deltaHeightLabel.doubleValue
+        
+        // And mark the profile as calibrated
+        calibratedDevice.isCalibrated = true
+        
+        displayDeltas(forProfile: calibratedDevice)
     }
 }
 
@@ -308,6 +336,22 @@ extension LayoutSidebarCalibration: LayoutSidebar {
 // /////////////////
 // MARK: - Clearing
 extension LayoutSidebarCalibration {
+    func displayDeltas(forProfile profile: DeviceCalibrationProfile) {
+        guard profile.isCalibrated else {
+            storedOrientationDelta.stringValue = "-"
+            storedXDelta.stringValue = "-"
+            storedYDelta.stringValue = "-"
+            storedHeightDelta.stringValue = "-"
+            return
+        }
+        
+        storedOrientationDelta.doubleValue = profile.calibratedOrientation
+        storedXDelta.doubleValue = profile.calibratedPosition.x
+        storedYDelta.doubleValue = profile.calibratedPosition.y
+        storedHeightDelta.doubleValue = profile.calibratedHeight
+    }
+    
+    
     func clearAndDisableAll() {
         clearAndDisablePhysicalPanel()
         clearAndDisableReferencePanel()
@@ -332,12 +376,12 @@ extension LayoutSidebarCalibration {
     }
     
     func clearAndDisableCalibrationPanel() {
+        storeDeltasButton.isEnabled = false
+        
         deltaXLabel.stringValue = "-"
         deltaYLabel.stringValue = "-"
         deltaHeightLabel.stringValue = "-"
         deltaOrientationLabel.stringValue = "-"
-        
-        calibrationStatus.stringValue = "-"
         
         deltasCalculator.reset()
     }
