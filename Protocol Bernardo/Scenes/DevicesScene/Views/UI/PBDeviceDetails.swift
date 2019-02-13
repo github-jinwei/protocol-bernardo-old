@@ -31,10 +31,10 @@ class PBDeviceDetails: NSViewController {
         popover.delegate = self
     }
     
-    /// Update the view valus using the given DeviceStatus
+    /// Update the view valus using the given PhysicalDevice
     ///
     /// - Parameter device: the device status
-    func update(deviceValues device: DeviceStatus) {
+    func update(deviceValues device: PhysicalDevice) {
         // Update the view values
         deviceNameField.stringValue = device.name
         serialField.stringValue = device.serial

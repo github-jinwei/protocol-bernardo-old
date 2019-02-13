@@ -1,5 +1,5 @@
 //
-//  DeviceStatus.swift
+//  PhysicalDevice.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-02-09.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DeviceStatus {
+struct PhysicalDevice {
     var name: String
     
     var serial: String
@@ -25,7 +25,7 @@ struct DeviceStatus {
     }
 }
 
-extension DeviceStatus {
+extension PhysicalDevice {
     /// English label for the current device state
     var stateLabel: String {
         switch state.rawValue {

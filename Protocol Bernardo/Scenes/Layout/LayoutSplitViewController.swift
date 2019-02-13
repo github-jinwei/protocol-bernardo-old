@@ -137,7 +137,7 @@ class LayoutSplitViewController: NSSplitViewController {
         sidebar.layout = layoutDocument.layout
         sidebar.document = layoutDocument
         
-        _canvas.editable = false
+//        _canvas.editable = false
     }
     
     /// Set the layout window configuration to Tracking

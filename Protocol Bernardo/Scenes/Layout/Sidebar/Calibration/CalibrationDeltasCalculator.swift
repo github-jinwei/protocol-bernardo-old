@@ -12,8 +12,12 @@ class CalibrationDeltasCalculator {
     /// Queue of stored positions coming from the device being calibrated
     var calibrationPositionsQueue = Queue<Position>()
     
+    var recentCalibrationPosition: Position!
+    
     /// Queue of stored positions coming fron the reference device
     var referencePositionsQueue = Queue<Position>()
+    
+    var recentReferencePosition: Position!
     
     /// Number of positions stored in the queues
     var positionsCount: Int = 0
@@ -23,6 +27,9 @@ extension CalibrationDeltasCalculator {
     func insert(calibrationPosition: Position, referencePosition: Position) {
         calibrationPositionsQueue.enqueue(value: calibrationPosition)
         referencePositionsQueue.enqueue(value: referencePosition)
+        
+        recentCalibrationPosition = calibrationPosition
+        recentReferencePosition = referencePosition
         
         positionsCount += 1
     }
@@ -45,27 +52,24 @@ extension CalibrationDeltasCalculator {
         
         var deltas = CalibrationDeltas()
         
-        let calibratingVector = movementVector(forQueue: calibrationPositionsQueue)
-        let referenceVector = movementVector(forQueue: referencePositionsQueue)
+        let calibratingVector = movementVector(from: recentCalibrationPosition, forQueue: calibrationPositionsQueue)
+        let referenceVector = movementVector(from: recentReferencePosition, forQueue: referencePositionsQueue)
+        
+        self.positionsCount -= 1
         
         deltas.orientation = referenceVector.angle(with: calibratingVector)
         
-        // Get and remove front positions from the queues
-        let calibrationPosition = calibrationPositionsQueue.dequeue()!
-        let referencePosition = referencePositionsQueue.dequeue()!
-        self.positionsCount -= 1
+        deltas.xPosition = recentCalibrationPosition.x - recentReferencePosition.x
+        deltas.yPosition = recentCalibrationPosition.z - recentReferencePosition.z
         
-        deltas.xPosition = calibrationPosition.x - referencePosition.x
-        deltas.yPosition = calibrationPosition.z - referencePosition.z
-        
-        deltas.height = calibrationPosition.y - referencePosition.y
+        deltas.height = recentCalibrationPosition.y - recentReferencePosition.y
         
         return deltas
     }
     
-    internal func movementVector(forQueue queue: Queue<Position>) -> Position {
-        let oldPos = queue.front
-        let lastPos = queue.back
+    internal func movementVector(from: Position, forQueue queue: Queue<Position>) -> Position {
+        let oldPos = from
+        let lastPos = queue.dequeue()!
         
         return abs(oldPos - lastPos)
     }

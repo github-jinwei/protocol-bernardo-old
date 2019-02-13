@@ -12,6 +12,7 @@ class LayoutSidebarCalibration: NSViewController {
     // //////////////////
     // MARK: - References
     
+    /// Reference to the layout document
     weak var document: LayoutDocument?
     
     /// Reference to the layout
@@ -78,12 +79,26 @@ class LayoutSidebarCalibration: NSViewController {
     // MARK: - Properties
     
     /// User position registered on the previous frame on the device being calibrated
-    var deltasCalculator = CalibrationDeltasCalculator()
+    internal var _deltasCalculator = CalibrationDeltasCalculator()
     
+    /// The device to calibrate profile
+    internal var _deviceCalibrationProfile: DeviceCalibrationProfile!
     
-    // //////////////////////
-    // MARK: - View Lifecycle
+    /// The reference device profile
+    internal var _referenceCalibrationProfile: DeviceCalibrationProfile?
     
+
+    
+    // Deinit
+    deinit {
+        App.dae.removeObserver(self)
+    }
+}
+
+
+// //////////////////////
+// MARK: - View Lifecycle
+extension LayoutSidebarCalibration {
     override func viewDidLoad() {
         // Place ourselves as the dae observer and start it if needed
         App.dae.addObsever(self)
@@ -103,20 +118,11 @@ class LayoutSidebarCalibration: NSViewController {
         profileNameField.stringValue = profile.name.capitalized
 
         // Fill the devices list
-        devicesList.removeAllItems()
-        devicesList.addItem(withTitle: "---")
-        layout?.devices.forEach { device in
-            devicesList.addItem(withTitle: device.name)
-        }
-        devicesList.isEnabled = true
+        fillLayoutDevicesList()
     }
     
     @IBAction func openDevices(_ sender: Any) {
         App.core.makeScene(ofType: DevicesScene.self)
-    }
-    
-    deinit {
-        App.dae.removeObserver(self)
     }
 }
 
@@ -130,6 +136,7 @@ extension LayoutSidebarCalibration {
         // Start by cleaning the panel
          clearAndDisableAll()
         
+        // If the user selected the first item (---) deselect the selected device
         guard devicesList.indexOfSelectedItem > 0 else {
             canvas.selectedNode = nil
             return;
@@ -140,41 +147,23 @@ extension LayoutSidebarCalibration {
         canvas.selectDevice(withName: devicesList.titleOfSelectedItem!)
         
         // Get the device profile or create a new one if needed
-        let calibratedDevice = profile.device(forUUID: deviceUUID) ??
+        _deviceCalibrationProfile = profile.device(forUUID: deviceUUID) ??
                                profile.addDevice(withUUID: deviceUUID)
         
-        displayDeltas(forProfile: calibratedDevice)
+        // Display the device profile stored deltas
+        displayDeltas(forProfile: _deviceCalibrationProfile)
         
-        // Reset the physical devices list
-        physicalDevicesList.removeAllItems()
-        physicalDevicesList.addItem(withTitle: "---")
-        physicalDevicesList.selectItem(at: 0)
+        // Update the list of physical devices
+        fillPhysicalDevicesList()
         
-        // Fill it with available devices list
-        App.dae.devices.forEach { serial, device in
-            physicalDevicesList.addItem(withTitle: serial)
-        }
-        
-        // And activate it
-        physicalDevicesList.isEnabled = true
-        
-        // Make sure this device as an associated physical device, otherwise stop here
-        guard let physicalDeviceSerial = calibratedDevice.physicalDeviceSerial else { return }
-        
-        // If the specified device is missing, add a row for it and specify it is missing
-        if physicalDevicesList.item(withTitle: physicalDeviceSerial) == nil {
-            let deviceLine = "\(physicalDeviceSerial) (Not Connected)"
-            physicalDevicesList.addItem(withTitle: deviceLine)
-            physicalDevicesList.selectItem(withTitle: deviceLine)
-            physicalDevicesList.itemArray.last!.isEnabled = false
-            
-            return
-        }
-        
-        physicalDevicesList.selectItem(withTitle: physicalDeviceSerial)
+        // Go further
         setPhysicalDevice(physicalDevicesList)
     }
     
+    /// User selected a physical device for the device to calibrate, update the lists
+    /// and interface accordingly
+    ///
+    /// - Parameter sender: _
     @IBAction func setPhysicalDevice(_ sender: NSPopUpButton) {
         // Clean interface
         referenceDeviceToggle.isEnabled = false
@@ -183,17 +172,15 @@ extension LayoutSidebarCalibration {
         clearAndDisableCalibrationPanel()
         
         // Make sure the placeholder isn't the one selected
-        guard physicalDevicesList.indexOfSelectedItem > 0 else { return }
+        guard physicalDevicesList.indexOfSelectedItem > 0 &&
+              physicalDevicesList.selectedItem!.isEnabled else { return }
         
-        // Get the device and the calibrated device
-        let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
-        let calibratedDevice = profile.device(forUUID: device.uuid)!
-        
-        calibratedDevice.physicalDeviceSerial = physicalDevicesList.titleOfSelectedItem!
+        // Set the physical device for the profile
+        _deviceCalibrationProfile.physicalDeviceSerial = physicalDevicesList.titleOfSelectedItem!
         
         // Activate the isReference toggle and set its value
         referenceDeviceToggle.isEnabled = true
-        referenceDeviceToggle.state = calibratedDevice.isReference! ? .on : .off
+        referenceDeviceToggle.state = _deviceCalibrationProfile.isReference! ? .on : .off
         
         // If this device is marked as reference, do nothing more
         guard referenceDeviceToggle.state == .off else { return }
@@ -201,46 +188,44 @@ extension LayoutSidebarCalibration {
         setReferenceState(referenceDeviceToggle)
     }
     
+    /// User changed the reference state for the selected device to calibrate
+    ///
+    /// - Parameter sender: _
     @IBAction func setReferenceState(_ sender: NSButton) {
         clearAndDisableReferencePanel()
         clearAndDisableCalibrationPanel()
         
-        // Get the device and the calibrated device
-        let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
-        let calibratedDevice = profile.device(forUUID: device.uuid)!
-        
-        calibratedDevice.isReference = referenceDeviceToggle.state == .on
+        // Set the device reference state based on the toggle
+        _deviceCalibrationProfile.isReference = referenceDeviceToggle.state == .on
         
         // If this device is marked as reference, do nothing more
         guard referenceDeviceToggle.state == .off else { return }
         
-        referenceDevicesList.removeAllItems()
-        referenceDevicesList.addItem(withTitle: "---")
+        // Update the reference device list
+        fillReferenceDevicesList()
         
-        referenceDevicesList.isEnabled = true
+        // Select the reference device if there is one
+        guard let referenceDeviceUUID = _deviceCalibrationProfile.referenceDeviceUUID else { return }
+        let referenceDevice: Device = layout.devices.first(where: { $0.uuid == referenceDeviceUUID })!
         
-        // Fill the calibrate against list
-        layout.devices.forEach { device in
-            guard device.uuid != calibratedDevice.layoutDeviceUUID else { return }
-            
-            referenceDevicesList.addItem(withTitle: device.name)
-            
-            let cDevice = profile.device(forUUID: device.uuid)
-            
-            if cDevice == nil || (!cDevice!.isReference && !cDevice!.isCalibrated) {
-                referenceDevicesList.itemArray.last!.isEnabled = false
-                referenceDevicesList.itemArray.last!.title += " (Not Calibrated)"
-                return
-            }
-        }
+        referenceDevicesList.selectItem(withTitle: referenceDevice.name)
+        
+        setReferenceDevice(referenceDevicesList)
     }
     
     @IBAction func setReferenceDevice(_ sender: NSPopUpButton) {
         clearAndDisableCalibrationPanel()
         
+        // Make sure the item selected isn't the placeholder one
         guard referenceDevicesList.indexOfSelectedItem > 0 else { return }
         
         storeDeltasButton.isEnabled = true
+        
+        // Get the reference device
+        let referenceDevice = layout.devices.filter({ $0.name == referenceDevicesList.titleOfSelectedItem! })[0]
+        
+        _deviceCalibrationProfile.referenceDeviceUUID = referenceDevice.uuid
+        _referenceCalibrationProfile = profile.device(forUUID: referenceDevice.uuid)
     }
     
     @IBAction func storeDeltas(_ sender: NSButton) {
@@ -249,7 +234,7 @@ extension LayoutSidebarCalibration {
         let calibratedDevice = profile.device(forUUID: device.uuid)!
         
         // Store the shown deltas in the calibration profile
-        calibratedDevice.orientationDelta = deltaOrientationLabel.doubleValue
+        calibratedDevice.orientationDelta = deltaOrientationLabel.doubleValue.rounded(FloatingPointRoundingRule.toNearestOrAwayFromZero)
         calibratedDevice.positionDelta.x = deltaXLabel.doubleValue
         calibratedDevice.positionDelta.y = deltaYLabel.doubleValue
         calibratedDevice.heightDelta = deltaHeightLabel.doubleValue
@@ -262,56 +247,158 @@ extension LayoutSidebarCalibration {
 }
 
 
+
+extension LayoutSidebarCalibration {
+    /// Fill the 'Devices' list
+    func fillLayoutDevicesList() {
+        // Reset the list
+        devicesList.removeAllItems()
+        devicesList.addItem(withTitle: "---")
+        
+        // Do we have a layout
+        guard let layout = layout else { return }
+        
+        // Fill the list with every device in the layout
+        for device in layout.devices {
+            devicesList.addItem(withTitle: device.name)
+        }
+        
+        // Activate the list
+        devicesList.isEnabled = true
+    }
+    
+    /// Fill the 'Physical devices" list
+    func fillPhysicalDevicesList() {
+        // Reset the physical devices list
+        physicalDevicesList.removeAllItems()
+        physicalDevicesList.addItem(withTitle: "---")
+        physicalDevicesList.selectItem(at: 0)
+        
+        // Fill it with available devices list
+        for (serial, _) in App.dae.connectedDevices.devices {
+            physicalDevicesList.addItem(withTitle: serial)
+        }
+        
+        // If the physical device for the currently selected device is missing,
+        // add it at the end of the list
+        guard let physicalDeviceSerial = _deviceCalibrationProfile.physicalDeviceSerial else { return }
+        
+        if physicalDevicesList.item(withTitle: physicalDeviceSerial) == nil {
+            let deviceLine = "\(physicalDeviceSerial) (Not Connected)"
+            physicalDevicesList.addItem(withTitle: deviceLine)
+            physicalDevicesList.selectItem(withTitle: deviceLine)
+            physicalDevicesList.itemArray.last!.isEnabled = false
+        } else {
+            physicalDevicesList.selectItem(withTitle: physicalDeviceSerial)
+        }
+        
+        // Activate it
+        physicalDevicesList.isEnabled = true
+    }
+    
+    /// Reset and fill the 'Calibrate against list'
+    func fillReferenceDevicesList() {
+        // Reset the list
+        referenceDevicesList.removeAllItems()
+        referenceDevicesList.addItem(withTitle: "---")
+        
+        referenceDevicesList.isEnabled = true
+        
+        // For each device in the layout
+        for device in layout.devices {
+            // Prevent displaying the same device in the list
+            guard device.uuid != _deviceCalibrationProfile.layoutDeviceUUID else { return }
+            
+            // Add an item with the name
+            referenceDevicesList.addItem(withTitle: device.name)
+            
+            let referenceDeviceProfile = profile.device(forUUID: device.uuid)
+            
+            // If the device is not calibrated, disable it from the list, and update its label
+            if referenceDeviceProfile == nil || (!referenceDeviceProfile!.isReference && !referenceDeviceProfile!.isCalibrated) {
+                referenceDevicesList.itemArray.last!.isEnabled = false
+                referenceDevicesList.itemArray.last!.title += " (Not Calibrated)"
+                return
+            }
+        }
+    }
+}
+
+
+
 // /////////////////////////////////////
 // MARK: - DataAcquisitionEngineObserver
 extension LayoutSidebarCalibration: DataAcquisitionEngineObserver {
-    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: [String: DeviceStatus]) {
+    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: ConnectedDevices) {
+        // Start by checking if we have a device profile selected
+        guard _deviceCalibrationProfile != nil else { return }
+        
+        // Is there a selected physical device ?
+        guard let serial = self._deviceCalibrationProfile?.physicalDeviceSerial else { return }
+        
+        // Make sure this device is connected
+        guard let physicalDevice = devices.with(serial: serial) else { return }
+        
+        // Display the state of the device
         DispatchQueue.main.async {
-            // Is there a selected physical device ?
-            guard self.physicalDevicesList.indexOfSelectedItem > 0 else { return }
-            
-            // Is this device connected ?
-            guard let physicalDevice = devices[self.physicalDevicesList.titleOfSelectedItem!] else { return }
-            
-            // Display the state of the device
             self.physicalDeviceStatus.stringValue = physicalDevice.stateLabel
+        }
+        
+        // Do nothing more if the current device is a reference one
+        if _deviceCalibrationProfile.isReference { return }
+        
+        // Is there a selected reference device ?
+        guard _referenceCalibrationProfile != nil else { return }
+        
+        // Make sure this reference device has an associated, connected physical device
+        guard let referencePhysicalDevice = devices.with(serial: _referenceCalibrationProfile?.physicalDeviceSerial) else {
+            return
+        }
+        
+        // Display the state of the reference device
+        DispatchQueue.main.async {
+            self.referenceDeviceStatus.stringValue = referencePhysicalDevice.stateLabel
+        }
+        
+        // If there is at least one user tracked by each device
+        guard physicalDevice.users.count > 0 &&
+              referencePhysicalDevice.users.count > 0 else { return }
+        
+        // Make sure their first users are both being tracked
+        guard physicalDevice.users[0].state == USER_TRACKED && referencePhysicalDevice.users[0].state == USER_TRACKED else {
             
-            // Is there a reference device selected ?
-            guard self.referenceDevicesList.indexOfSelectedItem > 0 else { return }
-            
-            // Is this device connected ?
-            guard let referenceDevice = devices[self.referenceDevicesList.titleOfSelectedItem!] else { return }
-            
-            // Display the state of this device
-            self.referenceDeviceStatus.stringValue = referenceDevice.stateLabel
-            
-            // If there is at least one user tracked by each device
-            guard physicalDevice.users.count > 0 &&
-                  referenceDevice.users.count > 0 else { return }
-            
-            // Make sure their first users are beiing tracked
-            guard physicalDevice.users[0].state == USER_TRACKED &&
-                referenceDevice.users[0].state == USER_TRACKED else { return }
-            
-            // Add them to the deltas calculator
-            self.deltasCalculator.insert(calibrationPosition: physicalDevice.users[0].centerOfMass,
-                                    referencePosition: referenceDevice.users[0].centerOfMass)
-            
-            // get the deltas
-            let deltas = self.deltasCalculator.getDeltas()
-            
-            self.deltaOrientationLabel.floatValue = deltas?.orientation ?? 0.0
-            
-            guard self.deltaOrientationLabel.floatValue < 3.0 else {
-                self.deltaXLabel.stringValue = "-"
-                self.deltaYLabel.stringValue = "-"
-                self.deltaHeightLabel.stringValue = "-"
+                DispatchQueue.main.async {
+                    self.clearDeltas()
+                }
                 return
-            }
+        }
+        
+        // Get the users CoM on the global coordinates system
+        let globalDevicePos = _deviceCalibrationProfile.globalCoordinates(forPosition: physicalDevice.users[0].centerOfMass)
+        let globalReferencePos = _referenceCalibrationProfile!.globalCoordinates(forPosition: referencePhysicalDevice.users[0].centerOfMass)
+        
+        // Add them to the deltas calculator
+        self._deltasCalculator.insert(calibrationPosition: globalDevicePos,
+                                referencePosition: globalReferencePos)
+        
+        // Get the deltas
+        let deltas = self._deltasCalculator.getDeltas()
+        
+        DispatchQueue.main.async {
+            // Display the orientation delta
+            self.deltaOrientationLabel.floatValue = rad2deg(deltas?.orientation.rounded() ?? 0.0)
+//
+//            // If the orientation delta is low enough, display the other deltas
+//            guard self.deltaOrientationLabel.floatValue < 3.0 else {
+//                self.deltaXLabel.stringValue = "-"
+//                self.deltaYLabel.stringValue = "-"
+//                self.deltaHeightLabel.stringValue = "-"
+//                return
+//            }
             
-            self.deltaXLabel.floatValue = deltas?.xPosition ?? 0.0
-            self.deltaYLabel.floatValue = deltas?.yPosition ?? 0.0
-            self.deltaHeightLabel.floatValue = deltas?.height ?? 0.0
+            self.deltaXLabel.intValue = Int32(Int((deltas?.xPosition.rounded() ?? 0.0) / 10.0))
+            self.deltaYLabel.intValue = Int32(Int((deltas?.yPosition.rounded() ?? 0.0) / 10.0))
+            self.deltaHeightLabel.intValue = Int32(Int((deltas?.height.rounded() ?? 0.0) / 10.0))
         }
     }
 }
@@ -378,11 +465,15 @@ extension LayoutSidebarCalibration {
     func clearAndDisableCalibrationPanel() {
         storeDeltasButton.isEnabled = false
         
+        clearDeltas()
+        
+        _deltasCalculator.reset()
+    }
+    
+    func clearDeltas() {
         deltaXLabel.stringValue = "-"
         deltaYLabel.stringValue = "-"
         deltaHeightLabel.stringValue = "-"
         deltaOrientationLabel.stringValue = "-"
-        
-        deltasCalculator.reset()
     }
 }

@@ -39,9 +39,9 @@ class UsersEngine {
 }
 
 extension UsersEngine: DataAcquisitionEngineObserver {
-    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: [String: DeviceStatus]) {
+    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
         // Parse all the available users and store them correctly
-        devices.forEach { serial, device in
+        for (serial, device) in connectedDevices.devices {
             device.users.forEach { physicalUser in
                 // Start by making sure this user is fully tracked
                 guard physicalUser.state == USER_TRACKED else {
@@ -86,10 +86,14 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         _users.forEach { user in
             let closestUsers = usersByDistance(fromPosition: user.calibratedPosition)
             // If the current user is the first one in the array (like 99% of the time), select the second one
-            let closest = closestUsers[0] === user ? closestUsers[1] : closestUsers[0]
-            let distance = closest.calibratedPosition.distance(from: user.calibratedPosition)
+            let closest: User
             
-            print(distance)
+            if closestUsers.count > 1 {
+                closest = closestUsers[0] === user ? closestUsers[1] : closestUsers[0]
+            } else {
+                closest = closestUsers[0]
+            }
+            let distance = closest.calibratedPosition.distance(from: user.calibratedPosition)
             
             if distance < 150 {
                 // The two user are really close by, let's merge them
@@ -104,13 +108,6 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         }
     }
     
-//    /// Compare the given physical user with already tracked users to find if it is already tracked
-//    ///
-//    /// - Parameter physicalUser: <#physicalUser description#>
-//    /// - Returns: <#return value description#>
-//    internal func getSameUser(forPhysicalUser physicalUser: PhysicalUser) -> User? {
-//
-//    }
     
     func newUser(forPhysic physic: PhysicalUser, onDevice serial: String) {
         let user = User()

@@ -13,7 +13,7 @@ class DeviceCalibrationProfile: Codable {
         didSet { document?.markAsEdited() }
     }
     
-    var physicalDeviceSerial: String? {
+    var physicalDeviceSerial: Serial? {
         didSet { document?.markAsEdited() }
     }
     
@@ -47,6 +47,7 @@ class DeviceCalibrationProfile: Codable {
         case layoutDeviceUUID
         case physicalDeviceSerial
         case isReference
+        case referenceDeviceUUID
         case positionDelta
         case orientationDelta
         case heightDelta
@@ -82,6 +83,7 @@ extension DeviceCalibrationProfile {
         return layoutDevice.orientation + orientationDelta
     }
 }
+
 
 
 

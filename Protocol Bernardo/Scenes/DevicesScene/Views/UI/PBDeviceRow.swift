@@ -58,7 +58,7 @@ class PBDeviceRow: NSView {
     /// Update the values for the device using the given one
     ///
     /// - Parameter device: The device status
-    func update(deviceValues device: DeviceStatus) {
+    func update(deviceValues device: PhysicalDevice) {
         // Make sure the given device is really for us
         guard serial == device.serial else {
             return

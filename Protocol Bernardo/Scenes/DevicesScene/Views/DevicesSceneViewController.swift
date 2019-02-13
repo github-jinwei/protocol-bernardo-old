@@ -16,16 +16,16 @@ class DevicesSceneViewController: NSViewController {
     /// Called to pass a new status to the interface
     ///
     /// - Parameter status: The DAE status
-    func statusUpdate(_ status: [String: DeviceStatus]) {
-        if(status.count != devicesList.views.count) {
-            reloadDevicesList(withStatus: status)
+    func statusUpdate(_ devices: ConnectedDevices) {
+        if(devices.count != devicesList.views.count) {
+            reloadDevicesList(withDevices: devices)
             return
         }
         
         devicesList.views.forEach { view in
             let deviceView = view as! PBDeviceRow
             let serial = deviceView.serial!
-            let device = status[serial]!
+            let device = devices.with(serial: serial)!
             
             // Update in the values
             deviceView.update(deviceValues: device)
@@ -35,11 +35,11 @@ class DevicesSceneViewController: NSViewController {
     /// Regenerate all the device views
     ///
     /// - Parameter status: The new status to generate from
-    func reloadDevicesList(withStatus status: [String: DeviceStatus]) {
+    func reloadDevicesList(withDevices connectedDevices: ConnectedDevices) {
         // Remove previously added view
         devicesList.views.forEach { $0.removeFromSuperview() }
         
-        status.forEach { serial, device in
+        for (serial, device) in connectedDevices.devices {
             let deviceView: PBDeviceRow = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
             
             // Values that will not change

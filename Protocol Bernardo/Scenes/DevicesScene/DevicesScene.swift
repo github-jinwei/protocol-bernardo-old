@@ -63,7 +63,7 @@ class DevicesScene: Scene {
 
 // MARK: - DataAcquisitionEngineDelegate
 extension DevicesScene: DataAcquisitionEngineObserver {
-    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: [String: DeviceStatus]) {
+    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: ConnectedDevices) {
         DispatchQueue.main.async {
            self._viewController.statusUpdate(devices);
         }

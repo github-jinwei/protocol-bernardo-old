@@ -12,8 +12,10 @@
 		390D0DB721F502170032CA23 /* DevicesScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D0DB621F502170032CA23 /* DevicesScene.storyboard */; };
 		390D0DB921F509C90032CA23 /* DevicesSceneWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DB821F509C90032CA23 /* DevicesSceneWindowController.swift */; };
 		390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */; };
+		392183CB22138B3A000D5968 /* ConnectedDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CA22138B3A000D5968 /* ConnectedDevices.swift */; };
+		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
 		39379A0E220FA220004C3815 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A0D220FA220004C3815 /* Position.swift */; };
-		39379A12220FE496004C3815 /* DeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* DeviceStatus.swift */; };
+		39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* PhysicalDevice.swift */; };
 		393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ECD2204DD0100BC54D3 /* Device.swift */; };
 		393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */; };
 		3968FCD621FB82B5005EAA4C /* PBDeviceRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968FCD521FB82B5005EAA4C /* PBDeviceRow.xib */; };
@@ -165,6 +167,8 @@
 		390D0DB821F509C90032CA23 /* DevicesSceneWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesSceneWindowController.swift; sourceTree = "<group>"; };
 		390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngine.swift; sourceTree = "<group>"; };
 		390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Protocol Bernardo-Bridging-Header.h"; sourceTree = "<group>"; };
+		392183CA22138B3A000D5968 /* ConnectedDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDevices.swift; sourceTree = "<group>"; };
+		392183CC22138C5E000D5968 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
 		3929600421F7BFEF0064B808 /* libopencv_hfs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_hfs.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_hfs.a; sourceTree = "<group>"; };
 		3929600521F7BFEF0064B808 /* libopencv_phase_unwrapping.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_phase_unwrapping.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_phase_unwrapping.4.0.1.dylib; sourceTree = "<group>"; };
@@ -256,7 +260,7 @@
 		392960B221F7CFDB0064B808 /* libfreenect2-openni2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libfreenect2-openni2.0.dylib"; path = "../../../../../usr/local/lib/libfreenect2-openni2.0.dylib"; sourceTree = "<group>"; };
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
 		39379A0D220FA220004C3815 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		39379A11220FE496004C3815 /* DeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceStatus.swift; sourceTree = "<group>"; };
+		39379A11220FE496004C3815 /* PhysicalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDevice.swift; sourceTree = "<group>"; };
 		393B1ECD2204DD0100BC54D3 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
 		395E0F0C21F924880097D992 /* libopenpose.1.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenpose.1.4.0.dylib; path = ../../../../../usr/local/lib/libopenpose.1.4.0.dylib; sourceTree = "<group>"; };
@@ -409,7 +413,8 @@
 				3968FCDE21FD0386005EAA4C /* Extensions */,
 				390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */,
 				39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */,
-				39379A11220FE496004C3815 /* DeviceStatus.swift */,
+				39379A11220FE496004C3815 /* PhysicalDevice.swift */,
+				392183CA22138B3A000D5968 /* ConnectedDevices.swift */,
 			);
 			path = DataAcquisitionEngine;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 				39C1E900220A05AF00F53AC2 /* NSDocumentDelegate.swift */,
 				39977434220B961B00ED4B93 /* Point.swift */,
 				396CF35722110EC10049E091 /* Queue.swift */,
+				392183CC22138C5E000D5968 /* Typealias.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -987,7 +993,7 @@
 				3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */,
 				39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
 				39977437220B977800ED4B93 /* CGPoint.swift in Sources */,
-				39379A12220FE496004C3815 /* DeviceStatus.swift in Sources */,
+				39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */,
 				39C1E901220A05AF00F53AC2 /* NSDocumentDelegate.swift in Sources */,
 				39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */,
 				397E685B21FE50E600FFA678 /* NSNib.swift in Sources */,
@@ -1017,7 +1023,9 @@
 				39E3121221F6F1C5006569F1 /* String.swift in Sources */,
 				390D0DB921F509C90032CA23 /* DevicesSceneWindowController.swift in Sources */,
 				396CF35822110EC10049E091 /* Queue.swift in Sources */,
+				392183CB22138B3A000D5968 /* ConnectedDevices.swift in Sources */,
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
+				392183CD22138C5E000D5968 /* Typealias.swift in Sources */,
 				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
 				39379A0E220FA220004C3815 /* Position.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,

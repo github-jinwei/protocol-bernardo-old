@@ -54,7 +54,7 @@ public class Queue<T> {
     }
     
     public var front: Element {
-        return _front.value
+        return _front.next!.value
     }
     
     public var back: Element {

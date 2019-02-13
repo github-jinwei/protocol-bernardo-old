@@ -32,21 +32,23 @@ class DataAcquisitionEngine {
         observers.removeAll{ $0 === observer }
     }
     
+    
+    
     // ////////////////
-    // MARK: Properties
+    // MARK: - Properties
     
     /// Holds the loop for the status fetcher
     internal var _statusFetcherLoop: Repeater?
     
     /// The devices handled by the engine
-    var devices: [String: DeviceStatus] = [:] {
-        didSet {
-            observers.forEach { $0.dae(self, devicesStatusUpdated: devices)  }
-        }
+    internal var _devices = ConnectedDevices()
+    
+    var connectedDevices: ConnectedDevices {
+        return _devices
     }
     
     // //////////////////////
-    // MARK: Engine Lifecycle
+    // MARK: - Engine Lifecycle
     
     func start() {
         guard _statusFetcherLoop == nil else { return }
@@ -65,26 +67,16 @@ class DataAcquisitionEngine {
     ///
     /// - Parameter repeater: The wrepeater
     func fetchStatus(_ repeater: Repeater) {
-        #if DEVICE_LIVE_VIEW
-        
-        DispatchQueue.main.async {
-            let status = DAEGetStatus()
-            self._engineStatus = status!.pointee
-        
-            // Free the used memory
-            status?.deallocate()
-        }
-        
-        #else
-        
         // Get the engine status
         let statusPointer = DAEGetStatus()
         
         // Copy informations from the status pointer to our own struct
-        devices = statusPointer!.pointee.copyAndDeallocate()
+        _devices.setDevices(statusPointer!.pointee.copyAndDeallocate())
+
+        // Free the memory
         statusPointer?.deallocate()
         
-        #endif
+        observers.forEach { $0.dae(self, devicesStatusUpdated: _devices) }
     }
     
     /// Changes the device status to its next possible state
@@ -92,7 +84,7 @@ class DataAcquisitionEngine {
     /// - Parameter serial: The serial of the device
     func toggleDeviceStatus(withSerial serial: String) {
         // Make sure the serial is a valid one
-        guard let device = devices[serial] else {
+        guard let device = _devices.with(serial: serial) else {
             return
         }
         

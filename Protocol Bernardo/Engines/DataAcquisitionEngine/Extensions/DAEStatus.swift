@@ -10,9 +10,9 @@ import Foundation
 
 extension DAEStatus {
     /// List of all the devices in a Swift friendly format
-    func copyAndDeallocate() -> [String: DeviceStatus] {
+    func copyAndDeallocate() -> [String: PhysicalDevice] {
         // The map
-        var devicesMap = [String: DeviceStatus]()
+        var devicesMap = [String: PhysicalDevice]()
 
         // Pointer used for parsing
         var pointer = _deviceStatus
@@ -22,7 +22,7 @@ extension DAEStatus {
             let daeDeviceStatus = pointer!.pointee
             
             // Insert in the map
-            devicesMap[daeDeviceStatus.serial] = DeviceStatus(from: daeDeviceStatus)
+            devicesMap[daeDeviceStatus.serial] = PhysicalDevice(from: daeDeviceStatus)
             
             // Free it
             daeDeviceStatus._users.deallocate()

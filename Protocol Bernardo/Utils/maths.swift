@@ -25,6 +25,10 @@ internal func deg2rad(_ degrees: Float) -> Float {
 }
 
 
+internal func rad2deg(_ radians: Float) -> Float {
+    return radians * 180.0 / .pi
+}
+
 
 /// Returns the absolute value of the given position
 ///
@@ -37,7 +41,7 @@ internal func abs(_ position: Position) -> Position {
     pos.z = abs(position.z)
     
     pos.x2D = abs(position.x2D)
-    pos.x2D = abs(position.x2D)
+    pos.y2D = abs(position.y2D)
     
     return pos
 }
