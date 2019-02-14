@@ -8,10 +8,12 @@
 
 import Foundation
 
+/// A layout calibration profile is a collection of device calibration profile
+/// for the current layout.
 class LayoutCalibrationProfile: Codable {
     /// Name of the calibration profile
     var name: String
-    
+
     /// All the calibrated devices, identified by their uuid in the layout
     var calibratedDevices: [DeviceCalibrationProfile] = []
 
@@ -54,12 +56,14 @@ extension LayoutCalibrationProfile {
     }
 }
 
+
+// MARK: - Accessing devices' profiles
 extension LayoutCalibrationProfile {
     /// Gives the corresponding profile for the given device serial
     ///
     /// - Parameter serial: A device serial
     /// - Returns: The corresponding calibration profile, if any
-    func device(forSerial serial: String) -> DeviceCalibrationProfile? {
+    func device(forSerial serial: Serial) -> DeviceCalibrationProfile? {
         return calibratedDevices.first { $0.physicalDeviceSerial == serial }
     }
     

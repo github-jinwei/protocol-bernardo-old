@@ -9,8 +9,8 @@
 import Foundation
 
 extension DAEDeviceStatus {
-    /// Returns the device serial in as a swift string
-    var serial: String {
+    /// The device's serial
+    var serial: Serial {
         get {
             var temp = _serial
             return withUnsafePointer(to: &temp) {
@@ -20,7 +20,8 @@ extension DAEDeviceStatus {
             }
         }
     }
-    
+
+    /// The device's name
     var name: String {
         get {
             var temp = _name
@@ -36,14 +37,13 @@ extension DAEDeviceStatus {
     var users: [PhysicalUser] {
         get {
             var users = [PhysicalUser]()
-            
             var pointer = _users
-            
+
             for i in 0..<userCount {
                 let user = pointer!.pointee
-                
+
                 users.append(user)
-                
+
                 if i + 1 < userCount {
                     pointer = pointer?.successor()
                 }

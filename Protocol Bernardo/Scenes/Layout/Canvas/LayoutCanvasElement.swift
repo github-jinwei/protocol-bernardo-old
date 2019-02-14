@@ -51,7 +51,7 @@ extension LayoutCanvasElement {
         return false
     }
     
-    func update() { }
+    func update() {}
 }
 
 // MARK: - Useful methods

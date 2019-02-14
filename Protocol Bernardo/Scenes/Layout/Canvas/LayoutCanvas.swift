@@ -52,7 +52,9 @@ class LayoutCanvas: NSViewController {
     /// The currently selected node, might be null
     var selectedNode: LayoutCanvasElement? {
         didSet {
-            if selectedNode === oldValue { return }
+            if selectedNode === oldValue {
+                return
+            }
             
             // Deselect the currently selected node (if any) before moving on
             oldValue?.deselect()
@@ -100,10 +102,13 @@ extension LayoutCanvas {
         layout.decorations.forEach {
             createNodeForExistingLine($0)
         }
+
+        // Tell the delegate the canvas finish its init
+        delegate?.canvasAppeared(self)
     }
     
     func selectDevice(withName deviceName: String) {
-        let deviceNode = frontElements.filter({ $0.name! == deviceName }).first
+        let deviceNode = frontElements.filter { $0.name! == deviceName }.first
         deviceNode?.markAsSelected()
     }
 }
@@ -112,7 +117,7 @@ extension LayoutCanvas {
 // ////////////////////////////////
 // MARK: - Scene elements lifecycle
 extension LayoutCanvas {
-    /// Creates a new node for a new device and insert it in the layotu
+    /// Creates a new node for a new device and insert it in the layout
     func createDevice() {
         let deviceNode = LayoutCanvasDevice(onCanvas: self,
                                             forDevice: layout.createDevice())
@@ -205,6 +210,21 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
     func elementCanBeEdited(_ element: LayoutCanvasElement) -> Bool {
         return self.editable
     }
+}
+
+extension LayoutCanvas: LayoutWindowDelegate {
+    func toolbar(_: LayoutWindowController, interfaceModeHasChanged interfaceMode: LayoutInterfaceMode) {
+
+        switch interfaceMode {
+        case .edition: editable = true
+        case .calibration: editable = false
+        case .tracking: editable = false
+        }
+    }
+
+    func toolbar(_: LayoutWindowController, calibrationProfileChanged: LayoutCalibrationProfile?) { }
+
+
 }
 
 extension LayoutCanvas: SKSceneDelegate {

@@ -94,10 +94,10 @@ class LayoutCanvasLine: SKNode {
     /// Reference to the device parameters view when it is available
     internal lazy var _parametersController: PBLayoutCanvasLinePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
-        var controller = storyboard.instantiateController(withIdentifier: "lineParametersController") as! PBLayoutCanvasLinePropertiesController
-        controller.line = self
+        var controller = storyboard.instantiateController(withIdentifier: "lineParametersController") as? PBLayoutCanvasLinePropertiesController
+        controller?.line = self
         
-        return controller
+        return controller!
     }()
 }
 
@@ -228,7 +228,7 @@ extension LayoutCanvasLine {
     ///
     /// - Parameter event:
     internal func translateWithEvent(_ event: NSEvent) {
-        let translateAmount:CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
+        let translateAmount: CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
         
         switch event.keyCode {
         case Keycode.upArrow: position.y += translateAmount

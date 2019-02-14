@@ -8,12 +8,31 @@
 
 import AppKit
 
+/// Receptacle for all the custom interactions coming from the application menu
 class MainMenu: NSMenu {
-    @IBAction func openWelcomeScene(_ sender: Any?) {
-        App.core.showWelcomeScene()
+
+    @IBAction func createLayout(_ sender: NSMenuItem) {
+        App.layoutEngine.newLayout()
     }
-    
-    @IBAction func openDevicesScene(_ sender: Any?) {
-        App.core.makeScene(ofType: DevicesScene.self)
+
+    /// Prompt the user to open a layout document
+    @IBAction func openLayout(_ sender: Any) {
+        App.layoutEngine.openLayout()
     }
+
+
+    /// Show the welcome screen
+    ///
+    /// - Parameter sender: _
+    @IBAction func openWelcomeWindow(_ sender: Any?) {
+        App.core.showWelcomeWindow()
+    }
+
+    /// Open the devices scene
+    ///
+    /// - Parameter sender: _
+    @IBAction func openDevicesWindow(_ sender: Any?) {
+        App.core.showDevicesWindow()
+    }
+
 }

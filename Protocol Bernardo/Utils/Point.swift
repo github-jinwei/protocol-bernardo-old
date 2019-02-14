@@ -8,6 +8,7 @@
 
 import CoreGraphics
 
+/// Represent a 2D Point
 struct Point: Codable {
     var x: Double
     var y: Double
@@ -24,6 +25,12 @@ struct Point: Codable {
 }
 
 extension Point {
+    /// + Operator to add the values of two Point
+    ///
+    /// - Parameters:
+    ///   - left: _
+    ///   - right: _
+    /// - Returns: A new point consisting of the sum of the two others
     static func + (left: Point, right: Point) -> Point {
         return Point(x: left.x + right.x, y: left.y + right.y)
     }

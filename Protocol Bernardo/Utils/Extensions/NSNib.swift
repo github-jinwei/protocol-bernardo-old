@@ -9,6 +9,12 @@
 import AppKit
 
 extension NSNib {
+    /// Instanciate the view/window of the method type from the specified Nib
+    ///
+    /// - Parameters:
+    ///   - nibName: Name of the nib to extract the view/window fron
+    ///   - owner: _
+    /// - Returns: The instanciated view/window
     static func make<T>(fromNib nibName: String, owner: AnyObject?) -> T {
         var instanciatedViews: NSArray? = []
         

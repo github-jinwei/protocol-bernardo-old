@@ -12,9 +12,11 @@
 #include <map>
 
 #include "DAEStatus.h"
-#include "PhysicalDevice.hpp"
 #include "DeviceConnectionListener.hpp"
 #include "DeviceDisconnectionListener.hpp"
+
+// Forward Declarations
+class PhysicalDevice;
 
 class DataAcquisitionEngine {
 public:
@@ -25,6 +27,20 @@ public:
         
         return _instance;
     };
+
+    /**
+     By enabling live view, the dae will create an OpenCV to display the color
+     stream of the connected devices. Live view needs to be enabled before starting the dae.
+     When using live view, `getStatus()` needs to be called from the main thread
+     */
+    void enableLiveView();
+
+    /**
+     Disable live view
+     */
+    void disableLiveView();
+
+    inline bool isLiveViewEnabled() { return _liveView; }
     
     /**
      Init necessary drivers and execute a first parse for devices
@@ -91,6 +107,8 @@ private:
     
     /** Tell if OpenNI has already been initialized or not */
     static bool _openNIInitialized;
+
+    bool _liveView = false;
     
     /** All the available devices */
     std::map<std::string, PhysicalDevice *> _devices;
@@ -113,6 +131,8 @@ private:
 extern "C" {
     struct DAEStatus * DAEGetStatus();
 
+    void DAEEnableLiveView();
+    void DAEDisableLiveView();
     void DAEPrepare();
     void DAEConnectToDevice(const char * c_serial);
     void DAESetDeviceActive(const char * c_serial);

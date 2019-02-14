@@ -12,7 +12,7 @@ class PBDeviceDetailsPopover: NSPopover {
     /// Convenient access to get the controller in the proper type
     var controller: PBDeviceDetails {
         get {
-            return contentViewController! as! PBDeviceDetails
+            return contentViewController as! PBDeviceDetails
         }
     }
 }

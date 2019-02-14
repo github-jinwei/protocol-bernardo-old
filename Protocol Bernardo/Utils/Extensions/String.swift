@@ -16,10 +16,13 @@ extension String {
         return (self as NSString).utf8String!
     }
     
+    /// If the string represent a filename, give the extension without the dot "."
     var fileExtension: String {
         return String(self.split(separator: ".").last!)
     }
     
+    /// If the string represent a filename (not a pathc), give the file name
+    /// without the extension
     var fileNameWithoutExtension: String {
         return String(self.split(separator: ".").first!)
     }

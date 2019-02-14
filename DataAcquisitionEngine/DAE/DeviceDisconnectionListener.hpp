@@ -12,6 +12,7 @@
 #include <iostream>
 #include <ni2/OpenNI.h>
 
+// Forward Declarations
 class DataAcquisitionEngine;
 
 class DeviceDisconnectionListener: public openni::OpenNI::DeviceDisconnectedListener {

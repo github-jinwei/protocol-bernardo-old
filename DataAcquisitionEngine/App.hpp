@@ -9,15 +9,18 @@
 #ifndef CApp_h
 #define CApp_h
 
-#include "DAE/DataAcquisitionEngine.hpp"
+// ///////////////////
+// Forward Declaration
+class DataAcquisitionEngine;
 
 class AppStruct {
 public:
     /** The Data Acquisition Engine */
     DataAcquisitionEngine * dae;
+
+    AppStruct();
 };
 
-/** The Application global object */
-AppStruct * App = new AppStruct();
+extern AppStruct * App;
 
 #endif /* CApp_h */

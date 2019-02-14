@@ -19,6 +19,10 @@ class LayoutSidebarEdition: NSViewController {
 
     /// The view holding an element parameters view
     @IBOutlet weak var parametersViewHolder: NSView!
+
+    override func viewDidAppear() {
+        setSelectedElement(canvas.selectedNode)
+    }
     
     
     // /////////////////////////

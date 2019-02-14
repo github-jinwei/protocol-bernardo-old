@@ -8,6 +8,9 @@
 
 #include "PhysicalDevice.hpp"
 
+#include "../App.hpp"
+#include "DataAcquisitionEngine.hpp"
+
 // OpenCV Header
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -75,8 +78,10 @@ void PhysicalDevice::connect() {
     
     // Mark the device as ready
     _state = DeviceState::DEVICE_READY;
-    
-//    cv::namedWindow(_serial, cv::WINDOW_AUTOSIZE);
+
+    if(App->dae->isLiveViewEnabled()) {
+        cv::namedWindow(_serial, cv::WINDOW_AUTOSIZE);
+    }
 }
 
 void PhysicalDevice::setActive() {
@@ -128,23 +133,24 @@ DAEDeviceStatus PhysicalDevice::getStatus() {
     
     status.userCount = (unsigned int) _usersTracker._users.size();
     status._users = _usersTracker.getUsers();
-    
-#ifdef DEVICE_LIVE_VIEW
-    if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
 
-        cv::Mat cImageBGR;
-        const cv::Mat mImageRGB(_colorFrame->getHeight(),
-                                _colorFrame->getWidth(),
-                                CV_8UC3,
-                                (void*)_colorFrame->getData());
+    // If live view is enabled, update the window fo the device
+    if(App->dae->isLiveViewEnabled()) {
+        if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
 
-        // p2c. convert form RGB to BGR
-        cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
+            cv::Mat cImageBGR;
+            const cv::Mat mImageRGB(_colorFrame->getHeight(),
+                                    _colorFrame->getWidth(),
+                                    CV_8UC3,
+                                    (void*)_colorFrame->getData());
 
-        cv::imshow(_serial, cImageBGR );
+            // p2c. convert form RGB to BGR
+            cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
+
+            cv::imshow(_serial, cImageBGR );
+        }
     }
-#endif /** DEVICE_LIVE_VIEW */
-    
+
     return status;
 }
 

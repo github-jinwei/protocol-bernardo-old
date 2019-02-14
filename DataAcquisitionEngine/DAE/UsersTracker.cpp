@@ -6,8 +6,10 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#include "UsersTracker.hpp"
 #include "PhysicalDevice.hpp"
+
+#include "UsersTracker.hpp"
+#include "Structs/PhysicalUser.h"
 
 void UsersTracker::onNewFrame(nite::UserTracker &userTracker) {
     // Is the device even active ? The user tracker starts on creation

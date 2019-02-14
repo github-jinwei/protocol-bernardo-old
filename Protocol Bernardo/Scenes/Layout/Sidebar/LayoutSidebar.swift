@@ -15,4 +15,13 @@ protocol LayoutSidebar: AnyObject {
     ///
     /// - Parameter element: The selected element or nil if no elements are selected
     func setSelectedElement(_ element: LayoutCanvasElement?)
+
+    /// Tell the sidebar the calibration profile has changed
+    ///
+    /// - Parameter profile: The selected calibration profile
+    func setCalibrationProfile(_ profile: LayoutCalibrationProfile?)
+}
+
+extension LayoutSidebar {
+    func setCalibrationProfile(_ profile: LayoutCalibrationProfile?) { }
 }

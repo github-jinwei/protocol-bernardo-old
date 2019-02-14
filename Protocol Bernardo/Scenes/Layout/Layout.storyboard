@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Devices Layout Window-->
+        <!--Layout Window-->
         <scene sceneID="LCH-Av-DmZ">
             <objects>
-                <windowController id="z0f-Va-BWi" userLabel="Devices Layout Window" customClass="LayoutWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="z0f-Va-BWi" userLabel="Layout Window" customClass="LayoutWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="IfL-Pf-Uly">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -72,6 +72,21 @@
                                         </connections>
                                     </popUpButton>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="FD1ADCF1-78EB-464A-BE9B-75A6947CFC8B" label="" paletteLabel="" toolTip="Toggle Sidebar" sizingBehavior="auto" id="ZhF-un-vbe">
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="TBd-hV-ah6">
+                                        <rect key="frame" x="0.0" y="14" width="38" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="foU-bF-Fl1">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment image="NSTouchBarSidebarTemplate" width="32"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                    <connections>
+                                        <action selector="toggleSidebar:" target="z0f-Va-BWi" id="Zcj-Vs-uIy"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="kPg-eF-K0R"/>
@@ -79,14 +94,16 @@
                                 <toolbarItem reference="WiB-BI-Kiy"/>
                                 <toolbarItem reference="E5w-wq-SPB"/>
                                 <toolbarItem reference="BYu-Uk-dW2"/>
+                                <toolbarItem reference="ZhF-un-vbe"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
-                            <outlet property="delegate" destination="z0f-Va-BWi" id="FZG-Pt-ep1"/>
+                            <outlet property="delegate" destination="z0f-Va-BWi" id="LbQ-sW-g4X"/>
                         </connections>
                     </window>
                     <connections>
                         <outlet property="calibrationProfilesList" destination="qoa-ZB-Uuh" id="LTt-4n-Fui"/>
+                        <outlet property="layoutInterfaceButtons" destination="hLq-CL-cMy" id="ctn-Ub-A9y"/>
                         <outlet property="windowTitle" destination="ANh-ab-Ndm" id="FWs-Mh-tZO"/>
                         <segue destination="joy-8q-fi3" kind="relationship" relationship="window.shadowedContentViewController" id="8ku-ax-sKc"/>
                     </connections>
@@ -96,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="-47" y="7"/>
         </scene>
-        <!--Layout Split View Controller-->
+        <!--Layout Controller-->
         <scene sceneID="Q0P-Do-mUp">
             <objects>
-                <splitViewController id="joy-8q-fi3" customClass="LayoutSplitViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="joy-8q-fi3" customClass="LayoutController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="sz6-D2-WBt"/>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="rI4-2O-BJL"/>
@@ -2016,6 +2033,7 @@ Gw
     <resources>
         <image name="Device" width="321" height="87"/>
         <image name="Line" width="305" height="87"/>
+        <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
         <image name="buttonCell:YPO-XM-LjA:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGVVZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEgcI

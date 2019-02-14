@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <ni2/OpenNI.h>
 
+// Forward Declarations
 class PhysicalDevice;
 
 class FrameListener: public openni::VideoStream::NewFrameListener {

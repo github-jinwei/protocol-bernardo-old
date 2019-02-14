@@ -8,13 +8,18 @@
 
 import Foundation
 
+/// Represent a real-worldm physical device
 struct PhysicalDevice {
+    /// The name of the device
     var name: String
     
-    var serial: String
+    /// The device's serial number
+    var serial: Serial
     
+    /// The device's state
     var state: DeviceState
     
+    /// All the physical users tracked by the device
     var users: [PhysicalUser]
     
     init(from status: DAEDeviceStatus) {

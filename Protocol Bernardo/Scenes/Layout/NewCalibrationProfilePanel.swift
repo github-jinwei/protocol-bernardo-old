@@ -10,7 +10,7 @@ import AppKit
 
 class NewCalibrationProfilePanel: NSViewController {
     
-    weak var reference: LayoutSplitViewController?
+    var createProfileDelegate: ((_ :String) -> Void)?
     
     @IBOutlet weak var profileNameField: NSTextField!
     
@@ -20,7 +20,8 @@ class NewCalibrationProfilePanel: NSViewController {
     
     @IBAction func createButton(_ sender: Any) {
         guard profileNameField.stringValue.trimmingCharacters(in: CharacterSet(charactersIn: " ")).count > 3 else { return }
-        reference?.createCalibrationProfile(named: profileNameField.stringValue)
+
+        createProfileDelegate?(profileNameField.stringValue)
         dismiss(self)
     }
 }

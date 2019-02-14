@@ -25,6 +25,10 @@ internal func deg2rad(_ degrees: Float) -> Float {
 }
 
 
+/// Transform a radians rotation in degrees
+///
+/// - Parameter radians: Angle in radians
+/// - Returns: The angle in degrees
 internal func rad2deg(_ radians: Float) -> Float {
     return radians * 180.0 / .pi
 }

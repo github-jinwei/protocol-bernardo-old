@@ -6,51 +6,42 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 /// The application structure Core
 class Core {
-    /// Reference to the SceneSelectorController
-    internal var _welcomeScene: WelcomeSceneViewController!
-    
+    /// The Welcome Scene
+    internal var _welcomeWindow: WelcomeWindow!
+
+    /// The Devices Window
+    internal var _devicesWindow: DevicesWindow!
+
     /// Used by the SceneSelectorController to register itself
     ///
-    /// - Parameter controller: The SceneSelectorController
-    func registerWelcomeScene(_ controller: WelcomeSceneViewController) {
-        _welcomeScene = controller
+    /// - Parameter controller: The WelcomeWindow
+    func registerWelcomeWindow(_ controller: WelcomeWindow) {
+        _welcomeWindow = controller
     }
-    
-    func showWelcomeScene() {
-        _welcomeScene?.view.window!.windowController?.showWindow(nil)
+
+    /// Display the welcome window
+    func showWelcomeWindow() {
+        _welcomeWindow?.view.window!.windowController?.showWindow(nil)
     }
-    
-    /// Array with all the currently opened scenes
-    internal var _scenes = [Int: Scene]()
-    
-    /// The index of the next scene that will be added
-    internal var _nextSceneIndex: Int = 0
-    
-    /// Instanciate and register a new scene
+
+    /// Used by the DevicesWindow to register itself in the core
     ///
-    /// - Parameter sceneType: The Type of the scene to create
-    func makeScene(ofType sceneType: Scene.Type) {
-        var newScene = sceneType.make()
-        newScene.sceneIndex = _nextSceneIndex
-        
-        _scenes[_nextSceneIndex] = newScene
-        
-        _nextSceneIndex += 1
+    /// - Parameter controller: The DevicesWindow
+    func registerDevicesWindow(_ controller: DevicesWindow) {
+        _devicesWindow = controller
     }
-    
-    /// Deregister a scene. If the scene has no other references,
-    /// this will triggers its deinit
-    ///
-    /// - Parameter sceneIndex: Index of the scene to remove
-    func removeScene(withIndex sceneIndex: Int) {
-        _scenes.removeValue(forKey: sceneIndex)
-        
-        if(_scenes.count == 0) {
-            showWelcomeScene()
+
+    /// Display the devices window
+    func showDevicesWindow() {
+        if _devicesWindow == nil {
+            let window = NSStoryboard(name: "DevicesWindow", bundle: nil).instantiateController(withIdentifier: "DevicesWindow")
+            (window as? NSWindowController)?.showWindow(nil)
         }
+
+        _devicesWindow?.view.window!.windowController?.showWindow(nil)
     }
 }

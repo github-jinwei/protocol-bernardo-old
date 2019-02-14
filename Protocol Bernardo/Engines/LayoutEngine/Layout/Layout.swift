@@ -8,7 +8,11 @@
 
 import Foundation
 
-class Layout: Codable {    
+/// A Layout is a representation of a real-world installation.
+///
+/// A Layout is used to enable user tracking accross multiple devices. It is composed
+/// of two kind of elements. The devices and decorations elements (lines currently)
+class Layout: Codable {
     /// All the devices composing the layout
     var devices = [Device]()
     
@@ -70,4 +74,5 @@ extension Layout {
         guard foundDevices.count == 1 else { return nil }
         return foundDevices[0]
     }
+    
 }

@@ -8,12 +8,10 @@
 
 import AppKit
 
+/// A Layout Document represent a stored .pblayout package
 class LayoutDocument: NSDocument {
-    /// The document delegate
-    weak var delegate: NSDocumentDelegate?
-    
     /// The layout
-    var layout:Layout = Layout()
+    var layout: Layout = Layout()
     
     /// The calibration profiles
     var calibrationsProfiles: [String: LayoutCalibrationProfile] = [:]
@@ -21,15 +19,16 @@ class LayoutDocument: NSDocument {
     /// The window controller managed by this document
     internal var _layoutWindow: LayoutWindowController! = nil
     
+    /// Tell the document is as been edited, and should adopt an "unsaved document"
+    /// behaviour
     func markAsEdited() {
-        _layoutWindow?.window!.isDocumentEdited = true
+        _layoutWindow.setDocumentEdited(true)
     }
-    
-    var autosavesInPlace = true
 }
 
 // MARK: - Document IO
 extension LayoutDocument {
+
     /// Write the content of the package
     ///
     /// - Parameter typeName: _
@@ -47,11 +46,12 @@ extension LayoutDocument {
             let calibrationData = try! JSONEncoder().encode([profile])
             rootDir.addRegularFile(withContents: calibrationData, preferredFilename: "\(name).pblayoutcalibration")
         }
-        
-        delegate?.document(self, didSave: true, contextInfo: nil)
-        
+
+        _layoutWindow.setDocumentEdited(false)
+
         return rootDir
     }
+
     
     /// Read the content of the given filewrapper into memory
     ///
@@ -79,11 +79,7 @@ extension LayoutDocument {
             default: return
             }
         }
-        
-        postOpenOperations()
-    }
-    
-    func postOpenOperations() {
+
         // Add a reference to this document on each calibration profile
         calibrationsProfiles.forEach { profileName, profile in
             profile.document = self
@@ -95,18 +91,26 @@ extension LayoutDocument {
 // ///////////////////////
 // MARK: - Document window
 extension LayoutDocument {
+
     override func makeWindowControllers() {
         // If the layout window is missing, let's create it
-        if _layoutWindow == nil {
-            _layoutWindow = NSStoryboard(name: "Layout", bundle: nil).instantiateInitialController() as? LayoutWindowController
-            self.addWindowController(_layoutWindow)
-        }
+        guard _layoutWindow == nil else { return }
+
+        let windowController = NSStoryboard(name: "Layout", bundle: nil).instantiateInitialController()
+
+        _layoutWindow = windowController as? LayoutWindowController
+        addWindowController(_layoutWindow)
     }
+
 }
 
 // ///////////////////
 // MARK: - Calibration
-extension LayoutDocument{
+extension LayoutDocument {
+    /// Create a new calibration profile inside the current layout
+    ///
+    /// - Parameter name: Name of the calibration profile to create
+    /// - Returns: A reference to the newly created profile
     func makeCalibrationProfile(withName name: String) -> LayoutCalibrationProfile {
         calibrationsProfiles[name] = LayoutCalibrationProfile(name: name)
         markAsEdited()

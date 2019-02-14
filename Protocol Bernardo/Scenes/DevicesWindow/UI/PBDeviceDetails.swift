@@ -26,7 +26,7 @@ class PBDeviceDetails: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.wantsLayer = true;
+        view.wantsLayer = true
         
         popover.delegate = self
     }
@@ -57,7 +57,7 @@ class PBDeviceDetails: NSViewController {
             
             guard let userView = userDetailsViews[user.userID] else {
                 // This is a new user, let's give it a view
-                let userView:PBTrackedUserDetailsExcerpt = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
+                let userView: PBTrackedUserDetailsExcerpt = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
                 userDetailsViews[user.userID] = userView
                 userView.update(userValues: user)
                 usersDetailsStackView.addView(userView, in: .trailing)

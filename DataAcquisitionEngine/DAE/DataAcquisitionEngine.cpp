@@ -6,20 +6,32 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#include "DataAcquisitionEngine.hpp"
 #include <iostream>
-#include <cstdlib>
-#include <signal.h>
 #include <regex>
 #include <string>
 
 #include <ni2/OpenNI.h>
 #include <nite2/NiTE.h>
 
+#include "DataAcquisitionEngine.hpp"
+
 #include "../App.hpp"
+#include "PhysicalDevice.hpp"
 
 DataAcquisitionEngine * DataAcquisitionEngine::_instance;
 bool DataAcquisitionEngine::_openNIInitialized = false;
+
+void DataAcquisitionEngine::enableLiveView() {
+    if(DataAcquisitionEngine::_openNIInitialized) {
+        return;
+    }
+
+    _liveView = true;
+}
+
+void DataAcquisitionEngine::disableLiveView() {
+    _liveView = false;
+}
 
 void DataAcquisitionEngine::start() {
     // Init OpenNI
@@ -180,8 +192,15 @@ std::string DataAcquisitionEngine::getDeviceSerial(const openni::DeviceInfo * de
 
 // C Access
 
+void DAEEnableLiveView() {
+    App->dae->enableLiveView();
+}
+
+void DAEDisableLiveView() {
+    App->dae->disableLiveView();
+}
+
 void DAEPrepare() {
-    App->dae = DataAcquisitionEngine::getInstance();
     App->dae->start();
 }
 

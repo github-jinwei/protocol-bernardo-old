@@ -10,6 +10,11 @@ import Foundation
 
 /// Delegate used by the Layout Canvas to informs its receiver on events happening
 protocol LayoutCanvasDelegate: AnyObject {
+    /// Informs the deleagate the canvas as finished its initial drawing
+    ///
+    /// - Parameter canvas: The current canvas
+    func canvasAppeared(_ canvas: LayoutCanvas)
+
     /// Informs the delegate that the canvas content has been changed
     ///
     /// - Parameters:

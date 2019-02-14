@@ -16,7 +16,9 @@ class LayoutSidebarCalibration: NSViewController {
     weak var document: LayoutDocument?
     
     /// Reference to the layout
-    weak var layout: Layout!
+    var layout: Layout! {
+        return document!.layout
+    }
     
     /// Reference to the calibration profile currently open, might be nil
     weak var profile: LayoutCalibrationProfile!
@@ -86,9 +88,7 @@ class LayoutSidebarCalibration: NSViewController {
     
     /// The reference device profile
     internal var _referenceCalibrationProfile: DeviceCalibrationProfile?
-    
 
-    
     // Deinit
     deinit {
         App.dae.removeObserver(self)
@@ -119,10 +119,12 @@ extension LayoutSidebarCalibration {
 
         // Fill the devices list
         fillLayoutDevicesList()
+
+        setSelectedElement(canvas.selectedNode)
     }
     
     @IBAction func openDevices(_ sender: Any) {
-        App.core.makeScene(ofType: DevicesScene.self)
+        App.core.showDevicesWindow()
     }
 }
 
@@ -139,7 +141,7 @@ extension LayoutSidebarCalibration {
         // If the user selected the first item (---) deselect the selected device
         guard devicesList.indexOfSelectedItem > 0 else {
             canvas.selectedNode = nil
-            return;
+            return
         }
         
         /// Get the device uuid
@@ -151,7 +153,7 @@ extension LayoutSidebarCalibration {
                                profile.addDevice(withUUID: deviceUUID)
         
         // Display the device profile stored deltas
-        displayDeltas(forProfile: _deviceCalibrationProfile)
+        displayDeltas()
         
         // Update the list of physical devices
         fillPhysicalDevicesList()
@@ -222,27 +224,23 @@ extension LayoutSidebarCalibration {
         storeDeltasButton.isEnabled = true
         
         // Get the reference device
-        let referenceDevice = layout.devices.filter({ $0.name == referenceDevicesList.titleOfSelectedItem! })[0]
+        let referenceDevice = layout.devices.filter { $0.name == referenceDevicesList.titleOfSelectedItem! }[0]
         
         _deviceCalibrationProfile.referenceDeviceUUID = referenceDevice.uuid
         _referenceCalibrationProfile = profile.device(forUUID: referenceDevice.uuid)
     }
     
     @IBAction func storeDeltas(_ sender: NSButton) {
-        // Get the device and the calibrated device
-        let device = layout.devices.filter({ $0.name == devicesList.titleOfSelectedItem! })[0]
-        let calibratedDevice = profile.device(forUUID: device.uuid)!
-        
         // Store the shown deltas in the calibration profile
-        calibratedDevice.orientationDelta = deltaOrientationLabel.doubleValue.rounded(FloatingPointRoundingRule.toNearestOrAwayFromZero)
-        calibratedDevice.positionDelta.x = deltaXLabel.doubleValue
-        calibratedDevice.positionDelta.y = deltaYLabel.doubleValue
-        calibratedDevice.heightDelta = deltaHeightLabel.doubleValue
+        _deviceCalibrationProfile.orientationDelta = deltaOrientationLabel.doubleValue
+        _deviceCalibrationProfile.positionDelta.x = deltaXLabel.doubleValue
+        _deviceCalibrationProfile.positionDelta.y = deltaYLabel.doubleValue
+        _deviceCalibrationProfile.heightDelta = deltaHeightLabel.doubleValue
         
         // And mark the profile as calibrated
-        calibratedDevice.isCalibrated = true
+        _deviceCalibrationProfile.isCalibrated = true
         
-        displayDeltas(forProfile: calibratedDevice)
+        displayDeltas()
     }
 }
 
@@ -345,7 +343,9 @@ extension LayoutSidebarCalibration: DataAcquisitionEngineObserver {
         }
         
         // Do nothing more if the current device is a reference one
-        if _deviceCalibrationProfile.isReference { return }
+        if _deviceCalibrationProfile.isReference {
+            return
+        }
         
         // Is there a selected reference device ?
         guard _referenceCalibrationProfile != nil else { return }
@@ -417,14 +417,18 @@ extension LayoutSidebarCalibration: LayoutSidebar {
         devicesList.selectItem(withTitle: device.name!)
         setDeviceToCalibrate(devicesList)
     }
+
+    func setCalibrationProfile(_ profile: LayoutCalibrationProfile?) {
+        self.profile = profile
+    }
 }
 
 
 // /////////////////
 // MARK: - Clearing
 extension LayoutSidebarCalibration {
-    func displayDeltas(forProfile profile: DeviceCalibrationProfile) {
-        guard profile.isCalibrated else {
+    func displayDeltas() {
+        guard _deviceCalibrationProfile.isCalibrated else {
             storedOrientationDelta.stringValue = "-"
             storedXDelta.stringValue = "-"
             storedYDelta.stringValue = "-"
@@ -432,10 +436,10 @@ extension LayoutSidebarCalibration {
             return
         }
         
-        storedOrientationDelta.doubleValue = profile.calibratedOrientation
-        storedXDelta.doubleValue = profile.calibratedPosition.x
-        storedYDelta.doubleValue = profile.calibratedPosition.y
-        storedHeightDelta.doubleValue = profile.calibratedHeight
+        storedOrientationDelta.doubleValue = _deviceCalibrationProfile.calibratedOrientation
+        storedXDelta.doubleValue = _deviceCalibrationProfile.calibratedPosition.x
+        storedYDelta.doubleValue = _deviceCalibrationProfile.calibratedPosition.y
+        storedHeightDelta.doubleValue = _deviceCalibrationProfile.calibratedHeight
     }
     
     

@@ -23,6 +23,7 @@ void FrameListener::onNewFrame(openni::VideoStream &stream) {
             device->storeDepthFrame(frame);
             break;
         default:
+            delete frame;
             return;
     }
 }

@@ -15,12 +15,12 @@ class User {
     
     /// The list serials of devices tracking this user
     /// [device serial: userID for this device]
-    var devices: [String: Int16] = [:]
+    var devices: [Serial: Int16] = [:]
     
     /// The tracked physic of the user, each Physical user
     /// corresponds to a version of the user as seen by a device.
     /// [device serial: physical user]
-    var trackedPhysics: [String: PhysicalUser] = [:]
+    var trackedPhysics: [Serial: PhysicalUser] = [:]
     
     /// The calibration profile this user will use to do coordinate calculations
     weak var calibrationProfile: LayoutCalibrationProfile?

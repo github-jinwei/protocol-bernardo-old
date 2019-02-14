@@ -8,4 +8,5 @@
 
 import Foundation
 
+/// Typealias to help differentiate standard strings, and devices serials
 typealias Serial = String

@@ -83,7 +83,7 @@ class LayoutCanvasDevice: SKNode {
     }
     
     /// The maximum distance to be from the device to be able to be detected (in cm)
-    var maximumCaptationDistance: CGFloat = 450{
+    var maximumCaptationDistance: CGFloat = 450 {
         didSet {
             device.maximumCaptationDistance = Double(maximumCaptationDistance)
             _captationArea.path = captationArea()
@@ -220,7 +220,7 @@ extension LayoutCanvasDevice {
 }
 
 extension LayoutCanvasDevice {
-    func update() { }
+    func update() {}
 }
 
 
@@ -281,7 +281,7 @@ extension LayoutCanvasDevice {
     ///
     /// - Parameter event:
     internal func translateWithEvent(_ event: NSEvent) {
-        let translateAmount:CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
+        let translateAmount: CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
         
         switch event.keyCode {
         case Keycode.upArrow: position.y += translateAmount
@@ -417,8 +417,8 @@ extension LayoutCanvasDevice {
         let clickLocationCaptationArea = event.location(in: _captationArea)
         let clickLocationCenterArea = event.location(in: _centerCircle)
      
-        if(_captationArea.path!.contains(clickLocationCaptationArea) ||
-            _centerCircle.contains(clickLocationCenterArea)) {
+        if _captationArea.path!.contains(clickLocationCaptationArea) ||
+           _centerCircle.contains(clickLocationCenterArea) {
             return true
         }
         

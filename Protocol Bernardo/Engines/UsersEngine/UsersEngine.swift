@@ -15,6 +15,7 @@ class UsersEngine {
     // ////////////////
     // MARK: Properties
     
+    /// All the users tracked by the system
     internal var _users = [User]()
     
     /// The layout used to position the devices
@@ -39,6 +40,7 @@ class UsersEngine {
 }
 
 extension UsersEngine: DataAcquisitionEngineObserver {
+
     func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
         // Parse all the available users and store them correctly
         for (serial, device) in connectedDevices.devices {
@@ -107,8 +109,12 @@ extension UsersEngine: DataAcquisitionEngineObserver {
             }
         }
     }
-    
-    
+
+    /// Insert a new user in the list of tracked user using
+    ///
+    /// - Parameters:
+    ///   - physic: The new user physic
+    ///   - serial: The device tracking the user
     func newUser(forPhysic physic: PhysicalUser, onDevice serial: String) {
         let user = User()
         user.devices[serial] = physic.userID
@@ -118,23 +124,30 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         _users.append(user)
     }
     
-    func removePhysicFromUserIfNeeded(serial: String, userID: Int16) {
+    /// Check if a physic needs to be removed from the specified user
+    ///
+    /// - Parameters:
+    ///   - serial: The device serial tracking the user
+    ///   - userID: The user ID given by the tracking device
+    func removePhysicFromUserIfNeeded(serial: Serial, userID: Int16) {
         guard let user = self.user(forDeviceSerial: serial, andUserID: userID) else { return }
         
         // the device isn't actively tracking the user, remove everything
         user.trackedPhysics.removeValue(forKey: serial)
         user.devices.removeValue(forKey: serial)
         
-        // if the user tracked anymore, remove it
+        // if the user is not tracked anymore, remove it
         if user.trackedPhysics.count == 0 {
             _users.removeAll { $0 === user }
         }
     }
+
 }
 
 
 // MARK: - Accessing the tracked users
 extension UsersEngine {
+    /// All the users tracked by the user engine
     var allUsers: [User] { return _users }
     
     /// Gets the closes user from the given position.
@@ -167,11 +180,21 @@ extension UsersEngine {
         return zip(users, distances).sorted(by: { $0.1 < $1.1 }).map { $0.0 }
     }
     
-    func users(forDeviceSerial serial: String) -> [User] {
+    /// Gives all users tracked by a specific device
+    ///
+    /// - Parameter serial: The device's serial
+    /// - Returns: A list of users
+    func users(forDeviceSerial serial: Serial) -> [User] {
         return _users.filter { user in user.devices[serial] != nil }
     }
     
-    func user(forDeviceSerial serial: String, andUserID userID: Int16) -> User? {
+    /// Gives the user corresponding to the specified device serial and user ID
+    ///
+    /// - Parameters:
+    ///   - serial: The device serial
+    ///   - userID: The user ID
+    /// - Returns: The matching user, if any
+    func user(forDeviceSerial serial: Serial, andUserID userID: Int16) -> User? {
         let foundUsers = _users.filter { user in
             // Is this user tracked by the specified device ?
             guard user.devices[serial] != nil else { return false }
@@ -182,4 +205,5 @@ extension UsersEngine {
         
         return foundUsers.count > 0 ? foundUsers[0] : nil
     }
+    
 }

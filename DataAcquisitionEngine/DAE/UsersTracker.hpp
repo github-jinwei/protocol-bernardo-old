@@ -13,7 +13,8 @@
 #include <map>
 #include <nite2/NiTE.h>
 
-#include "Structs/PhysicalUser.h"
+// Forward Declarations
+struct PhysicalDevice;
 
 class PhysicalDevice;
 

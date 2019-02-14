@@ -8,11 +8,11 @@
 
 import Cocoa
 
-class WelcomeSceneViewController: NSViewController {
+class WelcomeWindow: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        App.core.registerWelcomeScene(self)
+        App.core.registerWelcomeWindow(self)
     }
     
     override func viewDidAppear() {
@@ -34,16 +34,7 @@ class WelcomeSceneViewController: NSViewController {
     ///
     /// - Parameter sender:
     @IBAction func openLayout(_ sender: Any) {
-        let openPanel = NSOpenPanel()
-        openPanel.allowsMultipleSelection = false
-        openPanel.canChooseDirectories = false
-        openPanel.canChooseDirectories = false
-        openPanel.allowedFileTypes = ["pblayout"]
-        openPanel.runModal()
-        
-        guard let fileURL = openPanel.url else { return }
-        
-        App.layoutEngine.openLayout(at: fileURL)
+        App.layoutEngine.openLayout()
     }
     
     
@@ -54,4 +45,3 @@ class WelcomeSceneViewController: NSViewController {
     // /////////////
     // MARK: Syncing
 }
-

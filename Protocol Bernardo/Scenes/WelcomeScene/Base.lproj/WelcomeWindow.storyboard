@@ -42,10 +42,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Welcome Scene View Controller-->
+        <!--Welcome Window-->
         <scene sceneID="zGY-ke-JGS">
             <objects>
-                <viewController id="BtT-hE-XfD" customClass="WelcomeSceneViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BtT-hE-XfD" customClass="WelcomeWindow" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <visualEffectView key="view" blendingMode="behindWindow" material="underWindowBackground" state="active" id="uxX-Mb-mzu">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="581"/>
                         <autoresizingMask key="autoresizingMask"/>

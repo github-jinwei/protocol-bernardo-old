@@ -9,10 +9,12 @@
 #ifndef DAE_Bridging_h
 #define DAE_Bridging_h
 
-#include "Structs/DAEStatus.h"
+#include "DAE/Structs/DAEStatus.h"
 
 struct DAEStatus * DAEGetStatus();
 
+void DAEEnableLiveView();
+void DAEDisableLiveView();
 void DAEPrepare();
 void DAEConnectToDevice(const char * c_serial);
 void DAESetDeviceActive(const char * c_serial);

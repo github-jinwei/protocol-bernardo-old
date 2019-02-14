@@ -8,16 +8,5 @@
 /**
  DAE C Interfaces
  */
-/**
-#include "DAE/Structs/DAEStatus.h"
 
-struct DAEStatus * DAEGetStatus();
-
-void DAEPrepare();
-void DAEParseForDevices();
-void DAEConnectToDevice(const char * c_serial);
-void DAESetDeviceActive(const char * c_serial);
-void DAESetDeviceIdle(const char * c_serial);
-void DAEEndAcquisition();*/
-
-#include "DataAcquisitionEngine/DAE/DAE-Bridging.h"
+#include "DataAcquisitionEngine/DAE-Bridging.h"

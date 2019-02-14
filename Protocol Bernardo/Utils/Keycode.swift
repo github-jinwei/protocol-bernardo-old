@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// List of all the keycode on an AINSI keyboard
 struct Keycode {
     
     // Layout-independent Keys

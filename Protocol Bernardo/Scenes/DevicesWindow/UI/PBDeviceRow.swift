@@ -11,10 +11,10 @@ import AppKit
 class PBDeviceRow: NSView {
 
     /// Reference to the upper view
-    weak var topController: DevicesSceneViewController!
+    weak var topController: DevicesWindow!
     
     /// The serial of this device
-    var serial:String!
+    var serial: Serial!
     
     @IBOutlet weak var outletBox: NSBox!
     @IBOutlet weak var deviceNameField: NSTextField!
@@ -40,9 +40,9 @@ class PBDeviceRow: NSView {
         // Make sure the popover isn't already open
         guard deviceDetailsPopover == nil else {
             // Close the popover properly
-            deviceDetailsPopover.performClose(nil);
-            deviceDetailsPopover = nil;
-            return;
+            deviceDetailsPopover.performClose(nil)
+            deviceDetailsPopover = nil
+            return
         }
         
         // Create the popover
@@ -52,7 +52,7 @@ class PBDeviceRow: NSView {
             of: quickLookButton,
             preferredEdge: .maxX)
         
-        deviceDetailsPopover.controller.refRow = self;
+        deviceDetailsPopover.controller.refRow = self
     }
     
     /// Update the values for the device using the given one
@@ -72,20 +72,20 @@ class PBDeviceRow: NSView {
         // Update the button value and state based on the device's state
         switch device.state.rawValue {
         case 1: // Connecting
-            actionButton.isEnabled = true;
+            actionButton.isEnabled = true
             actionButton.title = "Connect"
         case 2: // Connecting
-            actionButton.isEnabled = false;
+            actionButton.isEnabled = false
         case 3: // Ready
-            actionButton.isEnabled = true;
+            actionButton.isEnabled = true
             actionButton.title = "Activate"
         case 4: // Active
-            actionButton.isEnabled = true;
+            actionButton.isEnabled = true
             actionButton.title = "Pause"
         case 5: // Closing
-            actionButton.isEnabled = false;
+            actionButton.isEnabled = false
         default: // Errored
-            actionButton.isEnabled = false;
+            actionButton.isEnabled = false
             actionButton.title = "Errored"
         }
         

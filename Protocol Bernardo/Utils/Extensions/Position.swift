@@ -53,6 +53,10 @@ extension Position {
         return pos
     }
     
+    /// Gives the angle betwee the current position as a vector, and the given one as a vector
+    ///
+    /// - Parameter position: _
+    /// - Returns: Angle between the two vectors
     public func angle(with position: Position) -> Float {
         let vec1 = vector3(self.x, self.y, self.z)
         let vec2 = vector3(position.x, position.y, position.z)
