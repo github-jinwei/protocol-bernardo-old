@@ -12,62 +12,40 @@ class DevicesWindow: NSViewController {
     /// The devices list
     @IBOutlet weak var devicesList: NSStackView!
 
-    /// The live view toggle
-    @IBOutlet weak var liveViewToggle: NSButton!
-
-    /// The DAE start/stop button
-    @IBOutlet weak var startStopDAEButton: NSButton!
+    @IBOutlet weak var liveViewIcon: NSImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         App.core.registerDevicesWindow(self)
-
         App.dae.addObsever(self)
-
-        if App.dae.isLiveViewEnabled {
-            liveViewToggle.state = .on
-        } else {
-            liveViewToggle.state = .off
-        }
-
-        if App.dae.isRunning {
-            startStopDAEButton.title = "Stop Drivers"
-            liveViewToggle.isEnabled = false
-        }
     }
 
     override func viewDidAppear() {
         super.viewDidAppear()
         
         view.window!.title = "Devices"
+
+        if !App.dae.isRunning {
+            performSegue(withIdentifier: "showStartOptionsSegue", sender: nil)
+        }
+    }
+
+    func updateLiveView() {
+        let image: NSImage.Name
+
+        if App.dae.isLiveViewEnabled {
+            image = NSImage.statusAvailableName
+        } else {
+            image = NSImage.statusUnavailableName
+        }
+
+        liveViewIcon.image = NSImage(named: image)
     }
 
 
     deinit {
         App.dae.removeObserver(self)
-    }
-
-    @IBAction func toggleLiveView(_ sender: Any) {
-        // Do nothing if the dae is already running
-        if App.dae.isRunning {
-            return
-        }
-
-        App.dae.toggleLiveView()
-    }
-
-    @IBAction func toggleDataAcquistionEngine(_ sender: Any) {
-        if App.dae.isRunning {
-            App.dae.end()
-
-            startStopDAEButton.title = "Start Drivers"
-            liveViewToggle.isEnabled = true
-            return
-        }
-
-        App.dae.start()
-        startStopDAEButton.title = "Stop Drivers"
-        liveViewToggle.isEnabled = false
     }
 }
 
@@ -103,7 +81,7 @@ extension DevicesWindow {
         devicesList.views.forEach { $0.removeFromSuperview() }
 
         for (serial, device) in connectedDevices.devices {
-            let deviceView: PBDeviceRow = NSNib.make(fromNib: "PBDeviceRow", owner: nil)
+            let deviceView: PBDeviceRow = NSNib.make(fromNib: "DevicesWindowViews", owner: nil)
 
             // Values that will not change
             deviceView.topController = self

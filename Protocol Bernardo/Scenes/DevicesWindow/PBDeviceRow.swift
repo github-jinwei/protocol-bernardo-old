@@ -46,7 +46,7 @@ class PBDeviceRow: NSView {
         }
         
         // Create the popover
-        deviceDetailsPopover = NSNib.make(fromNib: "PBDeviceRow", owner: nil)!
+        deviceDetailsPopover = NSNib.make(fromNib: "DevicesWindowViews", owner: nil)!
         deviceDetailsPopover.show(
             relativeTo: quickLookButton.bounds,
             of: quickLookButton,
