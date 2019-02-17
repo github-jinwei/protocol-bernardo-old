@@ -157,4 +157,34 @@ extension DeviceCalibrationProfile {
         return globalPos
     }
 
+
+    /// Transform the given position from the device referential to the global
+    /// corrdinate system ignoring the calibrated layout
+    ///
+    /// - Parameter position: The position to transform
+    /// - Returns: The position in the global coordinate system
+    func uncalibratedGlobalCoordinates(forPosition position: Position) -> Position {
+        // Make sure we have an associated layout device
+        guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
+            print("No associated layout device")
+            return position
+        }
+
+        // Create a new, empty position
+        var globalPos = Position()
+
+        // 2D position are unaffected
+        globalPos.x2D = position.x2D
+        globalPos.y2D = position.y2D
+
+        // X and Z coordinates takes into account the angle of the tracking device
+        globalPos.x = (position.x * cos(deg2rad(Float(-layoutDevice.orientation))) - position.z * sin(deg2rad(Float(-layoutDevice.orientation)))) - Float(layoutDevice.position.x) * 10.0
+        globalPos.z = (position.x * sin(deg2rad(Float(-layoutDevice.orientation))) + position.z * cos(deg2rad(Float(-layoutDevice.orientation)))) + Float(layoutDevice.position.y) * 10.0
+
+        // Y coordinate (Height) is not affected by the angle of capture
+        globalPos.y = position.y + Float(layoutDevice.height) * 10.0
+
+        return globalPos
+    }
+
 }

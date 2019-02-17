@@ -13,8 +13,11 @@
  Current state of a device
  */
 typedef enum DeviceState {
+    /** The state of the device is unknown. Used for not connected devices */
+    DEVICE_UNKNOWN,
+
     /** An errored occured with the device. This make it unusable. */
-    DEVCICE_ERROR,
+    DEVICE_ERROR,
     
     /** The device has been detected but is not currently connected. No data
      are beiing exchanged with it. */

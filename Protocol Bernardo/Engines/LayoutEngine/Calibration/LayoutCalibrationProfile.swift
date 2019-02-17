@@ -71,7 +71,11 @@ extension LayoutCalibrationProfile {
     ///
     /// - Parameter serial: A layout device uuid
     /// - Returns: The corresponding calibration profile, if any
-    func device(forUUID uuid: String) -> DeviceCalibrationProfile? {
+    func device(forUUID uuid: String?) -> DeviceCalibrationProfile? {
+        if uuid == nil {
+            return nil
+        }
+
         return calibratedDevices.first { $0.layoutDeviceUUID == uuid }
     }
 }

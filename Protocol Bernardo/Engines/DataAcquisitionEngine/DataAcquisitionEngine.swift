@@ -196,4 +196,8 @@ class DataAcquisitionEngine {
         DAEEndAcquisition()
     }
 
+    deinit {
+        end()
+    }
+
 }

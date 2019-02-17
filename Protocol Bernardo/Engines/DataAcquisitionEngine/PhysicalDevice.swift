@@ -31,15 +31,7 @@ struct PhysicalDevice {
 }
 
 extension PhysicalDevice {
-    /// English label for the current device state
-    var stateLabel: String {
-        switch state.rawValue {
-        case 1: return "Idle"
-        case 2: return "Connecting"
-        case 3: return "Ready"
-        case 4: return "Active"
-        case 5: return "Closing"
-        default: return "Errored"
-        }
+    var trackedUsers: [PhysicalUser] {
+        return users.filter { $0.state == USER_TRACKED }
     }
 }

@@ -38,7 +38,7 @@ class PBDeviceDetails: NSViewController {
         // Update the view values
         deviceNameField.stringValue = device.name
         serialField.stringValue = device.serial
-        deviceStateField.stringValue = device.stateLabel
+        deviceStateField.stringValue = device.state.label
         usersCountField.intValue = Int32(Int(device.users.count))
         
         update(users: device.users)

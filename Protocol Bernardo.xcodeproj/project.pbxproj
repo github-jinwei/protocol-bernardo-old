@@ -14,6 +14,9 @@
 		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
 		39379A0E220FA220004C3815 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A0D220FA220004C3815 /* Position.swift */; };
 		39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* PhysicalDevice.swift */; };
+		393ACD2122150C4500306D60 /* PBCalibrationLiveDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */; };
+		393ACD232215140700306D60 /* CalibrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD222215140700306D60 /* CalibrationController.swift */; };
+		393ACD252215143400306D60 /* CalibrationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */; };
 		393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ECD2204DD0100BC54D3 /* Device.swift */; };
 		393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */; };
 		39684DEC22149FEA006E4B37 /* libNiTE2.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -28,6 +31,7 @@
 		396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */; };
 		396CF35822110EC10049E091 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35722110EC10049E091 /* Queue.swift */; };
 		396CF35A2212037E0049E091 /* CalibrationDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF3592212037E0049E091 /* CalibrationDeltas.swift */; };
+		396D45742218A7F10018F95C /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396D45732218A7F10018F95C /* DeviceState.swift */; };
 		396DDFC921F4285000628070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFC821F4285000628070 /* AppDelegate.swift */; };
 		396DDFCB21F4285000628070 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* WelcomeWindow.swift */; };
 		396DDFD021F4285200628070 /* WelcomeWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCE21F4285200628070 /* WelcomeWindow.storyboard */; };
@@ -171,6 +175,9 @@
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
 		39379A0D220FA220004C3815 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		39379A11220FE496004C3815 /* PhysicalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDevice.swift; sourceTree = "<group>"; };
+		393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCalibrationLiveDeltas.swift; sourceTree = "<group>"; };
+		393ACD222215140700306D60 /* CalibrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationController.swift; sourceTree = "<group>"; };
+		393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationControllerDelegate.swift; sourceTree = "<group>"; };
 		393B1ECD2204DD0100BC54D3 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
 		39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +191,7 @@
 		396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltasCalculator.swift; sourceTree = "<group>"; };
 		396CF35722110EC10049E091 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		396CF3592212037E0049E091 /* CalibrationDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltas.swift; sourceTree = "<group>"; };
+		396D45732218A7F10018F95C /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
 		396DDFC521F4285000628070 /* Protocol Bernardo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Protocol Bernardo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DDFC821F4285000628070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396DDFCA21F4285000628070 /* WelcomeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
@@ -349,6 +357,7 @@
 			children = (
 				39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */,
 				39E3121321F777F6006569F1 /* DAEStatus.swift */,
+				396D45732218A7F10018F95C /* DeviceState.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,9 +482,12 @@
 		39977425220B7E4500ED4B93 /* Calibration */ = {
 			isa = PBXGroup;
 			children = (
-				3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */,
-				396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */,
+				393ACD222215140700306D60 /* CalibrationController.swift */,
+				393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */,
 				396CF3592212037E0049E091 /* CalibrationDeltas.swift */,
+				396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */,
+				3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */,
+				393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */,
 			);
 			path = Calibration;
 			sourceTree = "<group>";
@@ -810,6 +822,8 @@
 				397195C22200219000F92C5C /* LayoutCanvasView.swift in Sources */,
 				396DDFCB21F4285000628070 /* WelcomeWindow.swift in Sources */,
 				397195C4220022F800F92C5C /* Comparable.swift in Sources */,
+				393ACD252215143400306D60 /* CalibrationControllerDelegate.swift in Sources */,
+				393ACD2122150C4500306D60 /* PBCalibrationLiveDeltas.swift in Sources */,
 				39DFBDDF2208A7AF00A7B9BD /* LayoutDocument.swift in Sources */,
 				39A1E70721FE6C26003162FE /* LayoutSidebarEdition.swift in Sources */,
 				39C1E90D220A37F300F53AC2 /* Line.swift in Sources */,
@@ -824,7 +838,9 @@
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
 				39B5576222000FC70021BFDA /* NSColor.swift in Sources */,
 				396DDFC921F4285000628070 /* AppDelegate.swift in Sources */,
+				393ACD232215140700306D60 /* CalibrationController.swift in Sources */,
 				39684DF02214A163006E4B37 /* LayoutWindowDelegate.swift in Sources */,
+				396D45742218A7F10018F95C /* DeviceState.swift in Sources */,
 				39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */,
 				3989EAD722037C3F005CF113 /* NSStepper.swift in Sources */,
 				39977435220B961B00ED4B93 /* Point.swift in Sources */,

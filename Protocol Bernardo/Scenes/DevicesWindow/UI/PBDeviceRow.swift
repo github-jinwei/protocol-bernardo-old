@@ -67,22 +67,22 @@ class PBDeviceRow: NSView {
         // Update the values
         deviceNameField.stringValue = device.name
         serialField.stringValue = device.serial
-        statusField.stringValue = device.stateLabel
+        statusField.stringValue = device.state.label
         
         // Update the button value and state based on the device's state
-        switch device.state.rawValue {
-        case 1: // Connecting
+        switch device.state {
+        case DEVICE_IDLE: // Connecting
             actionButton.isEnabled = true
             actionButton.title = "Connect"
-        case 2: // Connecting
+        case DEVICE_CONNECTING: // Connecting
             actionButton.isEnabled = false
-        case 3: // Ready
+        case DEVICE_READY: // Ready
             actionButton.isEnabled = true
             actionButton.title = "Activate"
-        case 4: // Active
+        case DEVICE_ACTIVE: // Active
             actionButton.isEnabled = true
             actionButton.title = "Pause"
-        case 5: // Closing
+        case DEVICE_CLOSING: // Closing
             actionButton.isEnabled = false
         default: // Errored
             actionButton.isEnabled = false

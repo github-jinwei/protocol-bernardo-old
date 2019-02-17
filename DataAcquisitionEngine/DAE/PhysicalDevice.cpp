@@ -23,7 +23,7 @@ void PhysicalDevice::connect() {
     if (_device.open(_uri.c_str()) != openni::STATUS_OK)
     {
         printf("Coudle not open the device:\n%s\n", openni::OpenNI::getExtendedError());
-        _state = DeviceState::DEVCICE_ERROR;
+        _state = DeviceState::DEVICE_ERROR;
         return;
     }
     
@@ -33,7 +33,7 @@ void PhysicalDevice::connect() {
     // Create the color stream
     if(_colorStream.create(_device, openni::SENSOR_COLOR) != openni::STATUS_OK) {
         printf("Coudle not create the color stream:\n%s\n", openni::OpenNI::getExtendedError());
-        _state = DeviceState::DEVCICE_ERROR;
+        _state = DeviceState::DEVICE_ERROR;
         return;
     }
     
@@ -53,7 +53,7 @@ void PhysicalDevice::connect() {
     
     if(_depthStream.create(_device, openni::SENSOR_DEPTH) != openni::STATUS_OK) {
         printf("Coudle not create the color stream:\n%s\n", openni::OpenNI::getExtendedError());
-        _state = DeviceState::DEVCICE_ERROR;
+        _state = DeviceState::DEVICE_ERROR;
         return;
     }
     
@@ -91,12 +91,12 @@ void PhysicalDevice::setActive() {
 
     // Start the streams
     if(_colorStream.start() != openni::STATUS_OK) {
-        _state = DeviceState::DEVCICE_ERROR;
+        _state = DeviceState::DEVICE_ERROR;
         return;
     }
     
     if(_depthStream.start() != openni::STATUS_OK) {
-        _state = DeviceState::DEVCICE_ERROR;
+        _state = DeviceState::DEVICE_ERROR;
         return;
     }
     

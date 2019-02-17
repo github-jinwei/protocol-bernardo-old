@@ -23,6 +23,11 @@ class LayoutCanvasUser: SKShapeNode {
         self.fillColor = NSColor(color, alpha: 0.6)
         
         let numberOfTrackers = SKLabelNode(text: "\(user.trackedPhysics.count)")
+        numberOfTrackers.horizontalAlignmentMode = .center
+        numberOfTrackers.verticalAlignmentMode = .center
+        numberOfTrackers.position.x -= 1
+        numberOfTrackers.fontSize = 14
+        numberOfTrackers.fontName = NSFont.systemFont(ofSize: 14, weight: .bold).fontName
         self.addChild(numberOfTrackers)
     }
 }

@@ -42,6 +42,8 @@ class UsersEngine {
 extension UsersEngine: DataAcquisitionEngineObserver {
 
     func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
+        guard let profile = profile else { return }
+
         // Parse all the available users and store them correctly
         for (serial, device) in connectedDevices.devices {
             device.users.forEach { physicalUser in
@@ -61,7 +63,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 // This user is not registered yet, let's find if its a redundancy of an already tracked user
                 
                 // Get the user center of mass in the global coordinates system
-                let userCOM = profile!.device(forSerial: serial)!.globalCoordinates(forPosition: physicalUser.centerOfMass)
+                let userCOM = profile.device(forSerial: serial)!.globalCoordinates(forPosition: physicalUser.centerOfMass)
                 
                 // Find the user the closest from this point
                 let (closest, distance) = closestUser(fromPosition: userCOM)

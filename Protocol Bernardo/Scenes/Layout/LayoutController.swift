@@ -96,7 +96,6 @@ extension LayoutController: LayoutWindowDelegate {
     }
 
     func toolbar(_ layoutWindow: LayoutWindowController, calibrationProfileChanged profile: LayoutCalibrationProfile?) {
-
         calibrationProfile = profile
 
         App.usersEngine.profile = calibrationProfile
@@ -104,10 +103,12 @@ extension LayoutController: LayoutWindowDelegate {
 
         _canvas.calibrationProfile = calibrationProfile
         _sidebar.setCalibrationProfile(calibrationProfile)
-
     }
 }
 
+
+// ////////////////////////////
+// MARK: - LayoutCanvasDelegate
 extension LayoutController: LayoutCanvasDelegate {
     func canvasAppeared(_ canvas: LayoutCanvas) {
         window.setDocumentEdited(false)
