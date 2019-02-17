@@ -16,11 +16,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Assing the main menu to our app
-        guard let application = aNotification.object as? NSApplication else { return }
+//        guard let application = aNotification.object as? NSApplication else { return }
 
-        application.mainMenu = NSNib.make(fromNib: "MainMenu", owner: nil)
+//        application.mainMenu = NSNib.make(fromNib: "MainMenu", owner: nil)
 
-        // Open file if user double-clicked one
+        App.core.showWelcomeWindow()
     }
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
@@ -29,5 +29,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         App.layoutEngine.openLayout(at: url)
 
         return true
+    }
+
+    func applicationShouldOpenUntitledFile(_ sender: NSApplication) -> Bool {
+        return false
+    }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        return false
     }
 }

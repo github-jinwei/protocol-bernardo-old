@@ -34,5 +34,4 @@ class MainMenu: NSMenu {
     @IBAction func openDevicesWindow(_ sender: Any?) {
         App.core.showDevicesWindow()
     }
-
 }

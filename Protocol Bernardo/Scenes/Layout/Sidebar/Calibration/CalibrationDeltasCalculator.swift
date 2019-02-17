@@ -109,10 +109,10 @@ extension CalibrationDeltasCalculator {
     fileprivate func getDeltas(usingPositions positions: PositionCollection) -> CalibrationDeltas {
         var deltas = CalibrationDeltas()
 
-        deltas.xPosition = positions.device!.x - positions.reference!.x
-        deltas.yPosition = positions.device!.z - positions.reference!.z
+        deltas.xPosition = positions.reference!.x - positions.device!.x
+        deltas.yPosition = positions.reference!.z - positions.device!.z
 
-        deltas.height = positions.device!.y - positions.reference!.y
+        deltas.height = positions.reference!.y - positions.device!.y
 
         return deltas
     }

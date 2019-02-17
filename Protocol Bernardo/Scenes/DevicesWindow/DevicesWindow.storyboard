@@ -9,8 +9,8 @@
         <scene sceneID="vz8-WA-rTm">
             <objects>
                 <windowController storyboardIdentifier="DevicesWindow" id="fsL-Iw-xmW" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hoh-9m-8vD">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="Devices" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="hoh-9m-8vD">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="736" width="480" height="63"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
@@ -29,65 +29,53 @@
             <objects>
                 <viewController id="och-mK-cQM" customClass="DevicesWindow" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="R5G-UH-u4a">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="75"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="78"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WxO-ie-Dhx">
-                                <rect key="frame" x="18" y="28" width="90" height="27"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Devices" id="ocJ-mN-8IL">
-                                    <font key="font" metaFont="systemHeavy" size="22"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjI-C9-ozr">
-                                <rect key="frame" x="20" y="20" width="440" height="0.0"/>
+                                <rect key="frame" x="20" y="20" width="440" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="OFu-S6-wZu"/>
                                 </constraints>
                             </stackView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VBt-tr-37F">
-                                <rect key="frame" x="393" y="31" width="69" height="17"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-e6-6WH">
+                                <rect key="frame" x="459" y="55" width="16" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="FRC-F4-4tV"/>
+                                    <constraint firstAttribute="height" constant="16" id="Ztd-uA-deI"/>
+                                    <constraint firstAttribute="width" constant="16" id="eEn-3z-gXX"/>
                                 </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusNone" id="zQT-LU-Zu6"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VBt-tr-37F">
+                                <rect key="frame" x="396" y="56" width="62" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Live View" id="tUT-bh-cwj">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCd-e6-6WH">
-                                <rect key="frame" x="376" y="31" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="Ztd-uA-deI"/>
-                                    <constraint firstAttribute="width" constant="16" id="eEn-3z-gXX"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSStatusAvailable" id="zQT-LU-Zu6"/>
-                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="cjI-C9-ozr" firstAttribute="top" secondItem="VBt-tr-37F" secondAttribute="bottom" constant="15" id="0fO-Nw-CY4"/>
+                            <constraint firstItem="bCd-e6-6WH" firstAttribute="leading" secondItem="VBt-tr-37F" secondAttribute="trailing" constant="3" id="3pq-m0-mNf"/>
                             <constraint firstAttribute="bottom" secondItem="cjI-C9-ozr" secondAttribute="bottom" constant="20" id="92y-rY-smN"/>
-                            <constraint firstItem="cjI-C9-ozr" firstAttribute="top" secondItem="WxO-ie-Dhx" secondAttribute="bottom" constant="8" id="ECe-x4-ECf"/>
-                            <constraint firstItem="WxO-ie-Dhx" firstAttribute="top" secondItem="R5G-UH-u4a" secondAttribute="top" constant="20" id="HWt-wg-faV"/>
-                            <constraint firstItem="VBt-tr-37F" firstAttribute="bottom" secondItem="bCd-e6-6WH" secondAttribute="bottom" id="Mjz-cK-rM4"/>
+                            <constraint firstItem="VBt-tr-37F" firstAttribute="bottom" secondItem="bCd-e6-6WH" secondAttribute="bottom" constant="-1" id="Mjz-cK-rM4"/>
                             <constraint firstAttribute="trailing" secondItem="cjI-C9-ozr" secondAttribute="trailing" constant="20" id="SFE-X1-pU0"/>
-                            <constraint firstItem="VBt-tr-37F" firstAttribute="leading" secondItem="bCd-e6-6WH" secondAttribute="trailing" constant="3" id="YhE-Ud-Z5A"/>
+                            <constraint firstItem="VBt-tr-37F" firstAttribute="top" secondItem="R5G-UH-u4a" secondAttribute="top" constant="5" id="Zt0-gn-4o9"/>
                             <constraint firstItem="cjI-C9-ozr" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="brf-Ls-hSY"/>
-                            <constraint firstItem="VBt-tr-37F" firstAttribute="bottom" secondItem="WxO-ie-Dhx" secondAttribute="bottom" constant="-3" id="caz-sX-iYZ"/>
-                            <constraint firstItem="WxO-ie-Dhx" firstAttribute="leading" secondItem="R5G-UH-u4a" secondAttribute="leading" constant="20" id="iWj-2b-don"/>
-                            <constraint firstAttribute="trailing" secondItem="VBt-tr-37F" secondAttribute="trailing" constant="20" id="j3n-We-eL1"/>
+                            <constraint firstAttribute="trailing" secondItem="bCd-e6-6WH" secondAttribute="trailing" constant="5" id="uHk-mz-TKd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="devicesList" destination="cjI-C9-ozr" id="yyC-hP-K8X"/>
                         <outlet property="liveViewIcon" destination="bCd-e6-6WH" id="HQv-IY-Zjh"/>
+                        <outlet property="liveViewLabel" destination="VBt-tr-37F" id="vss-vz-Hcw"/>
                         <segue destination="aAB-Wc-iak" kind="sheet" identifier="showStartOptionsSegue" id="dk2-Bq-ias"/>
                     </connections>
                 </viewController>
                 <customObject id="OPB-xZ-zLT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="248"/>
+            <point key="canvasLocation" x="-106" y="249"/>
         </scene>
         <!--Devices Startup Sheet-->
         <scene sceneID="DTb-Hy-L1L">
@@ -112,6 +100,9 @@
                                 <buttonCell key="cell" type="push" title="Start Drivers" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B7V-ut-RUH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="startDrivers:" target="aAB-Wc-iak" id="ywI-4D-rQ8"/>
@@ -120,7 +111,7 @@
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="vPs-MI-gvE">
                                 <rect key="frame" x="123" y="61" width="309" height="42"/>
                                 <textFieldCell key="cell" selectable="YES" title="Using live view has a negative impact on performaces. Live view should only be used when setting up or calibration the devices" id="w5f-ZM-oer">
-                                    <font key="font" metaFont="system" size="11"/>
+                                    <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -167,10 +158,10 @@
                 </viewController>
                 <customObject id="qS0-7q-dXb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="248"/>
+            <point key="canvasLocation" x="462" y="247.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="NSStatusAvailable" width="16" height="16"/>
+        <image name="NSStatusNone" width="16" height="16"/>
     </resources>
 </document>

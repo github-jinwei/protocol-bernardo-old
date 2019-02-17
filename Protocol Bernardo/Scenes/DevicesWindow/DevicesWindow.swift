@@ -12,7 +12,10 @@ class DevicesWindow: NSViewController {
     /// The devices list
     @IBOutlet weak var devicesList: NSStackView!
 
+    @IBOutlet weak var liveViewLabel: NSTextField!
     @IBOutlet weak var liveViewIcon: NSImageView!
+
+    var devicesRows: [PBDeviceRow] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,10 @@ class DevicesWindow: NSViewController {
 
         if !App.dae.isRunning {
             performSegue(withIdentifier: "showStartOptionsSegue", sender: nil)
+            return
         }
+
+        updateLiveView()
     }
 
     func updateLiveView() {
@@ -36,15 +42,15 @@ class DevicesWindow: NSViewController {
 
         if App.dae.isLiveViewEnabled {
             image = NSImage.statusAvailableName
-        } else {
-            image = NSImage.statusUnavailableName
+            liveViewIcon.image = NSImage(named: image)
+            return
         }
 
-        liveViewIcon.image = NSImage(named: image)
+        liveViewLabel.isHidden = true
+        liveViewIcon.isHidden = true
     }
 
-
-    deinit {
+    override func viewWillDisappear() {
         App.dae.removeObserver(self)
     }
 }
@@ -58,8 +64,7 @@ extension DevicesWindow: DataAcquisitionEngineObserver {
                 return
             }
 
-            for view in self.devicesList.views {
-                let deviceView = view as! PBDeviceRow
+            for deviceView in self.devicesRows {
                 let serial = deviceView.serial!
                 let device = devices.with(serial: serial)!
 
@@ -68,32 +73,59 @@ extension DevicesWindow: DataAcquisitionEngineObserver {
             }
         }
     }
-
 }
 
 extension DevicesWindow {
-
     /// Regenerate all the device views
     ///
     /// - Parameter status: The new status to generate from
     func reloadDevicesList(withDevices connectedDevices: ConnectedDevices) {
         // Remove previously added view
-        devicesList.views.forEach { $0.removeFromSuperview() }
+        devicesList.views.forEach { machineView in
+            (machineView as! PBMachineDevicesList).devicesList.views.forEach {
+                $0.removeFromSuperview()
+            }
+            machineView.removeFromSuperview()
+            devicesRows.removeAll()
+        }
 
-        for (serial, device) in connectedDevices.devices {
+        let sortedDevices = connectedDevices.devices.sorted {
+
+            if $0.value.hostname == $1.value.hostname {
+                // The two devices are on the same machine, order by serial
+                return $0.key < $1.key
+            }
+
+            // The two devices are on different machines, order by hostname
+            return $0.value.hostname < $1.value.hostname
+        }
+
+        var lastHostname = ""
+        var currentBox: PBMachineDevicesList! = nil
+
+        for (serial, device) in sortedDevices {
+            // Are we on the same machine as the last device ?
+            if device.hostname != lastHostname {
+                lastHostname = device.hostname
+                currentBox = NSNib.make(fromNib: "DevicesWindowViews", owner: nil)
+                currentBox.box.title = device.hostname
+
+                self.devicesList.addView(currentBox, in: .top)
+            }
+
             let deviceView: PBDeviceRow = NSNib.make(fromNib: "DevicesWindowViews", owner: nil)
 
             // Values that will not change
             deviceView.topController = self
             deviceView.serial = serial
-            deviceView.outletBox.title = "Device #\(devicesList.views.count + 1)"
+            deviceView.separatorLine.isHidden = currentBox.devicesList.views.count == 0
 
             // Fill in the values
             deviceView.update(deviceValues: device)
 
             // Insert the view in the stack
-            devicesList.addView(deviceView, in: .top)
+            currentBox.devicesList.addView(deviceView, in: .top)
+            devicesRows.append(deviceView)
         }
     }
-
 }

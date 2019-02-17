@@ -9,6 +9,16 @@
 import Foundation
 
 extension DAEDeviceStatus {
+    /// The device's host name
+    var hostname: String {
+        var temp = _hostname
+        return withUnsafePointer(to: &temp) {
+            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: _hostname)) {
+                String(cString: $0)
+            }
+        }
+    }
+
     /// The device's serial
     var serial: Serial {
         var temp = _serial

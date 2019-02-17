@@ -98,7 +98,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 Prisme. All rights reserved.</string>
 	<key>NSMainStoryboardFile</key>
-	<string>WelcomeWindow</string>
+	<string>Core</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>UTExportedTypeDeclarations</key>

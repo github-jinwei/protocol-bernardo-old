@@ -50,10 +50,11 @@ class LayoutSidebarCalibration: NSViewController {
     /// Status of the selected reference device
     @IBOutlet weak var referenceDeviceStatus: NSTextField!
     
+    /// View encapsulating the live deltas part of the sidebar
     @IBOutlet weak var liveDeltasView: PBCalibrationLiveDeltas!
 
     /// Button used to store a calibration profile deltas
-    @IBOutlet weak var storeDeltasButton: NSButton!
+    @IBOutlet weak var updateProfileButton: NSButton!
 
     /// Currently stored orientation delta in the profile
     @IBOutlet weak var storedOrientationDelta: NSTextField!
@@ -67,6 +68,9 @@ class LayoutSidebarCalibration: NSViewController {
     /// Currently stored height delta in the profile
     @IBOutlet weak var storedHeightDelta: NSTextField!
     
+    /// Button used to reset the profile deltas to zero
+    @IBOutlet weak var clearDeltasButton: NSButton!
+
     // //////////////////////
     // MARK: - Properties
     
@@ -102,10 +106,6 @@ extension LayoutSidebarCalibration {
         fillLayoutDevicesList()
 
         setSelectedElement(canvas.selectedNode)
-    }
-
-    @IBAction func openDevices(_ sender: Any) {
-        App.core.showDevicesWindow()
     }
 }
 
@@ -230,6 +230,10 @@ extension LayoutSidebarCalibration {
     @IBAction func storeDeltas(_ sender: NSButton) {
         calibrationController.storeDeltas()
     }
+
+    @IBAction func clearDeltas(_ sender: NSButton) {
+        calibrationController.clearDeltas()
+    }
 }
 
 
@@ -322,14 +326,17 @@ extension LayoutSidebarCalibration: CalibrationControllerDelegate {
         // Update deltas values on the interface
         DispatchQueue.main.async {
             self.liveDeltasView.show(deltas: deltas)
+
+            // Activate the update device profile button if there is deltas
+            self.updateProfileButton.isEnabled = deltas != nil
         }
     }
 
     func calibration(_ controller: CalibrationController, storedDeltasChanged deltas: CalibrationDeltas) {
         storedOrientationDelta.floatValue = deltas.orientation ?? 0.0
-        storedXDelta.floatValue = deltas.xPosition
-        storedYDelta.floatValue = deltas.yPosition
-        storedHeightDelta.floatValue = deltas.height
+        storedXDelta.floatValue = deltas.xPosition / 10.0
+        storedYDelta.floatValue = deltas.yPosition / 10.0
+        storedHeightDelta.floatValue = deltas.height / 10.0
     }
 }
 
@@ -361,6 +368,6 @@ extension LayoutSidebarCalibration {
     }
     
     func clearAndDisableCalibrationPanel() {
-        storeDeltasButton.isEnabled = false
+        updateProfileButton.isEnabled = false
     }
 }

@@ -11,10 +11,10 @@ import AppKit
 /// The application structure Core
 class Core {
     /// The Welcome Scene
-    fileprivate var welcomeWindow: WelcomeWindow!
+    fileprivate weak var welcomeWindow: WelcomeWindow!
 
     /// The Devices Window
-    fileprivate var devicesWindow: DevicesWindow!
+    fileprivate weak var devicesWindow: DevicesWindow!
 
     /// Used by the SceneSelectorController to register itself
     ///
@@ -25,6 +25,11 @@ class Core {
 
     /// Display the welcome window
     func showWelcomeWindow() {
+        if welcomeWindow == nil {
+            let window = NSStoryboard(name: "WelcomeWindow", bundle: nil).instantiateController(withIdentifier: "welcomeWindow")
+            (window as? NSWindowController)?.showWindow(nil)
+        }
+
         welcomeWindow?.view.window!.windowController?.showWindow(nil)
     }
 

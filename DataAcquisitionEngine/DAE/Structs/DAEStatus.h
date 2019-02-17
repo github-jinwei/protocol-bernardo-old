@@ -9,6 +9,9 @@
 #ifndef DAEStatus_h
 #define DAEStatus_h
 
+#include <unistd.h>
+#include <limits.h>
+
 #include "../Enums/DeviceState.h"
 #include "PhysicalUser.h"
 
@@ -18,6 +21,9 @@
  Primarily used to retrieve a device status from Swift
  */
 struct DAEDeviceStatus {
+    /** Name of the machine (C String) */
+    char _hostname[_POSIX_HOST_NAME_MAX + 1];
+
     /** Name of the device (C String) */
     char _name[256];
     

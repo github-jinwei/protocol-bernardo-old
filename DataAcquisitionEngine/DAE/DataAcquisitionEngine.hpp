@@ -10,6 +10,8 @@
 #define DataAcquisitionEngine_hpp
 
 #include <map>
+#include <unistd.h>
+#include <limits.h>
 
 #include "DAEStatus.h"
 #include "DeviceConnectionListener.hpp"
@@ -102,13 +104,15 @@ public:
     ~DataAcquisitionEngine();
     
 private:
-    DataAcquisitionEngine() {}
+    DataAcquisitionEngine();
     static DataAcquisitionEngine * _instance;
     
     /** Tell if OpenNI has already been initialized or not */
     static bool _openNIInitialized;
 
     bool _liveView = false;
+
+    char hostname[_POSIX_HOST_NAME_MAX + 1];
     
     /** All the available devices */
     std::map<std::string, PhysicalDevice *> _devices;

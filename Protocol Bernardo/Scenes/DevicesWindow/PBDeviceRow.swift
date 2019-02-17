@@ -15,8 +15,8 @@ class PBDeviceRow: NSView {
     
     /// The serial of this device
     var serial: Serial!
-    
-    @IBOutlet weak var outletBox: NSBox!
+
+    @IBOutlet weak var separatorLine: NSBox!
     @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet weak var serialField: NSTextField!
     @IBOutlet weak var statusField: NSTextField!

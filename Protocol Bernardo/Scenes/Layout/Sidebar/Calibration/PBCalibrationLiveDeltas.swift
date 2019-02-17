@@ -76,19 +76,19 @@ class PBCalibrationLiveDeltas: NSView {
         // Display the positions deltas
         xPositionDeltaField.floatValue = deltas.xPosition / 10.0
 
-        if xPositionDeltaField.floatValue < 5 {
+        if abs(xPositionDeltaField.floatValue) < 5 {
             setXPositionOKAppearance()
         }
 
         yPositionDeltaField.floatValue = deltas.yPosition / 10.0
 
-        if yPositionDeltaField.floatValue < 5 {
+        if abs(yPositionDeltaField.floatValue) < 5 {
             setYPositionOKAppearance()
         }
 
         heightDeltaField.floatValue = deltas.height / 10.0
 
-        if heightDeltaField.floatValue < 5 {
+        if abs(heightDeltaField.floatValue) < 5 {
             setHeightOKAppearance()
         }
     }

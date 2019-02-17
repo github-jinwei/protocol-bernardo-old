@@ -17,7 +17,13 @@ class WelcomeWindow: NSViewController {
     
     override func viewDidAppear() {
         super.viewDidAppear()
+
+        // Stylize the window
         self.view.window!.isMovableByWindowBackground = true
+
+        self.view.window!.titleVisibility = .hidden
+        self.view.window!.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        self.view.window!.standardWindowButton(.zoomButton)?.isHidden = true
     }
     
     // ////////////

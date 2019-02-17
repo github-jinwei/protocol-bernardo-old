@@ -46,6 +46,9 @@ extension UsersEngine: DataAcquisitionEngineObserver {
 
         // Parse all the available users and store them correctly
         for (serial, device) in connectedDevices.devices {
+            // Make sure this device is part of the calibration profile
+            guard let deviceProfile = profile.device(forSerial: serial) else { continue }
+
             device.users.forEach { physicalUser in
                 // Start by making sure this user is fully tracked
                 guard physicalUser.state == USER_TRACKED else {
@@ -63,7 +66,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 // This user is not registered yet, let's find if its a redundancy of an already tracked user
                 
                 // Get the user center of mass in the global coordinates system
-                let userCOM = profile.device(forSerial: serial)!.globalCoordinates(forPosition: physicalUser.centerOfMass)
+                let userCOM = deviceProfile.globalCoordinates(forPosition: physicalUser.centerOfMass)
                 
                 // Find the user the closest from this point
                 let (closest, distance) = closestUser(fromPosition: userCOM)

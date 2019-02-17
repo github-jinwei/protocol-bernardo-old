@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="jAn-Qg-lQc">
+            <objects>
+                <application id="Mcs-Fl-BnS" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="Ict-FC-ORh" customClass="MainMenu" customModule="Protocol_Bernardo" customModuleProvider="target">
+                        <items>
+                            <menuItem title="Protocol Bernardo" id="ij5-Zn-m6g">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Protocol Bernardo" systemMenu="apple" id="EuT-AJ-eWv">
+                                    <items>
+                                        <menuItem title="About Protocol Bernardo" id="E4i-Cy-RuY">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="Ybc-6E-y7g" id="vJZ-sq-dJn"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="u2n-tD-1A8"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="qt0-bX-kga"/>
+                                        <menuItem isSeparatorItem="YES" id="BTm-QU-ihM"/>
+                                        <menuItem title="Services" id="hhk-Kr-OAr">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="7Dh-zq-tzF"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="BEi-L6-cNC"/>
+                                        <menuItem title="Hide Protocol Bernardo" keyEquivalent="h" id="oAn-RZ-DL2">
+                                            <connections>
+                                                <action selector="hide:" target="Ybc-6E-y7g" id="VRu-RA-nKP"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="1zi-Sm-qUZ">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ybc-6E-y7g" id="aXz-Zq-80y"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="K5q-Mr-PaC">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ybc-6E-y7g" id="x7I-44-ykN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="jKr-4n-uv8"/>
+                                        <menuItem title="Quit Protocol Bernardo" keyEquivalent="q" id="Gpz-VS-JRQ">
+                                            <connections>
+                                                <action selector="terminate:" target="Ybc-6E-y7g" id="qqq-aH-ZnQ"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" id="ZTT-NJ-F7A">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="urI-P3-2Ep">
+                                    <items>
+                                        <menuItem title="New Layout" keyEquivalent="n" id="2V6-pQ-rCQ">
+                                            <connections>
+                                                <action selector="createLayout:" target="Ict-FC-ORh" id="nue-DP-6fV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Layout…" keyEquivalent="o" id="2BN-Vb-7GN">
+                                            <connections>
+                                                <action selector="openLayout:" target="Ict-FC-ORh" id="znG-JM-70o"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Recent" id="Sqd-fK-CYc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="04g-ms-AaP">
+                                                <items>
+                                                    <menuItem title="Clear Menu" id="aLG-4s-OYi">
+                                                        <connections>
+                                                            <action selector="clearRecentDocuments:" target="Ybc-6E-y7g" id="LLi-3u-rlQ"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="7hk-Z3-rlD"/>
+                                        <menuItem title="Close" keyEquivalent="w" id="7nY-6A-rST">
+                                            <connections>
+                                                <action selector="performClose:" target="Ybc-6E-y7g" id="XUs-GP-bO7"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save…" keyEquivalent="s" id="Ndz-P7-emO">
+                                            <connections>
+                                                <action selector="saveDocument:" target="Ybc-6E-y7g" id="wv2-9A-axJ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save As…" keyEquivalent="S" id="L1T-yq-9gt">
+                                            <connections>
+                                                <action selector="saveDocumentAs:" target="Ybc-6E-y7g" id="6er-pf-pbj"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Revert to Saved" keyEquivalent="r" id="M1B-sI-xH2">
+                                            <connections>
+                                                <action selector="revertDocumentToSaved:" target="Ybc-6E-y7g" id="U9x-0N-QaF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="5qh-WK-d1w">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="5jZ-5n-jdN">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="Sk5-mt-81E">
+                                            <connections>
+                                                <action selector="undo:" target="Ybc-6E-y7g" id="tm4-bj-drK"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="zXG-IT-TUd">
+                                            <connections>
+                                                <action selector="redo:" target="Ybc-6E-y7g" id="6Vm-49-mfI"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="qEw-sR-iIn"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="fsb-Lt-MhP">
+                                            <connections>
+                                                <action selector="cut:" target="Ybc-6E-y7g" id="eaY-B5-dmd"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="Mj7-s8-2YI">
+                                            <connections>
+                                                <action selector="copy:" target="Ybc-6E-y7g" id="8gF-i1-dGR"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="bUG-hB-EFg">
+                                            <connections>
+                                                <action selector="paste:" target="Ybc-6E-y7g" id="EXU-Yo-oyo"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Delete" id="nPs-4p-OoW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="delete:" target="Ybc-6E-y7g" id="Mfi-r9-6JW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Duplicate" keyEquivalent="d" id="J5c-HW-lof">
+                                            <connections>
+                                                <action selector="copy:" target="Ybc-6E-y7g" id="CvL-pj-XWr"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" id="qw9-fX-cS7">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="AUI-aQ-0Nz">
+                                    <items>
+                                        <menuItem title="New" keyEquivalent="n" id="v8C-dr-G71">
+                                            <connections>
+                                                <action selector="newDocument:" target="Ybc-6E-y7g" id="M5w-G6-WbB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open…" keyEquivalent="o" id="b0x-ll-rdJ">
+                                            <connections>
+                                                <action selector="openDocument:" target="Ybc-6E-y7g" id="i2V-st-b78"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Recent" id="ePZ-fI-Je8">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="aen-lk-tPB">
+                                                <items>
+                                                    <menuItem title="Clear Menu" id="SFg-B5-4ZS">
+                                                        <connections>
+                                                            <action selector="clearRecentDocuments:" target="Ybc-6E-y7g" id="2PB-Lu-X26"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="gCl-sm-nfw"/>
+                                        <menuItem title="Close" keyEquivalent="w" id="HCc-wE-4PP">
+                                            <connections>
+                                                <action selector="performClose:" target="Ybc-6E-y7g" id="6mO-Iw-N5V"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save" keyEquivalent="s" id="IcM-PF-1yE">
+                                            <connections>
+                                                <action selector="saveDocument:" target="Ybc-6E-y7g" id="QuK-HL-TEt"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save As…" keyEquivalent="S" id="RTg-Mq-pdB">
+                                            <connections>
+                                                <action selector="saveDocumentAs:" target="Ybc-6E-y7g" id="OUv-c7-fRB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Revert to Saved" id="zic-fe-SuB">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="revertDocumentToSaved:" target="Ybc-6E-y7g" id="oHM-Qn-Mce"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="l7f-ZI-sNl"/>
+                                        <menuItem title="Page Setup…" keyEquivalent="P" id="F1J-35-DXd">
+                                            <connections>
+                                                <action selector="runPageLayout:" target="Ybc-6E-y7g" id="GKB-Qw-eOj"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Print…" keyEquivalent="p" id="4Ws-ev-ePv">
+                                            <connections>
+                                                <action selector="print:" target="Ybc-6E-y7g" id="dkK-zv-SDi"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" id="p1G-id-RU2">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="3ug-BB-omY">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="I1e-lR-q3w">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="Ybc-6E-y7g" id="JYx-Wa-CTL"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="z0h-Um-qyU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="Ybc-6E-y7g" id="aYq-lk-jwR"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="OUd-5Y-Wa0"/>
+                                        <menuItem title="Welcome to Protocol Bernardo" keyEquivalent="0" id="6jW-fL-iGe">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="openWelcomeWindow:" target="Ict-FC-ORh" id="tl7-Ys-PRV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Devices" keyEquivalent="1" id="pJI-Nl-Ve6">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="openDevicesWindow:" target="Ict-FC-ORh" id="ozf-US-3lm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="U1h-pm-HVS"/>
+                                        <menuItem title="Bring All to Front" id="phg-ht-HAa">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="Ybc-6E-y7g" id="3uk-S2-cbK"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" id="CQo-3w-nyb">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="qvt-Ci-9GQ">
+                                    <items>
+                                        <menuItem title="Protocol Bernardo Help" keyEquivalent="?" id="1JD-yc-56x">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ybc-6E-y7g" id="JXh-lD-R3n"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="R1C-ny-hoE" id="27Y-re-LHL"/>
+                    </connections>
+                </application>
+                <customObject id="Ybc-6E-y7g" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="R1C-ny-hoE" customClass="AppDelegate" customModule="Protocol_Bernardo" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="-104"/>
+        </scene>
+    </scenes>
+</document>

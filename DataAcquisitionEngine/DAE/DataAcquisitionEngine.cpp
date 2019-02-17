@@ -21,6 +21,11 @@
 DataAcquisitionEngine * DataAcquisitionEngine::_instance;
 bool DataAcquisitionEngine::_openNIInitialized = false;
 
+DataAcquisitionEngine::DataAcquisitionEngine() {
+    hostname[_POSIX_HOST_NAME_MAX] = '\0';
+    gethostname(hostname, _POSIX_HOST_NAME_MAX);
+}
+
 void DataAcquisitionEngine::enableLiveView() {
     if(DataAcquisitionEngine::_openNIInitialized) {
         return;
@@ -61,16 +66,17 @@ void DataAcquisitionEngine::start() {
 }
 
 void DataAcquisitionEngine::stop() {
+    // Stop NiTE
+    nite::NiTE::shutdown();
+
+    _devices.clear();
+
     // Let's free all the devices
     for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
         PhysicalDevice * device = deviceReference.second;
         delete device;
     }
-    
-    _devices.clear();
-    
-    // Stop NiTE
-    nite::NiTE::shutdown();
+
 }
 
 void DataAcquisitionEngine::parseForDevices() {
@@ -155,6 +161,7 @@ DAEStatus * DataAcquisitionEngine::getStatus() {
     for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
         PhysicalDevice * device = deviceReference.second;
         status->_deviceStatus[i] = device->getStatus();
+        memcpy(status->_deviceStatus[i]._hostname, hostname, _POSIX_HOST_NAME_MAX);
         ++i;
     }
     
