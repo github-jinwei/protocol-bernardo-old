@@ -17,6 +17,11 @@ struct Point: Codable {
         self.x = x
         self.y = y
     }
+
+    init(_ x: Float, _ y: Float) {
+        self.x = Double(x)
+        self.y = Double(y)
+    }
     
     init(_ point: CGPoint) {
         self.x = Double(point.x)

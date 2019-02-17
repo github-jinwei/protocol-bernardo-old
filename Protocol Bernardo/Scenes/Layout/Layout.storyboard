@@ -1407,7 +1407,7 @@ Gw
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-mi-GqA">
                                                             <rect key="frame" x="84" y="6" width="95" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="00.00" id="0a4-jy-d2X">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="0a4-jy-d2X">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1461,7 +1461,7 @@ Gw
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1cU-4m-mpz">
                                                             <rect key="frame" x="84" y="6" width="95" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="00.00" id="wJy-OK-xvK">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="wJy-OK-xvK">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1515,7 +1515,7 @@ Gw
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sPV-se-gxW">
                                                             <rect key="frame" x="84" y="6" width="95" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="00.00" id="Mnb-qB-SEH">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="Mnb-qB-SEH">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1569,7 +1569,7 @@ Gw
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0I3-mW-C6c">
                                                             <rect key="frame" x="84" y="6" width="95" height="17"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="00.00" id="TEi-FQ-WMY">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="-" id="TEi-FQ-WMY">
                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1638,10 +1638,22 @@ Gw
                                     <constraint firstItem="UO0-GT-R5e" firstAttribute="leading" secondItem="P7k-Nd-dp5" secondAttribute="leading" constant="20" id="teh-Lj-BGM"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="heightBox" destination="AL6-ul-1fQ" id="cJh-IA-krb"/>
                                     <outlet property="heightDeltaField" destination="0I3-mW-C6c" id="xEO-Bx-ttW"/>
+                                    <outlet property="heightLabel" destination="UUS-Vo-vl7" id="wIn-jQ-Ysz"/>
+                                    <outlet property="heightUnitLabel" destination="4Lo-ar-znu" id="YAt-HL-p8g"/>
+                                    <outlet property="orientationBox" destination="1Yf-ef-GHN" id="7KC-uG-7gW"/>
                                     <outlet property="orientationDeltaField" destination="x0B-mi-GqA" id="ZUz-pt-Rd3"/>
+                                    <outlet property="orientationLabel" destination="JV7-My-Bgr" id="wy6-x5-IYf"/>
+                                    <outlet property="orientationUnitLabel" destination="8HL-dV-Av2" id="5XQ-gO-exL"/>
+                                    <outlet property="xPositionBox" destination="9TV-Al-gm4" id="OIz-fk-Wff"/>
                                     <outlet property="xPositionDeltaField" destination="1cU-4m-mpz" id="73S-3K-mVu"/>
+                                    <outlet property="xPositionLabel" destination="idA-sy-EQP" id="yHW-nt-A9Q"/>
+                                    <outlet property="xPositionUnitLabel" destination="PCB-PC-XGx" id="Icp-Xn-VK7"/>
+                                    <outlet property="yPositionBox" destination="eaN-B4-iop" id="tbk-88-s7e"/>
                                     <outlet property="yPositionDeltaField" destination="sPV-se-gxW" id="MKG-h3-21N"/>
+                                    <outlet property="yPositionLabel" destination="f5k-2e-Wqd" id="2aE-cc-DDY"/>
+                                    <outlet property="yPositionUnitLabel" destination="ki1-Tl-lGZ" id="ML0-bp-QDN"/>
                                 </connections>
                             </customView>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="EIC-Jv-FPw">
@@ -1779,6 +1791,9 @@ Gw
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <outlet property="formatter" destination="gae-Mb-ZOF" id="1i6-ph-ZVN"/>
+                                                            </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="II2-Cm-Q3M">
                                                             <rect key="frame" x="172" y="0.0" width="24" height="17"/>
@@ -1825,6 +1840,9 @@ Gw
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <outlet property="formatter" destination="gae-Mb-ZOF" id="5x3-Bs-Kwa"/>
+                                                            </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNY-O5-ala">
                                                             <rect key="frame" x="172" y="0.0" width="24" height="17"/>
@@ -1871,6 +1889,9 @@ Gw
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <outlet property="formatter" destination="gae-Mb-ZOF" id="lEK-7h-54i"/>
+                                                            </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Ua-j4-zAR">
                                                             <rect key="frame" x="172" y="0.0" width="24" height="17"/>
@@ -1917,6 +1938,9 @@ Gw
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
+                                                            <connections>
+                                                                <outlet property="formatter" destination="gae-Mb-ZOF" id="eo8-gH-Ie9"/>
+                                                            </connections>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C9V-wv-idB">
                                                             <rect key="frame" x="172" y="0.0" width="24" height="17"/>

@@ -9,7 +9,7 @@
 import Foundation
 
 /// A list of positionning differences betwen two captation devices
-struct CalibrationDeltas {
+struct CalibrationDeltas: Codable {
     /// Orientation difference
     var orientation: Float? = nil
     

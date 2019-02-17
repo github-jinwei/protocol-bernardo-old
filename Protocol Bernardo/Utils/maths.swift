@@ -20,6 +20,14 @@ internal func deg2rad(_ degrees: CGFloat) -> CGFloat {
 ///
 /// - Parameter degrees: Angle in degrees
 /// - Returns: The angle in radians
+internal func deg2rad(_ degrees: Double) -> Double {
+    return degrees * .pi / 180.0
+}
+
+/// Transforms a degree rotation to radians
+///
+/// - Parameter degrees: Angle in degrees
+/// - Returns: The angle in radians
 internal func deg2rad(_ degrees: Float) -> Float {
     return degrees * .pi / 180.0
 }

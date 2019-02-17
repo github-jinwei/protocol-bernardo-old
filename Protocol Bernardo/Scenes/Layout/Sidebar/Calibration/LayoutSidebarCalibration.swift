@@ -324,6 +324,13 @@ extension LayoutSidebarCalibration: CalibrationControllerDelegate {
             self.liveDeltasView.show(deltas: deltas)
         }
     }
+
+    func calibration(_ controller: CalibrationController, storedDeltasChanged deltas: CalibrationDeltas) {
+        storedOrientationDelta.floatValue = deltas.orientation ?? 0.0
+        storedXDelta.floatValue = deltas.xPosition
+        storedYDelta.floatValue = deltas.yPosition
+        storedHeightDelta.floatValue = deltas.height
+    }
 }
 
 

@@ -48,23 +48,10 @@ class DeviceCalibrationProfile: Codable {
             document?.markAsEdited()
         }
     }
-    
-    /// The position difference the layout device and the physical one
-    var positionDelta = Point(x: 0.0, y: 0.0) {
-        didSet {
-            document?.markAsEdited()
-        }
-    }
-    
-    /// The orientation difference the layout device and the physical one
-    var orientationDelta: Double = 0.0 {
-        didSet {
-            document?.markAsEdited()
-        }
-    }
-    
-    /// The height difference between the layout device and the physical device
-    var heightDelta: Double = 0.0 {
+
+    /// The positionning differences between the layout device and
+    /// the physical device
+    var deltas: CalibrationDeltas = CalibrationDeltas() {
         didSet {
             document?.markAsEdited()
         }
@@ -86,9 +73,7 @@ class DeviceCalibrationProfile: Codable {
         case physicalDeviceSerial
         case isReference
         case referenceDeviceUUID
-        case positionDelta
-        case orientationDelta
-        case heightDelta
+        case deltas
         case isCalibrated
     }
 }
@@ -100,6 +85,8 @@ class DeviceCalibrationProfile: Codable {
 extension DeviceCalibrationProfile {
     /// The device's calibrated position
     var calibratedPosition: Point {
+        let positionDelta = Point(deltas.xPosition, deltas.yPosition)
+
         // Get the layout device, or do nothing
         guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
             return positionDelta
@@ -112,20 +99,20 @@ extension DeviceCalibrationProfile {
     var calibratedHeight: Double {
         // Get the layout device, or do nothing
         guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
-            return heightDelta
+            return Double(deltas.height)
         }
         
-        return layoutDevice.height + heightDelta
+        return layoutDevice.height + Double(deltas.height)
     }
 
     /// THe device's calibrated orientation
     var calibratedOrientation: Double {
         // Get the layout device, or do nothing
         guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
-            return orientationDelta
+            return Double(deltas.orientation ?? 0.0)
         }
         
-        return layoutDevice.orientation + orientationDelta
+        return layoutDevice.orientation + Double((deltas.orientation ?? 0.0))
     }
 }
 

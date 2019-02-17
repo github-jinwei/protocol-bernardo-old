@@ -484,7 +484,6 @@
 			children = (
 				393ACD222215140700306D60 /* CalibrationController.swift */,
 				393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */,
-				396CF3592212037E0049E091 /* CalibrationDeltas.swift */,
 				396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */,
 				3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */,
 				393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */,
@@ -497,6 +496,7 @@
 			children = (
 				3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */,
 				39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */,
+				396CF3592212037E0049E091 /* CalibrationDeltas.swift */,
 			);
 			path = Calibration;
 			sourceTree = "<group>";

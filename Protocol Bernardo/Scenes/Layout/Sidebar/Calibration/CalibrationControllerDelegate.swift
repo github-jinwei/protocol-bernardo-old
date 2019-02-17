@@ -30,4 +30,11 @@ protocol CalibrationControllerDelegate: AnyObject {
     ///   - controller: The emitting CalibrationController
     ///   - liveDeltasUpdated: The latest live deltas
     func calibration(_ controller: CalibrationController, liveDeltasUpdated: CalibrationDeltas?)
+
+    /// Tells the delegated the stored deltas have been updated
+    ///
+    /// - Parameters:
+    ///   - controller: The emitting CalibrationController
+    ///   - storedDeltasChanged: The current device stored deltas
+    func calibration(_ controller: CalibrationController, storedDeltasChanged: CalibrationDeltas)
 }

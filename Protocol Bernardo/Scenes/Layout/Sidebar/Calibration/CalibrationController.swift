@@ -71,6 +71,8 @@ extension CalibrationController {
             // Set the device calibration profile
             deviceProfile = calibrationProfile?.device(forUUID: uuid) ??
                             calibrationProfile?.addDevice(withUUID: uuid)
+
+            delegate?.calibration(self, storedDeltasChanged: deviceProfile!.deltas)
         }
     }
 
@@ -118,10 +120,9 @@ extension CalibrationController {
     func storeDeltas() {
         guard let deltas = latestDeltas else { return }
 
-        deviceProfile?.orientationDelta = Double(deltas.orientation ?? 0.0)
-        deviceProfile?.positionDelta.x = Double(deltas.xPosition)
-        deviceProfile?.positionDelta.y = Double(deltas.yPosition)
-        deviceProfile?.heightDelta = Double(deltas.height)
+        deviceProfile?.deltas = deltas
+
+        delegate?.calibration(self, storedDeltasChanged: deltas)
     }
 }
 
