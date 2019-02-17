@@ -15,7 +15,7 @@ class LayoutCanvasLine: SKNode {
     weak var line: Line!
     
     /// Reference to the delegate
-    weak var delegate: LayoutCanvasElementDelegate?
+    weak var delegate: LayoutCanvasElementDelegate!
 
     // ////////////////////////////////
     // MARK: - Line properties remap
@@ -72,11 +72,6 @@ class LayoutCanvasLine: SKNode {
     // //////////////////////////
     // MARK: - SKNode properties
     
-    /// Reference to the parent node
-    ///
-    /// Reference is weak to prevent circular referencing
-    weak var canvas: LayoutCanvas!
-    
     /// The actual line being displayed
     fileprivate var lineShape: SKShapeNode!
     
@@ -85,16 +80,16 @@ class LayoutCanvasLine: SKNode {
     
     /// Tell if the line is currently selected
     var isSelected: Bool = false
-    
-    
+
     // ////////////////////////////////
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
     fileprivate lazy var parametersController: PBLayoutCanvasLinePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
-        var controller = storyboard.instantiateController(withIdentifier: "lineParametersController") as? PBLayoutCanvasLinePropertiesController
-        controller?.line = self
+        let rawController = storyboard.instantiateController(withIdentifier: "lineParametersController")
+        var controller = rawController as? PBLayoutCanvasLinePropertiesController
+        controller!.line = self
         
         return controller!
     }()
@@ -103,7 +98,6 @@ class LayoutCanvasLine: SKNode {
 // /////////////////////
 // MARK: - LayoutElement
 extension LayoutCanvasLine: LayoutCanvasElement {
-
     /// Returns the controller allowing for fine tuning of the
     /// device parameter
     ///
@@ -118,10 +112,12 @@ extension LayoutCanvasLine: LayoutCanvasElement {
     }
 
     func deleteActions() {
-        canvas.remove(line: self)
 
         removeAllChildren()
         removeFromParent()
+
+        delegate.elementWillBeRemoved(self)
+//        canvas.remove(line: self)
     }
 }
 
@@ -131,8 +127,6 @@ extension LayoutCanvasLine {
     convenience init(onCanvas canvas: LayoutCanvas,
                      forLine line: Line) {
         self.init()
-        
-        self.canvas = canvas
         
         // Set the represented line
         self.line = line
@@ -168,10 +162,11 @@ extension LayoutCanvasLine {
     
     /// Duplicate the current node, and insert it in the layout and the scene
     internal func duplicate() {
-        let newLine = Line(from: line)
-        
-        canvas.layout.decorations.append(newLine)
-        canvas.createNodeForExistingLine(newLine)
+        delegate.duplicateLineElement(self)
+//        let newLine = Line(from: line)
+//
+//        canvas.layout.decorations.append(newLine)
+//        canvas.createNodeForExistingLine(newLine)
     }
 }
 
@@ -190,10 +185,12 @@ extension LayoutCanvasLine {
             super.mouseDragged(with: event)
             return
         }
+
+        let scale = delegate.canvasRootNode().xScale
         
         // Adjust the node position accordingly
-        self.position.x += (event.deltaX / canvas.root.xScale)
-        self.position.y -= (event.deltaY / canvas.root.yScale)
+        self.position.x += (event.deltaX / scale)
+        self.position.y -= (event.deltaY / scale)
         
         // Update the represented device and the parameters view
         updatePositionOnParameters()
@@ -204,12 +201,7 @@ extension LayoutCanvasLine {
     
     override func keyDown(with event: NSEvent) {
         // Check with our delegate if we can edit the node
-        guard delegate?.elementCanBeEdited(self) ?? false else {
-            return
-        }
-        
-        // Make sure we only aknowledge keyboard events when we are selected
-        guard isSelected else {
+        guard (delegate?.elementCanBeEdited(self) ?? false) && isSelected else {
             return
         }
         

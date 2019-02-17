@@ -27,7 +27,6 @@ class PBLayoutCanvasLinePropertiesController: NSViewController {
     @IBOutlet weak var orientationField: NSTextField!
     @IBOutlet weak var orientationStepper: NSStepper!
     
-    
     // ///////////////
     // MARK: - Actions
     
@@ -50,7 +49,6 @@ class PBLayoutCanvasLinePropertiesController: NSViewController {
     @IBAction func orientationModified(_ sender: NSControl) {
         line?.orientation = CGFloat(orientationStepper.doubleValue)
     }
-    
     
     // //////////////////////////
     // MARK: - Setters
@@ -77,9 +75,7 @@ class PBLayoutCanvasLinePropertiesController: NSViewController {
         orientationField?.doubleValue = Double(orientation)
         orientationStepper?.doubleValue = Double(orientation)
     }
-    
-    
-    
+
     // ////////////
     // MARK: - Init
     

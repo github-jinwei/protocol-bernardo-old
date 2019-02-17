@@ -62,7 +62,7 @@ extension LayoutController {
         // Mark ourselves as the layout window delegate
         window.delegate = self
         
-        canvas.layout = (window.document as? LayoutDocument)?.layout
+        canvas.layout = (window.document as! LayoutDocument).layout
         canvas.delegate = self
 
         for sidebar in (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems {

@@ -11,10 +11,7 @@ import AppKit
 
 protocol LayoutCanvasElement: AnyObject {
     /// The element delegate
-    var delegate: LayoutCanvasElementDelegate? { get set }
-
-    /// The canvas this element belongs to
-    var canvas: LayoutCanvas! { get }
+    var delegate: LayoutCanvasElementDelegate! { get set }
 
     // /////////////////
     // MARK: - Selection
@@ -83,7 +80,7 @@ extension LayoutCanvasElement {
 
     /// Change the device state to selected
     func markAsSelected() {
-        canvas.selectedNode = self
+        delegate?.element(self, selectionChanged: true)
     }
 
     /// Update the device state to reflect is selected state.
@@ -97,7 +94,7 @@ extension LayoutCanvasElement {
 
     /// Change the device state to idle
     func markAsIdle() {
-        canvas.selectedNode = nil
+        delegate?.element(self, selectionChanged: false)
     }
 
     /// Update the device state to reflect is deselected state.
@@ -119,16 +116,15 @@ extension LayoutCanvasElement {
         confirmModal.addButton(withTitle: "Delete Element")
         confirmModal.addButton(withTitle: "Cancel")
 
-        confirmModal.beginSheetModal(for: canvas.sceneView.window!) { response in
+        confirmModal.beginSheetModal(for: delegate.canvasWindow()) { response in
             guard response == NSApplication.ModalResponse.alertFirstButtonReturn else {
                 // Alert was canceled, do nothing
                 return
             }
 
-            self.delegate?.elementWillBeRemoved(self)
-
             self.markAsIdle()
             self.deleteActions()
+            self.delegate?.elementWillBeRemoved(self)
         }
     }
 }

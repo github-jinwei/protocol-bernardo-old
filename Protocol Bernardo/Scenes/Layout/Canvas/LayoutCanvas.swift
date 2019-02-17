@@ -137,18 +137,20 @@ extension LayoutCanvas {
                                             forDevice: device)
         deviceNode.delegate = self
         frontElements.append(deviceNode)
+
+        selectedNode = deviceNode
         
         delegate?.canvasWasChanged(self)
     }
     
     /// Creates a new node for a new device and insert it in the layotu
     func createLine() {
-        let deviceNode = LayoutCanvasLine(onCanvas: self,
+        let lineNode = LayoutCanvasLine(onCanvas: self,
                                           forLine: layout.createLine())
-        deviceNode.delegate = self
-        backElements.append(deviceNode)
+        lineNode.delegate = self
+        backElements.append(lineNode)
         
-        selectedNode = deviceNode
+        selectedNode = lineNode
         
         delegate?.canvasWasChanged(self)
     }
@@ -204,12 +206,46 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
     }
     
     func elementWillBeRemoved(_ element: LayoutCanvasElement) {
-        delegate?.canvasWasChanged(self)
+        if element is LayoutCanvasDevice {
+            remove(device: element as! LayoutCanvasDevice)
+        } else {
+            remove(line: element as! LayoutCanvasLine)
+        }
     }
     
     func elementCanBeEdited(_ element: LayoutCanvasElement) -> Bool {
         return self.isEditable
     }
+
+    func element(_ element: LayoutCanvasElement, selectionChanged isSelected: Bool) {
+        selectedNode = element
+    }
+
+    func duplicateDeviceElement(_ element: LayoutCanvasDevice) {
+        let newDevice = Device(from: element.device)
+
+        newDevice.position.x += 10
+        newDevice.position.y += 10
+
+        layout.devices.append(newDevice)
+        createNodeForExistingDevice(newDevice)
+    }
+
+    func duplicateLineElement(_ element: LayoutCanvasLine) {
+        let newLine = Line(from: element.line)
+
+        layout.decorations.append(newLine)
+        createNodeForExistingLine(newLine)
+    }
+
+    func canvasRootNode() -> SKNode {
+        return root
+    }
+
+    func canvasWindow() -> NSWindow {
+        return self.view.window!
+    }
+
 }
 
 extension LayoutCanvas: SKSceneDelegate {

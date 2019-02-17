@@ -79,33 +79,36 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 closest?.trackedPhysics[serial] = physicalUser
             }
         }
-        
-        // Sometimes, the devices give bad first position, resulting in separate User for the same real user.
-        // To prevent this, let's do a swipe of all the tracked users,
-        // if two of them are within close distance, we merge them in the first user
-        
+
+        analyzeUsers()
+    }
+    
+    /// Sometimes, the devices give bad first position, resulting in separate User for the same real user.
+    /// To prevent this, let's do a swipe of all the tracked users,
+    /// if two of them are within close distance, we merge them in the first user
+    func analyzeUsers() {
         // Make sure there is at least one other user
         guard users.count > 1 else { return }
-        
+
         users.forEach { user in
             let closestUsers = usersByDistance(fromPosition: user.calibratedPosition)
             // If the current user is the first one in the array (like 99% of the time), select the second one
             let closest: User
-            
+
             if closestUsers.count > 1 {
                 closest = closestUsers[0] === user ? closestUsers[1] : closestUsers[0]
             } else {
                 closest = closestUsers[0]
             }
             let distance = closest.calibratedPosition.distance(from: user.calibratedPosition)
-            
+
             if distance < 150 {
                 // The two user are really close by, let's merge them
                 closest.trackedPhysics.forEach { serial, physic in
                     user.devices[serial] = physic.userID
                     user.trackedPhysics[serial] = physic
                 }
-                
+
                 // Remove the closest user from the user array
                 users.removeAll { $0 === closest }
             }

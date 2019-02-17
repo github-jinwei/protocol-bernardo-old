@@ -14,7 +14,7 @@ class LayoutCanvasDevice: SKNode {
     /// The device this node is representing
     weak var device: Device!
     
-    weak var delegate: LayoutCanvasElementDelegate?
+    weak var delegate: LayoutCanvasElementDelegate!
     
     // ////////////////////////////////
     // MARK: - Device properties remap
@@ -97,11 +97,6 @@ class LayoutCanvasDevice: SKNode {
     // //////////////////////////
     // MARK: - SKNode properties
     
-    /// Reference to the parent node
-    ///
-    /// Reference is weak to prevent circular referencing
-    weak var canvas: LayoutCanvas!
-    
     /// The sprite node holding the device image
     fileprivate var deviceSprite: SKSpriteNode!
     
@@ -124,13 +119,17 @@ class LayoutCanvasDevice: SKNode {
     /// Reference to the device parameters view when it is available
     fileprivate lazy var parametersController: PBLayoutCanvasDevicePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
-        var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBLayoutCanvasDevicePropertiesController
+
+        let rawController = storyboard.instantiateController(withIdentifier: "deviceParametersController")
+        guard let controller = rawController as? PBLayoutCanvasDevicePropertiesController else {
+            fatalError("Bad ViewController : Expected <PBLayoutCanvasDevicePropertiesController>")
+        }
+
         controller.device = self
         
         return controller
     }()
 }
-
 
 // /////////////////////
 // MARK: - LayoutElement
@@ -149,7 +148,6 @@ extension LayoutCanvasDevice: LayoutCanvasElement {
     }
 }
 
-
 // ///////////////////
 // MARK: - Initializer
 extension LayoutCanvasDevice {
@@ -160,8 +158,6 @@ extension LayoutCanvasDevice {
     ///   - device: The device the node will represent
     convenience init(onCanvas canvas: LayoutCanvas, forDevice device: Device) {
         self.init()
-        
-        self.canvas = canvas
         
         // Set the represented device
         self.device = device
@@ -210,12 +206,9 @@ extension LayoutCanvasDevice {
         canvas.frontLayer.addChild(self)
     }
     
-    /// Duplicate the current node, and insert it in the layout and the scene
+    /// Tell the delegate to duplicate this layout
     internal func duplicate() {
-        let newDevice = Device(from: device)
-        
-        canvas.layout.devices.append(newDevice)
-        canvas.createNodeForExistingDevice(newDevice)
+        delegate?.duplicateDeviceElement(self)
     }
 }
 
@@ -223,13 +216,10 @@ extension LayoutCanvasDevice {
     func update() {}
 
     func deleteActions() {
-        canvas.remove(device: self)
-
         removeAllChildren()
         removeFromParent()
     }
 }
-
 
 // ///////////////////
 // MARK: - User events
@@ -246,10 +236,12 @@ extension LayoutCanvasDevice {
             super.mouseDragged(with: event)
             return
         }
+
+        let scale = delegate?.canvasRootNode().xScale ?? 1.0
         
         // Adjust the node position accordingly
-        self.position.x += (event.deltaX / canvas.root.xScale)
-        self.position.y -= (event.deltaY / canvas.root.yScale)
+        self.position.x += (event.deltaX / scale)
+        self.position.y -= (event.deltaY / scale)
         
         // Update the represented device and the parameters view
         updatePositionOnParameters()
@@ -260,14 +252,10 @@ extension LayoutCanvasDevice {
     
     override func keyDown(with event: NSEvent) {
         // Check with our delegate if we can edit the node
-        guard delegate?.elementCanBeEdited(self) ?? false else {
-            return
-        }
+        guard delegate?.elementCanBeEdited(self) ?? false else { return }
         
         // Make sure we only aknowledge keyboard events when we are selected
-        guard isSelected else {
-            return
-        }
+        guard isSelected else { return }
         
         // Act according to the pressed key
         switch event.keyCode {

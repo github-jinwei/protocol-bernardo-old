@@ -166,7 +166,7 @@ extension CalibrationController {
 
         // Insert all devices available for calibration
         for device in layout.devices {
-            // Make sure the list doesn't contain the device to calibrate
+            // If its the device to calibrate, skip it
             if device.uuid == deviceUUID { continue }
 
             // Get the device calibration profile
@@ -305,7 +305,7 @@ extension CalibrationController {
     ///   - user: Physical user to work with
     ///   - profile: Calibration profile to use for the conversion
     /// - Returns: The user center of mass in the global coordinate system without any calibration adjustements
-    fileprivate func uncalibratedGlobalPosition(ofUser user: PhysicalUser, withProfile profile:  DeviceCalibrationProfile) -> Position {
+    fileprivate func uncalibratedGlobalPosition(ofUser user: PhysicalUser, withProfile profile: DeviceCalibrationProfile) -> Position {
         let localPosition = user.centerOfMass
         return profile.uncalibratedGlobalCoordinates(forPosition: localPosition)
     }

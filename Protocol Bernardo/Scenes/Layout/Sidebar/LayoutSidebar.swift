@@ -23,5 +23,5 @@ protocol LayoutSidebar: AnyObject {
 }
 
 extension LayoutSidebar {
-    func setCalibrationProfile(_ profile: LayoutCalibrationProfile?) { }
+    func setCalibrationProfile(_ profile: LayoutCalibrationProfile?) {}
 }

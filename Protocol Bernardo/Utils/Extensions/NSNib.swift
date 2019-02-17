@@ -29,7 +29,11 @@ extension NSNib {
         guard views.count == 1 else {
             fatalError("Could not extract the view from the nib. (Number of view with the correct type found : \(views.count)")
         }
+
+        guard let view = views.first as? T else {
+            fatalError()
+        }
         
-        return views.first as! T
+        return view
     }
 }

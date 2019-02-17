@@ -12,7 +12,72 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Protocol_Bernardo" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
-                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6"/>
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="File" id="Y4v-m2-MuW">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="ZNn-OX-nuC">
+                                    <items>
+                                        <menuItem title="New" keyEquivalent="n" id="l4A-H9-iLn">
+                                            <connections>
+                                                <action selector="newDocument:" target="Ady-hI-5gd" id="ooT-Ul-tSG"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open…" keyEquivalent="o" id="OjF-yY-DBf">
+                                            <connections>
+                                                <action selector="openDocument:" target="Ady-hI-5gd" id="zzA-lP-Pqr"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Open Recent" id="z1w-pZ-0Pm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="s2e-x4-Xp9">
+                                                <items>
+                                                    <menuItem title="Clear Menu" id="OH0-UJ-hEU">
+                                                        <connections>
+                                                            <action selector="clearRecentDocuments:" target="Ady-hI-5gd" id="Bf8-Ys-7Tn"/>
+                                                        </connections>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="x5x-Vk-2S8"/>
+                                        <menuItem title="Close" keyEquivalent="w" id="mSa-jI-jkE">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="9bv-RD-lWj"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save" keyEquivalent="s" id="WfI-09-JeS">
+                                            <connections>
+                                                <action selector="saveDocument:" target="Ady-hI-5gd" id="nAu-3Y-mOp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save As…" keyEquivalent="S" id="bDl-iW-uR5">
+                                            <connections>
+                                                <action selector="saveDocumentAs:" target="Ady-hI-5gd" id="N9o-aV-gN6"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Revert to Saved" id="MKX-Ba-zr4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="revertDocumentToSaved:" target="Ady-hI-5gd" id="Xd2-sB-sqM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="VUv-al-JCV"/>
+                                        <menuItem title="Page Setup…" keyEquivalent="P" id="KKC-S6-OFg">
+                                            <connections>
+                                                <action selector="runPageLayout:" target="Ady-hI-5gd" id="Jnd-S0-18Q"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Print…" keyEquivalent="p" id="58S-FX-xsW">
+                                            <connections>
+                                                <action selector="print:" target="Ady-hI-5gd" id="Bf8-ZC-1bZ"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
