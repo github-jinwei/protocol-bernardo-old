@@ -14,9 +14,9 @@ class LayoutCanvasLine: SKNode {
     /// The line this node is reprenseting
     weak var line: Line!
     
-    var delegate: LayoutCanvasElementDelegate?
-    
-    
+    /// Reference to the delegate
+    weak var delegate: LayoutCanvasElementDelegate?
+
     // ////////////////////////////////
     // MARK: - Line properties remap
     
@@ -26,8 +26,8 @@ class LayoutCanvasLine: SKNode {
             line.size = Double(size)
             
             // Update the shape
-            _lineShape.path = getLineRectPath(width: size, height: weight)
-            _clickableArea.path = getLineRectPath(width: size,
+            lineShape.path = getLineRectPath(width: size, height: weight)
+            clickableArea.path = getLineRectPath(width: size,
                                                   height: (weight + 10).clamped(to: weight...10))
             
             // Tell the delegate
@@ -49,8 +49,8 @@ class LayoutCanvasLine: SKNode {
             line.weight = Double(weight)
             
             // Update the shape
-            _lineShape.path = getLineRectPath(width: size, height: weight)
-            _clickableArea.path = getLineRectPath(width: size,
+            lineShape.path = getLineRectPath(width: size, height: weight)
+            clickableArea.path = getLineRectPath(width: size,
                                                   height: weight+5)
             
             // Tell the delegate
@@ -68,8 +68,7 @@ class LayoutCanvasLine: SKNode {
             delegate?.elementDidChange(self)
         }
     }
-    
-    
+
     // //////////////////////////
     // MARK: - SKNode properties
     
@@ -79,10 +78,10 @@ class LayoutCanvasLine: SKNode {
     weak var canvas: LayoutCanvas!
     
     /// The actual line being displayed
-    internal var _lineShape: SKShapeNode!
+    fileprivate var lineShape: SKShapeNode!
     
     /// The clickable area as the line may be too thin for easy manipulation
-    internal var _clickableArea: SKShapeNode!
+    fileprivate var clickableArea: SKShapeNode!
     
     /// Tell if the line is currently selected
     var isSelected: Bool = false
@@ -92,7 +91,7 @@ class LayoutCanvasLine: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    internal lazy var _parametersController: PBLayoutCanvasLinePropertiesController = {
+    fileprivate lazy var parametersController: PBLayoutCanvasLinePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
         var controller = storyboard.instantiateController(withIdentifier: "lineParametersController") as? PBLayoutCanvasLinePropertiesController
         controller?.line = self
@@ -100,7 +99,6 @@ class LayoutCanvasLine: SKNode {
         return controller!
     }()
 }
-
 
 // /////////////////////
 // MARK: - LayoutElement
@@ -111,12 +109,12 @@ extension LayoutCanvasLine: LayoutCanvasElement {
     ///
     /// - Returns: A view controller
     func getParametersController() -> NSViewController {
-        return _parametersController
+        return parametersController
     }
     
     /// Update the position values for the device on the parameters view
     func updatePositionOnParameters() {
-        _parametersController.set(position: position)
+        parametersController.set(position: position)
     }
 
     func deleteActions() {
@@ -126,7 +124,6 @@ extension LayoutCanvasLine: LayoutCanvasElement {
         removeFromParent()
     }
 }
-
 
 // ///////////////////
 // MARK: - Initializer
@@ -152,18 +149,18 @@ extension LayoutCanvasLine {
         // Build the line sprite node
         let linePath = getLineRectPath(width: size,
                                        height: weight)
-        _lineShape = SKShapeNode(path: linePath)
+        lineShape = SKShapeNode(path: linePath)
         
         // Build the clickable area sprite node
         let clickablePath = getLineRectPath(width: size,
                                             height: weight + 10)
-        _clickableArea = SKShapeNode(path: clickablePath)
-        _clickableArea.alpha = 0.0
+        clickableArea = SKShapeNode(path: clickablePath)
+        clickableArea.alpha = 0.0
         
         setIdleAppearance()
         
-        self.addChild(_lineShape)
-        self.addChild(_clickableArea)
+        self.addChild(lineShape)
+        self.addChild(clickableArea)
         
         // And insert ourselves
         canvas.backLayer.addChild(self)
@@ -177,7 +174,6 @@ extension LayoutCanvasLine {
         canvas.createNodeForExistingLine(newLine)
     }
 }
-
 
 // ///////////////////
 // MARK: - User events
@@ -259,20 +255,20 @@ extension LayoutCanvasLine {
     ///
     /// This also reflects the default state of the device on the scene
     func setIdleAppearance() {
-        _lineShape.fillColor = NSColor(calibratedWhite: 0, alpha: 0.8)
-        _lineShape.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
+        lineShape.fillColor = NSColor(calibratedWhite: 0, alpha: 0.8)
+        lineShape.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
     }
     
     /// Update the device appearance to reflect its selected state
     func setSelectedAppearance() {
-        _lineShape.fillColor = NSColor(_highlightColor, alpha: 0.8)
-        _lineShape.strokeColor = NSColor(_highlightColor, alpha: 0.8)
+        lineShape.fillColor = NSColor(highlightColor, alpha: 0.8)
+        lineShape.strokeColor = NSColor(highlightColor, alpha: 0.8)
     }
     
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
-        let clickLocationClickableArea = event.location(in: _clickableArea)
+        let clickLocationClickableArea = event.location(in: clickableArea)
         
-        if _clickableArea.path!.contains(clickLocationClickableArea) {
+        if clickableArea.path!.contains(clickLocationClickableArea) {
             return true
         }
         

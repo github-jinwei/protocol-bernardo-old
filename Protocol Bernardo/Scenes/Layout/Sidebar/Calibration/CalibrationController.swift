@@ -17,7 +17,7 @@ class CalibrationController {
 
     weak var layout: Layout!
 
-    fileprivate var _deltasCalculator = CalibrationDeltasCalculator()
+    fileprivate var deltasCalculator = CalibrationDeltasCalculator()
 
     // //////////////////////////////
     // MARK: - Calibration Properties
@@ -248,7 +248,7 @@ extension CalibrationController {
         let referenceDevice = App.dae.connectedDevices.with(serial: referenceSerial)!
 
         // reset calculator
-        _deltasCalculator.reset()
+        deltasCalculator.reset()
 
         // Each device has to track at least one user
         guard physicalDevice.trackedUsers.count >= 1 &&
@@ -267,14 +267,14 @@ extension CalibrationController {
                                             withProfile: referenceProfile!)
 
         // Add the positions to the calculator
-        _deltasCalculator.set(devicePrimaryUser: primaryDevicePos,
+        deltasCalculator.set(devicePrimaryUser: primaryDevicePos,
                               referencePrimaryUser: primaryReferencePos)
 
         // If the two devices have at least two users, use them too
         guard physicalDevice.trackedUsers.count >= 2 &&
               referenceDevice.trackedUsers.count >= 2 else {
                 // There is only one user usable, get deltas and send them to the delegate
-                latestDeltas = _deltasCalculator.getDeltas()
+                latestDeltas = deltasCalculator.getDeltas()
                 delegate?.calibration(self, liveDeltasUpdated: latestDeltas)
                 return
         }
@@ -288,10 +288,10 @@ extension CalibrationController {
             withProfile: referenceProfile!)
 
         // Add them to the calculator
-        _deltasCalculator.set(deviceSecondaryUser: secondaryDevicePos, referenceSecondaryUser: secondaryReferencePos)
+        deltasCalculator.set(deviceSecondaryUser: secondaryDevicePos, referenceSecondaryUser: secondaryReferencePos)
 
         // Get and store the deltas
-        latestDeltas = _deltasCalculator.getDeltas()
+        latestDeltas = deltasCalculator.getDeltas()
 
         // Send them to the delegate
         delegate?.calibration(self, liveDeltasUpdated: latestDeltas)

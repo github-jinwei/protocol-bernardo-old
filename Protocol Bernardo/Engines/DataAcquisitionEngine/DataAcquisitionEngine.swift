@@ -53,20 +53,20 @@ class DataAcquisitionEngine {
     // MARK: - Properties
 
     /// Holds the loop for the status fetcher
-    internal var _statusFetcherLoop: Repeater?
+    fileprivate var statusFetcherLoop: Repeater?
 
     /// The devices handled by the engine
-    internal var _devices = ConnectedDevices()
+    fileprivate var devices = ConnectedDevices()
 
     /// Wrapper with all the connected devices
     var connectedDevices: ConnectedDevices {
-        return _devices
+        return devices
     }
 
     /// Tell if the DAE is currently running
     var isRunning: Bool {
         get {
-            return _statusFetcherLoop != nil
+            return statusFetcherLoop != nil
         }
     }
 
@@ -112,8 +112,8 @@ class DataAcquisitionEngine {
         }
 
         // Start a loop to query the CPP DAE status regularly
-        _statusFetcherLoop = Repeater(interval: .milliseconds(100), mode: .infinite, tolerance: .milliseconds(100), queue: DispatchQueue.global(qos: .utility), observer: self.fetchStatus)
-        _statusFetcherLoop?.start()
+        statusFetcherLoop = Repeater(interval: .milliseconds(100), mode: .infinite, tolerance: .milliseconds(100), queue: DispatchQueue.global(qos: .utility), observer: self.fetchStatus)
+        statusFetcherLoop?.start()
     }
 
     /// Select the appropriate queue then calls the CPP DAE to get
@@ -138,12 +138,12 @@ class DataAcquisitionEngine {
         let statusPointer = DAEGetStatus()
 
         // Copy informations from the status pointer to our own struct
-        _devices.setDevices(statusPointer!.pointee.copyAndDeallocate())
+        devices.setDevices(statusPointer!.pointee.copyAndDeallocate())
 
         // Free the memory
         statusPointer?.deallocate()
 
-        observers.forEach { $0.dae(self, devicesStatusUpdated: _devices) }
+        observers.forEach { $0.dae(self, devicesStatusUpdated: devices) }
     }
 
     /// Changes the device status to its next possible state
@@ -151,7 +151,7 @@ class DataAcquisitionEngine {
     /// - Parameter serial: The serial of the device
     func toggleDeviceStatus(withSerial serial: Serial) {
         // Make sure the serial is a valid one
-        guard let device = _devices.with(serial: serial) else {
+        guard let device = devices.with(serial: serial) else {
             return
         }
 
@@ -190,8 +190,8 @@ class DataAcquisitionEngine {
     func end() {
         guard isRunning else { return }
 
-        _statusFetcherLoop?.removeAllObservers(thenStop: true)
-        _statusFetcherLoop = nil
+        statusFetcherLoop?.removeAllObservers(thenStop: true)
+        statusFetcherLoop = nil
 
         DAEEndAcquisition()
     }

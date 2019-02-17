@@ -119,7 +119,7 @@ extension LayoutCanvasElement {
         confirmModal.addButton(withTitle: "Delete Element")
         confirmModal.addButton(withTitle: "Cancel")
 
-        confirmModal.beginSheetModal(for: canvas._sceneView.window!) { response in
+        confirmModal.beginSheetModal(for: canvas.sceneView.window!) { response in
             guard response == NSApplication.ModalResponse.alertFirstButtonReturn else {
                 // Alert was canceled, do nothing
                 return
@@ -136,7 +136,7 @@ extension LayoutCanvasElement {
 // MARK: - Useful methods
 extension LayoutCanvasElement {
     /// Gives the highlight color for the current MacOS Style
-    internal var _highlightColor: NSColor {
+    internal var highlightColor: NSColor {
         return NSColor.controlAccentColor
     }
 }

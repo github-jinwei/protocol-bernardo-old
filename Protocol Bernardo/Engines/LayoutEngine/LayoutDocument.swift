@@ -17,12 +17,12 @@ class LayoutDocument: NSDocument {
     var calibrationsProfiles: [String: LayoutCalibrationProfile] = [:]
     
     /// The window controller managed by this document
-    internal var _layoutWindow: LayoutWindowController! = nil
+    fileprivate var layoutWindow: LayoutWindowController! = nil
     
     /// Tell the document is as been edited, and should adopt an "unsaved document"
     /// behaviour
     func markAsEdited() {
-        _layoutWindow.setDocumentEdited(true)
+        layoutWindow.setDocumentEdited(true)
     }
 }
 
@@ -47,7 +47,7 @@ extension LayoutDocument {
             rootDir.addRegularFile(withContents: calibrationData, preferredFilename: "\(name).pblayoutcalibration")
         }
 
-        _layoutWindow.setDocumentEdited(false)
+        layoutWindow.setDocumentEdited(false)
 
         return rootDir
     }
@@ -94,12 +94,12 @@ extension LayoutDocument {
 
     override func makeWindowControllers() {
         // If the layout window is missing, let's create it
-        guard _layoutWindow == nil else { return }
+        guard layoutWindow == nil else { return }
 
         let windowController = NSStoryboard(name: "Layout", bundle: nil).instantiateInitialController()
 
-        _layoutWindow = windowController as? LayoutWindowController
-        addWindowController(_layoutWindow)
+        layoutWindow = windowController as? LayoutWindowController
+        addWindowController(layoutWindow)
     }
 
 }

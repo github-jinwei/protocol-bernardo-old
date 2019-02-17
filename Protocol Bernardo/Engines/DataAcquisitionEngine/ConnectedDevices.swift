@@ -14,7 +14,7 @@ import Foundation
 /// gives to its observers
 class ConnectedDevices {
     /// List of all connected devices
-    internal var _devices: [Serial: PhysicalDevice] = [:]
+    fileprivate var _devices: [Serial: PhysicalDevice] = [:]
 
     /// All the connected devices
     var devices: [Serial: PhysicalDevice] {
@@ -26,7 +26,7 @@ class ConnectedDevices {
     /// Tells the number of connected devices available
     var count: Int {
         get {
-            return _devices.count
+            return devices.count
         }
     }
 
@@ -56,7 +56,7 @@ extension ConnectedDevices {
             return nil
         }
 
-        return _devices.first(where: { $0.key == serial })?.value
+        return devices.first(where: { $0.key == serial })?.value
     }
 
 }

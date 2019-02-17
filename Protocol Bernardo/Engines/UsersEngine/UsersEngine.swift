@@ -16,7 +16,7 @@ class UsersEngine {
     // MARK: Properties
     
     /// All the users tracked by the system
-    internal var _users = [User]()
+    fileprivate var users = [User]()
     
     /// The layout used to position the devices
     weak var layout: Layout?
@@ -85,9 +85,9 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         // if two of them are within close distance, we merge them in the first user
         
         // Make sure there is at least one other user
-        guard _users.count > 1 else { return }
+        guard users.count > 1 else { return }
         
-        _users.forEach { user in
+        users.forEach { user in
             let closestUsers = usersByDistance(fromPosition: user.calibratedPosition)
             // If the current user is the first one in the array (like 99% of the time), select the second one
             let closest: User
@@ -107,7 +107,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 }
                 
                 // Remove the closest user from the user array
-                _users.removeAll { $0 === closest }
+                users.removeAll { $0 === closest }
             }
         }
     }
@@ -123,7 +123,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         user.trackedPhysics[serial] = physic
         user.calibrationProfile = profile
     
-        _users.append(user)
+        users.append(user)
     }
     
     /// Check if a physic needs to be removed from the specified user
@@ -140,7 +140,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         
         // if the user is not tracked anymore, remove it
         if user.trackedPhysics.count == 0 {
-            _users.removeAll { $0 === user }
+            users.removeAll { $0 === user }
         }
     }
 
@@ -150,7 +150,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
 // MARK: - Accessing the tracked users
 extension UsersEngine {
     /// All the users tracked by the user engine
-    var allUsers: [User] { return _users }
+    var allUsers: [User] { return users }
     
     /// Gets the closes user from the given position.
     ///
@@ -172,7 +172,7 @@ extension UsersEngine {
     /// - Returns: The distance-ordered user array
     func usersByDistance(fromPosition position: Position) -> [User] {
         // Get a copy of the users array
-        let users = _users
+        let users = self.users
         
         // Get the distance for each user
         let distances = users.map {
@@ -187,7 +187,7 @@ extension UsersEngine {
     /// - Parameter serial: The device's serial
     /// - Returns: A list of users
     func users(forDeviceSerial serial: Serial) -> [User] {
-        return _users.filter { user in user.devices[serial] != nil }
+        return users.filter { user in user.devices[serial] != nil }
     }
     
     /// Gives the user corresponding to the specified device serial and user ID
@@ -197,7 +197,7 @@ extension UsersEngine {
     ///   - userID: The user ID
     /// - Returns: The matching user, if any
     func user(forDeviceSerial serial: Serial, andUserID userID: Int16) -> User? {
-        let foundUsers = _users.filter { user in
+        let foundUsers = users.filter { user in
             // Is this user tracked by the specified device ?
             guard user.devices[serial] != nil else { return false }
             

@@ -22,11 +22,7 @@ class LayoutWindowController: NSWindowController {
 
     /// The list of calibrated profiles
     @IBOutlet weak var calibrationProfilesList: NSPopUpButton!
-    
-    /// Tell if the window is already in a closing process and is waiting for
-    /// some user actions to complete
-    internal var _waitingToQuit: Bool = false
-
+        
     /// The Layout Window delegate
     weak var delegate: LayoutWindowDelegate?
     
@@ -45,7 +41,7 @@ class LayoutWindowController: NSWindowController {
     // MARK: - Convenient access
     
     /// Convenient access to the window content controller
-    internal var _controller: LayoutController {
+    internal var layoutController: LayoutController {
         return contentViewController as! LayoutController
     }
     
@@ -65,7 +61,7 @@ class LayoutWindowController: NSWindowController {
         // Mark ourselves as the window delegate
         window?.delegate = self
 
-        _controller.window = self
+        layoutController.window = self
     }
     
     // ///////////////
@@ -90,7 +86,7 @@ class LayoutWindowController: NSWindowController {
     ///
     /// - Parameter sender: The toggle sidebar button
     @IBAction func toggleSidebar(_ sender: Any) {
-        _controller.toggleSidebar(sender)
+        layoutController.toggleSidebar(sender)
     }
 }
 

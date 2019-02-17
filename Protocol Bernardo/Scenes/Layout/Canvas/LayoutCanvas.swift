@@ -15,7 +15,7 @@ class LayoutCanvas: NSViewController {
     // MARK: - Base properties
     
     /// The scene view
-    internal var _sceneView: LayoutCanvasView {
+    var sceneView: LayoutCanvasView {
         return view as! LayoutCanvasView
     }
     
@@ -29,19 +29,19 @@ class LayoutCanvas: NSViewController {
     weak var layout: Layout!
     
     /// The SKScene used by the canvas
-    internal var _scene: SKScene!
+    fileprivate var scene: SKScene!
     
     /// Convenient access to the 'root' node of the scene
-    var root: SKNode { return _scene.childNode(withName: "root")! }
+    var root: SKNode { return scene.childNode(withName: "root")! }
     
     /// The scene front layer, holding the device objects
-    var frontLayer: SKNode { return _scene.childNode(withName: "root/frontLayer")! }
+    var frontLayer: SKNode { return scene.childNode(withName: "root/frontLayer")! }
     
     /// The scene back layer, holding the decorations objects
-    var backLayer: SKNode { return _scene.childNode(withName: "root/backLayer")! }
+    var backLayer: SKNode { return scene.childNode(withName: "root/backLayer")! }
     
     /// The scene front layer, holding the device objects
-    var usersLayer: SKNode { return _scene.childNode(withName: "root/usersLayer")! }
+    var usersLayer: SKNode { return scene.childNode(withName: "root/usersLayer")! }
     
     // List of all the frontElements nodes in the scene
     var frontElements = [LayoutCanvasDevice]()
@@ -83,15 +83,15 @@ extension LayoutCanvas {
         // Start with a blank layout
         
         // Set up the scene view
-        _sceneView.canvas = self
-        _sceneView.allowsTransparency = true
+        sceneView.canvas = self
+        sceneView.allowsTransparency = true
         
         // Create the scene
-        _scene = SKScene(fileNamed: "LayoutCanvas")
-        _scene.delegate = self
+        scene = SKScene(fileNamed: "LayoutCanvas")
+        scene.delegate = self
         
         // Display it
-        _sceneView.presentScene(_scene)
+        sceneView.presentScene(scene)
         
         // Parse layout to create nodes for existing elements
         layout.devices.forEach {

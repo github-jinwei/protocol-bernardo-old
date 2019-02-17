@@ -34,12 +34,12 @@ class LayoutController: NSSplitViewController {
     // MARK: - Convenience properties
     
     /// Convenient access to the canvas
-    internal var _canvas: LayoutCanvas {
+    fileprivate var canvas: LayoutCanvas {
         return canvasSplitViewItem.viewController as! LayoutCanvas
     }
     
     /// Convenient access to the sidebar
-    internal var _sidebar: LayoutSidebar {
+    fileprivate var sidebar: LayoutSidebar {
         let tabIndex = (sidebarTabViewItem.viewController as! NSTabViewController).selectedTabViewItemIndex
         return (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems[tabIndex].viewController as! LayoutSidebar
     }
@@ -62,12 +62,12 @@ extension LayoutController {
         // Mark ourselves as the layout window delegate
         window.delegate = self
         
-        _canvas.layout = (window.document as? LayoutDocument)?.layout
-        _canvas.delegate = self
+        canvas.layout = (window.document as? LayoutDocument)?.layout
+        canvas.delegate = self
 
         for sidebar in (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems {
             let layoutSidebar = sidebar.viewController as! LayoutSidebar
-            layoutSidebar.canvas = _canvas
+            layoutSidebar.canvas = canvas
         }
     }
 }
@@ -84,20 +84,20 @@ extension LayoutController: LayoutWindowDelegate {
         case .edition:
             tabViewController.selectedTabViewItemIndex = 0
 
-            _canvas.isEditable = true
+            canvas.isEditable = true
         case .calibration:
             tabViewController.selectedTabViewItemIndex = 1
 
-            let sidebar = _sidebar as! LayoutSidebarCalibration
+            let sidebar = (self.sidebar as! LayoutSidebarCalibration)
             sidebar.document = layoutDocument
             sidebar.profile = calibrationProfile
 
-            _canvas.isEditable = false
+            canvas.isEditable = false
 
         case .tracking:
             tabViewController.selectedTabViewItemIndex = 2
 
-            _canvas.isEditable = false
+            canvas.isEditable = false
         }
     }
 
@@ -107,8 +107,8 @@ extension LayoutController: LayoutWindowDelegate {
         App.usersEngine.profile = calibrationProfile
         App.usersEngine.layout = layoutDocument.layout
 
-        _canvas.calibrationProfile = calibrationProfile
-        _sidebar.setCalibrationProfile(calibrationProfile)
+        canvas.calibrationProfile = calibrationProfile
+        sidebar.setCalibrationProfile(calibrationProfile)
     }
 }
 
@@ -125,6 +125,6 @@ extension LayoutController: LayoutCanvasDelegate {
     }
     
     func canvas(_ canvas: LayoutCanvas, selectionChanged element: LayoutCanvasElement?) {
-        _sidebar.setSelectedElement(element)
+        sidebar.setSelectedElement(element)
     }
 }

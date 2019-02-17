@@ -22,7 +22,7 @@ class LayoutCanvasDevice: SKNode {
     override var name: String? {
         didSet {
             device.name = name!
-            _deviceLabel?.text = name
+            deviceLabel?.text = name
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -52,7 +52,7 @@ class LayoutCanvasDevice: SKNode {
     var orientation: CGFloat = 0 {
         didSet {
             device.orientation = Double(orientation)
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
+            captationAreaNode.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -63,8 +63,8 @@ class LayoutCanvasDevice: SKNode {
     var horizontalFOV: CGFloat = 70 {
         didSet {
             device.horizontalFOV = Double(horizontalFOV)
-            _captationArea.path = captationArea()
-            _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
+            captationAreaNode.path = captationArea()
+            captationAreaNode.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -75,7 +75,7 @@ class LayoutCanvasDevice: SKNode {
     var minimumCaptationDistance: CGFloat = 50 {
         didSet {
             device.minimumCaptationDistance = Double(minimumCaptationDistance)
-            _captationArea.path = captationArea()
+            captationAreaNode.path = captationArea()
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -86,7 +86,7 @@ class LayoutCanvasDevice: SKNode {
     var maximumCaptationDistance: CGFloat = 450 {
         didSet {
             device.maximumCaptationDistance = Double(maximumCaptationDistance)
-            _captationArea.path = captationArea()
+            captationAreaNode.path = captationArea()
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -103,16 +103,16 @@ class LayoutCanvasDevice: SKNode {
     weak var canvas: LayoutCanvas!
     
     /// The sprite node holding the device image
-    internal var _deviceSprite: SKSpriteNode!
+    fileprivate var deviceSprite: SKSpriteNode!
     
     /// The shape used to trigger clicks on the device image
-    internal var _centerCircle: SKShapeNode!
+    fileprivate var centerCircle: SKShapeNode!
     
     /// The shape representing the device captation area
-    internal var _captationArea: SKShapeNode!
+    fileprivate var captationAreaNode: SKShapeNode!
     
     /// The name tag for the device on the scene
-    internal var _deviceLabel: SKLabelNode!
+    fileprivate var deviceLabel: SKLabelNode!
     
     /// Tell is the device is currently selected
     internal var isSelected: Bool = false
@@ -122,7 +122,7 @@ class LayoutCanvasDevice: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    internal lazy var _parametersController: PBLayoutCanvasDevicePropertiesController = {
+    fileprivate lazy var parametersController: PBLayoutCanvasDevicePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
         var controller = storyboard.instantiateController(withIdentifier: "deviceParametersController") as! PBLayoutCanvasDevicePropertiesController
         controller.device = self
@@ -140,12 +140,12 @@ extension LayoutCanvasDevice: LayoutCanvasElement {
     ///
     /// - Returns: A view controller
     func getParametersController() -> NSViewController {
-       return _parametersController
+       return parametersController
     }
     
     /// Update the position values for the device on the parameters view
     func updatePositionOnParameters() {
-        _parametersController.set(position: position)
+        parametersController.set(position: position)
     }
 }
 
@@ -179,32 +179,32 @@ extension LayoutCanvasDevice {
         isUserInteractionEnabled = false
         
         // Build the device sprite node
-        _deviceSprite = SKSpriteNode(imageNamed: "Device")
-        _deviceSprite.position.y += 3
-        _deviceSprite.setScale(0.15)
-        _deviceSprite.colorBlendFactor = 1.0
+        deviceSprite = SKSpriteNode(imageNamed: "Device")
+        deviceSprite.position.y += 3
+        deviceSprite.setScale(0.15)
+        deviceSprite.colorBlendFactor = 1.0
         
-        _deviceLabel = SKLabelNode(text: self.name)
-        _deviceLabel.horizontalAlignmentMode = .center
-        _deviceLabel.verticalAlignmentMode = .center
-        _deviceLabel.position.y -= 12
-        _deviceLabel.fontSize = 11
-        _deviceLabel.fontName = NSFont.systemFont(ofSize: 11, weight: .bold).fontName
+        deviceLabel = SKLabelNode(text: self.name)
+        deviceLabel.horizontalAlignmentMode = .center
+        deviceLabel.verticalAlignmentMode = .center
+        deviceLabel.position.y -= 12
+        deviceLabel.fontSize = 11
+        deviceLabel.fontName = NSFont.systemFont(ofSize: 11, weight: .bold).fontName
         
-        _centerCircle = SKShapeNode(circleOfRadius: 25)
+        centerCircle = SKShapeNode(circleOfRadius: 25)
         
         // Build the captation area node
-        _captationArea = SKShapeNode(path: captationArea())
-        _captationArea.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
+        captationAreaNode = SKShapeNode(path: captationArea())
+        captationAreaNode.zRotation = deg2rad(self.horizontalFOV / -2 + orientation + 90)
         
         // Give them their idle style
         setIdleAppearance()
         
         // Insert them in the tree
-        self.addChild(_centerCircle)
-        self.addChild(_captationArea)
-        self.addChild(_deviceSprite)
-        self.addChild(_deviceLabel)
+        self.addChild(centerCircle)
+        self.addChild(captationAreaNode)
+        self.addChild(deviceSprite)
+        self.addChild(deviceLabel)
         
         // And insert ourselves
         canvas.frontLayer.addChild(self)
@@ -308,25 +308,25 @@ extension LayoutCanvasDevice {
 // MARK: - SKNode utils
 extension LayoutCanvasDevice {
     func setIdleAppearance() {
-        _deviceSprite.color = NSColor(calibratedWhite: 0, alpha: 0.9)
-        _deviceLabel.fontColor = NSColor(calibratedWhite: 0, alpha: 0.8)
+        deviceSprite.color = NSColor(calibratedWhite: 0, alpha: 0.9)
+        deviceLabel.fontColor = NSColor(calibratedWhite: 0, alpha: 0.8)
         
-        _centerCircle.alpha = 0.0
+        centerCircle.alpha = 0.0
         
-        _captationArea.fillColor = NSColor(calibratedWhite: 0, alpha: 0.5)
-        _captationArea.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
+        captationAreaNode.fillColor = NSColor(calibratedWhite: 0, alpha: 0.5)
+        captationAreaNode.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
     }
     
     /// Update the device appearance to reflect its selected state
     func setSelectedAppearance() {
         // _deviceSprite.color = NSColor(_highlightColor, alpha: 0.9)
         
-        _centerCircle.alpha = 1.0
-        _centerCircle.fillColor = NSColor(_highlightColor, alpha: 0.5)
-        _centerCircle.strokeColor = NSColor(_highlightColor, alpha: 0.8)
+        centerCircle.alpha = 1.0
+        centerCircle.fillColor = NSColor(highlightColor, alpha: 0.5)
+        centerCircle.strokeColor = NSColor(highlightColor, alpha: 0.8)
         
-        _captationArea.fillColor = NSColor(_highlightColor, alpha: 0.5)
-        _captationArea.strokeColor = NSColor(_highlightColor, alpha: 0.8)
+        captationAreaNode.fillColor = NSColor(highlightColor, alpha: 0.5)
+        captationAreaNode.strokeColor = NSColor(highlightColor, alpha: 0.8)
     }
     
     /// Gives the CGPath corresponding to the device captation area
@@ -358,11 +358,11 @@ extension LayoutCanvasDevice {
     /// - Parameter event: Mouse event
     /// - Returns: True if the cursor is inside the trigger area, false otherwise
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
-        let clickLocationCaptationArea = event.location(in: _captationArea)
-        let clickLocationCenterArea = event.location(in: _centerCircle)
+        let clickLocationCaptationArea = event.location(in: captationAreaNode)
+        let clickLocationCenterArea = event.location(in: centerCircle)
      
-        if _captationArea.path!.contains(clickLocationCaptationArea) ||
-           _centerCircle.contains(clickLocationCenterArea) {
+        if captationAreaNode.path!.contains(clickLocationCaptationArea) ||
+           centerCircle.contains(clickLocationCenterArea) {
             return true
         }
         
