@@ -71,7 +71,7 @@ class LayoutCanvas: NSViewController {
     // MARK: - Canvas status
     
     /// Tell if the canvas is editable
-    var editable: Bool = true
+    var isEditable: Bool = true
 }
 
 
@@ -208,23 +208,8 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
     }
     
     func elementCanBeEdited(_ element: LayoutCanvasElement) -> Bool {
-        return self.editable
+        return self.isEditable
     }
-}
-
-extension LayoutCanvas: LayoutWindowDelegate {
-    func toolbar(_: LayoutWindowController, interfaceModeHasChanged interfaceMode: LayoutInterfaceMode) {
-
-        switch interfaceMode {
-        case .edition: editable = true
-        case .calibration: editable = false
-        case .tracking: editable = false
-        }
-    }
-
-    func toolbar(_: LayoutWindowController, calibrationProfileChanged: LayoutCalibrationProfile?) { }
-
-
 }
 
 extension LayoutCanvas: SKSceneDelegate {

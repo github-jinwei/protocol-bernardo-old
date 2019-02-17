@@ -100,7 +100,7 @@ class LayoutCanvasDevice: SKNode {
     /// Reference to the parent node
     ///
     /// Reference is weak to prevent circular referencing
-    internal weak var _canvas: LayoutCanvas!
+    weak var canvas: LayoutCanvas!
     
     /// The sprite node holding the device image
     internal var _deviceSprite: SKSpriteNode!
@@ -115,7 +115,7 @@ class LayoutCanvasDevice: SKNode {
     internal var _deviceLabel: SKLabelNode!
     
     /// Tell is the device is currently selected
-    internal var _isSelected: Bool = false
+    internal var isSelected: Bool = false
     
     
     // ////////////////////////////////
@@ -161,7 +161,7 @@ extension LayoutCanvasDevice {
     convenience init(onCanvas canvas: LayoutCanvas, forDevice device: Device) {
         self.init()
         
-        _canvas = canvas
+        self.canvas = canvas
         
         // Set the represented device
         self.device = device
@@ -207,20 +207,27 @@ extension LayoutCanvasDevice {
         self.addChild(_deviceLabel)
         
         // And insert ourselves
-        _canvas.frontLayer.addChild(self)
+        canvas.frontLayer.addChild(self)
     }
     
     /// Duplicate the current node, and insert it in the layout and the scene
     internal func duplicate() {
         let newDevice = Device(from: device)
         
-        _canvas.layout.devices.append(newDevice)
-        _canvas.createNodeForExistingDevice(newDevice)
+        canvas.layout.devices.append(newDevice)
+        canvas.createNodeForExistingDevice(newDevice)
     }
 }
 
 extension LayoutCanvasDevice {
     func update() {}
+
+    func deleteActions() {
+        canvas.remove(device: self)
+
+        removeAllChildren()
+        removeFromParent()
+    }
 }
 
 
@@ -241,8 +248,8 @@ extension LayoutCanvasDevice {
         }
         
         // Adjust the node position accordingly
-        self.position.x += (event.deltaX / _canvas.root.xScale)
-        self.position.y -= (event.deltaY / _canvas.root.yScale)
+        self.position.x += (event.deltaX / canvas.root.xScale)
+        self.position.y -= (event.deltaY / canvas.root.yScale)
         
         // Update the represented device and the parameters view
         updatePositionOnParameters()
@@ -258,7 +265,7 @@ extension LayoutCanvasDevice {
         }
         
         // Make sure we only aknowledge keyboard events when we are selected
-        guard _isSelected else {
+        guard isSelected else {
             return
         }
         
@@ -297,72 +304,9 @@ extension LayoutCanvasDevice {
     }
 }
 
-    
-// ////////////////////
-// MARK: - Device state
-extension LayoutCanvasDevice {
-    /// Change the device state to selected
-    internal func markAsSelected() {
-        _canvas.selectedNode = self
-    }
-    
-    /// Update the device state to reflect is selected state.
-    /// You should not called this method directly. Use `markAsSelected` instead.
-    func select() {
-        _isSelected = true
-        
-        // Update appearance to reflect change
-        setSelectedAppearance()
-    }
-    
-    /// Change the device state to idle
-    internal func markAsIdle() {
-        _canvas.selectedNode = nil
-    }
-    
-    /// Update the device state to reflect is deselected state.
-    /// You should not called this method directly. Use `markAsIdle` instead.
-    func deselect() {
-        _isSelected = false
-        
-        // Update appearance to reflect change
-        setIdleAppearance()
-    }
-
-    /// Delete the device, removes it from the layout and fron the view
-    func delete() {
-        // Asks the user before going further obviously
-        
-        let confirmModal = NSAlert()
-        confirmModal.alertStyle = .warning
-        confirmModal.messageText = "Are you sure you want to delete this device ?"
-        confirmModal.addButton(withTitle: "Delete Device")
-        confirmModal.addButton(withTitle: "Cancel")
-        
-        confirmModal.beginSheetModal(for: _canvas._sceneView.window!) { response in
-            guard response == NSApplication.ModalResponse.alertFirstButtonReturn else {
-                // Alert was canceled, do nothing
-                return
-            }
-            
-            self.delegate?.elementWillBeRemoved(self)
-            
-            self.markAsIdle()
-            self._canvas.remove(device: self)
-            
-            self.removeAllChildren()
-            self.removeFromParent()
-        }
-    }
-}
-
-
 // /////////////////////
 // MARK: - SKNode utils
 extension LayoutCanvasDevice {
-    /// Update the device appearance to reflect its idle state
-    ///
-    /// This also reflects the default state of the device on the scene
     func setIdleAppearance() {
         _deviceSprite.color = NSColor(calibratedWhite: 0, alpha: 0.9)
         _deviceLabel.fontColor = NSColor(calibratedWhite: 0, alpha: 0.8)

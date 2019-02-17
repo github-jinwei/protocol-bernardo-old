@@ -55,7 +55,7 @@ class LayoutCanvasView: SKView {
         super.keyDown(with: event)
         
         // Make sure the canvas is editable
-        guard canvas.editable else { return }
+        guard canvas.isEditable else { return }
         
         // Simply pass the event to the selected node
         canvas?.selectedNode?.keyDown(with: event)
@@ -77,7 +77,7 @@ class LayoutCanvasView: SKView {
         }
         
         // Return here if we found a node, or if the canvas isn't editable
-        if frontElements.count > 0 || !canvas.editable {
+        if frontElements.count > 0 || !canvas.isEditable {
             return frontElements
         }
         

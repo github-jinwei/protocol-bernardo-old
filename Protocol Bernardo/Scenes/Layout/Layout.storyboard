@@ -449,6 +449,7 @@ Gw
                                                             <bool key="NSValidatesImmediately" value="YES"/>
                                                         </dictionary>
                                                     </binding>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="5nC-Mn-eHI"/>
                                                     <outlet property="nextKeyView" destination="Qr4-CL-3WD" id="9eh-nA-i3K"/>
                                                 </connections>
                                             </textField>
@@ -514,6 +515,7 @@ Gw
                                                 <connections>
                                                     <action selector="minDistanceModified:" target="6rc-uw-BXq" id="Zw8-dI-SuW"/>
                                                     <binding destination="6rc-uw-BXq" name="value" keyPath="self.minDistanceStepper.doubleValue" id="s7a-yz-Q5Z"/>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="blx-cc-i9S"/>
                                                     <outlet property="nextKeyView" destination="Sx2-ab-LDV" id="rD5-mh-JPg"/>
                                                 </connections>
                                             </textField>
@@ -579,6 +581,7 @@ Gw
                                                 <connections>
                                                     <action selector="maxDistanceModified:" target="6rc-uw-BXq" id="w6d-r7-pBn"/>
                                                     <binding destination="6rc-uw-BXq" name="value" keyPath="self.maxDistanceStepper.doubleValue" id="ajO-C8-8vn"/>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="XAu-pv-AtC"/>
                                                     <outlet property="nextKeyView" destination="bJU-72-9DK" id="16v-Mg-1WW"/>
                                                 </connections>
                                             </textField>
@@ -655,6 +658,7 @@ Gw
                                                 <connections>
                                                     <action selector="xPositionModified:" target="6rc-uw-BXq" id="2jR-9A-MtI"/>
                                                     <binding destination="6rc-uw-BXq" name="value" keyPath="self.xPositionStepper.doubleValue" id="Bdj-F8-J1F"/>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="Saa-nl-oCI"/>
                                                     <outlet property="nextKeyView" destination="DPM-8K-X3l" id="eRC-qJ-u43"/>
                                                 </connections>
                                             </textField>
@@ -714,6 +718,7 @@ Gw
                                                 <connections>
                                                     <action selector="yPositionModified:" target="6rc-uw-BXq" id="ylN-vg-ddl"/>
                                                     <binding destination="6rc-uw-BXq" name="value" keyPath="self.yPositionStepper.doubleValue" id="KIA-bC-mL0"/>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="qDu-sp-coy"/>
                                                     <outlet property="nextKeyView" destination="Vet-cZ-yeS" id="qxg-nJ-n5U"/>
                                                 </connections>
                                             </textField>
@@ -762,6 +767,7 @@ Gw
                                                 <connections>
                                                     <action selector="orientationModified:" target="6rc-uw-BXq" id="kaG-nL-kpq"/>
                                                     <binding destination="6rc-uw-BXq" name="value" keyPath="self.orientationStepper.doubleValue" id="COo-59-Sl9"/>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="LqL-BK-EAU"/>
                                                     <outlet property="nextKeyView" destination="odV-sM-Jcy" id="2Gg-jo-GxD"/>
                                                 </connections>
                                             </textField>
@@ -827,6 +833,7 @@ Gw
                                                 <connections>
                                                     <action selector="heightModified:" target="6rc-uw-BXq" id="5Dd-2o-JEq"/>
                                                     <binding destination="6rc-uw-BXq" name="value" keyPath="self.heightStepper.doubleValue" id="Yrn-6p-gZ0"/>
+                                                    <outlet property="formatter" destination="dUP-LD-T5q" id="M0z-pz-IaT"/>
                                                 </connections>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z6B-WT-1qw">
@@ -944,6 +951,7 @@ Gw
                         <outlet property="yPositionStepper" destination="u26-nD-9lr" id="37L-rC-0nR"/>
                     </connections>
                 </viewController>
+                <numberFormatter formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="dUP-LD-T5q"/>
             </objects>
             <point key="canvasLocation" x="-98" y="1812"/>
         </scene>
@@ -991,6 +999,7 @@ Gw
                                                 <connections>
                                                     <action selector="sizeModified:" target="BsV-Te-b0P" id="ZwP-0c-7Rf"/>
                                                     <binding destination="BsV-Te-b0P" name="value" keyPath="self.sizeStepper.doubleValue" id="dYi-eK-dwT"/>
+                                                    <outlet property="formatter" destination="8tD-0h-eJZ" id="KqU-Ey-yXy"/>
                                                     <outlet property="nextKeyView" destination="R0y-HW-RMy" id="kHC-sl-boc"/>
                                                 </connections>
                                             </textField>
@@ -1051,6 +1060,7 @@ Gw
                                                 <connections>
                                                     <action selector="weightModified:" target="BsV-Te-b0P" id="7pk-zU-FBh"/>
                                                     <binding destination="BsV-Te-b0P" name="value" keyPath="self.weightStepper.doubleValue" id="sR7-qc-0d2"/>
+                                                    <outlet property="formatter" destination="8tD-0h-eJZ" id="5Wn-8S-Odk"/>
                                                     <outlet property="nextKeyView" destination="lU4-bJ-fMQ" id="lby-2o-iJ5"/>
                                                 </connections>
                                             </textField>
@@ -1122,6 +1132,7 @@ Gw
                                                 <connections>
                                                     <action selector="xPositionModified:" target="BsV-Te-b0P" id="kPo-GX-PhH"/>
                                                     <binding destination="BsV-Te-b0P" name="value" keyPath="self.xPositionStepper.doubleValue" id="fUa-yM-KSJ"/>
+                                                    <outlet property="formatter" destination="8tD-0h-eJZ" id="Akk-Ig-7dR"/>
                                                     <outlet property="nextKeyView" destination="LOJ-Nh-EdV" id="qlP-cq-eGv"/>
                                                 </connections>
                                             </textField>
@@ -1171,6 +1182,7 @@ Gw
                                                 <connections>
                                                     <action selector="yPositionModified:" target="BsV-Te-b0P" id="jgt-4m-bz5"/>
                                                     <binding destination="BsV-Te-b0P" name="value" keyPath="self.yPositionStepper.doubleValue" id="hq6-zP-XGx"/>
+                                                    <outlet property="formatter" destination="8tD-0h-eJZ" id="OVg-b1-skd"/>
                                                     <outlet property="nextKeyView" destination="Fjj-R0-lLa" id="bEx-DY-On0"/>
                                                 </connections>
                                             </textField>
@@ -1219,6 +1231,7 @@ Gw
                                                 <connections>
                                                     <action selector="orientationModified:" target="BsV-Te-b0P" id="01i-PO-haR"/>
                                                     <binding destination="BsV-Te-b0P" name="value" keyPath="self.orientationStepper.doubleValue" id="fVJ-Td-S75"/>
+                                                    <outlet property="formatter" destination="8tD-0h-eJZ" id="pYZ-Jm-iud"/>
                                                     <outlet property="nextKeyView" destination="odV-sM-Jcy" id="Coz-dB-ZM8"/>
                                                 </connections>
                                             </textField>
@@ -1316,7 +1329,7 @@ Gw
                         <outlet property="yPositionStepper" destination="Yye-JG-960" id="HuO-m9-1Y1"/>
                     </connections>
                 </viewController>
-                <userDefaultsController representsSharedInstance="YES" id="P10-Ax-8vg"/>
+                <numberFormatter formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="8tD-0h-eJZ"/>
             </objects>
             <point key="canvasLocation" x="-98" y="2073"/>
         </scene>

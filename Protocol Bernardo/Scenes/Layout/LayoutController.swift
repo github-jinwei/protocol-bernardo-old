@@ -83,6 +83,8 @@ extension LayoutController: LayoutWindowDelegate {
         switch interfaceMode {
         case .edition:
             tabViewController.selectedTabViewItemIndex = 0
+
+            _canvas.isEditable = true
         case .calibration:
             tabViewController.selectedTabViewItemIndex = 1
 
@@ -90,8 +92,12 @@ extension LayoutController: LayoutWindowDelegate {
             sidebar.document = layoutDocument
             sidebar.profile = calibrationProfile
 
+            _canvas.isEditable = false
+
         case .tracking:
             tabViewController.selectedTabViewItemIndex = 2
+
+            _canvas.isEditable = false
         }
     }
 

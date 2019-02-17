@@ -76,7 +76,7 @@ class LayoutCanvasLine: SKNode {
     /// Reference to the parent node
     ///
     /// Reference is weak to prevent circular referencing
-    internal weak var _canvas: LayoutCanvas!
+    weak var canvas: LayoutCanvas!
     
     /// The actual line being displayed
     internal var _lineShape: SKShapeNode!
@@ -85,7 +85,7 @@ class LayoutCanvasLine: SKNode {
     internal var _clickableArea: SKShapeNode!
     
     /// Tell if the line is currently selected
-    internal var _isSelected: Bool = false
+    var isSelected: Bool = false
     
     
     // ////////////////////////////////
@@ -105,6 +105,7 @@ class LayoutCanvasLine: SKNode {
 // /////////////////////
 // MARK: - LayoutElement
 extension LayoutCanvasLine: LayoutCanvasElement {
+
     /// Returns the controller allowing for fine tuning of the
     /// device parameter
     ///
@@ -117,6 +118,13 @@ extension LayoutCanvasLine: LayoutCanvasElement {
     func updatePositionOnParameters() {
         _parametersController.set(position: position)
     }
+
+    func deleteActions() {
+        canvas.remove(line: self)
+
+        removeAllChildren()
+        removeFromParent()
+    }
 }
 
 
@@ -127,7 +135,7 @@ extension LayoutCanvasLine {
                      forLine line: Line) {
         self.init()
         
-        _canvas = canvas
+        self.canvas = canvas
         
         // Set the represented line
         self.line = line
@@ -158,15 +166,15 @@ extension LayoutCanvasLine {
         self.addChild(_clickableArea)
         
         // And insert ourselves
-        _canvas.backLayer.addChild(self)
+        canvas.backLayer.addChild(self)
     }
     
     /// Duplicate the current node, and insert it in the layout and the scene
     internal func duplicate() {
         let newLine = Line(from: line)
         
-        _canvas.layout.decorations.append(newLine)
-        _canvas.createNodeForExistingLine(newLine)
+        canvas.layout.decorations.append(newLine)
+        canvas.createNodeForExistingLine(newLine)
     }
 }
 
@@ -188,8 +196,8 @@ extension LayoutCanvasLine {
         }
         
         // Adjust the node position accordingly
-        self.position.x += (event.deltaX / _canvas.root.xScale)
-        self.position.y -= (event.deltaY / _canvas.root.yScale)
+        self.position.x += (event.deltaX / canvas.root.xScale)
+        self.position.y -= (event.deltaY / canvas.root.yScale)
         
         // Update the represented device and the parameters view
         updatePositionOnParameters()
@@ -205,7 +213,7 @@ extension LayoutCanvasLine {
         }
         
         // Make sure we only aknowledge keyboard events when we are selected
-        guard _isSelected else {
+        guard isSelected else {
             return
         }
         
@@ -243,61 +251,6 @@ extension LayoutCanvasLine {
         delegate?.elementDidChange(self)
     }
 }
-    
-// ////////////////////
-// MARK: - Device state
-extension LayoutCanvasLine {
-    /// Change the device state to selected
-    internal func markAsSelected() {
-        _canvas.selectedNode = self
-    }
-    
-    func select() {
-        _isSelected = true
-        
-        // Update appearance to reflect change
-        setSelectedAppearance()
-    }
-    
-    /// Change the device state to idle
-    internal func markAsIdle() {
-        _canvas.selectedNode = nil
-    }
-    
-    func deselect() {
-        _isSelected = false
-        
-        // Update appearance to reflect change
-        setIdleAppearance()
-    }
-    
-    /// Delete the device, removes it from the layout and fron the view
-    func delete() {
-        // Asks the user before going further obviously
-        
-        let confirmModal = NSAlert()
-        confirmModal.alertStyle = .warning
-        confirmModal.messageText = "Are you sure you want to delete this device ?"
-        confirmModal.addButton(withTitle: "Delete Device")
-        confirmModal.addButton(withTitle: "Cancel")
-        
-        confirmModal.beginSheetModal(for: _canvas._sceneView.window!) { response in
-            guard response == NSApplication.ModalResponse.alertFirstButtonReturn else {
-                // Alert was canceled, do nothing
-                return
-            }
-            
-            self.delegate?.elementWillBeRemoved(self)
-            
-            self.markAsIdle()
-            self._canvas.remove(line: self)
-            
-            self.removeAllChildren()
-            self.removeFromParent()
-        }
-    }
-}
-
 
 // /////////////////////
 // MARK: - SKNode utils
