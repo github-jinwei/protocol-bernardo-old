@@ -9,4 +9,4 @@
  DAE C Interfaces
  */
 
-#include "DataAcquisitionEngine/DAE-Bridging.h"
+#include "Resources/Libs/DataAcquisitionEngine/DAE-Bridging.h"

@@ -50,8 +50,4 @@ extension User {
         
         return userCoM / Float(trackedPhysics.count)
     }
-    
-    /// Skeleton of the user (if available) in the global coordinates system with
-    /// its position inferred from all the tracked physics available
-    var calibratedSkeleton: Skeleton? { return Skeleton() }
 }

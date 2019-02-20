@@ -7,305 +7,202 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		76F3A8B40E7CE26E73D7B870ECA6D30E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1093F40AE4DD13DBC0F2B6F24B644118 /* Cocoa.framework */; };
-		8B9D792A3FDAAE921E7CE0276FE06CE0 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630B5BEA910615C41D9A54E479D2574D /* Debouncer.swift */; };
-		9E042FB68EAB7E4CEB372EF4F98F14C2 /* Pods-Protocol BernardoTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FFD0E68243B08BE4C21CFCBF459F56 /* Pods-Protocol BernardoTests-dummy.m */; };
-		A198D8709589DADA167AE407F95443E3 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F1EE2C91A55A8AAC576FB401DD0AB3 /* Throttler.swift */; };
-		A6C255C5D5B22009EA6B7C6819CFF100 /* Pods-Protocol BernardoTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBFC9BF20A78EE2199C4FFD965EBF7B /* Pods-Protocol BernardoTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3FA242A835B923272B9E965D28DE3EF /* Repeat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D33009B491CEF1D036B0D973187C8EFF /* Repeat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B96830AA5C26EE12F4ACA74B05DF82A1 /* Pods-Protocol Bernardo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E594CB7E75C6B4461D69ABB14D5B2E /* Pods-Protocol Bernardo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C27566A7BF9B3A72E72EC58A85558EF8 /* Repeat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883A8291C7B76369ED7C67FB6D40F29 /* Repeat-dummy.m */; };
-		CF458789A938E0076616F4F7BB4FD179 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1093F40AE4DD13DBC0F2B6F24B644118 /* Cocoa.framework */; };
-		CF5E1E68B86D9DECC2B61EED6F362FE1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D2B0912E976A6B337B290F98E3F024 /* Foundation.framework */; };
-		D857FB8CD5960F37BABB83198FD15792 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1093F40AE4DD13DBC0F2B6F24B644118 /* Cocoa.framework */; };
-		DE2F2F7CFA179ADAA801E0C39E49E72E /* Pods-Protocol Bernardo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D86068873946016AB7C1CD3DEC9F113 /* Pods-Protocol Bernardo-dummy.m */; };
-		F4505CAE23D681081472C7BC62539D79 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A90F355929A378211B957AB39F1AD /* Repeater.swift */; };
+		07C90FE9FFD47D1F8396D70B511AC086 /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7958C4252C74E0F4573E610A8FC0B762 /* Repeater.swift */; };
+		1F3F5DC3990BDDA1520C39A4520A7CC9 /* Repeat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA81FC68D81A22BE1E60F0608AAEA06B /* Repeat-dummy.m */; };
+		36F147614D44C4F1F3ACE6A8B6E15375 /* Pods-Protocol Bernardo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 687378E915E7BEC7AFB6C9FDBD5986C5 /* Pods-Protocol Bernardo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37A045C51AE6F3E89FDCF440471D459A /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C5D3FC4A98ADA7895758C76E2A50 /* Throttler.swift */; };
+		47661510E9494C76C5078B91D2D9D747 /* Pods-Protocol Bernardo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A44FDD498D828E4BF430573DD5AC4256 /* Pods-Protocol Bernardo-dummy.m */; };
+		8805E0F5FA3E1D173F8F74680345BDAF /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E63760DD3AEF5B5501E545AA59F31 /* Debouncer.swift */; };
+		8F4ACA0AF4B2DB966B48662721AD98F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A88BC9A09E22966FC557877A938E37 /* Cocoa.framework */; };
+		990D60F7810FE19FD4CCE522F08404A9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A88BC9A09E22966FC557877A938E37 /* Cocoa.framework */; };
+		9C13E31A99C2A71C0648D13C827F6C02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64735A976593F155F9461C58AD6FDEE2 /* Foundation.framework */; };
+		AFEBCBC90B6273C7EBC1AF51D09B34DB /* Repeat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BEF5ED01A54DBC0C698A8BBF6979EC76 /* Repeat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5C719217DDF350A9962845E9829B450F /* PBXContainerItemProxy */ = {
+		B9BF03C67782C96E4687B990FDF60CFA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 88A13512593F5986C86FD6C78E8D3CBE;
-			remoteInfo = "Pods-Protocol Bernardo";
-		};
-		5D7950E93006D8E000B5AE21B1E0624C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9BAC8B847F5EBC69BDD2EB57B7C226CD;
-			remoteInfo = Repeat;
-		};
-		C0EEBF48C2F48524956152EE5FF58B07 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9BAC8B847F5EBC69BDD2EB57B7C226CD;
+			remoteGlobalIDString = 4AB84CAC5B415234606CA3B41DC96D20;
 			remoteInfo = Repeat;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02CAFD6E3D8C5E7941992491C2EA8E8A /* Pods-Protocol BernardoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Protocol BernardoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0842DA04A03E41F49938F892BA33A5A3 /* Pods-Protocol BernardoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Protocol BernardoTests.modulemap"; sourceTree = "<group>"; };
-		1093F40AE4DD13DBC0F2B6F24B644118 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		11C043D7A98E728372C604911C71FCCA /* Repeat-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Repeat-prefix.pch"; sourceTree = "<group>"; };
-		1705BDE6C273DBAA4773BCC251A8FB01 /* Repeat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Repeat.xcconfig; sourceTree = "<group>"; };
-		1D86068873946016AB7C1CD3DEC9F113 /* Pods-Protocol Bernardo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Protocol Bernardo-dummy.m"; sourceTree = "<group>"; };
-		256A5B2E416C2B1159C841A71EFEF89C /* Pods-Protocol Bernardo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Protocol Bernardo-frameworks.sh"; sourceTree = "<group>"; };
-		3BBFC9BF20A78EE2199C4FFD965EBF7B /* Pods-Protocol BernardoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Protocol BernardoTests-umbrella.h"; sourceTree = "<group>"; };
-		40D2B0912E976A6B337B290F98E3F024 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		43DEF404587FCFD10E5D027958CD2CE7 /* Pods-Protocol Bernardo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol Bernardo.release.xcconfig"; sourceTree = "<group>"; };
-		44140BCC0604E4FA282F0EEDC1768DE0 /* Repeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Repeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4641D0212148A10DA5FB9EA1EC9F56CA /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D16AEC67CF275F21FC5DBE3E0EF508F /* Pods-Protocol BernardoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol BernardoTests.release.xcconfig"; sourceTree = "<group>"; };
-		630B5BEA910615C41D9A54E479D2574D /* Debouncer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debouncer.swift; path = Sources/Repeat/Debouncer.swift; sourceTree = "<group>"; };
-		697A90F355929A378211B957AB39F1AD /* Repeater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Repeater.swift; path = Sources/Repeat/Repeater.swift; sourceTree = "<group>"; };
-		70F1EE2C91A55A8AAC576FB401DD0AB3 /* Throttler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Throttler.swift; path = Sources/Repeat/Throttler.swift; sourceTree = "<group>"; };
-		75FFD0E68243B08BE4C21CFCBF459F56 /* Pods-Protocol BernardoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Protocol BernardoTests-dummy.m"; sourceTree = "<group>"; };
-		7883A8291C7B76369ED7C67FB6D40F29 /* Repeat-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Repeat-dummy.m"; sourceTree = "<group>"; };
-		79B4B34BC9AB4463BF047694E0E6F881 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B1D18DADCB23885469A9A982DBEE5F4 /* Pods-Protocol BernardoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Protocol BernardoTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		7E6837F62635A0EE33A03ED824D7732B /* Pods_Protocol_BernardoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_BernardoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80E469F2462082EAB94D0316643B5C15 /* Pods-Protocol Bernardo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Protocol Bernardo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9D2ED354F98E98F18AB3088372C7B082 /* Pods-Protocol BernardoTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Protocol BernardoTests-frameworks.sh"; sourceTree = "<group>"; };
-		A8609740A0E6E9E78AA0649AD57CD63A /* Pods-Protocol Bernardo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol Bernardo.debug.xcconfig"; sourceTree = "<group>"; };
-		B6ADC7432DE109ABC4584E4B5D28CB34 /* Pods-Protocol Bernardo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Protocol Bernardo-resources.sh"; sourceTree = "<group>"; };
-		BD2582A9EEF73C5309FE2389F173E38F /* Pods-Protocol BernardoTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Protocol BernardoTests-resources.sh"; sourceTree = "<group>"; };
-		C7E594CB7E75C6B4461D69ABB14D5B2E /* Pods-Protocol Bernardo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Protocol Bernardo-umbrella.h"; sourceTree = "<group>"; };
-		CE102F248A0FA2E3BF42D8047D0DA6B5 /* Pods-Protocol Bernardo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Protocol Bernardo.modulemap"; sourceTree = "<group>"; };
-		CF6C4591E961C0B6BAC74196815FF50A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D33009B491CEF1D036B0D973187C8EFF /* Repeat-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Repeat-umbrella.h"; sourceTree = "<group>"; };
-		D7B1BD1FA9D625240BFC5701E3A36360 /* Pods-Protocol Bernardo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Protocol Bernardo-acknowledgements.plist"; sourceTree = "<group>"; };
-		EB0F2CB8DA1BEF6F6A712EF01C1864AC /* Pods-Protocol BernardoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol BernardoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F69F918173E9F07FA75755A1483CF76A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCC80A5D146306FA00F377259D348228 /* Repeat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Repeat.modulemap; sourceTree = "<group>"; };
+		1419C149396B6313FAD9EBEF8F0B51B1 /* Repeat-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Repeat-Info.plist"; sourceTree = "<group>"; };
+		2E7893023916D0922AC89DC0DD2FB537 /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0E63760DD3AEF5B5501E545AA59F31 /* Debouncer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debouncer.swift; path = Sources/Repeat/Debouncer.swift; sourceTree = "<group>"; };
+		61F26F7F5EC9869C7B4A0D8C4B1DBF06 /* Pods-Protocol Bernardo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Protocol Bernardo-Info.plist"; sourceTree = "<group>"; };
+		62A47D74FE2367405306A9D9F0523270 /* Repeat-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Repeat-prefix.pch"; sourceTree = "<group>"; };
+		64735A976593F155F9461C58AD6FDEE2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		687378E915E7BEC7AFB6C9FDBD5986C5 /* Pods-Protocol Bernardo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Protocol Bernardo-umbrella.h"; sourceTree = "<group>"; };
+		7169566C025EC7028573CF841D6F5A62 /* Pods-Protocol Bernardo.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol Bernardo.analyze.xcconfig"; sourceTree = "<group>"; };
+		7958C4252C74E0F4573E610A8FC0B762 /* Repeater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Repeater.swift; path = Sources/Repeat/Repeater.swift; sourceTree = "<group>"; };
+		80D30B541C872FCBC83AFE2079D4025A /* Pods-Protocol Bernardo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol Bernardo.release.xcconfig"; sourceTree = "<group>"; };
+		849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Repeat.xcconfig; sourceTree = "<group>"; };
+		9BEE4C7B7A4B6969B4A05DE3366206CC /* Pods-Protocol Bernardo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Protocol Bernardo.debug.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A44FDD498D828E4BF430573DD5AC4256 /* Pods-Protocol Bernardo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Protocol Bernardo-dummy.m"; sourceTree = "<group>"; };
+		A86FD3E62EA95EB0482C4E547608BF11 /* Repeat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Repeat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC3C0F739FCA7AFE32BA03DD0FDCF6F /* Repeat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Repeat.modulemap; sourceTree = "<group>"; };
+		AD84C5D3FC4A98ADA7895758C76E2A50 /* Throttler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Throttler.swift; path = Sources/Repeat/Throttler.swift; sourceTree = "<group>"; };
+		BEF5ED01A54DBC0C698A8BBF6979EC76 /* Repeat-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Repeat-umbrella.h"; sourceTree = "<group>"; };
+		DCB0763C980E6FF2BE3BB9D70F92A4BB /* Pods-Protocol Bernardo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Protocol Bernardo.modulemap"; sourceTree = "<group>"; };
+		E2A88BC9A09E22966FC557877A938E37 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		EA81FC68D81A22BE1E60F0608AAEA06B /* Repeat-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Repeat-dummy.m"; sourceTree = "<group>"; };
+		EE2D936175AE891435C5B71EE29E6341 /* Pods-Protocol Bernardo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Protocol Bernardo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F0AE30B7CEF4ECA2AB40376B1C28EE67 /* Pods-Protocol Bernardo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Protocol Bernardo-frameworks.sh"; sourceTree = "<group>"; };
+		FF6ECF51C0F1B09A180CEEC299110E3C /* Pods-Protocol Bernardo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Protocol Bernardo-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		39E41F58239286A9BFEBC9A1C77329B3 /* Frameworks */ = {
+		428173E3C88B665ADCE8901F46D22D20 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76F3A8B40E7CE26E73D7B870ECA6D30E /* Cocoa.framework in Frameworks */,
+				990D60F7810FE19FD4CCE522F08404A9 /* Cocoa.framework in Frameworks */,
+				9C13E31A99C2A71C0648D13C827F6C02 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		413743F042DC73B7BD78AFD755327A12 /* Frameworks */ = {
+		E40E01CED90A6014AA010D242ACCB8F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D857FB8CD5960F37BABB83198FD15792 /* Cocoa.framework in Frameworks */,
-				CF5E1E68B86D9DECC2B61EED6F362FE1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8D8B8000006102821618608451E64EAC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF458789A938E0076616F4F7BB4FD179 /* Cocoa.framework in Frameworks */,
+				8F4ACA0AF4B2DB966B48662721AD98F8 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E22E2FEA0328A1266F8C094E3EBE426 /* Pods */ = {
+		01F87E47DE4F6CF9EC7034037E6C6160 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				60E9FE345D6249F6F41940067C700FFF /* Repeat */,
+				2EED57E4D9994F557775082C4BB223FC /* Pods-Protocol Bernardo */,
 			);
-			name = Pods;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		304DF506926BBD03D18BF01AF6B80BF4 /* OS X */ = {
+		2EED57E4D9994F557775082C4BB223FC /* Pods-Protocol Bernardo */ = {
 			isa = PBXGroup;
 			children = (
-				1093F40AE4DD13DBC0F2B6F24B644118 /* Cocoa.framework */,
-				40D2B0912E976A6B337B290F98E3F024 /* Foundation.framework */,
-			);
-			name = "OS X";
-			sourceTree = "<group>";
-		};
-		3658374B23E336106ACA3A910B2D0216 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				79B4B34BC9AB4463BF047694E0E6F881 /* Info.plist */,
-				FCC80A5D146306FA00F377259D348228 /* Repeat.modulemap */,
-				1705BDE6C273DBAA4773BCC251A8FB01 /* Repeat.xcconfig */,
-				7883A8291C7B76369ED7C67FB6D40F29 /* Repeat-dummy.m */,
-				11C043D7A98E728372C604911C71FCCA /* Repeat-prefix.pch */,
-				D33009B491CEF1D036B0D973187C8EFF /* Repeat-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Repeat";
-			sourceTree = "<group>";
-		};
-		4C606C2C238F4EF5662A5A883B37EA71 /* Pods-Protocol Bernardo */ = {
-			isa = PBXGroup;
-			children = (
-				CF6C4591E961C0B6BAC74196815FF50A /* Info.plist */,
-				CE102F248A0FA2E3BF42D8047D0DA6B5 /* Pods-Protocol Bernardo.modulemap */,
-				80E469F2462082EAB94D0316643B5C15 /* Pods-Protocol Bernardo-acknowledgements.markdown */,
-				D7B1BD1FA9D625240BFC5701E3A36360 /* Pods-Protocol Bernardo-acknowledgements.plist */,
-				1D86068873946016AB7C1CD3DEC9F113 /* Pods-Protocol Bernardo-dummy.m */,
-				256A5B2E416C2B1159C841A71EFEF89C /* Pods-Protocol Bernardo-frameworks.sh */,
-				B6ADC7432DE109ABC4584E4B5D28CB34 /* Pods-Protocol Bernardo-resources.sh */,
-				C7E594CB7E75C6B4461D69ABB14D5B2E /* Pods-Protocol Bernardo-umbrella.h */,
-				A8609740A0E6E9E78AA0649AD57CD63A /* Pods-Protocol Bernardo.debug.xcconfig */,
-				43DEF404587FCFD10E5D027958CD2CE7 /* Pods-Protocol Bernardo.release.xcconfig */,
+				DCB0763C980E6FF2BE3BB9D70F92A4BB /* Pods-Protocol Bernardo.modulemap */,
+				EE2D936175AE891435C5B71EE29E6341 /* Pods-Protocol Bernardo-acknowledgements.markdown */,
+				FF6ECF51C0F1B09A180CEEC299110E3C /* Pods-Protocol Bernardo-acknowledgements.plist */,
+				A44FDD498D828E4BF430573DD5AC4256 /* Pods-Protocol Bernardo-dummy.m */,
+				F0AE30B7CEF4ECA2AB40376B1C28EE67 /* Pods-Protocol Bernardo-frameworks.sh */,
+				61F26F7F5EC9869C7B4A0D8C4B1DBF06 /* Pods-Protocol Bernardo-Info.plist */,
+				687378E915E7BEC7AFB6C9FDBD5986C5 /* Pods-Protocol Bernardo-umbrella.h */,
+				7169566C025EC7028573CF841D6F5A62 /* Pods-Protocol Bernardo.analyze.xcconfig */,
+				9BEE4C7B7A4B6969B4A05DE3366206CC /* Pods-Protocol Bernardo.debug.xcconfig */,
+				80D30B541C872FCBC83AFE2079D4025A /* Pods-Protocol Bernardo.release.xcconfig */,
 			);
 			name = "Pods-Protocol Bernardo";
 			path = "Target Support Files/Pods-Protocol Bernardo";
 			sourceTree = "<group>";
 		};
-		55F22294F491F665AB70F2898B6D5E5E /* Pods-Protocol BernardoTests */ = {
+		5232A4CAB371FC1DC517D90B6D52F9EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F69F918173E9F07FA75755A1483CF76A /* Info.plist */,
-				0842DA04A03E41F49938F892BA33A5A3 /* Pods-Protocol BernardoTests.modulemap */,
-				02CAFD6E3D8C5E7941992491C2EA8E8A /* Pods-Protocol BernardoTests-acknowledgements.markdown */,
-				7B1D18DADCB23885469A9A982DBEE5F4 /* Pods-Protocol BernardoTests-acknowledgements.plist */,
-				75FFD0E68243B08BE4C21CFCBF459F56 /* Pods-Protocol BernardoTests-dummy.m */,
-				9D2ED354F98E98F18AB3088372C7B082 /* Pods-Protocol BernardoTests-frameworks.sh */,
-				BD2582A9EEF73C5309FE2389F173E38F /* Pods-Protocol BernardoTests-resources.sh */,
-				3BBFC9BF20A78EE2199C4FFD965EBF7B /* Pods-Protocol BernardoTests-umbrella.h */,
-				EB0F2CB8DA1BEF6F6A712EF01C1864AC /* Pods-Protocol BernardoTests.debug.xcconfig */,
-				4D16AEC67CF275F21FC5DBE3E0EF508F /* Pods-Protocol BernardoTests.release.xcconfig */,
+				DB23E78CB7A3DA469A47D4514BAE5D1F /* Repeat */,
 			);
-			name = "Pods-Protocol BernardoTests";
-			path = "Target Support Files/Pods-Protocol BernardoTests";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		60E9FE345D6249F6F41940067C700FFF /* Repeat */ = {
+		553144D9DDC299A4373057E3CC94340E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				630B5BEA910615C41D9A54E479D2574D /* Debouncer.swift */,
-				697A90F355929A378211B957AB39F1AD /* Repeater.swift */,
-				70F1EE2C91A55A8AAC576FB401DD0AB3 /* Throttler.swift */,
-				3658374B23E336106ACA3A910B2D0216 /* Support Files */,
-			);
-			path = Repeat;
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				D648CE86F139C7CCFD55D5B8A03BE74B /* Frameworks */,
-				1E22E2FEA0328A1266F8C094E3EBE426 /* Pods */,
-				A734494EE5F5FC81F32F43E6B8DD6CC5 /* Products */,
-				E0D6C434D66352C1D615470973D87359 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		A734494EE5F5FC81F32F43E6B8DD6CC5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4641D0212148A10DA5FB9EA1EC9F56CA /* Pods_Protocol_Bernardo.framework */,
-				7E6837F62635A0EE33A03ED824D7732B /* Pods_Protocol_BernardoTests.framework */,
-				44140BCC0604E4FA282F0EEDC1768DE0 /* Repeat.framework */,
+				2E7893023916D0922AC89DC0DD2FB537 /* Pods_Protocol_Bernardo.framework */,
+				A86FD3E62EA95EB0482C4E547608BF11 /* Repeat.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D648CE86F139C7CCFD55D5B8A03BE74B /* Frameworks */ = {
+		BE7E6DB4EC06C9746B1E83B7AE7EA44D /* OS X */ = {
 			isa = PBXGroup;
 			children = (
-				304DF506926BBD03D18BF01AF6B80BF4 /* OS X */,
+				E2A88BC9A09E22966FC557877A938E37 /* Cocoa.framework */,
+				64735A976593F155F9461C58AD6FDEE2 /* Foundation.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		C080C886C9E2F80D52E3E86A62E5B711 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE7E6DB4EC06C9746B1E83B7AE7EA44D /* OS X */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E0D6C434D66352C1D615470973D87359 /* Targets Support Files */ = {
+		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
-				4C606C2C238F4EF5662A5A883B37EA71 /* Pods-Protocol Bernardo */,
-				55F22294F491F665AB70F2898B6D5E5E /* Pods-Protocol BernardoTests */,
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				C080C886C9E2F80D52E3E86A62E5B711 /* Frameworks */,
+				5232A4CAB371FC1DC517D90B6D52F9EB /* Pods */,
+				553144D9DDC299A4373057E3CC94340E /* Products */,
+				01F87E47DE4F6CF9EC7034037E6C6160 /* Targets Support Files */,
 			);
-			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D47F545808B9B377DB169742069C5F7B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAC3C0F739FCA7AFE32BA03DD0FDCF6F /* Repeat.modulemap */,
+				849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */,
+				EA81FC68D81A22BE1E60F0608AAEA06B /* Repeat-dummy.m */,
+				1419C149396B6313FAD9EBEF8F0B51B1 /* Repeat-Info.plist */,
+				62A47D74FE2367405306A9D9F0523270 /* Repeat-prefix.pch */,
+				BEF5ED01A54DBC0C698A8BBF6979EC76 /* Repeat-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Repeat";
+			sourceTree = "<group>";
+		};
+		DB23E78CB7A3DA469A47D4514BAE5D1F /* Repeat */ = {
+			isa = PBXGroup;
+			children = (
+				3B0E63760DD3AEF5B5501E545AA59F31 /* Debouncer.swift */,
+				7958C4252C74E0F4573E610A8FC0B762 /* Repeater.swift */,
+				AD84C5D3FC4A98ADA7895758C76E2A50 /* Throttler.swift */,
+				D47F545808B9B377DB169742069C5F7B /* Support Files */,
+			);
+			path = Repeat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4AA504A7A5145A4C1583AEFD77E4F00C /* Headers */ = {
+		24AE0A9AB8B331AA52CA3EF33F42307E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B96830AA5C26EE12F4ACA74B05DF82A1 /* Pods-Protocol Bernardo-umbrella.h in Headers */,
+				AFEBCBC90B6273C7EBC1AF51D09B34DB /* Repeat-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B5F9197FA01BD978D60A8E202143B78 /* Headers */ = {
+		A95F377A831689B08D4B102527B44328 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6C255C5D5B22009EA6B7C6819CFF100 /* Pods-Protocol BernardoTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8DE47435D98A3FD85D4BC4DA45FC4D0D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3FA242A835B923272B9E965D28DE3EF /* Repeat-umbrella.h in Headers */,
+				36F147614D44C4F1F3ACE6A8B6E15375 /* Pods-Protocol Bernardo-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7F3C2EE8B107AE7CFC318FC17533BCC4 /* Pods-Protocol BernardoTests */ = {
+		4AB84CAC5B415234606CA3B41DC96D20 /* Repeat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A16E7789755A471B0FFFAF16C8CC2508 /* Build configuration list for PBXNativeTarget "Pods-Protocol BernardoTests" */;
+			buildConfigurationList = 6790F6710C7A89761CC22DEA65BFB9AA /* Build configuration list for PBXNativeTarget "Repeat" */;
 			buildPhases = (
-				7B5F9197FA01BD978D60A8E202143B78 /* Headers */,
-				B7F42995532DB68170757DBB888F74E6 /* Sources */,
-				8D8B8000006102821618608451E64EAC /* Frameworks */,
-				021ABF7A0A8146A159D1E5006D2BF68E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				03481385D6DB8BF4CE09102736615089 /* PBXTargetDependency */,
-				E513DDC7622B6ABC77A3DFA6F79AC935 /* PBXTargetDependency */,
-			);
-			name = "Pods-Protocol BernardoTests";
-			productName = "Pods-Protocol BernardoTests";
-			productReference = 7E6837F62635A0EE33A03ED824D7732B /* Pods_Protocol_BernardoTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		88A13512593F5986C86FD6C78E8D3CBE /* Pods-Protocol Bernardo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9D06A3B1E090574209C31AB1EB9B1848 /* Build configuration list for PBXNativeTarget "Pods-Protocol Bernardo" */;
-			buildPhases = (
-				4AA504A7A5145A4C1583AEFD77E4F00C /* Headers */,
-				6E1A32513AAC4834E3C25F271EC3DCF7 /* Sources */,
-				39E41F58239286A9BFEBC9A1C77329B3 /* Frameworks */,
-				323672B02B2186B8808894B20D84524D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C72B6427274AD87C337902C89219F43A /* PBXTargetDependency */,
-			);
-			name = "Pods-Protocol Bernardo";
-			productName = "Pods-Protocol Bernardo";
-			productReference = 4641D0212148A10DA5FB9EA1EC9F56CA /* Pods_Protocol_Bernardo.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9BAC8B847F5EBC69BDD2EB57B7C226CD /* Repeat */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C9C6D8C85752972FB163FADF23447254 /* Build configuration list for PBXNativeTarget "Repeat" */;
-			buildPhases = (
-				8DE47435D98A3FD85D4BC4DA45FC4D0D /* Headers */,
-				0A4443C3B05B42B06A78E96B5F388F31 /* Sources */,
-				413743F042DC73B7BD78AFD755327A12 /* Frameworks */,
-				F1AA4D08FE5709CBFA4A9596FE6F3D49 /* Resources */,
+				24AE0A9AB8B331AA52CA3EF33F42307E /* Headers */,
+				5B8E472E6B686CB9774B261257D35651 /* Sources */,
+				428173E3C88B665ADCE8901F46D22D20 /* Frameworks */,
+				BA1355714562BBB7B8810F5FC96B37AB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -313,58 +210,69 @@
 			);
 			name = Repeat;
 			productName = Repeat;
-			productReference = 44140BCC0604E4FA282F0EEDC1768DE0 /* Repeat.framework */;
+			productReference = A86FD3E62EA95EB0482C4E547608BF11 /* Repeat.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B17D7546E0C7E48F4C9A25A1266ED8A5 /* Pods-Protocol Bernardo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 438608726D7B069328EAD0CCB875FD49 /* Build configuration list for PBXNativeTarget "Pods-Protocol Bernardo" */;
+			buildPhases = (
+				A95F377A831689B08D4B102527B44328 /* Headers */,
+				440825B55AA62AA6F9C138A0E749E361 /* Sources */,
+				E40E01CED90A6014AA010D242ACCB8F5 /* Frameworks */,
+				1050C6A4B554A1212AEFD0AC14E66D51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5BA81CD8298F620EB95DC1A2CA3B48A /* PBXTargetDependency */,
+			);
+			name = "Pods-Protocol Bernardo";
+			productName = "Pods-Protocol Bernardo";
+			productReference = 2E7893023916D0922AC89DC0DD2FB537 /* Pods_Protocol_Bernardo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				TargetAttributes = {
-					9BAC8B847F5EBC69BDD2EB57B7C226CD = {
+					4AB84CAC5B415234606CA3B41DC96D20 = {
 						LastSwiftMigration = 1010;
 					};
 				};
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = A734494EE5F5FC81F32F43E6B8DD6CC5 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 553144D9DDC299A4373057E3CC94340E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88A13512593F5986C86FD6C78E8D3CBE /* Pods-Protocol Bernardo */,
-				7F3C2EE8B107AE7CFC318FC17533BCC4 /* Pods-Protocol BernardoTests */,
-				9BAC8B847F5EBC69BDD2EB57B7C226CD /* Repeat */,
+				B17D7546E0C7E48F4C9A25A1266ED8A5 /* Pods-Protocol Bernardo */,
+				4AB84CAC5B415234606CA3B41DC96D20 /* Repeat */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		021ABF7A0A8146A159D1E5006D2BF68E /* Resources */ = {
+		1050C6A4B554A1212AEFD0AC14E66D51 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		323672B02B2186B8808894B20D84524D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1AA4D08FE5709CBFA4A9596FE6F3D49 /* Resources */ = {
+		BA1355714562BBB7B8810F5FC96B37AB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,62 +282,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0A4443C3B05B42B06A78E96B5F388F31 /* Sources */ = {
+		440825B55AA62AA6F9C138A0E749E361 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B9D792A3FDAAE921E7CE0276FE06CE0 /* Debouncer.swift in Sources */,
-				C27566A7BF9B3A72E72EC58A85558EF8 /* Repeat-dummy.m in Sources */,
-				F4505CAE23D681081472C7BC62539D79 /* Repeater.swift in Sources */,
-				A198D8709589DADA167AE407F95443E3 /* Throttler.swift in Sources */,
+				47661510E9494C76C5078B91D2D9D747 /* Pods-Protocol Bernardo-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E1A32513AAC4834E3C25F271EC3DCF7 /* Sources */ = {
+		5B8E472E6B686CB9774B261257D35651 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE2F2F7CFA179ADAA801E0C39E49E72E /* Pods-Protocol Bernardo-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B7F42995532DB68170757DBB888F74E6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9E042FB68EAB7E4CEB372EF4F98F14C2 /* Pods-Protocol BernardoTests-dummy.m in Sources */,
+				8805E0F5FA3E1D173F8F74680345BDAF /* Debouncer.swift in Sources */,
+				1F3F5DC3990BDDA1520C39A4520A7CC9 /* Repeat-dummy.m in Sources */,
+				07C90FE9FFD47D1F8396D70B511AC086 /* Repeater.swift in Sources */,
+				37A045C51AE6F3E89FDCF440471D459A /* Throttler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		03481385D6DB8BF4CE09102736615089 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-Protocol Bernardo";
-			target = 88A13512593F5986C86FD6C78E8D3CBE /* Pods-Protocol Bernardo */;
-			targetProxy = 5C719217DDF350A9962845E9829B450F /* PBXContainerItemProxy */;
-		};
-		C72B6427274AD87C337902C89219F43A /* PBXTargetDependency */ = {
+		A5BA81CD8298F620EB95DC1A2CA3B48A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Repeat;
-			target = 9BAC8B847F5EBC69BDD2EB57B7C226CD /* Repeat */;
-			targetProxy = C0EEBF48C2F48524956152EE5FF58B07 /* PBXContainerItemProxy */;
-		};
-		E513DDC7622B6ABC77A3DFA6F79AC935 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Repeat;
-			target = 9BAC8B847F5EBC69BDD2EB57B7C226CD /* Repeat */;
-			targetProxy = 5D7950E93006D8E000B5AE21B1E0624C /* PBXContainerItemProxy */;
+			target = 4AB84CAC5B415234606CA3B41DC96D20 /* Repeat */;
+			targetProxy = B9BF03C67782C96E4687B990FDF60CFA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		10F767E4FFC7B061FB6D7CB8EA06C93B /* Release */ = {
+		1441CEB353D651C5BF2D38F0E37ABFEC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43DEF404587FCFD10E5D027958CD2CE7 /* Pods-Protocol Bernardo.release.xcconfig */;
+			baseConfigurationReference = 9BEE4C7B7A4B6969B4A05DE3366206CC /* Pods-Protocol Bernardo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -442,143 +331,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Protocol Bernardo/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MODULEMAP_FILE = "Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		5BBEBD36A6B2F4FDB8702CDC9C44DE03 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1705BDE6C273DBAA4773BCC251A8FB01 /* Repeat.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/Repeat/Repeat-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Repeat/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Repeat/Repeat.modulemap";
-				PRODUCT_MODULE_NAME = Repeat;
-				PRODUCT_NAME = Repeat;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		6A3A971D19652B1DDCC5969BE38ED714 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1705BDE6C273DBAA4773BCC251A8FB01 /* Repeat.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				GCC_PREFIX_HEADER = "Target Support Files/Repeat/Repeat-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Repeat/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Repeat/Repeat.modulemap";
-				PRODUCT_MODULE_NAME = Repeat;
-				PRODUCT_NAME = Repeat;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6D71316FA057D42E1581210016E4327C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB0F2CB8DA1BEF6F6A712EF01C1864AC /* Pods-Protocol BernardoTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Protocol BernardoTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MODULEMAP_FILE = "Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7288D2A32B2D5D8DA2F8AEBD7AE7282A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8609740A0E6E9E78AA0649AD57CD63A /* Pods-Protocol Bernardo.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Protocol Bernardo/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
@@ -596,11 +349,11 @@
 			};
 			name = Debug;
 		};
-		774B26A2F69BD0B6B48812607CD97867 /* Release */ = {
+		2E869FE87E64AD8203562074B6E98660 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D16AEC67CF275F21FC5DBE3E0EF508F /* Pods-Protocol BernardoTests.release.xcconfig */;
+			baseConfigurationReference = 849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -613,86 +366,128 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Protocol BernardoTests/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Repeat/Repeat-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Repeat/Repeat-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MODULEMAP_FILE = "Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Repeat/Repeat.modulemap";
+				PRODUCT_MODULE_NAME = Repeat;
+				PRODUCT_NAME = Repeat;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C2D890269F1FA25DC30D6FE55231A243 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
-				SYMROOT = "${SRCROOT}/../build";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		D0AD58396AEB1FF37F60C3FBAEBB98DE /* Debug */ = {
+		58A3AC110A10CF39AF9511CD7C3527DE /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7169566C025EC7028573CF841D6F5A62 /* Pods-Protocol Bernardo.analyze.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MODULEMAP_FILE = "Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Analyze;
+		};
+		673425F224981D9E024F4AB4BDC00C3D /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/Repeat/Repeat-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Repeat/Repeat-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Repeat/Repeat.modulemap";
+				PRODUCT_MODULE_NAME = Repeat;
+				PRODUCT_NAME = Repeat;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Analyze;
+		};
+		6CC751802E9EA3D23189BD5E72021126 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/Repeat/Repeat-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Repeat/Repeat-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Repeat/Repeat.modulemap";
+				PRODUCT_MODULE_NAME = Repeat;
+				PRODUCT_NAME = Repeat;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		97735B90B60C29A8D1118A0462F30A17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -724,8 +519,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -758,46 +551,194 @@
 			};
 			name = Debug;
 		};
+		A127414807D25C3E2F098D07D41CB58C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80D30B541C872FCBC83AFE2079D4025A /* Pods-Protocol Bernardo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MODULEMAP_FILE = "Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D0A5C185E6F96F034A3680A0F734FD8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D565A579BB9CD2A87AB3D13572F2F45A /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_ANALYZE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Analyze;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		438608726D7B069328EAD0CCB875FD49 /* Build configuration list for PBXNativeTarget "Pods-Protocol Bernardo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D0AD58396AEB1FF37F60C3FBAEBB98DE /* Debug */,
-				C2D890269F1FA25DC30D6FE55231A243 /* Release */,
+				58A3AC110A10CF39AF9511CD7C3527DE /* Analyze */,
+				1441CEB353D651C5BF2D38F0E37ABFEC /* Debug */,
+				A127414807D25C3E2F098D07D41CB58C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D06A3B1E090574209C31AB1EB9B1848 /* Build configuration list for PBXNativeTarget "Pods-Protocol Bernardo" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7288D2A32B2D5D8DA2F8AEBD7AE7282A /* Debug */,
-				10F767E4FFC7B061FB6D7CB8EA06C93B /* Release */,
+				D565A579BB9CD2A87AB3D13572F2F45A /* Analyze */,
+				97735B90B60C29A8D1118A0462F30A17 /* Debug */,
+				D0A5C185E6F96F034A3680A0F734FD8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A16E7789755A471B0FFFAF16C8CC2508 /* Build configuration list for PBXNativeTarget "Pods-Protocol BernardoTests" */ = {
+		6790F6710C7A89761CC22DEA65BFB9AA /* Build configuration list for PBXNativeTarget "Repeat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6D71316FA057D42E1581210016E4327C /* Debug */,
-				774B26A2F69BD0B6B48812607CD97867 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C9C6D8C85752972FB163FADF23447254 /* Build configuration list for PBXNativeTarget "Repeat" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BBEBD36A6B2F4FDB8702CDC9C44DE03 /* Debug */,
-				6A3A971D19652B1DDCC5969BE38ED714 /* Release */,
+				673425F224981D9E024F4AB4BDC00C3D /* Analyze */,
+				6CC751802E9EA3D23189BD5E72021126 /* Debug */,
+				2E869FE87E64AD8203562074B6E98660 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

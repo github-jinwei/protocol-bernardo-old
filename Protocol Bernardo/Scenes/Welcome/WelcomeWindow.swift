@@ -32,14 +32,14 @@ class WelcomeWindow: NSViewController {
     /// Open a new, empty layout
     ///
     /// - Parameter sender:
-    @IBAction func newLayout(_ sender: Any) {
+    @IBAction func newLayout(_: Any) {
         App.layoutEngine.newLayout()
     }
     
     /// Asks the user to select an existing layout to open
     ///
     /// - Parameter sender:
-    @IBAction func openLayout(_ sender: Any) {
+    @IBAction func openLayout(_: Any) {
         App.layoutEngine.openLayout()
     }
     

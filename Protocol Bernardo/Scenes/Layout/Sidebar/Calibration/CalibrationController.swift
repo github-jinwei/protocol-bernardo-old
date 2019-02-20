@@ -193,14 +193,6 @@ extension CalibrationController {
 
         return list
     }
-
-    /// Tell if the calibration process can happen
-    fileprivate var isCalibrationPossible: Bool {
-        let deviceState = App.dae.connectedDevices.with(serial: deviceSerial)?.state
-        let referenceDeviceState = App.dae.connectedDevices.with(serial: referenceSerial)?.state
-
-        return deviceState == DEVICE_ACTIVE && referenceDeviceState == DEVICE_ACTIVE
-    }
 }
 
 

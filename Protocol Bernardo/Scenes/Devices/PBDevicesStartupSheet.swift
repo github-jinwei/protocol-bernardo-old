@@ -16,11 +16,11 @@ class PBDevicesStartupSheet: NSViewController {
         liveViewToggle.state = App.dae.isLiveViewEnabled ? .on : .off
     }
 
-    @IBAction func toggleLiveView(_ sender: Any) {
+    @IBAction func toggleLiveView(_: Any) {
         App.dae.toggleLiveView()
     }
 
-    @IBAction func startDrivers(_ sender: Any) {
+    @IBAction func startDrivers(_: Any) {
         startDriversButton.isEnabled = false
         App.dae.start()
 

@@ -116,15 +116,15 @@ extension LayoutController: LayoutWindowDelegate {
 // ////////////////////////////
 // MARK: - LayoutCanvasDelegate
 extension LayoutController: LayoutCanvasDelegate {
-    func canvasAppeared(_ canvas: LayoutCanvas) {
+    func canvasAppeared(_: LayoutCanvas) {
         window.setDocumentEdited(false)
     }
 
-    func canvasWasChanged(_ canvas: LayoutCanvas) {
+    func canvasWasChanged(_: LayoutCanvas) {
         window.setDocumentEdited(true)
     }
     
-    func canvas(_ canvas: LayoutCanvas, selectionChanged element: LayoutCanvasElement?) {
+    func canvas(_: LayoutCanvas, selectionChanged element: LayoutCanvasElement?) {
         sidebar.setSelectedElement(element)
     }
 }

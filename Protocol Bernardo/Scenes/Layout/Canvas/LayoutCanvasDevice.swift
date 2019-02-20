@@ -213,8 +213,6 @@ extension LayoutCanvasDevice {
 }
 
 extension LayoutCanvasDevice {
-    func update() {}
-
     func deleteActions() {
         removeAllChildren()
         removeFromParent()

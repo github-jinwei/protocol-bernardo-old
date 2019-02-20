@@ -180,7 +180,7 @@ extension LayoutWindowController: NSWindowDelegate {
 extension LayoutWindowController {
 
     @objc
-    func document(doc: NSDocument, shouldClose: Bool, contextInfo: UnsafeRawPointer?) {
+    func document(doc _: NSDocument, shouldClose: Bool, contextInfo _: UnsafeRawPointer?) {
         if shouldClose {
             self.close()
         }

@@ -31,14 +31,14 @@ class LayoutSidebarEdition: NSViewController {
     /// Tell the canvas to add a new device to the layout
     ///
     /// - Parameter sender:
-    @IBAction func addDevice(_ sender: Any) {
+    @IBAction func addDevice(_: Any) {
         canvas?.createDevice()
     }
     
     /// Tell the canvas to add a new line to the layout
     ///
     /// - Parameter sender:
-    @IBAction func addLine(_ sender: Any) {
+    @IBAction func addLine(_: Any) {
          canvas?.createLine()
     }
     

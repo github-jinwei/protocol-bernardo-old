@@ -30,23 +30,23 @@ class PBLayoutCanvasLinePropertiesController: NSViewController {
     // ///////////////
     // MARK: - Actions
     
-    @IBAction func sizeModified(_ sender: NSControl) {
+    @IBAction func sizeModified(_: NSControl) {
         line?.size = CGFloat(sizeStepper.doubleValue)
     }
     
-    @IBAction func weightModified(_ sender: NSControl) {
+    @IBAction func weightModified(_: NSControl) {
         line?.weight = CGFloat(weightStepper.doubleValue)
     }
     
-    @IBAction func xPositionModified(_ sender: NSControl) {
+    @IBAction func xPositionModified(_: NSControl) {
         line?.position.x = CGFloat(xPositionStepper.doubleValue)
     }
     
-    @IBAction func yPositionModified(_ sender: NSControl) {
+    @IBAction func yPositionModified(_: NSControl) {
         line?.position.y = CGFloat(yPositionStepper.doubleValue)
     }
     
-    @IBAction func orientationModified(_ sender: NSControl) {
+    @IBAction func orientationModified(_: NSControl) {
         line?.orientation = CGFloat(orientationStepper.doubleValue)
     }
     

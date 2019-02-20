@@ -41,7 +41,7 @@ class UsersEngine {
 
 extension UsersEngine: DataAcquisitionEngineObserver {
 
-    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
+    func dae(_: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
         guard let profile = profile else { return }
 
         // Parse all the available users and store them correctly

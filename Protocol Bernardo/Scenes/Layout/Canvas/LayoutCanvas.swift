@@ -201,7 +201,7 @@ extension LayoutCanvas {
 }
 
 extension LayoutCanvas: LayoutCanvasElementDelegate {
-    func elementDidChange(_ element: LayoutCanvasElement) {
+    func elementDidChange(_: LayoutCanvasElement) {
         delegate?.canvasWasChanged(self)
     }
     
@@ -213,11 +213,11 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
         }
     }
     
-    func elementCanBeEdited(_ element: LayoutCanvasElement) -> Bool {
+    func elementCanBeEdited(_: LayoutCanvasElement) -> Bool {
         return self.isEditable
     }
 
-    func element(_ element: LayoutCanvasElement, selectionChanged isSelected: Bool) {
+    func element(_ element: LayoutCanvasElement, selectionChanged _: Bool) {
         selectedNode = element
     }
 
@@ -249,10 +249,7 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
 }
 
 extension LayoutCanvas: SKSceneDelegate {
-    func update(_ currentTime: TimeInterval, for scene: SKScene) {
-        // Call the update method of each device
-        frontElements.forEach { $0.update() }
-        
+    func update(_ currentTime: TimeInterval, for scene: SKScene) {        
         // Update the users array
         usersLayer.removeAllChildren()
         

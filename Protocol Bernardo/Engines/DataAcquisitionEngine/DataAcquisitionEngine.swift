@@ -120,7 +120,7 @@ class DataAcquisitionEngine {
     /// its current status
     ///
     /// - Parameter repeater: The wrepeater
-    func fetchStatus(_ repeater: Repeater) {
+    func fetchStatus(_: Repeater) {
         if isLiveViewEnabled {
             // Live view requires fetches to be executed from the main queue
             DispatchQueue.main.async {

@@ -43,31 +43,31 @@ class PBLayoutCanvasDevicePropertiesController: NSViewController {
         device?.name = sender.stringValue
     }
     
-    @IBAction func fovModified(_ sender: NSControl) {
+    @IBAction func fovModified(_: NSControl) {
         device?.horizontalFOV = CGFloat(fovStepper.doubleValue)
     }
     
-    @IBAction func minDistanceModified(_ sender: NSControl) {
+    @IBAction func minDistanceModified(_: NSControl) {
         device?.minimumCaptationDistance = CGFloat(minDistanceStepper.doubleValue)
     }
     
-    @IBAction func maxDistanceModified(_ sender: NSControl) {
+    @IBAction func maxDistanceModified(_: NSControl) {
         device?.maximumCaptationDistance = CGFloat(maxDistanceStepper.doubleValue)
     }
     
-    @IBAction func xPositionModified(_ sender: NSControl) {
+    @IBAction func xPositionModified(_: NSControl) {
         device?.position.x = CGFloat(xPositionStepper.doubleValue)
     }
     
-    @IBAction func yPositionModified(_ sender: NSControl) {
+    @IBAction func yPositionModified(_: NSControl) {
         device?.position.y = CGFloat(yPositionStepper.doubleValue)
     }
     
-    @IBAction func orientationModified(_ sender: NSControl) {
+    @IBAction func orientationModified(_: NSControl) {
         device?.orientation = CGFloat(orientationStepper.doubleValue)
     }
     
-    @IBAction func heightModified(_ sender: NSControl) {
+    @IBAction func heightModified(_: NSControl) {
         device?.height = CGFloat(heightStepper.doubleValue)
     }
     

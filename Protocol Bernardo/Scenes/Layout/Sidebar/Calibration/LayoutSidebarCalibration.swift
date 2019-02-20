@@ -155,7 +155,7 @@ extension LayoutSidebarCalibration {
     /// User selected a device to calibrate, let's update the list of physical devices
     ///
     /// - Parameter sender: _
-    @IBAction func setDeviceToCalibrate(_ sender: NSPopUpButton) {
+    @IBAction func setDeviceToCalibrate(_: NSPopUpButton) {
         // Start by cleaning the panel
          clearAndDisableAll()
         
@@ -177,7 +177,7 @@ extension LayoutSidebarCalibration {
     /// and interface accordingly
     ///
     /// - Parameter sender: _
-    @IBAction func setPhysicalDevice(_ sender: NSPopUpButton) {
+    @IBAction func setPhysicalDevice(_: NSPopUpButton) {
         // Clean interface
         referenceDeviceToggle.isEnabled = false
         referenceDeviceToggle.state = .off
@@ -201,7 +201,7 @@ extension LayoutSidebarCalibration {
     /// User changed the reference state for the selected device to calibrate
     ///
     /// - Parameter sender: _
-    @IBAction func setReferenceState(_ sender: NSButton) {
+    @IBAction func setReferenceState(_: NSButton) {
         clearAndDisableReferencePanel()
         clearAndDisableCalibrationPanel()
         
@@ -215,7 +215,7 @@ extension LayoutSidebarCalibration {
         fillReferenceDevicesList()
     }
     
-    @IBAction func setReferenceDevice(_ sender: NSPopUpButton) {
+    @IBAction func setReferenceDevice(_: NSPopUpButton) {
         clearAndDisableCalibrationPanel()
         
         // Make sure the item selected isn't the placeholder one
@@ -227,11 +227,11 @@ extension LayoutSidebarCalibration {
         calibrationController.referenceUUID = referenceDevice.uuid
     }
     
-    @IBAction func storeDeltas(_ sender: NSButton) {
+    @IBAction func storeDeltas(_: NSButton) {
         calibrationController.storeDeltas()
     }
 
-    @IBAction func clearDeltas(_ sender: NSButton) {
+    @IBAction func clearDeltas(_: NSButton) {
         calibrationController.clearDeltas()
     }
 }
@@ -310,19 +310,19 @@ extension LayoutSidebarCalibration {
 // /////////////////////////////////////
 // MARK: - CalibrationControllerDelegate
 extension LayoutSidebarCalibration: CalibrationControllerDelegate {
-    func calibration(_ controller: CalibrationController, physicalDeviceStateChanged state: DeviceState) {
+    func calibration(_: CalibrationController, physicalDeviceStateChanged state: DeviceState) {
         DispatchQueue.main.async {
             self.physicalDeviceStatus.stringValue = state.label
         }
     }
 
-    func calibration(_ controller: CalibrationController, referenceDeviceStateChanged state: DeviceState) {
+    func calibration(_: CalibrationController, referenceDeviceStateChanged state: DeviceState) {
         DispatchQueue.main.async {
             self.referenceDeviceStatus.stringValue = state.label
         }
     }
 
-    func calibration(_ controller: CalibrationController, liveDeltasUpdated deltas: CalibrationDeltas?) {
+    func calibration(_: CalibrationController, liveDeltasUpdated deltas: CalibrationDeltas?) {
         // Update deltas values on the interface
         DispatchQueue.main.async {
             self.liveDeltasView.show(deltas: deltas)
@@ -332,7 +332,7 @@ extension LayoutSidebarCalibration: CalibrationControllerDelegate {
         }
     }
 
-    func calibration(_ controller: CalibrationController, storedDeltasChanged deltas: CalibrationDeltas) {
+    func calibration(_: CalibrationController, storedDeltasChanged deltas: CalibrationDeltas) {
         storedOrientationDelta.floatValue = deltas.orientation ?? 0.0
         storedXDelta.floatValue = deltas.xPosition / 10.0
         storedYDelta.floatValue = deltas.yPosition / 10.0

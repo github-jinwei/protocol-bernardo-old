@@ -25,9 +25,6 @@ protocol LayoutCanvasElement: AnyObject {
     /// Called by a user event to deselect the element
     func deselect()
 
-    /// Call on the update part of the frame rendering by the scene
-    func update()
-
     /// Called when the element is remove to let it properly remove its content
     func deleteActions()
 
@@ -71,8 +68,6 @@ extension LayoutCanvasElement {
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
         return false
     }
-    
-    func update() {}
 
     func setIdleAppearance() {}
 

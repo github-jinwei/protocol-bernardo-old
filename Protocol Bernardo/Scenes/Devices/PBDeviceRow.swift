@@ -29,14 +29,14 @@ class PBDeviceRow: NSView {
     /// Tell the DAE to change the device status
     ///
     /// - Parameter sender: _
-    @IBAction func toggleState(_ sender: AnyObject) {
+    @IBAction func toggleState(_: AnyObject) {
         App.dae.toggleDeviceStatus(withSerial: serial)
     }
     
     /// Open the popover view. If the popover is already open, this will close it
     ///
     /// - Parameter sender: _
-    @IBAction func openQuickLook(_ sender: AnyObject) {
+    @IBAction func openQuickLook(_: AnyObject) {
         // Make sure the popover isn't already open
         guard deviceDetailsPopover == nil else {
             // Close the popover properly

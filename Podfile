@@ -9,11 +9,4 @@ target 'Protocol Bernardo' do
 
   # Pods for Protocol Bernardo
   pod 'Repeat'	
-
-  target 'Protocol BernardoTests' do
-    inherit! :search_paths
-    # Pods for testing
-    pod 'Repeat'
-  end
-
 end

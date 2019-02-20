@@ -57,7 +57,7 @@ class DevicesWindow: NSViewController {
 
 extension DevicesWindow: DataAcquisitionEngineObserver {
 
-    func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: ConnectedDevices) {
+    func dae(_: DataAcquisitionEngine, devicesStatusUpdated devices: ConnectedDevices) {
         DispatchQueue.main.async {
             if devices.count != self.devicesRows.count {
                 self.reloadDevicesList(withDevices: devices)
