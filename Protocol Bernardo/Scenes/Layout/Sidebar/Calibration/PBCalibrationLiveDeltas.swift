@@ -56,7 +56,7 @@ class PBCalibrationLiveDeltas: NSView {
 
         // If the orientation delta isn't low enough, display empty strings for
         // the other properties
-        guard abs(orientationDelta) < 3.0 else {
+        guard abs(orientationDelta) < 15.0 else {
             xPositionDeltaField.stringValue = emptyString
             yPositionDeltaField.stringValue = emptyString
             heightDeltaField.stringValue = emptyString

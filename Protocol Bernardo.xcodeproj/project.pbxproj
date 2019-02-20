@@ -330,6 +330,16 @@
 			path = DataAcquisitionEngine;
 			sourceTree = "<group>";
 		};
+		3915BFA62219F4AC00E80ABE /* icns */ = {
+			isa = PBXGroup;
+			children = (
+				3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */,
+				39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */,
+				39D558AC220919CA00916AAA /* PBLayoutIcon.icns */,
+			);
+			path = icns;
+			sourceTree = "<group>";
+		};
 		393B1ECB2204DCA800BC54D3 /* LayoutEngine */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,10 +576,8 @@
 		39D558AE220919D900916AAA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */,
+				3915BFA62219F4AC00E80ABE /* icns */,
 				396DDFCC21F4285200628070 /* Assets.xcassets */,
-				39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */,
-				39D558AC220919CA00916AAA /* PBLayoutIcon.icns */,
 				396DDFD121F4285200628070 /* Info.plist */,
 				398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */,
 			);

@@ -59,7 +59,7 @@ extension DevicesWindow: DataAcquisitionEngineObserver {
 
     func dae(_ dae: DataAcquisitionEngine, devicesStatusUpdated devices: ConnectedDevices) {
         DispatchQueue.main.async {
-            if devices.count != self.devicesList.views.count {
+            if devices.count != self.devicesRows.count {
                 self.reloadDevicesList(withDevices: devices)
                 return
             }
