@@ -69,6 +69,11 @@ extension LayoutController {
             let layoutSidebar = sidebar.viewController as! LayoutSidebar
             layoutSidebar.canvas = canvas
         }
+
+        if layoutDocument.layout.profile != nil {
+            window.calibrationProfilesList.selectItem(withTitle: layoutDocument.layout.profile!)
+            window.setCalibrationProfile(window.calibrationProfilesList)
+        }
     }
 }
 
@@ -103,12 +108,15 @@ extension LayoutController: LayoutWindowDelegate {
 
     func toolbar(_ layoutWindow: LayoutWindowController, calibrationProfileChanged profile: LayoutCalibrationProfile?) {
         calibrationProfile = profile
+        layoutDocument.layout.profile = profile!.name
 
         App.usersEngine.profile = calibrationProfile
         App.usersEngine.layout = layoutDocument.layout
 
         canvas.calibrationProfile = calibrationProfile
         sidebar.setCalibrationProfile(calibrationProfile)
+
+        window.setDocumentEdited(true)
     }
 }
 

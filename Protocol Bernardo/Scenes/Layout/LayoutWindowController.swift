@@ -178,7 +178,6 @@ extension LayoutWindowController: NSWindowDelegate {
 // ////////////////////////////
 // MARK: - NSDocumentDelegate
 extension LayoutWindowController {
-
     @objc
     func document(doc _: NSDocument, shouldClose: Bool, contextInfo _: UnsafeRawPointer?) {
         if shouldClose {

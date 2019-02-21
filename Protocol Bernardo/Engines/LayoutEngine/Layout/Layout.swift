@@ -18,6 +18,10 @@ class Layout: Codable {
     
     /// All the lines composing the layout
     var decorations = [Line]()
+
+    /// The calibration profile selected when closing the profile
+    /// Used to restart 
+    var profile: String?
 }
 
 
