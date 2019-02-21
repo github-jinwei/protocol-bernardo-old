@@ -11,10 +11,10 @@ import AppKit
 /// The application structure Core
 class Core {
     /// The Welcome Scene
-    fileprivate weak var welcomeWindow: WelcomeWindow!
+    private weak var welcomeWindow: WelcomeWindow!
 
     /// The Devices Window
-    fileprivate weak var devicesWindow: DevicesWindow!
+    private weak var devicesWindow: DevicesWindow!
 
     /// Used by the SceneSelectorController to register itself
     ///

@@ -329,6 +329,10 @@ extension LayoutSidebarCalibration: CalibrationControllerDelegate {
 
             // Activate the update device profile button if there is deltas
             self.updateProfileButton.isEnabled = deltas != nil
+
+            if deltas != nil {
+                self.canvas.frontElements.first(where: { $0.device.uuid == self.calibrationController.deviceUUID })?.liveDeltas = deltas
+            }
         }
     }
 

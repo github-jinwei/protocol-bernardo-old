@@ -51,4 +51,10 @@ protocol LayoutCanvasElementDelegate: AnyObject {
     ///
     /// - Returns: The canvas contaner window
     func canvasWindow() -> NSWindow
+
+    /// Asks the delegate for the currently selected calibration profile
+    ///
+    /// - Parameter forDevice: The device to get the calibration profile for
+    /// - Returns: The given device's calibration profile
+    func deviceProfile(forDevice: Device) -> DeviceCalibrationProfile?
 }

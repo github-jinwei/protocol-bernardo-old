@@ -53,10 +53,10 @@ class DataAcquisitionEngine {
     // MARK: - Properties
 
     /// Holds the loop for the status fetcher
-    fileprivate var statusFetcherLoop: Repeater?
+    private var statusFetcherLoop: Repeater?
 
     /// The devices handled by the engine
-    fileprivate var devices = ConnectedDevices()
+    private var devices = ConnectedDevices()
 
     /// Wrapper with all the connected devices
     var connectedDevices: ConnectedDevices {

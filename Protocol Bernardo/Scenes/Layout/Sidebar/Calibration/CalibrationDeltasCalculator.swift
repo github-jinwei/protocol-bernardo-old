@@ -19,16 +19,16 @@ class CalibrationDeltasCalculator {
 
     /// Inner structure to store a couple of position for the same user accross
     /// two devices
-    fileprivate struct PositionCollection {
+    private struct PositionCollection {
         var device: Position? = nil
         var reference: Position? = nil
     }
 
     /// Positions of the primary user on both devices
-    fileprivate var primaryPositions = PositionCollection()
+    private var primaryPositions = PositionCollection()
 
     /// Positions of the secondary user on both devices
-    fileprivate var secondaryPositions = PositionCollection()
+    private var secondaryPositions = PositionCollection()
 }
 
 extension CalibrationDeltasCalculator {
@@ -106,7 +106,7 @@ extension CalibrationDeltasCalculator {
     ///
     /// - Parameter positions: _
     /// - Returns: The deltas
-    fileprivate func getDeltas(usingPositions positions: PositionCollection) -> CalibrationDeltas {
+    private func getDeltas(usingPositions positions: PositionCollection) -> CalibrationDeltas {
         var deltas = CalibrationDeltas()
 
         deltas.xPosition = positions.reference!.x - positions.device!.x

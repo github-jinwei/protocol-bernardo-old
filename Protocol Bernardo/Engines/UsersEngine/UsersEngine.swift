@@ -16,7 +16,7 @@ class UsersEngine {
     // MARK: Properties
     
     /// All the users tracked by the system
-    fileprivate var users = [User]()
+    private var users = [User]()
     
     /// The layout used to position the devices
     weak var layout: Layout?

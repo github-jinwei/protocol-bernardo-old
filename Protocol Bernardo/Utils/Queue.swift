@@ -8,7 +8,7 @@
 
 
 // should be an inner class of Queue, but inner classes and generics crash the compiler, SourceKit (repeatedly) and occasionally XCode.
-fileprivate class QueueItem<T> {
+private class QueueItem<T> {
     let value: T!
     var next: QueueItem?
     

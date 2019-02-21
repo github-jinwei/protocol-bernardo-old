@@ -13,12 +13,12 @@ struct CalibrationDeltas: Codable {
     /// Orientation difference
     var orientation: Float? = nil
     
-    /// X Position difference
+    /// X Position difference (in mm)
     var xPosition: Float = 0.0
     
-    /// Y Position difference
+    /// Y Position difference (in mm)
     var yPosition: Float = 0.0
     
-    /// Height difference
+    /// Height difference (in mm)
     var height: Float = 0.0
 }

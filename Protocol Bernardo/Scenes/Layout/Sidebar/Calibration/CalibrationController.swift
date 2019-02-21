@@ -17,19 +17,19 @@ class CalibrationController {
 
     weak var layout: Layout!
 
-    fileprivate var deltasCalculator = CalibrationDeltasCalculator()
+    private var deltasCalculator = CalibrationDeltasCalculator()
 
     // //////////////////////////////
     // MARK: - Calibration Properties
 
     /// Calibration profile used by the controller
-    fileprivate var calibrationProfile: LayoutCalibrationProfile?
+    private var calibrationProfile: LayoutCalibrationProfile?
 
     /// Device Calibration Profile for the selected layout device
-    fileprivate var deviceProfile: DeviceCalibrationProfile?
+    private var deviceProfile: DeviceCalibrationProfile?
 
     /// The latest deltas available
-    fileprivate var latestDeltas: CalibrationDeltas?
+    private var latestDeltas: CalibrationDeltas?
 
 
     // //////////////////////////////
@@ -109,12 +109,12 @@ extension CalibrationController {
     }
 
     /// The calibration profile of the reference device
-    fileprivate var referenceProfile: DeviceCalibrationProfile? {
+    private var referenceProfile: DeviceCalibrationProfile? {
         return calibrationProfile?.device(forUUID: referenceUUID)
     }
 
     /// Serial of the reference device
-    fileprivate var referenceSerial: Serial? {
+    private var referenceSerial: Serial? {
         return referenceProfile?.physicalDeviceSerial
     }
 
@@ -237,7 +237,7 @@ extension CalibrationController: DataAcquisitionEngineObserver {
 // ///////////////////////////
 // MARK: - Deltas Calculations
 extension CalibrationController {
-    fileprivate func calculateDeltas() {
+    private func calculateDeltas() {
         // Deltas can only be caclulated if the two devices are active
         guard physicalDeviceState == DEVICE_ACTIVE && referenceDeviceState == DEVICE_ACTIVE else {
             // Tell the delegate there is no calibration tracking
@@ -308,7 +308,7 @@ extension CalibrationController {
     ///   - user: Physical user to work with
     ///   - profile: Calibration profile to use for the conversion
     /// - Returns: The user center of mass in the global coordinate system without any calibration adjustements
-    fileprivate func uncalibratedGlobalPosition(ofUser user: PhysicalUser, withProfile profile: DeviceCalibrationProfile) -> Position {
+    private func uncalibratedGlobalPosition(ofUser user: PhysicalUser, withProfile profile: DeviceCalibrationProfile) -> Position {
         let localPosition = user.centerOfMass
         return profile.uncalibratedGlobalCoordinates(forPosition: localPosition)
     }

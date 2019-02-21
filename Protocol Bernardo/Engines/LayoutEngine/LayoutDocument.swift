@@ -17,7 +17,7 @@ class LayoutDocument: NSDocument {
     var calibrationsProfiles: [String: LayoutCalibrationProfile] = [:]
     
     /// The window controller managed by this document
-    fileprivate var layoutWindow: LayoutWindowController! = nil
+    private var layoutWindow: LayoutWindowController! = nil
     
     /// Tell the document is as been edited, and should adopt an "unsaved document"
     /// behaviour

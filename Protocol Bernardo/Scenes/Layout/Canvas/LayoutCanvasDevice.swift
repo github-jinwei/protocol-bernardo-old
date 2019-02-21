@@ -98,26 +98,52 @@ class LayoutCanvasDevice: SKNode {
     // MARK: - SKNode properties
     
     /// The sprite node holding the device image
-    fileprivate var deviceSprite: SKSpriteNode!
+    private var deviceSprite: SKSpriteNode!
     
     /// The shape used to trigger clicks on the device image
-    fileprivate var centerCircle: SKShapeNode!
+    private var centerCircle: SKShapeNode!
     
     /// The shape representing the device captation area
-    fileprivate var captationAreaNode: SKShapeNode!
+    private var captationAreaNode: SKShapeNode!
     
     /// The name tag for the device on the scene
-    fileprivate var deviceLabel: SKLabelNode!
+    private var deviceLabel: SKLabelNode!
+
+    /// The calibrated center circle of the device
+    private var calibratedCenterCircle: SKShapeNode!
     
     /// Tell is the device is currently selected
-    internal var isSelected: Bool = false
+    internal var isSelected: Bool = false {
+        didSet {
+            isCalibrating = false
+            liveDeltas = nil
+        }
+    }
+
+    /// Tell if the device is currently being calibrated
+    public var isCalibrating: Bool = false
+
+    /// Live deltas, used when the device is calibrating
+    public var liveDeltas: CalibrationDeltas? {
+        didSet {
+            isCalibrating = liveDeltas != nil
+
+            if liveDeltas != nil {
+                // Update the calibrated center circle position
+                calibratedCenterCircle.position.x = CGFloat(liveDeltas!.xPosition) / 10.0
+                calibratedCenterCircle.position.y = CGFloat(liveDeltas!.yPosition) / 10.0
+
+                showCalibratedPosition()
+            }
+        }
+    }
     
     
     // ////////////////////////////////
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    fileprivate lazy var parametersController: PBLayoutCanvasDevicePropertiesController = {
+    private lazy var parametersController: PBLayoutCanvasDevicePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
 
         let rawController = storyboard.instantiateController(withIdentifier: "deviceParametersController")
@@ -188,6 +214,8 @@ extension LayoutCanvasDevice {
         deviceLabel.fontName = NSFont.systemFont(ofSize: 11, weight: .bold).fontName
         
         centerCircle = SKShapeNode(circleOfRadius: 25)
+
+        calibratedCenterCircle = SKShapeNode(circleOfRadius: 25)
         
         // Build the captation area node
         captationAreaNode = SKShapeNode(path: captationArea())
@@ -198,6 +226,7 @@ extension LayoutCanvasDevice {
         
         // Insert them in the tree
         self.addChild(centerCircle)
+        self.addChild(calibratedCenterCircle)
         self.addChild(captationAreaNode)
         self.addChild(deviceSprite)
         self.addChild(deviceLabel)
@@ -216,6 +245,28 @@ extension LayoutCanvasDevice {
     func deleteActions() {
         removeAllChildren()
         removeFromParent()
+    }
+}
+
+// ////////////////////
+// MARK: - Frame update
+extension LayoutCanvasDevice {
+    /// Called by the layout canvas on each render frame
+    func update() {
+        // Do nothing if the game is calibrating
+        if isCalibrating { return }
+        // Get the calibrated position of the device
+        guard let deviceProfile = delegate?.deviceProfile(forDevice: device) else {
+            return
+        }
+
+        // Update the calibrated center circle position
+        calibratedCenterCircle.position.x = CGFloat(deviceProfile.deltas.xPosition) / 10.0
+        calibratedCenterCircle.position.y = CGFloat(deviceProfile.deltas.yPosition) / 10.0
+
+        if isSelected {
+            showCalibratedPosition()
+        }
     }
 }
 
@@ -290,10 +341,20 @@ extension LayoutCanvasDevice {
     }
 }
 
-// /////////////////////
-// MARK: - SKNode utils
+// //////////////////
+// MARK: - Appearance
 extension LayoutCanvasDevice {
-    func setIdleAppearance() {
+    func set(appearance: LayoutCanvasElementAppearance) {
+        switch appearance {
+        case .idle:
+            setIdleAppearance()
+        case .selected:
+            setSelectedAppearance()
+        }
+    }
+
+    /// Set the device appearance to reflect its idle state
+    private func setIdleAppearance() {
         deviceSprite.color = NSColor(calibratedWhite: 0, alpha: 0.9)
         deviceLabel.fontColor = NSColor(calibratedWhite: 0, alpha: 0.8)
         
@@ -301,10 +362,12 @@ extension LayoutCanvasDevice {
         
         captationAreaNode.fillColor = NSColor(calibratedWhite: 0, alpha: 0.5)
         captationAreaNode.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
+
+        hideCalibratedPosition()
     }
-    
-    /// Update the device appearance to reflect its selected state
-    func setSelectedAppearance() {
+
+    /// Set the device appearance to reflect its selected state
+    private func setSelectedAppearance() {
         // _deviceSprite.color = NSColor(_highlightColor, alpha: 0.9)
         
         centerCircle.alpha = 1.0
@@ -314,11 +377,27 @@ extension LayoutCanvasDevice {
         captationAreaNode.fillColor = NSColor(highlightColor, alpha: 0.5)
         captationAreaNode.strokeColor = NSColor(highlightColor, alpha: 0.8)
     }
-    
+
+    /// Show the calibrated center position
+    private func showCalibratedPosition() {
+        calibratedCenterCircle.alpha = 1.0
+        calibratedCenterCircle.fillColor = NSColor(NSColor.systemGreen, alpha: 0.4)
+        calibratedCenterCircle.strokeColor = NSColor(NSColor.systemGreen, alpha: 0.6)
+    }
+
+    /// Hide the calibrated center position
+    private func hideCalibratedPosition() {
+        calibratedCenterCircle.alpha = 0.0
+    }
+}
+
+// /////////////////////
+// MARK: - SKNode utils
+extension LayoutCanvasDevice {
     /// Gives the CGPath corresponding to the device captation area
     ///
     /// - Returns: A CGPath representing an arc
-    func captationArea() -> CGMutablePath {
+    private func captationArea() -> CGMutablePath {
         let angle = deg2rad(self.horizontalFOV)
         
         let path = CGMutablePath()

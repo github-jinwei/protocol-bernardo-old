@@ -29,7 +29,7 @@ class Device: Codable {
     /// The device's maximum captation distance
     var maximumCaptationDistance: Double = 450.0
     
-    /// The device's position
+    /// The device's position (in cm)
     var position = Point(x: 0, y: 0)
     
     /// The device's orientation (in degrees)

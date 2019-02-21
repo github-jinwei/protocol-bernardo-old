@@ -34,12 +34,12 @@ class LayoutController: NSSplitViewController {
     // MARK: - Convenience properties
     
     /// Convenient access to the canvas
-    fileprivate var canvas: LayoutCanvas {
+    private var canvas: LayoutCanvas {
         return canvasSplitViewItem.viewController as! LayoutCanvas
     }
     
     /// Convenient access to the sidebar
-    fileprivate var sidebar: LayoutSidebar {
+    private var sidebar: LayoutSidebar {
         let tabIndex = (sidebarTabViewItem.viewController as! NSTabViewController).selectedTabViewItemIndex
         return (sidebarTabViewItem.viewController as! NSTabViewController).tabViewItems[tabIndex].viewController as! LayoutSidebar
     }

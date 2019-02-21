@@ -14,7 +14,7 @@ import Foundation
 /// gives to its observers
 class ConnectedDevices {
     /// List of all connected devices
-    fileprivate var _devices: [Serial: PhysicalDevice] = [:]
+    private var _devices: [Serial: PhysicalDevice] = [:]
 
     /// All the connected devices
     var devices: [Serial: PhysicalDevice] {

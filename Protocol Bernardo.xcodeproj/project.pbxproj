@@ -86,6 +86,7 @@
 		398F627B2219230D003BFC81 /* libOpenNI2.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		398F627C22192337003BFC81 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B645321FD321800A71E58 /* libNiTE2.dylib */; };
 		398F627D22192337003BFC81 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; };
+		39967344221E2127003A75A6 /* LayoutCanvasElementAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */; };
 		3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */; };
 		39977430220B94FB00ED4B93 /* LayoutCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */; };
 		39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */; };
@@ -267,6 +268,7 @@
 		3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLayoutCanvasDevicePropertiesController.swift; sourceTree = "<group>"; };
 		398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Protocol Bernardo.entitlements"; sourceTree = "<group>"; };
 		398F6272221901E8003BFC81 /* PBDevicesStartupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDevicesStartupSheet.swift; sourceTree = "<group>"; };
+		39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasElementAppearance.swift; sourceTree = "<group>"; };
 		3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutCalibrationIcon.icns; sourceTree = "<group>"; };
 		3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibrationProfile.swift; sourceTree = "<group>"; };
 		39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCalibrationProfile.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */,
 				39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */,
 				397195C12200219000F92C5C /* LayoutCanvasView.swift */,
+				39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				392183CB22138B3A000D5968 /* ConnectedDevices.swift in Sources */,
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
 				392183CD22138C5E000D5968 /* Typealias.swift in Sources */,
+				39967344221E2127003A75A6 /* LayoutCanvasElementAppearance.swift in Sources */,
 				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
 				39379A0E220FA220004C3815 /* Position.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,

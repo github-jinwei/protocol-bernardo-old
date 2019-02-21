@@ -28,11 +28,10 @@ protocol LayoutCanvasElement: AnyObject {
     /// Called when the element is remove to let it properly remove its content
     func deleteActions()
 
-    /// Update the element appearance to reflect its idle state
-    func setIdleAppearance()
-
-    /// Update the element appearance to reflect its selected state
-    func setSelectedAppearance()
+    /// Change the element appearance to the specified appearance
+    ///
+    /// - Parameter appearance: The element appearance value
+    func set(appearance: LayoutCanvasElementAppearance)
 
     // ////////////////////
     // MARK: - User actions
@@ -69,10 +68,6 @@ extension LayoutCanvasElement {
         return false
     }
 
-    func setIdleAppearance() {}
-
-    func setSelectedAppearance() {}
-
     /// Change the device state to selected
     func markAsSelected() {
         delegate?.element(self, selectionChanged: true)
@@ -84,7 +79,7 @@ extension LayoutCanvasElement {
         isSelected = true
 
         // Update appearance to reflect change
-        setSelectedAppearance()
+        set(appearance: .selected)
     }
 
     /// Change the device state to idle
@@ -98,7 +93,7 @@ extension LayoutCanvasElement {
         isSelected = false
 
         // Update appearance to reflect change
-        setIdleAppearance()
+        set(appearance: .idle)
     }
 
     /// Delete the device, removes it from the layout and fron the view

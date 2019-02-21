@@ -29,7 +29,7 @@ class LayoutCanvas: NSViewController {
     weak var layout: Layout!
     
     /// The SKScene used by the canvas
-    fileprivate var scene: SKScene!
+    private var scene: SKScene!
     
     /// Convenient access to the 'root' node of the scene
     var root: SKNode { return scene.childNode(withName: "root")! }
@@ -246,10 +246,16 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
         return self.view.window!
     }
 
+    func deviceProfile(forDevice device: Device) -> DeviceCalibrationProfile? {
+        return self.calibrationProfile?.device(forUUID: device.uuid)
+    }
 }
 
 extension LayoutCanvas: SKSceneDelegate {
-    func update(_ currentTime: TimeInterval, for scene: SKScene) {        
+    func update(_ currentTime: TimeInterval, for scene: SKScene) {
+        // Pass the update event to all the devices
+        frontElements.forEach { $0.update() }
+
         // Update the users array
         usersLayer.removeAllChildren()
         

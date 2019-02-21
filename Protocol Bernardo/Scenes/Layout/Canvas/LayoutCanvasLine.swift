@@ -73,10 +73,10 @@ class LayoutCanvasLine: SKNode {
     // MARK: - SKNode properties
     
     /// The actual line being displayed
-    fileprivate var lineShape: SKShapeNode!
+    private var lineShape: SKShapeNode!
     
     /// The clickable area as the line may be too thin for easy manipulation
-    fileprivate var clickableArea: SKShapeNode!
+    private var clickableArea: SKShapeNode!
     
     /// Tell if the line is currently selected
     var isSelected: Bool = false
@@ -85,7 +85,7 @@ class LayoutCanvasLine: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    fileprivate lazy var parametersController: PBLayoutCanvasLinePropertiesController = {
+    private lazy var parametersController: PBLayoutCanvasLinePropertiesController = {
         let storyboard = NSStoryboard(name: "Layout", bundle: nil)
         let rawController = storyboard.instantiateController(withIdentifier: "lineParametersController")
         var controller = rawController as? PBLayoutCanvasLinePropertiesController
@@ -112,12 +112,10 @@ extension LayoutCanvasLine: LayoutCanvasElement {
     }
 
     func deleteActions() {
-
         removeAllChildren()
         removeFromParent()
 
         delegate.elementWillBeRemoved(self)
-//        canvas.remove(line: self)
     }
 }
 
@@ -240,23 +238,36 @@ extension LayoutCanvasLine {
     }
 }
 
-// /////////////////////
-// MARK: - SKNode utils
+// //////////////////
+// MARK: - Appearance
 extension LayoutCanvasLine {
+    func set(appearance: LayoutCanvasElementAppearance) {
+        switch appearance {
+        case .idle:
+            setIdleAppearance()
+        case .selected:
+            setSelectedAppearance()
+        }
+    }
+
     /// Update the device appearance to reflect its idle state
     ///
     /// This also reflects the default state of the device on the scene
-    func setIdleAppearance() {
+    private func setIdleAppearance() {
         lineShape.fillColor = NSColor(calibratedWhite: 0, alpha: 0.8)
         lineShape.strokeColor = NSColor(calibratedWhite: 0, alpha: 0.8)
     }
     
     /// Update the device appearance to reflect its selected state
-    func setSelectedAppearance() {
+    private func setSelectedAppearance() {
         lineShape.fillColor = NSColor(highlightColor, alpha: 0.8)
         lineShape.strokeColor = NSColor(highlightColor, alpha: 0.8)
     }
-    
+}
+
+// /////////////////////
+// MARK: - SKNode utils
+extension LayoutCanvasLine {
     func locationInTriggerArea(forEvent event: NSEvent) -> Bool {
         let clickLocationClickableArea = event.location(in: clickableArea)
         
@@ -267,6 +278,12 @@ extension LayoutCanvasLine {
         return false
     }
     
+    /// Returns a rectangle CGMutablePath using the provided parameters
+    ///
+    /// - Parameters:
+    ///   - width: The rectangle's width
+    ///   - height: The rectangle's height
+    /// - Returns: The rectangle's path
     func getLineRectPath(width: CGFloat, height: CGFloat) -> CGMutablePath {
         let path = CGMutablePath()
         path.addRect(CGRect(x: width / -2.0,
