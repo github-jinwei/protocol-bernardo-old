@@ -22,4 +22,14 @@ protocol LayoutWindowDelegate: AnyObject {
     ///   - _: The emitter window controller
     ///   - calibrationProfileChanged: The selected calibration profile
     func toolbar(_: LayoutWindowController, calibrationProfileChanged: LayoutCalibrationProfile?)
+
+    /// Tells the receiver the user wants to create a new device
+    ///
+    /// - Parameter _: <#_ description#>
+    func createNewDevice(_: LayoutWindowController)
+
+    /// Tells the receiver the user wants to create a new line
+    ///
+    /// - Parameter _: <#_ description#>
+    func createNewLine(_: LayoutWindowController)
 }

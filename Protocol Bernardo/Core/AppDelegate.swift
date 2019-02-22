@@ -32,3 +32,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
 }
+
+
+extension AppDelegate {
+    @IBAction func newLayout(_ sender: Any) {
+        App.layoutEngine.newLayout()
+    }
+
+    @IBAction func openLayout(_ sender: Any) {
+        App.layoutEngine.openLayout()
+    }
+
+    @IBAction func showDevicesWindow(_ sender: Any) {
+        App.core.showDevicesWindow()
+    }
+}

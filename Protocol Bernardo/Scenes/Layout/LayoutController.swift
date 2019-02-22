@@ -85,25 +85,28 @@ extension LayoutController: LayoutWindowDelegate {
     func toolbar(_ layoutWindow: LayoutWindowController, interfaceModeHasChanged interfaceMode: LayoutInterfaceMode) {
         let tabViewController = sidebarTabViewItem.viewController as! NSTabViewController
 
-        switch interfaceMode {
-        case .edition:
-            tabViewController.selectedTabViewItemIndex = 0
+        // Adjust the transition animation
+        if tabViewController.selectedTabViewItemIndex < interfaceMode.rawValue {
+            tabViewController.transitionOptions = .slideForward
+        } else {
+            tabViewController.transitionOptions = .slideBackward
+        }
 
-            canvas.isEditable = true
+        // Change the sidebar
+        tabViewController.selectedTabViewItemIndex = interfaceMode.rawValue
+
+        // Do more adjustement if needed
+        switch interfaceMode {
+        case .edition: break;
         case .calibration:
-            tabViewController.selectedTabViewItemIndex = 1
 
             let sidebar = (self.sidebar as! LayoutSidebarCalibration)
             sidebar.document = layoutDocument
             sidebar.profile = calibrationProfile
-
-            canvas.isEditable = false
-
-        case .tracking:
-            tabViewController.selectedTabViewItemIndex = 2
-
-            canvas.isEditable = false
+        case .tracking: break;
         }
+
+        canvas.isEditable = interfaceMode == .edition
     }
 
     func toolbar(_ layoutWindow: LayoutWindowController, calibrationProfileChanged profile: LayoutCalibrationProfile?) {
@@ -117,6 +120,14 @@ extension LayoutController: LayoutWindowDelegate {
         sidebar.setCalibrationProfile(calibrationProfile)
 
         window.setDocumentEdited(true)
+    }
+
+    func createNewDevice(_: LayoutWindowController) {
+        canvas.createDevice()
+    }
+
+    func createNewLine(_: LayoutWindowController) {
+        canvas.createLine()
     }
 }
 

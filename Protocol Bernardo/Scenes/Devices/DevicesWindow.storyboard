@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="fsL-Iw-xmW">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +20,6 @@
                     </connections>
                 </windowController>
                 <customObject id="wyN-ny-ZAu" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController representsSharedInstance="YES" id="OCp-sj-CTN"/>
             </objects>
             <point key="canvasLocation" x="-106" y="-58"/>
         </scene>
@@ -152,11 +151,28 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gJN-n3-GuW">
+                                <rect key="frame" x="20" y="19" width="75" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="hBY-IH-Psb"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rmt-pt-l2d">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelOpening:" target="aAB-Wc-iak" id="dap-CP-66s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="0FE-oV-FyZ" firstAttribute="top" secondItem="VbV-32-w0c" secondAttribute="bottom" constant="8" id="1az-vT-fsU"/>
                             <constraint firstAttribute="bottom" secondItem="AeA-Cs-S95" secondAttribute="bottom" constant="20" id="62O-7J-BnG"/>
                             <constraint firstItem="t8U-ZP-SmD" firstAttribute="bottom" secondItem="0FE-oV-FyZ" secondAttribute="bottom" id="B1y-sP-6dY"/>
+                            <constraint firstItem="gJN-n3-GuW" firstAttribute="leading" secondItem="xDX-qn-MjV" secondAttribute="leading" constant="20" id="Cgu-2X-KSz"/>
                             <constraint firstItem="t8U-ZP-SmD" firstAttribute="leading" secondItem="0FE-oV-FyZ" secondAttribute="trailing" constant="8" id="G77-Kf-44b"/>
                             <constraint firstItem="vPs-MI-gvE" firstAttribute="leading" secondItem="t8U-ZP-SmD" secondAttribute="leading" constant="22" id="HoV-54-QOE"/>
                             <constraint firstAttribute="trailing" secondItem="AeA-Cs-S95" secondAttribute="trailing" constant="20" id="ITl-sD-6h6"/>
@@ -164,6 +180,7 @@ DQ
                             <constraint firstItem="vPs-MI-gvE" firstAttribute="top" secondItem="t8U-ZP-SmD" secondAttribute="bottom" constant="8" id="MSa-yN-mT3"/>
                             <constraint firstAttribute="trailing" secondItem="vPs-MI-gvE" secondAttribute="trailing" constant="20" id="gci-0X-gFq"/>
                             <constraint firstItem="AeA-Cs-S95" firstAttribute="top" secondItem="vPs-MI-gvE" secondAttribute="bottom" constant="20" id="l9t-aq-8We"/>
+                            <constraint firstAttribute="bottom" secondItem="gJN-n3-GuW" secondAttribute="bottom" constant="20" id="lmN-jJ-NHj"/>
                             <constraint firstItem="VbV-32-w0c" firstAttribute="top" secondItem="xDX-qn-MjV" secondAttribute="top" constant="20" id="uRO-IN-RbO"/>
                             <constraint firstItem="0FE-oV-FyZ" firstAttribute="leading" secondItem="xDX-qn-MjV" secondAttribute="leading" constant="20" id="x72-bs-EC8"/>
                         </constraints>

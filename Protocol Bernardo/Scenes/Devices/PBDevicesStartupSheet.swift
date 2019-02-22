@@ -27,4 +27,9 @@ class PBDevicesStartupSheet: NSViewController {
         (presentingViewController as! DevicesWindow).updateLiveView()
         dismiss(nil)
     }
+
+    @IBAction func cancelOpening(_: Any) {
+        (presentingViewController as! DevicesWindow).quit()
+        dismiss(nil)
+    }
 }

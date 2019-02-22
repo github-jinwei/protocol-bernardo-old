@@ -53,6 +53,10 @@ class DevicesWindow: NSViewController {
     override func viewWillDisappear() {
         App.dae.removeObserver(self)
     }
+
+    func quit() {
+        self.view.window?.close()
+    }
 }
 
 extension DevicesWindow: DataAcquisitionEngineObserver {

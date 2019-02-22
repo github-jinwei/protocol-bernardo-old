@@ -12,7 +12,7 @@ class LayoutCanvasUser: SKShapeNode {
     convenience init(user: User) {
         self.init(circleOfRadius: 10)
         
-        let position = user.calibratedPosition
+        let position = user.position
         
         self.position.x = CGFloat(-position.x / 10.0)
         self.position.y = CGFloat(position.z / 10.0)

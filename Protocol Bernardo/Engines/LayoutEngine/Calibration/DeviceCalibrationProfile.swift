@@ -144,7 +144,6 @@ extension DeviceCalibrationProfile {
         return globalPos
     }
 
-
     /// Transform the given position from the device referential to the global
     /// corrdinate system ignoring the calibrated layout
     ///
@@ -173,5 +172,4 @@ extension DeviceCalibrationProfile {
 
         return globalPos
     }
-
 }

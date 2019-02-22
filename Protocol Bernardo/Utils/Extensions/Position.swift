@@ -9,7 +9,87 @@
 import Foundation
 import simd
 
+
 extension Position {
+    var properties: [Float] {
+        return [x, y, z, x2D, y2D]
+    }
+
+    init(properties: [Float]) {
+        self.init()
+        
+        self.x = properties[0]
+        self.y = properties[1]
+        self.z = properties[2]
+        self.x2D = properties[3]
+        self.y2D = properties[3]
+    }
+}
+
+extension Position {
+
+    /// Addition operator overload
+    /// Adds the properties of the left component by the corresponding ones
+    /// on the right components
+    ///
+    /// - Parameters:
+    ///   - left: _
+    ///   - right: _
+    /// - Returns: _
+    static public func + (left: Position, right: Position) -> Position {
+        var pos = Position()
+
+        pos.x = left.x + right.x
+        pos.y = left.y + right.y
+        pos.z = left.z + right.z
+
+        pos.x2D = left.x2D + right.x2D
+        pos.y2D = left.y2D + right.y2D
+
+        return pos
+    }
+
+    /// Substraction operator overload
+    /// Divides the properties of the left component by the corresponding ones
+    /// on the right components
+    ///
+    /// - Parameters:
+    ///   - left: _
+    ///   - right: _
+    /// - Returns: _
+    static public func - (left: Position, right: Position) -> Position {
+        var pos = Position()
+
+        pos.x = left.x - right.x
+        pos.y = left.y - right.y
+        pos.z = left.z - right.z
+
+        pos.x2D = left.x2D - right.x2D
+        pos.y2D = left.y2D - right.y2D
+
+        return pos
+    }
+
+    /// Multiply operator overload
+    /// Multiply the properties of the left component by the corresponding ones
+    /// on the right components
+    ///
+    /// - Parameters:
+    ///   - left: _
+    ///   - right: _
+    /// - Returns: _
+    static public func * (left: Position, right: Float) -> Position {
+        var pos = Position()
+
+        pos.x = left.x * right
+        pos.y = left.y * right
+        pos.z = left.z * right
+
+        pos.x2D = left.x2D * right
+        pos.y2D = left.y2D * right
+
+        return pos
+    }
     
     /// Dividing operator overload
     /// Divides the properties of the left component by the corresponding ones
@@ -28,27 +108,6 @@ extension Position {
         
         pos.x2D = left.x2D / right
         pos.y2D = left.y2D / right
-        
-        return pos
-    }
-    
-    /// Substraction operator overload
-    /// Divides the properties of the left component by the corresponding ones
-    /// on the right components
-    ///
-    /// - Parameters:
-    ///   - left: _
-    ///   - right: _
-    /// - Returns: _
-    static public func - (left: Position, right: Position) -> Position {
-        var pos = Position()
-        
-        pos.x = left.x - right.x
-        pos.y = left.y - right.y
-        pos.z = left.z - right.z
-        
-        pos.x2D = left.x2D - right.x2D
-        pos.y2D = left.y2D - right.y2D
         
         return pos
     }

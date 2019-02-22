@@ -22,7 +22,7 @@ struct PhysicalUser {
     /** The state of this user */
     UserState state;
     
-    /** The skeleton of the user. Irrevelant is the user state isn't USER_TRACKED */
+    /** The skeleton of the user. Irrevelant if the user state isn't USER_TRACKED */
     struct Skeleton skeleton;
     
     /** The center of mass of the user. Irrevelant is the user state isn't USER_TRACKED  */

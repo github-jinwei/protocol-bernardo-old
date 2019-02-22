@@ -20,9 +20,41 @@ class LayoutWindowController: NSWindowController {
     /// The segmented controls used by the user to change the layout interface
     @IBOutlet weak var layoutInterfaceButtons: NSSegmentedControl!
 
+    /// Button used to switch the layout interface on the touchbar
+    @IBOutlet weak var touchbarChangeLayoutInterfaceButton: NSPopoverTouchBarItem!
+
+    /// The segmented controls for changing the layout interface on the touchbar
+    @IBOutlet weak var touchbarLayoutInterfaceButtons: NSSegmentedControl?
+
     /// The list of calibrated profiles
     @IBOutlet weak var calibrationProfilesList: NSPopUpButton!
-        
+
+    /// The add layout elements buttons on the touchbar
+    @IBOutlet weak var touchbarAddElementButtons: NSSegmentedControl!
+
+    @IBOutlet var touchbarSidebarElement: NSTouchBarItem?
+
+    @IBOutlet var editSidebarTouchbarItem: NSGroupTouchBarItem!
+
+    /// List of available items for this touchbar
+    ///
+    /// - layoutConfigurationPopover: <#layoutConfigurationPopover description#>
+    /// - toggleSidebarButton: <#toggleSidebarButton description#>
+    /// - editConfigurationItems: <#editConfigurationItems description#>
+    /// - calibrateConfiguration: <#calibrateConfiguration description#>
+    enum TouchbarItemsIdentifier: String {
+        case layoutConfigurationPopover
+        case toggleSidebarButton
+
+        case editConfigurationItems
+        case calibrateConfigurationItems
+
+        var identifier: NSTouchBarItem.Identifier {
+            return NSTouchBarItem.Identifier(self.rawValue)
+        }
+    }
+
+
     /// The Layout Window delegate
     weak var delegate: LayoutWindowDelegate?
     
@@ -58,10 +90,10 @@ class LayoutWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        // Mark ourselves as the window delegate
         window?.delegate = self
-
         layoutController.window = self
+
+        switchInterface(layoutInterfaceButtons)
     }
     
     // ///////////////
@@ -73,11 +105,39 @@ class LayoutWindowController: NSWindowController {
     @IBAction func switchInterface(_ sender: NSSegmentedControl) {
         let interfaceType: LayoutInterfaceMode
         switch sender.selectedSegment {
-        case 0: interfaceType = .edition
-        case 1: interfaceType = .calibration
-        case 2: interfaceType = .tracking
+        case 0:
+            interfaceType = .edition
+
+            touchBar?.defaultItemIdentifiers = [
+                TouchbarItemsIdentifier.layoutConfigurationPopover.identifier,
+                .flexibleSpace,
+                TouchbarItemsIdentifier.editConfigurationItems.identifier,
+                .flexibleSpace,
+                TouchbarItemsIdentifier.toggleSidebarButton.identifier 
+            ]
+            touchBar?.principalItemIdentifier = TouchbarItemsIdentifier.editConfigurationItems.identifier
+        case 1:
+            interfaceType = .calibration
+
+            touchBar?.defaultItemIdentifiers = [
+                TouchbarItemsIdentifier.layoutConfigurationPopover.identifier,
+                .flexibleSpace,
+                TouchbarItemsIdentifier.calibrateConfigurationItems.identifier,
+                .flexibleSpace,
+                TouchbarItemsIdentifier.toggleSidebarButton.identifier
+            ]
+            touchBar?.principalItemIdentifier = TouchbarItemsIdentifier.calibrateConfigurationItems.identifier
+        case 2:
+            interfaceType = .tracking
         default: return
         }
+
+        layoutInterfaceButtons.selectedSegment = sender.selectedSegment
+        touchbarLayoutInterfaceButtons?.selectedSegment = sender.selectedSegment
+
+        // Touchbar
+        touchbarChangeLayoutInterfaceButton?.collapsedRepresentationLabel = interfaceType.label.capitalized
+        touchbarChangeLayoutInterfaceButton?.dismissPopover(nil)
 
         delegate?.toolbar(self, interfaceModeHasChanged: interfaceType)
     }
@@ -87,6 +147,14 @@ class LayoutWindowController: NSWindowController {
     /// - Parameter sender: The toggle sidebar button
     @IBAction func toggleSidebar(_ sender: Any) {
         layoutController.toggleSidebar(sender)
+    }
+
+    @IBAction func AddElementOnLayout(_ sender: NSSegmentedControl) {
+        switch sender.selectedSegment {
+        case 0: delegate?.createNewDevice(self)
+        case 1: delegate?.createNewLine(self)
+        default: return
+        }
     }
 }
 

@@ -23,6 +23,9 @@ class UsersEngine {
     
     /// The calibration profile used to track users
     weak var profile: LayoutCalibrationProfile?
+
+    /// The engine's delegate
+    weak var delegate: UsersEngineDelegate?
     
     // //////////////////
     // MARK: - Lifecycle
@@ -84,6 +87,8 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         }
 
         analyzeUsers()
+
+        updatePositions()
     }
     
     /// Sometimes, the devices give bad first position, resulting in separate User for the same real user.
@@ -93,8 +98,8 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         // Make sure there is at least one other user
         guard users.count > 1 else { return }
 
-        users.forEach { user in
-            let closestUsers = usersByDistance(fromPosition: user.calibratedPosition)
+        for user in users {
+            let closestUsers = usersByDistance(fromPosition: user.position)
             // If the current user is the first one in the array (like 99% of the time), select the second one
             let closest: User
 
@@ -103,7 +108,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
             } else {
                 closest = closestUsers[0]
             }
-            let distance = closest.calibratedPosition.distance(from: user.calibratedPosition)
+            let distance = closest.position.distance(from: user.position)
 
             if distance < 150 {
                 // The two user are really close by, let's merge them
@@ -114,7 +119,21 @@ extension UsersEngine: DataAcquisitionEngineObserver {
 
                 // Remove the closest user from the user array
                 users.removeAll { $0 === closest }
+
+                delegate?.userEngine(self, mergedUser: closest, inUser: user)
             }
+        }
+    }
+
+    /// Calculate the averaged, global position for each user
+    func updatePositions() {
+        let historySize = delegate?.usersPhysicsHistorySize(self) ?? 0
+
+        for user in users {
+            user.calculatePosition(historySize: historySize)
+
+            // Tell the delegate the position of the user has changed
+            delegate?.userEngine(self, user: user, physicUpdated: user.latestPhysic)
         }
     }
 
@@ -130,6 +149,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         user.calibrationProfile = profile
     
         users.append(user)
+        delegate?.userEngine(self, startedTrackingUser: user)
     }
     
     /// Check if a physic needs to be removed from the specified user
@@ -147,6 +167,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         // if the user is not tracked anymore, remove it
         if user.trackedPhysics.count == 0 {
             users.removeAll { $0 === user }
+            delegate?.userEngine(self, stoppedTrackingUser: user)
         }
     }
 
@@ -168,7 +189,7 @@ extension UsersEngine {
         guard users.count > 0 else { return (nil, Float.infinity) }
         
         // return a tuple with the closest user and its distance from the given position
-        return (users[0], position.distance(from: users[0].calibratedPosition))
+        return (users[0], position.distance(from: users[0].position))
     }
     
     /// Returns an array of all the users ordered by their distance from the given position.
@@ -182,7 +203,7 @@ extension UsersEngine {
         
         // Get the distance for each user
         let distances = users.map {
-            return position.distance(from: $0.calibratedPosition)
+            return position.distance(from: $0.position)
         }
         // Sort the array
         return zip(users, distances).sorted(by: { $0.1 < $1.1 }).map { $0.0 }
