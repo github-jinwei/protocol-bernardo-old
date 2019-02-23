@@ -67,6 +67,7 @@ extension Layout {
     }
 }
 
+// MARK: - Accessing the layout content
 extension Layout {
     /// Return the device on the layout with the corresponding UUID
     /// If no device matches the given UUID, returns nil

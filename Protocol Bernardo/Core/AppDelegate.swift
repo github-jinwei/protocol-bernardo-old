@@ -8,10 +8,9 @@
 
 import Cocoa
 
-/// Application main delegate
+/// The application delegate, handles systems behaviours
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         App.core.showWelcomeWindow()
     }
@@ -30,20 +29,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return false
-    }
-}
-
-
-extension AppDelegate {
-    @IBAction func newLayout(_ sender: Any) {
-        App.layoutEngine.newLayout()
-    }
-
-    @IBAction func openLayout(_ sender: Any) {
-        App.layoutEngine.openLayout()
-    }
-
-    @IBAction func showDevicesWindow(_ sender: Any) {
-        App.core.showDevicesWindow()
     }
 }

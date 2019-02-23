@@ -19,6 +19,7 @@ class LayoutCanvas: NSViewController {
         return view as! LayoutCanvasView
     }
     
+    /// The canvas delegate
     weak var delegate: LayoutCanvasDelegate?
     
     
@@ -64,6 +65,7 @@ class LayoutCanvas: NSViewController {
         }
     }
     
+    /// The calibration profile used for this canvas
     weak var calibrationProfile: LayoutCalibrationProfile?
     
     

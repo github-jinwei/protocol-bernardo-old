@@ -227,11 +227,11 @@ extension LayoutSidebarCalibration {
         calibrationController.referenceUUID = referenceDevice.uuid
     }
     
-    @IBAction func storeDeltas(_: NSButton) {
+    @IBAction func storeDeltas(_: NSButton?) {
         calibrationController.storeDeltas()
     }
 
-    @IBAction func clearDeltas(_: NSButton) {
+    @IBAction func clearDeltas(_: NSButton?) {
         calibrationController.clearDeltas()
     }
 }

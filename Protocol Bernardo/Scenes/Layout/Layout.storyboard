@@ -15,7 +15,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="362" width="715" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
                         <toolbar key="toolbar" implicitIdentifier="C3B9D10F-46E5-496D-81D9-D278C68AD498" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="tXY-XX-Yem">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="7gh-VI-viI"/>
@@ -184,6 +184,9 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" usesAppearanceFont="YES"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="openDevices:" target="z0f-Va-BWi" id="1dK-t2-16Y"/>
+                                                    </connections>
                                                 </button>
                                             </viewController>
                                             <size key="designTimeSize" width="90" height="30"/>
@@ -215,6 +218,9 @@
                                                             <segment label="Update" width="82" tag="1"/>
                                                         </segments>
                                                     </segmentedCell>
+                                                    <connections>
+                                                        <action selector="setDeviceDeltas:" target="z0f-Va-BWi" id="eXs-r8-bUI"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </viewController>
                                             <size key="designTimeSize" width="168" height="30"/>
@@ -348,7 +354,7 @@ Gw
                         <tabViewItem id="1UG-RG-vFL"/>
                         <tabViewItem id="wwV-jo-sXX"/>
                     </tabViewItems>
-                    <viewControllerTransitionOptions key="transitionOptions" crossfade="YES" slideLeft="YES" slideForward="YES"/>
+                    <viewControllerTransitionOptions key="transitionOptions" crossfade="YES"/>
                     <tabView key="tabView" drawsBackground="NO" allowsTruncatedLabels="NO" type="noTabsNoBorder" id="nfM-YW-GOn">
                         <rect key="frame" x="0.0" y="0.0" width="252" height="693"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2245,12 +2251,12 @@ Gw
                             </textField>
                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lkb-XH-Bbh">
                                 <rect key="frame" x="18" y="640" width="146" height="25"/>
-                                <popUpButtonCell key="cell" type="push" title="Tracking Session" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="dNC-Tq-nbB" id="YmW-Cu-7Mv">
+                                <popUpButtonCell key="cell" type="push" title="Tracking Session" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="dNC-Tq-nbB" id="YmW-Cu-7Mv">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" autoenablesItems="NO" id="XXR-Mf-hry">
                                         <items>
-                                            <menuItem title="Tracking Session" enabled="NO" id="dNC-Tq-nbB"/>
+                                            <menuItem title="Tracking Session" state="on" enabled="NO" id="dNC-Tq-nbB"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>

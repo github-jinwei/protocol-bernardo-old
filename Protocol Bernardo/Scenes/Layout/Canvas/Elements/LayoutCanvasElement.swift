@@ -13,6 +13,7 @@ protocol LayoutCanvasElement: AnyObject {
     /// The element delegate
     var delegate: LayoutCanvasElementDelegate! { get set }
 
+
     // /////////////////
     // MARK: - Selection
 
@@ -33,6 +34,7 @@ protocol LayoutCanvasElement: AnyObject {
     /// - Parameter appearance: The element appearance value
     func set(appearance: LayoutCanvasElementAppearance)
 
+
     // ////////////////////
     // MARK: - User actions
     
@@ -46,6 +48,7 @@ protocol LayoutCanvasElement: AnyObject {
     /// - Parameter event:
     func mouseDragged(with event: NSEvent)
 
+    
     // /////////////////////////
     // MARK: - Internal methods
 

@@ -27,10 +27,7 @@ class LayoutCalibrationProfile: Codable {
         }
     }
     
-    /// Keys to encode when converting the profile to JSON
-    ///
-    /// - name: _
-    /// - calibratedDevices: _
+    /// Keys to encode when converting the profile to and from JSON
     private enum CodingKeys: String, CodingKey {
         case name
         case calibratedDevices
@@ -41,6 +38,7 @@ class LayoutCalibrationProfile: Codable {
     }
 }
 
+// MARK: - Managing devices profiles
 extension LayoutCalibrationProfile {
     /// Insert a new device in the profile, with the given layout device uuid
     ///
@@ -57,7 +55,7 @@ extension LayoutCalibrationProfile {
 }
 
 
-// MARK: - Accessing devices' profiles
+// MARK: - Accessing devices profiles
 extension LayoutCalibrationProfile {
     /// Gives the corresponding profile for the given device serial
     ///

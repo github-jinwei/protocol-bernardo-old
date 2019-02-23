@@ -35,15 +35,10 @@ class UsersEngine {
         // Start by making ourselves an observer of the DAE
         App.dae.addObsever(self)
     }
-    
-    
-    deinit {
-        App.dae.removeObserver(self)
-    }
 }
 
+// MARK: - DataAcquisitionEngineObserver
 extension UsersEngine: DataAcquisitionEngineObserver {
-
     func dae(_: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
         guard let profile = profile else { return }
 

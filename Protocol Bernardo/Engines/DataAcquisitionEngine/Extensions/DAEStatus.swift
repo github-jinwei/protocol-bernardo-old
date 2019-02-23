@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// Represent the current state of the C++ DAE
+///
+/// You should not use this structure directly as it is converted to `ConnectedDevices` upon
+/// receiving.
 extension DAEStatus {
     /// List of all the devices in a Swift friendly format
     func copyAndDeallocate() -> [Serial: PhysicalDevice] {

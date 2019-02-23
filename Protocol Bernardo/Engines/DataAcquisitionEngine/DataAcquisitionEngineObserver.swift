@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// The Data Acquisition Engine Observer protocol to implement
-/// to be able to receive events from the engine
+/// The Data Acquisition Engine Observer should be used
+/// to be able to receive events from the DAE
 protocol DataAcquisitionEngineObserver: AnyObject {
     /// Called when the main state of the DAE changes
     ///

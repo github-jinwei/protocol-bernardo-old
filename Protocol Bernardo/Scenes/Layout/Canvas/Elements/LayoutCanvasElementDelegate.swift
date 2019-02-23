@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+/// Used by a canvas element to propagate its events and access properties of its
+/// parent canvas
 protocol LayoutCanvasElementDelegate: AnyObject {
     /// Tells the delegate that the element has changed
     ///

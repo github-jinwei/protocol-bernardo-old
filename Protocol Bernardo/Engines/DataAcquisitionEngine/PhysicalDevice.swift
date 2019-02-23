@@ -35,6 +35,7 @@ struct PhysicalDevice {
 }
 
 extension PhysicalDevice {
+    /// Returns all the physical users actively tracked by this device
     var trackedUsers: [PhysicalUser] {
         return users.filter { $0.state == USER_TRACKED }
     }

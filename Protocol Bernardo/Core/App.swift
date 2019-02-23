@@ -8,6 +8,8 @@
 
 import AppKit
 
+/// The app struct is made to be used globaly to access various entity
+/// needed by different parts of the application
 struct App {
     /// The application core, handling the scenes
     static let core = Core()
@@ -21,5 +23,6 @@ struct App {
     /// The Users Engine is used to store and access tracked users
     static let usersEngine = UsersEngine()
 
+    /// The document controller used by the various documents engines
     static let documentsController = NSDocumentController()
 }

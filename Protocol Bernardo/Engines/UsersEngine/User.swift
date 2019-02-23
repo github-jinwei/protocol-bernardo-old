@@ -33,11 +33,18 @@ class User {
     var physicsHistory: [PhysicalUser] = []
 }
 
+// MARK: - Accessing user physics
 extension User {
+    /// Give the first physic in the physics history of this user.
+    ///
+    /// This value is NOT the first tracked physic of the user if the number of physics
+    /// updates for this user is greater than the history size specified by the `UsersEngine.delegate`
     var firstPhysic: PhysicalUser {
         return physicsHistory.first!
     }
 
+    /// The latest physic tracked for this user. If the user is acrtively tracked, this
+    /// represent its current position
     var latestPhysic: PhysicalUser {
         return physicsHistory.last!
     }
@@ -57,6 +64,7 @@ extension User {
     }
 }
 
+// MARK: - Calculations
 extension User {
     /// Calculate the merged position and skeleton on the global coordinate system,
     /// and add it to the history of physics assumed by the user.

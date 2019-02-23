@@ -86,11 +86,11 @@ extension LayoutController: LayoutWindowDelegate {
         let tabViewController = sidebarTabViewItem.viewController as! NSTabViewController
 
         // Adjust the transition animation
-        if tabViewController.selectedTabViewItemIndex < interfaceMode.rawValue {
-            tabViewController.transitionOptions = .slideForward
-        } else {
-            tabViewController.transitionOptions = .slideBackward
-        }
+//        if tabViewController.selectedTabViewItemIndex < interfaceMode.rawValue {
+//            tabViewController.transitionOptions = .slideForward
+//        } else {
+//            tabViewController.transitionOptions = .slideBackward
+//        }
 
         // Change the sidebar
         tabViewController.selectedTabViewItemIndex = interfaceMode.rawValue
@@ -128,6 +128,22 @@ extension LayoutController: LayoutWindowDelegate {
 
     func createNewLine(_: LayoutWindowController) {
         canvas.createLine()
+    }
+
+    func clearDeviceDeltas(_: LayoutWindowController) {
+        guard let sidebar = sidebar as? LayoutSidebarCalibration else {
+            return
+        }
+
+        sidebar.clearDeltas(nil)
+    }
+
+    func updateDeviceDeltas(_: LayoutWindowController) {
+        guard let sidebar = sidebar as? LayoutSidebarCalibration else {
+            return
+        }
+
+        sidebar.storeDeltas(nil)
     }
 }
 

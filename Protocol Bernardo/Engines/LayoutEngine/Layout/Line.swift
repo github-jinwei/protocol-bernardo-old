@@ -21,10 +21,10 @@ class Line: Codable {
     
     /// The line's orientation (in degrees)
     var orientation: Double = 0.0
-}
 
-
-extension Line {
+    /// Convenient init used to duplicate a line
+    ///
+    /// - Parameter device: An existing line to use as source
     convenience init(from line: Line) {
         self.init()
         

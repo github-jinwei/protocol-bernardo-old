@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// The users engine delegate receive update on users tracking and responds to
+/// behavior queries from the UsersEngine
 protocol UsersEngineDelegate: AnyObject {
     /// Tells the delegate the engine has started tracking a new user
     ///

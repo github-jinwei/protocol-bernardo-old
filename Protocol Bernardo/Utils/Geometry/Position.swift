@@ -10,11 +10,14 @@ import Foundation
 import simd
 
 
+/// Represent a 2D position on an acquisition device "screen" and 3D position on
+/// the same device world space.
+///
+/// When a position has been transformed to the global space, its 2D coordinates becomes meaningless
 extension Position {
-    var properties: [Float] {
-        return [x, y, z, x2D, y2D]
-    }
-
+    /// Creates a Position using a list of properties following the `properties` format
+    ///
+    /// - Parameter properties: The Position properties
     init(properties: [Float]) {
         self.init()
         
@@ -24,10 +27,15 @@ extension Position {
         self.x2D = properties[3]
         self.y2D = properties[3]
     }
+
+    /// All the properties in this position as [x, y, z, x2D, y2D]
+    @inlinable var properties: [Float] {
+        return [x, y, z, x2D, y2D]
+    }
 }
 
+// MARK: - Operators
 extension Position {
-
     /// Addition operator overload
     /// Adds the properties of the left component by the corresponding ones
     /// on the right components
@@ -111,7 +119,10 @@ extension Position {
         
         return pos
     }
-    
+}
+
+// MARK: - Geometry
+extension Position {
     /// Gives the angle betwee the current position as a vector, and the given one as a vector
     ///
     /// - Parameter position: _

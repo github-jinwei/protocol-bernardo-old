@@ -17,7 +17,7 @@ import Repeat
 /// constructors.
 ///
 /// The Data Acquisition Engine receive the tracking informations from the devices,
-/// and gives it to its observers using the `dae(_:devicesStatusUpdated:)` method
+/// and gives it to its observers using the `DataAcquisitionEngineObserver.dae(_:, devicesStatusUpdated:)` method
 ///
 /// The current support of the kinect on Mac, as well as NiTE2 for skeleton tracking,
 /// is quite instable. Some actions like connecting to a device needs to be done on the main thread
@@ -196,8 +196,8 @@ class DataAcquisitionEngine {
         DAEEndAcquisition()
     }
 
+    /// Closes the DAE drivers on closing if needed
     deinit {
         end()
     }
-
 }

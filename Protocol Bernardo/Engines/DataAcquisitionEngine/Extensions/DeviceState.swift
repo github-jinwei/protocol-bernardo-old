@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Current state of a device
 extension DeviceState {
     /// English label for the current value
     var label: String {

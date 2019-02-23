@@ -14,6 +14,7 @@ class LayoutCanvasDevice: SKNode {
     /// The device this node is representing
     weak var device: Device!
     
+    /// The device delegate
     weak var delegate: LayoutCanvasElementDelegate!
     
     // ////////////////////////////////

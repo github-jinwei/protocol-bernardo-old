@@ -114,8 +114,6 @@ extension LayoutCanvasLine: LayoutCanvasElement {
     func deleteActions() {
         removeAllChildren()
         removeFromParent()
-
-        delegate.elementWillBeRemoved(self)
     }
 }
 

@@ -37,9 +37,10 @@ class Device: Codable {
     
     /// The device's height
     var height: Double = 60.0
-}
-
-extension Device {
+    
+    /// Convenient init used to duplicate a device
+    ///
+    /// - Parameter device: An existing device to use as source
     convenience init(from device: Device) {
         self.init()
         

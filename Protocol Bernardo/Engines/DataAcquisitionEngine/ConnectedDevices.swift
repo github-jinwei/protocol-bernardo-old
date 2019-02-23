@@ -38,13 +38,10 @@ class ConnectedDevices {
     func setDevices(_ devices: [Serial: PhysicalDevice]) {
         _devices = devices
     }
-
 }
-
 
 // MARK: - Access Methods
 extension ConnectedDevices {
-
     /// Return the connected device with the matching serial
     ///
     /// Returns nil if there is no matching device
@@ -58,5 +55,4 @@ extension ConnectedDevices {
 
         return devices.first(where: { $0.key == serial })?.value
     }
-
 }

@@ -32,16 +32,12 @@ class LayoutWindowController: NSWindowController {
     /// The add layout elements buttons on the touchbar
     @IBOutlet weak var touchbarAddElementButtons: NSSegmentedControl!
 
-    @IBOutlet var touchbarSidebarElement: NSTouchBarItem?
-
-    @IBOutlet var editSidebarTouchbarItem: NSGroupTouchBarItem!
-
     /// List of available items for this touchbar
     ///
-    /// - layoutConfigurationPopover: <#layoutConfigurationPopover description#>
-    /// - toggleSidebarButton: <#toggleSidebarButton description#>
-    /// - editConfigurationItems: <#editConfigurationItems description#>
-    /// - calibrateConfiguration: <#calibrateConfiguration description#>
+    /// - layoutConfigurationPopover: Layout configuration switcher
+    /// - toggleSidebarButton: Sidebar toggle button
+    /// - editConfigurationItems: Edit configuration's items
+    /// - calibrateConfiguration: Calibrate configuration's items
     enum TouchbarItemsIdentifier: String {
         case layoutConfigurationPopover
         case toggleSidebarButton
@@ -153,6 +149,18 @@ class LayoutWindowController: NSWindowController {
         switch sender.selectedSegment {
         case 0: delegate?.createNewDevice(self)
         case 1: delegate?.createNewLine(self)
+        default: return
+        }
+    }
+
+    @IBAction func openDevices(_ sender: Any) {
+        App.core.showDevicesWindow()
+    }
+
+    @IBAction func setDeviceDeltas(_ sender: NSSegmentedControl) {
+        switch sender.selectedSegment {
+        case 0: delegate?.clearDeviceDeltas(self)
+        case 1: delegate?.updateDeviceDeltas(self)
         default: return
         }
     }

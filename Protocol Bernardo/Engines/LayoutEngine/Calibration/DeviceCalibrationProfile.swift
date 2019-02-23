@@ -67,7 +67,8 @@ class DeviceCalibrationProfile: Codable {
     
     /// Reference to the layout document, used to get the calibrated position for the device
     weak var document: LayoutDocument?
-    
+
+    /// Keys to encode when converting the profile to and from JSON
     private enum CodingKeys: String, CodingKey {
         case layoutDeviceUUID
         case physicalDeviceSerial

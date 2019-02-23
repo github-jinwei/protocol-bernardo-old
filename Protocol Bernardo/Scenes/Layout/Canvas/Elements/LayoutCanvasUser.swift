@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+/// Represent a tracked user on the canvas
 class LayoutCanvasUser: SKShapeNode {
     convenience init(user: User) {
         self.init(circleOfRadius: 10)

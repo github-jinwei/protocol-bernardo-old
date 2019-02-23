@@ -7,10 +7,31 @@
 //
 
 import Foundation
+
+/// A Skeleton, as tracked by NiTE2, is composed of 15 joints, each defined by their position
+/// in the 2D and 3d position in the space of the acquisition device, and a Quaternion for each
+/// joint orientation to its next counterpart, relative to its parent joint.
+extension Skeleton {
+    /// Takes a list of properties and a list of confidences and builds the skeleton with them.
+    ///
+    /// - Parameters:
+    ///     - properties: List of properties respecting the `allProperties` format
+    ///     - confidences: List of confidences respecting the `allConfidences` format
+    init(properties: [Float], confidences: [Float]) {
+        self.init()
+
+        for i in stride(from: 0, to: properties.count, by: 9) {
+            self[SkeletonJoint.allCases[i]] = Joint(properties: Array(properties[(i*9)..<((i+1)*9)]),
+                                                    confidences: Array(confidences[(i*9)..<((i+1)*9)]))
+        }
+    }
+}
+
+// MARK: - Accessing the joints
 extension Skeleton {
     /// Subscript operator for reading and writing the skeleton joints
     ///
-    /// - Parameter joint: <#joint description#>
+    /// - Parameter joint: The joint to access
     subscript(joint: SkeletonJoint) -> Joint {
         get {
             switch joint {
@@ -53,7 +74,7 @@ extension Skeleton {
     }
 }
 
-
+// MARK: - Accessing the properties
 extension Skeleton {
     /// Number of values in the allProperties and allConfidences arrays
     static var propertiesCount: Int {
@@ -62,40 +83,31 @@ extension Skeleton {
 
     /// All the float properties in the skeleton
     ///
-    /// [Joint[Position[xyzX2dU2d], Orientation[xyzw]]*9]
+    /// [Joint[ Position[ x y z X2d Y2d ], Orientation[ x y z w ] ] * 9]
     ///
     /// - Parameter profile: The device calibration profile
     /// - Returns: An array with all the properties of the skeleton
     func allProperties(usingProfile profile: DeviceCalibrationProfile) -> [Float] {
         var properties = [Float]()
         for joint in SkeletonJoint.allCases {
-            properties.append(contentsOf: self[joint].properties(usingProfile: profile))
+            properties.append(contentsOf: self[joint].allproperties(usingProfile: profile))
         }
 
         return properties
     }
 
-    /// All the float confidences in the skeleton
+    /// All the float confidences for each propety in the skeleton
     ///
-    /// [PositionConfidence*5, OrientationConfidence*4]
+    /// [PositionConfidence * 5, OrientationConfidence * 4]
     ///
     /// - Parameter profile: The device calibration profile
     /// - Returns: An array with all the properties of the skeleton
     var allConfidences: [Float] {
         var confidences = [Float]()
         for joint in SkeletonJoint.allCases {
-            confidences.append(contentsOf: self[joint].confidences)
+            confidences.append(contentsOf: self[joint].allConfidences)
         }
 
         return confidences
-    }
-
-    init(properties: [Float], confidences: [Float]) {
-        self.init()
-        
-        for i in stride(from: 0, to: properties.count, by: 9) {
-            self[SkeletonJoint.allCases[i]] = Joint(properties: Array(properties[(i*9)..<((i+1)*9)]),
-                                                    confidences: Array(confidences[(i*9)..<((i+1)*9)]))
-        }
     }
 }
