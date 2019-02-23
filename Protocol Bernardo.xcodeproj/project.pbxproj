@@ -74,6 +74,8 @@
 		397195C62200D38000F92C5C /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397195C52200D38000F92C5C /* Keycode.swift */; };
 		39757D9B2220706100FF6D57 /* UsersEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39757D9A2220706100FF6D57 /* UsersEngineDelegate.swift */; };
 		39757D9D2220902400FF6D57 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39757D9C2220902400FF6D57 /* Accelerate.framework */; };
+		39757DA022209F1800FF6D57 /* TrackingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39757D9F22209F1800FF6D57 /* TrackingSession.swift */; };
+		39757DA52221B66900FF6D57 /* .jazzy.json in Resources */ = {isa = PBXBuildFile; fileRef = 39757DA42221B66900FF6D57 /* .jazzy.json */; };
 		397B648821FD323400A71E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCC21F4285200628070 /* Assets.xcassets */; };
 		397B648A21FD324B00A71E58 /* Pods_Protocol_Bernardo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */; };
 		397B648D21FD327600A71E58 /* NiTE2 in Copy OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 397B648421FD322700A71E58 /* NiTE2 */; };
@@ -270,6 +272,8 @@
 		397195C52200D38000F92C5C /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
 		39757D9A2220706100FF6D57 /* UsersEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEngineDelegate.swift; sourceTree = "<group>"; };
 		39757D9C2220902400FF6D57 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		39757D9F22209F1800FF6D57 /* TrackingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSession.swift; sourceTree = "<group>"; };
+		39757DA42221B66900FF6D57 /* .jazzy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .jazzy.json; sourceTree = "<group>"; };
 		397B63EC21FD2AE000A71E58 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		397B645021FD321800A71E58 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI2.dylib; sourceTree = "<group>"; };
 		397B645121FD321800A71E58 /* OpenNI.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OpenNI.ini; sourceTree = "<group>"; };
@@ -509,6 +513,7 @@
 		393B1ECB2204DCA800BC54D3 /* LayoutEngine */ = {
 			isa = PBXGroup;
 			children = (
+				39757D9E22209EB800FF6D57 /* Tracking */,
 				3997742A220B91C000ED4B93 /* Calibration */,
 				393B1ECC2204DCD700BC54D3 /* Layout */,
 				393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */,
@@ -540,6 +545,7 @@
 		396DDFBC21F4285000628070 = {
 			isa = PBXGroup;
 			children = (
+				39757DA42221B66900FF6D57 /* .jazzy.json */,
 				397E685C21FE57D700FFA678 /* README.md */,
 				396DDFC721F4285000628070 /* Protocol Bernardo */,
 				396DDFC621F4285000628070 /* Products */,
@@ -592,10 +598,10 @@
 		396DDFF421F4340B00628070 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				39757DA62221BA9100FF6D57 /* Geometry */,
 				396DDFF521F4341A00628070 /* Extensions */,
 				397195C52200D38000F92C5C /* Keycode.swift */,
 				39B5575F220008430021BFDA /* maths.swift */,
-				39977434220B961B00ED4B93 /* Point.swift */,
 				396CF35722110EC10049E091 /* Queue.swift */,
 				392183CC22138C5E000D5968 /* Typealias.swift */,
 			);
@@ -605,14 +611,42 @@
 		396DDFF521F4341A00628070 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				39977436220B977800ED4B93 /* CGPoint.swift */,
 				397195C3220022F800F92C5C /* Comparable.swift */,
 				39B5576122000FC70021BFDA /* NSColor.swift */,
 				397E685A21FE50E600FFA678 /* NSNib.swift */,
 				39E3121121F6F1C5006569F1 /* String.swift */,
-				39379A0D220FA220004C3815 /* Position.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		39757D9E22209EB800FF6D57 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				39757D9F22209F1800FF6D57 /* TrackingSession.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
+		39757DA62221BA9100FF6D57 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				39977434220B961B00ED4B93 /* Point.swift */,
+				39379A0D220FA220004C3815 /* Position.swift */,
+				39977436220B977800ED4B93 /* CGPoint.swift */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		39757DA72221BC1A00FF6D57 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				39A1E70D21FE7892003162FE /* LayoutCanvasElement.swift */,
+				39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */,
+				39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */,
+				39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */,
+				39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		397B644F21FD321800A71E58 /* Libs */ = {
@@ -694,16 +728,12 @@
 		39A1E70C21FE7871003162FE /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
+				39757DA72221BC1A00FF6D57 /* Elements */,
 				39A1E71721FEC08C003162FE /* LayoutCanvas.sks */,
 				39A1E70821FE6C3D003162FE /* LayoutCanvas.swift */,
 				39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */,
 				39A1E71521FE7A7A003162FE /* LayoutCanvasDevice.swift */,
-				39A1E70D21FE7892003162FE /* LayoutCanvasElement.swift */,
-				39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */,
-				39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */,
-				39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */,
 				397195C12200219000F92C5C /* LayoutCanvasView.swift */,
-				39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -723,10 +753,10 @@
 		39C1E904220A1F3B00F53AC2 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				39967345221E3C20003A75A6 /* Tracking */,
 				39977425220B7E4500ED4B93 /* Calibration */,
 				39C1E905220A1FF800F53AC2 /* Edition */,
 				39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */,
+				39967345221E3C20003A75A6 /* Tracking */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -823,8 +853,9 @@
 				397B649E21FE341C00A71E58 /* Change Embedded Libraries Paths */,
 				3983D9CE21F8FF8100C49CEF /* Copy OpenNI/NiTE Files */,
 				3968FCC521FB5829005EAA4C /* Copy NiTE Files */,
-				39F0BE682213C6E5001AA7AE /* Tailor */,
-				39967342221DFF7E003A75A6 /* Periphery */,
+				39F0BE682213C6E5001AA7AE /* [Analysis] Tailor */,
+				39967342221DFF7E003A75A6 /* [Analysis]  Periphery */,
+				39757DA12221B5FC00FF6D57 /* [Analysis] Jazzy */,
 			);
 			buildRules = (
 			);
@@ -889,6 +920,7 @@
 				397B648821FD323400A71E58 /* Assets.xcassets in Resources */,
 				3915BFA52219EFF500E80ABE /* Core.storyboard in Resources */,
 				3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */,
+				39757DA52221B66900FF6D57 /* .jazzy.json in Resources */,
 				39A1E70321FE67FE003162FE /* Layout.storyboard in Resources */,
 				396DDFD021F4285200628070 /* WelcomeWindow.storyboard in Resources */,
 				390D0DB721F502170032CA23 /* DevicesWindow.storyboard in Resources */,
@@ -923,6 +955,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		39757DA12221B5FC00FF6D57 /* [Analysis] Jazzy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Analysis] Jazzy";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\n    jazzy --config \".jazzy.json\"\nfi\n";
+		};
 		397B649E21FE341C00A71E58 /* Change Embedded Libraries Paths */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -941,7 +991,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#NiTE\nLIBNITE=libNiTE2.dylib\ninstall_name_tool -change /usr/local/lib/$LIBNITE @executable_path/../Frameworks/$LIBNITE  \"$BUILT_PRODUCTS_DIR/$EXECUTABLE_PATH\"\n\n#OpenNi\nLIBOPENNI=libOpenNI2.dylib\ninstall_name_tool -change /usr/local/lib/ni2/$LIBOPENNI @executable_path/../Frameworks/$LIBOPENNI  \"$BUILT_PRODUCTS_DIR/$EXECUTABLE_PATH\"\n";
 		};
-		39967342221DFF7E003A75A6 /* Periphery */ = {
+		39967342221DFF7E003A75A6 /* [Analysis]  Periphery */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -950,7 +1000,7 @@
 			);
 			inputPaths = (
 			);
-			name = Periphery;
+			name = "[Analysis]  Periphery";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -959,7 +1009,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\nperiphery scan --workspace Protocol\\ Bernardo.xcworkspace --schemes Protocol\\ Bernardo --targets \"Protocol Bernardo\" --format xcode\nfi\n";
 		};
-		39F0BE682213C6E5001AA7AE /* Tailor */ = {
+		39F0BE682213C6E5001AA7AE /* [Analysis] Tailor */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -968,7 +1018,7 @@
 			);
 			inputPaths = (
 			);
-			name = Tailor;
+			name = "[Analysis] Tailor";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1028,6 +1078,7 @@
 				39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */,
 				39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */,
 				39684DF22214A1B2006E4B37 /* LayoutInterfaceMode.swift in Sources */,
+				39757DA022209F1800FF6D57 /* TrackingSession.swift in Sources */,
 				39A1E70521FE67FE003162FE /* LayoutController.swift in Sources */,
 				39A1E70B21FE77A3003162FE /* Layout.swift in Sources */,
 				39A1E70921FE6C3D003162FE /* LayoutCanvas.swift in Sources */,

@@ -74,6 +74,9 @@ extension LayoutDocument {
                 let calibrationData = wrapper.regularFileContents!
                 let calibrationProfile = try! JSONDecoder().decode([LayoutCalibrationProfile].self, from: calibrationData)[0]
                 calibrationsProfiles[name.fileNameWithoutExtension] = calibrationProfile
+
+            case "pbtrackingsession":
+                break
                 
             // Unknown file extension, ignore
             default: return

@@ -6,23 +6,22 @@
 //
 //  Using the "Two-Lock Concurrent Queue Algorithm" from http://www.cs.rochester.edu/research/synchronization/pseudocode/queues.html#tlq, without the locks.
 
-
-// should be an inner class of Queue, but inner classes and generics crash the compiler, SourceKit (repeatedly) and occasionally XCode.
-private class QueueItem<T> {
-    let value: T!
-    var next: QueueItem?
-    
-    init(_ newvalue: T?) {
-        self.value = newvalue
-    }
-}
-
 ///
 /// A standard queue (FIFO - First In First Out). Supports simultaneous adding and removing, but only one item can be added at a time, and only one item can be removed at a time.
 ///
 public class Queue<T> {
     
     public typealias Element = T
+
+    // should be an inner class of Queue, but inner classes and generics crash the compiler, SourceKit (repeatedly) and occasionally XCode.
+    private class QueueItem<T> {
+        let value: T!
+        var next: QueueItem?
+
+        init(_ newvalue: T?) {
+            self.value = newvalue
+        }
+    }
     
     private var _front: QueueItem<Element>
     private var _back: QueueItem<Element>

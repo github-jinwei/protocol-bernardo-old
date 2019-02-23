@@ -234,5 +234,4 @@ extension UsersEngine {
         
         return foundUsers.count > 0 ? foundUsers[0] : nil
     }
-    
 }

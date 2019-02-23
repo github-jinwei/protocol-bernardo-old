@@ -1,0 +1,130 @@
+{
+    "clean": true,
+    "sdk": "macosx",
+    "readme": "README.md",
+    "github_url": "https://github.com/boisier/protocol-bernardo",
+    "umbrella_header": "Protocol Bernardo/Protocol Bernardo-Bridging-Header.h",
+    "min_acl": "private",
+    "theme": "apple",
+    "use_safe_filenames": true,
+    "undocumented_text": "",
+    "custom_categories": [{
+        "name": "Core",
+        "children": [
+            "App",
+            "AppDelegate",
+            "Core",
+            "MainMenu"
+        ]
+    }, {
+        "name": "Welcome Scene",
+        "children": [
+            "WelcomeWindow"
+        ]
+    }, {
+        "name": "Devices Window",
+        "children": [
+            "DevicesWindow",
+            "PBDeviceDetails",
+            "PBDeviceDetailsPopover",
+            "PBDeviceRow",
+            "PBDevicesStartupSheet",
+            "PBMachineDevicesList",
+            "PBTrackedUserDetailsExcerpt"
+        ]
+    }, {
+        "name": "Layout Window",
+        "children": [
+            "LayoutController",
+            "LayoutInterfaceMode",
+            "LayoutTouchbar",
+            "LayoutWindowController",
+            "LayoutWindowDelegate",
+            "NewCalibrationProfilePanel",
+            "LayoutCanvas",
+            "LayoutCanvasDelegate",
+            "LayoutCanvasDevice",
+            "LayoutCanvasElement",
+            "LayoutCanvasElementAppearance",
+            "LayoutCanvasElementDelegate",
+            "LayoutCanvasLine",
+            "LayoutCanvasUser",
+            "LayoutCanvasView",
+            "LayoutSidebar",
+            "LayoutSidebarEdition",
+            "PBLayoutCanvasDevicePropertiesController",
+            "PBLayoutCanvasLinePropertiesController",
+            "LayoutSidebarCalibration",
+            "CalibrationController",
+            "CalibrationControllerDelegate",
+            "CalibrationDeltasCalculator",
+            "PBCalibrationLiveDeltas",
+            "LayoutSidebarTracking"
+        ]
+    }, {
+        "name": "Data Acquisition Engine",
+        "children": [
+            "DataAcquisitionEngine",
+            "DataAcquisitionEngineObserver",
+            "ConnectedDevices",
+            "PhysicalDevice",
+            "DAEDeviceStatus",
+            "DAEStatus",
+            "DeviceState",
+            "Serial"
+        ]
+    }, {
+        "name": "Layout Engine",
+        "children": [
+            "LayoutEngine",
+            "LayoutDocument",
+            "Layout",
+            "Device",
+            "Line",
+            "LayoutCalibrationProfile",
+            "DeviceCalibrationProfile",
+            "CalibrationDeltas",
+            "TrackingSession"
+        ]
+    }, {
+        "name": "Users Engine",
+        "children": [
+            "UsersEngine",
+            "UsersEngineDelegate",
+            "User",
+            "Skeleton",
+            "Skeleton",
+            "SkeletonJoint",
+            "Quaternion",
+            "Joint"
+        ]
+    }, {
+        "name": "Geometry",
+        "children": [
+            "CGPoint",
+            "Point",
+            "Position"
+        ]
+    }, {
+        "name": "Utils",
+        "children": [
+            "Keycode",
+            "Queue",
+            "QueueItem"
+        ]
+    }, {
+        "name": "Extensions",
+        "children": [
+            "Comparable",
+            "NSColor",
+            "NSNib",
+            "String"
+        ]
+    }, {
+        "name": "Maths",
+        "children": [
+            "deg2rad(_:)",
+            "rad2deg(_:)"
+        ]
+    }]
+}

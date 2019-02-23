@@ -13,10 +13,10 @@
                 <windowController storyboardIdentifier="welcomeWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" identifier="welcomeWindow" title="Welcome to Protocol Bernardo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA" userLabel="Protocol Bernardo">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
-                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
                         <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="727" y="511" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
