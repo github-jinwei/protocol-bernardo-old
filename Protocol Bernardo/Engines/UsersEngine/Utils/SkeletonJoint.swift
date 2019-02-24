@@ -8,47 +8,47 @@
 
 /// All the joints composing a skeleton as tracked by NiTE2
 enum SkeletonJoint: String, CaseIterable {
-    /// Head joint
-    case head
+    /// Torse joint
+    case torso
 
     /// Neck joint
     case neck
 
+    /// Head joint
+    case head
+
     /// Left shoulder joint
     case leftShoulder
-
-    /// right shoulder joint
-    case rightShoulder
 
     /// left Elbow joint
     case leftElbow
 
-    /// right elbow joint
-    case rightElbow
-
     /// left hand joint
     case leftHand
+
+    /// right shoulder joint
+    case rightShoulder
+
+    /// right elbow joint
+    case rightElbow
 
     /// Right hand joint
     case rightHand
 
-    /// Torse joint
-    case torso
-
     /// Left hip joint
     case leftHip
-
-    /// Right hip joint
-    case rightHip
 
     /// Left knee joint
     case leftKnee
 
-    /// Right knee joint
-    case rightKnee
-
     /// Left foot joint
     case leftFoot
+
+    /// Right hip joint
+    case rightHip
+
+    /// Right knee joint
+    case rightKnee
 
     /// Right foot joints
     case rightFoot
