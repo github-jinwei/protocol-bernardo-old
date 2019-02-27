@@ -262,7 +262,7 @@ extension LayoutCanvas: SKSceneDelegate {
         usersLayer.removeAllChildren()
         
         // For all actively tracked users
-        App.usersEngine.allUsers.forEach { user in
+        for user in App.usersEngine.allUsers {
             // Create a node for it
             let userNode = LayoutCanvasUser(user: user)
             

@@ -110,4 +110,14 @@ extension Skeleton {
 
         return confidences
     }
+
+    func jointsOrientation() -> [Float] {
+        var orientations = [Float]()
+
+        for joint in SkeletonJoint.allCases {
+            orientations.append(contentsOf: self[joint].orientation.properties)
+        }
+
+        return orientations
+    }
 }

@@ -242,9 +242,6 @@ extension LayoutWindowController: NSWindowDelegate {
         layoutDocument.canClose(withDelegate: self,
                                 shouldClose: #selector(document(doc:shouldClose:contextInfo:)),
                                 contextInfo: nil)
-
-
-
         return false
     }
 }

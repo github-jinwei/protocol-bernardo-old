@@ -103,7 +103,10 @@ extension LayoutController: LayoutWindowDelegate {
             let sidebar = (self.sidebar as! LayoutSidebarCalibration)
             sidebar.document = layoutDocument
             sidebar.profile = calibrationProfile
-        case .tracking: break;
+        case .tracking:
+            let sidebar = (self.sidebar as! LayoutSidebarTracking)
+            sidebar.document = layoutDocument
+            sidebar.profile = calibrationProfile
         }
 
         canvas.isEditable = interfaceMode == .edition

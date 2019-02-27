@@ -52,6 +52,10 @@ class DataAcquisitionEngine {
     // ////////////////
     // MARK: - Properties
 
+    var refreshRate: UInt {
+        return 30
+    }
+
     /// Holds the loop for the status fetcher
     private var statusFetcherLoop: Repeater?
 
@@ -112,7 +116,11 @@ class DataAcquisitionEngine {
         }
 
         // Start a loop to query the CPP DAE status regularly
-        statusFetcherLoop = Repeater(interval: .milliseconds(100), mode: .infinite, tolerance: .milliseconds(100), queue: DispatchQueue.global(qos: .utility), observer: self.fetchStatus)
+        statusFetcherLoop = Repeater(interval: .milliseconds(Int(10000 / refreshRate)),
+                                     mode: .infinite,
+                                     tolerance: .milliseconds(Int(1000 / refreshRate)),
+                                     queue: DispatchQueue.global(qos: .utility),
+                                     observer: self.fetchStatus)
         statusFetcherLoop?.start()
     }
 
@@ -143,6 +151,7 @@ class DataAcquisitionEngine {
         // Free the memory
         statusPointer?.deallocate()
 
+        // Tell all the observes
         observers.forEach { $0.dae(self, devicesStatusUpdated: devices) }
     }
 

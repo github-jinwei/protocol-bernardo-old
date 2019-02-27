@@ -239,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					4AB84CAC5B415234606CA3B41DC96D20 = {
 						LastSwiftMigration = 1010;
@@ -318,7 +318,6 @@
 			baseConfigurationReference = 9BEE4C7B7A4B6969B4A05DE3366206CC /* Pods-Protocol Bernardo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -353,7 +352,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -388,7 +386,6 @@
 			baseConfigurationReference = 7169566C025EC7028573CF841D6F5A62 /* Pods-Protocol Bernardo.analyze.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -423,7 +420,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -457,7 +453,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 849A24E2BBD7BEC9B7AD462E9AD7F036 /* Repeat.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -556,7 +551,6 @@
 			baseConfigurationReference = 80D30B541C872FCBC83AFE2079D4025A /* Pods-Protocol Bernardo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

@@ -25,4 +25,11 @@ struct App {
 
     /// The document controller used by the various documents engines
     static let documentsController = NSDocumentController()
+
+    /// The utility queue running concurrently for background tasks.
+    ///
+    /// The queue as a QoS set as userInitiated.
+    static let utilityQueue = DispatchQueue(
+        label: "studio.prisme.pb.utilityQueue",
+        qos: DispatchQoS.userInitiated)
 }

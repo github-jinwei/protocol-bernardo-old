@@ -52,7 +52,7 @@ class PBDeviceDetails: NSViewController {
         var receivedIDs = [Int16]()
         
         // for each tracked user
-        users.forEach { user in
+        for user in users {
             receivedIDs.append(user.userID)
             
             guard let userView = userDetailsViews[user.userID] else {
@@ -68,7 +68,7 @@ class PBDeviceDetails: NSViewController {
         }
         
         // Remove users
-        userDetailsViews.forEach { userID, userView in
+        for (userID, userView) in userDetailsViews {
             if receivedIDs.contains(userID) {
                 // User is not missing, do nothing.
                 return

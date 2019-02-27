@@ -21,7 +21,7 @@ class LayoutCalibrationProfile: Codable {
     weak var document: LayoutDocument? {
         didSet {
             // Pass the reference to the layout document to each calibrated device
-            calibratedDevices.forEach { device in
+            for device in calibratedDevices {
                 device.document = document
             }
         }

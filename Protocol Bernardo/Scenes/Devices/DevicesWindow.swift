@@ -85,7 +85,7 @@ extension DevicesWindow {
     /// - Parameter status: The new status to generate from
     func reloadDevicesList(withDevices connectedDevices: ConnectedDevices) {
         // Remove previously added view
-        devicesList.views.forEach { machineView in
+        for machineView in  devicesList.views {
             (machineView as! PBMachineDevicesList).devicesList.views.forEach {
                 $0.removeFromSuperview()
             }

@@ -61,7 +61,6 @@ class LayoutCanvasLine: SKNode {
     var orientation: CGFloat = 0.0 {
         didSet {
             line.orientation = Double(orientation)
-            
             self.zRotation = deg2rad(orientation)
             
             // Tell the delegate
@@ -132,6 +131,7 @@ extension LayoutCanvasLine {
         self.weight = CGFloat(line.weight)
         self.position = CGPoint(line.position)
         self.orientation = CGFloat(line.orientation)
+        self.zRotation = deg2rad(orientation)
         
         // Set up the node
         isUserInteractionEnabled = false

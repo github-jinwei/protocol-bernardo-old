@@ -14,6 +14,9 @@ class User {
     /// Unique ID for this user
     var uuid = UUID().uuidString
 
+    /// The time this user has been created
+    var trackingStartTime = Date()
+
     /// The calibration profile this user will use to do coordinate calculations
     weak var calibrationProfile: LayoutCalibrationProfile?
     
@@ -91,7 +94,7 @@ extension User {
         }
 
         // Do the median position from all the tracking devices
-        trackedPhysics.forEach { serial, physic in
+        for (serial, physic) in trackedPhysics {
             // Get the user CoM in the global coordinaters system
             let gPos = profile.device(forSerial: serial)!.globalCoordinates(forPosition: physic.centerOfMass)
 

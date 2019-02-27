@@ -47,7 +47,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
             // Make sure this device is part of the calibration profile
             guard let deviceProfile = profile.device(forSerial: serial) else { continue }
 
-            device.users.forEach { physicalUser in
+            for physicalUser in device.users {
                 // Start by making sure this user is fully tracked
                 guard physicalUser.state == USER_TRACKED else {
                     removePhysicFromUserIfNeeded(serial: serial, userID: physicalUser.userID)
@@ -103,19 +103,35 @@ extension UsersEngine: DataAcquisitionEngineObserver {
             } else {
                 closest = closestUsers[0]
             }
+
             let distance = closest.position.distance(from: user.position)
 
             if distance < 150 {
                 // The two user are really close by, let's merge them
-                closest.trackedPhysics.forEach { serial, physic in
-                    user.devices[serial] = physic.userID
-                    user.trackedPhysics[serial] = physic
+                // We merge the yougest user in the oldest user.
+                // This is to ensure a human will have a unique valid User representation
+                // for the time it is being tracked.
+
+                let recipient, toMerge: User
+
+                if closest.trackingStartTime < user.trackingStartTime {
+                    // Merge the other user in the current one
+                    recipient = user
+                    toMerge = closest
+                } else {
+                    recipient = closest
+                    toMerge = user
+                }
+
+                for (serial, physic) in toMerge.trackedPhysics {
+                    recipient.devices[serial] = physic.userID
+                    recipient.trackedPhysics[serial] = physic
                 }
 
                 // Remove the closest user from the user array
-                users.removeAll { $0 === closest }
+                users.removeAll { $0 === toMerge }
 
-                delegate?.userEngine(self, mergedUser: closest, inUser: user)
+                delegate?.userEngine(self, mergedUser: toMerge, inUser: recipient)
             }
         }
     }

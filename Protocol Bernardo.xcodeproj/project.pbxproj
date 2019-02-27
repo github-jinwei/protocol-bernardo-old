@@ -137,6 +137,9 @@
 		39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */; };
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
 		39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */; };
+		39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */; };
+		39F5F58F2221ED780035B9C1 /* PBAFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58E2221ED780035B9C1 /* PBAFile.swift */; };
+		39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -326,6 +329,9 @@
 		39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEDeviceStatus.swift; sourceTree = "<group>"; };
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfilePanel.swift; sourceTree = "<group>"; };
+		39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedUser.swift; sourceTree = "<group>"; };
+		39F5F58E2221ED780035B9C1 /* PBAFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBAFile.swift; sourceTree = "<group>"; };
+		39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingSessionPanel.swift; sourceTree = "<group>"; };
 		55FCC8726FF73A9710F67B5A /* Pods-Protocol Bernardo.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.analyze.xcconfig"; sourceTree = "<group>"; };
 		8A3C96C47318A5A246F5A95A /* Pods-Protocol Bernardo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.debug.xcconfig"; sourceTree = "<group>"; };
 		E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -604,6 +610,7 @@
 				39B5575F220008430021BFDA /* maths.swift */,
 				396CF35722110EC10049E091 /* Queue.swift */,
 				392183CC22138C5E000D5968 /* Typealias.swift */,
+				39F5F58E2221ED780035B9C1 /* PBAFile.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -623,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				39757D9F22209F1800FF6D57 /* TrackingSession.swift */,
+				39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -683,6 +691,7 @@
 			isa = PBXGroup;
 			children = (
 				39967346221E3C30003A75A6 /* LayoutSidebarTracking.swift */,
+				39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */,
 			);
 			path = Tracking;
 			sourceTree = "<group>";
@@ -1071,6 +1080,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */,
+				39F5F58F2221ED780035B9C1 /* PBAFile.swift in Sources */,
 				390C265F21F66EFB00E7FEAE /* DevicesWindow.swift in Sources */,
 				393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */,
 				39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */,
@@ -1111,6 +1121,7 @@
 				39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */,
 				397195C22200219000F92C5C /* LayoutCanvasView.swift in Sources */,
 				396DDFCB21F4285000628070 /* WelcomeWindow.swift in Sources */,
+				39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */,
 				39264994221E72EC00C8ECBF /* LayoutTouchbar.swift in Sources */,
 				397195C4220022F800F92C5C /* Comparable.swift in Sources */,
 				39023F99221F5C21005E2C9F /* Quaternion.swift in Sources */,
@@ -1137,6 +1148,7 @@
 				39684DF02214A163006E4B37 /* LayoutWindowDelegate.swift in Sources */,
 				396D45742218A7F10018F95C /* DeviceState.swift in Sources */,
 				3915BFA32219E6C800E80ABE /* PBMachineDevicesList.swift in Sources */,
+				39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */,
 				39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */,
 				39977435220B961B00ED4B93 /* Point.swift in Sources */,
 				39B55760220008430021BFDA /* maths.swift in Sources */,
