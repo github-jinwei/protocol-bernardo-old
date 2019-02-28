@@ -92,12 +92,12 @@ class DataAcquisitionEngine {
         }
 
         if isLiveViewEnabled {
-            DAEDisableLiveView()
+            PAEDisableLiveView()
             isLiveViewEnabled = false
             return
         }
 
-        DAEEnableLiveView()
+        PAEEnableLiveView()
         isLiveViewEnabled = true
     }
     
@@ -112,7 +112,7 @@ class DataAcquisitionEngine {
 
         // Init the DAE on the CPP side on another thread
         DispatchQueue.global(qos: .userInitiated).async {
-            DAEPrepare()
+            PAEPrepare()
         }
 
         // Start a loop to query the CPP DAE status regularly
@@ -143,7 +143,7 @@ class DataAcquisitionEngine {
     /// Actually calls the dae to get and store its status
     internal func doFetchStatus() {
         // Get the engine status
-        let statusPointer = DAEGetStatus()
+        let statusPointer = PAEGetStatus()
 
         // Copy informations from the status pointer to our own struct
         devices.setDevices(statusPointer!.pointee.copyAndDeallocate())
@@ -177,14 +177,14 @@ class DataAcquisitionEngine {
     ///
     /// - Parameter deviceSerial: The serial of the device
     func connect(toDevice deviceSerial: Serial) {
-        DAEConnectToDevice(deviceSerial.CString())
+        PAEConnectToDevice(deviceSerial.CString())
     }
 
     /// Tries to activate the device and starte collecting data
     ///
     /// - Parameter deviceSerial: The serial of the device
     func activate(device deviceSerial: Serial) {
-        DAESetDeviceActive(deviceSerial.CString())
+        PAESetDeviceActive(deviceSerial.CString())
     }
 
     /// Pause data acquisition from the device. It still possible to resume it
@@ -192,7 +192,7 @@ class DataAcquisitionEngine {
     ///
     /// - Parameter deviceSerial: The device's serial
     func pause(device deviceSerial: Serial) {
-        DAESetDeviceIdle(deviceSerial.CString())
+        PAESetDeviceIdle(deviceSerial.CString())
     }
 
     /// End any tracking task and disconnect properly from every device
@@ -202,10 +202,10 @@ class DataAcquisitionEngine {
         statusFetcherLoop?.removeAllObservers(thenStop: true)
         statusFetcherLoop = nil
 
-        DAEEndAcquisition()
+        PAEEndAcquisition()
     }
 
-    /// Closes the DAE drivers on closing if needed
+    /// Closes the PAE drivers on closing if needed
     deinit {
         end()
     }

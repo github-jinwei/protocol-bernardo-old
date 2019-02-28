@@ -1,6 +1,6 @@
 //
 //  DeviceConnectionListener.cpp
-//  DataAcquisitionEngine
+//  PositionAcquisitionEngine
 //
 //  Created by Valentin Dufois on 2019-02-09.
 //  Copyright © 2019 Prisme. All rights reserved.
@@ -8,10 +8,10 @@
 
 #include "DeviceConnectionListener.hpp"
 
-#include "DataAcquisitionEngine.hpp"
+#include "PositionAcquisitionEngine.hpp"
 
 void DeviceConnectionListener::onDeviceConnected(const openni::DeviceInfo *deviceInfo) {
     std::cout << "Device Connected" << std::endl;
-    // Inform the dae of the connection
+    // Inform the pae of the connection
     dae->onNewDevice(deviceInfo);
 }

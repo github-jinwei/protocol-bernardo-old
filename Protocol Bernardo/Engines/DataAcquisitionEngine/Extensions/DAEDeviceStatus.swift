@@ -17,9 +17,9 @@ import Foundation
 extension DAEDeviceStatus {
     /// The device's host name
     var hostname: String {
-        var temp = _hostname
+        var temp = deviceHostname
         return withUnsafePointer(to: &temp) {
-            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: _hostname)) {
+            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: deviceHostname)) {
                 String(cString: $0)
             }
         }
@@ -27,9 +27,9 @@ extension DAEDeviceStatus {
 
     /// The device's serial
     var serial: Serial {
-        var temp = _serial
+        var temp = deviceSerial
         return withUnsafePointer(to: &temp) {
-            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: _serial)) {
+            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: deviceSerial)) {
                 String(cString: $0)
             }
         }
@@ -37,9 +37,9 @@ extension DAEDeviceStatus {
 
     /// The device's name
     var name: String {
-        var temp = _name
+        var temp = deviceName
         return withUnsafePointer(to: &temp) {
-            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: _name)) {
+            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: deviceName)) {
                 String(cString: $0)
             }
         }
@@ -48,7 +48,7 @@ extension DAEDeviceStatus {
     // List all the users in a Swift friendly format
     var users: [PhysicalUser] {
         var users = [PhysicalUser]()
-        var pointer = _users
+        var pointer = trackedUsers
 
         for i in 0..<userCount {
             let user = pointer!.pointee

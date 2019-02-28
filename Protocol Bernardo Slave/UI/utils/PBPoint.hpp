@@ -1,0 +1,21 @@
+//
+//  PBPoint.hpp
+//  Protocol Bernardo
+//
+//  Created by Valentin Dufois on 2019-02-27.
+//  Copyright © 2019 Prisme. All rights reserved.
+//
+
+#ifndef PBPoint_hpp
+#define PBPoint_hpp
+
+#include "../PBUI.hpp"
+
+struct PBPoint {
+    int x;
+    int y;
+
+    PBPoint(const int &aX, const int &aY): x(aX), y(aY) { }
+};
+
+#endif /* PBPoint_hpp */

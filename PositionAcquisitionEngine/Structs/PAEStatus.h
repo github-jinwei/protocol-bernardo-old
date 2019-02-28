@@ -1,5 +1,5 @@
 //
-//  DAEStatus.h
+//  PAEStatus.h
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-21.
@@ -22,13 +22,13 @@
  */
 struct DAEDeviceStatus {
     /** Name of the machine (C String) */
-    char _hostname[_POSIX_HOST_NAME_MAX + 1];
+    char deviceHostname[_POSIX_HOST_NAME_MAX + 1];
 
     /** Name of the device (C String) */
-    char _name[256];
+    char deviceName[256];
     
     /** Serial of the device (C String) */
-    char _serial[256];
+    char deviceSerial[256];
     
     /** The current state of the device */
     DeviceState state;
@@ -37,7 +37,7 @@ struct DAEDeviceStatus {
     unsigned int userCount;
     
     /** All the users tracked by the device */
-    struct PhysicalUser * _users;
+    struct PhysicalUser * trackedUsers;
 };
 
 /**
@@ -45,12 +45,12 @@ struct DAEDeviceStatus {
  
  Primarily used to retrieve a device status from Swift
  */
-struct DAEStatus {
+struct PAEStatus {
     /** The number of devices available */
     unsigned int deviceCount;
     
     /** The status for every available device */
-    struct DAEDeviceStatus * _deviceStatus;
+    struct DAEDeviceStatus * connectedDevices;
 };
 
 

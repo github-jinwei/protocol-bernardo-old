@@ -7,9 +7,7 @@
 //
 
 #include "PhysicalDevice.hpp"
-
-#include "../App.hpp"
-#include "DataAcquisitionEngine.hpp"
+#include "PositionAcquisitionEngine.hpp"
 
 // OpenCV Header
 #include <opencv2/core/core.hpp>
@@ -79,7 +77,7 @@ void PhysicalDevice::connect() {
     // Mark the device as ready
     _state = DeviceState::DEVICE_READY;
 
-    if(App->dae->isLiveViewEnabled()) {
+    if(_pae->isLiveViewEnabled()) {
         cv::namedWindow(_serial, cv::WINDOW_AUTOSIZE);
     }
 }
@@ -127,27 +125,30 @@ void PhysicalDevice::storeDepthFrame(openni::VideoFrameRef *frame) {
 
 DAEDeviceStatus PhysicalDevice::getStatus() {
     DAEDeviceStatus status;
-    strcpy(status._name, _name.c_str());
-    strcpy(status._serial, _serial.c_str());
+    strcpy(status.deviceName, _name.c_str());
+    strcpy(status.deviceSerial, _serial.c_str());
     status.state = _state;
     
     status.userCount = (unsigned int) _usersTracker._users.size();
-    status._users = _usersTracker.getUsers();
+    status.trackedUsers = _usersTracker.getUsers();
 
     // If live view is enabled, update the window fo the device
-    if(App->dae->isLiveViewEnabled()) {
+    if(_pae->isLiveViewEnabled()) {
         if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
+            if(_colorFrame->getData() != NULL) {
+                std::cout << "Frame size " << _colorFrame->getDataSize() << std::endl;
 
-            cv::Mat cImageBGR;
-            const cv::Mat mImageRGB(_colorFrame->getHeight(),
-                                    _colorFrame->getWidth(),
-                                    CV_8UC3,
-                                    (void*)_colorFrame->getData());
+                cv::Mat cImageBGR;
+                const cv::Mat mImageRGB(_colorFrame->getHeight(),
+                                        _colorFrame->getWidth(),
+                                        CV_8UC3,
+                                        (void*)_colorFrame->getData());
 
-            // p2c. convert form RGB to BGR
-            cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
+                // p2c. convert form RGB to BGR
+                cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
 
-            cv::imshow(_serial, cImageBGR );
+                cv::imshow(_serial, cImageBGR );
+            }
         }
     }
 

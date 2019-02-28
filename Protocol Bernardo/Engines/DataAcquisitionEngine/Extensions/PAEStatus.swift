@@ -12,14 +12,14 @@ import Foundation
 ///
 /// You should not use this structure directly as it is converted to `ConnectedDevices` upon
 /// receiving.
-extension DAEStatus {
+extension PAEStatus {
     /// List of all the devices in a Swift friendly format
     func copyAndDeallocate() -> [Serial: PhysicalDevice] {
         // The map
         var devicesMap = [Serial: PhysicalDevice]()
 
         // Pointer used for parsing
-        var pointer = _deviceStatus
+        var pointer = connectedDevices
         
         // Loop on each device
         for i in 0..<deviceCount {
@@ -29,7 +29,7 @@ extension DAEStatus {
             devicesMap[daeDeviceStatus.serial] = PhysicalDevice(from: daeDeviceStatus)
             
             // Free it
-            daeDeviceStatus._users.deallocate()
+            daeDeviceStatus.trackedUsers.deallocate()
             
             // Check if we can advance
             if i + 1 < deviceCount {
@@ -38,7 +38,7 @@ extension DAEStatus {
         }
         
         // Free the array
-        _deviceStatus.deallocate()
+        connectedDevices.deallocate()
         
         return devicesMap
     }

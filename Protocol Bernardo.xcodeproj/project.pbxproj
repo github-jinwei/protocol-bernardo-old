@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3900AE5D221DF73800A38E26 /* DataAcquisitionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924833D221DF5A300DE6015 /* DataAcquisitionEngine.cpp */; };
+		3900AE5D221DF73800A38E26 /* PositionAcquisitionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */; };
 		3900AE5E221DF73800A38E26 /* FrameListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924833F221DF5A300DE6015 /* FrameListener.cpp */; };
 		3900AE5F221DF73800A38E26 /* PhysicalDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248340221DF5A300DE6015 /* PhysicalDevice.cpp */; };
 		3900AE60221DF73800A38E26 /* DeviceDisconnectionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248341221DF5A300DE6015 /* DeviceDisconnectionListener.cpp */; };
 		3900AE61221DF73800A38E26 /* UsersTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248342221DF5A300DE6015 /* UsersTracker.cpp */; };
 		3900AE62221DF73800A38E26 /* DeviceConnectionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */; };
-		3900AE63221DF75200A38E26 /* App.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248354221DF5A300DE6015 /* App.hpp */; };
+		3900AE63221DF75200A38E26 /* PAEMacOSApp.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248354221DF5A300DE6015 /* PAEMacOSApp.hpp */; };
 		3900AE64221DF75200A38E26 /* DeviceConnectionListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */; };
 		3900AE65221DF75200A38E26 /* DeviceState.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248344221DF5A300DE6015 /* DeviceState.h */; };
 		3900AE66221DF75200A38E26 /* UserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248345221DF5A300DE6015 /* UserState.h */; };
@@ -21,19 +21,37 @@
 		3900AE68221DF75200A38E26 /* Joint.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248348221DF5A300DE6015 /* Joint.h */; };
 		3900AE69221DF75200A38E26 /* Quaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248349221DF5A300DE6015 /* Quaternion.h */; };
 		3900AE6A221DF75200A38E26 /* Skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834A221DF5A300DE6015 /* Skeleton.h */; };
-		3900AE6B221DF75200A38E26 /* DAEStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834B221DF5A300DE6015 /* DAEStatus.h */; };
+		3900AE6B221DF75200A38E26 /* PAEStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834B221DF5A300DE6015 /* PAEStatus.h */; };
 		3900AE6C221DF75200A38E26 /* Position.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834C221DF5A300DE6015 /* Position.h */; };
 		3900AE6D221DF75200A38E26 /* PhysicalUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834D221DF5A300DE6015 /* PhysicalUser.h */; };
-		3900AE6E221DF75200A38E26 /* DataAcquisitionEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3924834E221DF5A300DE6015 /* DataAcquisitionEngine.hpp */; };
+		3900AE6E221DF75200A38E26 /* PositionAcquisitionEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */; };
 		3900AE6F221DF75200A38E26 /* FrameListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248350221DF5A300DE6015 /* FrameListener.hpp */; };
 		3900AE70221DF75200A38E26 /* PhysicalDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248351221DF5A300DE6015 /* PhysicalDevice.hpp */; };
 		3900AE71221DF75200A38E26 /* DeviceDisconnectionListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248352221DF5A300DE6015 /* DeviceDisconnectionListener.hpp */; };
-		3900AE72221DF75200A38E26 /* DAE-Bridging.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924833B221DF5A300DE6015 /* DAE-Bridging.h */; };
-		3900AE73221DF75A00A38E26 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248353221DF5A300DE6015 /* App.cpp */; };
+		3900AE72221DF75200A38E26 /* PAE-Bridging.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924833B221DF5A300DE6015 /* PAE-Bridging.h */; };
+		3900AE73221DF75A00A38E26 /* PAEMacOSApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248353221DF5A300DE6015 /* PAEMacOSApp.cpp */; };
 		39023F94221F58E1005E2C9F /* SkeletonJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39023F93221F58E1005E2C9F /* SkeletonJoint.swift */; };
 		39023F97221F594C005E2C9F /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39023F96221F594C005E2C9F /* Skeleton.swift */; };
 		39023F99221F5C21005E2C9F /* Quaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39023F98221F5C21005E2C9F /* Quaternion.swift */; };
 		39023F9B221F608F005E2C9F /* Joint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39023F9A221F608F005E2C9F /* Joint.swift */; };
+		3908ABB222271CC900997684 /* PAE-Interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3908ABB122271CC900997684 /* PAE-Interface.cpp */; };
+		3908ABB422271EDF00997684 /* PAEMacOSApp.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248354221DF5A300DE6015 /* PAEMacOSApp.hpp */; };
+		3908ABB522271EDF00997684 /* PAE-Bridging.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924833B221DF5A300DE6015 /* PAE-Bridging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3908ABB622271EDF00997684 /* PAE-Interface.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3908ABB322271D4600997684 /* PAE-Interface.hpp */; };
+		3908ABB722271EEF00997684 /* PAEMacOSApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248353221DF5A300DE6015 /* PAEMacOSApp.cpp */; };
+		3908ABBA2227201300997684 /* libPAE-MacOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3908AB9D22271AF900997684 /* libPAE-MacOS.a */; };
+		3908ABBB2227203700997684 /* libPositionAcquisitionEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392482A9221DF2EC00DE6015 /* libPositionAcquisitionEngine.a */; };
+		3908ABBC2227209300997684 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */; };
+		3908ABBD2227209300997684 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
+		3908ABBE2227209300997684 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
+		3908ABC62227210200997684 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3908ABC52227210200997684 /* main.cpp */; };
+		3908ABCF2227216400997684 /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3908ABCD2227216400997684 /* App.cpp */; };
+		3908ABD02227231F00997684 /* libPositionAcquisitionEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392482A9221DF2EC00DE6015 /* libPositionAcquisitionEngine.a */; };
+		3908ABD12227237600997684 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; };
+		3908ABD22227237B00997684 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B645321FD321800A71E58 /* libNiTE2.dylib */; };
+		3908ABD3222723C000997684 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */; };
+		3908ABD4222723C000997684 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
+		3908ABD5222723C000997684 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
 		390C265F21F66EFB00E7FEAE /* DevicesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C265E21F66EFB00E7FEAE /* DevicesWindow.swift */; };
 		390D0DB721F502170032CA23 /* DevicesWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D0DB621F502170032CA23 /* DevicesWindow.storyboard */; };
 		390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */; };
@@ -43,7 +61,6 @@
 		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
 		392482C5221DF3E200DE6015 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */; };
 		392482CC221DF3E200DE6015 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 392482C8221DF3E200DE6015 /* libOpenNI2.dylib */; };
-		392482CE221DF41A00DE6015 /* libDataAcquisitionEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392482A9221DF2EC00DE6015 /* libDataAcquisitionEngine.a */; };
 		392482D1221DF53300DE6015 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */; };
 		392482D2221DF53300DE6015 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
 		392482D3221DF53300DE6015 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
@@ -87,6 +104,14 @@
 		397B649821FD328D00A71E58 /* NiTE.ini in Copy NiTE Files */ = {isa = PBXBuildFile; fileRef = 397B646121FD321800A71E58 /* NiTE.ini */; };
 		397B649921FD32A100A71E58 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B63EC21FD2AE000A71E58 /* libc++.tbd */; };
 		397E685B21FE50E600FFA678 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397E685A21FE50E600FFA678 /* NSNib.swift */; };
+		398304EA222733F600977C6C /* PBPopupMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398304E8222733F600977C6C /* PBPopupMenu.cpp */; };
+		398304EE2227342300977C6C /* ncurses.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398304EC2227342300977C6C /* ncurses.cpp */; };
+		398304F02227343000977C6C /* libncurses.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 398304EF2227343000977C6C /* libncurses.tbd */; };
+		398304F32227366F00977C6C /* PBMenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398304F12227366F00977C6C /* PBMenuItem.cpp */; };
+		398304F62227368E00977C6C /* PBView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398304F42227368E00977C6C /* PBView.cpp */; };
+		398304FF22274A1A00977C6C /* PBButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398304FD22274A1A00977C6C /* PBButton.cpp */; };
+		398305022227559300977C6C /* PBControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398305002227559300977C6C /* PBControl.cpp */; };
+		3983050522275B7D00977C6C /* PBLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3983050322275B7D00977C6C /* PBLabel.cpp */; };
 		3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */; };
 		398F6273221901E8003BFC81 /* PBDevicesStartupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F6272221901E8003BFC81 /* PBDevicesStartupSheet.swift */; };
 		398F6274221920DF003BFC81 /* libOpenNI2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; };
@@ -121,11 +146,10 @@
 		39C1E907220A201A00F53AC2 /* LayoutSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */; };
 		39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */; };
 		39C1E90D220A37F300F53AC2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90C220A37F300F53AC2 /* Line.swift */; };
+		39D4944922276AA800E89801 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B63EC21FD2AE000A71E58 /* libc++.tbd */; };
+		39D4944D222770CA00E89801 /* PBScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39D4944B222770CA00E89801 /* PBScene.cpp */; };
 		39D558AD220919CA00916AAA /* PBLayoutIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39D558AC220919CA00916AAA /* PBLayoutIcon.icns */; };
 		39D558B02209321700916AAA /* PBDevicesLayoutIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */; };
-		39DACC1C220CC02D002E97F8 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */; };
-		39DACC1D220CC02D002E97F8 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
-		39DACC1E220CC02D002E97F8 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
 		39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */; };
 		39DACC30220F5475002E97F8 /* UsersEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC2F220F5475002E97F8 /* UsersEngine.swift */; };
 		39DACC34220F663F002E97F8 /* LayoutCanvasUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */; };
@@ -133,7 +157,7 @@
 		39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */; };
 		39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */; };
 		39E3121221F6F1C5006569F1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121121F6F1C5006569F1 /* String.swift */; };
-		39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* DAEStatus.swift */; };
+		39E3121421F777F6006569F1 /* PAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* PAEStatus.swift */; };
 		39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */; };
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
 		39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */; };
@@ -143,16 +167,39 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		392482CF221DF42200DE6015 /* PBXContainerItemProxy */ = {
+		3908ABA222271B0200997684 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 396DDFBD21F4285000628070 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 392482A8221DF2EC00DE6015;
-			remoteInfo = DataAcquisitionEngine;
+			remoteInfo = PositionAcquisitionEngine;
+		};
+		3908ABB822271FC100997684 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 396DDFBD21F4285000628070 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3908AB9C22271AF900997684;
+			remoteInfo = "PAE-MacOS";
+		};
+		39D4944E2227892000E89801 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 396DDFBD21F4285000628070 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3908AB9C22271AF900997684;
+			remoteInfo = "PAE-MacOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3908ABC12227210200997684 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		3968FCC521FB5829005EAA4C /* Copy NiTE Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,13 +243,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1AD18919927E8DB868C1271B /* Pods-Protocol BernardoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol BernardoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.release.xcconfig"; sourceTree = "<group>"; };
-		2E884ECCA75A8FC5014A93D2 /* Pods-Protocol Bernardo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.release.xcconfig"; sourceTree = "<group>"; };
-		2FC16C30A804C5686E883755 /* Pods-Protocol BernardoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol BernardoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		39023F93221F58E1005E2C9F /* SkeletonJoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonJoint.swift; sourceTree = "<group>"; };
 		39023F96221F594C005E2C9F /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		39023F98221F5C21005E2C9F /* Quaternion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quaternion.swift; sourceTree = "<group>"; };
 		39023F9A221F608F005E2C9F /* Joint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joint.swift; sourceTree = "<group>"; };
+		3908AB9D22271AF900997684 /* libPAE-MacOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPAE-MacOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3908ABAB22271B4C00997684 /* Pods-Protocol Bernardo.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.debug.xcconfig"; sourceTree = "<group>"; };
+		3908ABAC22271B4C00997684 /* Pods-Protocol Bernardo.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.release.xcconfig"; sourceTree = "<group>"; };
+		3908ABAD22271B4C00997684 /* Pods-Protocol BernardoTests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Protocol BernardoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3908ABAE22271B4C00997684 /* Pods-Protocol BernardoTests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Protocol BernardoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol BernardoTests/Pods-Protocol BernardoTests.release.xcconfig"; sourceTree = "<group>"; };
+		3908ABAF22271B4C00997684 /* Pods-Protocol Bernardo.analyze.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.analyze.xcconfig"; sourceTree = "<group>"; };
+		3908ABB122271CC900997684 /* PAE-Interface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "PAE-Interface.cpp"; sourceTree = "<group>"; };
+		3908ABB322271D4600997684 /* PAE-Interface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "PAE-Interface.hpp"; sourceTree = "<group>"; };
+		3908ABC32227210200997684 /* Protocol Bernardo Slave */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Protocol Bernardo Slave"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3908ABC52227210200997684 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3908ABCD2227216400997684 /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
+		3908ABCE2227216400997684 /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		3908ABD722272B1800997684 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
 		390C265E21F66EFB00E7FEAE /* DevicesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesWindow.swift; sourceTree = "<group>"; };
 		390D0DB621F502170032CA23 /* DevicesWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DevicesWindow.storyboard; sourceTree = "<group>"; };
 		390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngine.swift; sourceTree = "<group>"; };
@@ -211,13 +268,13 @@
 		3915BFA42219EFF500E80ABE /* Core.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Core.storyboard; sourceTree = "<group>"; };
 		392183CA22138B3A000D5968 /* ConnectedDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDevices.swift; sourceTree = "<group>"; };
 		392183CC22138C5E000D5968 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
-		392482A9221DF2EC00DE6015 /* libDataAcquisitionEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDataAcquisitionEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		392482A9221DF2EC00DE6015 /* libPositionAcquisitionEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPositionAcquisitionEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		392482C6221DF3E200DE6015 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.a; sourceTree = "<group>"; };
 		392482C7221DF3E200DE6015 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.a; sourceTree = "<group>"; };
 		392482C8221DF3E200DE6015 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = ../../../../../usr/local/lib/libOpenNI2.dylib; sourceTree = "<group>"; };
 		392482C9221DF3E200DE6015 /* libopencv_highgui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_highgui.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.a; sourceTree = "<group>"; };
-		3924833B221DF5A300DE6015 /* DAE-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DAE-Bridging.h"; sourceTree = "<group>"; };
-		3924833D221DF5A300DE6015 /* DataAcquisitionEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DataAcquisitionEngine.cpp; sourceTree = "<group>"; };
+		3924833B221DF5A300DE6015 /* PAE-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAE-Bridging.h"; sourceTree = "<group>"; };
+		3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PositionAcquisitionEngine.cpp; sourceTree = "<group>"; };
 		3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DeviceConnectionListener.hpp; sourceTree = "<group>"; };
 		3924833F221DF5A300DE6015 /* FrameListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FrameListener.cpp; sourceTree = "<group>"; };
 		39248340221DF5A300DE6015 /* PhysicalDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicalDevice.cpp; sourceTree = "<group>"; };
@@ -229,16 +286,16 @@
 		39248348221DF5A300DE6015 /* Joint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Joint.h; sourceTree = "<group>"; };
 		39248349221DF5A300DE6015 /* Quaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
 		3924834A221DF5A300DE6015 /* Skeleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
-		3924834B221DF5A300DE6015 /* DAEStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DAEStatus.h; sourceTree = "<group>"; };
+		3924834B221DF5A300DE6015 /* PAEStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAEStatus.h; sourceTree = "<group>"; };
 		3924834C221DF5A300DE6015 /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		3924834D221DF5A300DE6015 /* PhysicalUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicalUser.h; sourceTree = "<group>"; };
-		3924834E221DF5A300DE6015 /* DataAcquisitionEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DataAcquisitionEngine.hpp; sourceTree = "<group>"; };
+		3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PositionAcquisitionEngine.hpp; sourceTree = "<group>"; };
 		3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceConnectionListener.cpp; sourceTree = "<group>"; };
 		39248350221DF5A300DE6015 /* FrameListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FrameListener.hpp; sourceTree = "<group>"; };
 		39248351221DF5A300DE6015 /* PhysicalDevice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicalDevice.hpp; sourceTree = "<group>"; };
 		39248352221DF5A300DE6015 /* DeviceDisconnectionListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DeviceDisconnectionListener.hpp; sourceTree = "<group>"; };
-		39248353221DF5A300DE6015 /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
-		39248354221DF5A300DE6015 /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
+		39248353221DF5A300DE6015 /* PAEMacOSApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PAEMacOSApp.cpp; sourceTree = "<group>"; };
+		39248354221DF5A300DE6015 /* PAEMacOSApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PAEMacOSApp.hpp; sourceTree = "<group>"; };
 		39264993221E72EC00C8ECBF /* LayoutTouchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTouchbar.swift; sourceTree = "<group>"; };
 		3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
 		3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.4.0.1.dylib; sourceTree = "<group>"; };
@@ -287,6 +344,25 @@
 		397B648521FD322700A71E58 /* OpenNI2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenNI2; sourceTree = "<group>"; };
 		397E685A21FE50E600FFA678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
 		397E685C21FE57D700FFA678 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		398304E8222733F600977C6C /* PBPopupMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBPopupMenu.cpp; sourceTree = "<group>"; };
+		398304E9222733F600977C6C /* PBPopupMenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBPopupMenu.hpp; sourceTree = "<group>"; };
+		398304EC2227342300977C6C /* ncurses.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ncurses.cpp; sourceTree = "<group>"; };
+		398304ED2227342300977C6C /* ncurses.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ncurses.hpp; sourceTree = "<group>"; };
+		398304EF2227343000977C6C /* libncurses.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libncurses.tbd; path = usr/lib/libncurses.tbd; sourceTree = SDKROOT; };
+		398304F12227366F00977C6C /* PBMenuItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBMenuItem.cpp; sourceTree = "<group>"; };
+		398304F22227366F00977C6C /* PBMenuItem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBMenuItem.hpp; sourceTree = "<group>"; };
+		398304F42227368E00977C6C /* PBView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBView.cpp; sourceTree = "<group>"; };
+		398304F52227368E00977C6C /* PBView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBView.hpp; sourceTree = "<group>"; };
+		398304F9222737B700977C6C /* PBFrame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBFrame.hpp; sourceTree = "<group>"; };
+		398304FB222737F400977C6C /* libraries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = libraries.hpp; sourceTree = "<group>"; };
+		398304FC2227382F00977C6C /* PBUI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBUI.hpp; sourceTree = "<group>"; };
+		398304FD22274A1A00977C6C /* PBButton.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBButton.cpp; sourceTree = "<group>"; };
+		398304FE22274A1A00977C6C /* PBButton.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBButton.hpp; sourceTree = "<group>"; };
+		398305002227559300977C6C /* PBControl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBControl.cpp; sourceTree = "<group>"; };
+		398305012227559300977C6C /* PBControl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBControl.hpp; sourceTree = "<group>"; };
+		3983050322275B7D00977C6C /* PBLabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBLabel.cpp; sourceTree = "<group>"; };
+		3983050422275B7D00977C6C /* PBLabel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBLabel.hpp; sourceTree = "<group>"; };
+		3983050622275BD400977C6C /* PBPoint.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBPoint.hpp; sourceTree = "<group>"; };
 		3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLayoutCanvasDevicePropertiesController.swift; sourceTree = "<group>"; };
 		398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Protocol Bernardo.entitlements"; sourceTree = "<group>"; };
 		398F6272221901E8003BFC81 /* PBDevicesStartupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDevicesStartupSheet.swift; sourceTree = "<group>"; };
@@ -316,6 +392,8 @@
 		39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebar.swift; sourceTree = "<group>"; };
 		39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLayoutCanvasLinePropertiesController.swift; sourceTree = "<group>"; };
 		39C1E90C220A37F300F53AC2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		39D4944B222770CA00E89801 /* PBScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBScene.cpp; sourceTree = "<group>"; };
+		39D4944C222770CA00E89801 /* PBScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBScene.hpp; sourceTree = "<group>"; };
 		39D558AC220919CA00916AAA /* PBLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutIcon.icns; sourceTree = "<group>"; };
 		39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBDevicesLayoutIcon.icns; sourceTree = "<group>"; };
 		39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngineObserver.swift; sourceTree = "<group>"; };
@@ -325,19 +403,40 @@
 		39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceRow.swift; sourceTree = "<group>"; };
 		39E3121121F6F1C5006569F1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		39E3121321F777F6006569F1 /* DAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEStatus.swift; sourceTree = "<group>"; };
+		39E3121321F777F6006569F1 /* PAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEStatus.swift; sourceTree = "<group>"; };
 		39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEDeviceStatus.swift; sourceTree = "<group>"; };
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfilePanel.swift; sourceTree = "<group>"; };
 		39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedUser.swift; sourceTree = "<group>"; };
 		39F5F58E2221ED780035B9C1 /* PBAFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBAFile.swift; sourceTree = "<group>"; };
 		39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingSessionPanel.swift; sourceTree = "<group>"; };
-		55FCC8726FF73A9710F67B5A /* Pods-Protocol Bernardo.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.analyze.xcconfig"; sourceTree = "<group>"; };
-		8A3C96C47318A5A246F5A95A /* Pods-Protocol Bernardo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.debug.xcconfig"; sourceTree = "<group>"; };
 		E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3908AB9B22271AF900997684 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3908ABBB2227203700997684 /* libPositionAcquisitionEngine.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3908ABC02227210200997684 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39D4944922276AA800E89801 /* libc++.tbd in Frameworks */,
+				398304F02227343000977C6C /* libncurses.tbd in Frameworks */,
+				3908ABD3222723C000997684 /* libopencv_core.4.0.1.dylib in Frameworks */,
+				3908ABD4222723C000997684 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
+				3908ABD5222723C000997684 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
+				3908ABD02227231F00997684 /* libPositionAcquisitionEngine.a in Frameworks */,
+				3908ABD12227237600997684 /* libOpenNI2.dylib in Frameworks */,
+				3908ABD22227237B00997684 /* libNiTE2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		392482A7221DF2EC00DE6015 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,14 +453,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39757D9D2220902400FF6D57 /* Accelerate.framework in Frameworks */,
-				392482CE221DF41A00DE6015 /* libDataAcquisitionEngine.a in Frameworks */,
-				398F627C22192337003BFC81 /* libNiTE2.dylib in Frameworks */,
+				3908ABBA2227201300997684 /* libPAE-MacOS.a in Frameworks */,
 				398F627D22192337003BFC81 /* libOpenNI2.dylib in Frameworks */,
-				39DACC1C220CC02D002E97F8 /* libopencv_core.4.0.1.dylib in Frameworks */,
-				39DACC1D220CC02D002E97F8 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
-				39DACC1E220CC02D002E97F8 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
+				398F627C22192337003BFC81 /* libNiTE2.dylib in Frameworks */,
+				3908ABBC2227209300997684 /* libopencv_core.4.0.1.dylib in Frameworks */,
+				3908ABBD2227209300997684 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
+				3908ABBE2227209300997684 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
 				397B649921FD32A100A71E58 /* libc++.tbd in Frameworks */,
+				39757D9D2220902400FF6D57 /* Accelerate.framework in Frameworks */,
 				397B648A21FD324B00A71E58 /* Pods_Protocol_Bernardo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,18 +468,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19F3F63DC7FFB06856CA4300 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8A3C96C47318A5A246F5A95A /* Pods-Protocol Bernardo.debug.xcconfig */,
-				2E884ECCA75A8FC5014A93D2 /* Pods-Protocol Bernardo.release.xcconfig */,
-				2FC16C30A804C5686E883755 /* Pods-Protocol BernardoTests.debug.xcconfig */,
-				1AD18919927E8DB868C1271B /* Pods-Protocol BernardoTests.release.xcconfig */,
-				55FCC8726FF73A9710F67B5A /* Pods-Protocol Bernardo.analyze.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		3900AE5B221DF63900A38E26 /* OpenNI2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +499,42 @@
 				39023F9A221F608F005E2C9F /* Joint.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		3908ABA422271B0D00997684 /* PAE-MacOS */ = {
+			isa = PBXGroup;
+			children = (
+				39248353221DF5A300DE6015 /* PAEMacOSApp.cpp */,
+				39248354221DF5A300DE6015 /* PAEMacOSApp.hpp */,
+				3924833B221DF5A300DE6015 /* PAE-Bridging.h */,
+				3908ABB122271CC900997684 /* PAE-Interface.cpp */,
+				3908ABB322271D4600997684 /* PAE-Interface.hpp */,
+			);
+			path = "PAE-MacOS";
+			sourceTree = "<group>";
+		};
+		3908ABB022271B4C00997684 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3908ABAB22271B4C00997684 /* Pods-Protocol Bernardo.debug.xcconfig */,
+				3908ABAC22271B4C00997684 /* Pods-Protocol Bernardo.release.xcconfig */,
+				3908ABAD22271B4C00997684 /* Pods-Protocol BernardoTests.debug.xcconfig */,
+				3908ABAE22271B4C00997684 /* Pods-Protocol BernardoTests.release.xcconfig */,
+				3908ABAF22271B4C00997684 /* Pods-Protocol Bernardo.analyze.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3908ABC42227210200997684 /* Protocol Bernardo Slave */ = {
+			isa = PBXGroup;
+			children = (
+				398304E72227337400977C6C /* UI */,
+				398304E62227317400977C6C /* Core */,
+				3908ABC52227210200997684 /* main.cpp */,
+				3908ABD722272B1800997684 /* main.hpp */,
+				398304FB222737F400977C6C /* libraries.hpp */,
+			);
+			path = "Protocol Bernardo Slave";
 			sourceTree = "<group>";
 		};
 		390D0DB321F4FBE10032CA23 /* Devices */ = {
@@ -462,36 +585,25 @@
 			path = icns;
 			sourceTree = "<group>";
 		};
-		39248283221DF29100DE6015 /* DataAcquisitionEngine */ = {
+		39248283221DF29100DE6015 /* PositionAcquisitionEngine */ = {
 			isa = PBXGroup;
 			children = (
-				39248353221DF5A300DE6015 /* App.cpp */,
-				39248354221DF5A300DE6015 /* App.hpp */,
-				3924833C221DF5A300DE6015 /* DAE */,
-				3924833B221DF5A300DE6015 /* DAE-Bridging.h */,
-			);
-			path = DataAcquisitionEngine;
-			sourceTree = "<group>";
-		};
-		3924833C221DF5A300DE6015 /* DAE */ = {
-			isa = PBXGroup;
-			children = (
-				3924833D221DF5A300DE6015 /* DataAcquisitionEngine.cpp */,
-				3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */,
-				3924833F221DF5A300DE6015 /* FrameListener.cpp */,
-				39248340221DF5A300DE6015 /* PhysicalDevice.cpp */,
-				39248341221DF5A300DE6015 /* DeviceDisconnectionListener.cpp */,
-				39248342221DF5A300DE6015 /* UsersTracker.cpp */,
-				39248343221DF5A300DE6015 /* Enums */,
-				39248346221DF5A300DE6015 /* UsersTracker.hpp */,
-				39248347221DF5A300DE6015 /* Structs */,
-				3924834E221DF5A300DE6015 /* DataAcquisitionEngine.hpp */,
 				3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */,
-				39248350221DF5A300DE6015 /* FrameListener.hpp */,
-				39248351221DF5A300DE6015 /* PhysicalDevice.hpp */,
+				3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */,
+				39248341221DF5A300DE6015 /* DeviceDisconnectionListener.cpp */,
 				39248352221DF5A300DE6015 /* DeviceDisconnectionListener.hpp */,
+				39248343221DF5A300DE6015 /* Enums */,
+				3924833F221DF5A300DE6015 /* FrameListener.cpp */,
+				39248350221DF5A300DE6015 /* FrameListener.hpp */,
+				39248340221DF5A300DE6015 /* PhysicalDevice.cpp */,
+				39248351221DF5A300DE6015 /* PhysicalDevice.hpp */,
+				3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */,
+				3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */,
+				39248347221DF5A300DE6015 /* Structs */,
+				39248342221DF5A300DE6015 /* UsersTracker.cpp */,
+				39248346221DF5A300DE6015 /* UsersTracker.hpp */,
 			);
-			path = DAE;
+			path = PositionAcquisitionEngine;
 			sourceTree = "<group>";
 		};
 		39248343221DF5A300DE6015 /* Enums */ = {
@@ -509,7 +621,7 @@
 				39248348221DF5A300DE6015 /* Joint.h */,
 				39248349221DF5A300DE6015 /* Quaternion.h */,
 				3924834A221DF5A300DE6015 /* Skeleton.h */,
-				3924834B221DF5A300DE6015 /* DAEStatus.h */,
+				3924834B221DF5A300DE6015 /* PAEStatus.h */,
 				3924834C221DF5A300DE6015 /* Position.h */,
 				3924834D221DF5A300DE6015 /* PhysicalUser.h */,
 			);
@@ -542,7 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */,
-				39E3121321F777F6006569F1 /* DAEStatus.swift */,
+				39E3121321F777F6006569F1 /* PAEStatus.swift */,
 				396D45732218A7F10018F95C /* DeviceState.swift */,
 			);
 			path = Extensions;
@@ -551,12 +663,16 @@
 		396DDFBC21F4285000628070 = {
 			isa = PBXGroup;
 			children = (
-				39757DA42221B66900FF6D57 /* .jazzy.json */,
 				397E685C21FE57D700FFA678 /* README.md */,
+				39757DA42221B66900FF6D57 /* .jazzy.json */,
+				39248283221DF29100DE6015 /* PositionAcquisitionEngine */,
+				3908ABA422271B0D00997684 /* PAE-MacOS */,
 				396DDFC721F4285000628070 /* Protocol Bernardo */,
-				396DDFC621F4285000628070 /* Products */,
+				3908ABC42227210200997684 /* Protocol Bernardo Slave */,
+				397B644F21FD321800A71E58 /* Libs */,
 				398B65D821F64C5600F6D1FC /* Frameworks */,
-				19F3F63DC7FFB06856CA4300 /* Pods */,
+				396DDFC621F4285000628070 /* Products */,
+				3908ABB022271B4C00997684 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -564,7 +680,9 @@
 			isa = PBXGroup;
 			children = (
 				396DDFC521F4285000628070 /* Protocol Bernardo.app */,
-				392482A9221DF2EC00DE6015 /* libDataAcquisitionEngine.a */,
+				392482A9221DF2EC00DE6015 /* libPositionAcquisitionEngine.a */,
+				3908AB9D22271AF900997684 /* libPAE-MacOS.a */,
+				3908ABC32227210200997684 /* Protocol Bernardo Slave */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -662,14 +780,49 @@
 			children = (
 				3900AE5C221DF64E00A38E26 /* NiTE2 */,
 				3900AE5B221DF63900A38E26 /* OpenNI2 */,
-				39248283221DF29100DE6015 /* DataAcquisitionEngine */,
 			);
-			path = Libs;
+			name = Libs;
+			path = libs;
+			sourceTree = "<group>";
+		};
+		398304E62227317400977C6C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3908ABCD2227216400997684 /* App.cpp */,
+				3908ABCE2227216400997684 /* App.hpp */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		398304E72227337400977C6C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				39D4944A222770A000E89801 /* Elements */,
+				398304F72227379B00977C6C /* utils */,
+				398304F42227368E00977C6C /* PBView.cpp */,
+				398304F52227368E00977C6C /* PBView.hpp */,
+				398304FC2227382F00977C6C /* PBUI.hpp */,
+				39D4944B222770CA00E89801 /* PBScene.cpp */,
+				39D4944C222770CA00E89801 /* PBScene.hpp */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		398304F72227379B00977C6C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				398304EC2227342300977C6C /* ncurses.cpp */,
+				398304ED2227342300977C6C /* ncurses.hpp */,
+				398304F9222737B700977C6C /* PBFrame.hpp */,
+				3983050622275BD400977C6C /* PBPoint.hpp */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		398B65D821F64C5600F6D1FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				398304EF2227343000977C6C /* libncurses.tbd */,
 				39757D9C2220902400FF6D57 /* Accelerate.framework */,
 				392482C7221DF3E200DE6015 /* libopencv_core.a */,
 				392482C9221DF3E200DE6015 /* libopencv_highgui.a */,
@@ -780,10 +933,26 @@
 			path = Edition;
 			sourceTree = "<group>";
 		};
+		39D4944A222770A000E89801 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				398304FD22274A1A00977C6C /* PBButton.cpp */,
+				398304FE22274A1A00977C6C /* PBButton.hpp */,
+				398305002227559300977C6C /* PBControl.cpp */,
+				398305012227559300977C6C /* PBControl.hpp */,
+				3983050322275B7D00977C6C /* PBLabel.cpp */,
+				3983050422275B7D00977C6C /* PBLabel.hpp */,
+				398304F12227366F00977C6C /* PBMenuItem.cpp */,
+				398304F22227366F00977C6C /* PBMenuItem.hpp */,
+				398304E8222733F600977C6C /* PBPopupMenu.cpp */,
+				398304E9222733F600977C6C /* PBPopupMenu.hpp */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		39D558AE220919D900916AAA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				397B644F21FD321800A71E58 /* Libs */,
 				3915BFA62219F4AC00E80ABE /* icns */,
 				396DDFCC21F4285200628070 /* Assets.xcassets */,
 				396DDFD121F4285200628070 /* Info.plist */,
@@ -806,11 +975,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3908AB9922271AF900997684 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3908ABB522271EDF00997684 /* PAE-Bridging.h in Headers */,
+				3908ABB422271EDF00997684 /* PAEMacOSApp.hpp in Headers */,
+				3908ABB622271EDF00997684 /* PAE-Interface.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		392482A5221DF2EC00DE6015 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3900AE63221DF75200A38E26 /* App.hpp in Headers */,
+				3900AE63221DF75200A38E26 /* PAEMacOSApp.hpp in Headers */,
 				3900AE64221DF75200A38E26 /* DeviceConnectionListener.hpp in Headers */,
 				3900AE65221DF75200A38E26 /* DeviceState.h in Headers */,
 				3900AE66221DF75200A38E26 /* UserState.h in Headers */,
@@ -818,23 +997,59 @@
 				3900AE68221DF75200A38E26 /* Joint.h in Headers */,
 				3900AE69221DF75200A38E26 /* Quaternion.h in Headers */,
 				3900AE6A221DF75200A38E26 /* Skeleton.h in Headers */,
-				3900AE6B221DF75200A38E26 /* DAEStatus.h in Headers */,
+				3900AE6B221DF75200A38E26 /* PAEStatus.h in Headers */,
 				3900AE6C221DF75200A38E26 /* Position.h in Headers */,
 				3900AE6D221DF75200A38E26 /* PhysicalUser.h in Headers */,
-				3900AE6E221DF75200A38E26 /* DataAcquisitionEngine.hpp in Headers */,
+				3900AE6E221DF75200A38E26 /* PositionAcquisitionEngine.hpp in Headers */,
 				3900AE6F221DF75200A38E26 /* FrameListener.hpp in Headers */,
 				3900AE70221DF75200A38E26 /* PhysicalDevice.hpp in Headers */,
 				3900AE71221DF75200A38E26 /* DeviceDisconnectionListener.hpp in Headers */,
-				3900AE72221DF75200A38E26 /* DAE-Bridging.h in Headers */,
+				3900AE72221DF75200A38E26 /* PAE-Bridging.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		392482A8221DF2EC00DE6015 /* DataAcquisitionEngine */ = {
+		3908AB9C22271AF900997684 /* PAE-MacOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 392482AA221DF2EC00DE6015 /* Build configuration list for PBXNativeTarget "DataAcquisitionEngine" */;
+			buildConfigurationList = 3908AB9E22271AF900997684 /* Build configuration list for PBXNativeTarget "PAE-MacOS" */;
+			buildPhases = (
+				3908AB9922271AF900997684 /* Headers */,
+				3908AB9A22271AF900997684 /* Sources */,
+				3908AB9B22271AF900997684 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3908ABA322271B0200997684 /* PBXTargetDependency */,
+			);
+			name = "PAE-MacOS";
+			productName = "PAE-MacOS";
+			productReference = 3908AB9D22271AF900997684 /* libPAE-MacOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3908ABC22227210200997684 /* Protocol Bernardo Slave */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3908ABC72227210200997684 /* Build configuration list for PBXNativeTarget "Protocol Bernardo Slave" */;
+			buildPhases = (
+				3908ABBF2227210200997684 /* Sources */,
+				3908ABC02227210200997684 /* Frameworks */,
+				3908ABC12227210200997684 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39D4944F2227892000E89801 /* PBXTargetDependency */,
+			);
+			name = "Protocol Bernardo Slave";
+			productName = "Protocol Bernardo Slave";
+			productReference = 3908ABC32227210200997684 /* Protocol Bernardo Slave */;
+			productType = "com.apple.product-type.tool";
+		};
+		392482A8221DF2EC00DE6015 /* PositionAcquisitionEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 392482AA221DF2EC00DE6015 /* Build configuration list for PBXNativeTarget "PositionAcquisitionEngine" */;
 			buildPhases = (
 				392482A5221DF2EC00DE6015 /* Headers */,
 				392482A6221DF2EC00DE6015 /* Sources */,
@@ -844,9 +1059,9 @@
 			);
 			dependencies = (
 			);
-			name = DataAcquisitionEngine;
+			name = PositionAcquisitionEngine;
 			productName = DataAcquisitionEngine;
-			productReference = 392482A9221DF2EC00DE6015 /* libDataAcquisitionEngine.a */;
+			productReference = 392482A9221DF2EC00DE6015 /* libPositionAcquisitionEngine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		396DDFC421F4285000628070 /* Protocol Bernardo */ = {
@@ -869,7 +1084,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				392482D0221DF42200DE6015 /* PBXTargetDependency */,
+				3908ABB922271FC100997684 /* PBXTargetDependency */,
 			);
 			name = "Protocol Bernardo";
 			productName = "Protocol Bernardo";
@@ -886,6 +1101,12 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Prisme;
 				TargetAttributes = {
+					3908AB9C22271AF900997684 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					3908ABC22227210200997684 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					392482A8221DF2EC00DE6015 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -914,7 +1135,9 @@
 			projectRoot = "";
 			targets = (
 				396DDFC421F4285000628070 /* Protocol Bernardo */,
-				392482A8221DF2EC00DE6015 /* DataAcquisitionEngine */,
+				392482A8221DF2EC00DE6015 /* PositionAcquisitionEngine */,
+				3908AB9C22271AF900997684 /* PAE-MacOS */,
+				3908ABC22227210200997684 /* Protocol Bernardo Slave */,
 			);
 		};
 /* End PBXProject section */
@@ -1061,12 +1284,38 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3908AB9A22271AF900997684 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3908ABB722271EEF00997684 /* PAEMacOSApp.cpp in Sources */,
+				3908ABB222271CC900997684 /* PAE-Interface.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3908ABBF2227210200997684 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39D4944D222770CA00E89801 /* PBScene.cpp in Sources */,
+				3983050522275B7D00977C6C /* PBLabel.cpp in Sources */,
+				3908ABC62227210200997684 /* main.cpp in Sources */,
+				398305022227559300977C6C /* PBControl.cpp in Sources */,
+				398304F32227366F00977C6C /* PBMenuItem.cpp in Sources */,
+				398304FF22274A1A00977C6C /* PBButton.cpp in Sources */,
+				398304EA222733F600977C6C /* PBPopupMenu.cpp in Sources */,
+				3908ABCF2227216400997684 /* App.cpp in Sources */,
+				398304F62227368E00977C6C /* PBView.cpp in Sources */,
+				398304EE2227342300977C6C /* ncurses.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		392482A6221DF2EC00DE6015 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3900AE73221DF75A00A38E26 /* App.cpp in Sources */,
-				3900AE5D221DF73800A38E26 /* DataAcquisitionEngine.cpp in Sources */,
+				3900AE73221DF75A00A38E26 /* PAEMacOSApp.cpp in Sources */,
+				3900AE5D221DF73800A38E26 /* PositionAcquisitionEngine.cpp in Sources */,
 				3900AE5E221DF73800A38E26 /* FrameListener.cpp in Sources */,
 				3900AE5F221DF73800A38E26 /* PhysicalDevice.cpp in Sources */,
 				3900AE60221DF73800A38E26 /* DeviceDisconnectionListener.cpp in Sources */,
@@ -1118,7 +1367,7 @@
 				39E8BA7F220BC0440021DC34 /* User.swift in Sources */,
 				39967347221E3C30003A75A6 /* LayoutSidebarTracking.swift in Sources */,
 				39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */,
-				39E3121421F777F6006569F1 /* DAEStatus.swift in Sources */,
+				39E3121421F777F6006569F1 /* PAEStatus.swift in Sources */,
 				397195C22200219000F92C5C /* LayoutCanvasView.swift in Sources */,
 				396DDFCB21F4285000628070 /* WelcomeWindow.swift in Sources */,
 				39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */,
@@ -1159,10 +1408,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		392482D0221DF42200DE6015 /* PBXTargetDependency */ = {
+		3908ABA322271B0200997684 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 392482A8221DF2EC00DE6015 /* DataAcquisitionEngine */;
-			targetProxy = 392482CF221DF42200DE6015 /* PBXContainerItemProxy */;
+			target = 392482A8221DF2EC00DE6015 /* PositionAcquisitionEngine */;
+			targetProxy = 3908ABA222271B0200997684 /* PBXContainerItemProxy */;
+		};
+		3908ABB922271FC100997684 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3908AB9C22271AF900997684 /* PAE-MacOS */;
+			targetProxy = 3908ABB822271FC100997684 /* PBXContainerItemProxy */;
+		};
+		39D4944F2227892000E89801 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3908AB9C22271AF900997684 /* PAE-MacOS */;
+			targetProxy = 39D4944E2227892000E89801 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1178,6 +1437,108 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3908AB9F22271AF900997684 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3908ABA022271AF900997684 /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Analyze;
+		};
+		3908ABA122271AF900997684 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3908ABC82227210200997684 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libs/**",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3908ABC92227210200997684 /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libs/**",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Analyze;
+		};
+		3908ABCA2227210200997684 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KJ993GM677;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Libs/**",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		392482AB221DF2EC00DE6015 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1190,10 +1551,7 @@
 					/usr/local/include/ni2/,
 					/usr/local/include/opencv4/,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/opencv/4.0.1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/4.0.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1211,10 +1569,7 @@
 					/usr/local/include/ni2/,
 					/usr/local/include/opencv4/,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/opencv/4.0.1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/4.0.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1232,10 +1587,7 @@
 					/usr/local/include/ni2/,
 					/usr/local/include/opencv4/,
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/usr/local/Cellar/opencv/4.0.1/lib,
-				);
+				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/4.0.1/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1358,7 +1710,7 @@
 		};
 		396DDFE121F4285200628070 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A3C96C47318A5A246F5A95A /* Pods-Protocol Bernardo.debug.xcconfig */;
+			baseConfigurationReference = 3908ABAB22271B4C00997684 /* Pods-Protocol Bernardo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1383,6 +1735,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs/OpenNI2",
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1396,7 +1750,7 @@
 		};
 		396DDFE221F4285200628070 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E884ECCA75A8FC5014A93D2 /* Pods-Protocol Bernardo.release.xcconfig */;
+			baseConfigurationReference = 3908ABAC22271B4C00997684 /* Pods-Protocol Bernardo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1421,6 +1775,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs/OpenNI2",
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1494,7 +1850,7 @@
 		};
 		39F0BE672213C6C6001AA7AE /* Analyze */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55FCC8726FF73A9710F67B5A /* Pods-Protocol Bernardo.analyze.xcconfig */;
+			baseConfigurationReference = 3908ABAF22271B4C00997684 /* Pods-Protocol Bernardo.analyze.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1519,6 +1875,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs/OpenNI2",
+					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1533,7 +1891,27 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		392482AA221DF2EC00DE6015 /* Build configuration list for PBXNativeTarget "DataAcquisitionEngine" */ = {
+		3908AB9E22271AF900997684 /* Build configuration list for PBXNativeTarget "PAE-MacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3908AB9F22271AF900997684 /* Debug */,
+				3908ABA022271AF900997684 /* Analyze */,
+				3908ABA122271AF900997684 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3908ABC72227210200997684 /* Build configuration list for PBXNativeTarget "Protocol Bernardo Slave" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3908ABC82227210200997684 /* Debug */,
+				3908ABC92227210200997684 /* Analyze */,
+				3908ABCA2227210200997684 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		392482AA221DF2EC00DE6015 /* Build configuration list for PBXNativeTarget "PositionAcquisitionEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				392482AB221DF2EC00DE6015 /* Debug */,

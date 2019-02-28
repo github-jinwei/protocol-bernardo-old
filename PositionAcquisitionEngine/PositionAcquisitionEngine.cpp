@@ -1,5 +1,5 @@
 //
-//  DataAcquisitionEngine.cpp
+//  PositionAcquisitionEngine.cpp
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-20.
@@ -13,40 +13,38 @@
 #include <ni2/OpenNI.h>
 #include <nite2/NiTE.h>
 
-#include "DataAcquisitionEngine.hpp"
-
-#include "../App.hpp"
+#include "PositionAcquisitionEngine.hpp"
 #include "PhysicalDevice.hpp"
 
-DataAcquisitionEngine * DataAcquisitionEngine::_instance;
-bool DataAcquisitionEngine::_openNIInitialized = false;
+PositionAcquisitionEngine * PositionAcquisitionEngine::_instance;
+bool PositionAcquisitionEngine::_openNIInitialized = false;
 
-DataAcquisitionEngine::DataAcquisitionEngine() {
+PositionAcquisitionEngine::PositionAcquisitionEngine() {
     hostname[_POSIX_HOST_NAME_MAX] = '\0';
     gethostname(hostname, _POSIX_HOST_NAME_MAX);
 }
 
-void DataAcquisitionEngine::enableLiveView() {
-    if(DataAcquisitionEngine::_openNIInitialized) {
+void PositionAcquisitionEngine::enableLiveView() {
+    if(PositionAcquisitionEngine::_openNIInitialized) {
         return;
     }
 
     _liveView = true;
 }
 
-void DataAcquisitionEngine::disableLiveView() {
+void PositionAcquisitionEngine::disableLiveView() {
     _liveView = false;
 }
 
-void DataAcquisitionEngine::start() {
+void PositionAcquisitionEngine::start() {
     // Init OpenNI
-    if(!DataAcquisitionEngine::_openNIInitialized) {
+    if(!PositionAcquisitionEngine::_openNIInitialized) {
         if(openni::OpenNI::initialize() != openni::STATUS_OK) {
             std::cout << openni::OpenNI::getExtendedError() << std::endl;
             throw "Could not itialize OpenNI";
         }
         
-        DataAcquisitionEngine::_openNIInitialized = true;
+        PositionAcquisitionEngine::_openNIInitialized = true;
     }
     
     // Add our event listeners to OpenNI
@@ -65,7 +63,7 @@ void DataAcquisitionEngine::start() {
     parseForDevices();
 }
 
-void DataAcquisitionEngine::stop() {
+void PositionAcquisitionEngine::stop() {
     // Stop NiTE
     nite::NiTE::shutdown();
 
@@ -79,7 +77,7 @@ void DataAcquisitionEngine::stop() {
 
 }
 
-void DataAcquisitionEngine::parseForDevices() {
+void PositionAcquisitionEngine::parseForDevices() {
     // Get all the available devices
     openni::Array<openni::DeviceInfo> availableDevices;
     openni::OpenNI::enumerateDevices(&availableDevices);
@@ -90,7 +88,7 @@ void DataAcquisitionEngine::parseForDevices() {
     }
 }
 
-void DataAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInfo) {
+void PositionAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInfo) {
     // Get the device serial
     std::string serial = getDeviceSerial(deviceInfo);
     
@@ -106,11 +104,11 @@ void DataAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInfo) {
     }
     
     // Register the device
-    PhysicalDevice * device = new PhysicalDevice(*deviceInfo, serial);
+    PhysicalDevice * device = new PhysicalDevice(*deviceInfo, serial, this);
     _devices[serial] = device;
 }
 
-void DataAcquisitionEngine::onDeviceDisconnected(const openni::DeviceInfo * deviceInfo) {
+void PositionAcquisitionEngine::onDeviceDisconnected(const openni::DeviceInfo * deviceInfo) {
     // Get the device serial
     std::string serial = getDeviceSerial(deviceInfo);
     
@@ -124,7 +122,7 @@ void DataAcquisitionEngine::onDeviceDisconnected(const openni::DeviceInfo * devi
     _devices.erase(serial);
 }
 
-void DataAcquisitionEngine::connectToDevice(const std::string &serial) {
+void PositionAcquisitionEngine::connectToDevice(const std::string &serial) {
     // Make sure the device specified is available
     if(_devices.count(serial) == 0)
         return; // Do nothing
@@ -132,7 +130,7 @@ void DataAcquisitionEngine::connectToDevice(const std::string &serial) {
     _devices[serial]->connect();
 }
 
-void DataAcquisitionEngine::setDeviceActive(const std::string &serial) {
+void PositionAcquisitionEngine::setDeviceActive(const std::string &serial) {
     // Make sure the device specified is available
     if(_devices.count(serial) == 0)
         return; // Do nothing
@@ -140,7 +138,7 @@ void DataAcquisitionEngine::setDeviceActive(const std::string &serial) {
     _devices[serial]->setActive();
 }
 
-void DataAcquisitionEngine::setDeviceIdle(const std::string &serial) {
+void PositionAcquisitionEngine::setDeviceIdle(const std::string &serial) {
     // Make sure the device specified is available
     if(_devices.count(serial) == 0)
         return; // Do nothing
@@ -148,34 +146,43 @@ void DataAcquisitionEngine::setDeviceIdle(const std::string &serial) {
     _devices[serial]->setIdle();
 }
 
-DAEStatus * DataAcquisitionEngine::getStatus() {
-    DAEStatus * status = new DAEStatus();
+PAEStatus * PositionAcquisitionEngine::getStatus() {
+    PAEStatus * status = new PAEStatus();
     
     status->deviceCount = (unsigned int)_devices.size();
     
     // Allocate space to store the device states (C-style baby)
-    status->_deviceStatus = (DAEDeviceStatus *)malloc(sizeof(DAEDeviceStatus) * status->deviceCount);
+    status->connectedDevices = (DAEDeviceStatus *)malloc(sizeof(DAEDeviceStatus) * status->deviceCount);
     
     // For each device currently stored, generate and store its status
     int i = 0;
     for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
         PhysicalDevice * device = deviceReference.second;
-        status->_deviceStatus[i] = device->getStatus();
-        memcpy(status->_deviceStatus[i]._hostname, hostname, _POSIX_HOST_NAME_MAX);
+        status->connectedDevices[i] = device->getStatus();
+        memcpy(status->connectedDevices[i].deviceHostname, hostname, _POSIX_HOST_NAME_MAX);
         ++i;
     }
     
     return status;
 }
 
-DataAcquisitionEngine::~DataAcquisitionEngine() {
+void PositionAcquisitionEngine::freeStatus(PAEStatus * status) {
+    for(int i = 0; i < status->deviceCount; ++i) {
+        delete status->connectedDevices[i].trackedUsers;
+    }
+
+    delete status->connectedDevices;
+    delete status;
+}
+
+PositionAcquisitionEngine::~PositionAcquisitionEngine() {
     stop();
     
     // Ideally, stop OpenNI too, but this is causing a EXC_BAD_ACCESS,
     // so we will not do it for now...
 }
 
-std::string DataAcquisitionEngine::getDeviceSerial(const openni::DeviceInfo * deviceInfo) {
+std::string PositionAcquisitionEngine::getDeviceSerial(const openni::DeviceInfo * deviceInfo) {
     // Get the device URI
     const std::string uri(deviceInfo->getUri());
     
@@ -194,42 +201,4 @@ std::string DataAcquisitionEngine::getDeviceSerial(const openni::DeviceInfo * de
     
     // mathc[1] is the serial
     return match[1];
-}
-
-
-// C Access
-
-void DAEEnableLiveView() {
-    App->dae->enableLiveView();
-}
-
-void DAEDisableLiveView() {
-    App->dae->disableLiveView();
-}
-
-void DAEPrepare() {
-    App->dae->start();
-}
-
-void DAEConnectToDevice(const char * c_serial) {
-    std::string serial = c_serial;
-    App->dae->connectToDevice(serial);
-}
-
-void DAESetDeviceActive(const char * c_serial) {
-    std::string serial = c_serial;
-    App->dae->setDeviceActive(serial);
-}
-
-void DAESetDeviceIdle(const char * c_serial) {
-    std::string serial = c_serial;
-    App->dae->setDeviceIdle(serial);
-}
-
-void DAEEndAcquisition() {
-    App->dae->stop();
-}
-
-DAEStatus * DAEGetStatus() {
-    return App->dae->getStatus();
 }

@@ -9,4 +9,4 @@
  DAE C Interfaces
  */
 
-#include "Resources/Libs/DataAcquisitionEngine/DAE-Bridging.h"
+#include "../PAE-MacOS/PAE-Bridging.h"

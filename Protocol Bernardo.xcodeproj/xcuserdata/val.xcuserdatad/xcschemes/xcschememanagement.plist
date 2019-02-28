@@ -4,10 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>DataAcquisitionEngine.xcscheme_^#shared#^_</key>
+		<key>PAE-MacOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
+		</dict>
+		<key>PositionAcquisitionEngine.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Protocol Bernardo Slave.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Protocol Bernardo.xcscheme_^#shared#^_</key>
 		<dict>
@@ -18,6 +28,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3900AE74221DF8DB00A38E26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>392482A8221DF2EC00DE6015</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,5 +1,5 @@
 //
-//  DataAcquisitionEngine.hpp
+//  PositionAcquisitionEngine.hpp
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-20.
@@ -13,26 +13,26 @@
 #include <unistd.h>
 #include <limits.h>
 
-#include "DAEStatus.h"
+#include "PAEStatus.h"
 #include "DeviceConnectionListener.hpp"
 #include "DeviceDisconnectionListener.hpp"
 
 // Forward Declarations
 class PhysicalDevice;
 
-class DataAcquisitionEngine {
+class PositionAcquisitionEngine {
 public:
     
-    static DataAcquisitionEngine * getInstance() {
+    static PositionAcquisitionEngine * getInstance() {
         if(!_instance)
-            _instance = new DataAcquisitionEngine();
+            _instance = new PositionAcquisitionEngine();
         
         return _instance;
     };
 
     /**
-     By enabling live view, the dae will create an OpenCV to display the color
-     stream of the connected devices. Live view needs to be enabled before starting the dae.
+     By enabling live view, the pae will create an OpenCV to display the color
+     stream of the connected devices. Live view needs to be enabled before starting the pae.
      When using live view, `getStatus()` needs to be called from the main thread
      */
     void enableLiveView();
@@ -42,6 +42,11 @@ public:
      */
     void disableLiveView();
 
+    /**
+     Tell if live view is currently enabled
+
+     @return True if enabled, false otherwise
+     */
     inline bool isLiveViewEnabled() { return _liveView; }
     
     /**
@@ -99,19 +104,23 @@ public:
 
      @return The global status
      */
-    DAEStatus * getStatus();
+    PAEStatus * getStatus();
+
+    void freeStatus(PAEStatus * status);
     
-    ~DataAcquisitionEngine();
+    ~PositionAcquisitionEngine();
     
 private:
-    DataAcquisitionEngine();
-    static DataAcquisitionEngine * _instance;
+    PositionAcquisitionEngine();
+    static PositionAcquisitionEngine * _instance;
     
     /** Tell if OpenNI has already been initialized or not */
     static bool _openNIInitialized;
 
+    /** Tell if live view is enabled */
     bool _liveView = false;
 
+    /** Holds the hostname of the current machine */
     char hostname[_POSIX_HOST_NAME_MAX + 1];
     
     /** All the available devices */
@@ -131,17 +140,5 @@ private:
      */
     std::string getDeviceSerial(const openni::DeviceInfo * deviceInfo);
 };
-
-extern "C" {
-    struct DAEStatus * DAEGetStatus();
-
-    void DAEEnableLiveView();
-    void DAEDisableLiveView();
-    void DAEPrepare();
-    void DAEConnectToDevice(const char * c_serial);
-    void DAESetDeviceActive(const char * c_serial);
-    void DAESetDeviceIdle(const char * c_serial);
-    void DAEEndAcquisition();
-}
 
 #endif /* DataAcquisitionEngine_hpp */

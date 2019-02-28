@@ -15,9 +15,12 @@
 #include <ni2/OpenNI.h>
 #include <nite2/NiTE.h>
 
-#include "DAEStatus.h"
+#include "PAEStatus.h"
 #include "FrameListener.hpp"
 #include "UsersTracker.hpp"
+
+/** Forward Declaration */
+class PositionAcquisitionEngine;
 
 class PhysicalDevice {
 public:
@@ -27,10 +30,11 @@ public:
      @param device The device info object provided by OpenNI
      @param serial The serial number of the device
      */
-    PhysicalDevice(const openni::DeviceInfo &device, const std::string &serial):
+    PhysicalDevice(const openni::DeviceInfo &device, const std::string &serial, PositionAcquisitionEngine * pae):
         _name(std::string(device.getName())),
         _serial(serial),
-        _uri(std::string(device.getUri())) {}
+        _uri(std::string(device.getUri())),
+        _pae(pae) {}
     
     /**
      Open a connection with the device, properly initializing this class.
@@ -110,6 +114,9 @@ private:
     std::string _name;
     std::string _serial;
     std::string _uri;
+
+    /** Reference to the PAE */
+    PositionAcquisitionEngine * _pae;
     
     openni::Device _device;
     
