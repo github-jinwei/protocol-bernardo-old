@@ -7,17 +7,17 @@
 		<key>PAE-MacOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>3</integer>
 		</dict>
 		<key>PositionAcquisitionEngine.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Protocol Bernardo Slave.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Protocol Bernardo.xcscheme_^#shared#^_</key>
 		<dict>
@@ -28,6 +28,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3900AE74221DF8DB00A38E26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3908AB9C22271AF900997684</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3908ABC22227210200997684</key>
 		<dict>
 			<key>primary</key>
 			<true/>
