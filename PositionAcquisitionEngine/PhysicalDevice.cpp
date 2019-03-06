@@ -15,6 +15,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 
 void PhysicalDevice::connect() {
+    if(_state != DEVICE_IDLE) { return; }
+
     _state = DeviceState::DEVICE_CONNECTING;
     
     // Open the device
@@ -123,8 +125,8 @@ void PhysicalDevice::storeDepthFrame(openni::VideoFrameRef *frame) {
     _depthFrame = frame;
 }
 
-DAEDeviceStatus PhysicalDevice::getStatus() {
-    DAEDeviceStatus status;
+PAEDeviceStatus PhysicalDevice::getStatus() {
+    PAEDeviceStatus status;
     strcpy(status.deviceName, _name.c_str());
     strcpy(status.deviceSerial, _serial.c_str());
     status.state = _state;

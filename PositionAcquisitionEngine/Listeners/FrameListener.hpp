@@ -15,9 +15,10 @@
 // Forward Declarations
 class PhysicalDevice;
 
+// Respond to OpenNI new frame events. Used to retrieve frame from a device
 class FrameListener: public openni::VideoStream::NewFrameListener {
     /**
-     Called by NiTE every time a new video frame is available from a stream
+     Called by OpenNI every time a new video frame is available from a stream
 
      @param stream The strean who has an available frame
      */

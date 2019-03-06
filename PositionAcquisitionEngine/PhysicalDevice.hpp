@@ -16,12 +16,17 @@
 #include <nite2/NiTE.h>
 
 #include "PAEStatus.h"
-#include "FrameListener.hpp"
+#include "Listeners/FrameListener.hpp"
 #include "UsersTracker.hpp"
 
 /** Forward Declaration */
 class PositionAcquisitionEngine;
 
+/** Represent a real world captation devicee. Provides a abstraction on top
+of OpenNI own device format.
+
+A PhysicalDevice holds its own frame listener and control the device it represents
+*/
 class PhysicalDevice {
 public:
     /**
@@ -78,7 +83,7 @@ public:
 
      @return The device state
      */
-    DAEDeviceStatus getStatus();
+    PAEDeviceStatus getStatus();
     
     /**
      Gives the name of the device
@@ -111,35 +116,49 @@ public:
     ~PhysicalDevice();
     
 private:
+    /** Name of the dvice */
     std::string _name;
+
+    /** Serial of the devicee */
     std::string _serial;
+
+    /** URI of the device */
     std::string _uri;
 
     /** Reference to the PAE */
     PositionAcquisitionEngine * _pae;
-    
+
+    /** The OpenNI deviceee */
     openni::Device _device;
-    
+
+    /** The device's color stream */
     openni::VideoStream _colorStream;
     
     /** The latest color frame received */
     openni::VideoFrameRef * _colorFrame = nullptr;
-    
+
+    /** The device depth stream */
     openni::VideoStream _depthStream;
     
     /** The latest color depth received */
     openni::VideoFrameRef * _depthFrame = nullptr;
-    
+
+    /** The color stream listener */
     FrameListener _colorStreamListener;
+
+    /** The depth stream listener */
     FrameListener _depthStreamListener;
-    
+
+    /** Current state of the device */
     DeviceState _state = DeviceState::DEVICE_IDLE;
-    
+
+    /** Human pose tracker (NiTE) */
     nite::UserTracker _rigTracker;
     
     /** The latest user frame received */
     nite::UserTrackerFrameRef * _userFrame;
-    
+
+    /** User tracker */
     UsersTracker _usersTracker;
 };
 

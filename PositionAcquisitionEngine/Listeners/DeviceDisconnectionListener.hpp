@@ -15,11 +15,14 @@
 // Forward Declarations
 class PositionAcquisitionEngine;
 
+/** Responds to Device disconnection events sent by OpenNI */
 class DeviceDisconnectionListener: public openni::OpenNI::DeviceDisconnectedListener {
 public:
+    /** Called by openNi when a device disconnect */
     void onDeviceDisconnected(const openni::DeviceInfo * deviceInfo);
 
-    PositionAcquisitionEngine * dae;
+    /** Reference to the Position Acquisition Engine */
+    PositionAcquisitionEngine * pae;
 };
 
 #endif /* DeviceDisconnectedListener_hpp */

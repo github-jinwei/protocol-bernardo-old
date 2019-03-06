@@ -8,10 +8,10 @@
 
 #include "DeviceConnectionListener.hpp"
 
-#include "PositionAcquisitionEngine.hpp"
+#include "../PositionAcquisitionEngine.hpp"
 
 void DeviceConnectionListener::onDeviceConnected(const openni::DeviceInfo *deviceInfo) {
     std::cout << "Device Connected" << std::endl;
     // Inform the pae of the connection
-    dae->onNewDevice(deviceInfo);
+    pae->onNewDevice(deviceInfo);
 }

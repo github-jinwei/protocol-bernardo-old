@@ -13,7 +13,7 @@
 #include "Position.h"
 
 /**
- Represent a Joint on a skeleton.
+ Represent a joint on a skeleton.
  */
 struct Joint {
     /** The current orientation of the joint */

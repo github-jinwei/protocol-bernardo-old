@@ -15,11 +15,18 @@
 // Forward Declarations
 class PositionAcquisitionEngine;
 
+/** Responds to Device connection events sent by OpenNI */
 class DeviceConnectionListener: public openni::OpenNI::DeviceConnectedListener {
 public:
+    /**
+     Called by OpenNI when a new device has been connected
+
+     @param deviceInfo The newly connected device
+     */
     void onDeviceConnected(const openni::DeviceInfo * deviceInfo);
-    
-    PositionAcquisitionEngine * dae;
+
+    /** Reference to the Position Acquisition Engine */
+    PositionAcquisitionEngine * pae;
 };
 
 #endif /* DeviceConnectionListener_hpp */

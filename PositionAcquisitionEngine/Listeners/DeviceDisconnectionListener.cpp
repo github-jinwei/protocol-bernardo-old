@@ -8,10 +8,9 @@
 
 #include "DeviceDisconnectionListener.hpp"
 
-#include "PositionAcquisitionEngine.hpp"
+#include "../PositionAcquisitionEngine.hpp"
 
 void DeviceDisconnectionListener::onDeviceDisconnected(const openni::DeviceInfo *deviceInfo) {
-    std::cout << "Device disconnected" << std::endl;
-    // Inform the pae of the connection
-    dae->onDeviceDisconnected(deviceInfo);
+    // Inform the pae of the disconnection
+    pae->onDeviceDisconnected(deviceInfo);
 }
