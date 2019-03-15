@@ -24,6 +24,12 @@ extension String {
     /// If the string represent a filename (not a pathc), give the file name
     /// without the extension
     var fileNameWithoutExtension: String {
-        return String(self.split(separator: ".").first!)
+        var components = self.split(separator: ".")
+
+        // Remove the extension
+        components.removeLast(1)
+
+        // Merge and return the rest
+        return String(components.joined(separator: "."))
     }
 }

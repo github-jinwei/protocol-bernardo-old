@@ -262,7 +262,7 @@
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Saa-EC-5OP">
                                     <rect key="frame" x="-2" y="50" width="35" height="17"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="posX" id="2zt-iZ-vzF">
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="posX" id="2zt-iZ-vzF">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -270,7 +270,7 @@
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IoU-hm-1h7">
                                     <rect key="frame" x="-1" y="25" width="34" height="17"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="posY" id="lOS-BV-hZ0">
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="posY" id="lOS-BV-hZ0">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -278,7 +278,7 @@
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6VS-HP-8WM">
                                     <rect key="frame" x="-2" y="0.0" width="35" height="17"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="posZ" id="hQB-dO-3MU">
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="posZ" id="hQB-dO-3MU">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

@@ -15,7 +15,7 @@ class PBTrackedUserDetailsExcerpt: NSView {
     @IBOutlet weak var userPosXField: NSTextField!
     @IBOutlet weak var userPosYField: NSTextField!
     @IBOutlet weak var userPosZField: NSTextField!
-    
+
     /// Update the user values
     ///
     /// - Parameter user:
@@ -24,15 +24,16 @@ class PBTrackedUserDetailsExcerpt: NSView {
         trackingStatusField.stringValue = getLabel(forState: user.state)
     
         guard user.state == USER_TRACKED else {
+            // The user isn't tracked
             userPosXField.intValue = 0
             userPosYField.intValue = 0
             userPosZField.intValue = 0
             return
         }
         
-        userPosXField.intValue = Int32(user.centerOfMass.x)
-        userPosYField.intValue = Int32(user.centerOfMass.y)
-        userPosZField.intValue = Int32(user.centerOfMass.z)
+        userPosXField.floatValue = (user.skeleton.torso.position.x / 10.0).rounded()
+        userPosYField.floatValue = (user.skeleton.torso.position.y / 10.0).rounded()
+        userPosZField.floatValue = (user.skeleton.torso.position.z / 10.0).rounded()
     }
     
     /// Gets the label matching the user state

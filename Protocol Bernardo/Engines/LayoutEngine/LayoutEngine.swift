@@ -33,6 +33,11 @@ class LayoutEngine {
     ///
     /// - Parameter url: A .pblayout package url
     func openLayout(at url: URL) {
-        App.documentsController.openDocument(withContentsOf: url, display: true) { _, _, _ in }
+        App.documentsController.openDocument(withContentsOf: url, display: true) { doc, _, _ in
+            guard let doc = doc else { return }
+
+            // Set up autosaving for the document
+            doc.scheduleAutosaving()
+        }
     }
 }

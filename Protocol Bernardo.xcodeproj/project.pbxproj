@@ -19,10 +19,8 @@
 		3900AE66221DF75200A38E26 /* UserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248345221DF5A300DE6015 /* UserState.h */; };
 		3900AE67221DF75200A38E26 /* UsersTracker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248346221DF5A300DE6015 /* UsersTracker.hpp */; };
 		3900AE68221DF75200A38E26 /* Joint.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248348221DF5A300DE6015 /* Joint.h */; };
-		3900AE69221DF75200A38E26 /* Quaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248349221DF5A300DE6015 /* Quaternion.h */; };
 		3900AE6A221DF75200A38E26 /* Skeleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834A221DF5A300DE6015 /* Skeleton.h */; };
 		3900AE6B221DF75200A38E26 /* PAEStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834B221DF5A300DE6015 /* PAEStatus.h */; };
-		3900AE6C221DF75200A38E26 /* Position.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834C221DF5A300DE6015 /* Position.h */; };
 		3900AE6D221DF75200A38E26 /* PhysicalUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834D221DF5A300DE6015 /* PhysicalUser.h */; };
 		3900AE6E221DF75200A38E26 /* PositionAcquisitionEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */; };
 		3900AE6F221DF75200A38E26 /* FrameListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248350221DF5A300DE6015 /* FrameListener.hpp */; };
@@ -69,7 +67,6 @@
 		392482D2221DF53300DE6015 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
 		392482D3221DF53300DE6015 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
 		39264994221E72EC00C8ECBF /* LayoutTouchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39264993221E72EC00C8ECBF /* LayoutTouchbar.swift */; };
-		39379A0E220FA220004C3815 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A0D220FA220004C3815 /* Position.swift */; };
 		39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* PhysicalDevice.swift */; };
 		393ACD2122150C4500306D60 /* PBCalibrationLiveDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */; };
 		393ACD232215140700306D60 /* CalibrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD222215140700306D60 /* CalibrationController.swift */; };
@@ -84,7 +81,6 @@
 		3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */; };
 		396C48532208FDBA000AA888 /* LayoutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C48522208FDBA000AA888 /* LayoutWindowController.swift */; };
 		396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */; };
-		396CF35822110EC10049E091 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35722110EC10049E091 /* Queue.swift */; };
 		396CF35A2212037E0049E091 /* CalibrationDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF3592212037E0049E091 /* CalibrationDeltas.swift */; };
 		396D45742218A7F10018F95C /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396D45732218A7F10018F95C /* DeviceState.swift */; };
 		396DDFC921F4285000628070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFC821F4285000628070 /* AppDelegate.swift */; };
@@ -129,8 +125,6 @@
 		3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */; };
 		39977430220B94FB00ED4B93 /* LayoutCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */; };
 		39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */; };
-		39977435220B961B00ED4B93 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977434220B961B00ED4B93 /* Point.swift */; };
-		39977437220B977800ED4B93 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977436220B977800ED4B93 /* CGPoint.swift */; };
 		3997743D220BB0E500ED4B93 /* LayoutSidebarCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */; };
 		39A1E70321FE67FE003162FE /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A1E6FE21FE67FE003162FE /* Layout.storyboard */; };
 		39A1E70521FE67FE003162FE /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70021FE67FE003162FE /* LayoutController.swift */; };
@@ -164,12 +158,13 @@
 		39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */; };
 		39E3121221F6F1C5006569F1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121121F6F1C5006569F1 /* String.swift */; };
 		39E3121421F777F6006569F1 /* PAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* PAEStatus.swift */; };
-		39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */; };
+		39E3121621F779A0006569F1 /* PAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */; };
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
 		39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */; };
 		39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */; };
 		39F5F58F2221ED780035B9C1 /* BVHFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58E2221ED780035B9C1 /* BVHFile.swift */; };
 		39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */; };
+		39FFE2F522357D97001BCE9E /* simd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFE2F422357D97001BCE9E /* simd.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,10 +293,8 @@
 		39248345221DF5A300DE6015 /* UserState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserState.h; sourceTree = "<group>"; };
 		39248346221DF5A300DE6015 /* UsersTracker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UsersTracker.hpp; sourceTree = "<group>"; };
 		39248348221DF5A300DE6015 /* Joint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Joint.h; sourceTree = "<group>"; };
-		39248349221DF5A300DE6015 /* Quaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quaternion.h; sourceTree = "<group>"; };
 		3924834A221DF5A300DE6015 /* Skeleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Skeleton.h; sourceTree = "<group>"; };
 		3924834B221DF5A300DE6015 /* PAEStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAEStatus.h; sourceTree = "<group>"; };
-		3924834C221DF5A300DE6015 /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		3924834D221DF5A300DE6015 /* PhysicalUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicalUser.h; sourceTree = "<group>"; };
 		3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PositionAcquisitionEngine.hpp; sourceTree = "<group>"; };
 		3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceConnectionListener.cpp; sourceTree = "<group>"; };
@@ -316,7 +309,6 @@
 		3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.4.0.1.dylib; sourceTree = "<group>"; };
 		392960B221F7CFDB0064B808 /* libfreenect2-openni2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libfreenect2-openni2.0.dylib"; path = "../../../../../usr/local/lib/libfreenect2-openni2.0.dylib"; sourceTree = "<group>"; };
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
-		39379A0D220FA220004C3815 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		39379A11220FE496004C3815 /* PhysicalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDevice.swift; sourceTree = "<group>"; };
 		393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCalibrationLiveDeltas.swift; sourceTree = "<group>"; };
 		393ACD222215140700306D60 /* CalibrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationController.swift; sourceTree = "<group>"; };
@@ -332,7 +324,6 @@
 		3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBTrackedUserDetailsExcerpt.swift; sourceTree = "<group>"; };
 		396C48522208FDBA000AA888 /* LayoutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowController.swift; sourceTree = "<group>"; };
 		396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltasCalculator.swift; sourceTree = "<group>"; };
-		396CF35722110EC10049E091 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		396CF3592212037E0049E091 /* CalibrationDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltas.swift; sourceTree = "<group>"; };
 		396D45732218A7F10018F95C /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
 		396DDFC521F4285000628070 /* Protocol Bernardo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Protocol Bernardo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,8 +377,6 @@
 		3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutCalibrationIcon.icns; sourceTree = "<group>"; };
 		3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibrationProfile.swift; sourceTree = "<group>"; };
 		39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCalibrationProfile.swift; sourceTree = "<group>"; };
-		39977434220B961B00ED4B93 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
-		39977436220B977800ED4B93 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebarCalibration.swift; sourceTree = "<group>"; };
 		39A1E6FE21FE67FE003162FE /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
 		39A1E70021FE67FE003162FE /* LayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
@@ -424,12 +413,13 @@
 		39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceRow.swift; sourceTree = "<group>"; };
 		39E3121121F6F1C5006569F1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		39E3121321F777F6006569F1 /* PAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEStatus.swift; sourceTree = "<group>"; };
-		39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEDeviceStatus.swift; sourceTree = "<group>"; };
+		39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEDeviceStatus.swift; sourceTree = "<group>"; };
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfilePanel.swift; sourceTree = "<group>"; };
 		39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedUser.swift; sourceTree = "<group>"; };
 		39F5F58E2221ED780035B9C1 /* BVHFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVHFile.swift; sourceTree = "<group>"; };
 		39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingSessionPanel.swift; sourceTree = "<group>"; };
+		39FFE2F422357D97001BCE9E /* simd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simd.swift; sourceTree = "<group>"; };
 		E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -622,8 +612,8 @@
 		39248283221DF29100DE6015 /* PositionAcquisitionEngine */ = {
 			isa = PBXGroup;
 			children = (
-				390EC7D6222EF7E300DDAE9F /* Listeners */,
 				39248343221DF5A300DE6015 /* Enums */,
+				390EC7D6222EF7E300DDAE9F /* Listeners */,
 				39248340221DF5A300DE6015 /* PhysicalDevice.cpp */,
 				39248351221DF5A300DE6015 /* PhysicalDevice.hpp */,
 				3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */,
@@ -651,8 +641,6 @@
 				398AF77F222F7546008145CB /* PAEDeviceStatus.h */,
 				3924834B221DF5A300DE6015 /* PAEStatus.h */,
 				3924834D221DF5A300DE6015 /* PhysicalUser.h */,
-				3924834C221DF5A300DE6015 /* Position.h */,
-				39248349221DF5A300DE6015 /* Quaternion.h */,
 				3924834A221DF5A300DE6015 /* Skeleton.h */,
 			);
 			path = Structs;
@@ -683,7 +671,7 @@
 		3968FCDE21FD0386005EAA4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				39E3121521F779A0006569F1 /* DAEDeviceStatus.swift */,
+				39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */,
 				39E3121321F777F6006569F1 /* PAEStatus.swift */,
 				396D45732218A7F10018F95C /* DeviceState.swift */,
 			);
@@ -694,7 +682,6 @@
 			isa = PBXGroup;
 			children = (
 				397E685C21FE57D700FFA678 /* README.md */,
-				39757DA42221B66900FF6D57 /* .jazzy.json */,
 				39248283221DF29100DE6015 /* PositionAcquisitionEngine */,
 				3908ABA422271B0D00997684 /* PAE-MacOS */,
 				396DDFC721F4285000628070 /* Protocol Bernardo */,
@@ -720,12 +707,13 @@
 		396DDFC721F4285000628070 /* Protocol Bernardo */ = {
 			isa = PBXGroup;
 			children = (
-				39D558AE220919D900916AAA /* Resources */,
-				390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */,
-				390D0DBA21F511630032CA23 /* Engines */,
+				39757DA42221B66900FF6D57 /* .jazzy.json */,
 				39AF88AB21F4CF6E00A68993 /* Core */,
-				396DDFF421F4340B00628070 /* Utils */,
+				390D0DBA21F511630032CA23 /* Engines */,
+				390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */,
+				39D558AE220919D900916AAA /* Resources */,
 				396DDFE621F42A2300628070 /* Scenes */,
+				396DDFF421F4340B00628070 /* Utils */,
 			);
 			path = "Protocol Bernardo";
 			sourceTree = "<group>";
@@ -752,11 +740,9 @@
 		396DDFF421F4340B00628070 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				39757DA62221BA9100FF6D57 /* Geometry */,
 				396DDFF521F4341A00628070 /* Extensions */,
 				397195C52200D38000F92C5C /* Keycode.swift */,
 				39B5575F220008430021BFDA /* maths.swift */,
-				396CF35722110EC10049E091 /* Queue.swift */,
 				392183CC22138C5E000D5968 /* Typealias.swift */,
 				39F5F58E2221ED780035B9C1 /* BVHFile.swift */,
 			);
@@ -770,6 +756,7 @@
 				39B5576122000FC70021BFDA /* NSColor.swift */,
 				397E685A21FE50E600FFA678 /* NSNib.swift */,
 				39E3121121F6F1C5006569F1 /* String.swift */,
+				39FFE2F422357D97001BCE9E /* simd.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -781,16 +768,6 @@
 				39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */,
 			);
 			path = Tracking;
-			sourceTree = "<group>";
-		};
-		39757DA62221BA9100FF6D57 /* Geometry */ = {
-			isa = PBXGroup;
-			children = (
-				39977434220B961B00ED4B93 /* Point.swift */,
-				39379A0D220FA220004C3815 /* Position.swift */,
-				39977436220B977800ED4B93 /* CGPoint.swift */,
-			);
-			path = Geometry;
 			sourceTree = "<group>";
 		};
 		39757DA72221BC1A00FF6D57 /* Elements */ = {
@@ -1045,10 +1022,8 @@
 				3900AE66221DF75200A38E26 /* UserState.h in Headers */,
 				3900AE67221DF75200A38E26 /* UsersTracker.hpp in Headers */,
 				3900AE68221DF75200A38E26 /* Joint.h in Headers */,
-				3900AE69221DF75200A38E26 /* Quaternion.h in Headers */,
 				3900AE6A221DF75200A38E26 /* Skeleton.h in Headers */,
 				3900AE6B221DF75200A38E26 /* PAEStatus.h in Headers */,
-				3900AE6C221DF75200A38E26 /* Position.h in Headers */,
 				3900AE6D221DF75200A38E26 /* PhysicalUser.h in Headers */,
 				3900AE6E221DF75200A38E26 /* PositionAcquisitionEngine.hpp in Headers */,
 				3900AE6F221DF75200A38E26 /* FrameListener.hpp in Headers */,
@@ -1307,7 +1282,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\n#    if hash tailor 2>/dev/null; then\n#        tailor --except=trailing-whitespace,function-whitespace,lower-camel-case Protocol\\ Bernardo/\n#    else\n#        echo \"warning: Please install Tailor from https://tailor.sh\"\n#    fi\n# fi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\n   if hash tailor 2>/dev/null; then\n       tailor --except=trailing-whitespace,function-whitespace Protocol\\ Bernardo/\n   else\n       echo \"warning: Please install Tailor from https://tailor.sh\"\n   fi\nfi\n";
 		};
 		48B1039FCFCC7E0E313ABDD4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1391,7 +1366,8 @@
 				39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */,
 				396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */,
 				39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */,
-				39E3121621F779A0006569F1 /* DAEDeviceStatus.swift in Sources */,
+				39E3121621F779A0006569F1 /* PAEDeviceStatus.swift in Sources */,
+				39FFE2F522357D97001BCE9E /* simd.swift in Sources */,
 				39684DF22214A1B2006E4B37 /* LayoutInterfaceMode.swift in Sources */,
 				39757DA022209F1800FF6D57 /* TrackingSession.swift in Sources */,
 				39A1E70521FE67FE003162FE /* LayoutController.swift in Sources */,
@@ -1401,7 +1377,6 @@
 				39C1E907220A201A00F53AC2 /* LayoutSidebar.swift in Sources */,
 				3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */,
 				39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
-				39977437220B977800ED4B93 /* CGPoint.swift in Sources */,
 				398F6273221901E8003BFC81 /* PBDevicesStartupSheet.swift in Sources */,
 				39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */,
 				39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */,
@@ -1437,14 +1412,12 @@
 				39023F97221F594C005E2C9F /* Skeleton.swift in Sources */,
 				39C1E90D220A37F300F53AC2 /* Line.swift in Sources */,
 				39E3121221F6F1C5006569F1 /* String.swift in Sources */,
-				396CF35822110EC10049E091 /* Queue.swift in Sources */,
 				39023F9B221F608F005E2C9F /* Joint.swift in Sources */,
 				392183CB22138B3A000D5968 /* ConnectedDevices.swift in Sources */,
 				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
 				392183CD22138C5E000D5968 /* Typealias.swift in Sources */,
 				39967344221E2127003A75A6 /* LayoutCanvasElementAppearance.swift in Sources */,
 				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
-				39379A0E220FA220004C3815 /* Position.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
 				39B5576222000FC70021BFDA /* NSColor.swift in Sources */,
@@ -1455,7 +1428,6 @@
 				3915BFA32219E6C800E80ABE /* PBMachineDevicesList.swift in Sources */,
 				39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */,
 				39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */,
-				39977435220B961B00ED4B93 /* Point.swift in Sources */,
 				39B55760220008430021BFDA /* maths.swift in Sources */,
 				3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift in Sources */,
 			);
@@ -1797,8 +1769,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
-					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs/OpenNI2",
-					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1837,8 +1807,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
-					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs/OpenNI2",
-					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1937,8 +1905,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
-					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs/OpenNI2",
-					"$(PROJECT_DIR)/Protocol\\ Bernardo/Resources/Libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

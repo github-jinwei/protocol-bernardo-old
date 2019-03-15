@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import simd
 
 /// Calculate positioning deltas between two devices
 ///
@@ -20,8 +21,8 @@ class CalibrationDeltasCalculator {
     /// Inner structure to store a couple of position for the same user accross
     /// two devices
     private struct PositionCollection {
-        var device: Position? = nil
-        var reference: Position? = nil
+        var device: float3? = nil
+        var reference: float3? = nil
     }
 
     /// Positions of the primary user on both devices
@@ -38,7 +39,7 @@ extension CalibrationDeltasCalculator {
     /// - Parameters:
     ///   - devicePrimaryUser: Position on the device to calibrate
     ///   - referencePrimaryUser: Position on the reference device
-    func set(devicePrimaryUser: Position, referencePrimaryUser: Position) {
+    func set(devicePrimaryUser: float3, referencePrimaryUser: float3) {
         primaryPositions.device = devicePrimaryUser
         primaryPositions.reference = referencePrimaryUser
     }
@@ -49,7 +50,7 @@ extension CalibrationDeltasCalculator {
     /// - Parameters:
     ///   - devicePrimaryUser: Position on the device to calibrate
     ///   - referencePrimaryUser: Position on the reference device
-    func set(deviceSecondaryUser: Position, referenceSecondaryUser: Position) {
+    func set(deviceSecondaryUser: float3, referenceSecondaryUser: float3) {
         secondaryPositions.device = deviceSecondaryUser
         secondaryPositions.reference = referenceSecondaryUser
     }
@@ -92,7 +93,9 @@ extension CalibrationDeltasCalculator {
         // Store the deltas
         var deltas = CalibrationDeltas()
 
-        deltas.orientation = deviceVector.angle(with: referenceVector)
+        // Get the orientation delta between the device and the referenceVector
+        deltas.orientation = atan2f(referenceVector.z, referenceVector.x) -
+                            atan2f(deviceVector.z, deviceVector.x)
 
         deltas.xPosition = (primaryUserDeltas.xPosition + secondaryUserDeltas.xPosition) / 2
         deltas.yPosition = (primaryUserDeltas.yPosition + secondaryUserDeltas.yPosition) / 2

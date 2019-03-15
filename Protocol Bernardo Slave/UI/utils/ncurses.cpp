@@ -5,11 +5,13 @@
 //  Created by Valentin Dufois on 24/11/2017.
 //  Copyright © 2017 Valentin Dufois. All rights reserved.
 //
+#include <locale.h>
 
 #include "ncurses.hpp"
 
 void nCurses::init()
 {
+    setlocale(LC_ALL, "");
 	initscr();
 	cbreak();
 	noecho();
@@ -68,6 +70,13 @@ void nCurses::clear()
 	clearStyling();
 
 	m_lastColorID = 1;
+}
+
+void nCurses::clearArea(const int &col, const int &row, const uint &width, const uint &height)
+{
+    for(int i = 0; i < width; ++i)
+        for(int j = 0; j < height; ++j)
+            print << mv(col + i, row + j) << " ";
 }
 
 void nCurses::clearStyling()
@@ -177,21 +186,47 @@ void nCurses::box(const int &col, const int &row, const uint &width, const uint 
 	vLine(col + width - 1, row + 1         , height - 2);
 
 	//Fill all spaces to apply any style
-	for(int i = 1; i < width-1; ++i)
-		for(int j = 1; j < height-1; ++j)
-			print << mv(col + i, row + j) << " ";
+    clearArea(col + 1, row + 1, width - 1, height - 1);
 
 
 }
 
 void nCurses::hLine(const int &col, const int &row, const uint &length)
 {
-	for(int i = 0; i < length; ++i)
-		print << mv(col + i, row) << ACS_HLINE;
+    for(int i = 0; i < length; ++i) {
+        chtype character = ACS_HLINE;
+        chtype currChar = mvinch(col + i, row);
+
+        if(currChar == ACS_VLINE) {
+            if(i == 0) {
+                character = ACS_LTEE;
+            } else if(i + 1 == length) {
+                character = ACS_RTEE;
+            } else {
+                character = ACS_PLUS;
+            }
+        }
+
+		print << mv(col + i, row) << character;
+    }
 }
 
 void nCurses::vLine(const int &col, const int &row, const uint &length)
 {
-	for(int i = 0; i < length; ++i)
-		print << mv(col, row + i) << ACS_VLINE;
+    for(int i = 0; i < length; ++i) {
+        chtype character = ACS_VLINE;
+        uint currChar = mvinch(col + i, row) & A_CHARTEXT;
+
+        if(currChar == ACS_HLINE) {
+            if(i == 0) {
+                character = ACS_TTEE;
+            } else if(i + 1 == length) {
+                character = ACS_BTEE;
+            } else {
+                character = ACS_PLUS;
+            }
+        }
+
+        print << mv(col, row + i) << character;
+    }
 }

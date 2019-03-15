@@ -14,31 +14,27 @@
 
 class PBButton: public PBControl {
 public:
-    PBButton(const std::string &aTitle, const PBFrame &aFrame);
-
-    /** The button's frame */
-    PBFrame frame;
+    PBButton(const std::string &aTitle, const PBPoint &aPosition);
 
     /**
      Changes the button's title
 
      @param title The new title for the button
      */
-    inline void setTitle(const std::string &title) { titleLabel->title = title; }
+    inline void setTitle(const std::string &title) { titleLabel->setTitle(title); }
 
     /**
      Gives the current title of the button
 
      @return The button title
      */
-    inline std::string getTitle() { return titleLabel->title; }
+    inline std::string getTitle() { return titleLabel->getTitle(); }
+
+    bool isInline = false;
 
     // MARK: - PBView
-    std::function<void(PBButton *)> action;
-
-    // MARK: - PBView
-    void render();
-
+    void render() override;
+    
 private:
 
     PBLabel * titleLabel;

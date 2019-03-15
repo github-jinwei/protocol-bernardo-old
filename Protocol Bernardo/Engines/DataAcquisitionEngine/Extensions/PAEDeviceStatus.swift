@@ -1,5 +1,5 @@
 //
-//  PhysicalDevice.swift
+//  PAEDeviceStatus.swift
 //  Protocol Bernardo
 //
 //  Created by Valentin Dufois on 2019-01-22.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-/// A DAEDeviceStatus is used to carry the current status of an acquisition device,
+/// A PAEDeviceStatus is used to carry the current status of an acquisition device,
 /// including the users it is currently tracking.
 ///
 /// The main purpose of this structure is to create a bridge between the C++ DAE
 /// and Swift. This structure should not be used directly as it is converted to `PhysicalDevice`
 /// upon receiving.
-extension DAEDeviceStatus {
+extension PAEDeviceStatus {
     /// The device's host name
     var hostname: String {
         var temp = deviceHostname

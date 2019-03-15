@@ -29,7 +29,7 @@ struct App {
     /// The utility queue running concurrently for background tasks.
     ///
     /// The queue as a QoS set as userInitiated.
-    static let utilityQueue = DispatchQueue(
-        label: "studio.prisme.pb.utilityQueue",
-        qos: DispatchQoS.userInitiated)
+//    static let utilityQueue = DispatchQueue(
+//        label: "studio.prisme.pb.utilityQueue",
+//        qos: DispatchQoS.userInitiated)
 }

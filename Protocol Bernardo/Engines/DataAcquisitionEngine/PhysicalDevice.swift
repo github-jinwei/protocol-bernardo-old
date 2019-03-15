@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represent a real-worldm physical device
+/// Represent a real-world physical device
 struct PhysicalDevice {
     /// The name of the device's host
     var hostname: String
@@ -25,7 +25,7 @@ struct PhysicalDevice {
     /// All the physical users tracked by the device
     var users: [PhysicalUser]
     
-    init(from status: DAEDeviceStatus) {
+    init(from status: PAEDeviceStatus) {
         self.hostname = status.hostname
         self.name = status.name
         self.serial = status.serial

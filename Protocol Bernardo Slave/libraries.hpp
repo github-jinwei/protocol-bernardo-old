@@ -17,8 +17,9 @@
 #include <curses.h>
 
 using uint = unsigned int;
+using keyCode = int;
 
-#define FRAMERATE 10.0
+#define FRAMERATE 15.0
 #define FRAME_LENGTH 1.0 / FRAMERATE
 
 #include "Core/App.hpp"

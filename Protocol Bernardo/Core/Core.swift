@@ -9,6 +9,8 @@
 import AppKit
 
 /// The application structure Core
+///
+/// - TODO: Change name of the class
 class Core {
     /// The Welcome Scene
     private weak var welcomeWindow: WelcomeWindow!

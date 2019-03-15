@@ -12,7 +12,7 @@
 #include "../libraries.hpp"
 
 #include "utils/ncurses.hpp"
-#include "utils/PBFrame.hpp"
 #include "utils/PBPoint.hpp"
+#include "utils/PBFrame.hpp"
 
 #endif /* PBUI_h */

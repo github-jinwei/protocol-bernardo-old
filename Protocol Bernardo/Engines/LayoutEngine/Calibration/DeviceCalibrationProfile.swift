@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import simd
 
 /// A device calibration profile contains the needed informations to correct
 /// the position of the device with its physical counterparts
@@ -85,8 +86,8 @@ class DeviceCalibrationProfile: Codable {
 // MARK: - Calibrated properties
 extension DeviceCalibrationProfile {
     /// The device's calibrated position
-    var calibratedPosition: Point {
-        let positionDelta = Point(deltas.xPosition, deltas.yPosition)
+    var calibratedPosition: double2 {
+        let positionDelta = double2(Double(deltas.xPosition), Double(deltas.yPosition))
 
         // Get the layout device, or do nothing
         guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
@@ -106,7 +107,7 @@ extension DeviceCalibrationProfile {
         return layoutDevice.height + Double(deltas.height)
     }
 
-    /// THe device's calibrated orientation
+    /// The device's calibrated orientation
     var calibratedOrientation: Double {
         // Get the layout device, or do nothing
         guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
@@ -127,20 +128,22 @@ extension DeviceCalibrationProfile {
     ///
     /// - Parameter position: The position to transform
     /// - Returns: The position in the global coordinate system
-    func globalCoordinates(forPosition position: Position) -> Position {
+    func globalCoordinates(forPosition position: float3) -> float3 {
         // Create a new, empty position
-        var globalPos = Position()
-        
-        // 2D position are unaffected
-        globalPos.x2D = position.x2D
-        globalPos.y2D = position.y2D
+        var globalPos = float3(0)
+
+        let orientation = deg2rad(Float(-calibratedOrientation))
         
         // X and Z coordinates takes into account the angle of the tracking device
-        globalPos.x = (position.x * cos(deg2rad(Float(-calibratedOrientation))) - position.z * sin(deg2rad(Float(-calibratedOrientation)))) - Float(calibratedPosition.x) * 10.0
-        globalPos.z = (position.x * sin(deg2rad(Float(-calibratedOrientation))) + position.z * cos(deg2rad(Float(-calibratedOrientation)))) + Float(calibratedPosition.y) * 10.0
-        
+        globalPos.x = position.x * cos(orientation) - position.z * sin(orientation)
+        globalPos.z = position.x * sin(orientation) + position.z * cos(orientation)
+
+        // And take into account the device position
+        globalPos.x -= Float(calibratedPosition.x) * 10.0 // cm to mm
+        globalPos.z += Float(calibratedPosition.y) * 10.0 // cm to mm
+
         // Y coordinate (Height) is not affected by the angle of capture
-        globalPos.y = position.y + Float(calibratedHeight) * 10.0
+        globalPos.y = position.y + Float(calibratedHeight) * 10.0 // cm to mm
         
         return globalPos
     }
@@ -150,7 +153,7 @@ extension DeviceCalibrationProfile {
     ///
     /// - Parameter position: The position to transform
     /// - Returns: The position in the global coordinate system
-    func uncalibratedGlobalCoordinates(forPosition position: Position) -> Position {
+    func uncalibratedGlobalCoordinates(forPosition position: float3) -> float3 {
         // Make sure we have an associated layout device
         guard let layoutDevice = document?.layout.device(withUUID: layoutDeviceUUID) else {
             print("No associated layout device")
@@ -158,15 +161,17 @@ extension DeviceCalibrationProfile {
         }
 
         // Create a new, empty position
-        var globalPos = Position()
+        var globalPos = float3(0)
 
-        // 2D position are unaffected
-        globalPos.x2D = position.x2D
-        globalPos.y2D = position.y2D
+        let orientation = deg2rad(Float(-layoutDevice.orientation))
 
         // X and Z coordinates takes into account the angle of the tracking device
-        globalPos.x = (position.x * cos(deg2rad(Float(-layoutDevice.orientation))) - position.z * sin(deg2rad(Float(-layoutDevice.orientation)))) - Float(layoutDevice.position.x) * 10.0
-        globalPos.z = (position.x * sin(deg2rad(Float(-layoutDevice.orientation))) + position.z * cos(deg2rad(Float(-layoutDevice.orientation)))) + Float(layoutDevice.position.y) * 10.0
+        globalPos.x = (position.x * cos(orientation) - position.z * sin(orientation))
+        globalPos.z = (position.x * sin(orientation) + position.z * cos(orientation))
+
+        // And take into account the device position
+        globalPos.x -= Float(layoutDevice.position.x) * 10.0
+        globalPos.z += Float(layoutDevice.position.y) * 10.0
 
         // Y coordinate (Height) is not affected by the angle of capture
         globalPos.y = position.y + Float(layoutDevice.height) * 10.0

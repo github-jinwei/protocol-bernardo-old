@@ -97,7 +97,7 @@ extension LayoutController: LayoutWindowDelegate {
 
         // Do more adjustement if needed
         switch interfaceMode {
-        case .edition: break;
+        case .edition: break
         case .calibration:
 
             let sidebar = (self.sidebar as! LayoutSidebarCalibration)
@@ -122,7 +122,7 @@ extension LayoutController: LayoutWindowDelegate {
         canvas.calibrationProfile = calibrationProfile
         sidebar.setCalibrationProfile(calibrationProfile)
 
-        window.setDocumentEdited(true)
+        layoutDocument.markAsEdited()
     }
 
     func createNewDevice(_: LayoutWindowController) {
@@ -155,11 +155,11 @@ extension LayoutController: LayoutWindowDelegate {
 // MARK: - LayoutCanvasDelegate
 extension LayoutController: LayoutCanvasDelegate {
     func canvasAppeared(_: LayoutCanvas) {
-        window.setDocumentEdited(false)
+//        window.setDocumentEdited(false)
     }
 
     func canvasWasChanged(_: LayoutCanvas) {
-        window.setDocumentEdited(true)
+        layoutDocument.markAsEdited()
     }
     
     func canvas(_: LayoutCanvas, selectionChanged element: LayoutCanvasElement?) {

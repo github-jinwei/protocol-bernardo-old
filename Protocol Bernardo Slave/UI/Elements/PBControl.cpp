@@ -8,19 +8,32 @@
 
 #include "PBControl.hpp"
 
-void PBControl::onKeyDown(const int &keyCode) {
-    switch(keyCode) {
-        case KEY_UP:    moveToNeighboor(   topNeighboor); break;
-        case KEY_RIGHT: moveToNeighboor( rightNeighboor); break;
-        case KEY_DOWN:  moveToNeighboor(bottomNeighboor); break;
-        case KEY_LEFT:  moveToNeighboor(  leftNeighboor); break;
-        case KEY_ENTER: action(this); break;
-        default:
-            return;
+void PBControl::onKeyPressed(const std::vector<keyCode> &pressedKeys) {
+    for(keyCode key: pressedKeys) {
+        switch(key) {
+            case KEY_UP:
+                moveToControl(topNeighboor);
+                return;
+            break;
+            case KEY_RIGHT:
+                moveToControl(rightNeighboor);
+                return;
+            case KEY_DOWN:
+                moveToControl(bottomNeighboor);
+                return;
+            case KEY_LEFT:
+                moveToControl(leftNeighboor);
+                return;
+            case 10:
+                action(this);
+            break;
+            default:
+                return;
+        }
     }
 }
 
-void PBControl::select() {
+void PBControl::select(PBControl * sender) {
     _isSelected = true;
 }
 
@@ -28,9 +41,9 @@ void PBControl::deselect() {
     _isSelected = false;
 }
 
-void PBControl::moveToNeighboor(PBControl * neighboor) {
-    if(topNeighboor != nullptr) {
+void PBControl::moveToControl(PBControl * control) {
+    if(control != nullptr) {
         deselect();
-        topNeighboor->select();
+        control->select(this);
     }
 }

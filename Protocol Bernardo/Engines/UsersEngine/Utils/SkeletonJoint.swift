@@ -52,4 +52,26 @@ enum SkeletonJoint: String, CaseIterable {
 
     /// Right foot joints
     case rightFoot
+
+    /// The parent skeleton Joint for the current joint.
+    /// The torso joint doesn't have a parent, parent will return torso for this one.
+    var parent: SkeletonJoint {
+        switch self {
+        case .torso: return .torso
+        case .neck: return .torso
+        case .head: return .neck
+        case .leftShoulder: return .neck
+        case .leftElbow: return .leftShoulder
+        case .leftHand: return .leftElbow
+        case .rightShoulder: return .neck
+        case .rightElbow: return .rightShoulder
+        case .rightHand: return .rightElbow
+        case .leftHip: return .torso
+        case .leftKnee: return .leftHip
+        case .leftFoot: return .leftKnee
+        case .rightHip: return .torso
+        case .rightKnee: return .rightHip
+        case .rightFoot: return .rightKnee
+        }
+    }
 }

@@ -32,7 +32,7 @@ class LayoutCanvasDevice: SKNode {
     
     override var position: CGPoint {
         didSet {
-            device.position = Point(position)
+            device.position = double2(Double(position.x), Double(position.y))
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -194,7 +194,7 @@ extension LayoutCanvasDevice {
         self.horizontalFOV = CGFloat(device.horizontalFOV)
         self.minimumCaptationDistance = CGFloat(device.minimumCaptationDistance)
         self.maximumCaptationDistance = CGFloat(device.maximumCaptationDistance)
-        self.position = CGPoint(device.position)
+        self.position = CGPoint(x: CGFloat(device.position.x), y: CGFloat(device.position.y))
         self.orientation = CGFloat(device.orientation)
         self.height = CGFloat(device.height)
     
@@ -255,7 +255,10 @@ extension LayoutCanvasDevice {
     /// Called by the layout canvas on each render frame
     func update() {
         // Do nothing if the game is calibrating
-        if isCalibrating { return }
+        if isCalibrating {
+            return
+        }
+        
         // Get the calibrated position of the device
         guard let deviceProfile = delegate?.deviceProfile(forDevice: device) else {
             return

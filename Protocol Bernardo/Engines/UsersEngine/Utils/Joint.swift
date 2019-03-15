@@ -21,12 +21,11 @@ extension Joint {
     init(properties: [Float], confidences: [Float]) {
         self.init()
 
-        orientation = Quaternion(properties: Array(properties[0..<4]))
+        orientation = simd_quatf(properties: Array(properties[0..<4]))
         orientationConfidence = confidences[0]
 
-        position = Position(properties: Array(properties[4..<6]))
+        position = float3(Array(properties[4..<9]))
         orientationConfidence = confidences[4]
-
     }
 }
 
@@ -38,7 +37,7 @@ extension Joint {
     /// - Returns: All the properties in an array
     func allproperties(usingProfile profile: DeviceCalibrationProfile) -> [Float] {
         let pos = profile.globalCoordinates(forPosition: position)
-        return orientation.properties + pos.properties
+        return orientation.properties + pos
     }
 
     /// All the confidence values for the joint properties

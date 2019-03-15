@@ -52,11 +52,11 @@ extension User {
         return physicsHistory.last!
     }
 
-    /// Average, calibrated position of the user (its center of mass) in the global coordinates
+    /// Average, calibrated position of the user (its torso) in the global coordinates
     /// system as inferred from all the tracked physics available.
     /// The 2D coordinates of this position will always be 0
-    var position: Position {
-        return physicsHistory.last!.centerOfMass
+    var position: float3 {
+        return physicsHistory.last!.skeleton.torso.position
     }
 
     /// Average, calibrated skeleton of the user (positions and angle) in the global coordinates
@@ -72,10 +72,15 @@ extension User {
     /// Calculate the merged position and skeleton on the global coordinate system,
     /// and add it to the history of physics assumed by the user.
     func calculatePosition(historySize: UInt) {
+//        physicsHistory.append(PhysicalUser(userID: 0,
+//                                           state: USER_TRACKED,
+//                                           skeleton: calculateMergedSkeleton(),
+//                                           centerOfMass: calculateMergedPosition()))
+
         physicsHistory.append(PhysicalUser(userID: 0,
                                            state: USER_TRACKED,
-                                           skeleton: calculateMergedSkeleton(),
-                                           centerOfMass: calculateMergedPosition()))
+                                           skeleton: trackedPhysics.first!.value.skeleton,
+                                           centerOfMass: trackedPhysics.first!.value.centerOfMass))
 
         if physicsHistory.count > historySize + 1 {
             physicsHistory.removeFirst(physicsHistory.count - (Int(historySize) + 1))
@@ -85,25 +90,25 @@ extension User {
     /// Calculate the averaged, merged, position of the user on the global coordinate system
     ///
     /// - Returns: The user's position
-    private func calculateMergedPosition() -> Position {
-        var userCoM = Position()
+    private func calculateMergedPosition() -> float3 {
+        var userPos = float3(0)
 
         // Make sure we have a calibration profile, and that we are actively tracking the user
         guard trackedPhysics.count > 0, let profile = calibrationProfile else {
-            return userCoM
+            return userPos
         }
 
         // Do the median position from all the tracking devices
         for (serial, physic) in trackedPhysics {
             // Get the user CoM in the global coordinaters system
-            let gPos = profile.device(forSerial: serial)!.globalCoordinates(forPosition: physic.centerOfMass)
+            let gPos = profile.device(forSerial: serial)!.globalCoordinates(forPosition: physic.skeleton.torso.position)
 
-            userCoM.x += gPos.x
-            userCoM.y += gPos.y
-            userCoM.z += gPos.z
+            userPos.x += gPos.x
+            userPos.y += gPos.y
+            userPos.z += gPos.z
         }
 
-        return userCoM / Float(trackedPhysics.count)
+        return userPos / Float(trackedPhysics.count)
     }
 
     /// Calculate the averaged, merged, skeleton of the user on the global coordinates
@@ -134,7 +139,7 @@ extension User {
             props = tmp2
 
             // Add the confs to the confs accumulator
-            vDSP_vadd(&confs, 1, &pProps, 1, &tmp, 1, vdspLength)
+            vDSP_vadd(&confs, 1, &pConfs, 1, &tmp, 1, vdspLength)
             confs = tmp
         }
 

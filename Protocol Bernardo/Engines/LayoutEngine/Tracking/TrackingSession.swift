@@ -89,11 +89,11 @@ extension TrackingSession {
         }
 
         // Insert the existing users
-        existingTrackings.forEach { (k,v) in userWrapper[k] = v }
+        existingTrackings.forEach { (k, v) in userWrapper[k] = v }
 
         // Create the session wrapper with all the tracked users wrappers
         let wrapper = FileWrapper(directoryWithFileWrappers: userWrapper)
-        wrapper.filename = LayoutDocument.FileTypes.trackingSession.named(name)
+        wrapper.preferredFilename = LayoutDocument.FileTypes.trackingSession.named(name)
 
         return wrapper
     }
@@ -101,14 +101,14 @@ extension TrackingSession {
 
 // MARK: - UsersEngineDelegate
 extension TrackingSession: UsersEngineDelegate {
-    func userEngine(_ engine: UsersEngine, startedTrackingUser user: User) {
+    func userEngine(_: UsersEngine, startedTrackingUser user: User) {
         guard isTracking else { return }
 
         trackedUsers.append(TrackedUser(forUser: user))
         document?.markAsEdited()
     }
 
-    func userEngine(_ engine: UsersEngine, user: User, physicUpdated physic: PhysicalUser) {
+    func userEngine(_: UsersEngine, user: User, physicUpdated physic: PhysicalUser) {
         guard isTracking else { return }
 
         guard let trackedUser = trackedUser(forUser: user) else { return }
@@ -117,7 +117,7 @@ extension TrackingSession: UsersEngineDelegate {
         document?.markAsEdited()
     }
 
-    func userEngine(_ engine: UsersEngine, mergedUser: User, inUser: User) {
+    func userEngine(_: UsersEngine, mergedUser: User, inUser _: User) {
         guard isTracking else { return }
 
         // In case of a merging, we discard the merged user and keep only the second one
@@ -125,7 +125,7 @@ extension TrackingSession: UsersEngineDelegate {
         document?.markAsEdited()
     }
 
-    func userEngine(_ engine: UsersEngine, stoppedTrackingUser user: User) {
+    func userEngine(_: UsersEngine, stoppedTrackingUser user: User) {
         guard isTracking else { return }
 
         guard let trackedUser = trackedUser(forUser: user) else { return }
@@ -134,7 +134,7 @@ extension TrackingSession: UsersEngineDelegate {
         document?.markAsEdited()
     }
 
-    func usersPhysicsHistorySize(_ engine: UsersEngine) -> UInt {
+    func usersPhysicsHistorySize(_: UsersEngine) -> UInt {
         return 1
     }
 }

@@ -16,6 +16,10 @@ struct PBPoint {
     int y;
 
     PBPoint(const int &aX, const int &aY): x(aX), y(aY) { }
+
+    PBPoint operator +(const PBPoint &right) {
+        return PBPoint(x + right.x, y + right.y);
+    }
 };
 
 #endif /* PBPoint_hpp */

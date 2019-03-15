@@ -9,28 +9,29 @@
 #include "PBLabel.hpp"
 
 PBLabel::PBLabel(const std::string &aTitle, const PBPoint &aPosition):
-    position(aPosition),
-    title(aTitle) {}
+    PBView(PBFrame(aPosition, uint(aTitle.size()), 1)),
+    _title(aTitle) {}
 
 void PBLabel::renderWithoutStyling() {
-    int posX = position.x;
-    int posY = position.y;
+    PBPoint globalPos = getGlobalPosition();
+    int posX = globalPos.x;
+    int posY = globalPos.y;
 
     // Adjust the label position based on its alignement
     switch(alignement) {
         case LABEL_ALIGN_LEFT: break;
-        case LABEL_ALIGN_CENTER: posX -= (title.size() / 2); break;
-        case LABEL_ALIGN_RIGHT: posX -= title.size(); break;
+        case LABEL_ALIGN_CENTER: posX -= (_title.size() / 2); break;
+        case LABEL_ALIGN_RIGHT: posX -= _title.size(); break;
     }
 
-    nC::move(posX, posY);
-    nC::print << title;
+    if(isBold) { nC::setBold(); }
+    if(isUnderlined) { nC::setUnderline(); }
+
+    nC::print << nC::mv(posX, posY) << _title;
 }
 
 void PBLabel::render() {
     nC::clearStyling();
 
     renderWithoutStyling();
-
-    PBView::render();
 }

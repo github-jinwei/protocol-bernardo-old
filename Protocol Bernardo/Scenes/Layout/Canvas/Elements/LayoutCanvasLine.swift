@@ -37,7 +37,7 @@ class LayoutCanvasLine: SKNode {
     
     override var position: CGPoint {
         didSet {
-            line.position = Point(position)
+            line.position = double2(Double(position.x), Double(position.y))
             
             // Tell the delegate
             delegate?.elementDidChange(self)
@@ -129,7 +129,7 @@ extension LayoutCanvasLine {
         // Copy the values from the line to ourselves
         self.size = CGFloat(line.size)
         self.weight = CGFloat(line.weight)
-        self.position = CGPoint(line.position)
+        self.position = CGPoint(x: line.position.x, y: line.position.y)
         self.orientation = CGFloat(line.orientation)
         self.zRotation = deg2rad(orientation)
         

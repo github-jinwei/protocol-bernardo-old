@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import simd
 
 class CalibrationController {
 
@@ -133,7 +134,7 @@ extension CalibrationController {
 
         deviceProfile.deltas = CalibrationDeltas()
 
-        delegate?.calibration(self, storedDeltasChanged:  deviceProfile.deltas)
+        delegate?.calibration(self, storedDeltasChanged: deviceProfile.deltas)
     }
 }
 
@@ -178,7 +179,7 @@ extension CalibrationController {
         // Insert all devices available for calibration
         for device in layout.devices {
             // If its the device to calibrate, skip it
-            if device.uuid == deviceUUID { continue }
+            guard device.uuid != deviceUUID else { continue }
 
             // Get the device calibration profile
             let profile = calibrationProfile?.device(forUUID: device.uuid)
@@ -308,8 +309,8 @@ extension CalibrationController {
     ///   - user: Physical user to work with
     ///   - profile: Calibration profile to use for the conversion
     /// - Returns: The user center of mass in the global coordinate system without any calibration adjustements
-    private func uncalibratedGlobalPosition(ofUser user: PhysicalUser, withProfile profile: DeviceCalibrationProfile) -> Position {
-        let localPosition = user.centerOfMass
+    private func uncalibratedGlobalPosition(ofUser user: PhysicalUser, withProfile profile: DeviceCalibrationProfile) -> float3 {
+        let localPosition = user.skeleton.torso.position
         return profile.uncalibratedGlobalCoordinates(forPosition: localPosition)
     }
 }

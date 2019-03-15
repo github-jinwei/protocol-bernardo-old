@@ -29,7 +29,7 @@ class LayoutDocument: NSDocument {
         ///
         /// - Parameter fileName: Name of the file
         /// - Returns: The full file name with the extension
-        func named(_ fileName: String) -> String{
+        func named(_ fileName: String) -> String {
             return fileName + "." + self.rawValue
         }
     }
@@ -52,7 +52,12 @@ class LayoutDocument: NSDocument {
     /// Tell the document is as been edited, and should adopt an "unsaved document"
     /// behaviour
     func markAsEdited() {
-        layoutWindow.setDocumentEdited(true)
+        updateChangeCount(.changeDone)
+//        layoutWindow.setDocumentEdited(true)
+    }
+
+    override class var autosavesInPlace: Bool {
+        return true
     }
 }
 

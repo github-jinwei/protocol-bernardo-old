@@ -23,7 +23,7 @@ class TrackedUser {
     var fileURL: URL!
 
     /// The recording file representation
-    var file: PBAFile!
+    var file: BVHFile!
 
     /// The filename for this tracked user
     var fileName: String {
@@ -50,11 +50,13 @@ extension TrackedUser {
     ///
     /// - Parameter physic: The physic to insert
     func add(physic: PhysicalUser) {
-        guard !file.isClosed else { return }
-
         if file == nil {
             // File is missing, create it
             createFile(withPhysic: physic)
+        }
+
+        if file.isClosed {
+            return
         }
 
         file.insert(physic: physic)
@@ -62,14 +64,22 @@ extension TrackedUser {
 
     /// End the tracking, close the file. Is is not possible to reopen the file later
     func endTracking() {
-        file.close()
+        file?.close()
     }
 
     private func createFile(withPhysic physic: PhysicalUser) {
         fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
 
+        try! FileManager.default.createDirectory(
+            at: URL(fileURLWithPath: NSTemporaryDirectory()),
+            withIntermediateDirectories: true,
+            attributes: nil)
+        FileManager.default.createFile(atPath: fileURL.path,
+                                       contents: nil,
+                                       attributes: nil)
+
         let fileHandle = try! FileHandle(forWritingTo: fileURL)
-        file = PBAFile(empty: fileHandle)
+        file = BVHFile(empty: fileHandle)
 
         file.insertHierarchy(usingPhysic: physic, framerate: App.dae.refreshRate)
     }

@@ -10,10 +10,13 @@
 #define App_hpp
 
 class PositionAcquisitionEngine;
+class Core;
 
 class ApplicationObject {
 public:
     ApplicationObject();
+
+    Core * core;
 
     PositionAcquisitionEngine * pae;
 };

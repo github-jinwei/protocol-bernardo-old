@@ -8,9 +8,9 @@
 
 #include "PBButton.hpp"
 
-PBButton::PBButton(const std::string &aTitle, const PBFrame &aFrame):
-    frame(aFrame) {
-    titleLabel = new PBLabel(aTitle, PBPoint(frame.x, frame.y));
+PBButton::PBButton(const std::string &aTitle, const PBPoint &aPosition):
+    PBView(PBFrame(aPosition, uint(aTitle.size() + 4), 3)) {
+    titleLabel = new PBLabel(aTitle, PBPoint(2, 1));
     addSubview(titleLabel);
 }
 
@@ -22,6 +22,13 @@ void PBButton::render() {
         nC::setForeground(COLOR_BLACK);
     }
 
-    nC::box(frame.x, frame.y, frame.width, frame.height);
+    PBPoint globalPos = getGlobalPosition();
+    PBFrame frame = getFrame();
+
+    if(!isInline) {
+        nC::box(globalPos.x, globalPos.y, frame.width, frame.height);
+    }
+
     titleLabel->renderWithoutStyling();
 }
+

@@ -153,7 +153,7 @@ class LayoutWindowController: NSWindowController {
         }
     }
 
-    @IBAction func openDevices(_ sender: Any) {
+    @IBAction func openDevices(_: Any) {
         App.core.showDevicesWindow()
     }
 
@@ -238,7 +238,7 @@ extension LayoutWindowController {
 // MARK: - NSWindowDelegate
 extension LayoutWindowController: NSWindowDelegate {
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        layoutDocument.save(nil)
+//        layoutDocument.save(nil)
         layoutDocument.canClose(withDelegate: self,
                                 shouldClose: #selector(document(doc:shouldClose:contextInfo:)),
                                 contextInfo: nil)

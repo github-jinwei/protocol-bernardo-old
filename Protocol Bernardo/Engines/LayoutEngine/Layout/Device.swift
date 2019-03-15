@@ -30,7 +30,7 @@ class Device: Codable {
     var maximumCaptationDistance: Double = 450.0
     
     /// The device's position (in cm)
-    var position = Point(x: 0, y: 0)
+    var position = double2(0, 0)
     
     /// The device's orientation (in degrees)
     var orientation: Double = 0.0
@@ -52,7 +52,5 @@ class Device: Codable {
         self.position = device.position
         self.orientation = device.orientation
         self.height = device.height
-        
-        print(device.uuid, self.uuid)
     }
 }

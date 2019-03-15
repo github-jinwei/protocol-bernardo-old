@@ -74,6 +74,18 @@ public:
 			return * this;
 		}
 
+        /**
+         Print a wide char on the screen
+
+         @param toPrint What to print
+         @return The stream
+         */
+        Print & operator<< (const char toPrint[])
+        {
+            addstr(toPrint);
+            return * this;
+        }
+
 		/**
 		 Print a nCurses char on the screen
 
@@ -121,6 +133,8 @@ public:
 	 Revert all texts and colors styling
 	 */
 	static void clearStyling();
+
+    static void clearArea(const int &col, const int &row, const uint &width, const uint &height);
 
 	/**
 	 Revert to default text

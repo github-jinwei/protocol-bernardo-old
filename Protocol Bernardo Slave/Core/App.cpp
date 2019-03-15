@@ -9,9 +9,11 @@
 #include "App.hpp"
 
 #include "../../PositionAcquisitionEngine/PositionAcquisitionEngine.hpp"
+#include "Core.hpp"
 
 ApplicationObject * App = new ApplicationObject();
 
 ApplicationObject::ApplicationObject() {
+    core = new Core();
     pae = PositionAcquisitionEngine::getInstance();
 }

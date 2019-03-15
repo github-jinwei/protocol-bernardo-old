@@ -120,21 +120,21 @@ void UsersTracker::onUserFrame(nite::UserTrackerFrameRef * userFrame) {
         Skeleton * userSkeleton = &user->skeleton;
         const nite::Skeleton * skeleton = &(userData->getSkeleton());
         
-        userSkeleton->head = niteJointToCJoint(skeleton->getJoint(nite::JOINT_HEAD));
-        userSkeleton->neck = niteJointToCJoint(skeleton->getJoint(nite::JOINT_NECK));
-        userSkeleton->leftShoulder = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_SHOULDER));
+        userSkeleton->head          = niteJointToCJoint(skeleton->getJoint(nite::JOINT_HEAD));
+        userSkeleton->neck          = niteJointToCJoint(skeleton->getJoint(nite::JOINT_NECK));
+        userSkeleton->leftShoulder  = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_SHOULDER));
         userSkeleton->rightShoulder = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_SHOULDER));
-        userSkeleton->leftElbow = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_ELBOW));
-        userSkeleton->rightElbow = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_ELBOW));
-        userSkeleton->leftHand = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_HAND));
-        userSkeleton->rightHand = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_HAND));
-        userSkeleton->torso = niteJointToCJoint(skeleton->getJoint(nite::JOINT_TORSO));
-        userSkeleton->leftHip = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_HIP));
-        userSkeleton->rightHip = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_HIP));
-        userSkeleton->leftKnee = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_KNEE));
-        userSkeleton->rightKnee = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_KNEE));
-        userSkeleton->leftFoot = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_FOOT));
-        userSkeleton->rightFoot = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_FOOT));
+        userSkeleton->leftElbow     = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_ELBOW));
+        userSkeleton->rightElbow    = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_ELBOW));
+        userSkeleton->leftHand      = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_HAND));
+        userSkeleton->rightHand     = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_HAND));
+        userSkeleton->torso         = niteJointToCJoint(skeleton->getJoint(nite::JOINT_TORSO));
+        userSkeleton->leftHip       = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_HIP));
+        userSkeleton->rightHip      = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_HIP));
+        userSkeleton->leftKnee      = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_KNEE));
+        userSkeleton->rightKnee     = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_KNEE));
+        userSkeleton->leftFoot      = niteJointToCJoint(skeleton->getJoint(nite::JOINT_LEFT_FOOT));
+        userSkeleton->rightFoot     = niteJointToCJoint(skeleton->getJoint(nite::JOINT_RIGHT_FOOT));
     }
 }
 

@@ -2483,7 +2483,6 @@ Gw
                         <outlet property="recordingDurationLabel" destination="9TP-xd-5B6" id="gNP-1A-NY1"/>
                         <outlet property="recordingStartLabel" destination="Kdo-9M-uli" id="4LU-75-t8B"/>
                         <outlet property="sessionsList" destination="lkb-XH-Bbh" id="7nd-br-Mou"/>
-                        <outlet property="setTrackingSession" destination="lkb-XH-Bbh" id="ZNT-1f-Vfn"/>
                         <outlet property="toggleRecordingButton" destination="84i-9b-BDJ" id="udP-vG-jw8"/>
                         <outlet property="totalUsersTrackedLabel" destination="YJI-Fk-SYl" id="Yum-xT-R13"/>
                         <outlet property="usersTrackedLabel" destination="BTm-4Q-a40" id="JdV-kj-Q32"/>

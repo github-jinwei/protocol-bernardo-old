@@ -9,50 +9,68 @@
 #ifndef PBControl_hpp
 #define PBControl_hpp
 
+#include "libraries.hpp"
 #include "../PBView.hpp"
 
-class PBControl: public PBView {
+class PBControl: virtual public PBView {
 public:
-    /** The top neighboor of this button */
-    PBControl * topNeighboor;
+    PBControl() {}
 
-    /** The right neighboor of this button */
-    PBControl * rightNeighboor;
+    PBControl(void * aValue): value(aValue) {}
 
-    /** The bottom neighboor of this button */
-    PBControl * bottomNeighboor;
+    /** The top neighboor of this control */
+    PBControl * topNeighboor = nullptr;
 
-    /** The left neighboor of this button */
-    PBControl * leftNeighboor;
+    /** The right neighboor of this control */
+    PBControl * rightNeighboor = nullptr;
+
+    /** The bottom neighboor of this control */
+    PBControl * bottomNeighboor = nullptr;
+
+    /** The left neighboor of this control */
+    PBControl * leftNeighboor = nullptr;
     /**
-     Tell if the button is selected
+     Tell if the control is selected
 
      @return True if selected, false otherwise
      */
-    inline bool isSelected() { return _isSelected; }
+    inline bool isSelected() const { return _isSelected; }
 
     /**
-     Tell the button to execute its action
+     Tell the control to execute its action
      */
-    void onKeyDown(const int &keyCode);
+    virtual void onKeyPressed(const std::vector<keyCode> &pressedKeys);
 
     /**
-     Select the button, update its appearance
+     Select the control, update its appearance
+
+     @param sender The element the selection is coming from
      */
-    void select();
+    virtual void select(PBControl * sender);
 
     /**
-     Deselect the button, change is appearance
+     Deselect the control, change is appearance
      */
-    void deselect();
+    virtual void deselect();
 
     /** The button's action */
     std::function<void(PBControl *)> action;
 
+    /**
+     Change the selection from the current control to the given one
+
+     @param control The next control to select
+     */
+    void moveToControl(PBControl * control);
+
+    /** The control value */
+    void * value = nullptr;
+
 protected:
+
+    /** Tell if the control is currently selected */
     bool _isSelected = false;
 
-    void moveToNeighboor(PBControl * neighboor);
 };
 
 #endif /* PBControl_hpp */

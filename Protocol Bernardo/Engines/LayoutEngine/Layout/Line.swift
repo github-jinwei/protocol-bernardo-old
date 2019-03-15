@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import simd
 
 /// A line displayed on the layout. May or may not represent a real worl element
 class Line: Codable {
@@ -17,7 +18,7 @@ class Line: Codable {
     var weight: Double = 1.0
     
     /// The line's position
-    var position = Point(x: 0.0, y: 0.0)
+    var position = double2(0, 0)
     
     /// The line's orientation (in degrees)
     var orientation: Double = 0.0

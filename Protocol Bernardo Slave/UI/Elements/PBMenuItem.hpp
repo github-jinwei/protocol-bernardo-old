@@ -10,18 +10,41 @@
 #define PBMenuItem_hpp
 
 #include "PBUI.hpp"
-#include "PBButton.hpp"
+#include "PBControl.hpp"
+#include "PBLabel.hpp"
 
-class PBMenuItem: public PBButton {
-    // MARK: - PBButton
+class PBMenuItem: virtual public PBControl {
+public:
+    PBMenuItem(const std::string &aTitle);
 
-    /** Button's action */
-    void click();
+    PBMenuItem(const std::string &aTitle, void * aValue);
 
-    std::function<void(PBMenuItem)> action;
+    /**
+     Changes the menu item's title
+
+     @param title The new title for the button
+     */
+    inline void setTitle(const std::string &title) { titleLabel->setTitle(title); }
+
+    /**
+     Gives the current title of the menu item
+
+     @return The button title
+     */
+    inline std::string getTitle() { return titleLabel->getTitle(); }
+
+    // MARK: - PBControl
+
+    /** The button's action */
+    std::function<void(PBMenuItem *)> action;
+
 
     // MARK: - PBView
-    void render();
+    void render() override;
+
+private:
+
+    PBLabel * titleLabel;
 };
 
 #endif /* PBMenuItem_hpp */

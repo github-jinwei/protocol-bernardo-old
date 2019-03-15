@@ -11,6 +11,9 @@ import AppKit
 /// Receptacle for all the custom interactions coming from the application menu
 class MainMenu: NSMenu {
 
+    /// Create a new layout and open it
+    ///
+    /// - Parameter _: _
     @IBAction func createLayout(_: NSMenuItem) {
         App.layoutEngine.newLayout()
     }

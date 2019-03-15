@@ -17,7 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
         let url = URL(fileURLWithPath: filename)
-
         App.layoutEngine.openLayout(at: url)
 
         return true

@@ -21,8 +21,9 @@ extension Skeleton {
         self.init()
 
         for i in stride(from: 0, to: properties.count, by: 9) {
-            self[SkeletonJoint.allCases[i]] = Joint(properties: Array(properties[(i*9)..<((i+1)*9)]),
-                                                    confidences: Array(confidences[(i*9)..<((i+1)*9)]))
+            self[SkeletonJoint.allCases[i/9]] = Joint(
+                properties: Array(properties[i..<(i+9)]),
+                confidences: Array(confidences[i..<(i+9)]))
         }
     }
 }

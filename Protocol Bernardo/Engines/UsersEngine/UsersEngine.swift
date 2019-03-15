@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import simd
 
 /// The users engine receives raw user informations from the dae and uses the
 /// currently opened layout and calibration profile to track users and replace
@@ -51,20 +52,20 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 // Start by making sure this user is fully tracked
                 guard physicalUser.state == USER_TRACKED else {
                     removePhysicFromUserIfNeeded(serial: serial, userID: physicalUser.userID)
-                    return
+                    continue
                 }
                 
                 // Are we already tracking this user ?
                 if let user = self.user(forDeviceSerial: serial, andUserID: physicalUser.userID) {
                     // This users is already being tracked, just update its physic for the current device
                     user.trackedPhysics[serial] = physicalUser
-                    return
+                    continue
                 }
                 
                 // This user is not registered yet, let's find if its a redundancy of an already tracked user
                 
-                // Get the user center of mass in the global coordinates system
-                let userCOM = deviceProfile.globalCoordinates(forPosition: physicalUser.centerOfMass)
+                // Get the user torso in the global coordinates system
+                let userCOM = deviceProfile.globalCoordinates(forPosition: physicalUser.skeleton.torso.position)
                 
                 // Find the user the closest from this point
                 let (closest, distance) = closestUser(fromPosition: userCOM)
@@ -72,7 +73,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 guard closest != nil && distance < 150 else {
                     // No user where found, or was too far, create a new user
                     newUser(forPhysic: physicalUser, onDevice: serial)
-                    return
+                    continue
                 }
                 
                 // We have a match, insert ourselves
@@ -86,7 +87,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         updatePositions()
     }
     
-    /// Sometimes, the devices give bad first position, resulting in separate User for the same real user.
+    /// Sometimes, the devices gives bad first position, resulting in separate Users for the same real user.
     /// To prevent this, let's do a swipe of all the tracked users,
     /// if two of them are within close distance, we merge them in the first user
     func analyzeUsers() {
@@ -104,7 +105,7 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 closest = closestUsers[0]
             }
 
-            let distance = closest.position.distance(from: user.position)
+            let distance = simd_distance(closest.position, user.position)
 
             if distance < 150 {
                 // The two user are really close by, let's merge them
@@ -194,13 +195,13 @@ extension UsersEngine {
     ///
     /// - Parameter position: The position to gets the distance from
     /// - Returns: Tuple : (User found (might be nil), distance from the user (infinity if no user))
-    func closestUser(fromPosition position: Position) -> (User?, Float) {
+    func closestUser(fromPosition position: float3) -> (User?, Float) {
         let users = usersByDistance(fromPosition: position)
         
         guard users.count > 0 else { return (nil, Float.infinity) }
         
         // return a tuple with the closest user and its distance from the given position
-        return (users[0], position.distance(from: users[0].position))
+        return (users[0], simd_distance(position, users[0].position))
     }
     
     /// Returns an array of all the users ordered by their distance from the given position.
@@ -208,13 +209,13 @@ extension UsersEngine {
     ///
     /// - Parameter position: Reference position
     /// - Returns: The distance-ordered user array
-    func usersByDistance(fromPosition position: Position) -> [User] {
+    func usersByDistance(fromPosition position: float3) -> [User] {
         // Get a copy of the users array
         let users = self.users
         
         // Get the distance for each user
         let distances = users.map {
-            return position.distance(from: $0.position)
+            return simd_distance(position, $0.position)
         }
         // Sort the array
         return zip(users, distances).sorted(by: { $0.1 < $1.1 }).map { $0.0 }

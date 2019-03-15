@@ -148,68 +148,6 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="qw9-fX-cS7">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="File" id="AUI-aQ-0Nz">
-                                    <items>
-                                        <menuItem title="New" keyEquivalent="n" id="v8C-dr-G71">
-                                            <connections>
-                                                <action selector="newDocument:" target="Ybc-6E-y7g" id="M5w-G6-WbB"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Open…" keyEquivalent="o" id="b0x-ll-rdJ">
-                                            <connections>
-                                                <action selector="openDocument:" target="Ybc-6E-y7g" id="i2V-st-b78"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Open Recent" id="ePZ-fI-Je8">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="aen-lk-tPB">
-                                                <items>
-                                                    <menuItem title="Clear Menu" id="SFg-B5-4ZS">
-                                                        <connections>
-                                                            <action selector="clearRecentDocuments:" target="Ybc-6E-y7g" id="2PB-Lu-X26"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="gCl-sm-nfw"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="HCc-wE-4PP">
-                                            <connections>
-                                                <action selector="performClose:" target="Ybc-6E-y7g" id="6mO-Iw-N5V"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save" keyEquivalent="s" id="IcM-PF-1yE">
-                                            <connections>
-                                                <action selector="saveDocument:" target="Ybc-6E-y7g" id="QuK-HL-TEt"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Save As…" keyEquivalent="S" id="RTg-Mq-pdB">
-                                            <connections>
-                                                <action selector="saveDocumentAs:" target="Ybc-6E-y7g" id="OUv-c7-fRB"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Revert to Saved" id="zic-fe-SuB">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="revertDocumentToSaved:" target="Ybc-6E-y7g" id="oHM-Qn-Mce"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="l7f-ZI-sNl"/>
-                                        <menuItem title="Page Setup…" keyEquivalent="P" id="F1J-35-DXd">
-                                            <connections>
-                                                <action selector="runPageLayout:" target="Ybc-6E-y7g" id="GKB-Qw-eOj"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Print…" keyEquivalent="p" id="4Ws-ev-ePv">
-                                            <connections>
-                                                <action selector="print:" target="Ybc-6E-y7g" id="dkK-zv-SDi"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Window" id="p1G-id-RU2">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Window" systemMenu="window" id="3ug-BB-omY">

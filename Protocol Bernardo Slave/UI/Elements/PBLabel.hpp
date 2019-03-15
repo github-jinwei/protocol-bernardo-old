@@ -10,14 +10,17 @@
 #define PBLabel_hpp
 
 #include "PBView.hpp"
+#include "../utils/PBPoint.hpp"
 
 class PBLabel: public PBView {
 public:
     PBLabel(const std::string &aTitle, const PBPoint &aPosition);
 
-    PBPoint position;
+    inline std::string getTitle() { return _title; }
 
-    std::string title;
+    inline void setTitle(const std::string &title) {
+        _title = title;
+    }
 
     enum Alignement {
         LABEL_ALIGN_LEFT,
@@ -27,10 +30,17 @@ public:
 
     Alignement alignement;
 
+    bool isBold = false;
+
+    bool isUnderlined = false;
+
     void renderWithoutStyling();
 
     // MARK: - PBView
-    void render();
+    void render() override;
+
+private:
+    std::string _title;
 };
 
 #endif /* PBLabel_hpp */
