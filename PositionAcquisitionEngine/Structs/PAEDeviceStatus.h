@@ -10,6 +10,7 @@
 #define PAEDeviceStatus_h
 
 #include <unistd.h>
+#include <limits.h>
 
 #include "../Enums/DeviceState.h"
 #include "PhysicalUser.h"

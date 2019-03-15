@@ -9,6 +9,8 @@
 #ifndef User_h
 #define User_h
 
+#include <simd/simd.h>
+
 #include "../Enums/UserState.h"
 #include "Skeleton.h"
 
@@ -26,7 +28,7 @@ struct PhysicalUser {
     struct Skeleton skeleton;
     
     /** The center of mass of the user. Irrevelant is the user state isn't USER_TRACKED  */
-    struct Position centerOfMass;
+    simd_float3 centerOfMass;
 };
 
 #endif /* User_h */

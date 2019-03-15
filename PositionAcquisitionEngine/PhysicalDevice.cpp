@@ -136,25 +136,80 @@ PAEDeviceStatus PhysicalDevice::getStatus() {
 
     // If live view is enabled, update the window fo the device
     if(_pae->isLiveViewEnabled()) {
-        if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
-            if(_colorFrame->getData() != NULL) {
-                std::cout << "Frame size " << _colorFrame->getDataSize() << std::endl;
-
-                cv::Mat cImageBGR;
-                const cv::Mat mImageRGB(_colorFrame->getHeight(),
-                                        _colorFrame->getWidth(),
-                                        CV_8UC3,
-                                        (void*)_colorFrame->getData());
-
-                // p2c. convert form RGB to BGR
-                cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
-
-                cv::imshow(_serial, cImageBGR );
-            }
-        }
+        updateLiveView(status);
     }
 
     return status;
+}
+
+void PhysicalDevice::updateLiveView(const PAEDeviceStatus &status) {
+    if(_state == DeviceState::DEVICE_ACTIVE && _colorFrame != nullptr) {
+        if(_colorFrame->getData() != NULL) {
+            cv::Mat cImageBGR;
+            const cv::Mat mImageRGB(_colorFrame->getHeight(),
+                                    _colorFrame->getWidth(),
+                                    CV_8UC3,
+                                    (void*)_colorFrame->getData());
+
+            cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
+
+            for(int i = 0; i < status.userCount; ++i) {
+                Joint aJoints[15];
+                aJoints[ 0] = status.trackedUsers[i].skeleton.head;
+                aJoints[ 1] = status.trackedUsers[i].skeleton.neck;
+                aJoints[ 2] = status.trackedUsers[i].skeleton.leftShoulder;
+                aJoints[ 3] = status.trackedUsers[i].skeleton.rightShoulder;
+                aJoints[ 4] = status.trackedUsers[i].skeleton.leftElbow;
+                aJoints[ 5] = status.trackedUsers[i].skeleton.rightElbow;
+                aJoints[ 6] = status.trackedUsers[i].skeleton.leftHand;
+                aJoints[ 7] = status.trackedUsers[i].skeleton.rightHand;
+                aJoints[ 8] = status.trackedUsers[i].skeleton.torso;
+                aJoints[ 9] = status.trackedUsers[i].skeleton.leftHip;
+                aJoints[10] = status.trackedUsers[i].skeleton.rightHip;
+                aJoints[11] = status.trackedUsers[i].skeleton.leftKnee;
+                aJoints[12] = status.trackedUsers[i].skeleton.rightKnee;
+                aJoints[13] = status.trackedUsers[i].skeleton.leftFoot;
+                aJoints[14] = status.trackedUsers[i].skeleton.rightFoot;
+
+                cv::Point2f aPoint[15];
+                for( int s = 0; s < 15; ++ s )
+                {
+                    const simd_float3& rPos = aJoints[s].position;
+                    _rigTracker.convertJointCoordinatesToDepth(
+                                                               rPos.x, rPos.y, rPos.z,
+                                                               &(aPoint[s].x), &(aPoint[s].y) );
+
+
+                    aPoint[s].x = cImageBGR.cols - aPoint[s].x;
+                }
+
+                cv::line(cImageBGR, aPoint[ 0], aPoint[ 1], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 1], aPoint[ 2], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 1], aPoint[ 3], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 2], aPoint[ 4], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 3], aPoint[ 5], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 4], aPoint[ 6], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 5], aPoint[ 7], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 1], aPoint[ 8], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 8], aPoint[ 9], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 8], aPoint[10], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[ 9], aPoint[11], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[10], aPoint[12], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[11], aPoint[13], cv::Scalar( 255, 0, 0 ), 3 );
+                cv::line(cImageBGR, aPoint[12], aPoint[14], cv::Scalar( 255, 0, 0 ), 3 );
+
+                for(int s = 0; s < 15; ++s)
+                {
+                    if(aJoints[s].positionConfidence < 0.5 )
+                        cv::circle(cImageBGR, aPoint[s], 3, cv::Scalar(0, 0, 255), 2);
+                    else
+                        cv::circle(cImageBGR, aPoint[s], 3, cv::Scalar(0, 255, 0), 2);
+                }
+            }
+
+            cv::imshow(_serial, cImageBGR );
+        }
+    }
 }
 
 

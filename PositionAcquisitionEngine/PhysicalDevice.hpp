@@ -160,6 +160,8 @@ private:
 
     /** User tracker */
     UsersTracker _usersTracker;
+
+    void updateLiveView(const PAEDeviceStatus &status);
 };
 
 #endif /* Device_hpp */

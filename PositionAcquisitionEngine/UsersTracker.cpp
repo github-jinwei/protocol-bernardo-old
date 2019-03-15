@@ -114,7 +114,7 @@ void UsersTracker::onUserFrame(nite::UserTrackerFrameRef * userFrame) {
         user->state = UserState::USER_TRACKED;
         
         // If we are here, it means the user is being actively tracked. Let's update its structure.
-        user->centerOfMass = P3FtoPosition(userData->getCenterOfMass());
+        user->centerOfMass = P3FtoFloat3(userData->getCenterOfMass());
         
         // Update the skeleton and all its joint coordinates
         Skeleton * userSkeleton = &user->skeleton;
@@ -165,32 +165,18 @@ Joint UsersTracker::niteJointToCJoint(const nite::SkeletonJoint &joint) {
     
     cJoint.orientation = niteQuaternionToCQuaternion(joint.getOrientation());
     cJoint.orientationConfidence = joint.getOrientationConfidence();
-    
-    cJoint.position = P3FtoPosition(joint.getPosition());
+
+    // Joint coordinates are given in real world coordinates
+    cJoint.position = P3FtoFloat3(joint.getPosition());
     cJoint.positionConfidence = joint.getPositionConfidence();
     
     return cJoint;
 }
 
-Position UsersTracker::P3FtoPosition(const nite::Point3f &p3f) {
-    Position pos;
-    
-    pos.x = p3f.x;
-    pos.y = p3f.y;
-    pos.z = p3f.z;
-    
-    _device->getRigTracker()->convertDepthCoordinatesToJoint(p3f.x, p3f.y, p3f.z, &pos.x2D, &pos.y2D);
-    
-    return pos;
+simd_float3 UsersTracker::P3FtoFloat3(const nite::Point3f &p3f) {
+    return simd_make_float3(p3f.x, p3f.y, p3f.z);
 }
 
-Quaternion UsersTracker::niteQuaternionToCQuaternion(const nite::Quaternion &quaternion) {
-    Quaternion cQuat;
-    
-    cQuat.x = quaternion.x;
-    cQuat.y = quaternion.y;
-    cQuat.z = quaternion.z;
-    cQuat.w = quaternion.w;
-    
-    return cQuat;
+simd_quatf UsersTracker::niteQuaternionToCQuaternion(const nite::Quaternion &quaternion) {
+    return simd_quaternion(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
 }

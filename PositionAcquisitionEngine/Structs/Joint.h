@@ -9,21 +9,20 @@
 #ifndef Joint_h
 #define Joint_h
 
-#include "Quaternion.h"
-#include "Position.h"
+#include <simd/simd.h>
 
 /**
  Represent a joint on a skeleton.
  */
 struct Joint {
     /** The current orientation of the joint */
-    struct Quaternion orientation;
+    simd_quatf orientation;
     
     /** The confidence of NiTE when giving the orientation */
     float orientationConfidence;
     
-    /** The position in 3D and 2D space of the Joint */
-    struct Position position;
+    /** The position in 3D space of the Joint */
+    simd_float3 position;
     
     /** The confidence of NiTe when giving the position */
     float positionConfidence;

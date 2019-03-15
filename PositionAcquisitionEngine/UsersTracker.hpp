@@ -12,6 +12,7 @@
 #include <string>
 #include <map>
 #include <nite2/NiTE.h>
+#include <simd/simd.h>
 
 // Forward Declarations
 struct PhysicalDevice;
@@ -71,7 +72,7 @@ private:
      @param p3f NiTE 3d Position
      @return Position struct 3D and 2D positions
      */
-    Position P3FtoPosition(const nite::Point3f &p3f);
+    simd_float3 P3FtoFloat3(const nite::Point3f &p3f);
     
     /**
      Create a Quaternion reflecting the given nite::Quaternion.
@@ -79,7 +80,7 @@ private:
      @param quaternion The nite Quaternion
      @return The newly created Quaternion reflecting the given nite Quaternion
      */
-    Quaternion niteQuaternionToCQuaternion(const nite::Quaternion &quaternion);
+    simd_quatf niteQuaternionToCQuaternion(const nite::Quaternion &quaternion);
     
 };
 

@@ -103,7 +103,7 @@ void PositionAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInf
     if(serial.size() == 0) {
         return;
     }
-    
+
     // Check the serial isn't already stored
     if(_devices.find(serial) != _devices.end()) {
         // Serial already stored, ignore device
