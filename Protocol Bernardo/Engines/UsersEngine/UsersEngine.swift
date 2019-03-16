@@ -82,9 +82,9 @@ extension UsersEngine: DataAcquisitionEngineObserver {
             }
         }
 
-        analyzeUsers()
-
         updatePositions()
+
+        analyzeUsers()
     }
     
     /// Sometimes, the devices gives bad first position, resulting in separate Users for the same real user.
@@ -95,6 +95,8 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         guard users.count > 1 else { return }
 
         for user in users {
+            guard user.physicsHistory.count > 0 else { continue }
+            
             let closestUsers = usersByDistance(fromPosition: user.position)
             // If the current user is the first one in the array (like 99% of the time), select the second one
             let closest: User

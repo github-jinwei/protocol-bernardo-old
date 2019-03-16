@@ -162,7 +162,6 @@
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
 		39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */; };
 		39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */; };
-		39F5F58F2221ED780035B9C1 /* BVHFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58E2221ED780035B9C1 /* BVHFile.swift */; };
 		39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */; };
 		39FFE2F522357D97001BCE9E /* simd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFE2F422357D97001BCE9E /* simd.swift */; };
 /* End PBXBuildFile section */
@@ -417,7 +416,6 @@
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfilePanel.swift; sourceTree = "<group>"; };
 		39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedUser.swift; sourceTree = "<group>"; };
-		39F5F58E2221ED780035B9C1 /* BVHFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVHFile.swift; sourceTree = "<group>"; };
 		39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingSessionPanel.swift; sourceTree = "<group>"; };
 		39FFE2F422357D97001BCE9E /* simd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simd.swift; sourceTree = "<group>"; };
 		E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -744,7 +742,6 @@
 				397195C52200D38000F92C5C /* Keycode.swift */,
 				39B5575F220008430021BFDA /* maths.swift */,
 				392183CC22138C5E000D5968 /* Typealias.swift */,
-				39F5F58E2221ED780035B9C1 /* BVHFile.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1360,7 +1357,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */,
-				39F5F58F2221ED780035B9C1 /* BVHFile.swift in Sources */,
 				390C265F21F66EFB00E7FEAE /* DevicesWindow.swift in Sources */,
 				393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */,
 				39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */,

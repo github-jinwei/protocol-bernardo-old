@@ -48,6 +48,10 @@ private:
      @param userFrame The latest user frame
      */
     void onUserFrame(nite::UserTrackerFrameRef * userFrame);
+
+    void recalculateOrientations(::Skeleton * skeleton);
+
+    simd_float3x3 rotationMatrix(const float &rad);
     
     /**
      Returns a string corresponding to the given skeleton state. Primarly used
@@ -81,7 +85,6 @@ private:
      @return The newly created Quaternion reflecting the given nite Quaternion
      */
     simd_quatf niteQuaternionToCQuaternion(const nite::Quaternion &quaternion);
-    
 };
 
 #endif /* UsersTracker_hpp */

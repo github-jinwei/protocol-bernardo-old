@@ -11,7 +11,7 @@ import Foundation
 /// A Skeleton, as tracked by NiTE2, is composed of 15 joints, each defined by their position
 /// in the 2D and 3d position in the space of the acquisition device, and a Quaternion for each
 /// joint orientation to its next counterpart, relative to its parent joint.
-extension Skeleton {
+extension Skeleton: Codable {
     /// Takes a list of properties and a list of confidences and builds the skeleton with them.
     ///
     /// - Parameters:

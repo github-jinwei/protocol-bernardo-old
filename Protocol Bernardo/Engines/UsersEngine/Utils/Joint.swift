@@ -12,7 +12,7 @@ import Foundation
 ///
 /// A Joint is defined by its position (in 2D and 3D space) and its rotation, and
 /// a confidence value for both.
-extension Joint {
+extension Joint: Codable {
     /// Create a Joint using a property list and a confidences list
     ///
     /// - Parameters:

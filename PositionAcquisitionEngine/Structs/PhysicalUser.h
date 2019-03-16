@@ -20,6 +20,9 @@
 struct PhysicalUser {
     /** The userID for the user, given by NiTE */
     short int /* nite::UserId */ userID;
+
+    /** The current frame of the user */
+    uint frame = 0;
     
     /** The state of this user */
     UserState state;

@@ -61,11 +61,6 @@ class TrackingSession {
         guard isTracking else { return }
 
         isTracking = false
-
-        // Stop all trackings
-        for user in trackedUsers {
-            user.endTracking()
-        }
     }
 }
 
@@ -89,7 +84,9 @@ extension TrackingSession {
         }
 
         // Insert the existing users
-        existingTrackings.forEach { (k, v) in userWrapper[k] = v }
+        for (k, v) in existingTrackings {
+            userWrapper[k] = v
+        }
 
         // Create the session wrapper with all the tracked users wrappers
         let wrapper = FileWrapper(directoryWithFileWrappers: userWrapper)
@@ -125,16 +122,22 @@ extension TrackingSession: UsersEngineDelegate {
         document?.markAsEdited()
     }
 
-    func userEngine(_: UsersEngine, stoppedTrackingUser user: User) {
-        guard isTracking else { return }
 
+    func userEngine(_ engine: UsersEngine, stoppedTrackingUser user: User) {
         guard let trackedUser = trackedUser(forUser: user) else { return }
 
-        trackedUser.endTracking()
+        // We will not be tracking this user again, write its file
         document?.markAsEdited()
+        document?.save(nil)
+
+        // Store the user wrapper
+        existingTrackings[trackedUser.fileName] = trackedUser.wrapper
+
+        // And remove it
+        trackedUsers.removeAll(where: { $0 === user })
     }
 
     func usersPhysicsHistorySize(_: UsersEngine) -> UInt {
-        return 1
+        return 3
     }
 }
