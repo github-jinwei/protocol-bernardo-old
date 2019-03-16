@@ -123,7 +123,7 @@ extension TrackingSession: UsersEngineDelegate {
     }
 
 
-    func userEngine(_ engine: UsersEngine, stoppedTrackingUser user: User) {
+    func userEngine(_: UsersEngine, stoppedTrackingUser user: User) {
         guard let trackedUser = trackedUser(forUser: user) else { return }
 
         // We will not be tracking this user again, write its file

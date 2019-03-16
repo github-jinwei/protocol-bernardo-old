@@ -20,10 +20,28 @@ extension Skeleton: Codable {
     init(properties: [Float], confidences: [Float]) {
         self.init()
 
-        for i in stride(from: 0, to: properties.count, by: 9) {
-            self[SkeletonJoint.allCases[i/9]] = Joint(
-                properties: Array(properties[i..<(i+9)]),
-                confidences: Array(confidences[i..<(i+9)]))
+        for i in stride(from: 0, to: properties.count, by: 7) {
+            self[SkeletonJoint.allCases[i/7]] = Joint(
+                properties: Array(properties[i..<(i+7)]),
+                confidences: Array(confidences[i..<(i+7)]))
+        }
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: SkeletonJoint.self)
+
+        self.init()
+
+        for joint in SkeletonJoint.allCases {
+            self[joint] = try values.decode(Joint.self, forKey: joint)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: SkeletonJoint.self)
+
+        for joint in SkeletonJoint.allCases {
+            try container.encode(self[joint], forKey: joint)
         }
     }
 }
@@ -79,12 +97,12 @@ extension Skeleton {
 extension Skeleton {
     /// Number of values in the allProperties and allConfidences arrays
     static var propertiesCount: Int {
-        return SkeletonJoint.allCases.count * 9
+        return SkeletonJoint.allCases.count * 7
     }
 
     /// All the float properties in the skeleton
     ///
-    /// [Joint[ Position[ x y z X2d Y2d ], Orientation[ x y z w ] ] * 9]
+    /// [Joint[ Position[ x y z X2d Y2d ], Orientation[ x y z w ] ] * 7]
     ///
     /// - Parameter profile: The device calibration profile
     /// - Returns: An array with all the properties of the skeleton

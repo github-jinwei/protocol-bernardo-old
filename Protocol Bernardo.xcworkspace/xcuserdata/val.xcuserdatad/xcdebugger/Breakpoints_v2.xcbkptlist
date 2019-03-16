@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Protocol Bernardo/Engines/UsersEngine/User.swift"
-            timestampString = "574446536.572656"
+            timestampString = "574464763.694198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "calculateMergedSkeleton()"
             landmarkType = "7">
          </BreakpointContent>

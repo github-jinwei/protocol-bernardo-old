@@ -216,7 +216,7 @@ extension UsersEngine {
         let users = self.users
         
         // Get the distance for each user
-        let distances = users.map {
+        let distances = users.filter({ $0.physicsHistory.count > 0 }).map {
             return simd_distance(position, $0.position)
         }
         // Sort the array

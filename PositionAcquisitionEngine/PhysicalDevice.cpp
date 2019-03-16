@@ -154,6 +154,10 @@ void PhysicalDevice::updateLiveView(const PAEDeviceStatus &status) {
             cv::cvtColor(mImageRGB, cImageBGR, cv::COLOR_RGB2BGR);
 
             for(int i = 0; i < status.userCount; ++i) {
+                if(status.trackedUsers[i].state != USER_TRACKED) {
+                    continue;
+                }
+
                 Joint aJoints[15];
                 aJoints[ 0] = status.trackedUsers[i].skeleton.head;
                 aJoints[ 1] = status.trackedUsers[i].skeleton.neck;

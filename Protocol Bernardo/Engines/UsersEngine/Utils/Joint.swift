@@ -24,8 +24,40 @@ extension Joint: Codable {
         orientation = simd_quatf(properties: Array(properties[0..<4]))
         orientationConfidence = confidences[0]
 
-        position = float3(Array(properties[4..<9]))
+        position = float3(Array(properties[4..<7]))
         orientationConfidence = confidences[4]
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        // Decode values
+        let           orientation = try values.decode(simd_quatf.self, forKey: .orientation)
+        let orientationConfidence = try values.decode(     Float.self, forKey: .orientationConfidence)
+        let              position = try values.decode(    float3.self, forKey: .position)
+        let    positionConfidence = try values.decode(     Float.self, forKey: .positionConfidence)
+
+        // Create the joint using the decoded values
+        self.init(          orientation: orientation,
+                  orientationConfidence: orientationConfidence,
+                               position: position,
+                     positionConfidence: positionConfidence)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(orientation, forKey: .orientation)
+        try container.encode(orientationConfidence, forKey: .orientationConfidence)
+        try container.encode(position, forKey: .position)
+        try container.encode(positionConfidence, forKey: .positionConfidence)
+    }
+
+    private enum CodingKeys: CodingKey {
+        case orientation,
+             orientationConfidence,
+             position,
+             positionConfidence
     }
 }
 
@@ -46,8 +78,6 @@ extension Joint {
                 orientationConfidence,
                 orientationConfidence,
                 orientationConfidence,
-                positionConfidence,
-                positionConfidence,
                 positionConfidence,
                 positionConfidence,
                 positionConfidence,

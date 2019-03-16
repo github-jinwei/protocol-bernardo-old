@@ -72,15 +72,17 @@ extension User {
     /// Calculate the merged position and skeleton on the global coordinate system,
     /// and add it to the history of physics assumed by the user.
     func calculatePosition(historySize: UInt) {
-//        physicsHistory.append(PhysicalUser(userID: 0,
-//                                           state: USER_TRACKED,
-//                                           skeleton: calculateMergedSkeleton(),
-//                                           centerOfMass: calculateMergedPosition()))
-
         physicsHistory.append(PhysicalUser(userID: 0,
+                                           frame: (physicsHistory.last?.frame ?? 0) + 1,
                                            state: USER_TRACKED,
-                                           skeleton: trackedPhysics.first!.value.skeleton,
-                                           centerOfMass: trackedPhysics.first!.value.centerOfMass))
+                                           skeleton: calculateMergedSkeleton(),
+                                           centerOfMass: calculateMergedPosition()))
+
+//        physicsHistory.append(PhysicalUser(userID: 0,
+//                                           frame: (physicsHistory.last?.frame ?? 0) + 1,
+//                                           state: USER_TRACKED,
+//                                           skeleton: trackedPhysics.first!.value.skeleton,
+//                                           centerOfMass: trackedPhysics.first!.value.centerOfMass))
 
         if physicsHistory.count > historySize + 1 {
             physicsHistory.removeFirst(physicsHistory.count - (Int(historySize) + 1))

@@ -7,7 +7,7 @@
 //
 
 /// All the joints composing a skeleton as tracked by NiTE2
-enum SkeletonJoint: String, CaseIterable {
+enum SkeletonJoint: String, CaseIterable, CodingKey {
     /// Torse joint
     case torso
 

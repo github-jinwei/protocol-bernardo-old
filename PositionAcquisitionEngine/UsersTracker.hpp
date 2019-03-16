@@ -49,9 +49,9 @@ private:
      */
     void onUserFrame(nite::UserTrackerFrameRef * userFrame);
 
-    void recalculateOrientations(::Skeleton * skeleton);
-
-    simd_float3x3 rotationMatrix(const float &rad);
+//    void recalculateOrientations(::Skeleton * skeleton);
+//
+//    simd_float3x3 rotationMatrix(const float &rad);
     
     /**
      Returns a string corresponding to the given skeleton state. Primarly used

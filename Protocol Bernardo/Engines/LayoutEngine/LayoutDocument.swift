@@ -22,7 +22,7 @@ class LayoutDocument: NSDocument {
         case layout = "pbdeviceslayout"
         case calibrationProfile = "pblayoutcalibration"
         case trackingSession = "pbtrackingsession"
-        case trackingFile = "bvh"
+        case trackingFile = "pba"
 
         /// Takes the given string and append the extension (with the dot)
         /// for the current FileType

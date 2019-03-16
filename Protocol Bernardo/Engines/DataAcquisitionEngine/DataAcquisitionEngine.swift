@@ -53,7 +53,7 @@ class DataAcquisitionEngine {
     // MARK: - Properties
 
     var refreshRate: UInt {
-        return 30
+        return 60
     }
 
     /// Holds the loop for the status fetcher
