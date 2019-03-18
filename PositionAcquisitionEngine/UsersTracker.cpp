@@ -84,6 +84,7 @@ void UsersTracker::onUserFrame(nite::UserTrackerFrameRef * userFrame) {
             
             _users.erase(user->userID);
             delete user;
+            user = nullptr;
             
             // Nothing else to do
             continue;

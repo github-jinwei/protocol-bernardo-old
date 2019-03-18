@@ -115,6 +115,10 @@ class DataAcquisitionEngine {
             PAEPrepare()
         }
 
+        PAEShouldEmit(1);
+        PAEShouldReceive(1);
+        PAEConnectTo("localhost".CString(), "3000".CString(), 0);
+
         // Start a loop to query the CPP DAE status regularly
         statusFetcherLoop = Repeater(interval: .milliseconds(Int(10000 / refreshRate)),
                                      mode: .infinite,

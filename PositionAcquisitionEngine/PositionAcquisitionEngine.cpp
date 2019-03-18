@@ -79,6 +79,7 @@ void PositionAcquisitionEngine::stop() {
     for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
         PhysicalDevice * device = deviceReference.second;
         delete device;
+        device = nullptr;
     }
 
     _isRunning = false;
@@ -212,10 +213,14 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
 void PositionAcquisitionEngine::freeStatus(PAEStatus * status) {
     for(int i = 0; i < status->deviceCount; ++i) {
         delete status->connectedDevices[i].trackedUsers;
+        status->connectedDevices[i].trackedUsers = nullptr;
     }
 
     delete status->connectedDevices;
+    status->connectedDevices = nullptr;
+
     delete status;
+    status = nullptr;
 }
 
 PositionAcquisitionEngine::~PositionAcquisitionEngine() {

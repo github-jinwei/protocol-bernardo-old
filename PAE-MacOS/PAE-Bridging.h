@@ -23,6 +23,9 @@ void PAEFreeStatus(struct PAEStatus * status);
 
 void PAEEndAcquisition();
 
+void PAEShouldEmit(const int shouldEmit);
+void PAEShouldReceive(const int shouldReceive);
+
 void PAEConnectTo(const char * c_ip, const char * c_port, const int isSecure);
 
 #endif /* PAE_Bridging_h */

@@ -53,11 +53,11 @@ void PAEFreeStatus(PAEStatus * status) {
     PAEMacOSApp->pae->freeStatus(status);
 }
 
-void PAEShouldEmit(const bool &shouldEmit) {
+void PAEShouldEmit(const int shouldEmit) {
     PAEMacOSApp->pae->shouldEmit(shouldEmit);
 }
 
-void PAEShouldReceive(const bool &shouldReceive) {
+void PAEShouldReceive(const int shouldReceive) {
     PAEMacOSApp->pae->linker()->shouldReceive(shouldReceive);
 }
 

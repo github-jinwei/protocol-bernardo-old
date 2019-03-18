@@ -44,13 +44,14 @@ void PAELinker::connect(const std::string &ip, const std::string &port, const bo
         std::cout << "Socket reconnecting" << std::endl;
     });
 
-    _socket->set_close_listener([this] (sio::client::close_reason const& reason) {
+    _socket->set_close_listener([this, uri] (sio::client::close_reason const& reason) {
         switch (reason) {
             case sio::client::close_reason::close_reason_normal:
                 std::cout << "Socket properly closed" << std::endl;
                 break;
             case sio::client::close_reason::close_reason_drop:
                 std::cout << "Socket connection dropped" << std::endl;
+                _socket->connect(uri);
                 break;
         }
 
@@ -80,6 +81,10 @@ std::vector<PAEDeviceStatus> PAELinker::storedDevices() {
         }
     }
 
+    // Clean the linker storage as retrieven informations must be freed by the caller
+    // prevent multiple free
+    _storedStatus.clear();
+
     return devices;
 }
 
@@ -98,6 +103,9 @@ std::string PAELinker::buildURI(const std::string &ip, const std::string &port, 
 }
 
 void PAELinker::onPaeStateReceived(const sio::event &event) {
+    // Do nothing if we are not supposed to receive data
+    if(!_isReceiver) { return; }
+
     // treat the message to rebuild the received paestate
     sio::message::ptr mPtr = event.get_message();
 
@@ -105,16 +113,16 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
 
     // Integrate the status
     if(foreignStatus->deviceCount == 0) {
+        // No device are attached to the receiveed state, ignore it
         PositionAcquisitionEngine::freeStatus(foreignStatus);
     }
 
     std::string hostname = foreignStatus->connectedDevices[0].deviceHostname;
 
     auto existingStatus = _storedStatus.find(hostname);
-
     if(existingStatus != _storedStatus.end()) {
         // Status already stored for this hostname, free it
-        PositionAcquisitionEngine::freeStatus(_storedStatus[hostname]);
+        PositionAcquisitionEngine::freeStatus(existingStatus->second);
     }
 
     _storedStatus[hostname] = foreignStatus;

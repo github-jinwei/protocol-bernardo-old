@@ -157,10 +157,10 @@ sio::message::ptr PAEStatusToSioMessage(const PAEStatus * s) {
 
         // Insert each tracked user
         for(int j = 0; j < device->userCount; ++j) {
-            PhysicalUser * user = &(device->trackedUsers[i]);
+            PhysicalUser * user = &(device->trackedUsers[j]);
 
             sio::message::ptr userMessagePtr = sio::object_message::create();
-            sio::object_message * userMessage = static_cast<sio::object_message *>(deviceMessagePtr.get());
+            sio::object_message * userMessage = static_cast<sio::object_message *>(userMessagePtr.get());
 
             userMessage->insert("userID", sio::int_message::create(user->userID));
             userMessage->insert("frame", sio::int_message::create(user->frame));
@@ -187,8 +187,8 @@ PAEStatus * sioMessageToPAEStatus(const sio::message::ptr * mPtr) {
     status->deviceCount = (unsigned int)m.size();
     status->connectedDevices = (PAEDeviceStatus *)malloc(sizeof(PAEDeviceStatus) * status->deviceCount);
 
-    for(sio::message::ptr dPtr: m) {
-        std::map<std::string, sio::message::ptr> d = dPtr->get_map();
+    for(int i = 0; i < status->deviceCount; ++i) {
+        std::map<std::string, sio::message::ptr> d = m[i]->get_map();
 
         PAEDeviceStatus device;
         strcpy(device.deviceHostname, d["deviceHostname"]->get_string().c_str());
@@ -210,8 +210,8 @@ PAEStatus * sioMessageToPAEStatus(const sio::message::ptr * mPtr) {
         device.userCount = (unsigned int)usersPtr.size();
         device.trackedUsers = (PhysicalUser *)malloc(sizeof(PhysicalUser) * device.userCount);
 
-        for(sio::message::ptr uPtr: usersPtr) {
-            std::map<std::string, sio::message::ptr> u = uPtr->get_map();
+        for(int j = 0; j < device.userCount; ++j) {
+            std::map<std::string, sio::message::ptr> u = usersPtr[j]->get_map();
 
             PhysicalUser user;
             user.userID = u["userID"]->get_int();
@@ -227,11 +227,14 @@ PAEStatus * sioMessageToPAEStatus(const sio::message::ptr * mPtr) {
 
             user.skeleton = sioMessageToSkeleton(u["skeleton"]);
             user.centerOfMass = sioMessageToFloat3(u["centerOfMass"]);
+
+            device.trackedUsers[j] = user;
         }
 
+        status->connectedDevices[i] = device;
     }
 
-    return nullptr;
+    return status;
 }
 
 

@@ -25,7 +25,9 @@ extern "C" {
 
     void PAEEndAcquisition();
 
-    void PAEConnectTo(const char * c_ip, const char * c_port, const bool &isSecure);
+    void PAEShouldEmit(const int shouldEmit);
+    void PAEShouldReceive(const int shouldReceive);
+    void PAEConnectTo(const char * c_ip, const char * c_port, const int isSecure);
 }
 
 #endif /* PAE_Interface_h */
