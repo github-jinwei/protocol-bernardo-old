@@ -22,6 +22,8 @@ bool PositionAcquisitionEngine::_openNIInitialized = false;
 PositionAcquisitionEngine::PositionAcquisitionEngine() {
     hostname[_POSIX_HOST_NAME_MAX] = '\0';
     gethostname(hostname, _POSIX_HOST_NAME_MAX);
+
+    _linker.setPAE(this);
 }
 
 void PositionAcquisitionEngine::enableLiveView() {
@@ -187,11 +189,29 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
         memcpy(status->connectedDevices[i].deviceHostname, hostname, _POSIX_HOST_NAME_MAX);
         ++i;
     }
+
+    // Emit the status if needed
+    if (_isEmitter) {
+        _linker.send(status);
+    }
+
+    // Integrate the status stored in the linker
+    std::vector<PAEDeviceStatus> foreignDevices = _linker.storedDevices();
+
+    unsigned int oldSize = status->deviceCount;
+    status->deviceCount += (unsigned int)foreignDevices.size();
+
+    status->connectedDevices = (PAEDeviceStatus *)realloc(status->connectedDevices, sizeof(PAEDeviceStatus) * status->deviceCount);
+
+    for(PAEDeviceStatus device: foreignDevices) {
+        status->connectedDevices[oldSize] = device;
+        oldSize++;
+    }
     
     return status;
 }
 
-void PositionAcquisitionEngine::freeStatus(PAEStatus * status) {
+void PositionAcquisitionEngine::freeStatus(PAEStatus * status) const {
     for(int i = 0; i < status->deviceCount; ++i) {
         delete status->connectedDevices[i].trackedUsers;
     }
@@ -224,7 +244,6 @@ std::string PositionAcquisitionEngine::getDeviceSerial(const openni::DeviceInfo 
         std::cout << "Could not get serial for device : " << uri << std::endl;
         return "";
     }
-
     
     // mathc[1] is the serial
     return match[1];

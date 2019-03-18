@@ -24,6 +24,8 @@ extern "C" {
     void PAEFreeStatus(PAEStatus * status);
 
     void PAEEndAcquisition();
+
+    void PAEConnectTo(const char * c_ip, const char * c_port, const bool &isSecure);
 }
 
 #endif /* PAE_Interface_h */

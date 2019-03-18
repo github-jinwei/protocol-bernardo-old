@@ -12,6 +12,7 @@
 
 #include "PAEMacOSApp.hpp"
 #include "../PositionAcquisitionEngine/PositionAcquisitionEngine.hpp"
+#include "../PositionAcquisitionEngine/PAELinker.hpp"
 
 void PAEEnableLiveView() {
     PAEMacOSApp->pae->enableLiveView();
@@ -50,4 +51,19 @@ PAEStatus * PAEGetStatus() {
 
 void PAEFreeStatus(PAEStatus * status) {
     PAEMacOSApp->pae->freeStatus(status);
+}
+
+void PAEShouldEmit(const bool &shouldEmit) {
+    PAEMacOSApp->pae->shouldEmit(shouldEmit);
+}
+
+void PAEShouldReceive(const bool &shouldReceive) {
+    PAEMacOSApp->pae->linker()->shouldReceive(shouldReceive);
+}
+
+void PAEConnectTo(const char * c_ip, const char * c_port, const bool &isSecure) {
+    std::string ip = c_ip;
+    std::string port = c_port;
+
+    PAEMacOSApp->pae->_linker.connect(ip, port, c_port);
 }

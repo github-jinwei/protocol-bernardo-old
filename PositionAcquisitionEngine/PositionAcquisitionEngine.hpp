@@ -17,6 +17,8 @@
 #include "Listeners/DeviceConnectionListener.hpp"
 #include "Listeners/DeviceDisconnectionListener.hpp"
 
+#include "PAELinker.hpp"
+
 // Forward Declarations
 class PhysicalDevice;
 
@@ -152,6 +154,10 @@ public:
      @return True if the engine is running
      */
     inline bool isRunning() { return _isRunning; }
+
+    inline PAELinker * linker() { return &_linker; }
+
+    inline void shouldEmit(const bool &shouldEmit) { _isEmitter = shouldEmit; }
     
     /**
      Gets the status of all devices.
@@ -168,9 +174,9 @@ public:
 
      Provides a uniform way for properly freeing a pae status
 
-     @param status <#status description#>
+     @param status The status to free
      */
-    void freeStatus(PAEStatus * status);
+    void freeStatus(PAEStatus * status) const;
     
     ~PositionAcquisitionEngine();
     
@@ -183,6 +189,9 @@ private:
 
     /** Tell if the PAE is currently running */
     bool _isRunning = false;
+
+    /** Tell if the pae should emit its status to other machines */
+    bool _isEmitter = false;
     
     /** Tell if OpenNI has already been initialized or not */
     static bool _openNIInitialized;
@@ -209,6 +218,8 @@ private:
      @return The device's serial
      */
     std::string getDeviceSerial(const openni::DeviceInfo * deviceInfo);
+
+    PAELinker _linker;
 };
 
 #endif /* DataAcquisitionEngine_hpp */

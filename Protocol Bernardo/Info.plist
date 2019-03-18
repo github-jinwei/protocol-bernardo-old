@@ -72,6 +72,24 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>pba</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>text/json</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Protocol Bernardo Animatic</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.prisme.pb.layout.animatic</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -130,6 +148,7 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
+				<string>public.json</string>
 				<string>public.text</string>
 			</array>
 			<key>UTTypeDescription</key>
@@ -149,6 +168,7 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
+				<string>public.json</string>
 				<string>public.text</string>
 			</array>
 			<key>UTTypeDescription</key>
@@ -162,6 +182,24 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>pblayoutcalibration</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.json</string>
+				<string>public.text</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Protocol Bernardo Animatic</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.prisme.pb.layout.animatic</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>pba</string>
 				</array>
 			</dict>
 		</dict>

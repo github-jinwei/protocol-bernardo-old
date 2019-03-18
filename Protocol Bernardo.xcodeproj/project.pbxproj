@@ -135,8 +135,10 @@
 		39A1E71221FE7921003162FE /* LayoutCanvasLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */; };
 		39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E71521FE7A7A003162FE /* LayoutCanvasDevice.swift */; };
 		39A1E71821FEC08C003162FE /* LayoutCanvas.sks in Resources */ = {isa = PBXBuildFile; fileRef = 39A1E71721FEC08C003162FE /* LayoutCanvas.sks */; };
+		39A293FD223DDF6C006EE326 /* PAELinker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39A293FB223DDF6C006EE326 /* PAELinker.hpp */; };
 		39AF88AD21F4CF7E00A68993 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AC21F4CF7E00A68993 /* App.swift */; };
 		39AF88AF21F4D02100A68993 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AE21F4D02100A68993 /* Core.swift */; };
+		39B34C2C223DF6050061F704 /* PAELinker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39A293FA223DDF6C006EE326 /* PAELinker.cpp */; };
 		39B55760220008430021BFDA /* maths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5575F220008430021BFDA /* maths.swift */; };
 		39B5576222000FC70021BFDA /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B5576122000FC70021BFDA /* NSColor.swift */; };
 		39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */; };
@@ -314,6 +316,7 @@
 		393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationControllerDelegate.swift; sourceTree = "<group>"; };
 		393B1ECD2204DD0100BC54D3 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
+		39615AA3223F05EB0077E5CB /* sio.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sio.hpp; sourceTree = "<group>"; };
 		39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowDelegate.swift; sourceTree = "<group>"; };
 		39684DF12214A1B2006E4B37 /* LayoutInterfaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutInterfaceMode.swift; sourceTree = "<group>"; };
 		3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../../../../../usr/local/lib/libNiTE2.dylib; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 		39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasLine.swift; sourceTree = "<group>"; };
 		39A1E71521FE7A7A003162FE /* LayoutCanvasDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasDevice.swift; sourceTree = "<group>"; };
 		39A1E71721FEC08C003162FE /* LayoutCanvas.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LayoutCanvas.sks; sourceTree = "<group>"; };
+		39A293FA223DDF6C006EE326 /* PAELinker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PAELinker.cpp; sourceTree = "<group>"; };
+		39A293FB223DDF6C006EE326 /* PAELinker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PAELinker.hpp; sourceTree = "<group>"; };
 		39AF88AC21F4CF7E00A68993 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		39AF88AE21F4D02100A68993 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		39B5575F220008430021BFDA /* maths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maths.swift; sourceTree = "<group>"; };
@@ -610,6 +615,7 @@
 		39248283221DF29100DE6015 /* PositionAcquisitionEngine */ = {
 			isa = PBXGroup;
 			children = (
+				39615AA2223F05DF0077E5CB /* Utils */,
 				39248343221DF5A300DE6015 /* Enums */,
 				390EC7D6222EF7E300DDAE9F /* Listeners */,
 				39248340221DF5A300DE6015 /* PhysicalDevice.cpp */,
@@ -619,6 +625,8 @@
 				39248347221DF5A300DE6015 /* Structs */,
 				39248342221DF5A300DE6015 /* UsersTracker.cpp */,
 				39248346221DF5A300DE6015 /* UsersTracker.hpp */,
+				39A293FA223DDF6C006EE326 /* PAELinker.cpp */,
+				39A293FB223DDF6C006EE326 /* PAELinker.hpp */,
 			);
 			path = PositionAcquisitionEngine;
 			sourceTree = "<group>";
@@ -664,6 +672,14 @@
 				39C1E90C220A37F300F53AC2 /* Line.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		39615AA2223F05DF0077E5CB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				39615AA3223F05EB0077E5CB /* sio.hpp */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		3968FCDE21FD0386005EAA4C /* Extensions */ = {
@@ -1017,6 +1033,7 @@
 				3900AE64221DF75200A38E26 /* DeviceConnectionListener.hpp in Headers */,
 				3900AE65221DF75200A38E26 /* DeviceState.h in Headers */,
 				3900AE66221DF75200A38E26 /* UserState.h in Headers */,
+				39A293FD223DDF6C006EE326 /* PAELinker.hpp in Headers */,
 				3900AE67221DF75200A38E26 /* UsersTracker.hpp in Headers */,
 				3900AE68221DF75200A38E26 /* Joint.h in Headers */,
 				3900AE6A221DF75200A38E26 /* Skeleton.h in Headers */,
@@ -1342,6 +1359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39B34C2C223DF6050061F704 /* PAELinker.cpp in Sources */,
 				3900AE73221DF75A00A38E26 /* PAEMacOSApp.cpp in Sources */,
 				3900AE5D221DF73800A38E26 /* PositionAcquisitionEngine.cpp in Sources */,
 				3900AE5E221DF73800A38E26 /* FrameListener.cpp in Sources */,
@@ -1515,14 +1533,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					/usr/local/opt/ncurses/include/,
-					/usr/local/include/,
-					/usr/local/include/ni2/,
-					/usr/local/include/opencv4/,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libs/**",
-					/usr/local/Cellar/opencv/4.0.1/lib,
+					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1535,14 +1550,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					/usr/local/opt/ncurses/include/,
-					/usr/local/include/,
-					/usr/local/include/ni2/,
-					/usr/local/include/opencv4/,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libs/**",
-					/usr/local/Cellar/opencv/4.0.1/lib,
+					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1555,14 +1567,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					/usr/local/opt/ncurses/include/,
-					/usr/local/include/,
-					/usr/local/include/ni2/,
-					/usr/local/include/opencv4/,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/Libs/**",
-					/usr/local/Cellar/opencv/4.0.1/lib,
+					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1626,7 +1635,7 @@
 		396DDFDE21F4285200628070 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1674,6 +1683,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(PROJECT_DIR)/Libs/",
+					/usr/local/Cellar/opencv/4.0.1/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1687,7 +1706,7 @@
 		396DDFDF21F4285200628070 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1729,6 +1748,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(PROJECT_DIR)/Libs/",
+					/usr/local/Cellar/opencv/4.0.1/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1816,7 +1845,7 @@
 		39F0BE662213C6C6001AA7AE /* Analyze */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1864,6 +1893,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					/usr/local/include/ni2/,
+					/usr/local/include/opencv4/,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(PROJECT_DIR)/Libs/",
+					/usr/local/Cellar/opencv/4.0.1/lib/,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
