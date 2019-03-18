@@ -22,8 +22,6 @@ bool PositionAcquisitionEngine::_openNIInitialized = false;
 PositionAcquisitionEngine::PositionAcquisitionEngine() {
     hostname[_POSIX_HOST_NAME_MAX] = '\0';
     gethostname(hostname, _POSIX_HOST_NAME_MAX);
-
-    _linker.setPAE(this);
 }
 
 void PositionAcquisitionEngine::enableLiveView() {
@@ -211,7 +209,7 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
     return status;
 }
 
-void PositionAcquisitionEngine::freeStatus(PAEStatus * status) const {
+void PositionAcquisitionEngine::freeStatus(PAEStatus * status) {
     for(int i = 0; i < status->deviceCount; ++i) {
         delete status->connectedDevices[i].trackedUsers;
     }

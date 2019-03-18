@@ -83,6 +83,12 @@ std::vector<PAEDeviceStatus> PAELinker::storedDevices() {
     return devices;
 }
 
+PAELinker::~PAELinker() {
+    for(auto i: _storedStatus) {
+        PositionAcquisitionEngine::freeStatus(i.second);
+    }
+}
+
 std::string PAELinker::buildURI(const std::string &ip, const std::string &port, const bool &isSecure) {
 
     std::string uri = (isSecure ? "http" : "https");
@@ -99,7 +105,7 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
 
     // Integrate the status
     if(foreignStatus->deviceCount == 0) {
-        _pae->freeStatus(foreignStatus);
+        PositionAcquisitionEngine::freeStatus(foreignStatus);
     }
 
     std::string hostname = foreignStatus->connectedDevices[0].deviceHostname;
@@ -108,7 +114,7 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
 
     if(existingStatus != _storedStatus.end()) {
         // Status already stored for this hostname, free it
-        _pae->freeStatus(_storedStatus[hostname]);
+        PositionAcquisitionEngine::freeStatus(_storedStatus[hostname]);
     }
 
     _storedStatus[hostname] = foreignStatus;

@@ -30,9 +30,9 @@ public:
 
     void send(PAEStatus * status);
 
-    inline void setPAE(const PositionAcquisitionEngine * pae) { _pae = pae; }
-
     std::vector<PAEDeviceStatus> storedDevices();
+
+    ~PAELinker();
 
 private:
 
@@ -42,9 +42,6 @@ private:
     bool _isReceiver = false;
 
     bool _isConnected = false;
-
-    /** Reference to the pae */
-    const PositionAcquisitionEngine * _pae;
 
     std::map<std::string, PAEStatus *> _storedStatus;
 

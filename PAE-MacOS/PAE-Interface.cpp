@@ -61,9 +61,9 @@ void PAEShouldReceive(const bool &shouldReceive) {
     PAEMacOSApp->pae->linker()->shouldReceive(shouldReceive);
 }
 
-void PAEConnectTo(const char * c_ip, const char * c_port, const bool &isSecure) {
+void PAEConnectTo(const char * c_ip, const char * c_port, const int isSecure) {
     std::string ip = c_ip;
     std::string port = c_port;
 
-    PAEMacOSApp->pae->_linker.connect(ip, port, c_port);
+    PAEMacOSApp->pae->linker()->connect(ip, port, isSecure);
 }

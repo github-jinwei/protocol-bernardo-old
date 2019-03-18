@@ -73,6 +73,9 @@
 		393ACD252215143400306D60 /* CalibrationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */; };
 		393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ECD2204DD0100BC54D3 /* Device.swift */; };
 		393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */; };
+		39615AA5223F3BED0077E5CB /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA4223F3BED0077E5CB /* libsioclient.a */; };
+		39615AA6223F3C540077E5CB /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA4223F3BED0077E5CB /* libsioclient.a */; };
+		39615AA9223F3C960077E5CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA8223F3C960077E5CB /* libboost_system.a */; };
 		39684DF02214A163006E4B37 /* LayoutWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */; };
 		39684DF22214A1B2006E4B37 /* LayoutInterfaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39684DF12214A1B2006E4B37 /* LayoutInterfaceMode.swift */; };
 		3968FCD621FB82B5005EAA4C /* DevicesWindowViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968FCD521FB82B5005EAA4C /* DevicesWindowViews.xib */; };
@@ -317,6 +320,8 @@
 		393B1ECD2204DD0100BC54D3 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
 		39615AA3223F05EB0077E5CB /* sio.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sio.hpp; sourceTree = "<group>"; };
+		39615AA4223F3BED0077E5CB /* libsioclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsioclient.a; path = ../../../../../usr/local/lib/libsioclient.a; sourceTree = "<group>"; };
+		39615AA8223F3C960077E5CB /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../usr/local/Cellar/boost/1.68.0_1/lib/libboost_system.a; sourceTree = "<group>"; };
 		39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowDelegate.swift; sourceTree = "<group>"; };
 		39684DF12214A1B2006E4B37 /* LayoutInterfaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutInterfaceMode.swift; sourceTree = "<group>"; };
 		3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../../../../../usr/local/lib/libNiTE2.dylib; sourceTree = "<group>"; };
@@ -454,6 +459,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39615AA5223F3BED0077E5CB /* libsioclient.a in Frameworks */,
 				392482D1221DF53300DE6015 /* libopencv_core.4.0.1.dylib in Frameworks */,
 				392482D2221DF53300DE6015 /* libopencv_highgui.4.0.1.dylib in Frameworks */,
 				392482D3221DF53300DE6015 /* libopencv_imgproc.4.0.1.dylib in Frameworks */,
@@ -466,6 +472,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39615AA9223F3C960077E5CB /* libboost_system.a in Frameworks */,
+				39615AA6223F3C540077E5CB /* libsioclient.a in Frameworks */,
 				3908ABBA2227201300997684 /* libPAE-MacOS.a in Frameworks */,
 				398F627D22192337003BFC81 /* libOpenNI2.dylib in Frameworks */,
 				398F627C22192337003BFC81 /* libNiTE2.dylib in Frameworks */,
@@ -845,6 +853,8 @@
 		398B65D821F64C5600F6D1FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39615AA8223F3C960077E5CB /* libboost_system.a */,
+				39615AA4223F3BED0077E5CB /* libsioclient.a */,
 				398304EF2227343000977C6C /* libncurses.tbd */,
 				39757D9C2220902400FF6D57 /* Accelerate.framework */,
 				392482C7221DF3E200DE6015 /* libopencv_core.a */,
@@ -1590,7 +1600,10 @@
 					/usr/local/include/ni2/,
 					/usr/local/include/opencv4/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/4.0.1/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1608,7 +1621,10 @@
 					/usr/local/include/ni2/,
 					/usr/local/include/opencv4/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/4.0.1/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1626,7 +1642,10 @@
 					/usr/local/include/ni2/,
 					/usr/local/include/opencv4/,
 				);
-				LIBRARY_SEARCH_PATHS = /usr/local/Cellar/opencv/4.0.1/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/opencv/4.0.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -1794,6 +1813,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
+					/usr/local/Cellar/boost/1.68.0_1/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1832,6 +1852,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
+					/usr/local/Cellar/boost/1.68.0_1/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1940,6 +1961,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
+					/usr/local/Cellar/boost/1.68.0_1/lib,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

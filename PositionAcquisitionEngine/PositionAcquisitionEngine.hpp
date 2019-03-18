@@ -176,7 +176,7 @@ public:
 
      @param status The status to free
      */
-    void freeStatus(PAEStatus * status) const;
+    static void freeStatus(PAEStatus * status);
     
     ~PositionAcquisitionEngine();
     
