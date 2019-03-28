@@ -9,57 +9,79 @@
 #ifndef sio_h
 #define sio_h
 
-#include <vector>
-
-#include <simd/simd.h>
-#include <socketio/sio_client.h>
-#include <socketio/sio_socket.h>
-#include <socketio/sio_message.h>
+#include "../libraries.h"
 
 #include "../Structs/PAEStatus.h"
 
-sio::message::ptr float3ToSioMessage(const simd_float3 &f) {
+sio::message::ptr float3ToSioMessage(const float3 &f) {
     sio::message::ptr mPtr = sio::array_message::create();
     sio::array_message * m = static_cast<sio::array_message *>(mPtr.get());
 
+#ifdef __APPLE__
     m->push(sio::double_message::create(double(f.x)));
     m->push(sio::double_message::create(double(f.y)));
     m->push(sio::double_message::create(double(f.z)));
+#else
+    m->push(sio::double_message::create(double(f(0))));
+    m->push(sio::double_message::create(double(f(1))));
+    m->push(sio::double_message::create(double(f(2))));
+#endif
+
 
     return mPtr;
 }
 
-simd_float3 sioMessageToFloat3(const sio::message::ptr &mPtr) {
+float3 sioMessageToFloat3(const sio::message::ptr &mPtr) {
     std::vector<sio::message::ptr> m = mPtr->get_vector();
-    simd_float3 f;
+    float3 f;
 
+#ifdef __APPLE__
     f.x = float(m[0]->get_double());
     f.y = float(m[1]->get_double());
     f.z = float(m[2]->get_double());
+#else
+    f(0) = float(m[0]->get_double());
+    f(1) = float(m[1]->get_double());
+    f(2) = float(m[2]->get_double());
+#endif
 
     return f;
 }
 
-sio::message::ptr quatfToSioMessage(const simd_quatf &q) {
+sio::message::ptr quatfToSioMessage(const quatf &q) {
     sio::message::ptr mPtr = sio::array_message::create();
     sio::array_message * m = static_cast<sio::array_message *>(mPtr.get());
 
+#ifdef __APPLE__
     m->push(sio::double_message::create(double(q.vector.x)));
     m->push(sio::double_message::create(double(q.vector.y)));
     m->push(sio::double_message::create(double(q.vector.z)));
     m->push(sio::double_message::create(double(q.vector.w)));
+#else
+    m->push(sio::double_message::create(double(q.coeffs()(0))));
+    m->push(sio::double_message::create(double(q.coeffs()(1))));
+    m->push(sio::double_message::create(double(q.coeffs()(2))));
+    m->push(sio::double_message::create(double(q.coeffs()(3))));
+#endif
 
     return mPtr;
 }
 
-simd_quatf sioMessageToQuatf(const sio::message::ptr &mPtr) {
+quatf sioMessageToQuatf(const sio::message::ptr &mPtr) {
     std::vector<sio::message::ptr> m = mPtr->get_vector();
-    simd_quatf q;
+    quatf q;
 
+#ifdef __APPLE__
     q.vector.x = float(m[0]->get_double());
     q.vector.y = float(m[1]->get_double());
     q.vector.z = float(m[2]->get_double());
     q.vector.w = float(m[3]->get_double());
+#else
+    q.coeffs()(0) = float(m[0]->get_double());
+    q.coeffs()(1) = float(m[1]->get_double());
+    q.coeffs()(2) = float(m[2]->get_double());
+    q.coeffs()(3) = float(m[3]->get_double()
+#endif
 
     return q;
 }
@@ -217,7 +239,7 @@ PAEStatus * sioMessageToPAEStatus(const sio::message::ptr * mPtr) {
             user.userID = u["userID"]->get_int();
             user.frame = (unsigned int)u["frame"]->get_int();
 
-            switch (d["state"]->get_int()) {
+            switch (u["state"]->get_int()) {
                 case 10: user.state = USER_ERRORED; break;
                 case 11: user.state = USER_NO_SKELETON; break;
                 case 12: user.state = USER_CALIBRATING; break;

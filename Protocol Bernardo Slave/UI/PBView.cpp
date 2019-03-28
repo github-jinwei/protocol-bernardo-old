@@ -7,7 +7,7 @@
 //
 
 #include "PBView.hpp"
-#include "PBControl.hpp"
+#include "Elements/PBControl.hpp"
 
 PBPoint PBView::getGlobalPosition() {
     PBPoint pos = _frame.getPosition();

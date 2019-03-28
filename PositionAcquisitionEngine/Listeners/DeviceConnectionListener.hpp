@@ -9,8 +9,7 @@
 #ifndef DeviceConnectionListener_hpp
 #define DeviceConnectionListener_hpp
 
-#include <iostream>
-#include <ni2/OpenNI.h>
+#include "../libraries.h"
 
 // Forward Declarations
 class PositionAcquisitionEngine;

@@ -27,9 +27,9 @@ extension PAEStatus {
             
             // Insert in the map
             devicesMap[daeDeviceStatus.serial] = PhysicalDevice(from: daeDeviceStatus)
-            
-            // Free it
-            daeDeviceStatus.trackedUsers.deallocate()
+
+			// Free it
+			daeDeviceStatus.trackedUsers.deallocate()
             
             // Check if we can advance
             if i + 1 < deviceCount {

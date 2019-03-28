@@ -9,7 +9,7 @@
 #ifndef WelcomeScene_hpp
 #define WelcomeScene_hpp
 
-#include "PBScene.hpp"
+#include "../UI/PBScene.hpp"
 
 class PBVerticalMenu;
 

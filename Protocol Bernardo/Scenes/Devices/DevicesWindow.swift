@@ -17,6 +17,8 @@ class DevicesWindow: NSViewController {
 
     var devicesRows: [PBDeviceRow] = []
 
+    var proto = PrototypeAlpha();
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -62,7 +62,7 @@ public:
     /** This will also free the entire view hierarchy hold by this scene.
      `sceneWillUnload()` is called right before freeing everything.
      */
-    ~PBScene();
+    virtual ~PBScene();
 
 protected:
     /**

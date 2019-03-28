@@ -9,7 +9,7 @@
 #ifndef Joint_h
 #define Joint_h
 
-#include <simd/simd.h>
+#include "../libraries.h"
 
 /**
  Represent a joint on a skeleton.

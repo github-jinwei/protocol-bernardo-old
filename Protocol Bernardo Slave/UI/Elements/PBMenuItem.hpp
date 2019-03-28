@@ -9,7 +9,7 @@
 #ifndef PBMenuItem_hpp
 #define PBMenuItem_hpp
 
-#include "PBUI.hpp"
+#include "../PBUI.hpp"
 #include "PBControl.hpp"
 #include "PBLabel.hpp"
 

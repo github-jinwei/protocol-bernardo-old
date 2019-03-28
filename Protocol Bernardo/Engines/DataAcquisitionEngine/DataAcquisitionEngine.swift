@@ -115,7 +115,6 @@ class DataAcquisitionEngine {
             PAEPrepare()
         }
 
-        PAEShouldEmit(1);
         PAEShouldReceive(1);
         PAEConnectTo("localhost".CString(), "3000".CString(), 0);
 

@@ -9,11 +9,9 @@
 #ifndef DataAcquisitionEngine_hpp
 #define DataAcquisitionEngine_hpp
 
-#include <map>
-#include <unistd.h>
-#include <limits.h>
+#include "libraries.h"
 
-#include "PAEStatus.h"
+#include "Structs/PAEStatus.h"
 #include "Listeners/DeviceConnectionListener.hpp"
 #include "Listeners/DeviceDisconnectionListener.hpp"
 

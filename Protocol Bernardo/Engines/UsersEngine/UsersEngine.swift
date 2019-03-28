@@ -26,7 +26,15 @@ class UsersEngine {
     weak var profile: LayoutCalibrationProfile?
 
     /// The engine's delegate
-    weak var delegate: UsersEngineDelegate?
+    var observers: [UsersEngineDelegate] = []
+
+    func addObserver(_ observer: UsersEngineDelegate) {
+        observers.append(observer);
+    }
+
+    func removeObserver(_ observer: UsersEngineDelegate) {
+        observers.removeAll(where: { $0 === observer })
+    }
     
     // //////////////////
     // MARK: - Lifecycle
@@ -134,20 +142,26 @@ extension UsersEngine: DataAcquisitionEngineObserver {
                 // Remove the closest user from the user array
                 users.removeAll { $0 === toMerge }
 
-                delegate?.userEngine(self, mergedUser: toMerge, inUser: recipient)
+                for obs in observers {
+                    obs.userEngine(self, mergedUser: toMerge, inUser: recipient)
+                }
             }
         }
     }
 
     /// Calculate the averaged, global position for each user
     func updatePositions() {
-        let historySize = delegate?.usersPhysicsHistorySize(self) ?? 0
+        // TODO: MAKE THIS BETTER
+        let historySize: UInt = 10
+//        let historySize = delegate?.usersPhysicsHistorySize(self) ?? 0
 
         for user in users {
             user.calculatePosition(historySize: historySize)
 
             // Tell the delegate the position of the user has changed
-            delegate?.userEngine(self, user: user, physicUpdated: user.latestPhysic)
+            for obs in observers {
+                obs.userEngine(self, user: user, physicUpdated: user.latestPhysic)
+            }
         }
     }
 
@@ -163,7 +177,10 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         user.calibrationProfile = profile
     
         users.append(user)
-        delegate?.userEngine(self, startedTrackingUser: user)
+
+        for obs in observers {
+            obs.userEngine(self, startedTrackingUser: user)
+        }
     }
     
     /// Check if a physic needs to be removed from the specified user
@@ -181,7 +198,10 @@ extension UsersEngine: DataAcquisitionEngineObserver {
         // if the user is not tracked anymore, remove it
         if user.trackedPhysics.count == 0 {
             users.removeAll { $0 === user }
-            delegate?.userEngine(self, stoppedTrackingUser: user)
+
+            for obs in observers {
+                obs.userEngine(self, stoppedTrackingUser: user)
+            }
         }
     }
 

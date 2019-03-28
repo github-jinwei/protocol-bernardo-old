@@ -49,14 +49,14 @@ void DevicesScene::sceneWillAppear() {
     // Connect All Button
     PBButton * connectAllButton = new PBButton("Connect All", PBPoint(0, nC::getWindowHeight() - 3));
     connectAllButton->isInline = true;
-    connectAllButton->action = [this] (PBControl * sender) {
+    connectAllButton->action = [] (PBControl * sender) {
         App->pae->connectAllDevices();
     };
 
     // Activate all Button
     PBButton * activateAllButton = new PBButton("Activate All", PBPoint(14, nC::getWindowHeight() - 3));
     activateAllButton->isInline = true;
-    activateAllButton->action = [this] (PBControl * sender) {
+    activateAllButton->action = [] (PBControl * sender) {
         App->pae->activateAllDevices();
     };
 
@@ -96,7 +96,7 @@ void DevicesScene::sceneWillRender() {
     }
 
     for(int i = 0; i < paeStatus->deviceCount; ++i) {
-        DAEDeviceStatus device = paeStatus->connectedDevices[i];
+        PAEDeviceStatus device = paeStatus->connectedDevices[i];
 
         std::string label;
 
@@ -124,7 +124,7 @@ void DevicesScene::fillDevicesList(PAEStatus * paeStatus) {
     _devicesList->removeAllItems();
 
     for(int i = 0; i < paeStatus->deviceCount; ++i) {
-        DAEDeviceStatus device = paeStatus->connectedDevices[i];
+        PAEDeviceStatus device = paeStatus->connectedDevices[i];
 
         _devicesList->addItem(device.deviceName, [this] (PBMenuItem * item) {
             if(_selectedItem != nullptr) {

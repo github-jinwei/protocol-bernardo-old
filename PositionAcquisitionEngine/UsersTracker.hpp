@@ -9,14 +9,9 @@
 #ifndef UsersTracker_hpp
 #define UsersTracker_hpp
 
-#include <string>
-#include <map>
-#include <nite2/NiTE.h>
-#include <simd/simd.h>
+#include "libraries.h"
 
 // Forward Declarations
-struct PhysicalDevice;
-
 class PhysicalDevice;
 
 class UsersTracker: public nite::UserTracker::NewFrameListener {

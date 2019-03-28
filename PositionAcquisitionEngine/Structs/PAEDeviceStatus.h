@@ -9,8 +9,7 @@
 #ifndef PAEDeviceStatus_h
 #define PAEDeviceStatus_h
 
-#include <unistd.h>
-#include <limits.h>
+#include "../libraries.h"
 
 #include "../Enums/DeviceState.h"
 #include "PhysicalUser.h"
@@ -39,5 +38,25 @@ struct PAEDeviceStatus {
     /** All the users tracked by the device */
     struct PhysicalUser * trackedUsers;
 };
+
+
+/** Copy "constructor" (C Compliance for Swift interoperability) */
+PAEDeviceStatus PAEDeviceStatus_copy(const PAEDeviceStatus &s) {
+	PAEDeviceStatus c;
+
+	strcpy(c.deviceHostname, s.deviceHostname);
+	strcpy(c.deviceName, s.deviceName);
+	strcpy(c.deviceSerial, s.deviceSerial);
+	c.state = s.state;
+	c.userCount = s.userCount;
+
+	c.trackedUsers = (PhysicalUser *)malloc(sizeof(PhysicalUser *) * c.userCount);
+
+	for(int i = 0; i < c.userCount; ++i) {
+		c.trackedUsers[i] = s.trackedUsers[i];
+	}
+
+	return c;
+}
 
 #endif /* PAEDeviceStatus_h */

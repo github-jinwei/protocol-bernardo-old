@@ -253,6 +253,7 @@ extension LayoutCanvas: LayoutCanvasElementDelegate {
     }
 }
 
+// MARK: - SKSceneDelegate
 extension LayoutCanvas: SKSceneDelegate {
     func update(_ currentTime: TimeInterval, for scene: SKScene) {
         // Pass the update event to all the devices

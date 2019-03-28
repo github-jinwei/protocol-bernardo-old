@@ -9,9 +9,9 @@
 #include <unistd.h>
 
 #include "Core.hpp"
-#include "PBScene.hpp"
-#include "PBView.hpp"
-#include "PBControl.hpp"
+#include "../UI/PBScene.hpp"
+#include "../UI/PBView.hpp"
+#include "../UI/Elements/PBControl.hpp"
 
 void Core::init(PBScene * firstScene) {
     nC::init();

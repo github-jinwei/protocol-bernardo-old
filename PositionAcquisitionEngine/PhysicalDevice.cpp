@@ -9,11 +9,6 @@
 #include "PhysicalDevice.hpp"
 #include "PositionAcquisitionEngine.hpp"
 
-// OpenCV Header
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-
 void PhysicalDevice::connect() {
     if(_state != DEVICE_IDLE) { return; }
 

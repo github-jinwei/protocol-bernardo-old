@@ -9,7 +9,7 @@
 #ifndef PBLabel_hpp
 #define PBLabel_hpp
 
-#include "PBView.hpp"
+#include "../PBView.hpp"
 #include "../utils/PBPoint.hpp"
 
 class PBLabel: public PBView {

@@ -15,7 +15,7 @@
 class PBVerticalMenu;
 class PBMenuItem;
 class PBButton;
-class PAEStatus;
+struct PAEStatus;
 
 class DevicesScene: public PBScene {
     void sceneWillAppear() override;

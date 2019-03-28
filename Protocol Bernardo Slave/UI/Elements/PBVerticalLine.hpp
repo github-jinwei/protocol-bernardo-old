@@ -9,7 +9,7 @@
 #ifndef PBVerticalLine_hpp
 #define PBVerticalLine_hpp
 
-#include "PBView.hpp"
+#include "../PBView.hpp"
 #include "../utils/PBPoint.hpp"
 
 class PBVerticalLine: public PBView {

@@ -9,7 +9,7 @@
 #ifndef PBHorizontalLine_hpp
 #define PBHorizontalLine_hpp
 
-#include "PBView.hpp"
+#include "../PBView.hpp"
 #include "../utils/PBPoint.hpp"
 
 class PBHorizontalLine: public PBView {

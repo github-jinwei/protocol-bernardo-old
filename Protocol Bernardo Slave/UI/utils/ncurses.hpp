@@ -9,10 +9,10 @@
 #ifndef ncurses_hpp
 #define ncurses_hpp
 
-#import <iostream>
-#import <ncurses.h>
+#include <iostream>
+#include <ncurses.h>
 
-#import "../PBUI.hpp"
+#include "../PBUI.hpp"
 
 using nCursesVoidElement = unsigned short int;
 

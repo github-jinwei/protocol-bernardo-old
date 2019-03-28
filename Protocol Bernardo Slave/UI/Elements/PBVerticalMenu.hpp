@@ -75,7 +75,7 @@ public:
 
     // MARK: - PBControl
 
-    void select(PBControl * sender);
+    void select(PBControl * sender) override;
 
     void onKeyPressed(const std::vector<keyCode> &pressedKeys) override;
 

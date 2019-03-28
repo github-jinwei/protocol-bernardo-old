@@ -78,7 +78,7 @@ public:
      */
     virtual PBControl * getSelectedControl();
 
-    ~PBView();
+    virtual ~PBView();
 
 protected:
     /**

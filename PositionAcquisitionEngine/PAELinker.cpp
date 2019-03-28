@@ -75,15 +75,15 @@ void PAELinker::send(PAEStatus * status) {
 std::vector<PAEDeviceStatus> PAELinker::storedDevices() {
     std::vector<PAEDeviceStatus> devices;
 
-    for(auto paeS: _storedStatus) {
+    std::map<std::string, PAEStatus *> * status = &_storedStatus;
+
+    for(auto paeS: *status) {
         for(int i = 0; i < paeS.second->deviceCount; ++i) {
-            devices.push_back(paeS.second->connectedDevices[i]);
+            try {
+                devices.push_back(paeS.second->connectedDevices[i]);
+            } catch(std::exception e) { }
         }
     }
-
-    // Clean the linker storage as retrieven informations must be freed by the caller
-    // prevent multiple free
-    _storedStatus.clear();
 
     return devices;
 }
@@ -106,9 +106,11 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
     // Do nothing if we are not supposed to receive data
     if(!_isReceiver) { return; }
 
+	// Lock the pae to prevent any race conditions
+	this->receiverLock.lock();
+
     // treat the message to rebuild the received paestate
     sio::message::ptr mPtr = event.get_message();
-
     PAEStatus * foreignStatus = sioMessageToPAEStatus(&mPtr);
 
     // Integrate the status
@@ -117,6 +119,7 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
         PositionAcquisitionEngine::freeStatus(foreignStatus);
     }
 
+	// Get the name of the host of the received status
     std::string hostname = foreignStatus->connectedDevices[0].deviceHostname;
 
     auto existingStatus = _storedStatus.find(hostname);
@@ -126,4 +129,6 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
     }
 
     _storedStatus[hostname] = foreignStatus;
+
+	this->receiverLock.unlock();
 }

@@ -9,16 +9,13 @@
 #ifndef PAELinker_hpp
 #define PAELinker_hpp
 
-#include <iostream>
-#include <socketio/sio_client.h>
-#include <socketio/sio_socket.h>
-#include <socketio/sio_message.h>
+#include "libraries.h"
 
 #include "Structs/PAEDeviceStatus.h"
 
 /** Forward Declarations */
 class PositionAcquisitionEngine;
-class PAEStatus;
+struct PAEStatus;
 
 class PAELinker {
 public:
@@ -31,6 +28,8 @@ public:
     void send(PAEStatus * status);
 
     std::vector<PAEDeviceStatus> storedDevices();
+
+	std::mutex receiverLock;
 
     ~PAELinker();
 

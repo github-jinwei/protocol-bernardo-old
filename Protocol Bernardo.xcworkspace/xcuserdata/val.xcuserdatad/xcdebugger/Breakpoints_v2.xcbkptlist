@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PositionAcquisitionEngine/Utils/sio.hpp"
-            timestampString = "574621713.455488"
+            timestampString = "574656513.637167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
             endingLineNumber = "186"
-            landmarkName = "sioMessageToPAEStatus(const sio::message::ptr * mPtr)"
+            landmarkName = "sioMessageToQuatf(const sio::message::ptr &amp;mPtr)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PositionAcquisitionEngine/Utils/sio.hpp"
-            timestampString = "574621713.455755"
+            timestampString = "574656513.637408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
             endingLineNumber = "237"
-            landmarkName = "sioMessageToPAEStatus(const sio::message::ptr * mPtr)"
+            landmarkName = "sioMessageToQuatf(const sio::message::ptr &amp;mPtr)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PositionAcquisitionEngine/Utils/sio.hpp"
-            timestampString = "574621713.4558181"
+            timestampString = "574656513.637455"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
             endingLineNumber = "194"
-            landmarkName = "sioMessageToPAEStatus(const sio::message::ptr * mPtr)"
+            landmarkName = "sioMessageToQuatf(const sio::message::ptr &amp;mPtr)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PositionAcquisitionEngine/Utils/sio.hpp"
-            timestampString = "574621713.4558721"
+            timestampString = "574656513.637494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
             endingLineNumber = "198"
-            landmarkName = "sioMessageToPAEStatus(const sio::message::ptr * mPtr)"
+            landmarkName = "sioMessageToQuatf(const sio::message::ptr &amp;mPtr)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PositionAcquisitionEngine/Utils/sio.hpp"
-            timestampString = "574621713.455917"
+            timestampString = "574656513.637531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
             endingLineNumber = "219"
-            landmarkName = "sioMessageToPAEStatus(const sio::message::ptr * mPtr)"
+            landmarkName = "sioMessageToQuatf(const sio::message::ptr &amp;mPtr)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,93 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PositionAcquisitionEngine/PositionAcquisitionEngine.cpp"
-            timestampString = "574621713.455964"
+            filePath = "Protocol Bernardo/Scenes/Layout/Canvas/LayoutCanvas.swift"
+            timestampString = "574656513.637592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "PositionAcquisitionEngine::freeStatus(PAEStatus * status)"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "update(_:for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Protocol Bernardo/Engines/UsersEngine/UsersEngine.swift"
+            timestampString = "574658941.3205889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "dae(_:devicesStatusUpdated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Protocol Bernardo/Engines/DataAcquisitionEngine/DataAcquisitionEngine.swift"
+            timestampString = "574656513.637961"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "doFetchStatus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Protocol_Bernardo.DataAcquisitionEngine.doFetchStatus() -&gt; ()"
+                  moduleName = "Protocol Bernardo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/val/Cours/PRISME/Protocol%20Bernardo/Protocol%20Bernardo/Engines/DataAcquisitionEngine/DataAcquisitionEngine.swift"
+                  timestampString = "574654801.2357171"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "425">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Protocol_Bernardo.DataAcquisitionEngineObserver) -&gt; () in Protocol_Bernardo.DataAcquisitionEngine.doFetchStatus() -&gt; ()"
+                  moduleName = "Protocol Bernardo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/val/Cours/PRISME/Protocol%20Bernardo/Protocol%20Bernardo/Engines/DataAcquisitionEngine/DataAcquisitionEngine.swift"
+                  timestampString = "574654801.237929"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Protocol Bernardo/Engines/UsersEngine/UsersEngine.swift"
+            timestampString = "574658941.320689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "dae(_:devicesStatusUpdated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

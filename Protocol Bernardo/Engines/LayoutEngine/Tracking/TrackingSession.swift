@@ -31,7 +31,7 @@ class TrackingSession {
     init(name: String) {
         self.name = name
 
-        App.usersEngine.delegate = self
+        App.usersEngine.addObserver(self)
     }
 
     /// Open the session using the given fileWrapper
@@ -48,7 +48,7 @@ class TrackingSession {
         // Store the existing wrappers
         existingTrackings = wrapper.fileWrappers!
 
-        App.usersEngine.delegate = self
+        App.usersEngine.addObserver(self)
     }
 
     /// Start recording users positions

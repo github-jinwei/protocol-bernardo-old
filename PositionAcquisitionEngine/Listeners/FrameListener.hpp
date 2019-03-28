@@ -9,8 +9,7 @@
 #ifndef FrameListener_hpp
 #define FrameListener_hpp
 
-#include <stdio.h>
-#include <ni2/OpenNI.h>
+#include "../libraries.h"
 
 // Forward Declarations
 class PhysicalDevice;

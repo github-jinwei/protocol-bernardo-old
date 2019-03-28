@@ -9,13 +9,9 @@
 #ifndef Device_hpp
 #define Device_hpp
 
-#include <iostream>
-#include <string>
+#include "libraries.h"
 
-#include <ni2/OpenNI.h>
-#include <nite2/NiTE.h>
-
-#include "PAEStatus.h"
+#include "Structs/PAEStatus.h"
 #include "Listeners/FrameListener.hpp"
 #include "UsersTracker.hpp"
 
@@ -154,9 +150,6 @@ private:
 
     /** Human pose tracker (NiTE) */
     nite::UserTracker _rigTracker;
-    
-    /** The latest user frame received */
-    nite::UserTrackerFrameRef * _userFrame;
 
     /** User tracker */
     UsersTracker _usersTracker;

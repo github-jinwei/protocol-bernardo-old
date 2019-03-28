@@ -6,13 +6,6 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#include <iostream>
-#include <regex>
-#include <string>
-
-#include <ni2/OpenNI.h>
-#include <nite2/NiTE.h>
-
 #include "PositionAcquisitionEngine.hpp"
 #include "PhysicalDevice.hpp"
 
@@ -194,6 +187,10 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
         _linker.send(status);
     }
 
+
+	// Wait for the linker to finish its work and lock it
+	_linker.receiverLock.lock();
+
     // Integrate the status stored in the linker
     std::vector<PAEDeviceStatus> foreignDevices = _linker.storedDevices();
 
@@ -203,9 +200,13 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
     status->connectedDevices = (PAEDeviceStatus *)realloc(status->connectedDevices, sizeof(PAEDeviceStatus) * status->deviceCount);
 
     for(PAEDeviceStatus device: foreignDevices) {
-        status->connectedDevices[oldSize] = device;
+		// We copy each device content to uniformize treatments afterward
+        status->connectedDevices[oldSize] = PAEDeviceStatus_copy(device);
         oldSize++;
     }
+
+	// Unlock the linker
+	_linker.receiverLock.unlock();
     
     return status;
 }
@@ -226,8 +227,8 @@ void PositionAcquisitionEngine::freeStatus(PAEStatus * status) {
 PositionAcquisitionEngine::~PositionAcquisitionEngine() {
     stop();
     
-    // Ideally, stop OpenNI too, but this is causing a EXC_BAD_ACCESS,
-    // so we will not do it for now...
+    // Ideally, stop OpenNI too, but this may cause a EXC_BAD_ACCESS,
+    // so we will not do it for now... but for now we are doing it.
     openni::OpenNI::shutdown();
 }
 
