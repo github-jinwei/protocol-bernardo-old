@@ -130,6 +130,9 @@ extension Skeleton {
         return confidences
     }
 
+    /// Gives an array containing all the joints' orientations
+    ///
+    /// - Returns: All the joints' orientation
     func jointsOrientation() -> [Float] {
         var orientations = [Float]()
 

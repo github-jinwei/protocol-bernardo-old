@@ -9,46 +9,23 @@
 import AppKit
 
 /// The application structure Core
-///
-/// - TODO: Change name of the class
 class Core {
-    /// The Welcome Scene
-    private weak var welcomeWindow: WelcomeWindow!
+	private weak var homeWindow: NSWindowController?
 
-    /// The Devices Window
-    private weak var devicesWindow: DevicesWindow!
+	func registerHomeWindow(_ window: NSWindowController) {
+		homeWindow = window
+	}
 
-    /// Used by the SceneSelectorController to register itself
-    ///
-    /// - Parameter controller: The WelcomeWindow
-    func registerWelcomeWindow(_ controller: WelcomeWindow) {
-        welcomeWindow = controller
-    }
+	/// Display the welcome window
+	func showHomeWindow() {
+		if homeWindow == nil {
+			homeWindow = NSStoryboard(name: "Home", bundle: nil).instantiateInitialController() as? NSWindowController
+		}
 
-    /// Display the welcome window
-    func showWelcomeWindow() {
-        if welcomeWindow == nil {
-            let window = NSStoryboard(name: "WelcomeWindow", bundle: nil).instantiateController(withIdentifier: "welcomeWindow")
-            (window as? NSWindowController)?.showWindow(nil)
-        }
+		homeWindow?.showWindow(nil)
+	}
 
-        welcomeWindow?.view.window!.windowController?.showWindow(nil)
-    }
-
-    /// Used by the DevicesWindow to register itself in the core
-    ///
-    /// - Parameter controller: The DevicesWindow
-    func registerDevicesWindow(_ controller: DevicesWindow) {
-        devicesWindow = controller
-    }
-
-    /// Display the devices window
-    func showDevicesWindow() {
-        if devicesWindow == nil {
-            let window = NSStoryboard(name: "DevicesWindow", bundle: nil).instantiateController(withIdentifier: "DevicesWindow")
-            (window as? NSWindowController)?.showWindow(nil)
-        }
-
-        devicesWindow?.view.window!.windowController?.showWindow(nil)
-    }
+	func hideHomeWindow() {
+		homeWindow?.close()
+	}
 }

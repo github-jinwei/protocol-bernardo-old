@@ -6,19 +6,19 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#ifndef DataAcquisitionEngine_hpp
-#define DataAcquisitionEngine_hpp
+#ifndef PositionAcquisitionEngine_hpp
+#define PositionAcquisitionEngine_hpp
 
-#include "libraries.h"
+#include "libraries.hpp"
 
 #include "Structs/PAEStatus.h"
-#include "Listeners/DeviceConnectionListener.hpp"
-#include "Listeners/DeviceDisconnectionListener.hpp"
+#include "Structs/PAEDeviceStatus.h"
 
 #include "PAELinker.hpp"
 
 // Forward Declarations
 class PhysicalDevice;
+class LiveViewer;
 
 /** The Position Acquisition engine provides a way of interacting with
  acquisition devices supported by OpenNI ang getting video streams as well as
@@ -44,8 +44,12 @@ class PhysicalDevice;
  \bug OpenNI tends to crash when being stopped, current fix is to free the most of
     used resources without stopping OpenNI
  */
-class PositionAcquisitionEngine {
+class PositionAcquisitionEngine:
+	public openni::OpenNI::DeviceConnectedListener,
+	public openni::OpenNI::DeviceDisconnectedListener {
 public:
+
+	// MARK: - Singleton
     
     /**
      Gives the instance of the Position Acquisition Engine.
@@ -61,6 +65,8 @@ public:
         
         return _instance;
     };
+
+	// MARK: - Live View
 
     /**
      By enabling live view, the pae will create an OpenCV to display the color
@@ -80,7 +86,9 @@ public:
      @return True if enabled, false otherwise
      */
     inline bool isLiveViewEnabled() { return _liveView; }
-    
+
+	// MARK: - Main controls
+
     /**
      Init necessary drivers and execute a first parse for devices
      */
@@ -90,18 +98,52 @@ public:
      Stop all acquisition, disconnect from every device.
      */
     void stop();
+
+	/**
+	 Tell is the engine has been started
+
+	 @return True if the engine is running
+	 */
+	inline bool isRunning() { return _isRunning; }
     
     /**
      Parse for any new devices connected
      */
     void parseForDevices();
-    
+
+	~PositionAcquisitionEngine();
+
+	// MARK: - Status
+
+	/**
+	 Gets the status of all devices.
+
+	 The provided status uses allocated memory that needs to be freed using
+	 `freeStatus`.
+
+	 @return The global status
+	 */
+	PAEStatusCollection * getStatus();
+
+	/**
+	 Free the ressources allocated for the given status.
+
+	 Provides a uniform way for properly freeing a pae status
+
+	 @param status The status to free
+	 */
+	static void freeStatus(PAEStatus * status);
+
+	static void freeCollection(PAEStatusCollection * collection);
+
+	// MARK: - Events
+
     /**
      Called by the deviceConnectionListener everytime a device is connected
 
      @param deviceInfo The connected device info
      */
-    void onNewDevice(const openni::DeviceInfo * deviceInfo);
+    void onDeviceConnected(const openni::DeviceInfo * deviceInfo);
     
     /**
      Called by the deviceDisconnectionListener everytime a device is disconnected
@@ -109,6 +151,9 @@ public:
      @param deviceInfo The disconnected device info
      */
     void onDeviceDisconnected(const openni::DeviceInfo * deviceInfo);
+
+
+	// MARK: - Devices controls
 
     /**
      Open the connection with all the available devices
@@ -132,7 +177,7 @@ public:
 
      @param serial Serial number of the device
      */
-    void setDeviceActive(const std::string &serial);
+    void activateDevice(const std::string &serial);
 
     /**
      Deactivate all the activated devices
@@ -144,41 +189,27 @@ public:
 
      @param serial Serial number of the device
      */
-    void setDeviceIdle(const std::string &serial);
+    void deactivateDevice(const std::string &serial);
+
+	// MARK: - Network
 
     /**
-     Tell is the engine has been started
+     Gives access to the linker used by the PAE to emit and receive data
 
-     @return True if the engine is running
+     @return Pointer to the underlying linker
      */
-    inline bool isRunning() { return _isRunning; }
-
     inline PAELinker * linker() { return &_linker; }
 
+    /**
+     Tell the pae if it should emit its status to a server.
+
+     @param shouldEmit True to emit
+     */
     inline void shouldEmit(const bool &shouldEmit) { _isEmitter = shouldEmit; }
     
-    /**
-     Gets the status of all devices.
-
-     The provided status uses allocated memory that needs to be freed using
-     `freeStatus`.
-
-     @return The global status
-     */
-    PAEStatus * getStatus();
-
-    /**
-     Free the ressources allocated for the given status.
-
-     Provides a uniform way for properly freeing a pae status
-
-     @param status The status to free
-     */
-    static void freeStatus(PAEStatus * status);
-    
-    ~PositionAcquisitionEngine();
-    
 private:
+	// MARK: - Singleton
+
     /** Singleton -> Private constructor */
     PositionAcquisitionEngine();
 
@@ -188,26 +219,31 @@ private:
     /** Tell if the PAE is currently running */
     bool _isRunning = false;
 
+
+	// MARK: Network
+
     /** Tell if the pae should emit its status to other machines */
     bool _isEmitter = false;
-    
-    /** Tell if OpenNI has already been initialized or not */
-    static bool _openNIInitialized;
+
+	/** The linker used to send and receive status with other PAE on the network */
+	PAELinker _linker;
+
+
+	// MARK: Live view
 
     /** Tell if live view is enabled */
     bool _liveView = false;
+
+	/** The viewerm, used when live view is enabled */
+	LiveViewer * _viewer = nullptr;
+
+	// MARK: Storage
 
     /** Holds the hostname of the current machine */
     char hostname[_POSIX_HOST_NAME_MAX + 1];
     
     /** All the available devices */
     std::map<std::string, PhysicalDevice *> _devices;
-
-    /** New device connection listener */
-    DeviceConnectionListener _connectionListener;
-    
-    /** Device disconnection listener */
-    DeviceDisconnectionListener _disconnectionListener;
     
     /**
      Extract the serial of a device from its URI
@@ -216,8 +252,6 @@ private:
      @return The device's serial
      */
     std::string getDeviceSerial(const openni::DeviceInfo * deviceInfo);
-
-    PAELinker _linker;
 };
 
-#endif /* DataAcquisitionEngine_hpp */
+#endif /* PositionAcquisitionEngine_hpp */

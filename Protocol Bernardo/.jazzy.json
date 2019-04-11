@@ -67,7 +67,7 @@
             "DataAcquisitionEngine",
             "DataAcquisitionEngineObserver",
             "ConnectedDevices",
-            "PhysicalDevice",
+            "AcquisitionDevice",
             "DAEDeviceStatus",
             "DAEStatus",
             "DeviceState",

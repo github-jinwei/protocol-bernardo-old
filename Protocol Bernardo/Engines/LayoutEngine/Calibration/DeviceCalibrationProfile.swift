@@ -130,7 +130,7 @@ extension DeviceCalibrationProfile {
     /// - Returns: The position in the global coordinate system
     func globalCoordinates(forPosition position: float3) -> float3 {
         // Create a new, empty position
-        var globalPos = float3(0)
+		var globalPos = float3(repeating: 0)
 
         let orientation = deg2rad(Float(-calibratedOrientation))
         
@@ -161,7 +161,7 @@ extension DeviceCalibrationProfile {
         }
 
         // Create a new, empty position
-        var globalPos = float3(0)
+		var globalPos = float3(repeating: 0)
 
         let orientation = deg2rad(Float(-layoutDevice.orientation))
 

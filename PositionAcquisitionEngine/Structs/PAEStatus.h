@@ -11,17 +11,31 @@
 
 #include "PAEDeviceStatus.h"
 
+#include <limits.h>
+#include <string.h>
+
 /**
  Representation of the status of the DAE
  
  Primarily used to retrieve a device status from Swift
  */
-struct PAEStatus {
+typedef struct PAEStatus {
+	/** Name of the machine (C String) */
+	char hostname[_POSIX_HOST_NAME_MAX + 1];
+
     /** The number of devices available */
     unsigned int deviceCount;
     
     /** The status for every available device */
     struct PAEDeviceStatus * connectedDevices;
+} PAEStatus;
+
+PAEStatus * PAEStatus_copy(PAEStatus * s);
+
+struct PAEStatusCollection {
+	unsigned int statusCount;
+
+	struct PAEStatus ** status;
 };
 
 

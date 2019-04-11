@@ -10,5 +10,5 @@ target 'Protocol Bernardo' do
   # Pods for Protocol Bernardo
   pod 'Repeat'	
   pod 'SwiftSocket'
-  pod 'Starscream', '~> 3.0.2'
+  pod 'Starscream'
 end

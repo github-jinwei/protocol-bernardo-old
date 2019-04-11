@@ -6,11 +6,14 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
+#include <iostream>
+#include <regex>
+
 #include "PositionAcquisitionEngine.hpp"
 #include "PhysicalDevice.hpp"
+#include "Utils/LiveViewer.hpp"
 
 PositionAcquisitionEngine * PositionAcquisitionEngine::_instance;
-bool PositionAcquisitionEngine::_openNIInitialized = false;
 
 PositionAcquisitionEngine::PositionAcquisitionEngine() {
     hostname[_POSIX_HOST_NAME_MAX] = '\0';
@@ -18,38 +21,36 @@ PositionAcquisitionEngine::PositionAcquisitionEngine() {
 }
 
 void PositionAcquisitionEngine::enableLiveView() {
-    if(PositionAcquisitionEngine::_openNIInitialized) {
-        return;
-    }
+	if(_liveView)
+		return;
 
     _liveView = true;
+	_viewer = new LiveViewer();
 }
 
 void PositionAcquisitionEngine::disableLiveView() {
+	if(!_liveView)
+		return;
+
     _liveView = false;
+	delete _viewer;
 }
 
 void PositionAcquisitionEngine::start() {
     if(_isRunning) { return; }
 
+	// Mark the engine as running
     _isRunning = true;
 
     // Init OpenNI
-    if(!PositionAcquisitionEngine::_openNIInitialized) {
-        if(openni::OpenNI::initialize() != openni::STATUS_OK) {
-            std::cout << openni::OpenNI::getExtendedError() << std::endl;
-            throw "Could not itialize OpenNI";
-        }
-        
-        PositionAcquisitionEngine::_openNIInitialized = true;
-    }
+	if(openni::OpenNI::initialize() != openni::STATUS_OK) {
+		std::cout << openni::OpenNI::getExtendedError() << std::endl;
+		throw "Could not itialize OpenNI";
+	}
     
     // Add our event listeners to OpenNI
-    _connectionListener.pae = this;
-    _disconnectionListener.pae = this;
-    
-    openni::OpenNI::addDeviceConnectedListener(&_connectionListener);
-    openni::OpenNI::addDeviceDisconnectedListener(&_disconnectionListener);
+    openni::OpenNI::addDeviceConnectedListener(this);
+    openni::OpenNI::addDeviceDisconnectedListener(this);
     
     // Init NiTE
     if(nite::NiTE::initialize() != nite::STATUS_OK) {
@@ -85,11 +86,11 @@ void PositionAcquisitionEngine::parseForDevices() {
     
     // Parse all the detected devices
     for (int i = 0; i < availableDevices.getSize(); ++i) {
-        onNewDevice(&availableDevices[i]);
+        onDeviceConnected(&availableDevices[i]);
     }
 }
 
-void PositionAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInfo) {
+void PositionAcquisitionEngine::onDeviceConnected(const openni::DeviceInfo * deviceInfo) {
     // Get the device serial
     std::string serial = getDeviceSerial(deviceInfo);
     
@@ -105,7 +106,7 @@ void PositionAcquisitionEngine::onNewDevice(const openni::DeviceInfo * deviceInf
     }
     
     // Register the device
-    PhysicalDevice * device = new PhysicalDevice(*deviceInfo, serial, this);
+    PhysicalDevice * device = new PhysicalDevice(*deviceInfo, serial);
     _devices[serial] = device;
 }
 
@@ -117,7 +118,12 @@ void PositionAcquisitionEngine::onDeviceDisconnected(const openni::DeviceInfo * 
     if(serial.size() == 0) {
         return;
     }
-    
+
+	// Close viewer if needed
+	if(_liveView) {
+		_viewer->endViewer(serial);
+	}
+
     // Erase and remove the device from the list
     delete _devices[serial];
     _devices.erase(serial);
@@ -139,11 +145,11 @@ void PositionAcquisitionEngine::connectToDevice(const std::string &serial) {
 
 void PositionAcquisitionEngine::activateAllDevices() {
     for(auto const &device: _devices) {
-        setDeviceActive(device.second->getSerial());
+        activateDevice(device.second->getSerial());
     }
 }
 
-void PositionAcquisitionEngine::setDeviceActive(const std::string &serial) {
+void PositionAcquisitionEngine::activateDevice(const std::string &serial) {
     // Make sure the device specified is available
     if(_devices.count(serial) == 0)
         return; // Do nothing
@@ -153,22 +159,28 @@ void PositionAcquisitionEngine::setDeviceActive(const std::string &serial) {
 
 void PositionAcquisitionEngine::deactivateAllDevices() {
     for(auto const &device: _devices) {
-        setDeviceIdle(device.second->getSerial());
+        deactivateDevice(device.second->getSerial());
     }
 }
 
-void PositionAcquisitionEngine::setDeviceIdle(const std::string &serial) {
+void PositionAcquisitionEngine::deactivateDevice(const std::string &serial) {
     // Make sure the device specified is available
     if(_devices.count(serial) == 0)
         return; // Do nothing
     
     _devices[serial]->setIdle();
+
+	// Close viewer if needed
+	if(_liveView) {
+		_viewer->endViewer(serial);
+	}
 }
 
-PAEStatus * PositionAcquisitionEngine::getStatus() {
-    PAEStatus * status = new PAEStatus();
+PAEStatusCollection * PositionAcquisitionEngine::getStatus() {
+	PAEStatus * status = new PAEStatus();
     
     status->deviceCount = (unsigned int)_devices.size();
+	memcpy(status->hostname, hostname, _POSIX_HOST_NAME_MAX);
     
     // Allocate space to store the device states (C-style baby)
     status->connectedDevices = (PAEDeviceStatus *)malloc(sizeof(PAEDeviceStatus) * status->deviceCount);
@@ -178,8 +190,12 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
     for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
         PhysicalDevice * device = deviceReference.second;
         status->connectedDevices[i] = device->getStatus();
-        memcpy(status->connectedDevices[i].deviceHostname, hostname, _POSIX_HOST_NAME_MAX);
         ++i;
+
+		// And present the device view if needed
+		if(_liveView) {
+			_viewer->presentView(&(status->connectedDevices[i]), device->getColorFrame());
+		}
     }
 
     // Emit the status if needed
@@ -187,28 +203,32 @@ PAEStatus * PositionAcquisitionEngine::getStatus() {
         _linker.send(status);
     }
 
-
-	// Wait for the linker to finish its work and lock it
-	_linker.receiverLock.lock();
+	std::vector<PAEStatus *> statusList;
+	statusList.push_back(status);
 
     // Integrate the status stored in the linker
-    std::vector<PAEDeviceStatus> foreignDevices = _linker.storedDevices();
+    std::vector<PAEStatus *> foreignStatus = _linker.storedDevices();
+	statusList.insert(statusList.end(), foreignStatus.begin(), foreignStatus.end());
 
-    unsigned int oldSize = status->deviceCount;
-    status->deviceCount += (unsigned int)foreignDevices.size();
+	PAEStatusCollection * collection = new PAEStatusCollection();
+	collection->statusCount = (unsigned int)statusList.size();
+	collection->status = (PAEStatus **)malloc(sizeof(PAEStatus *) * collection->statusCount);
 
-    status->connectedDevices = (PAEDeviceStatus *)realloc(status->connectedDevices, sizeof(PAEDeviceStatus) * status->deviceCount);
-
-    for(PAEDeviceStatus device: foreignDevices) {
-		// We copy each device content to uniformize treatments afterward
-        status->connectedDevices[oldSize] = PAEDeviceStatus_copy(device);
-        oldSize++;
-    }
-
-	// Unlock the linker
-	_linker.receiverLock.unlock();
+	for(int i = 0; i < collection->statusCount; ++i) {
+		collection->status[i] = statusList[i];
+	}
     
-    return status;
+    return collection;
+}
+
+void PositionAcquisitionEngine::freeCollection(PAEStatusCollection * collection) {
+	for(int i = 0; i < collection->statusCount; ++i) {
+		freeStatus(collection->status[i]);
+		collection->status[i] = nullptr;
+	}
+
+	delete collection;
+	collection = nullptr;
 }
 
 void PositionAcquisitionEngine::freeStatus(PAEStatus * status) {

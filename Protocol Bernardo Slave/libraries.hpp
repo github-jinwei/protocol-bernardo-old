@@ -16,6 +16,9 @@
 
 #include <curses.h>
 
+#include <PositionAcquisitionEngine/PositionAcquisitionEngine.hpp>
+#include <PositionAcquisitionEngine/PAELinker.hpp>
+
 using uint = unsigned int;
 using keyCode = int;
 

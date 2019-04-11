@@ -12,10 +12,10 @@ import Accelerate
 /// A User represent a real life user as tracked by one or more devices.
 class User {
     /// Unique ID for this user
-    var uuid = UUID().uuidString
+    private(set) var uuid = UUID().uuidString
 
     /// The time this user has been created
-    var trackingStartTime = Date()
+    private(set) var trackingStartTime = Date()
 
     /// The calibration profile this user will use to do coordinate calculations
     weak var calibrationProfile: LayoutCalibrationProfile?
@@ -93,7 +93,7 @@ extension User {
     ///
     /// - Returns: The user's position
     private func calculateMergedPosition() -> float3 {
-        var userPos = float3(0)
+		var userPos = float3(repeating: 0)
 
         // Make sure we have a calibration profile, and that we are actively tracking the user
         guard trackedPhysics.count > 0, let profile = calibrationProfile else {

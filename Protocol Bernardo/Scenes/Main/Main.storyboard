@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="YmL-tH-FAb">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="5wd-PF-Jrm">
+            <objects>
+                <windowController id="YmL-tH-FAb" customClass="MainWindowController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Protocol Bernardo" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="i9N-1S-X5a">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="372" width="1000" height="500"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1200"/>
+                        <value key="minSize" type="size" width="750" height="500"/>
+                        <connections>
+                            <outlet property="delegate" destination="YmL-tH-FAb" id="CEO-oq-HSv"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="7A4-iS-peY" kind="relationship" relationship="window.shadowedContentViewController" id="Ikt-X4-HeH"/>
+                    </connections>
+                </windowController>
+                <customObject id="3iv-AW-pkd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="-282"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="Me5-vT-tse">
+            <objects>
+                <splitViewController id="7A4-iS-peY" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="7bA-Iy-SEE"/>
+                        <splitViewItem id="DQ2-97-Sdh"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="GDg-No-seV">
+                        <rect key="frame" x="0.0" y="0.0" width="782" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="7A4-iS-peY" id="vyb-yV-hXR"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="GDg-No-seV" id="dss-uh-r3s"/>
+                        <segue destination="fE3-WS-lY2" kind="relationship" relationship="splitItems" id="Hm6-LM-MSe"/>
+                        <segue destination="Zgm-3A-huy" kind="relationship" relationship="splitItems" id="axO-rG-iHA"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="av6-ZZ-ig6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="245"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="FSu-7d-fdH">
+            <objects>
+                <customObject id="jfc-nC-aTd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <tabViewController tabStyle="unspecified" id="Zgm-3A-huy" customClass="MainViewController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabView key="tabView" drawsBackground="NO" type="noTabsNoBorder" id="Lqv-D8-NSF">
+                        <rect key="frame" x="0.0" y="0.0" width="689" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="Zgm-3A-huy" id="MNm-7c-NgG"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="Lqv-D8-NSF" id="Js1-Y9-NYp"/>
+                    </connections>
+                </tabViewController>
+            </objects>
+            <point key="canvasLocation" x="120.5" y="835"/>
+        </scene>
+        <!--Sidebar Controller-->
+        <scene sceneID="fAr-ac-jtt">
+            <objects>
+                <viewController id="fE3-WS-lY2" customClass="SidebarController" customModule="Protocol_Bernardo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aG3-mg-0Qt">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                        <subviews>
+                            <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eP7-Kn-cDt">
+                                <rect key="frame" x="45" y="450" width="160" height="25"/>
+                                <subviews>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="kaE-Je-0TS">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="E3J-ji-Bg4"/>
+                                            <constraint firstAttribute="width" constant="20" id="Uao-mv-P2B"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="devices-idle" imagePosition="only" alignment="center" alternateImage="devices-selected" imageScaling="proportionallyUpOrDown" inset="2" id="grt-YZ-MxA">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openDevicesSidebar:" target="fE3-WS-lY2" id="Yvt-zy-OYj"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="I2Y-0y-eRW">
+                                        <rect key="frame" x="35" y="0.0" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="JSB-Wx-BIG"/>
+                                            <constraint firstAttribute="width" constant="20" id="VYV-QR-fVA"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="edit-idle" imagePosition="only" alignment="center" alternateImage="edit-selected" imageScaling="proportionallyUpOrDown" inset="2" id="nCu-nx-1av">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openEditSidebar:" target="fE3-WS-lY2" id="I2u-75-82v"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="WiV-Cn-xNN">
+                                        <rect key="frame" x="70" y="0.0" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="SK8-Av-LJQ"/>
+                                            <constraint firstAttribute="height" constant="25" id="qSj-yg-Fpp"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="calibrate-idle" imagePosition="only" alignment="center" alternateImage="calibrate-selected" imageScaling="proportionallyUpOrDown" inset="2" id="ckh-me-2Q0">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openCalibrateSidebar:" target="fE3-WS-lY2" id="clD-9e-RPK"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="xo7-OI-M8A">
+                                        <rect key="frame" x="105" y="0.0" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="a9V-yA-q0c"/>
+                                            <constraint firstAttribute="height" constant="25" id="xSl-id-yQU"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="track-idle" imagePosition="only" alignment="center" alternateImage="track-selected" imageScaling="proportionallyUpOrDown" inset="2" id="5wS-5D-v4D">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openTrackSidebar:" target="fE3-WS-lY2" id="eH3-CL-tJ9"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="lJf-6o-tLk">
+                                        <rect key="frame" x="140" y="0.0" width="20" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Xk0-oJ-PFP"/>
+                                            <constraint firstAttribute="width" constant="20" id="c8L-Lj-DAx"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="display-idle" imagePosition="only" alignment="center" alternateImage="display-selected" imageScaling="proportionallyUpOrDown" inset="2" id="Gxc-Rc-3WE">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openDisplaySidebar:" target="fE3-WS-lY2" id="0wL-w2-tVd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <tabView drawsBackground="NO" allowsTruncatedLabels="NO" type="noTabsNoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="ofo-29-qZJ">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="444"/>
+                                <font key="font" metaFont="system"/>
+                            </tabView>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ONH-s2-Fz1">
+                                <rect key="frame" x="0.0" y="442" width="250" height="5"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="eP7-Kn-cDt" firstAttribute="centerX" secondItem="aG3-mg-0Qt" secondAttribute="centerX" id="4Ud-KL-7fS"/>
+                            <constraint firstAttribute="bottom" secondItem="ofo-29-qZJ" secondAttribute="bottom" id="LUy-Uo-xxZ"/>
+                            <constraint firstAttribute="trailing" secondItem="ONH-s2-Fz1" secondAttribute="trailing" id="RHx-Xg-FOc"/>
+                            <constraint firstItem="ONH-s2-Fz1" firstAttribute="top" secondItem="eP7-Kn-cDt" secondAttribute="bottom" constant="5" id="SdB-Zj-ZUM"/>
+                            <constraint firstItem="ofo-29-qZJ" firstAttribute="leading" secondItem="aG3-mg-0Qt" secondAttribute="leading" id="cZZ-my-5eQ"/>
+                            <constraint firstItem="ONH-s2-Fz1" firstAttribute="leading" secondItem="aG3-mg-0Qt" secondAttribute="leading" id="dVJ-Kj-uaB"/>
+                            <constraint firstItem="eP7-Kn-cDt" firstAttribute="top" secondItem="aG3-mg-0Qt" secondAttribute="top" constant="25" id="hXq-IP-bIV"/>
+                            <constraint firstItem="ofo-29-qZJ" firstAttribute="top" secondItem="ONH-s2-Fz1" secondAttribute="bottom" id="ucz-GC-o5l"/>
+                            <constraint firstAttribute="trailing" secondItem="ofo-29-qZJ" secondAttribute="trailing" id="uvX-Kb-3Jb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="calibrateSidebarButton" destination="WiV-Cn-xNN" id="ZGL-Fl-cu9"/>
+                        <outlet property="devicesSidebarButton" destination="kaE-Je-0TS" id="q7c-Et-6Zg"/>
+                        <outlet property="displaySidebarButton" destination="lJf-6o-tLk" id="duM-Mf-G5N"/>
+                        <outlet property="editSidebarButton" destination="I2Y-0y-eRW" id="eYV-0m-CS1"/>
+                        <outlet property="sidebarTabView" destination="ofo-29-qZJ" id="y6Y-HP-Rr3"/>
+                        <outlet property="topConstraint" destination="hXq-IP-bIV" id="0m9-ev-TRk"/>
+                        <outlet property="trackSidebarButton" destination="xo7-OI-M8A" id="GV3-HE-Dft"/>
+                    </connections>
+                </viewController>
+                <customObject id="1df-Pz-bNe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="yU6-g0-Rdi"/>
+            </objects>
+            <point key="canvasLocation" x="-376" y="835"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calibrate-idle" width="50" height="50"/>
+        <image name="calibrate-selected" width="50" height="50"/>
+        <image name="devices-idle" width="50" height="50"/>
+        <image name="devices-selected" width="50" height="50"/>
+        <image name="display-idle" width="50" height="50"/>
+        <image name="display-selected" width="50" height="50"/>
+        <image name="edit-idle" width="50" height="50"/>
+        <image name="edit-selected" width="50" height="50"/>
+        <image name="track-idle" width="50" height="50"/>
+        <image name="track-selected" width="50" height="50"/>
+    </resources>
+</document>

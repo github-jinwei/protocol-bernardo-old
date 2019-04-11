@@ -33,24 +33,24 @@ void PAEConnectToDevice(const char * c_serial) {
 
 void PAESetDeviceActive(const char * c_serial) {
     std::string serial = c_serial;
-    PAEMacOSApp->pae->setDeviceActive(serial);
+    PAEMacOSApp->pae->activateDevice(serial);
 }
 
 void PAESetDeviceIdle(const char * c_serial) {
     std::string serial = c_serial;
-    PAEMacOSApp->pae->setDeviceIdle(serial);
+    PAEMacOSApp->pae->deactivateDevice(serial);
 }
 
 void PAEEndAcquisition() {
     PAEMacOSApp->pae->stop();
 }
 
-PAEStatus * PAEGetStatus() {
+PAEStatusCollection * PAEGetStatus() {
     return PAEMacOSApp->pae->getStatus();
 }
 
-void PAEFreeStatus(PAEStatus * status) {
-    PAEMacOSApp->pae->freeStatus(status);
+void PAEFreeCollection(PAEStatusCollection * statusCollection) {
+    PAEMacOSApp->pae->freeCollection(statusCollection);
 }
 
 void PAEShouldEmit(const int shouldEmit) {
@@ -66,4 +66,8 @@ void PAEConnectTo(const char * c_ip, const char * c_port, const int isSecure) {
     std::string port = c_port;
 
     PAEMacOSApp->pae->linker()->connect(ip, port, isSecure);
+}
+
+int PAELinkIsConnected() {
+	return PAEMacOSApp->pae->linker()->isConnected();
 }

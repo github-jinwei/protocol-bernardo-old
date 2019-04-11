@@ -13,12 +13,12 @@
 #include "Core/App.hpp"
 #include "Core/Core.hpp"
 
-#include "Scenes/WelcomeScene.hpp"
+#include "Scenes/DefaultScene.hpp"
 
 int main(int argc, const char * argv[]) {
 
-    WelcomeScene * welcomeScene = new WelcomeScene();
-    App->core->init(welcomeScene);
+    DefaultScene * defaultScene = new DefaultScene(argc, argv);
+    App->core->init(defaultScene);
 
     App->core->main();
 

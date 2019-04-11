@@ -54,7 +54,7 @@ internal func quaternionToEuler(_ q: simd_quatf) -> float3 {
     let unit: Float = sqx + sqy + sqz + sqw // if normalised is one, otherwise is correction factor
     let test: Float = q.vector.x * q.vector.y + q.vector.z * q.vector.w
 
-    if (test > 0.499 * unit) { // singularity at north pole
+    if test > 0.499 * unit { // singularity at north pole
         eulerAngles.x = 2 * atan2(q.vector.x, q.vector.w)
         eulerAngles.y = .pi / 2
         eulerAngles.z = 0

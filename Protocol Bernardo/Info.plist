@@ -12,7 +12,7 @@
 				<string>pblayout</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>PBLayoutIcon</string>
+			<string>layout-package-icon</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array/>
 			<key>CFBundleTypeName</key>
@@ -34,7 +34,7 @@
 				<string>pbdeviceslayout</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>PBDevicesLayoutIcon</string>
+			<string>devices-file-icon</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>text/json</string>
@@ -56,7 +56,7 @@
 				<string>pblayoutcalibration</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>PBLayoutCalibrationIcon</string>
+			<string>calibration-file-icon</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>text/json</string>
@@ -77,6 +77,8 @@
 			<array>
 				<string>pba</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>animatic-file-icon</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>text/json</string>
@@ -130,7 +132,7 @@
 			<key>UTTypeDescription</key>
 			<string>Protocol Bernardo Layout</string>
 			<key>UTTypeIconFile</key>
-			<string>PBLayoutIcon</string>
+			<string>layout-package-icon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.prisme.pb.layout</string>
 			<key>UTTypeReferenceURL</key>
@@ -154,7 +156,7 @@
 			<key>UTTypeDescription</key>
 			<string>Protocol Bernardo Captation Devices</string>
 			<key>UTTypeIconFile</key>
-			<string>PBDevicesLayoutIcon</string>
+			<string>devices-file-icon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.prisme.pb.layout.devices</string>
 			<key>UTTypeTagSpecification</key>
@@ -174,7 +176,7 @@
 			<key>UTTypeDescription</key>
 			<string>Protocol Bernardo Layout Calibration</string>
 			<key>UTTypeIconFile</key>
-			<string>PBLayoutCalibrationIcon</string>
+			<string>calibration-file-icon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.prisme.pb.layout.calibration</string>
 			<key>UTTypeTagSpecification</key>
@@ -193,6 +195,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Protocol Bernardo Animatic</string>
+			<key>UTTypeIconFile</key>
+			<string>animatic-file-icon</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.prisme.pb.layout.animatic</string>
 			<key>UTTypeTagSpecification</key>

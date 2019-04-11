@@ -9,6 +9,8 @@
 #ifndef PBView_hpp
 #define PBView_hpp
 
+#include <vector>
+
 #include "PBUI.hpp"
 
 /** Forward declarations */

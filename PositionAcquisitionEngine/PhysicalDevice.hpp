@@ -9,10 +9,9 @@
 #ifndef Device_hpp
 #define Device_hpp
 
-#include "libraries.h"
+#include "libraries.hpp"
 
 #include "Structs/PAEStatus.h"
-#include "Listeners/FrameListener.hpp"
 #include "UsersTracker.hpp"
 
 /** Forward Declaration */
@@ -23,7 +22,8 @@ of OpenNI own device format.
 
 A PhysicalDevice holds its own frame listener and control the device it represents
 */
-class PhysicalDevice {
+class PhysicalDevice:
+	public openni::VideoStream::NewFrameListener {
 public:
     /**
      Instanciate the device
@@ -31,11 +31,10 @@ public:
      @param device The device info object provided by OpenNI
      @param serial The serial number of the device
      */
-    PhysicalDevice(const openni::DeviceInfo &device, const std::string &serial, PositionAcquisitionEngine * pae):
+    PhysicalDevice(const openni::DeviceInfo &device, const std::string &serial):
         _name(std::string(device.getName())),
         _serial(serial),
-        _uri(std::string(device.getUri())),
-        _pae(pae) {}
+        _uri(std::string(device.getUri())) {}
     
     /**
      Open a connection with the device, properly initializing this class.
@@ -59,6 +58,13 @@ public:
      @param frame The latest color frame
      */
     void storeColorFrame(openni::VideoFrameRef * frame);
+
+	/**
+	 Gives the current color frame as given by OpenNI, might be null.
+
+	 @return The current colorFrame
+	 */
+	inline openni::VideoFrameRef * getColorFrame() { return _colorFrame; }
     
     /**
      Used to store the last depth frame received fromn the device
@@ -66,6 +72,13 @@ public:
      @param frame The latest depth frame
      */
     void storeDepthFrame(openni::VideoFrameRef * frame);
+
+	/**
+	 Gives the current depth frame as given by OpenNI, might be null.
+
+	 @return The current depthFrame
+	 */
+	inline openni::VideoFrameRef * getDepthFrame() { return _depthFrame; }
     
     /**
      Gives the current state of the device
@@ -108,10 +121,21 @@ public:
      @return The device's rig tracker
      */
     inline nite::UserTracker * getRigTracker() { return &_rigTracker; }
+
+	void onNewFrame(openni::VideoStream &stream);
     
     ~PhysicalDevice();
     
 private:
+
+	// MARK: - The device
+
+	/** The OpenNI deviceee */
+	openni::Device _device;
+
+	/** Current state of the device */
+	DeviceState _state = DeviceState::DEVICE_IDLE;
+
     /** Name of the dvice */
     std::string _name;
 
@@ -121,11 +145,7 @@ private:
     /** URI of the device */
     std::string _uri;
 
-    /** Reference to the PAE */
-    PositionAcquisitionEngine * _pae;
-
-    /** The OpenNI deviceee */
-    openni::Device _device;
+	// MARK: - Stream & Frames
 
     /** The device's color stream */
     openni::VideoStream _colorStream;
@@ -139,22 +159,13 @@ private:
     /** The latest color depth received */
     openni::VideoFrameRef * _depthFrame = nullptr;
 
-    /** The color stream listener */
-    FrameListener _colorStreamListener;
-
-    /** The depth stream listener */
-    FrameListener _depthStreamListener;
-
-    /** Current state of the device */
-    DeviceState _state = DeviceState::DEVICE_IDLE;
+	// MARK: - Human Pose Tracking
 
     /** Human pose tracker (NiTE) */
     nite::UserTracker _rigTracker;
 
     /** User tracker */
     UsersTracker _usersTracker;
-
-    void updateLiveView(const PAEDeviceStatus &status);
 };
 
 #endif /* Device_hpp */

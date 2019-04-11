@@ -23,18 +23,7 @@ class MainMenu: NSMenu {
         App.layoutEngine.openLayout()
     }
 
-
-    /// Show the welcome screen
-    ///
-    /// - Parameter sender: _
-    @IBAction func openWelcomeWindow(_: Any?) {
-        App.core.showWelcomeWindow()
-    }
-
-    /// Open the devices scene
-    ///
-    /// - Parameter sender: _
-    @IBAction func openDevicesWindow(_: Any?) {
-        App.core.showDevicesWindow()
-    }
+	@IBAction func showHomeWindow(_: Any) {
+		App.core.showHomeWindow()
+	}
 }

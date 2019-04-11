@@ -6,22 +6,17 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
+#include <iostream>
+
 #include "PAELinker.hpp"
 
 #include "PositionAcquisitionEngine.hpp"
 #include "Utils/sio.hpp"
 
 void PAELinker::connect(const std::string &ip, const std::string &port, const bool &isSecure) {
-    if(_isConnected) { return; }
-
-    if(_socket != nullptr) {
-        _socket->clear_con_listeners();
-        _socket->clear_socket_listeners();
-        delete _socket;
-        _socket = nullptr;
-
-        return; // Socket already connected, do nothing
-    }
+    if(_isConnected || _socket != nullptr) {
+		disconnect();
+	}
 
     std::string uri = buildURI(ip, port, isSecure);
 
@@ -43,6 +38,7 @@ void PAELinker::connect(const std::string &ip, const std::string &port, const bo
         _isConnected = false;
         std::cout << "Socket reconnecting" << std::endl;
     });
+	_socket->set_reconnect_attempts(1);
 
     _socket->set_close_listener([this, uri] (sio::client::close_reason const& reason) {
         switch (reason) {
@@ -61,7 +57,18 @@ void PAELinker::connect(const std::string &ip, const std::string &port, const bo
     _socket->socket()->on("paeState", [this] (const sio::event &event) {
         onPaeStateReceived(event);
     });
+}
 
+void PAELinker::disconnect() {
+	if(!_isConnected) { return; }
+
+	_isConnected = false;
+
+	_socket->clear_con_listeners();
+	_socket->clear_socket_listeners();
+	_socket->close();
+	delete _socket;
+	_socket = nullptr;
 }
 
 void PAELinker::send(PAEStatus * status) {
@@ -72,23 +79,26 @@ void PAELinker::send(PAEStatus * status) {
     _socket->socket()->emit("paeState", msg);
 }
 
-std::vector<PAEDeviceStatus> PAELinker::storedDevices() {
-    std::vector<PAEDeviceStatus> devices;
+std::vector<PAEStatus *> PAELinker::storedDevices() {
+	// Create the list of devices to give to the caller.
+	std::vector<PAEStatus *> statusList;
 
-    std::map<std::string, PAEStatus *> * status = &_storedStatus;
+	// Prevent race condition on the stored status lsit
+	_receiverLock.lock();
 
-    for(auto paeS: *status) {
-        for(int i = 0; i < paeS.second->deviceCount; ++i) {
-            try {
-                devices.push_back(paeS.second->connectedDevices[i]);
-            } catch(std::exception e) { }
-        }
-    }
+	for(auto it = _storedStatus.begin(); it != _storedStatus.end(); ++it) {
+		statusList.push_back(PAEStatus_copy(it->second));
+	}
 
-    return devices;
+	// Unlock the list
+	_receiverLock.unlock();
+
+    return statusList;
 }
 
 PAELinker::~PAELinker() {
+	disconnect();
+
     for(auto i: _storedStatus) {
         PositionAcquisitionEngine::freeStatus(i.second);
     }
@@ -107,7 +117,7 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
     if(!_isReceiver) { return; }
 
 	// Lock the pae to prevent any race conditions
-	this->receiverLock.lock();
+	_receiverLock.lock();
 
     // treat the message to rebuild the received paestate
     sio::message::ptr mPtr = event.get_message();
@@ -115,12 +125,12 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
 
     // Integrate the status
     if(foreignStatus->deviceCount == 0) {
-        // No device are attached to the receiveed state, ignore it
+        // No device are attached to the received state, ignore it
         PositionAcquisitionEngine::freeStatus(foreignStatus);
     }
 
 	// Get the name of the host of the received status
-    std::string hostname = foreignStatus->connectedDevices[0].deviceHostname;
+    std::string hostname = foreignStatus->hostname;
 
     auto existingStatus = _storedStatus.find(hostname);
     if(existingStatus != _storedStatus.end()) {
@@ -130,5 +140,5 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
 
     _storedStatus[hostname] = foreignStatus;
 
-	this->receiverLock.unlock();
+	_receiverLock.unlock();
 }

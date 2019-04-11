@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -164,16 +164,10 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="OUd-5Y-Wa0"/>
-                                        <menuItem title="Welcome to Protocol Bernardo" keyEquivalent="0" id="6jW-fL-iGe">
+                                        <menuItem title="Protocol Bernardo Home" keyEquivalent="1" id="6jW-fL-iGe">
                                             <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                             <connections>
-                                                <action selector="openWelcomeWindow:" target="Ict-FC-ORh" id="tl7-Ys-PRV"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Devices" keyEquivalent="1" id="pJI-Nl-Ve6">
-                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="openDevicesWindow:" target="Ict-FC-ORh" id="ozf-US-3lm"/>
+                                                <action selector="showHomeWindow:" target="Ict-FC-ORh" id="SEQ-Ic-AU1"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="U1h-pm-HVS"/>

@@ -14,6 +14,9 @@
 #include "../UI/Elements/PBControl.hpp"
 
 void Core::init(PBScene * firstScene) {
+	// Parse flags for connectivity
+	std::string ip, port;
+
     nC::init();
 
     // Present the first scene

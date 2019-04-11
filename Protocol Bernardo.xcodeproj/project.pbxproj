@@ -8,12 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3900AE5D221DF73800A38E26 /* PositionAcquisitionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */; };
-		3900AE5E221DF73800A38E26 /* FrameListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924833F221DF5A300DE6015 /* FrameListener.cpp */; };
 		3900AE5F221DF73800A38E26 /* PhysicalDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248340221DF5A300DE6015 /* PhysicalDevice.cpp */; };
-		3900AE60221DF73800A38E26 /* DeviceDisconnectionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248341221DF5A300DE6015 /* DeviceDisconnectionListener.cpp */; };
 		3900AE61221DF73800A38E26 /* UsersTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248342221DF5A300DE6015 /* UsersTracker.cpp */; };
-		3900AE62221DF73800A38E26 /* DeviceConnectionListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */; };
-		3900AE64221DF75200A38E26 /* DeviceConnectionListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		3900AE65221DF75200A38E26 /* DeviceState.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248344221DF5A300DE6015 /* DeviceState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3900AE66221DF75200A38E26 /* UserState.h in Headers */ = {isa = PBXBuildFile; fileRef = 39248345221DF5A300DE6015 /* UserState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3900AE67221DF75200A38E26 /* UsersTracker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248346221DF5A300DE6015 /* UsersTracker.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -22,9 +18,7 @@
 		3900AE6B221DF75200A38E26 /* PAEStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834B221DF5A300DE6015 /* PAEStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3900AE6D221DF75200A38E26 /* PhysicalUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3924834D221DF5A300DE6015 /* PhysicalUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3900AE6E221DF75200A38E26 /* PositionAcquisitionEngine.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */; settings = {ATTRIBUTES = (Public, ); }; };
-		3900AE6F221DF75200A38E26 /* FrameListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248350221DF5A300DE6015 /* FrameListener.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		3900AE70221DF75200A38E26 /* PhysicalDevice.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248351221DF5A300DE6015 /* PhysicalDevice.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
-		3900AE71221DF75200A38E26 /* DeviceDisconnectionListener.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39248352221DF5A300DE6015 /* DeviceDisconnectionListener.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		3900AE73221DF75A00A38E26 /* PAEMacOSApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39248353221DF5A300DE6015 /* PAEMacOSApp.cpp */; };
 		39023F94221F58E1005E2C9F /* SkeletonJoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39023F93221F58E1005E2C9F /* SkeletonJoint.swift */; };
 		39023F97221F594C005E2C9F /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39023F96221F594C005E2C9F /* Skeleton.swift */; };
@@ -49,39 +43,39 @@
 		3908ABD3222723C000997684 /* libopencv_core.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */; };
 		3908ABD4222723C000997684 /* libopencv_highgui.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */; };
 		3908ABD5222723C000997684 /* libopencv_imgproc.4.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */; };
-		390C265F21F66EFB00E7FEAE /* DevicesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390C265E21F66EFB00E7FEAE /* DevicesWindow.swift */; };
-		390D0DB721F502170032CA23 /* DevicesWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 390D0DB621F502170032CA23 /* DevicesWindow.storyboard */; };
-		390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */; };
+		390D0DBD21F511BD0032CA23 /* PositionAcquisitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390D0DBC21F511BD0032CA23 /* PositionAcquisitionEngine.swift */; };
 		390F89CE224694E50038BBD7 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F89CD224694E50038BBD7 /* WebSocket.swift */; };
-		3915BFA32219E6C800E80ABE /* PBMachineDevicesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915BFA22219E6C800E80ABE /* PBMachineDevicesList.swift */; };
 		3915BFA52219EFF500E80ABE /* Core.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3915BFA42219EFF500E80ABE /* Core.storyboard */; };
 		3920892F222A101A001944DA /* PBHorizontalLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3920892E222A101A001944DA /* PBHorizontalLine.cpp */; };
 		39208932222A1199001944DA /* PBVerticalMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39208930222A1199001944DA /* PBVerticalMenu.cpp */; };
 		39208935222B1BE3001944DA /* DevicesScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39208933222B1BE3001944DA /* DevicesScene.cpp */; };
-		392183CB22138B3A000D5968 /* ConnectedDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CA22138B3A000D5968 /* ConnectedDevices.swift */; };
 		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
-		39264994221E72EC00C8ECBF /* LayoutTouchbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39264993221E72EC00C8ECBF /* LayoutTouchbar.swift */; };
-		39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* PhysicalDevice.swift */; };
-		393ACD2122150C4500306D60 /* PBCalibrationLiveDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */; };
+		39379A12220FE496004C3815 /* AcquisitionDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* AcquisitionDevice.swift */; };
+		39388AFA2259187500F4AEB2 /* CalibrationProfileManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */; };
+		393ACD2122150C4500306D60 /* CalibrationSidebarLiveDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */; };
 		393ACD232215140700306D60 /* CalibrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD222215140700306D60 /* CalibrationController.swift */; };
 		393ACD252215143400306D60 /* CalibrationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */; };
 		393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ECD2204DD0100BC54D3 /* Device.swift */; };
 		393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */; };
+		394D48BB22529BAD007D34FB /* LiveViewer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 394D48B922529BAD007D34FB /* LiveViewer.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		394D48BD22529C69007D34FB /* LiveViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 394D48BC22529C69007D34FB /* LiveViewer.cpp */; };
 		39615AA6223F3C540077E5CB /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA4223F3BED0077E5CB /* libsioclient.a */; };
 		39615AA9223F3C960077E5CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA8223F3C960077E5CB /* libboost_system.a */; };
-		39684DF02214A163006E4B37 /* LayoutWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */; };
-		39684DF22214A1B2006E4B37 /* LayoutInterfaceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39684DF12214A1B2006E4B37 /* LayoutInterfaceMode.swift */; };
-		3968FCD621FB82B5005EAA4C /* DevicesWindowViews.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3968FCD521FB82B5005EAA4C /* DevicesWindowViews.xib */; };
-		3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCD821FB88E0005EAA4C /* PBDeviceDetails.swift */; };
-		3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */; };
-		3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */; };
-		396C48532208FDBA000AA888 /* LayoutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C48522208FDBA000AA888 /* LayoutWindowController.swift */; };
+		396780F32254EDDD006784DE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396780F22254EDDD006784DE /* MainWindowController.swift */; };
+		396780F62254F222006784DE /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396780F52254F222006784DE /* Home.storyboard */; };
+		396780F82254FA51006784DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396780F72254FA51006784DE /* HomeViewController.swift */; };
+		396780FA2254FBE9006784DE /* RecentFileCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396780F92254FBE9006784DE /* RecentFileCellView.swift */; };
+		396780FF22551305006784DE /* Layout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396780FE22551305006784DE /* Layout.xib */; };
 		396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */; };
 		396CF35A2212037E0049E091 /* CalibrationDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CF3592212037E0049E091 /* CalibrationDeltas.swift */; };
 		396D45742218A7F10018F95C /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396D45732218A7F10018F95C /* DeviceState.swift */; };
 		396DDFC921F4285000628070 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFC821F4285000628070 /* AppDelegate.swift */; };
-		396DDFCB21F4285000628070 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396DDFCA21F4285000628070 /* WelcomeWindow.swift */; };
-		396DDFD021F4285200628070 /* WelcomeWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCE21F4285200628070 /* WelcomeWindow.storyboard */; };
+		397194D02253C7F400F46564 /* sio.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39615AA3223F05EB0077E5CB /* sio.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
+		397194D32253D9F800F46564 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 397194D22253D9F800F46564 /* Main.storyboard */; };
+		397194D52253E9A800F46564 /* SidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397194D42253E9A800F46564 /* SidebarController.swift */; };
+		397194D62253ED3000F46564 /* libraries.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 398A1BE7224A9520007D0429 /* libraries.hpp */; };
+		397194D72253ED3E00F46564 /* maths.h in Headers */ = {isa = PBXBuildFile; fileRef = 3990033C224EABFD0054025E /* maths.h */; };
+		397194D82253ED4E00F46564 /* PAEDeviceStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 398AF77F222F7546008145CB /* PAEDeviceStatus.h */; };
 		397195C22200219000F92C5C /* LayoutCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397195C12200219000F92C5C /* LayoutCanvasView.swift */; };
 		397195C4220022F800F92C5C /* Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397195C3220022F800F92C5C /* Comparable.swift */; };
 		397195C62200D38000F92C5C /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397195C52200D38000F92C5C /* Keycode.swift */; };
@@ -110,8 +104,7 @@
 		3983050522275B7D00977C6C /* PBLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3983050322275B7D00977C6C /* PBLabel.cpp */; };
 		39877C83224C07B60072BF43 /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39877C82224C07B60072BF43 /* libboost_system.dylib */; };
 		39877C84224C08060072BF43 /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA4223F3BED0077E5CB /* libsioclient.a */; };
-		3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */; };
-		398F6273221901E8003BFC81 /* PBDevicesStartupSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398F6272221901E8003BFC81 /* PBDevicesStartupSheet.swift */; };
+		3989EAD522037A1F005CF113 /* LayoutLinePropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3989EAD422037A1F005CF113 /* LayoutLinePropertiesViewController.swift */; };
 		398F6274221920DF003BFC81 /* libOpenNI2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; };
 		398F6275221921C3003BFC81 /* NiTE2 in Copy NiTE Files */ = {isa = PBXBuildFile; fileRef = 397B648421FD322700A71E58 /* NiTE2 */; };
 		398F627922192308003BFC81 /* libNiTE2.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 397B645321FD321800A71E58 /* libNiTE2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -119,22 +112,33 @@
 		398F627C22192337003BFC81 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B645321FD321800A71E58 /* libNiTE2.dylib */; };
 		398F627D22192337003BFC81 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; };
 		39900339224D447F0054025E /* DefaultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39900337224D447F0054025E /* DefaultScene.cpp */; };
+		399124392253FDAE00E8C4F4 /* Devices.xib in Resources */ = {isa = PBXBuildFile; fileRef = 399124382253FDAE00E8C4F4 /* Devices.xib */; };
+		3991243B2253FF1900E8C4F4 /* DevicesSidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991243A2253FF1900E8C4F4 /* DevicesSidebarController.swift */; };
+		3991243D225405E800E8C4F4 /* DeviceOutlineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991243C225405E800E8C4F4 /* DeviceOutlineCellView.swift */; };
+		3991243F225413E500E8C4F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991243E225413E500E8C4F4 /* MainViewController.swift */; };
+		399124412254147700E8C4F4 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399124402254147700E8C4F4 /* DeviceViewController.swift */; };
+		3991244522541E5E00E8C4F4 /* MachineOutlineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991244422541E5E00E8C4F4 /* MachineOutlineCellView.swift */; };
+		399124472254264900E8C4F4 /* AcquisitionMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399124462254264900E8C4F4 /* AcquisitionMachine.swift */; };
+		3991244A22542A7800E8C4F4 /* PAEStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3991244822542A7800E8C4F4 /* PAEStatus.cpp */; };
+		3991244D2254417E00E8C4F4 /* PAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3991244C2254417E00E8C4F4 /* PAEStatus.swift */; };
 		39967344221E2127003A75A6 /* LayoutCanvasElementAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */; };
-		39967347221E3C30003A75A6 /* LayoutSidebarTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39967346221E3C30003A75A6 /* LayoutSidebarTracking.swift */; };
-		3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */; };
+		39967347221E3C30003A75A6 /* TrackingSidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39967346221E3C30003A75A6 /* TrackingSidebarController.swift */; };
 		39977430220B94FB00ED4B93 /* LayoutCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */; };
 		39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */; };
-		3997743D220BB0E500ED4B93 /* LayoutSidebarCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */; };
-		39A1E70321FE67FE003162FE /* Layout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39A1E6FE21FE67FE003162FE /* Layout.storyboard */; };
-		39A1E70521FE67FE003162FE /* LayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70021FE67FE003162FE /* LayoutController.swift */; };
-		39A1E70721FE6C26003162FE /* LayoutSidebarEdition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70621FE6C26003162FE /* LayoutSidebarEdition.swift */; };
-		39A1E70921FE6C3D003162FE /* LayoutCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70821FE6C3D003162FE /* LayoutCanvas.swift */; };
+		3997743D220BB0E500ED4B93 /* CalibrationSidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997743C220BB0E500ED4B93 /* CalibrationSidebarController.swift */; };
+		399E7250225A92AA00163147 /* CalibrationProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E724F225A92AA00163147 /* CalibrationProfileManager.swift */; };
+		399E7252225BC04A00163147 /* NewCalibrationProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E7251225BC04A00163147 /* NewCalibrationProfileController.swift */; };
+		399E7254225BCB7A00163147 /* LayoutDocumentObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E7253225BCB7A00163147 /* LayoutDocumentObserver.swift */; };
+		399E7257225CD86000163147 /* Tracking.xib in Resources */ = {isa = PBXBuildFile; fileRef = 399E7256225CD86000163147 /* Tracking.xib */; };
+		399E7259225CE45D00163147 /* LayoutDocumentIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E7258225CE45D00163147 /* LayoutDocumentIO.swift */; };
+		399E725B225CEAE900163147 /* DocumentHandlerSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399E725A225CEAE900163147 /* DocumentHandlerSidebar.swift */; };
+		39A1E70921FE6C3D003162FE /* LayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70821FE6C3D003162FE /* LayoutViewController.swift */; };
 		39A1E70B21FE77A3003162FE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70A21FE77A2003162FE /* Layout.swift */; };
 		39A1E70E21FE7892003162FE /* LayoutCanvasElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E70D21FE7892003162FE /* LayoutCanvasElement.swift */; };
 		39A1E71221FE7921003162FE /* LayoutCanvasLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */; };
 		39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A1E71521FE7A7A003162FE /* LayoutCanvasDevice.swift */; };
 		39A1E71821FEC08C003162FE /* LayoutCanvas.sks in Resources */ = {isa = PBXBuildFile; fileRef = 39A1E71721FEC08C003162FE /* LayoutCanvas.sks */; };
-		39A293FD223DDF6C006EE326 /* PAELinker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39A293FB223DDF6C006EE326 /* PAELinker.hpp */; };
+		39A293FD223DDF6C006EE326 /* PAELinker.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 39A293FB223DDF6C006EE326 /* PAELinker.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		39AF88AD21F4CF7E00A68993 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AC21F4CF7E00A68993 /* App.swift */; };
 		39AF88AF21F4D02100A68993 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF88AE21F4D02100A68993 /* Core.swift */; };
 		39B34C2C223DF6050061F704 /* PAELinker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39A293FA223DDF6C006EE326 /* PAELinker.cpp */; };
@@ -143,29 +147,29 @@
 		39B6C53B2240905F00B97C31 /* PrototypeAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C53A2240905F00B97C31 /* PrototypeAlpha.swift */; };
 		39B6C53D2240907200B97C31 /* Sorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C53C2240907200B97C31 /* Sorter.swift */; };
 		39B6C53F224094D200B97C31 /* TCPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6C53E224094D200B97C31 /* TCPSocket.swift */; };
-		39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */; };
 		39C1E8FF22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */; };
-		39C1E907220A201A00F53AC2 /* LayoutSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */; };
-		39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */; };
+		39C1E907220A201A00F53AC2 /* LayoutCanvasDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E906220A201A00F53AC2 /* LayoutCanvasDelegate.swift */; };
+		39C1E90B220A347F00F53AC2 /* LayoutDevicePropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90A220A347E00F53AC2 /* LayoutDevicePropertiesViewController.swift */; };
 		39C1E90D220A37F300F53AC2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C1E90C220A37F300F53AC2 /* Line.swift */; };
+		39C97BE8225588FB00E93EC9 /* layout-package-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BE7225588FB00E93EC9 /* layout-package-icon.icns */; };
+		39C97BEA22558A7300E93EC9 /* calibration-file-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BE922558A7300E93EC9 /* calibration-file-icon.icns */; };
+		39C97BEC22558C6000E93EC9 /* devices-file-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BEB22558C6000E93EC9 /* devices-file-icon.icns */; };
+		39C97BEE22558D7C00E93EC9 /* animatic-file-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BED22558D7C00E93EC9 /* animatic-file-icon.icns */; };
+		39C97BF122564B1700E93EC9 /* Calibration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BF022564B1700E93EC9 /* Calibration.xib */; };
+		39C97BF522564F2200E93EC9 /* EditionSidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C97BF422564F2200E93EC9 /* EditionSidebarController.swift */; };
 		39D4944922276AA800E89801 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B63EC21FD2AE000A71E58 /* libc++.tbd */; };
 		39D4944D222770CA00E89801 /* PBScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39D4944B222770CA00E89801 /* PBScene.cpp */; };
-		39D558AD220919CA00916AAA /* PBLayoutIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39D558AC220919CA00916AAA /* PBLayoutIcon.icns */; };
-		39D558B02209321700916AAA /* PBDevicesLayoutIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */; };
-		39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */; };
+		39DACC20220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC1F220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift */; };
 		39DACC30220F5475002E97F8 /* UsersEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC2F220F5475002E97F8 /* UsersEngine.swift */; };
 		39DACC34220F663F002E97F8 /* LayoutCanvasUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */; };
 		39DFBDDF2208A7AF00A7B9BD /* LayoutDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */; };
 		39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */; };
 		39DFD18B22283DEF00E75A0B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39DFD18922283DEF00E75A0B /* Core.cpp */; };
 		39DFD18F22284E8A00E75A0B /* WelcomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39DFD18D22284E8A00E75A0B /* WelcomeScene.cpp */; };
-		39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */; };
 		39E3121221F6F1C5006569F1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121121F6F1C5006569F1 /* String.swift */; };
-		39E3121421F777F6006569F1 /* PAEStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* PAEStatus.swift */; };
+		39E3121421F777F6006569F1 /* PAEStatusCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* PAEStatusCollection.swift */; };
 		39E3121621F779A0006569F1 /* PAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */; };
-		39E7E59A224BF00100F65AA1 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 39E7E599224BF00100F65AA1 /* Makefile */; };
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
-		39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */; };
 		39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */; };
 		39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */; };
 		39FFE2F522357D97001BCE9E /* simd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFE2F422357D97001BCE9E /* simd.swift */; };
@@ -180,13 +184,6 @@
 			remoteInfo = PositionAcquisitionEngine;
 		};
 		3908ABB822271FC100997684 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 396DDFBD21F4285000628070 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3908AB9C22271AF900997684;
-			remoteInfo = "PAE-MacOS";
-		};
-		39D4944E2227892000E89801 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 396DDFBD21F4285000628070 /* Project object */;
 			proxyType = 1;
@@ -262,17 +259,14 @@
 		3908ABAF22271B4C00997684 /* Pods-Protocol Bernardo.analyze.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Protocol Bernardo.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-Protocol Bernardo/Pods-Protocol Bernardo.analyze.xcconfig"; sourceTree = "<group>"; };
 		3908ABB122271CC900997684 /* PAE-Interface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "PAE-Interface.cpp"; sourceTree = "<group>"; };
 		3908ABB322271D4600997684 /* PAE-Interface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "PAE-Interface.hpp"; sourceTree = "<group>"; };
-		3908ABC32227210200997684 /* Protocol Bernardo Slave */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Protocol Bernardo Slave"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3908ABC32227210200997684 /* pb-slave */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "pb-slave"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3908ABC52227210200997684 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3908ABCD2227216400997684 /* App.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = App.cpp; sourceTree = "<group>"; };
 		3908ABCE2227216400997684 /* App.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = App.hpp; sourceTree = "<group>"; };
 		3908ABD722272B1800997684 /* main.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
-		390C265E21F66EFB00E7FEAE /* DevicesWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesWindow.swift; sourceTree = "<group>"; };
-		390D0DB621F502170032CA23 /* DevicesWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DevicesWindow.storyboard; sourceTree = "<group>"; };
-		390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngine.swift; sourceTree = "<group>"; };
+		390D0DBC21F511BD0032CA23 /* PositionAcquisitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionAcquisitionEngine.swift; sourceTree = "<group>"; };
 		390D0DC121F5293D0032CA23 /* Protocol Bernardo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Protocol Bernardo-Bridging-Header.h"; sourceTree = "<group>"; };
 		390F89CD224694E50038BBD7 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
-		3915BFA22219E6C800E80ABE /* PBMachineDevicesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBMachineDevicesList.swift; sourceTree = "<group>"; };
 		3915BFA42219EFF500E80ABE /* Core.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Core.storyboard; sourceTree = "<group>"; };
 		3920892C222A0F46001944DA /* PBHorizontalLine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBHorizontalLine.hpp; sourceTree = "<group>"; };
 		3920892E222A101A001944DA /* PBHorizontalLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PBHorizontalLine.cpp; sourceTree = "<group>"; };
@@ -280,7 +274,6 @@
 		39208931222A1199001944DA /* PBVerticalMenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBVerticalMenu.hpp; sourceTree = "<group>"; };
 		39208933222B1BE3001944DA /* DevicesScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DevicesScene.cpp; sourceTree = "<group>"; };
 		39208934222B1BE3001944DA /* DevicesScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DevicesScene.hpp; sourceTree = "<group>"; };
-		392183CA22138B3A000D5968 /* ConnectedDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDevices.swift; sourceTree = "<group>"; };
 		392183CC22138C5E000D5968 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		392482A9221DF2EC00DE6015 /* libPAE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAE.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		392482C6221DF3E200DE6015 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.a; sourceTree = "<group>"; };
@@ -289,10 +282,7 @@
 		392482C9221DF3E200DE6015 /* libopencv_highgui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_highgui.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.a; sourceTree = "<group>"; };
 		3924833B221DF5A300DE6015 /* PAE-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAE-Bridging.h"; sourceTree = "<group>"; };
 		3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PositionAcquisitionEngine.cpp; sourceTree = "<group>"; };
-		3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DeviceConnectionListener.hpp; sourceTree = "<group>"; };
-		3924833F221DF5A300DE6015 /* FrameListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FrameListener.cpp; sourceTree = "<group>"; };
 		39248340221DF5A300DE6015 /* PhysicalDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicalDevice.cpp; sourceTree = "<group>"; };
-		39248341221DF5A300DE6015 /* DeviceDisconnectionListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceDisconnectionListener.cpp; sourceTree = "<group>"; };
 		39248342221DF5A300DE6015 /* UsersTracker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UsersTracker.cpp; sourceTree = "<group>"; };
 		39248344221DF5A300DE6015 /* DeviceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceState.h; sourceTree = "<group>"; };
 		39248345221DF5A300DE6015 /* UserState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserState.h; sourceTree = "<group>"; };
@@ -302,44 +292,41 @@
 		3924834B221DF5A300DE6015 /* PAEStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAEStatus.h; sourceTree = "<group>"; };
 		3924834D221DF5A300DE6015 /* PhysicalUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysicalUser.h; sourceTree = "<group>"; };
 		3924834E221DF5A300DE6015 /* PositionAcquisitionEngine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PositionAcquisitionEngine.hpp; sourceTree = "<group>"; };
-		3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DeviceConnectionListener.cpp; sourceTree = "<group>"; };
-		39248350221DF5A300DE6015 /* FrameListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FrameListener.hpp; sourceTree = "<group>"; };
 		39248351221DF5A300DE6015 /* PhysicalDevice.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicalDevice.hpp; sourceTree = "<group>"; };
-		39248352221DF5A300DE6015 /* DeviceDisconnectionListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DeviceDisconnectionListener.hpp; sourceTree = "<group>"; };
 		39248353221DF5A300DE6015 /* PAEMacOSApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PAEMacOSApp.cpp; sourceTree = "<group>"; };
 		39248354221DF5A300DE6015 /* PAEMacOSApp.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PAEMacOSApp.hpp; sourceTree = "<group>"; };
-		39264993221E72EC00C8ECBF /* LayoutTouchbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTouchbar.swift; sourceTree = "<group>"; };
 		3929600221F7BF6B0064B808 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
 		3929601421F7BFF00064B808 /* libopencv_imgproc.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.4.0.1.dylib; sourceTree = "<group>"; };
 		3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.4.0.1.dylib; sourceTree = "<group>"; };
 		392960B221F7CFDB0064B808 /* libfreenect2-openni2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libfreenect2-openni2.0.dylib"; path = "../../../../../usr/local/lib/libfreenect2-openni2.0.dylib"; sourceTree = "<group>"; };
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
-		39379A11220FE496004C3815 /* PhysicalDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalDevice.swift; sourceTree = "<group>"; };
-		393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBCalibrationLiveDeltas.swift; sourceTree = "<group>"; };
+		39379A11220FE496004C3815 /* AcquisitionDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquisitionDevice.swift; sourceTree = "<group>"; };
+		39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalibrationProfileManager.xib; sourceTree = "<group>"; };
+		393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationSidebarLiveDeltas.swift; sourceTree = "<group>"; };
 		393ACD222215140700306D60 /* CalibrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationController.swift; sourceTree = "<group>"; };
 		393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationControllerDelegate.swift; sourceTree = "<group>"; };
 		393B1ECD2204DD0100BC54D3 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutEngine.swift; sourceTree = "<group>"; };
+		394D48B922529BAD007D34FB /* LiveViewer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LiveViewer.hpp; sourceTree = "<group>"; };
+		394D48BC22529C69007D34FB /* LiveViewer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LiveViewer.cpp; sourceTree = "<group>"; };
 		39615AA3223F05EB0077E5CB /* sio.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sio.hpp; sourceTree = "<group>"; };
 		39615AA4223F3BED0077E5CB /* libsioclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsioclient.a; path = ../../../../../usr/local/lib/libsioclient.a; sourceTree = "<group>"; };
 		39615AA8223F3C960077E5CB /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../usr/local/Cellar/boost/1.68.0_1/lib/libboost_system.a; sourceTree = "<group>"; };
-		39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowDelegate.swift; sourceTree = "<group>"; };
-		39684DF12214A1B2006E4B37 /* LayoutInterfaceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutInterfaceMode.swift; sourceTree = "<group>"; };
+		396780F22254EDDD006784DE /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		396780F52254F222006784DE /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		396780F72254FA51006784DE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		396780F92254FBE9006784DE /* RecentFileCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentFileCellView.swift; sourceTree = "<group>"; };
+		396780FE22551305006784DE /* Layout.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Layout.xib; sourceTree = "<group>"; };
 		3968FCC321FA8D40005EAA4C /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../../../../../usr/local/lib/libNiTE2.dylib; sourceTree = "<group>"; };
-		3968FCD521FB82B5005EAA4C /* DevicesWindowViews.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevicesWindowViews.xib; sourceTree = "<group>"; };
-		3968FCD821FB88E0005EAA4C /* PBDeviceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceDetails.swift; sourceTree = "<group>"; };
-		3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceDetailsPopover.swift; sourceTree = "<group>"; };
-		3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBTrackedUserDetailsExcerpt.swift; sourceTree = "<group>"; };
-		396C48522208FDBA000AA888 /* LayoutWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutWindowController.swift; sourceTree = "<group>"; };
 		396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltasCalculator.swift; sourceTree = "<group>"; };
 		396CF3592212037E0049E091 /* CalibrationDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationDeltas.swift; sourceTree = "<group>"; };
 		396D45732218A7F10018F95C /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
 		396DDFC521F4285000628070 /* Protocol Bernardo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Protocol Bernardo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396DDFC821F4285000628070 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		396DDFCA21F4285000628070 /* WelcomeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
 		396DDFCC21F4285200628070 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		396DDFCF21F4285200628070 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WelcomeWindow.storyboard; sourceTree = "<group>"; };
 		396DDFD121F4285200628070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		397194D22253D9F800F46564 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		397194D42253E9A800F46564 /* SidebarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarController.swift; sourceTree = "<group>"; };
 		397195C12200219000F92C5C /* LayoutCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasView.swift; sourceTree = "<group>"; };
 		397195C3220022F800F92C5C /* Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable.swift; sourceTree = "<group>"; };
 		397195C52200D38000F92C5C /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
@@ -377,24 +364,35 @@
 		3983050422275B7D00977C6C /* PBLabel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBLabel.hpp; sourceTree = "<group>"; };
 		3983050622275BD400977C6C /* PBPoint.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBPoint.hpp; sourceTree = "<group>"; };
 		39877C82224C07B60072BF43 /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_system.dylib; path = ../../../../../usr/local/Cellar/boost/1.68.0_1/lib/libboost_system.dylib; sourceTree = "<group>"; };
-		3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLayoutCanvasDevicePropertiesController.swift; sourceTree = "<group>"; };
-		398A1BE7224A9520007D0429 /* libraries.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libraries.h; sourceTree = "<group>"; };
+		3989EAD422037A1F005CF113 /* LayoutLinePropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutLinePropertiesViewController.swift; sourceTree = "<group>"; };
+		398A1BE7224A9520007D0429 /* libraries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = libraries.hpp; sourceTree = "<group>"; };
 		398A1BE8224B16B4007D0429 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		398AF77F222F7546008145CB /* PAEDeviceStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAEDeviceStatus.h; sourceTree = "<group>"; };
 		398B660E21F6575700F6D1FC /* Protocol Bernardo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Protocol Bernardo.entitlements"; sourceTree = "<group>"; };
-		398F6272221901E8003BFC81 /* PBDevicesStartupSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDevicesStartupSheet.swift; sourceTree = "<group>"; };
 		39900337224D447F0054025E /* DefaultScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DefaultScene.cpp; sourceTree = "<group>"; };
 		39900338224D447F0054025E /* DefaultScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DefaultScene.hpp; sourceTree = "<group>"; };
+		3990033C224EABFD0054025E /* maths.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maths.h; sourceTree = "<group>"; };
+		399124382253FDAE00E8C4F4 /* Devices.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Devices.xib; sourceTree = "<group>"; };
+		3991243A2253FF1900E8C4F4 /* DevicesSidebarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesSidebarController.swift; sourceTree = "<group>"; };
+		3991243C225405E800E8C4F4 /* DeviceOutlineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOutlineCellView.swift; sourceTree = "<group>"; };
+		3991243E225413E500E8C4F4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		399124402254147700E8C4F4 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		3991244422541E5E00E8C4F4 /* MachineOutlineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineOutlineCellView.swift; sourceTree = "<group>"; };
+		399124462254264900E8C4F4 /* AcquisitionMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquisitionMachine.swift; sourceTree = "<group>"; };
+		3991244822542A7800E8C4F4 /* PAEStatus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PAEStatus.cpp; sourceTree = "<group>"; };
+		3991244C2254417E00E8C4F4 /* PAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEStatus.swift; sourceTree = "<group>"; };
 		39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasElementAppearance.swift; sourceTree = "<group>"; };
-		39967346221E3C30003A75A6 /* LayoutSidebarTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebarTracking.swift; sourceTree = "<group>"; };
-		3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutCalibrationIcon.icns; sourceTree = "<group>"; };
+		39967346221E3C30003A75A6 /* TrackingSidebarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSidebarController.swift; sourceTree = "<group>"; };
 		3997742F220B94FB00ED4B93 /* LayoutCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalibrationProfile.swift; sourceTree = "<group>"; };
 		39977432220B955500ED4B93 /* DeviceCalibrationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCalibrationProfile.swift; sourceTree = "<group>"; };
-		3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebarCalibration.swift; sourceTree = "<group>"; };
-		39A1E6FE21FE67FE003162FE /* Layout.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Layout.storyboard; sourceTree = "<group>"; };
-		39A1E70021FE67FE003162FE /* LayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutController.swift; sourceTree = "<group>"; };
-		39A1E70621FE6C26003162FE /* LayoutSidebarEdition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebarEdition.swift; sourceTree = "<group>"; };
-		39A1E70821FE6C3D003162FE /* LayoutCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvas.swift; sourceTree = "<group>"; };
+		3997743C220BB0E500ED4B93 /* CalibrationSidebarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationSidebarController.swift; sourceTree = "<group>"; };
+		399E724F225A92AA00163147 /* CalibrationProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationProfileManager.swift; sourceTree = "<group>"; };
+		399E7251225BC04A00163147 /* NewCalibrationProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfileController.swift; sourceTree = "<group>"; };
+		399E7253225BCB7A00163147 /* LayoutDocumentObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDocumentObserver.swift; sourceTree = "<group>"; };
+		399E7256225CD86000163147 /* Tracking.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Tracking.xib; sourceTree = "<group>"; };
+		399E7258225CE45D00163147 /* LayoutDocumentIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDocumentIO.swift; sourceTree = "<group>"; };
+		399E725A225CEAE900163147 /* DocumentHandlerSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentHandlerSidebar.swift; sourceTree = "<group>"; };
+		39A1E70821FE6C3D003162FE /* LayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutViewController.swift; sourceTree = "<group>"; };
 		39A1E70A21FE77A2003162FE /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		39A1E70D21FE7892003162FE /* LayoutCanvasElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasElement.swift; sourceTree = "<group>"; };
 		39A1E71121FE7921003162FE /* LayoutCanvasLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasLine.swift; sourceTree = "<group>"; };
@@ -409,16 +407,19 @@
 		39B6C53A2240905F00B97C31 /* PrototypeAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeAlpha.swift; sourceTree = "<group>"; };
 		39B6C53C2240907200B97C31 /* Sorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sorter.swift; sourceTree = "<group>"; };
 		39B6C53E224094D200B97C31 /* TCPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPSocket.swift; sourceTree = "<group>"; };
-		39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasDelegate.swift; sourceTree = "<group>"; };
 		39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasElementDelegate.swift; sourceTree = "<group>"; };
-		39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutSidebar.swift; sourceTree = "<group>"; };
-		39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBLayoutCanvasLinePropertiesController.swift; sourceTree = "<group>"; };
+		39C1E906220A201A00F53AC2 /* LayoutCanvasDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasDelegate.swift; sourceTree = "<group>"; };
+		39C1E90A220A347E00F53AC2 /* LayoutDevicePropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDevicePropertiesViewController.swift; sourceTree = "<group>"; };
 		39C1E90C220A37F300F53AC2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		39C97BE7225588FB00E93EC9 /* layout-package-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "layout-package-icon.icns"; sourceTree = "<group>"; };
+		39C97BE922558A7300E93EC9 /* calibration-file-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "calibration-file-icon.icns"; sourceTree = "<group>"; };
+		39C97BEB22558C6000E93EC9 /* devices-file-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "devices-file-icon.icns"; sourceTree = "<group>"; };
+		39C97BED22558D7C00E93EC9 /* animatic-file-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "animatic-file-icon.icns"; sourceTree = "<group>"; };
+		39C97BF022564B1700E93EC9 /* Calibration.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Calibration.xib; sourceTree = "<group>"; };
+		39C97BF422564F2200E93EC9 /* EditionSidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionSidebarController.swift; sourceTree = "<group>"; };
 		39D4944B222770CA00E89801 /* PBScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBScene.cpp; sourceTree = "<group>"; };
 		39D4944C222770CA00E89801 /* PBScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBScene.hpp; sourceTree = "<group>"; };
-		39D558AC220919CA00916AAA /* PBLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBLayoutIcon.icns; sourceTree = "<group>"; };
-		39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PBDevicesLayoutIcon.icns; sourceTree = "<group>"; };
-		39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAcquisitionEngineObserver.swift; sourceTree = "<group>"; };
+		39DACC1F220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionAcquisitionEngineObserver.swift; sourceTree = "<group>"; };
 		39DACC2F220F5475002E97F8 /* UsersEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersEngine.swift; sourceTree = "<group>"; };
 		39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCanvasUser.swift; sourceTree = "<group>"; };
 		39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutDocument.swift; sourceTree = "<group>"; };
@@ -428,13 +429,11 @@
 		39DFD18D22284E8A00E75A0B /* WelcomeScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WelcomeScene.cpp; sourceTree = "<group>"; };
 		39DFD18E22284E8A00E75A0B /* WelcomeScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WelcomeScene.hpp; sourceTree = "<group>"; };
 		39DFD19022284F4100E75A0B /* Elements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Elements.hpp; sourceTree = "<group>"; };
-		39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBDeviceRow.swift; sourceTree = "<group>"; };
 		39E3121121F6F1C5006569F1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		39E3121321F777F6006569F1 /* PAEStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEStatus.swift; sourceTree = "<group>"; };
+		39E3121321F777F6006569F1 /* PAEStatusCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEStatusCollection.swift; sourceTree = "<group>"; };
 		39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEDeviceStatus.swift; sourceTree = "<group>"; };
 		39E7E599224BF00100F65AA1 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCalibrationProfilePanel.swift; sourceTree = "<group>"; };
 		39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedUser.swift; sourceTree = "<group>"; };
 		39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingSessionPanel.swift; sourceTree = "<group>"; };
 		39FFE2F422357D97001BCE9E /* simd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simd.swift; sourceTree = "<group>"; };
@@ -482,6 +481,13 @@
 				397B649921FD32A100A71E58 /* libc++.tbd in Frameworks */,
 				39757D9D2220902400FF6D57 /* Accelerate.framework in Frameworks */,
 				397B648A21FD324B00A71E58 /* Pods_Protocol_Bernardo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDDBC57DA6CF53D1656416F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,63 +565,35 @@
 			path = "Protocol Bernardo Slave";
 			sourceTree = "<group>";
 		};
-		390D0DB321F4FBE10032CA23 /* Devices */ = {
-			isa = PBXGroup;
-			children = (
-				390D0DB621F502170032CA23 /* DevicesWindow.storyboard */,
-				390C265E21F66EFB00E7FEAE /* DevicesWindow.swift */,
-				3968FCD521FB82B5005EAA4C /* DevicesWindowViews.xib */,
-				3968FCD821FB88E0005EAA4C /* PBDeviceDetails.swift */,
-				3968FCDA21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift */,
-				39E3120F21F6EA8C006569F1 /* PBDeviceRow.swift */,
-				398F6272221901E8003BFC81 /* PBDevicesStartupSheet.swift */,
-				3915BFA22219E6C800E80ABE /* PBMachineDevicesList.swift */,
-				3968FCDC21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift */,
-			);
-			path = Devices;
-			sourceTree = "<group>";
-		};
 		390D0DBA21F511630032CA23 /* Engines */ = {
 			isa = PBXGroup;
 			children = (
 				39DACC2D220F5453002E97F8 /* UsersEngine */,
 				393B1ECB2204DCA800BC54D3 /* LayoutEngine */,
-				390D0DBB21F511680032CA23 /* DataAcquisitionEngine */,
+				390D0DBB21F511680032CA23 /* PositionAcquisitionEngine */,
 			);
 			path = Engines;
 			sourceTree = "<group>";
 		};
-		390D0DBB21F511680032CA23 /* DataAcquisitionEngine */ = {
+		390D0DBB21F511680032CA23 /* PositionAcquisitionEngine */ = {
 			isa = PBXGroup;
 			children = (
 				3968FCDE21FD0386005EAA4C /* Extensions */,
-				390D0DBC21F511BD0032CA23 /* DataAcquisitionEngine.swift */,
-				39DACC1F220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift */,
-				39379A11220FE496004C3815 /* PhysicalDevice.swift */,
-				392183CA22138B3A000D5968 /* ConnectedDevices.swift */,
+				390D0DBC21F511BD0032CA23 /* PositionAcquisitionEngine.swift */,
+				39DACC1F220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift */,
+				39379A11220FE496004C3815 /* AcquisitionDevice.swift */,
+				399124462254264900E8C4F4 /* AcquisitionMachine.swift */,
 			);
-			path = DataAcquisitionEngine;
-			sourceTree = "<group>";
-		};
-		390EC7D6222EF7E300DDAE9F /* Listeners */ = {
-			isa = PBXGroup;
-			children = (
-				3924834F221DF5A300DE6015 /* DeviceConnectionListener.cpp */,
-				3924833E221DF5A300DE6015 /* DeviceConnectionListener.hpp */,
-				39248341221DF5A300DE6015 /* DeviceDisconnectionListener.cpp */,
-				39248352221DF5A300DE6015 /* DeviceDisconnectionListener.hpp */,
-				3924833F221DF5A300DE6015 /* FrameListener.cpp */,
-				39248350221DF5A300DE6015 /* FrameListener.hpp */,
-			);
-			path = Listeners;
+			path = PositionAcquisitionEngine;
 			sourceTree = "<group>";
 		};
 		3915BFA62219F4AC00E80ABE /* icns */ = {
 			isa = PBXGroup;
 			children = (
-				3997742B220B931500ED4B93 /* PBLayoutCalibrationIcon.icns */,
-				39D558AF2209321700916AAA /* PBDevicesLayoutIcon.icns */,
-				39D558AC220919CA00916AAA /* PBLayoutIcon.icns */,
+				39C97BE7225588FB00E93EC9 /* layout-package-icon.icns */,
+				39C97BE922558A7300E93EC9 /* calibration-file-icon.icns */,
+				39C97BEB22558C6000E93EC9 /* devices-file-icon.icns */,
+				39C97BED22558D7C00E93EC9 /* animatic-file-icon.icns */,
 			);
 			path = icns;
 			sourceTree = "<group>";
@@ -625,7 +603,6 @@
 			children = (
 				39615AA2223F05DF0077E5CB /* Utils */,
 				39248343221DF5A300DE6015 /* Enums */,
-				390EC7D6222EF7E300DDAE9F /* Listeners */,
 				39248340221DF5A300DE6015 /* PhysicalDevice.cpp */,
 				39248351221DF5A300DE6015 /* PhysicalDevice.hpp */,
 				3924833D221DF5A300DE6015 /* PositionAcquisitionEngine.cpp */,
@@ -635,7 +612,8 @@
 				39248346221DF5A300DE6015 /* UsersTracker.hpp */,
 				39A293FA223DDF6C006EE326 /* PAELinker.cpp */,
 				39A293FB223DDF6C006EE326 /* PAELinker.hpp */,
-				398A1BE7224A9520007D0429 /* libraries.h */,
+				398A1BE7224A9520007D0429 /* libraries.hpp */,
+				3990033C224EABFD0054025E /* maths.h */,
 				398A1BE8224B16B4007D0429 /* Makefile */,
 			);
 			path = PositionAcquisitionEngine;
@@ -658,8 +636,19 @@
 				3924834B221DF5A300DE6015 /* PAEStatus.h */,
 				3924834D221DF5A300DE6015 /* PhysicalUser.h */,
 				3924834A221DF5A300DE6015 /* Skeleton.h */,
+				3991244822542A7800E8C4F4 /* PAEStatus.cpp */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		39388AF82259185E00F4AEB2 /* CalibrationProfileManager */ = {
+			isa = PBXGroup;
+			children = (
+				39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */,
+				399E724F225A92AA00163147 /* CalibrationProfileManager.swift */,
+				399E7251225BC04A00163147 /* NewCalibrationProfileController.swift */,
+			);
+			path = CalibrationProfileManager;
 			sourceTree = "<group>";
 		};
 		393B1ECB2204DCA800BC54D3 /* LayoutEngine */ = {
@@ -670,6 +659,8 @@
 				393B1ECC2204DCD700BC54D3 /* Layout */,
 				393B1ED12204E30E00BC54D3 /* LayoutEngine.swift */,
 				39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */,
+				399E7258225CE45D00163147 /* LayoutDocumentIO.swift */,
+				399E7253225BCB7A00163147 /* LayoutDocumentObserver.swift */,
 			);
 			path = LayoutEngine;
 			sourceTree = "<group>";
@@ -688,16 +679,41 @@
 			isa = PBXGroup;
 			children = (
 				39615AA3223F05EB0077E5CB /* sio.hpp */,
+				394D48B922529BAD007D34FB /* LiveViewer.hpp */,
+				394D48BC22529C69007D34FB /* LiveViewer.cpp */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		396780F42254EF9F006784DE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				396780F52254F222006784DE /* Home.storyboard */,
+				396780F72254FA51006784DE /* HomeViewController.swift */,
+				396780F92254FBE9006784DE /* RecentFileCellView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		396780FB225505A9006784DE /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				39A1E70C21FE7871003162FE /* Canvas */,
+				396780FE22551305006784DE /* Layout.xib */,
+				39C1E90A220A347E00F53AC2 /* LayoutDevicePropertiesViewController.swift */,
+				3989EAD422037A1F005CF113 /* LayoutLinePropertiesViewController.swift */,
+				39C97BF422564F2200E93EC9 /* EditionSidebarController.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		3968FCDE21FD0386005EAA4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */,
-				39E3121321F777F6006569F1 /* PAEStatus.swift */,
+				39E3121321F777F6006569F1 /* PAEStatusCollection.swift */,
 				396D45732218A7F10018F95C /* DeviceState.swift */,
+				3991244C2254417E00E8C4F4 /* PAEStatus.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -723,7 +739,7 @@
 				396DDFC521F4285000628070 /* Protocol Bernardo.app */,
 				392482A9221DF2EC00DE6015 /* libPAE.a */,
 				3908AB9D22271AF900997684 /* libPAE-MacOS.a */,
-				3908ABC32227210200997684 /* Protocol Bernardo Slave */,
+				3908ABC32227210200997684 /* pb-slave */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -745,21 +761,11 @@
 		396DDFE621F42A2300628070 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				396780F42254EF9F006784DE /* Home */,
+				397194D12253D9E800F46564 /* Main */,
 				39B6C5392240904C00B97C31 /* Prototype Alpha */,
-				39A1E6FC21FE67FE003162FE /* Layout */,
-				390D0DB321F4FBE10032CA23 /* Devices */,
-				396DDFE721F42A2800628070 /* Welcome */,
 			);
 			path = Scenes;
-			sourceTree = "<group>";
-		};
-		396DDFE721F42A2800628070 /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				396DDFCA21F4285000628070 /* WelcomeWindow.swift */,
-				396DDFCE21F4285200628070 /* WelcomeWindow.storyboard */,
-			);
-			path = Welcome;
 			sourceTree = "<group>";
 		};
 		396DDFF421F4340B00628070 /* Utils */ = {
@@ -785,6 +791,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		397194D12253D9E800F46564 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				399E7255225CD85200163147 /* Tracking */,
+				39388AF82259185E00F4AEB2 /* CalibrationProfileManager */,
+				39C97BEF22564B0A00E93EC9 /* Calibration */,
+				399124372253FD9F00E8C4F4 /* Devices */,
+				396780FB225505A9006784DE /* Layout */,
+				397194D22253D9F800F46564 /* Main.storyboard */,
+				3991243E225413E500E8C4F4 /* MainViewController.swift */,
+				396780F22254EDDD006784DE /* MainWindowController.swift */,
+				397194D42253E9A800F46564 /* SidebarController.swift */,
+				399E725A225CEAE900163147 /* DocumentHandlerSidebar.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		39757D9E22209EB800FF6D57 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,6 +820,7 @@
 		39757DA72221BC1A00FF6D57 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				39A1E71521FE7A7A003162FE /* LayoutCanvasDevice.swift */,
 				39A1E70D21FE7892003162FE /* LayoutCanvasElement.swift */,
 				39967343221E2127003A75A6 /* LayoutCanvasElementAppearance.swift */,
 				39C1E8FE22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift */,
@@ -877,25 +901,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		39967345221E3C20003A75A6 /* Tracking */ = {
+		399124372253FD9F00E8C4F4 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				39967346221E3C30003A75A6 /* LayoutSidebarTracking.swift */,
-				39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */,
+				399124382253FDAE00E8C4F4 /* Devices.xib */,
+				3991243A2253FF1900E8C4F4 /* DevicesSidebarController.swift */,
+				3991243C225405E800E8C4F4 /* DeviceOutlineCellView.swift */,
+				399124402254147700E8C4F4 /* DeviceViewController.swift */,
+				3991244422541E5E00E8C4F4 /* MachineOutlineCellView.swift */,
 			);
-			path = Tracking;
-			sourceTree = "<group>";
-		};
-		39977425220B7E4500ED4B93 /* Calibration */ = {
-			isa = PBXGroup;
-			children = (
-				393ACD222215140700306D60 /* CalibrationController.swift */,
-				393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */,
-				396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */,
-				3997743C220BB0E500ED4B93 /* LayoutSidebarCalibration.swift */,
-				393ACD2022150C4500306D60 /* PBCalibrationLiveDeltas.swift */,
-			);
-			path = Calibration;
+			path = Devices;
 			sourceTree = "<group>";
 		};
 		3997742A220B91C000ED4B93 /* Calibration */ = {
@@ -908,20 +923,14 @@
 			path = Calibration;
 			sourceTree = "<group>";
 		};
-		39A1E6FC21FE67FE003162FE /* Layout */ = {
+		399E7255225CD85200163147 /* Tracking */ = {
 			isa = PBXGroup;
 			children = (
-				39A1E70C21FE7871003162FE /* Canvas */,
-				39A1E6FE21FE67FE003162FE /* Layout.storyboard */,
-				39A1E70021FE67FE003162FE /* LayoutController.swift */,
-				39684DF12214A1B2006E4B37 /* LayoutInterfaceMode.swift */,
-				39264993221E72EC00C8ECBF /* LayoutTouchbar.swift */,
-				396C48522208FDBA000AA888 /* LayoutWindowController.swift */,
-				39684DEF2214A163006E4B37 /* LayoutWindowDelegate.swift */,
-				39E8BA80220C78870021DC34 /* NewCalibrationProfilePanel.swift */,
-				39C1E904220A1F3B00F53AC2 /* Sidebar */,
+				399E7256225CD86000163147 /* Tracking.xib */,
+				39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */,
+				39967346221E3C30003A75A6 /* TrackingSidebarController.swift */,
 			);
-			path = Layout;
+			path = Tracking;
 			sourceTree = "<group>";
 		};
 		39A1E70C21FE7871003162FE /* Canvas */ = {
@@ -929,10 +938,9 @@
 			children = (
 				39757DA72221BC1A00FF6D57 /* Elements */,
 				39A1E71721FEC08C003162FE /* LayoutCanvas.sks */,
-				39A1E70821FE6C3D003162FE /* LayoutCanvas.swift */,
-				39C1E8FC22094AA500F53AC2 /* LayoutCanvasDelegate.swift */,
-				39A1E71521FE7A7A003162FE /* LayoutCanvasDevice.swift */,
+				39C1E906220A201A00F53AC2 /* LayoutCanvasDelegate.swift */,
 				397195C12200219000F92C5C /* LayoutCanvasView.swift */,
+				39A1E70821FE6C3D003162FE /* LayoutViewController.swift */,
 			);
 			path = Canvas;
 			sourceTree = "<group>";
@@ -960,25 +968,17 @@
 			path = "Prototype Alpha";
 			sourceTree = "<group>";
 		};
-		39C1E904220A1F3B00F53AC2 /* Sidebar */ = {
+		39C97BEF22564B0A00E93EC9 /* Calibration */ = {
 			isa = PBXGroup;
 			children = (
-				39977425220B7E4500ED4B93 /* Calibration */,
-				39C1E905220A1FF800F53AC2 /* Edition */,
-				39C1E906220A201A00F53AC2 /* LayoutSidebar.swift */,
-				39967345221E3C20003A75A6 /* Tracking */,
+				39C97BF022564B1700E93EC9 /* Calibration.xib */,
+				393ACD222215140700306D60 /* CalibrationController.swift */,
+				393ACD242215143400306D60 /* CalibrationControllerDelegate.swift */,
+				396CF35522110B0D0049E091 /* CalibrationDeltasCalculator.swift */,
+				3997743C220BB0E500ED4B93 /* CalibrationSidebarController.swift */,
+				393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */,
 			);
-			path = Sidebar;
-			sourceTree = "<group>";
-		};
-		39C1E905220A1FF800F53AC2 /* Edition */ = {
-			isa = PBXGroup;
-			children = (
-				39A1E70621FE6C26003162FE /* LayoutSidebarEdition.swift */,
-				39C1E90A220A347E00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift */,
-				3989EAD422037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift */,
-			);
-			path = Edition;
+			path = Calibration;
 			sourceTree = "<group>";
 		};
 		39D4944A222770A000E89801 /* Elements */ = {
@@ -1057,17 +1057,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3900AE6E221DF75200A38E26 /* PositionAcquisitionEngine.hpp in Headers */,
+				397194D62253ED3000F46564 /* libraries.hpp in Headers */,
 				3900AE68221DF75200A38E26 /* Joint.h in Headers */,
 				3900AE6A221DF75200A38E26 /* Skeleton.h in Headers */,
+				397194D72253ED3E00F46564 /* maths.h in Headers */,
+				397194D82253ED4E00F46564 /* PAEDeviceStatus.h in Headers */,
 				3900AE6B221DF75200A38E26 /* PAEStatus.h in Headers */,
 				3900AE6D221DF75200A38E26 /* PhysicalUser.h in Headers */,
 				3900AE66221DF75200A38E26 /* UserState.h in Headers */,
 				3900AE65221DF75200A38E26 /* DeviceState.h in Headers */,
 				3900AE67221DF75200A38E26 /* UsersTracker.hpp in Headers */,
 				3900AE70221DF75200A38E26 /* PhysicalDevice.hpp in Headers */,
-				3900AE6F221DF75200A38E26 /* FrameListener.hpp in Headers */,
-				3900AE64221DF75200A38E26 /* DeviceConnectionListener.hpp in Headers */,
-				3900AE71221DF75200A38E26 /* DeviceDisconnectionListener.hpp in Headers */,
+				397194D02253C7F400F46564 /* sio.hpp in Headers */,
+				394D48BB22529BAD007D34FB /* LiveViewer.hpp in Headers */,
 				39A293FD223DDF6C006EE326 /* PAELinker.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1104,11 +1106,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				39D4944F2227892000E89801 /* PBXTargetDependency */,
 			);
 			name = "Protocol Bernardo Slave";
 			productName = "Protocol Bernardo Slave";
-			productReference = 3908ABC32227210200997684 /* Protocol Bernardo Slave */;
+			productReference = 3908ABC32227210200997684 /* pb-slave */;
 			productType = "com.apple.product-type.tool";
 		};
 		392482A8221DF2EC00DE6015 /* PositionAcquisitionEngine */ = {
@@ -1117,6 +1118,7 @@
 			buildPhases = (
 				392482A5221DF2EC00DE6015 /* Headers */,
 				392482A6221DF2EC00DE6015 /* Sources */,
+				FDDBC57DA6CF53D1656416F7 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1175,7 +1177,7 @@
 					};
 					396DDFC421F4285000628070 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -1210,18 +1212,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39C97BEA22558A7300E93EC9 /* calibration-file-icon.icns in Resources */,
 				398F6274221920DF003BFC81 /* libOpenNI2.dylib in Resources */,
 				39A1E71821FEC08C003162FE /* LayoutCanvas.sks in Resources */,
+				399E7257225CD86000163147 /* Tracking.xib in Resources */,
+				399124392253FDAE00E8C4F4 /* Devices.xib in Resources */,
+				39388AFA2259187500F4AEB2 /* CalibrationProfileManager.xib in Resources */,
 				397B648821FD323400A71E58 /* Assets.xcassets in Resources */,
+				39C97BF122564B1700E93EC9 /* Calibration.xib in Resources */,
 				3915BFA52219EFF500E80ABE /* Core.storyboard in Resources */,
-				3997742C220B931500ED4B93 /* PBLayoutCalibrationIcon.icns in Resources */,
+				396780F62254F222006784DE /* Home.storyboard in Resources */,
+				39C97BEC22558C6000E93EC9 /* devices-file-icon.icns in Resources */,
 				39757DA52221B66900FF6D57 /* .jazzy.json in Resources */,
-				39A1E70321FE67FE003162FE /* Layout.storyboard in Resources */,
-				396DDFD021F4285200628070 /* WelcomeWindow.storyboard in Resources */,
-				390D0DB721F502170032CA23 /* DevicesWindow.storyboard in Resources */,
-				39D558AD220919CA00916AAA /* PBLayoutIcon.icns in Resources */,
-				39D558B02209321700916AAA /* PBDevicesLayoutIcon.icns in Resources */,
-				3968FCD621FB82B5005EAA4C /* DevicesWindowViews.xib in Resources */,
+				396780FF22551305006784DE /* Layout.xib in Resources */,
+				39C97BEE22558D7C00E93EC9 /* animatic-file-icon.icns in Resources */,
+				397194D32253D9F800F46564 /* Main.storyboard in Resources */,
+				39C97BE8225588FB00E93EC9 /* layout-package-icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,7 +1326,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\n   if hash tailor 2>/dev/null; then\n       tailor --except=trailing-whitespace,function-whitespace Protocol\\ Bernardo/\n   else\n       echo \"warning: Please install Tailor from https://tailor.sh\"\n   fi\nfi\n";
+			shellScript = "#if [ \"${CONFIGURATION}\" = \"Analyze\" ]; then\n#   if hash tailor 2>/dev/null; then\n#        tailor --except=function-whitespace Protocol\\ Bernardo/\n#      # tailor --except=trailing-whitespace,function-whitespace Protocol\\ Bernardo/\n#   else\n#       echo \"warning: Please install Tailor from https://tailor.sh\"\n#   fi\n#fi\n";
 		};
 		48B1039FCFCC7E0E313ABDD4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1365,7 +1371,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3920892F222A101A001944DA /* PBHorizontalLine.cpp in Sources */,
-				39E7E59A224BF00100F65AA1 /* Makefile in Sources */,
 				39900339224D447F0054025E /* DefaultScene.cpp in Sources */,
 				39DFD18B22283DEF00E75A0B /* Core.cpp in Sources */,
 				39D4944D222770CA00E89801 /* PBScene.cpp in Sources */,
@@ -1389,14 +1394,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3991244A22542A7800E8C4F4 /* PAEStatus.cpp in Sources */,
 				39B34C2C223DF6050061F704 /* PAELinker.cpp in Sources */,
+				394D48BD22529C69007D34FB /* LiveViewer.cpp in Sources */,
 				3900AE73221DF75A00A38E26 /* PAEMacOSApp.cpp in Sources */,
 				3900AE5D221DF73800A38E26 /* PositionAcquisitionEngine.cpp in Sources */,
-				3900AE5E221DF73800A38E26 /* FrameListener.cpp in Sources */,
 				3900AE5F221DF73800A38E26 /* PhysicalDevice.cpp in Sources */,
-				3900AE60221DF73800A38E26 /* DeviceDisconnectionListener.cpp in Sources */,
 				3900AE61221DF73800A38E26 /* UsersTracker.cpp in Sources */,
-				3900AE62221DF73800A38E26 /* DeviceConnectionListener.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,79 +1409,79 @@
 			buildActionMask = 2147483647;
 			files = (
 				393B1ECE2204DD0100BC54D3 /* Device.swift in Sources */,
-				390C265F21F66EFB00E7FEAE /* DevicesWindow.swift in Sources */,
 				393B1ED22204E30E00BC54D3 /* LayoutEngine.swift in Sources */,
-				39E8BA81220C78870021DC34 /* NewCalibrationProfilePanel.swift in Sources */,
 				396CF35622110B0D0049E091 /* CalibrationDeltasCalculator.swift in Sources */,
 				39A1E71621FE7A7A003162FE /* LayoutCanvasDevice.swift in Sources */,
 				39B6C53D2240907200B97C31 /* Sorter.swift in Sources */,
 				39E3121621F779A0006569F1 /* PAEDeviceStatus.swift in Sources */,
 				39FFE2F522357D97001BCE9E /* simd.swift in Sources */,
-				39684DF22214A1B2006E4B37 /* LayoutInterfaceMode.swift in Sources */,
 				39757DA022209F1800FF6D57 /* TrackingSession.swift in Sources */,
 				390F89CE224694E50038BBD7 /* WebSocket.swift in Sources */,
-				39A1E70521FE67FE003162FE /* LayoutController.swift in Sources */,
 				39A1E70B21FE77A3003162FE /* Layout.swift in Sources */,
-				39A1E70921FE6C3D003162FE /* LayoutCanvas.swift in Sources */,
+				39A1E70921FE6C3D003162FE /* LayoutViewController.swift in Sources */,
 				39A1E71221FE7921003162FE /* LayoutCanvasLine.swift in Sources */,
-				39C1E907220A201A00F53AC2 /* LayoutSidebar.swift in Sources */,
-				3989EAD522037A1F005CF113 /* PBLayoutCanvasDevicePropertiesController.swift in Sources */,
-				39C1E8FD22094AA500F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
-				398F6273221901E8003BFC81 /* PBDevicesStartupSheet.swift in Sources */,
-				39379A12220FE496004C3815 /* PhysicalDevice.swift in Sources */,
-				39C1E90B220A347F00F53AC2 /* PBLayoutCanvasLinePropertiesController.swift in Sources */,
+				39C1E907220A201A00F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
+				399E7250225A92AA00163147 /* CalibrationProfileManager.swift in Sources */,
+				3989EAD522037A1F005CF113 /* LayoutLinePropertiesViewController.swift in Sources */,
+				39C97BF522564F2200E93EC9 /* EditionSidebarController.swift in Sources */,
+				399E7252225BC04A00163147 /* NewCalibrationProfileController.swift in Sources */,
+				39379A12220FE496004C3815 /* AcquisitionDevice.swift in Sources */,
+				39C1E90B220A347F00F53AC2 /* LayoutDevicePropertiesViewController.swift in Sources */,
 				397E685B21FE50E600FFA678 /* NSNib.swift in Sources */,
-				396C48532208FDBA000AA888 /* LayoutWindowController.swift in Sources */,
+				3991244522541E5E00E8C4F4 /* MachineOutlineCellView.swift in Sources */,
 				39023F94221F58E1005E2C9F /* SkeletonJoint.swift in Sources */,
 				39DACC34220F663F002E97F8 /* LayoutCanvasUser.swift in Sources */,
 				39DACC30220F5475002E97F8 /* UsersEngine.swift in Sources */,
-				3997743D220BB0E500ED4B93 /* LayoutSidebarCalibration.swift in Sources */,
+				3991243F225413E500E8C4F4 /* MainViewController.swift in Sources */,
+				396780F32254EDDD006784DE /* MainWindowController.swift in Sources */,
+				3997743D220BB0E500ED4B93 /* CalibrationSidebarController.swift in Sources */,
 				39757D9B2220706100FF6D57 /* UsersEngineDelegate.swift in Sources */,
-				390D0DBD21F511BD0032CA23 /* DataAcquisitionEngine.swift in Sources */,
-				3968FCD921FB88E0005EAA4C /* PBDeviceDetails.swift in Sources */,
+				390D0DBD21F511BD0032CA23 /* PositionAcquisitionEngine.swift in Sources */,
 				396CF35A2212037E0049E091 /* CalibrationDeltas.swift in Sources */,
 				39C1E8FF22094DB800F53AC2 /* LayoutCanvasElementDelegate.swift in Sources */,
 				39B6C53F224094D200B97C31 /* TCPSocket.swift in Sources */,
 				39977430220B94FB00ED4B93 /* LayoutCalibrationProfile.swift in Sources */,
 				397195C62200D38000F92C5C /* Keycode.swift in Sources */,
 				39A1E70E21FE7892003162FE /* LayoutCanvasElement.swift in Sources */,
-				3968FCDB21FCDFAD005EAA4C /* PBDeviceDetailsPopover.swift in Sources */,
 				39E8BA7F220BC0440021DC34 /* User.swift in Sources */,
-				39967347221E3C30003A75A6 /* LayoutSidebarTracking.swift in Sources */,
+				39967347221E3C30003A75A6 /* TrackingSidebarController.swift in Sources */,
+				399E7259225CE45D00163147 /* LayoutDocumentIO.swift in Sources */,
+				396780FA2254FBE9006784DE /* RecentFileCellView.swift in Sources */,
 				39977433220B955500ED4B93 /* DeviceCalibrationProfile.swift in Sources */,
-				39E3121421F777F6006569F1 /* PAEStatus.swift in Sources */,
+				39E3121421F777F6006569F1 /* PAEStatusCollection.swift in Sources */,
 				397195C22200219000F92C5C /* LayoutCanvasView.swift in Sources */,
+				396780F82254FA51006784DE /* HomeViewController.swift in Sources */,
 				39B6C53B2240905F00B97C31 /* PrototypeAlpha.swift in Sources */,
-				396DDFCB21F4285000628070 /* WelcomeWindow.swift in Sources */,
+				3991244D2254417E00E8C4F4 /* PAEStatus.swift in Sources */,
 				39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */,
-				39264994221E72EC00C8ECBF /* LayoutTouchbar.swift in Sources */,
+				3991243B2253FF1900E8C4F4 /* DevicesSidebarController.swift in Sources */,
 				397195C4220022F800F92C5C /* Comparable.swift in Sources */,
 				39023F99221F5C21005E2C9F /* Quaternion.swift in Sources */,
 				393ACD252215143400306D60 /* CalibrationControllerDelegate.swift in Sources */,
-				393ACD2122150C4500306D60 /* PBCalibrationLiveDeltas.swift in Sources */,
+				393ACD2122150C4500306D60 /* CalibrationSidebarLiveDeltas.swift in Sources */,
 				39DFBDDF2208A7AF00A7B9BD /* LayoutDocument.swift in Sources */,
-				39A1E70721FE6C26003162FE /* LayoutSidebarEdition.swift in Sources */,
 				39023F97221F594C005E2C9F /* Skeleton.swift in Sources */,
+				399E7254225BCB7A00163147 /* LayoutDocumentObserver.swift in Sources */,
 				39C1E90D220A37F300F53AC2 /* Line.swift in Sources */,
+				399124472254264900E8C4F4 /* AcquisitionMachine.swift in Sources */,
 				39E3121221F6F1C5006569F1 /* String.swift in Sources */,
 				39023F9B221F608F005E2C9F /* Joint.swift in Sources */,
-				392183CB22138B3A000D5968 /* ConnectedDevices.swift in Sources */,
-				39E3121021F6EA8C006569F1 /* PBDeviceRow.swift in Sources */,
+				399E725B225CEAE900163147 /* DocumentHandlerSidebar.swift in Sources */,
+				3991243D225405E800E8C4F4 /* DeviceOutlineCellView.swift in Sources */,
 				392183CD22138C5E000D5968 /* Typealias.swift in Sources */,
 				39967344221E2127003A75A6 /* LayoutCanvasElementAppearance.swift in Sources */,
-				39DACC20220CCFC5002E97F8 /* DataAcquisitionEngineObserver.swift in Sources */,
+				397194D52253E9A800F46564 /* SidebarController.swift in Sources */,
+				39DACC20220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
 				39B5576222000FC70021BFDA /* NSColor.swift in Sources */,
 				396DDFC921F4285000628070 /* AppDelegate.swift in Sources */,
+				399124412254147700E8C4F4 /* DeviceViewController.swift in Sources */,
 				393ACD232215140700306D60 /* CalibrationController.swift in Sources */,
-				39684DF02214A163006E4B37 /* LayoutWindowDelegate.swift in Sources */,
 				396D45742218A7F10018F95C /* DeviceState.swift in Sources */,
-				3915BFA32219E6C800E80ABE /* PBMachineDevicesList.swift in Sources */,
 				39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */,
 				39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */,
 				39B55760220008430021BFDA /* maths.swift in Sources */,
-				3968FCDD21FCEE83005EAA4C /* PBTrackedUserDetailsExcerpt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,28 +1498,13 @@
 			target = 3908AB9C22271AF900997684 /* PAE-MacOS */;
 			targetProxy = 3908ABB822271FC100997684 /* PBXContainerItemProxy */;
 		};
-		39D4944F2227892000E89801 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3908AB9C22271AF900997684 /* PAE-MacOS */;
-			targetProxy = 39D4944E2227892000E89801 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		396DDFCE21F4285200628070 /* WelcomeWindow.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				396DDFCF21F4285200628070 /* Base */,
-			);
-			name = WelcomeWindow.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3908AB9F22271AF900997684 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				EXECUTABLE_PREFIX = lib;
@@ -1532,6 +1521,7 @@
 		3908ABA022271AF900997684 /* Analyze */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				EXECUTABLE_PREFIX = lib;
@@ -1548,6 +1538,7 @@
 		3908ABA122271AF900997684 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				EXECUTABLE_PREFIX = lib;
@@ -1564,54 +1555,63 @@
 		3908ABC82227210200997684 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/opt/ncurses/include/,
+					"$(SRCROOT)",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = ProtocolBernardoSlave;
+				PRODUCT_NAME = "pb-slave";
 			};
 			name = Debug;
 		};
 		3908ABC92227210200997684 /* Analyze */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/opt/ncurses/include/,
+					"$(SRCROOT)",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = ProtocolBernardoSlave;
+				PRODUCT_NAME = "pb-slave";
 			};
 			name = Analyze;
 		};
 		3908ABCA2227210200997684 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/opt/ncurses/include/,
+					"$(SRCROOT)",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = ProtocolBernardoSlave;
+				PRODUCT_NAME = "pb-slave";
 			};
 			name = Release;
 		};
@@ -1622,6 +1622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				EXECUTABLE_PREFIX = lib;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					/usr/local/include/ni2/,
@@ -1632,6 +1633,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/opencv/4.0.1/lib,
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = PAE;
 				SKIP_INSTALL = YES;
 				SYMROOT = build/;
@@ -1645,6 +1647,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				EXECUTABLE_PREFIX = lib;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					/usr/local/include/ni2/,
@@ -1655,6 +1658,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/opencv/4.0.1/lib,
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = PAE;
 				SKIP_INSTALL = YES;
 				SYMROOT = build/;
@@ -1668,6 +1672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KJ993GM677;
 				EXECUTABLE_PREFIX = lib;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					/usr/local/include/ni2/,
@@ -1678,6 +1683,7 @@
 					"$(inherited)",
 					/usr/local/Cellar/opencv/4.0.1/lib,
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = PAE;
 				SKIP_INSTALL = YES;
 				SYMROOT = build/;
@@ -1825,11 +1831,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KJ993GM677;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/include,
@@ -1853,7 +1862,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT)/Protocol Bernardo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 			};
 			name = Debug;
@@ -1864,11 +1873,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KJ993GM677;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/include,
@@ -1891,7 +1903,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT)/Protocol Bernardo-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 			};
 			name = Release;
@@ -1973,11 +1985,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KJ993GM677;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/include,
@@ -2001,7 +2016,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT)/Protocol Bernardo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)";
 			};
 			name = Analyze;

@@ -10,9 +10,12 @@ import AppKit
 
 /// The layout engine handles creating and opening layouts
 class LayoutEngine {
+
+	private(set) var documentsController = NSDocumentController()
+
     /// Creates a new layout and open its window
     func newLayout() {
-        _ = try? App.documentsController.openUntitledDocumentAndDisplay(true)
+        _ = try? documentsController.openUntitledDocumentAndDisplay(true)
     }
 
     /// Ask the user to select a pblayout and opens it
@@ -33,11 +36,13 @@ class LayoutEngine {
     ///
     /// - Parameter url: A .pblayout package url
     func openLayout(at url: URL) {
-        App.documentsController.openDocument(withContentsOf: url, display: true) { doc, _, _ in
+        documentsController.openDocument(withContentsOf: url, display: true) { doc, _, _ in
             guard let doc = doc else { return }
 
             // Set up autosaving for the document
             doc.scheduleAutosaving()
         }
+
+		App.core.hideHomeWindow()
     }
 }

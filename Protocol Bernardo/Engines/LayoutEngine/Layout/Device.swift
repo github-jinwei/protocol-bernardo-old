@@ -15,7 +15,7 @@ import Foundation
 /// in the user tracking process.
 class Device: Codable {
     /// Unique ID for this device
-    var uuid: String! = UUID().uuidString
+    private(set) var uuid: String! = UUID().uuidString
     
     /// The device's name
     var name: String = "Device"

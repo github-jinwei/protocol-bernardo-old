@@ -25,7 +25,7 @@ extension Joint: Codable {
         orientationConfidence = confidences[0]
 
         position = float3(Array(properties[4..<7]))
-        orientationConfidence = confidences[4]
+        positionConfidence = confidences[4]
     }
 
     public init(from decoder: Decoder) throws {
@@ -41,6 +41,7 @@ extension Joint: Codable {
         self.init(          orientation: orientation,
                   orientationConfidence: orientationConfidence,
                                position: position,
+							   position2D: simd_make_float2(0.0, 0.0),
                      positionConfidence: positionConfidence)
     }
 
@@ -69,7 +70,7 @@ extension Joint {
     /// - Returns: All the properties in an array
     func allproperties(usingProfile profile: DeviceCalibrationProfile) -> [Float] {
         let pos = profile.globalCoordinates(forPosition: position)
-        return orientation.properties + pos
+        return orientation.properties + [pos.x, pos.y, pos.z]
     }
 
     /// All the confidence values for the joint properties

@@ -40,7 +40,7 @@ class TrackedUser {
                     Calendar.current.component(.hour, from: Date()),
                     Calendar.current.component(.minute, from: Date()),
                     Calendar.current.component(.second, from: Date()),
-                    Calendar.current.component(.nanosecond, from: Date())].map({ String($0) }).joined(separator: ".") + ".pba"
+                    Calendar.current.component(.nanosecond, from: Date())].map { String($0) }.joined(separator: ".") + ".pba"
     }
 }
 

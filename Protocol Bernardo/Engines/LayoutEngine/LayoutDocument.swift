@@ -35,107 +35,48 @@ class LayoutDocument: NSDocument {
     }
 
     /// The window controller managed by this document
-    private var layoutWindow: LayoutWindowController! = nil
+    private var window: MainWindowController! = nil
 
     /// The layout
-    var layout: Layout = Layout()
+    internal var layout: Layout = Layout()
     
     /// The calibration profiles
     var calibrationsProfiles: [String: LayoutCalibrationProfile] = [:]
+
+	/// reference to the currently selected profile
+	weak var profile: LayoutCalibrationProfile? {
+		didSet {
+			observers.forEach { $0.layout(self, calibrationProfileDidChanged: profile) }
+		}
+	}
 
     /// The tracking sessions
     var trackingSessions: [String: FileWrapper] = [:]
 
     /// The currently opened tracking session
-    private var openedTrackingSession: TrackingSession?
+    internal var openedTrackingSession: TrackingSession?
     
     /// Tell the document is as been edited, and should adopt an "unsaved document"
     /// behaviour
     func markAsEdited() {
         updateChangeCount(.changeDone)
-//        layoutWindow.setDocumentEdited(true)
     }
 
     override class var autosavesInPlace: Bool {
         return true
     }
-}
 
-// MARK: - Document IO
-extension LayoutDocument {
+	weak var layoutView: LayoutViewController!
 
-    /// Write the content of the package
-    ///
-    /// - Parameter typeName: _
-    /// - Returns: The FileWrapper to write
-    /// - Throws: _
-    override func fileWrapper(ofType typeName: String) throws -> FileWrapper {
-        let rootDir = FileWrapper(directoryWithFileWrappers: [:])
-        
-        // Add the layout file wrapper
-        let layoutData = try! JSONEncoder().encode([layout])
-        rootDir.addRegularFile(withContents: layoutData,
-                               preferredFilename: FileTypes.layout.named("layout"))
-        
-        // Add the calibrations profiles files wrapper
-        for (name, profile) in calibrationsProfiles {
-            let calibrationData = try! JSONEncoder().encode([profile])
-            rootDir.addRegularFile(withContents: calibrationData,
-                                   preferredFilename: FileTypes.calibrationProfile.named(name))
-        }
+	internal var observers: [LayoutDocumentObserver] = []
 
-        // Save the opened tracking session if needed
-        if openedTrackingSession != nil {
-            trackingSessions[openedTrackingSession!.name] = openedTrackingSession!.wrapper
-        }
+	func addObserver(_ observer: LayoutDocumentObserver) {
+		observers.append(observer)
+	}
 
-        // Insert the tracking sessions
-        for (_, wrapper) in trackingSessions {
-            rootDir.addFileWrapper(wrapper)
-        }
-
-        layoutWindow.setDocumentEdited(false)
-
-        return rootDir
-    }
-
-    
-    /// Read the content of the given filewrapper into memory
-    ///
-    /// - Parameters:
-    ///   - fileWrapper: FileWrapper of an existing package
-    ///   - typeName: _
-    /// - Throws: _
-    override func read(from fileWrapper: FileWrapper, ofType typeName: String) throws {
-        guard let fileWrappers = fileWrapper.fileWrappers else { return }
-
-        // Parse all the files in the directory and load or store them based on their extension
-        for (name, wrapper) in fileWrappers {
-            switch FileTypes(rawValue: name.fileExtension)! {
-            // Layout file
-            case .layout:
-                let layoutData = wrapper.regularFileContents!
-                layout = try! JSONDecoder().decode([Layout].self, from: layoutData)[0]
-                
-            // Calibration file
-            case .calibrationProfile:
-                let calibrationData = wrapper.regularFileContents!
-                let calibrationProfile = try! JSONDecoder().decode([LayoutCalibrationProfile].self, from: calibrationData)[0]
-                calibrationsProfiles[name.fileNameWithoutExtension] = calibrationProfile
-
-            case .trackingSession:
-                trackingSessions[name.fileNameWithoutExtension] = wrapper
-                break
-                
-            default: break
-            }
-        }
-
-        // Add a reference to this document on each calibration profile
-        for (_, profile) in calibrationsProfiles {
-            profile.document = self
-        }
-    }
+	func removeObserver(_ observer: LayoutDocumentObserver) {
+		observers.removeAll { $0 === observer }
+	}
 }
 
 
@@ -144,12 +85,12 @@ extension LayoutDocument {
 extension LayoutDocument {
     override func makeWindowControllers() {
         // If the layout window is missing, let's create it
-        guard layoutWindow == nil else { return }
+        guard window == nil else { return }
 
-        let windowController = NSStoryboard(name: "Layout", bundle: nil).instantiateInitialController()
+        let windowController = NSStoryboard(name: "Main", bundle: nil).instantiateInitialController()
 
-        layoutWindow = windowController as? LayoutWindowController
-        addWindowController(layoutWindow)
+        window = windowController as? MainWindowController
+        addWindowController(window)
     }
 
 }
@@ -167,6 +108,31 @@ extension LayoutDocument {
         
         return calibrationsProfiles[name]!
     }
+
+	func removeCalibrationProfile(withName name: String) {
+		if layout.profile == name {
+			layout.profile = nil
+		}
+
+		calibrationsProfiles.removeValue(forKey: name)
+
+		markAsEdited()
+	}
+
+	func set(calibrationProfile profileName: String?) {
+		guard let profileName = profileName else {
+			profile = nil
+			return
+		}
+
+		guard let selectedProfile = calibrationsProfiles[profileName] else {
+			profile = nil
+			return
+		}
+
+		layout.profile = profileName
+		profile = selectedProfile
+	}
 }
 
 

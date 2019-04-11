@@ -9,7 +9,7 @@
 #ifndef sio_h
 #define sio_h
 
-#include "../libraries.h"
+#include "../libraries.hpp"
 
 #include "../Structs/PAEStatus.h"
 
@@ -157,8 +157,14 @@ Skeleton sioMessageToSkeleton(const sio::message::ptr &mPtr) {
 }
 
 sio::message::ptr PAEStatusToSioMessage(const PAEStatus * s) {
-    sio::message::ptr msgPtr = sio::array_message::create();
-    sio::array_message * msg = static_cast<sio::array_message *>(msgPtr.get());
+    sio::message::ptr msgPtr = sio::object_message::create();
+    sio::object_message * msg = static_cast<sio::object_message *>(msgPtr.get());
+
+	sio::message::ptr listPtr = sio::array_message::create();
+	sio::array_message * list = static_cast<sio::array_message *>(listPtr.get());
+
+	msg->insert("hostname", s->hostname);
+	msg->insert("devices", listPtr);
 
     for(int i = 0; i < s->deviceCount; ++i) {
         PAEDeviceStatus * device = &(s->connectedDevices[i]);
@@ -168,7 +174,6 @@ sio::message::ptr PAEStatusToSioMessage(const PAEStatus * s) {
         sio::object_message * deviceMessage = static_cast<sio::object_message *>(deviceMessagePtr.get());
 
         // Fill it
-        deviceMessage->insert("deviceHostname", device->deviceHostname);
         deviceMessage->insert("deviceName", device->deviceName);
         deviceMessage->insert("deviceSerial", device->deviceSerial);
         deviceMessage->insert("state", sio::int_message::create(device->state));
@@ -196,24 +201,27 @@ sio::message::ptr PAEStatusToSioMessage(const PAEStatus * s) {
         deviceMessage->insert("trackedUsers", trackedUsersPtr);
 
         // Insert the device in the message
-        msg->push(deviceMessagePtr);
+        list->push(deviceMessagePtr);
     }
 
     return msgPtr;
 }
 
 PAEStatus * sioMessageToPAEStatus(const sio::message::ptr * mPtr) {
-    std::vector<sio::message::ptr> m = mPtr->get()->get_vector();
+	std::map<std::string, sio::message::ptr> m = mPtr->get()->get_map();
 
     PAEStatus * status = new PAEStatus();
-    status->deviceCount = (unsigned int)m.size();
+	strcpy(status->hostname, m["hostname"]->get_string().c_str());
+
+	// The list of devices
+	std::vector<sio::message::ptr> l = m["devices"]->get_vector();
+    status->deviceCount = (unsigned int)l.size();
     status->connectedDevices = (PAEDeviceStatus *)malloc(sizeof(PAEDeviceStatus) * status->deviceCount);
 
     for(int i = 0; i < status->deviceCount; ++i) {
-        std::map<std::string, sio::message::ptr> d = m[i]->get_map();
+        std::map<std::string, sio::message::ptr> d = l[i]->get_map();
 
         PAEDeviceStatus device;
-        strcpy(device.deviceHostname, d["deviceHostname"]->get_string().c_str());
         strcpy(device.deviceName, d["deviceName"]->get_string().c_str());
         strcpy(device.deviceSerial, d["deviceSerial"]->get_string().c_str());
 

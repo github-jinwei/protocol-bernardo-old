@@ -9,8 +9,6 @@
 #ifndef PBUI_h
 #define PBUI_h
 
-#include "../libraries.hpp"
-
 #include "utils/ncurses.hpp"
 #include "utils/PBPoint.hpp"
 #include "utils/PBFrame.hpp"

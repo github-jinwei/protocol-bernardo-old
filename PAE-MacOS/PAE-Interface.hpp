@@ -20,14 +20,15 @@ extern "C" {
     void PAESetDeviceActive(const char * c_serial);
     void PAESetDeviceIdle(const char * c_serial);
 
-    struct PAEStatus * PAEGetStatus();
-    void PAEFreeStatus(PAEStatus * status);
+	struct PAEStatusCollection * PAEGetStatus();
+	void PAEFreeCollection(struct PAEStatusCollection * statusCollection);
 
     void PAEEndAcquisition();
 
     void PAEShouldEmit(const int shouldEmit);
     void PAEShouldReceive(const int shouldReceive);
     void PAEConnectTo(const char * c_ip, const char * c_port, const int isSecure);
+	int PAELinkIsConnected();
 }
 
 #endif /* PAE_Interface_h */

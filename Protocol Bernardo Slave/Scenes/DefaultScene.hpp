@@ -9,17 +9,28 @@
 #ifndef DefaultScene_hpp
 #define DefaultScene_hpp
 
+#include "../libraries.hpp"
 #include "../UI/PBScene.hpp"
 
-class PBVerticalMenu;
+class DefaultScene: public PBScene {
+public:
+	DefaultScene(const int argc, const char * argv[]);
 
-class WelcomeScene: public PBScene {
 	void sceneWillAppear() override;
 
-	private:
-	PBVerticalMenu * menu;
+private:
+	// INTERFACE
 
-	void openDevices();
+
+
+	// LOGIC
+
+	std::string _ip = "localhost";
+
+	std::string _port = "5000";
+
+	bool _isSecure = false;
 };
+
 
 #endif /* DefaultScene_hpp */

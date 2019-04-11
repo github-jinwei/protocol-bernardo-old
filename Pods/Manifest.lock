@@ -1,11 +1,11 @@
 PODS:
   - Repeat (0.5.7)
-  - Starscream (3.0.6)
+  - Starscream (3.1.0)
   - SwiftSocket (2.0.2)
 
 DEPENDENCIES:
   - Repeat
-  - Starscream (~> 3.0.2)
+  - Starscream
   - SwiftSocket
 
 SPEC REPOS:
@@ -16,9 +16,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Repeat: 73c5ee602aed8f3c7bf1aa12d4cd0d3dc3edea0a
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: 0cc19d9ab8f528f69d363427cbb7534359512a75
+PODFILE CHECKSUM: aebef071f1c2f775db8446739350e82b7ed3c945
 
 COCOAPODS: 1.6.0

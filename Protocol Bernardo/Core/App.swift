@@ -14,22 +14,21 @@ struct App {
     /// The application core, handling the scenes
     static let core = Core()
 
+
     /// The Data Acquisition Engine
-    static let dae = DataAcquisitionEngine()
+    static let pae = PositionAcquisitionEngine()
+
 
     /// The Layout Engine is used to open and close layout documents
     static let layoutEngine = LayoutEngine()
 
+	/// Layout engine shortcut
+	static var le: LayoutEngine { return layoutEngine }
+
+
     /// The Users Engine is used to store and access tracked users
     static let usersEngine = UsersEngine()
 
-    /// The document controller used by the various documents engines
-    static let documentsController = NSDocumentController()
-
-    /// The utility queue running concurrently for background tasks.
-    ///
-    /// The queue as a QoS set as userInitiated.
-//    static let utilityQueue = DispatchQueue(
-//        label: "studio.prisme.pb.utilityQueue",
-//        qos: DispatchQoS.userInitiated)
+	/// Users engine shortcut
+	static var ue: UsersEngine { return usersEngine }
 }

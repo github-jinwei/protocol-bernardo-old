@@ -12,7 +12,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        App.core.showWelcomeWindow()
+        App.core.showHomeWindow()
     }
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {

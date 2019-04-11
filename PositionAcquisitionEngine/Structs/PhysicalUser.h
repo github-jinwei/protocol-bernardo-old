@@ -9,7 +9,7 @@
 #ifndef User_h
 #define User_h
 
-#include "../libraries.h"
+#include "../maths.h"
 
 #include "../Enums/UserState.h"
 #include "Skeleton.h"
@@ -17,7 +17,7 @@
 /**
  Represent a user tracked by a device
  */
-struct PhysicalUser {
+typedef struct PhysicalUser {
     /** The userID for the user, given by NiTE */
     short int /* nite::UserId */ userID;
 
@@ -31,7 +31,7 @@ struct PhysicalUser {
     struct Skeleton skeleton;
     
     /** The center of mass of the user. Irrevelant is the user state isn't USER_TRACKED  */
-    simd_float3 centerOfMass;
-};
+    float3 centerOfMass;
+} PhysicalUser;
 
 #endif /* User_h */

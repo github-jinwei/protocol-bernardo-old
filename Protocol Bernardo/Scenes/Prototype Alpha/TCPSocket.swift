@@ -14,21 +14,21 @@ class TCPSocket {
 	// MARK: Properties
 
 	/// The socket client
-	private var _socket: TCPClient!
+	private var socket: TCPClient!
 
 	/// Tell if the socket is connected
-	private var _isSocketConnected: Bool = false
+	private var isSocketConnected: Bool = false
 
 	/// Current connection status of the socket. True if connected
 	public var connected: Bool {
-		return _isSocketConnected
+		return isSocketConnected
 	}
 
 	/// The socket url
-	private var _url:String!
+	private var url: String!
 
 	/// The socket port
-	private var _port:Int32!
+	private var port: Int32!
 
 	/// Open a connection
 	///
@@ -38,26 +38,26 @@ class TCPSocket {
 	func connect(to url: String, port: Int32) {
 		// Make sure the socket isn't already opened
 		guard !self.connected else {
-			print("[Socket.connect] Socket is already connected to \(_socket.address):\(_socket.port)")
+			print("[Socket.connect] Socket is already connected to \(socket.address):\(socket.port)")
 			return
 		}
 
-		_url = url
-		_port = port
+		self.url = url
+		self.port = port
 
 		// Create the client
-		_socket = TCPClient(address: _url, port: _port)
+		socket = TCPClient(address: url, port: port)
 
 		// Open the client and check for success or failure
-		switch _socket.connect(timeout: 10) {
+		switch socket.connect(timeout: 10) {
 		case .success:
 			// Socket opened successfully
-			_isSocketConnected = true
+			isSocketConnected = true
             print("[SwiftSocket] Socket opened successfully")
 
 		case .failure(let error):
 			// Failed to open socket
-			_isSocketConnected = false
+			isSocketConnected = false
             print("[SwiftSocket] Socket failed to open : \(error.localizedDescription)")
 		}
 	}
@@ -72,12 +72,12 @@ class TCPSocket {
 			return
 		}
 
-		switch _socket.send(data: data) {
+		switch socket.send(data: data) {
 		case .success:
-			_ = _socket.send(string: "\n")
+			_ = socket.send(string: "\n")
 
 		case .failure(_):
-			_isSocketConnected = false
+			isSocketConnected = false
 		}
 	}
 
@@ -86,9 +86,9 @@ class TCPSocket {
 	/// - Parameter count: Number of bytes to read from the socket
 	/// - Returns: The received data or nil if no data is present
 	func read(count: Int) -> Data? {
-		guard let bytes = _socket.read(count) else { return nil }
+		guard let bytes = socket.read(count) else { return nil }
 
-		return Data(bytes: bytes)
+		return Data(bytes)
 	}
 
 	/// Disconnect then reconnect the socket on the same url and port
@@ -97,7 +97,7 @@ class TCPSocket {
 		disconnect()
 
 		// Open a new connection
-		connect(to: _url, port: _port)
+		connect(to: url, port: port)
 	}
 
 	/// Disconnect from the socket. The socket be re-opened on the same url and port
@@ -105,8 +105,8 @@ class TCPSocket {
 	func disconnect() {
 		guard self.connected else { return }
 
-		_socket.close()
-		_isSocketConnected = false
+		socket.close()
+		isSocketConnected = false
 	}
 
 	/// Make sure to properly close the connection

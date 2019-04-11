@@ -16,7 +16,7 @@ class Sorter {
     private let chaosThreshold: Double = 0.2            // probability of shuffling a fully sorted table
 
     var sortLevel: Float {
-        var goodPlace = 0;
+        var goodPlace = 0
 
         for i in 0..<workingTable.count {
             if workingTable[i] == i {
@@ -24,7 +24,7 @@ class Sorter {
             }
         }
 
-        return Float(goodPlace) / Float(workingTable.count);
+        return Float(goodPlace) / Float(workingTable.count)
     }
     
     
@@ -36,7 +36,7 @@ class Sorter {
 
             let deltaMax = Int(Double(workingTable.count) * chaosRate) + 1
             var delta = Int.random(in: 1...deltaMax)
-            delta = delta - (delta / 2);
+            delta = delta - (delta / 2)
 
             otherIndex = currentIndex + delta
             otherIndex = Int(simd_clamp(Double(otherIndex), Double(0), Double(workingTable.count - 1)))
@@ -48,20 +48,20 @@ class Sorter {
             let randomComparator: Double = Double.random(in: 0...1)
             
             // has a chance to sort values when they are not sorted
-            if(currentIndex < otherIndex) {
-                if((currentValue > otherValue) && (randomComparator > chaosRate)) {
+            if currentIndex < otherIndex {
+                if currentValue > otherValue && randomComparator > chaosRate {
                     workingTable.swapAt(currentIndex, otherIndex)
                 }
-                if((currentValue < otherValue) && (randomComparator < chaosRate)) {
+                if currentValue < otherValue && randomComparator < chaosRate {
                     workingTable.swapAt(currentIndex, otherIndex)
                 }
             }
             
-            if(currentIndex > otherIndex) {
-                if((currentValue < otherValue) && (randomComparator > chaosRate)) {
+            if currentIndex > otherIndex {
+                if currentValue < otherValue && randomComparator > chaosRate {
                     workingTable.swapAt(currentIndex, otherIndex)
                 }
-                if((currentValue > otherValue) && (randomComparator < chaosRate)) {
+                if currentValue > otherValue && randomComparator < chaosRate {
                     workingTable.swapAt(currentIndex, otherIndex)
                 }
             }
@@ -78,7 +78,7 @@ class Sorter {
             let randomComparator: Double = Double.random(in: 0...1)
             
             // has a little chance to shuffle values if they are already sorted
-            if(current <= next && randomComparator < chaosRate) {
+            if current <= next && randomComparator < chaosRate {
                 workingTable.swapAt(i, Int.random(in: 0...35))
             }
         }
@@ -91,7 +91,7 @@ class Sorter {
             let current = workingTable[i]
             let next = workingTable[i+1]
             
-            if(current > next) {
+            if current > next {
                 return false
             }
         }
@@ -103,15 +103,15 @@ class Sorter {
     // shuffles and returns the working table depending on chaos rate
     public func getSortedTable(chaosRate: Double) -> [Int] {
         // returns table when it is fully sorted and chaos rate is too low)
-        if(self.isSorted && chaosRate < chaosThreshold) {
+        if self.isSorted && chaosRate < chaosThreshold {
             return workingTable
         }
         
-        if(isSorted && chaosRate > chaosThreshold) {
+        if isSorted && chaosRate > chaosThreshold {
             // picks the following folder
             folderIndex += 1
             
-            if(folderIndex > 2) {
+            if folderIndex > 2 {
                 folderIndex = 0
             }
         }

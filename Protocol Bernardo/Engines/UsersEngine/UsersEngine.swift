@@ -9,7 +9,7 @@
 import Foundation
 import simd
 
-/// The users engine receives raw user informations from the dae and uses the
+/// The users engine receives raw user informations from the pae and uses the
 /// currently opened layout and calibration profile to track users and replace
 /// them all in the same coordinates system
 class UsersEngine {
@@ -17,7 +17,7 @@ class UsersEngine {
     // MARK: Properties
     
     /// All the users tracked by the system
-    private var users = [User]()
+    private(set) var users = [User]()
     
     /// The layout used to position the devices
     weak var layout: Layout?
@@ -25,70 +25,83 @@ class UsersEngine {
     /// The calibration profile used to track users
     weak var profile: LayoutCalibrationProfile?
 
-    /// The engine's delegate
-    var observers: [UsersEngineDelegate] = []
 
-    func addObserver(_ observer: UsersEngineDelegate) {
-        observers.append(observer);
-    }
+	// ///////////////
+	// MARK: Observers
 
-    func removeObserver(_ observer: UsersEngineDelegate) {
-        observers.removeAll(where: { $0 === observer })
-    }
-    
+	/// List of all the observers
+	private var observers = [UsersEngineDelegate]()
+
+	/// Add the given observer to the list of observers
+	///
+	/// - Parameter obs: The observer to add
+	func addObserver(_ obs: UsersEngineDelegate) {
+		observers.append(obs)
+	}
+
+	/// Remove the given observer from the list of observers
+	///
+	/// - Parameter obs: The observer to remove
+	func removeObserver(_ obs: UsersEngineDelegate) {
+		observers.removeAll { $0 === obs }
+	}
+
+
     // //////////////////
     // MARK: - Lifecycle
     
     /// Init
     init() {
         // Start by making ourselves an observer of the DAE
-        App.dae.addObsever(self)
+        App.pae.addObserver(self)
     }
 }
 
-// MARK: - DataAcquisitionEngineObserver
-extension UsersEngine: DataAcquisitionEngineObserver {
-    func dae(_: DataAcquisitionEngine, devicesStatusUpdated connectedDevices: ConnectedDevices) {
+// MARK: - PositionAcquisitionEngineObserver
+extension UsersEngine: PositionAcquisitionEngineObserver {
+    func pae(_: PositionAcquisitionEngine, statusUpdated connectedDevices: [AcquisitionMachine]) {
         guard let profile = profile else { return }
 
-        // Parse all the available users and store them correctly
-        for (serial, device) in connectedDevices.devices {
-            // Make sure this device is part of the calibration profile
-            guard let deviceProfile = profile.device(forSerial: serial) else { continue }
+		for machine in connectedDevices {
+			// Parse all the available users and store them correctly
+			for (serial, device) in machine.devices {
+				// Make sure this device is part of the calibration profile
+				guard let deviceProfile = profile.device(forSerial: serial) else { continue }
 
-            for physicalUser in device.users {
-                // Start by making sure this user is fully tracked
-                guard physicalUser.state == USER_TRACKED else {
-                    removePhysicFromUserIfNeeded(serial: serial, userID: physicalUser.userID)
-                    continue
-                }
-                
-                // Are we already tracking this user ?
-                if let user = self.user(forDeviceSerial: serial, andUserID: physicalUser.userID) {
-                    // This users is already being tracked, just update its physic for the current device
-                    user.trackedPhysics[serial] = physicalUser
-                    continue
-                }
-                
-                // This user is not registered yet, let's find if its a redundancy of an already tracked user
-                
-                // Get the user torso in the global coordinates system
-                let userCOM = deviceProfile.globalCoordinates(forPosition: physicalUser.skeleton.torso.position)
-                
-                // Find the user the closest from this point
-                let (closest, distance) = closestUser(fromPosition: userCOM)
-                
-                guard closest != nil && distance < 150 else {
-                    // No user where found, or was too far, create a new user
-                    newUser(forPhysic: physicalUser, onDevice: serial)
-                    continue
-                }
-                
-                // We have a match, insert ourselves
-                closest?.devices[serial] = physicalUser.userID
-                closest?.trackedPhysics[serial] = physicalUser
-            }
-        }
+				for physicalUser in device.users {
+					// Start by making sure this user is fully tracked
+					guard physicalUser.state == USER_TRACKED else {
+						removePhysicFromUserIfNeeded(serial: serial, userID: physicalUser.userID)
+						continue
+					}
+
+					// Are we already tracking this user ?
+					if let user = self.user(forDeviceSerial: serial, andUserID: physicalUser.userID) {
+						// This users is already being tracked, just update its physic for the current device
+						user.trackedPhysics[serial] = physicalUser
+						continue
+					}
+
+					// This user is not registered yet, let's find if its a redundancy of an already tracked user
+
+					// Get the user torso in the global coordinates system
+					let userCOM = deviceProfile.globalCoordinates(forPosition: physicalUser.skeleton.torso.position)
+
+					// Find the user the closest from this point
+					let (closest, distance) = closestUser(fromPosition: userCOM)
+
+					guard closest != nil && distance < 150 else {
+						// No user where found, or was too far, create a new user
+						newUser(forPhysic: physicalUser, onDevice: serial)
+						continue
+					}
+
+					// We have a match, insert ourselves
+					closest?.devices[serial] = physicalUser.userID
+					closest?.trackedPhysics[serial] = physicalUser
+				}
+			}
+		}
 
         updatePositions()
 
@@ -208,11 +221,8 @@ extension UsersEngine: DataAcquisitionEngineObserver {
 }
 
 
-// MARK: - Accessing the tracked users
+// MARK: - Convenient access to tracked users
 extension UsersEngine {
-    /// All the users tracked by the user engine
-    var allUsers: [User] { return users }
-    
     /// Gets the closes user from the given position.
     ///
     /// - Parameter position: The position to gets the distance from
@@ -236,7 +246,7 @@ extension UsersEngine {
         let users = self.users
         
         // Get the distance for each user
-        let distances = users.filter({ $0.physicsHistory.count > 0 }).map {
+        let distances = users.filter { $0.physicsHistory.count > 0 }.map {
             return simd_distance(position, $0.position)
         }
         // Sort the array
