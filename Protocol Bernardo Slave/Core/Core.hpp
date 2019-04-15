@@ -47,6 +47,8 @@ private:
 
     bool _isRunning = true;
 
+	unsigned long int _loopCount = 0;
+
     void candenceLoop(const clock_t &loopStart);
 
     std::vector<PBScene *> _scenes;

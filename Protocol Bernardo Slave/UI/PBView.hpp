@@ -101,7 +101,7 @@ protected:
 
      @param view The view to remove
      */
-    void removeView(PBView * view);
+    void removeSubview(PBView * view);
 private:
 
     /**

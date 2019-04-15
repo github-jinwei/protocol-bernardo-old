@@ -12,16 +12,24 @@
 #include "../libraries.hpp"
 #include "../UI/PBScene.hpp"
 
+// Forward declarations
+class PBLabel;
+
 class DefaultScene: public PBScene {
 public:
 	DefaultScene(const int argc, const char * argv[]);
 
 	void sceneWillAppear() override;
 
+	void sceneWillRender() override;
+
 private:
 	// INTERFACE
 
-
+	PBLabel * _devicesCountLabel;
+	PBLabel * _usersCountLabel;
+	PBLabel * _trackedUsersCountLabel;
+	PBLabel * _serverStatusLabel;
 
 	// LOGIC
 
@@ -30,6 +38,7 @@ private:
 	std::string _port = "5000";
 
 	bool _isSecure = false;
+
 };
 
 

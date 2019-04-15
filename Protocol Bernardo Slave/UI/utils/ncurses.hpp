@@ -135,7 +135,17 @@ public:
 	 */
 	static void clearStyling();
 
+	/**
+	 Replace all the characters in the given area by a fast, effectevly clearing them
+	 */
     static void clearArea(const int &col, const int &row, const uint &width, const uint &height);
+
+	/**
+	 Erase window content ; replace every char by a space (relatively fast)
+	 */
+	inline static void clearWindow() {
+		clearArea(0, 0, getWindowWidth(), getWindowHeight());
+	};
 
 	/**
 	 Revert to default text
@@ -246,9 +256,9 @@ public:
 	inline static uint getWindowHeight() { return LINES; };
 
 	/**
-	 Erase window content
+	 Erase window content (slow)
 	 */
-    inline static void clearWindow() { ::clear(); };
+    inline static void rawClear() { ::clear(); };
 
 	/**
 	 Get left position of an object centered on screen

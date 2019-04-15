@@ -12,6 +12,7 @@
 #include "PBScene.hpp"
 #include "PBView.hpp"
 
+#include "Elements/PBBox.hpp"
 #include "Elements/PBButton.hpp"
 #include "Elements/PBControl.hpp"
 #include "Elements/PBHorizontalLine.hpp"

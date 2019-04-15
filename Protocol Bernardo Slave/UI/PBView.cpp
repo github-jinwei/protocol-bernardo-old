@@ -44,7 +44,7 @@ void PBView::addSubview(PBView * view) {
 }
 
 void PBView::removeFromSuperView() {
-    _superview->removeView(this);
+    _superview->removeSubview(this);
 }
 
 PBControl * PBView::getSelectedControl() {
@@ -72,7 +72,7 @@ PBControl * PBView::getSelectedControl() {
     return nullptr;
 }
 
-void PBView::removeView(PBView * view) {
+void PBView::removeSubview(PBView * view) {
     // Set the view superview as nil
     view->_superview = nullptr;
 

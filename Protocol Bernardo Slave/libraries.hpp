@@ -23,7 +23,7 @@
 using uint = unsigned int;
 using keyCode = int;
 
-#define FRAMERATE 15.0
+#define FRAMERATE 30.0
 #define FRAME_LENGTH 1.0 / FRAMERATE
 
 #include "Core/App.hpp"

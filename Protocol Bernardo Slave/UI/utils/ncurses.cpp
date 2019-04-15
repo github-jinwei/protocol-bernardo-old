@@ -186,9 +186,7 @@ void nCurses::box(const int &col, const int &row, const uint &width, const uint 
 	vLine(col + width - 1, row + 1         , height - 2);
 
 	//Fill all spaces to apply any style
-    clearArea(col + 1, row + 1, width - 1, height - 1);
-
-
+    clearArea(col + 1, row + 1, width - 2, height - 2);
 }
 
 void nCurses::hLine(const int &col, const int &row, const uint &length)

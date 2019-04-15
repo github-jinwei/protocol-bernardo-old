@@ -35,8 +35,16 @@ void Core::main() {
         // Send it to the selected item of each scene
         propagateInteractions();
 
-		// Clear the window
-        nC::clear();
+		// Raw clear the window every 5 seconds to limit artifacts and other fuckeries
+		if(_loopCount % ((int)FRAMERATE * 5) == 0) {
+			nC::rawClear();
+		}
+
+		// Completely clear the window content, everything is redrawn on each frame
+		nC::clearWindow();
+		
+		// Clear any residual styling from the previous frame
+		nC::clear();
 
         // Render each scene
         for(PBScene * scene: _scenes) {
@@ -49,6 +57,8 @@ void Core::main() {
 
         // Refresh the screen
         refresh();
+
+		++_loopCount;
 
         // And cadence the loop
         candenceLoop(loopStart);

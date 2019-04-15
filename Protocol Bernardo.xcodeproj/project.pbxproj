@@ -169,6 +169,7 @@
 		39E3121621F779A0006569F1 /* PAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */; };
 		39E8BA7F220BC0440021DC34 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E8BA7E220BC0440021DC34 /* User.swift */; };
 		39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */; };
+		39F73F312264D3BA003025EF /* PBBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39F73F2F2264D3BA003025EF /* PBBox.cpp */; };
 		39FBE95C2223584900B8AABA /* NewTrackingSessionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */; };
 		39FFE2F522357D97001BCE9E /* simd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFE2F422357D97001BCE9E /* simd.swift */; };
 /* End PBXBuildFile section */
@@ -429,6 +430,8 @@
 		39E7E599224BF00100F65AA1 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		39E8BA7E220BC0440021DC34 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackedUser.swift; sourceTree = "<group>"; };
+		39F73F2F2264D3BA003025EF /* PBBox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBBox.cpp; sourceTree = "<group>"; };
+		39F73F302264D3BA003025EF /* PBBox.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBBox.hpp; sourceTree = "<group>"; };
 		39FBE95B2223584900B8AABA /* NewTrackingSessionPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrackingSessionPanel.swift; sourceTree = "<group>"; };
 		39FFE2F422357D97001BCE9E /* simd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simd.swift; sourceTree = "<group>"; };
 		E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Protocol_Bernardo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -994,6 +997,8 @@
 				39208931222A1199001944DA /* PBVerticalMenu.hpp */,
 				39053870222B385400F8EA2E /* PBVerticalLine.cpp */,
 				39053871222B385400F8EA2E /* PBVerticalLine.hpp */,
+				39F73F2F2264D3BA003025EF /* PBBox.cpp */,
+				39F73F302264D3BA003025EF /* PBBox.hpp */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -1365,6 +1370,7 @@
 				39DFD18B22283DEF00E75A0B /* Core.cpp in Sources */,
 				39D4944D222770CA00E89801 /* PBScene.cpp in Sources */,
 				3983050522275B7D00977C6C /* PBLabel.cpp in Sources */,
+				39F73F312264D3BA003025EF /* PBBox.cpp in Sources */,
 				3908ABC62227210200997684 /* main.cpp in Sources */,
 				398305022227559300977C6C /* PBControl.cpp in Sources */,
 				39053872222B385400F8EA2E /* PBVerticalLine.cpp in Sources */,
