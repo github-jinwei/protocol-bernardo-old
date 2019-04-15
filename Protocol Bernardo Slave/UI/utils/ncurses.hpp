@@ -9,8 +9,9 @@
 #ifndef ncurses_hpp
 #define ncurses_hpp
 
+#include "../../libraries.hpp"
+
 #include <iostream>
-#include <ncurses.h>
 
 #include "../PBUI.hpp"
 

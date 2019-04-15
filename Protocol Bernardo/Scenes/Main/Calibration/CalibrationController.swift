@@ -37,7 +37,7 @@ class CalibrationController {
     // MARK: - Lifecycle
 
     init() {
-        App.pae.addObsever(self)
+		App.pae.addObserver(self)
     }
 
     deinit {

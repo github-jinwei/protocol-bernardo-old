@@ -13,7 +13,7 @@ class DevicesSidebarController: NSViewController {
 		devicesList.dataSource = self
 		devicesList.delegate = self
 
-		App.pae.addObsever(self)
+		App.pae.addObserver(self)
 		App.pae.start()
 	}
 

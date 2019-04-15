@@ -48,7 +48,6 @@
 		3915BFA52219EFF500E80ABE /* Core.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3915BFA42219EFF500E80ABE /* Core.storyboard */; };
 		3920892F222A101A001944DA /* PBHorizontalLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3920892E222A101A001944DA /* PBHorizontalLine.cpp */; };
 		39208932222A1199001944DA /* PBVerticalMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39208930222A1199001944DA /* PBVerticalMenu.cpp */; };
-		39208935222B1BE3001944DA /* DevicesScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39208933222B1BE3001944DA /* DevicesScene.cpp */; };
 		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
 		39379A12220FE496004C3815 /* AcquisitionDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* AcquisitionDevice.swift */; };
 		39388AFA2259187500F4AEB2 /* CalibrationProfileManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */; };
@@ -165,7 +164,6 @@
 		39DFBDDF2208A7AF00A7B9BD /* LayoutDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDDE2208A7AF00A7B9BD /* LayoutDocument.swift */; };
 		39DFBDEA2208B3FB00A7B9BD /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */; };
 		39DFD18B22283DEF00E75A0B /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39DFD18922283DEF00E75A0B /* Core.cpp */; };
-		39DFD18F22284E8A00E75A0B /* WelcomeScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39DFD18D22284E8A00E75A0B /* WelcomeScene.cpp */; };
 		39E3121221F6F1C5006569F1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121121F6F1C5006569F1 /* String.swift */; };
 		39E3121421F777F6006569F1 /* PAEStatusCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121321F777F6006569F1 /* PAEStatusCollection.swift */; };
 		39E3121621F779A0006569F1 /* PAEDeviceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3121521F779A0006569F1 /* PAEDeviceStatus.swift */; };
@@ -272,8 +270,6 @@
 		3920892E222A101A001944DA /* PBHorizontalLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PBHorizontalLine.cpp; sourceTree = "<group>"; };
 		39208930222A1199001944DA /* PBVerticalMenu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBVerticalMenu.cpp; sourceTree = "<group>"; };
 		39208931222A1199001944DA /* PBVerticalMenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBVerticalMenu.hpp; sourceTree = "<group>"; };
-		39208933222B1BE3001944DA /* DevicesScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DevicesScene.cpp; sourceTree = "<group>"; };
-		39208934222B1BE3001944DA /* DevicesScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DevicesScene.hpp; sourceTree = "<group>"; };
 		392183CC22138C5E000D5968 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		392482A9221DF2EC00DE6015 /* libPAE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAE.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		392482C6221DF3E200DE6015 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_imgproc.a; sourceTree = "<group>"; };
@@ -426,8 +422,6 @@
 		39DFBDE92208B3FB00A7B9BD /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		39DFD18922283DEF00E75A0B /* Core.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Core.cpp; sourceTree = "<group>"; };
 		39DFD18A22283DEF00E75A0B /* Core.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Core.hpp; sourceTree = "<group>"; };
-		39DFD18D22284E8A00E75A0B /* WelcomeScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WelcomeScene.cpp; sourceTree = "<group>"; };
-		39DFD18E22284E8A00E75A0B /* WelcomeScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WelcomeScene.hpp; sourceTree = "<group>"; };
 		39DFD19022284F4100E75A0B /* Elements.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Elements.hpp; sourceTree = "<group>"; };
 		39E3121121F6F1C5006569F1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		39E3121321F777F6006569F1 /* PAEStatusCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAEStatusCollection.swift; sourceTree = "<group>"; };
@@ -1029,10 +1023,6 @@
 		39DFD18C22284E7700E75A0B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				39DFD18D22284E8A00E75A0B /* WelcomeScene.cpp */,
-				39DFD18E22284E8A00E75A0B /* WelcomeScene.hpp */,
-				39208933222B1BE3001944DA /* DevicesScene.cpp */,
-				39208934222B1BE3001944DA /* DevicesScene.hpp */,
 				39900337224D447F0054025E /* DefaultScene.cpp */,
 				39900338224D447F0054025E /* DefaultScene.hpp */,
 			);
@@ -1375,7 +1365,6 @@
 				39DFD18B22283DEF00E75A0B /* Core.cpp in Sources */,
 				39D4944D222770CA00E89801 /* PBScene.cpp in Sources */,
 				3983050522275B7D00977C6C /* PBLabel.cpp in Sources */,
-				39DFD18F22284E8A00E75A0B /* WelcomeScene.cpp in Sources */,
 				3908ABC62227210200997684 /* main.cpp in Sources */,
 				398305022227559300977C6C /* PBControl.cpp in Sources */,
 				39053872222B385400F8EA2E /* PBVerticalLine.cpp in Sources */,
@@ -1384,7 +1373,6 @@
 				398304EA222733F600977C6C /* PBPopupMenu.cpp in Sources */,
 				39208932222A1199001944DA /* PBVerticalMenu.cpp in Sources */,
 				3908ABCF2227216400997684 /* App.cpp in Sources */,
-				39208935222B1BE3001944DA /* DevicesScene.cpp in Sources */,
 				398304F62227368E00977C6C /* PBView.cpp in Sources */,
 				398304EE2227342300977C6C /* ncurses.cpp in Sources */,
 			);
@@ -1567,6 +1555,7 @@
 					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
+					/usr/local/Cellar/opencv/4.0.1/lib,
 				);
 				PRODUCT_MODULE_NAME = ProtocolBernardoSlave;
 				PRODUCT_NAME = "pb-slave";
@@ -1588,6 +1577,7 @@
 					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
+					/usr/local/Cellar/opencv/4.0.1/lib,
 				);
 				PRODUCT_MODULE_NAME = ProtocolBernardoSlave;
 				PRODUCT_NAME = "pb-slave";
@@ -1609,6 +1599,7 @@
 					"$(inherited)",
 					/usr/local/opt/ncurses/lib/,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
+					/usr/local/Cellar/opencv/4.0.1/lib,
 				);
 				PRODUCT_MODULE_NAME = ProtocolBernardoSlave;
 				PRODUCT_NAME = "pb-slave";

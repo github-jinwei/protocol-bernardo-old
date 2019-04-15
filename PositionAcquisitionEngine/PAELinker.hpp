@@ -9,6 +9,7 @@
 #ifndef PAELinker_hpp
 #define PAELinker_hpp
 
+#include <map>
 #include <mutex>
 
 #include "libraries.hpp"

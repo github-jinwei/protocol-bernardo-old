@@ -41,7 +41,7 @@ class PrototypeAlpha {
     }
 
     func refresh(_: Repeater) {
-        let users = App.usersEngine.allUsers
+        let users = App.usersEngine.users
 
         var acc: Float = 0.01
 

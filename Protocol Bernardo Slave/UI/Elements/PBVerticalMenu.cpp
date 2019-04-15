@@ -9,7 +9,6 @@
 #include "PBVerticalMenu.hpp"
 #include "PBMenuItem.hpp"
 
-#include <ncursesw/ncurses.h>
 #include <string>
 
 PBVerticalMenu::PBVerticalMenu(const PBPoint &aPosition):

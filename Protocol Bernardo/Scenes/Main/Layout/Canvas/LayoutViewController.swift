@@ -274,7 +274,7 @@ extension LayoutViewController: SKSceneDelegate {
         usersLayer.removeAllChildren()
         
         // For all actively tracked users
-        for user in App.usersEngine.allUsers {
+        for user in App.usersEngine.users {
             guard user.physicsHistory.count > 0 else { continue }
 
             // Create a node for it

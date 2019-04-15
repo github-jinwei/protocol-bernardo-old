@@ -35,6 +35,7 @@ void Core::main() {
         // Send it to the selected item of each scene
         propagateInteractions();
 
+		// Clear the window
         nC::clear();
 
         // Render each scene
@@ -42,6 +43,7 @@ void Core::main() {
             scene->render();
         }
 
+		// Place the cursor at the bottom right of the window
         nC::mv(nC::getWindowWidth()-1, nC::getWindowHeight()-1);
         nC::print << " ";
 

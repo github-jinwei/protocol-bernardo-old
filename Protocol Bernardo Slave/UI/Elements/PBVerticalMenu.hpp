@@ -9,6 +9,8 @@
 #ifndef PBVerticalMenu_hpp
 #define PBVerticalMenu_hpp
 
+#include "../../libraries.hpp"
+
 #include "../PBUI.hpp"
 #include "PBControl.hpp"
 

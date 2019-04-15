@@ -9,7 +9,7 @@
 #ifndef PBControl_hpp
 #define PBControl_hpp
 
-#include "libraries.hpp"
+#include "../../libraries.hpp"
 #include "../PBView.hpp"
 
 class PBControl: virtual public PBView {

@@ -7,14 +7,15 @@
 //  Copyright © 2019 Prisme. All rights reserved.
 //
 
-#ifndef libraries_hpp
-#define libraries_hpp
+#ifndef libraries_slave_hpp
+#define libraries_slave_hpp
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
-#include <curses.h>
+//#include <curses.h>
+#include <ncursesw/ncurses.h>
 
 #include <PositionAcquisitionEngine/PositionAcquisitionEngine.hpp>
 #include <PositionAcquisitionEngine/PAELinker.hpp>
@@ -29,4 +30,4 @@ using keyCode = int;
 
 #include "UI/PBUI.hpp"
 
-#endif /* libraries_hpp */
+#endif /* libraries_slave_hpp */
