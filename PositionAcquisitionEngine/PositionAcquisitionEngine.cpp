@@ -18,6 +18,8 @@ PositionAcquisitionEngine * PositionAcquisitionEngine::_instance;
 PositionAcquisitionEngine::PositionAcquisitionEngine() {
     hostname[_POSIX_HOST_NAME_MAX] = '\0';
     gethostname(hostname, _POSIX_HOST_NAME_MAX);
+
+	_linker.setPAE(this);
 }
 
 void PositionAcquisitionEngine::enableLiveView() {
@@ -137,8 +139,11 @@ void PositionAcquisitionEngine::connectAllDevices() {
 
 void PositionAcquisitionEngine::connectToDevice(const std::string &serial) {
     // Make sure the device specified is available
-    if(_devices.count(serial) == 0)
-        return; // Do nothing
+	if(_devices.count(serial) == 0) {
+		// Device is not here, send the action to the network
+		_linker.sendAction("connectDevice", serial);
+        return; // Do nothing else here
+	}
     
     _devices[serial]->connect();
 }
@@ -151,8 +156,11 @@ void PositionAcquisitionEngine::activateAllDevices() {
 
 void PositionAcquisitionEngine::activateDevice(const std::string &serial) {
     // Make sure the device specified is available
-    if(_devices.count(serial) == 0)
-        return; // Do nothing
+	if(_devices.count(serial) == 0) {
+		// Device is not here, send the action to the network
+		_linker.sendAction("activateDevice", serial);
+		return; // Do nothing else here
+	}
     
     _devices[serial]->setActive();
 }
@@ -165,8 +173,11 @@ void PositionAcquisitionEngine::deactivateAllDevices() {
 
 void PositionAcquisitionEngine::deactivateDevice(const std::string &serial) {
     // Make sure the device specified is available
-    if(_devices.count(serial) == 0)
-        return; // Do nothing
+	if(_devices.count(serial) == 0) {
+		// Device is not here, send the action to the network
+		_linker.sendAction("deactivateDevice", serial);
+		return; // Do nothing else here
+	}
     
     _devices[serial]->setIdle();
 

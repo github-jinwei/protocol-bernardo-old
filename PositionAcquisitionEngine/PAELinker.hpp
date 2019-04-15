@@ -18,11 +18,14 @@
 
 /** Forward Declarations */
 struct PAEStatus;
+class PositionAcquisitionEngine;
 
 /** The PAE linker is designed to work closely with the PositionAcquisitionEngine
  in the way that it directly transforms a PAEStatus to the appropriate format. */
 class PAELinker {
 public:
+	inline void setPAE(PositionAcquisitionEngine * pae) { _pae = pae; }
+
     /**
      Open a connection with the adress at the specified ip and port. The PAE uses
 	 websockets under the hood, meaning you can put a domain name as the ip.
@@ -58,6 +61,8 @@ public:
 	// TODO: Make this more universal
     void send(PAEStatus * status);
 
+	void sendAction(const std::string &action, const std::string &deviceSerial);
+
     /**
      Gives the list of PAEStatus currently stored in the linker. The given status
 	 is a copy and must be freed by yourself.
@@ -73,6 +78,8 @@ public:
     ~PAELinker();
 
 private:
+
+	PositionAcquisitionEngine * _pae;
 
     /** The socket io client */
     sio::client * _socket = nullptr;
@@ -101,6 +108,13 @@ private:
      @return The compiled URI
      */
     std::string buildURI(const std::string &ip, const std::string &port, const bool &isSecure);
+
+	/**
+	 Called everytime a new message has been received
+
+	 @param event The reception event
+	 */
+	void onReceived(const sio::event &event);
 
     /**
      Called everytime a new paeState has been received

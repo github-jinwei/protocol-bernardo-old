@@ -79,6 +79,11 @@ void PAELinker::send(PAEStatus * status) {
     _socket->socket()->emit("paeState", msg);
 }
 
+void PAELinker::sendAction(const std::string &action, const std::string &deviceSerial) {
+	sio::message::ptr msg = sio::string_message::create(deviceSerial);
+	_socket->socket()->emit(action, msg);
+}
+
 std::vector<PAEStatus *> PAELinker::storedDevices() {
 	// Create the list of devices to give to the caller.
 	std::vector<PAEStatus *> statusList;
@@ -112,9 +117,40 @@ std::string PAELinker::buildURI(const std::string &ip, const std::string &port, 
     return uri;
 }
 
+void PAELinker::onReceived(const sio::event &event) {
+	// Do nothing if we are not supposed to receive data
+	if(!_isReceiver) { return; }
+
+	std::string messageName = event.get_name();
+
+	if(messageName == "paeState") {
+		onPaeStateReceived(event);
+		return;
+	}
+
+	if(messageName == "connectDevice") {
+		std::string deviceSerial = event.get_message()->get_string();
+		_pae->connectToDevice(deviceSerial);
+	}
+
+	if(messageName == "activateDevice") {
+		std::string deviceSerial = event.get_message()->get_string();
+		_pae->activateDevice(deviceSerial);
+	}
+
+	if(messageName == "deactivateDevice") {
+		std::string deviceSerial = event.get_message()->get_string();
+		_pae->deactivateDevice(deviceSerial);
+	}
+}
+
 void PAELinker::onPaeStateReceived(const sio::event &event) {
     // Do nothing if we are not supposed to receive data
     if(!_isReceiver) { return; }
+
+	std::string messageName = event.get_name();
+
+	if(messageName == "paeState") {
 
 	// Lock the pae to prevent any race conditions
 	_receiverLock.lock();
