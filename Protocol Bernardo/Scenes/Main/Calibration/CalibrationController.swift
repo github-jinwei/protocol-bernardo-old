@@ -255,28 +255,24 @@ extension CalibrationController {
         deltasCalculator.reset()
 
         // Each device has to track at least one user
-        guard physicalDevice.trackedUsers.count >= 1 &&
-              referenceDevice.trackedUsers.count >= 1 else {
+        guard physicalDevice.trackedUsers.count >= 1 && referenceDevice.trackedUsers.count >= 1 else {
                 // Tell the delegate there is no calibration tracking
                 delegate?.calibration(self, liveDeltasUpdated: nil)
                 return
         }
 
         // Get the two primary users positions
-        let primaryDevicePos = uncalibratedGlobalPosition(
-                                            ofUser: physicalDevice.trackedUsers[0],
-                                            withProfile: deviceProfile!)
-        let primaryReferencePos = uncalibratedGlobalPosition(
-                                            ofUser: referenceDevice.trackedUsers[0],
-                                            withProfile: referenceProfile!)
+        let primaryDevicePos = uncalibratedGlobalPosition(ofUser: physicalDevice.trackedUsers[0],
+														  withProfile: deviceProfile!)
+        let primaryReferencePos = uncalibratedGlobalPosition(ofUser: referenceDevice.trackedUsers[0],
+															 withProfile: referenceProfile!)
 
         // Add the positions to the calculator
         deltasCalculator.set(devicePrimaryUser: primaryDevicePos,
-                              referencePrimaryUser: primaryReferencePos)
+							 referencePrimaryUser: primaryReferencePos)
 
         // If the two devices have at least two users, use them too
-        guard physicalDevice.trackedUsers.count >= 2 &&
-              referenceDevice.trackedUsers.count >= 2 else {
+        guard physicalDevice.trackedUsers.count >= 2 && referenceDevice.trackedUsers.count >= 2 else {
                 // There is only one user usable, get deltas and send them to the delegate
                 latestDeltas = deltasCalculator.getDeltas()
                 delegate?.calibration(self, liveDeltasUpdated: latestDeltas)
@@ -284,12 +280,10 @@ extension CalibrationController {
         }
 
         // Get the secondary users positions
-        let secondaryDevicePos = uncalibratedGlobalPosition(
-            ofUser: physicalDevice.trackedUsers[1],
-            withProfile: deviceProfile!)
-        let secondaryReferencePos = uncalibratedGlobalPosition(
-            ofUser: referenceDevice.trackedUsers[1],
-            withProfile: referenceProfile!)
+        let secondaryDevicePos = uncalibratedGlobalPosition(ofUser: physicalDevice.trackedUsers[1],
+															withProfile: deviceProfile!)
+        let secondaryReferencePos = uncalibratedGlobalPosition(ofUser: referenceDevice.trackedUsers[1],
+															   withProfile: referenceProfile!)
 
         // Add them to the calculator
         deltasCalculator.set(deviceSecondaryUser: secondaryDevicePos, referenceSecondaryUser: secondaryReferencePos)

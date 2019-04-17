@@ -29,6 +29,9 @@ protocol LayoutCanvasElement: AnyObject {
     /// Called by a user event to deselect the element
     func deselect()
 
+	/// Duplicate the current node, and insert it in the layout and the scene
+	func duplicate()
+
     /// Called when the element is remove to let it properly remove its content
     func deleteActions()
 
@@ -143,6 +146,30 @@ extension LayoutCanvasElement {
 		updatePositionOnParameters()
 
 		delegate?.elementDidChange(self)
+	}
+
+	func keyDown(with event: NSEvent) {
+		// Check with our delegate if we can edit the node
+		guard (delegate?.elementCanBeEdited(self) ?? false) && isSelected else {
+			return
+		}
+
+		// Make sure we only aknowledge keyboard events when we are selected
+		guard isSelected else { return }
+
+		// Act according to the pressed key
+		switch event.keyCode {
+		case Keycode.delete: delete()
+		case Keycode.upArrow: translateWithEvent(event)
+		case Keycode.downArrow: translateWithEvent(event)
+		case Keycode.rightArrow: translateWithEvent(event)
+		case Keycode.leftArrow: translateWithEvent(event)
+		case Keycode.d:
+			if event.modifierFlags.contains(.command) {
+				duplicate()
+			}
+		default: break
+		}
 	}
 }
 

@@ -287,28 +287,6 @@ extension LayoutCanvasDevice {
         // Tell our delegate we got updated
         delegate?.elementDidChange(self)
     }
-    
-    override func keyDown(with event: NSEvent) {
-        // Check with our delegate if we can edit the node
-        guard delegate?.elementCanBeEdited(self) ?? false else { return }
-        
-        // Make sure we only aknowledge keyboard events when we are selected
-        guard isSelected else { return }
-        
-        // Act according to the pressed key
-        switch event.keyCode {
-        case Keycode.delete: delete()
-        case Keycode.upArrow: translateWithEvent(event)
-        case Keycode.downArrow: translateWithEvent(event)
-        case Keycode.rightArrow: translateWithEvent(event)
-        case Keycode.leftArrow: translateWithEvent(event)
-        case Keycode.d:
-            if event.modifierFlags.contains(.command) {
-                duplicate()
-            }
-        default: break
-        }
-    }
 }
 
 // //////////////////
@@ -338,8 +316,6 @@ extension LayoutCanvasDevice {
 
     /// Set the device appearance to reflect its selected state
     private func setSelectedAppearance() {
-        // _deviceSprite.color = NSColor(_highlightColor, alpha: 0.9)
-        
         centerCircle.alpha = 1.0
         centerCircle.fillColor = NSColor(highlightColor, alpha: 0.5)
         centerCircle.strokeColor = NSColor(highlightColor, alpha: 0.8)

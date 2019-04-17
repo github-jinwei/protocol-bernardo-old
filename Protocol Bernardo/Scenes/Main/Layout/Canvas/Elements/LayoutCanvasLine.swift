@@ -145,9 +145,7 @@ extension LayoutCanvasLine {
         // And insert ourselves
         canvas.backLayer.addChild(self)
     }
-    
-    /// Duplicate the current node, and insert it in the layout and the scene
-    internal func duplicate() {
+    func duplicate() {
         delegate.duplicateLineElement(self)
 //        let newLine = Line(from: line)
 //
@@ -183,27 +181,6 @@ extension LayoutCanvasLine {
         
         // Tell our delegate we got updated
         delegate?.elementDidChange(self)
-    }
-    
-    override func keyDown(with event: NSEvent) {
-        // Check with our delegate if we can edit the node
-        guard (delegate?.elementCanBeEdited(self) ?? false) && isSelected else {
-            return
-        }
-        
-        // Act according to the pressed key
-        switch event.keyCode {
-        case Keycode.delete: delete()
-        case Keycode.upArrow: translateWithEvent(event)
-        case Keycode.downArrow: translateWithEvent(event)
-        case Keycode.rightArrow: translateWithEvent(event)
-        case Keycode.leftArrow: translateWithEvent(event)
-        case Keycode.d:
-            if event.modifierFlags.contains(.command) {
-                duplicate()
-            }
-        default: break
-        }
     }
 }
 

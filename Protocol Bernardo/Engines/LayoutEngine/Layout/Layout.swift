@@ -33,6 +33,7 @@ extension Layout {
     /// - Returns: The newly created device
     func createDevice() -> Device {
         let device = Device()
+		device.name += " #" + String(devices.count + 1)
         devices.append(device)
         
         return device
