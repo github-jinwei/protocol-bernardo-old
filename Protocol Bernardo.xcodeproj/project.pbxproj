@@ -91,6 +91,7 @@
 		3976324322654DAE00722F7F /* OpenNI2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B648521FD322700A71E58 /* OpenNI2 */; };
 		3976324822678ADD00722F7F /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3976324722678ADD00722F7F /* Logs.storyboard */; };
 		3976324A22678B8500722F7F /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3976324922678B8500722F7F /* LogsViewController.swift */; };
+		3976324C2267B73800722F7F /* LayoutElementPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3976324B2267B73800722F7F /* LayoutElementPropertiesViewController.swift */; };
 		397B648821FD323400A71E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCC21F4285200628070 /* Assets.xcassets */; };
 		397B648A21FD324B00A71E58 /* Pods_Protocol_Bernardo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */; };
 		397B648D21FD327600A71E58 /* NiTE2 in Copy OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 397B648421FD322700A71E58 /* NiTE2 */; };
@@ -349,6 +350,7 @@
 		39757DA42221B66900FF6D57 /* .jazzy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .jazzy.json; sourceTree = "<group>"; };
 		3976324722678ADD00722F7F /* Logs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
 		3976324922678B8500722F7F /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
+		3976324B2267B73800722F7F /* LayoutElementPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutElementPropertiesViewController.swift; sourceTree = "<group>"; };
 		397B63EC21FD2AE000A71E58 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		397B645021FD321800A71E58 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI2.dylib; sourceTree = "<group>"; };
 		397B645121FD321800A71E58 /* OpenNI.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OpenNI.ini; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 				39A1E70C21FE7871003162FE /* Canvas */,
 				396780FE22551305006784DE /* Layout.xib */,
 				39C1E90A220A347E00F53AC2 /* LayoutDevicePropertiesViewController.swift */,
+				3976324B2267B73800722F7F /* LayoutElementPropertiesViewController.swift */,
 				3989EAD422037A1F005CF113 /* LayoutLinePropertiesViewController.swift */,
 				39C97BF422564F2200E93EC9 /* EditionSidebarController.swift */,
 			);
@@ -1444,6 +1447,7 @@
 				39A1E70921FE6C3D003162FE /* LayoutViewController.swift in Sources */,
 				39A1E71221FE7921003162FE /* LayoutCanvasLine.swift in Sources */,
 				39C1E907220A201A00F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
+				3976324C2267B73800722F7F /* LayoutElementPropertiesViewController.swift in Sources */,
 				399E7250225A92AA00163147 /* CalibrationProfileManager.swift in Sources */,
 				3989EAD522037A1F005CF113 /* LayoutLinePropertiesViewController.swift in Sources */,
 				39C97BF522564F2200E93EC9 /* EditionSidebarController.swift in Sources */,

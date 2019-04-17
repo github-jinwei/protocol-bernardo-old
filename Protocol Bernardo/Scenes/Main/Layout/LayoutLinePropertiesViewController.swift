@@ -8,7 +8,7 @@
 
 import AppKit
 
-class LayoutLinePropertiesViewController: NSViewController {
+class LayoutLinePropertiesViewController: NSViewController, LayoutElementPropertiesViewController {
     
     weak var line: LayoutCanvasLine?
     
@@ -17,15 +17,15 @@ class LayoutLinePropertiesViewController: NSViewController {
     
     @IBOutlet weak var weightField: NSTextField!
     @IBOutlet weak var weightStepper: NSStepper!
-    
-    @IBOutlet weak var xPositionField: NSTextField!
-    @IBOutlet weak var xPositionStepper: NSStepper!
-    
-    @IBOutlet weak var yPositionField: NSTextField!
-    @IBOutlet weak var yPositionStepper: NSStepper!
-    
-    @IBOutlet weak var orientationField: NSTextField!
-    @IBOutlet weak var orientationStepper: NSStepper!
+
+	@IBOutlet weak var xPositionField: NSTextField!
+	@IBOutlet weak var xPositionStepper: NSStepper!
+
+	@IBOutlet weak var yPositionField: NSTextField!
+	@IBOutlet weak var yPositionStepper: NSStepper!
+
+	@IBOutlet weak var orientationField: NSTextField!
+	@IBOutlet weak var orientationStepper: NSStepper!
     
     // ///////////////
     // MARK: - Actions
@@ -61,19 +61,6 @@ class LayoutLinePropertiesViewController: NSViewController {
     func set(weight: CGFloat) {
         weightField?.doubleValue = Double(weight)
         weightStepper?.doubleValue = Double(weight)
-    }
-    
-    func set(position: CGPoint) {
-        xPositionField?.doubleValue = Double(position.x)
-        xPositionStepper?.doubleValue = Double(position.x)
-        
-        yPositionField?.doubleValue = Double(position.y)
-        yPositionStepper?.doubleValue = Double(position.y)
-    }
-    
-    func set(orientation: CGFloat) {
-        orientationField?.doubleValue = Double(orientation)
-        orientationStepper?.doubleValue = Double(orientation)
     }
 
     // ////////////

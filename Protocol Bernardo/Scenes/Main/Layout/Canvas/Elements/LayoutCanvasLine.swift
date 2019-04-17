@@ -84,7 +84,7 @@ class LayoutCanvasLine: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    private lazy var parametersController: LayoutLinePropertiesViewController = {
+    private(set) lazy var parametersController: NSViewController = {
 		let controller: LayoutLinePropertiesViewController = NSNib.make(fromNib: "Layout", owner: nil)
         controller.line = self
         
@@ -95,17 +95,9 @@ class LayoutCanvasLine: SKNode {
 // /////////////////////
 // MARK: - LayoutElement
 extension LayoutCanvasLine: LayoutCanvasElement {
-    /// Returns the controller allowing for fine tuning of the
-    /// device parameter
-    ///
-    /// - Returns: A view controller
-    func getParametersController() -> NSViewController {
-        return parametersController
-    }
-    
     /// Update the position values for the device on the parameters view
     func updatePositionOnParameters() {
-        parametersController.set(position: position)
+        (parametersController as? LayoutLinePropertiesViewController)?.set(position: position)
     }
 
     func deleteActions() {
@@ -212,25 +204,6 @@ extension LayoutCanvasLine {
             }
         default: break
         }
-    }
-    
-    /// Translate the node by the amount specified by the given MouseDragged event
-    ///
-    /// - Parameter event:
-    internal func translateWithEvent(_ event: NSEvent) {
-        let translateAmount: CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
-        
-        switch event.keyCode {
-        case Keycode.upArrow: position.y += translateAmount
-        case Keycode.downArrow: position.y -= translateAmount
-        case Keycode.rightArrow: position.x += translateAmount
-        case Keycode.leftArrow: position.x -= translateAmount
-        default: break
-        }
-        
-        updatePositionOnParameters()
-        
-        delegate?.elementDidChange(self)
     }
 }
 

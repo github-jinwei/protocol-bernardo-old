@@ -8,7 +8,7 @@
 
 import AppKit
 
-class LayoutDevicePropertiesViewController: NSViewController {
+class LayoutDevicePropertiesViewController: NSViewController, LayoutElementPropertiesViewController {
     
     weak var device: LayoutCanvasDevice?
     
@@ -94,19 +94,6 @@ class LayoutDevicePropertiesViewController: NSViewController {
         maxDistanceStepper?.doubleValue = Double(maxDistance)
     }
     
-    func set(position: CGPoint) {
-        xPositionField?.doubleValue = Double(position.x)
-        xPositionStepper?.doubleValue = Double(position.x)
-        
-        yPositionField?.doubleValue = Double(position.y)
-        yPositionStepper?.doubleValue = Double(position.y)
-    }
-    
-    func set(orientation: CGFloat) {
-        orientationField?.doubleValue = Double(orientation)
-        orientationStepper?.doubleValue = Double(orientation)
-    }
-    
     func set(height: CGFloat) {
         heightField?.doubleValue = Double(height)
         heightStepper?.doubleValue = Double(height)
@@ -118,7 +105,6 @@ class LayoutDevicePropertiesViewController: NSViewController {
     // MARK: - Init
     
     override func viewDidAppear() {
-        
         guard let device = device else { return }
         
         set(name: device.name ?? "")

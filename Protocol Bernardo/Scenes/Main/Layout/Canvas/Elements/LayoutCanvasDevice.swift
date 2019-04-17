@@ -144,7 +144,7 @@ class LayoutCanvasDevice: SKNode {
     // MARK: - Sidebar Properties view
     
     /// Reference to the device parameters view when it is available
-    private lazy var parametersController: LayoutDevicePropertiesViewController = {
+    private(set) lazy var parametersController: NSViewController = {
 		let controller: LayoutDevicePropertiesViewController = NSNib.make(fromNib: "Layout", owner: nil)
         controller.device = self
         
@@ -155,17 +155,9 @@ class LayoutCanvasDevice: SKNode {
 // /////////////////////
 // MARK: - LayoutElement
 extension LayoutCanvasDevice: LayoutCanvasElement {
-    /// Returns the controller allowing for fine tuning of the
-    /// device parameter
-    ///
-    /// - Returns: A view controller
-    func getParametersController() -> NSViewController {
-       return parametersController
-    }
-    
     /// Update the position values for the device on the parameters view
     func updatePositionOnParameters() {
-        parametersController.set(position: position)
+        (parametersController as? LayoutDevicePropertiesViewController)?.set(position: position)
     }
 }
 

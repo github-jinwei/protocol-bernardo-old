@@ -10,8 +10,11 @@ import SpriteKit
 import AppKit
 
 protocol LayoutCanvasElement: AnyObject {
+
     /// The element delegate
     var delegate: LayoutCanvasElementDelegate! { get set }
+
+	var position: CGPoint { get set }
 
 
     // /////////////////
@@ -55,7 +58,9 @@ protocol LayoutCanvasElement: AnyObject {
     /// Gives the viewController holding the parameters view for the element
     ///
     /// - Returns:
-    func getParametersController() -> NSViewController
+	var parametersController: NSViewController { get }
+
+	func updatePositionOnParameters() -> Void
     
     /// Tell if the cursor described by the given mouse event falls inside the
     /// device trigger areas
@@ -120,6 +125,25 @@ extension LayoutCanvasElement {
             self.delegate?.elementWillBeRemoved(self)
         }
     }
+
+	/// Translate the node by the amount specified by the given MouseDragged event
+	///
+	/// - Parameter event:
+	func translateWithEvent(_ event: NSEvent) {
+		let translateAmount: CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
+
+		switch event.keyCode {
+		case Keycode.upArrow: position.y += translateAmount
+		case Keycode.downArrow: position.y -= translateAmount
+		case Keycode.rightArrow: position.x += translateAmount
+		case Keycode.leftArrow: position.x -= translateAmount
+		default: break
+		}
+
+		updatePositionOnParameters()
+
+		delegate?.elementDidChange(self)
+	}
 }
 
 // MARK: - Useful methods

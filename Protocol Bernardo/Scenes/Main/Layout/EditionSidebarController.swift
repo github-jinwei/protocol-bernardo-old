@@ -80,7 +80,7 @@ extension EditionSidebarController: LayoutCanvasDelegate {
             clear()
         }
         
-        let elementParametersView: NSViewController = element.getParametersController()
+        let elementParametersView: NSViewController = element.parametersController
         elementParametersView.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(elementParametersView)
         parametersViewHolder.addSubview(elementParametersView.view)
