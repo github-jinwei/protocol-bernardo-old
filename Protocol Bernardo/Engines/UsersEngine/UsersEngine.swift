@@ -158,6 +158,7 @@ extension UsersEngine: PositionAcquisitionEngineObserver {
                 for obs in observers {
                     obs.userEngine(self, mergedUser: toMerge, inUser: recipient)
                 }
+				App.logs?.insert(message: "Merged user \(toMerge.uuid) in \(recipient.uuid)", prefix: "UsersEngine")
             }
         }
     }
@@ -175,6 +176,7 @@ extension UsersEngine: PositionAcquisitionEngineObserver {
             for obs in observers {
                 obs.userEngine(self, user: user, physicUpdated: user.latestPhysic)
             }
+			App.logs?.insert(message: "User \(user.uuid)'s position updated", prefix: "UsersEngine")
         }
     }
 
@@ -194,6 +196,7 @@ extension UsersEngine: PositionAcquisitionEngineObserver {
         for obs in observers {
             obs.userEngine(self, startedTrackingUser: user)
         }
+		App.logs?.insert(message: "Tracking new user \(user.uuid)", prefix: "UsersEngine")
     }
     
     /// Check if a physic needs to be removed from the specified user
@@ -215,6 +218,7 @@ extension UsersEngine: PositionAcquisitionEngineObserver {
             for obs in observers {
                 obs.userEngine(self, stoppedTrackingUser: user)
             }
+			App.logs?.insert(message: "Stopped tracking user \(user.uuid)", prefix: "UsersEngine")
         }
     }
 

@@ -201,12 +201,13 @@ PAEStatusCollection * PositionAcquisitionEngine::getStatus() {
     for (std::pair<std::string, PhysicalDevice *> deviceReference : _devices) {
         PhysicalDevice * device = deviceReference.second;
         status->connectedDevices[i] = device->getStatus();
-        ++i;
 
 		// And present the device view if needed
 		if(_liveView) {
 			_viewer->presentView(&(status->connectedDevices[i]), device->getColorFrame());
 		}
+		
+		++i;
     }
 
     // Emit the status if needed

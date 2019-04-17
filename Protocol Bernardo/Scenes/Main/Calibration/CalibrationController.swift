@@ -148,7 +148,7 @@ extension CalibrationController {
         var list: [String: Bool] = [:]
 
         // Insert all the connected devices
-        for device in layout.devices {
+        for device in layout .devices {
             list[device.name] = true
         }
 

@@ -170,6 +170,12 @@
                                                 <action selector="showHomeWindow:" target="Ict-FC-ORh" id="SEQ-Ic-AU1"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Logs" keyEquivalent="0" id="WYb-ZW-uZH">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="showlogsWindow:" target="Ict-FC-ORh" id="uO2-Xa-5mm"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="U1h-pm-HVS"/>
                                         <menuItem title="Bring All to Front" id="phg-ht-HAa">
                                             <modifierMask key="keyEquivalentModifierMask"/>

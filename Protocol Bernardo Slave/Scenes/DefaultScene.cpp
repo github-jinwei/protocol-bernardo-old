@@ -20,10 +20,13 @@ DefaultScene::DefaultScene(const int argc, const char * argv[]) {
 	}
 
 	if(argc >= 4) {
-		_isSecure = std::string(argv[3]) == "secure";
+		if(std::string(argv[3]) == "liveview") {
+			App->pae->enableLiveView();
+		}
 	}
 
 	// Open the connection
+	App->pae->shouldEmit(true);
 	App->pae->linker()->connect(_ip, _port, _isSecure);
 }
 
@@ -34,7 +37,7 @@ void DefaultScene::sceneWillAppear() {
 
 	// HEADER
 	PBPoint pos = PBPoint(2, 1);
-	PBLabel * titleLabel = new PBLabel("P R O T O C O L   B E R N A R D O", pos);
+	PBLabel * titleLabel = new PBLabel("P R O T O C O L   B E R N A R D O   S L A V E", pos);
 	titleLabel->isBold = true;
 	getView()->addSubview(titleLabel);
 
@@ -43,7 +46,7 @@ void DefaultScene::sceneWillAppear() {
 
 	// INFO BOXs
 
-	pos = PBPoint(8, 7);
+	pos = PBPoint(8, 9);
 	PBBox * devicesBox = new PBBox(PBFrame(pos, 15, 5));
 
 	_devicesCountLabel = new PBLabel("0", PBPoint(7, 2));
@@ -93,6 +96,15 @@ void DefaultScene::sceneWillAppear() {
 	_serverStatusLabel = new PBLabel("-", serverLabel->getFrame().getPosition() + PBPoint((int)serverLabel->getTitle().size() + 2, 0));
 	_serverStatusLabel->isBold = true;
 	getView()->addSubview(_serverStatusLabel);
+
+	// Get the machine hostname
+	char hostname[_POSIX_HOST_NAME_MAX + 1];
+	hostname[_POSIX_HOST_NAME_MAX] = '\0';
+	gethostname(hostname, _POSIX_HOST_NAME_MAX);
+
+	PBLabel * machineNameLabel = new PBLabel(hostname, PBPoint(nC::getWindowWidth() - 2, nC::getWindowHeight() - 2));
+	machineNameLabel->alignement = PBLabel::LABEL_ALIGN_RIGHT;
+	getView()->addSubview(machineNameLabel);
 
 	App->pae->start();
 }

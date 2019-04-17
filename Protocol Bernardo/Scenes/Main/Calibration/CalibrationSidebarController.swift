@@ -89,10 +89,6 @@ class CalibrationSidebarController: NSViewController, DocumentHandlerSidebar {
     
     /// User position registered on the previous frame on the device being calibrated
     var calibrationController = CalibrationController()
-
-	deinit {
-		document.removeObserver(self)
-	}
 }
 
 
@@ -103,6 +99,8 @@ extension CalibrationSidebarController {
 		document.layoutView.delegate = self
 
 		canvas(layoutView, selectionChanged: layoutView.selectedNode)
+
+		profileUpdated(profile)
 	}
 
 	@IBAction func selectCalibrationProfile(_ sender: Any?) {
@@ -112,16 +110,18 @@ extension CalibrationSidebarController {
 
 extension CalibrationSidebarController: LayoutDocumentObserver {
 	func layout(_: LayoutDocument, calibrationProfileDidChanged profile: LayoutCalibrationProfile?) {
-		profileUpdated(profile: profile)
+		profileUpdated(profile)
 	}
 
-	func profileUpdated(profile: LayoutCalibrationProfile?) {
-		guard let profile = profile else {
+	func profileUpdated(_ newProfile: LayoutCalibrationProfile?) {
+		guard let profile = newProfile else {
 			profileNameField.stringValue = "No Profile"
 			calibrationController.set(calibrationProfile: nil)
 			clearAndDisableAll()
 			return
 		}
+
+		self.profile = profile
 
 		// Set the profile calibration name
 		profileNameField.stringValue = profile.name.capitalized

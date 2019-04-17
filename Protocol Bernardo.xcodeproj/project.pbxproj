@@ -82,6 +82,15 @@
 		39757D9D2220902400FF6D57 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39757D9C2220902400FF6D57 /* Accelerate.framework */; };
 		39757DA022209F1800FF6D57 /* TrackingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39757D9F22209F1800FF6D57 /* TrackingSession.swift */; };
 		39757DA52221B66900FF6D57 /* .jazzy.json in Resources */ = {isa = PBXBuildFile; fileRef = 39757DA42221B66900FF6D57 /* .jazzy.json */; };
+		3976323D22654DAE00722F7F /* libNiTE2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B645321FD321800A71E58 /* libNiTE2.dylib */; };
+		3976323E22654DAE00722F7F /* NiTE.ini in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B646121FD321800A71E58 /* NiTE.ini */; };
+		3976323F22654DAE00722F7F /* NiTE2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B648421FD322700A71E58 /* NiTE2 */; };
+		3976324022654DAE00722F7F /* libfreenect2-openni2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B646B21FD321800A71E58 /* libfreenect2-openni2.0.dylib */; };
+		3976324122654DAE00722F7F /* libOpenNI2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B645021FD321800A71E58 /* libOpenNI2.dylib */; };
+		3976324222654DAE00722F7F /* OpenNI.ini in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B645121FD321800A71E58 /* OpenNI.ini */; };
+		3976324322654DAE00722F7F /* OpenNI2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 397B648521FD322700A71E58 /* OpenNI2 */; };
+		3976324822678ADD00722F7F /* Logs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3976324722678ADD00722F7F /* Logs.storyboard */; };
+		3976324A22678B8500722F7F /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3976324922678B8500722F7F /* LogsViewController.swift */; };
 		397B648821FD323400A71E58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396DDFCC21F4285200628070 /* Assets.xcassets */; };
 		397B648A21FD324B00A71E58 /* Pods_Protocol_Bernardo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E78B4A9836B469506B318430 /* Pods_Protocol_Bernardo.framework */; };
 		397B648D21FD327600A71E58 /* NiTE2 in Copy OpenNI/NiTE Files */ = {isa = PBXBuildFile; fileRef = 397B648421FD322700A71E58 /* NiTE2 */; };
@@ -194,12 +203,19 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		3908ABC12227210200997684 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				3976323D22654DAE00722F7F /* libNiTE2.dylib in CopyFiles */,
+				3976323E22654DAE00722F7F /* NiTE.ini in CopyFiles */,
+				3976323F22654DAE00722F7F /* NiTE2 in CopyFiles */,
+				3976324022654DAE00722F7F /* libfreenect2-openni2.0.dylib in CopyFiles */,
+				3976324122654DAE00722F7F /* libOpenNI2.dylib in CopyFiles */,
+				3976324222654DAE00722F7F /* OpenNI.ini in CopyFiles */,
+				3976324322654DAE00722F7F /* OpenNI2 in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3968FCC521FB5829005EAA4C /* Copy NiTE Files */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -331,6 +347,8 @@
 		39757D9C2220902400FF6D57 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		39757D9F22209F1800FF6D57 /* TrackingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSession.swift; sourceTree = "<group>"; };
 		39757DA42221B66900FF6D57 /* .jazzy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .jazzy.json; sourceTree = "<group>"; };
+		3976324722678ADD00722F7F /* Logs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Logs.storyboard; sourceTree = "<group>"; };
+		3976324922678B8500722F7F /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		397B63EC21FD2AE000A71E58 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		397B645021FD321800A71E58 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libOpenNI2.dylib; sourceTree = "<group>"; };
 		397B645121FD321800A71E58 /* OpenNI.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OpenNI.ini; sourceTree = "<group>"; };
@@ -758,9 +776,10 @@
 		396DDFE621F42A2300628070 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3976324622678A3F00722F7F /* Logs */,
 				396780F42254EF9F006784DE /* Home */,
 				397194D12253D9E800F46564 /* Main */,
-				39B6C5392240904C00B97C31 /* Prototype Alpha */,
+				39B6C5392240904C00B97C31 /* Prototype */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -825,6 +844,15 @@
 				39DACC33220F663F002E97F8 /* LayoutCanvasUser.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		3976324622678A3F00722F7F /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+				3976324722678ADD00722F7F /* Logs.storyboard */,
+				3976324922678B8500722F7F /* LogsViewController.swift */,
+			);
+			path = Logs;
 			sourceTree = "<group>";
 		};
 		397B644F21FD321800A71E58 /* Libs */ = {
@@ -954,7 +982,7 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		39B6C5392240904C00B97C31 /* Prototype Alpha */ = {
+		39B6C5392240904C00B97C31 /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
 				39B6C53A2240905F00B97C31 /* PrototypeAlpha.swift */,
@@ -962,7 +990,7 @@
 				39B6C53E224094D200B97C31 /* TCPSocket.swift */,
 				390F89CD224694E50038BBD7 /* WebSocket.swift */,
 			);
-			path = "Prototype Alpha";
+			path = Prototype;
 			sourceTree = "<group>";
 		};
 		39C97BEF22564B0A00E93EC9 /* Calibration */ = {
@@ -1215,6 +1243,7 @@
 				39388AFA2259187500F4AEB2 /* CalibrationProfileManager.xib in Resources */,
 				397B648821FD323400A71E58 /* Assets.xcassets in Resources */,
 				39C97BF122564B1700E93EC9 /* Calibration.xib in Resources */,
+				3976324822678ADD00722F7F /* Logs.storyboard in Resources */,
 				3915BFA52219EFF500E80ABE /* Core.storyboard in Resources */,
 				396780F62254F222006784DE /* Home.storyboard in Resources */,
 				39C97BEC22558C6000E93EC9 /* devices-file-icon.icns in Resources */,
@@ -1467,6 +1496,7 @@
 				397194D52253E9A800F46564 /* SidebarController.swift in Sources */,
 				39DACC20220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift in Sources */,
 				39AF88AD21F4CF7E00A68993 /* App.swift in Sources */,
+				3976324A22678B8500722F7F /* LogsViewController.swift in Sources */,
 				39AF88AF21F4D02100A68993 /* Core.swift in Sources */,
 				39B5576222000FC70021BFDA /* NSColor.swift in Sources */,
 				396DDFC921F4285000628070 /* AppDelegate.swift in Sources */,

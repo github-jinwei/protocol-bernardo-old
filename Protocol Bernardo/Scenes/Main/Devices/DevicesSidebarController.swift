@@ -74,7 +74,7 @@ extension DevicesSidebarController: PositionAcquisitionEngineObserver {
 
 			for device in machine.devices {
 				if let deviceView = devicesCellView[device.value.serial] {
-					deviceView.state = device.value.state
+					deviceView.update(status: device.value)
 					continue
 				}
 
@@ -128,7 +128,7 @@ extension DevicesSidebarController: NSOutlineViewDataSource {
 			return 14
 		}
 
-		return 44
+		return 64
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {

@@ -28,4 +28,24 @@ class Core {
 	func hideHomeWindow() {
 		homeWindow?.close()
 	}
+
+
+	private weak var logsWindow: NSWindowController?
+
+	func registerLogsWindow(_ window: NSWindowController) {
+		logsWindow = window
+	}
+
+	/// Display the welcome window
+	func showLogsWindow() {
+		if logsWindow == nil {
+			logsWindow = NSStoryboard(name: "Logs", bundle: nil).instantiateInitialController() as? NSWindowController
+		}
+
+		logsWindow?.showWindow(nil)
+	}
+
+	func hideLogsWindow() {
+		logsWindow?.close()
+	}
 }

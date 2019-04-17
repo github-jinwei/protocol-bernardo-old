@@ -105,6 +105,8 @@ extension LayoutDocument {
     func makeCalibrationProfile(withName name: String) -> LayoutCalibrationProfile {
         calibrationsProfiles[name] = LayoutCalibrationProfile(name: name)
         markAsEdited()
+
+		App.logs?.insert(message: "New calibration profile `\(name)` added", prefix: "Layout")
         
         return calibrationsProfiles[name]!
     }
@@ -117,6 +119,8 @@ extension LayoutDocument {
 		calibrationsProfiles.removeValue(forKey: name)
 
 		markAsEdited()
+
+		App.logs?.insert(message: "Calibration profile `name` removed", prefix: "Layout")
 	}
 
 	func set(calibrationProfile profileName: String?) {
@@ -132,6 +136,8 @@ extension LayoutDocument {
 
 		layout.profile = profileName
 		profile = selectedProfile
+
+		App.logs?.insert(message: "Calibration profile changed to `\(profileName)`", prefix: "Layout")
 	}
 }
 
@@ -156,6 +162,8 @@ extension LayoutDocument {
 
         markAsEdited()
 
+		App.logs?.insert(message: "New tracking session `\(name)` added", prefix: "Layout")
+
         return openedTrackingSession!
     }
 
@@ -174,6 +182,8 @@ extension LayoutDocument {
         openedTrackingSession = TrackingSession(wrapper: trackingSessions[name]!)
 
         markAsEdited()
+
+		App.logs?.insert(message: "Tracking session `\(name)` opened", prefix: "Layout")
 
         return openedTrackingSession!
     }

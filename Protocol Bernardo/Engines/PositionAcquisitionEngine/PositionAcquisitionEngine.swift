@@ -120,6 +120,8 @@ extension PositionAcquisitionEngine {
                                      queue: DispatchQueue.global(qos: .utility),
                                      observer: self.fetchStatus)
         statusFetcherLoop?.start()
+
+		App.logs?.insert(message: "Engine started", prefix: "PAE")
     }
 
 	/// End any tracking task and disconnect properly from every device
@@ -179,6 +181,8 @@ extension PositionAcquisitionEngine {
         // Get the engine status
         let statusPointer = PAEGetStatus()
 
+		App.logs?.insert(message: "Status updated. Dispatching...", prefix: "PAE")
+
         // Copy informations from the status pointer to our own struct
         machines = statusPointer!.pointee.copyAndDeallocate()
 
@@ -217,6 +221,8 @@ extension PositionAcquisitionEngine {
     /// - Parameter deviceSerial: The serial of the device
     func connect(toDevice deviceSerial: Serial) {
         PAEConnectToDevice(deviceSerial.CString())
+
+		App.logs?.insert(message: "Device `\(deviceSerial)` connected", prefix: "PAE")
     }
 
     /// Tries to activate the device and starte collecting data
@@ -224,6 +230,8 @@ extension PositionAcquisitionEngine {
     /// - Parameter deviceSerial: The serial of the device
     func activate(device deviceSerial: Serial) {
         PAESetDeviceActive(deviceSerial.CString())
+
+		App.logs?.insert(message: "Device `\(deviceSerial)` activated", prefix: "PAE")
     }
 
     /// Pause data acquisition from the device. It still possible to resume it
@@ -232,5 +240,7 @@ extension PositionAcquisitionEngine {
     /// - Parameter deviceSerial: The device's serial
     func pause(device deviceSerial: Serial) {
         PAESetDeviceIdle(deviceSerial.CString())
+
+		App.logs?.insert(message: "Device `\(deviceSerial)` paused", prefix: "PAE")
     }
 }

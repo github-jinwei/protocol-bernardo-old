@@ -41,7 +41,7 @@ extension LayoutDocument {
 			rootDir.addFileWrapper(wrapper)
 		}
 
-//		updateChangeCount(.changeCleared)
+		App.logs?.insert(message: "Layout `\(self.displayName)` saved", prefix: "Layout")
 
 		return rootDir
 	}

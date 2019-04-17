@@ -125,6 +125,10 @@ public:
 	 */
 	PAEStatusCollection * getStatus();
 
+	inline PhysicalDevice * getDevice(const std::string &serial) {
+		return _devices[serial];
+	}
+
 	/**
 	 Free the ressources allocated for the given status.
 

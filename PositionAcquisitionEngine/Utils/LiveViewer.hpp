@@ -18,7 +18,6 @@ struct Skeleton;
 
 class LiveViewer {
 public:
-	LiveViewer();
 
 	/**
 	 Display the tracked skeleton of the given device on the given frame.
@@ -70,9 +69,6 @@ private:
 	 @param rgbFrame The receiving frame
 	 */
 	void insertSkeleton(const ::Skeleton * skeleton, cv::Mat &frame) const;
-
-	/** The tracker used to convert depth coordinates */
-	nite::UserTracker _tracker;
 };
 
 #endif /* LiveViewer_hpp */

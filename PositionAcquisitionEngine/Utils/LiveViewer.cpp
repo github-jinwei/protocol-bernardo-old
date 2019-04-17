@@ -12,10 +12,6 @@
 #include "../Structs/PhysicalUser.h"
 #include "../Structs/Skeleton.h"
 
-LiveViewer::LiveViewer() {
-	_tracker.create();
-}
-
 void LiveViewer::presentView(const PAEDeviceStatus * device, const openni::VideoFrameRef * rgbFrame) {
 	// Make sure the device is usable
 	if(device == nullptr)

@@ -31,4 +31,7 @@ struct App {
 
 	/// Users engine shortcut
 	static var ue: UsersEngine { return usersEngine }
+
+	/// The logs window
+	static var logs: LogsViewController?
 }

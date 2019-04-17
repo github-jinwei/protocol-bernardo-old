@@ -55,7 +55,7 @@ void PAELinker::connect(const std::string &ip, const std::string &port, const bo
     });
 
     _socket->socket()->on("paeState", [this] (const sio::event &event) {
-        onPaeStateReceived(event);
+        onReceived(event);
     });
 }
 
@@ -145,13 +145,6 @@ void PAELinker::onReceived(const sio::event &event) {
 }
 
 void PAELinker::onPaeStateReceived(const sio::event &event) {
-    // Do nothing if we are not supposed to receive data
-    if(!_isReceiver) { return; }
-
-	std::string messageName = event.get_name();
-
-	if(messageName == "paeState") {
-
 	// Lock the pae to prevent any race conditions
 	_receiverLock.lock();
 

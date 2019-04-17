@@ -30,6 +30,7 @@ class LayoutEngine {
         guard let fileURL = openPanel.url else { return }
 
         openLayout(at: fileURL)
+		App.logs?.insert(message: "Layout opened", prefix: "LayoutEngine")
     }
     
     /// Open the pblayout at the given url
