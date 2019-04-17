@@ -116,19 +116,18 @@ class LayoutCanvasDevice: SKNode {
     /// Tell is the device is currently selected
     internal var isSelected: Bool = false {
         didSet {
-            isCalibrating = false
             liveDeltas = nil
         }
     }
 
     /// Tell if the device is currently being calibrated
-    public var isCalibrating: Bool = false
+	public var isCalibrating: Bool {
+		return liveDeltas != nil
+	}
 
     /// Live deltas, used when the device is calibrating
     public var liveDeltas: CalibrationDeltas? {
         didSet {
-            isCalibrating = liveDeltas != nil
-
             if liveDeltas != nil {
                 // Update the calibrated center circle position
                 calibratedCenterCircle.position.x = CGFloat(liveDeltas!.xPosition) / 10.0
@@ -240,7 +239,7 @@ extension LayoutCanvasDevice {
 extension LayoutCanvasDevice {
     /// Called by the layout layoutView on each render frame
     func update() {
-        // Do nothing if the game is calibrating
+        // Do nothing if the device is calibrating
         if isCalibrating {
             return
         }
@@ -309,25 +308,6 @@ extension LayoutCanvasDevice {
             }
         default: break
         }
-    }
-    
-    /// Translate the node by the amount specified by the given MouseDragged event
-    ///
-    /// - Parameter event:
-    internal func translateWithEvent(_ event: NSEvent) {
-        let translateAmount: CGFloat = 1 * (event.modifierFlags.contains(.shift) ? 10 : 1)
-        
-        switch event.keyCode {
-        case Keycode.upArrow: position.y += translateAmount
-        case Keycode.downArrow: position.y -= translateAmount
-        case Keycode.rightArrow: position.x += translateAmount
-        case Keycode.leftArrow: position.x -= translateAmount
-        default: break
-        }
-        
-        updatePositionOnParameters()
-        
-        delegate?.elementDidChange(self)
     }
 }
 

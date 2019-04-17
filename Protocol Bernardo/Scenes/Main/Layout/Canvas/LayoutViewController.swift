@@ -50,10 +50,10 @@ class LayoutViewController: NSViewController {
     var usersLayer: SKNode { return scene.childNode(withName: "root/usersLayer")! }
     
     // List of all the frontElements nodes in the scene
-    var frontElements = [LayoutCanvasDevice]()
+    private(set) var frontElements = [LayoutCanvasDevice]()
     
     // List of all the backElementlements nodes in the scene
-    var backElements = [LayoutCanvasElement]()
+    private(set) var backElements = [LayoutCanvasElement]()
     
     /// The currently selected node, might be null
     var selectedNode: LayoutCanvasElement? {
@@ -125,15 +125,7 @@ extension LayoutViewController {
 extension LayoutViewController {
     /// Creates a new node for a new device and insert it in the layout
     func createDevice() {
-        let deviceNode = LayoutCanvasDevice(onCanvas: self,
-                                            forDevice: layout.createDevice())
-        deviceNode.delegate = self
-        frontElements.append(deviceNode)
-        
-        selectedNode = deviceNode
-
-		document.markAsEdited()
-		delegate?.canvas(self, didChange: document)
+		createNodeForExistingDevice(layout.createDevice())
     }
     
     /// Create the node for an existing device
@@ -153,15 +145,7 @@ extension LayoutViewController {
     
     /// Creates a new node for a new device and insert it in the layotu
     func createLine() {
-        let lineNode = LayoutCanvasLine(onCanvas: self,
-                                          forLine: layout.createLine())
-        lineNode.delegate = self
-        backElements.append(lineNode)
-        
-        selectedNode = lineNode
-
-		document.markAsEdited()
-		delegate?.canvas(self, didChange: document)
+		createNodeForExistingLine(layout.createLine())
     }
     
     /// Create the node for an existing device
