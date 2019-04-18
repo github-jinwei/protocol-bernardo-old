@@ -32,4 +32,13 @@ extension String {
         // Merge and return the rest
         return String(components.joined(separator: "."))
     }
+
+	static func fromCString<T>(_ cStr: T) -> String {
+		var temp = cStr
+		return withUnsafePointer(to: &temp) {
+			$0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: cStr)) {
+				String(cString: $0)
+			}
+		}
+	}
 }

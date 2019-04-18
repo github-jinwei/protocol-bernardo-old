@@ -17,22 +17,12 @@ import Foundation
 extension PAEDeviceStatus {
     /// The device's serial
     var serial: Serial {
-        var temp = deviceSerial
-        return withUnsafePointer(to: &temp) {
-            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: deviceSerial)) {
-                String(cString: $0)
-            }
-        }
+		return String.fromCString(deviceSerial)
     }
 
     /// The device's name
     var name: String {
-        var temp = deviceName
-        return withUnsafePointer(to: &temp) {
-            $0.withMemoryRebound(to: UInt8.self, capacity: MemoryLayout.size(ofValue: deviceName)) {
-                String(cString: $0)
-            }
-        }
+		return String.fromCString(deviceName)
     }
     
     // List all the users in a Swift friendly format
