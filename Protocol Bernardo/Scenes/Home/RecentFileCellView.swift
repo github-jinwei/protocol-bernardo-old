@@ -14,8 +14,4 @@ class RecentFileCellView: NSTableCellView {
 	@IBOutlet weak var filepathLabel: NSTextField!
 
 	var fileURL: URL!
-
-	@IBAction func openFile(_ sender: Any) {
-		App.layoutEngine.openLayout(at: fileURL)
-	}
 }

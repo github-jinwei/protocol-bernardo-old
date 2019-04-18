@@ -229,13 +229,6 @@
                                                                         <constraint firstItem="9ND-ar-haP" firstAttribute="leading" secondItem="Oth-Cs-SFi" secondAttribute="trailing" constant="10" id="ggv-h2-fkc"/>
                                                                         <constraint firstItem="9ND-ar-haP" firstAttribute="centerY" secondItem="Oth-Cs-SFi" secondAttribute="centerY" id="x40-zy-GL1"/>
                                                                     </constraints>
-                                                                    <gestureRecognizers>
-                                                                        <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="2" id="bmZ-FQ-XwY">
-                                                                            <connections>
-                                                                                <action selector="openFile:" target="2Dp-Ru-jdf" id="s4A-S2-WeJ"/>
-                                                                            </connections>
-                                                                        </clickGestureRecognizer>
-                                                                    </gestureRecognizers>
                                                                     <connections>
                                                                         <outlet property="fileIcon" destination="Oth-Cs-SFi" id="vI7-TV-Qv6"/>
                                                                         <outlet property="filenameLabel" destination="V3Z-Dg-kIp" id="LOJ-iQ-S9E"/>
@@ -246,6 +239,7 @@
                                                         </tableColumn>
                                                     </tableColumns>
                                                     <connections>
+                                                        <action trigger="doubleAction" selector="doubleClick:" target="25V-Av-JpP" id="yfE-EQ-wlO"/>
                                                         <outlet property="dataSource" destination="25V-Av-JpP" id="zkt-XD-arl"/>
                                                         <outlet property="delegate" destination="25V-Av-JpP" id="Uoc-kF-gE7"/>
                                                     </connections>

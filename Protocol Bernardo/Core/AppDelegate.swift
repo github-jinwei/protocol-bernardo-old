@@ -12,9 +12,13 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-		App.core.showLogsWindow()
-        App.core.showHomeWindow()
     }
+
+	func applicationDidBecomeActive(_ notification: Notification) {
+		if App.layoutEngine.documentsController.documents.count == 0 {
+			App.core.showHomeWindow()
+		}
+	}
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
         let url = URL(fileURLWithPath: filename)

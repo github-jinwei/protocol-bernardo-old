@@ -93,6 +93,14 @@ extension LayoutDocument {
         addWindowController(window)
     }
 
+	override func close() {
+		super.close()
+
+		if App.layoutEngine.documentsController.documents.count == 0 {
+			App.core.showHomeWindow()
+		}
+	}
+
 }
 
 // ///////////////////
@@ -136,6 +144,10 @@ extension LayoutDocument {
 
 		layout.profile = profileName
 		profile = selectedProfile
+
+		for obs in observers {
+			obs.layout(self, calibrationProfileDidChanged: profile)
+		}
 
 		App.logs?.insert(message: "Calibration profile changed to `\(profileName)`", prefix: "Layout")
 	}

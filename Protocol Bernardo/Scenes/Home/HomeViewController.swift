@@ -31,8 +31,17 @@ class HomeViewController: NSViewController {
 
 		if let fileURL = recentFilesList.item(atRow: recentFilesList.selectedRow) as? URL {
 			App.layoutEngine.openLayout(at: fileURL)
+			App.core.hideHomeWindow()
 		}
 	}
+
+	@IBAction func doubleClick(_ sender: NSOutlineView) {
+		if let fileURL = recentFilesList.item(atRow: sender.clickedRow) as? URL {
+			App.layoutEngine.openLayout(at: fileURL)
+			App.core.hideHomeWindow()
+		}
+	}
+
 }
 
 extension HomeViewController: NSOutlineViewDataSource {

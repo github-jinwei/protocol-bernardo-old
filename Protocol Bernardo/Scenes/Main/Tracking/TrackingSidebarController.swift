@@ -11,7 +11,14 @@ import AppKit
 class TrackingSidebarController: NSViewController, DocumentHandlerSidebar {
 
     /// Reference to the Layout Document
-    weak var document: LayoutDocument!
+	weak var document: LayoutDocument! {
+		didSet {
+			guard document != nil else { return }
+
+			document.addObserver(self)
+			layout(document, calibrationProfileDidChanged: document.profile)
+		}
+	}
 
     /// Reference to the calibration profile
 	weak var profile: LayoutCalibrationProfile? {
@@ -74,6 +81,25 @@ extension TrackingSidebarController {
 
 	@IBAction func selectCalibrationProfile(_ sender: Any?) {
 		CalibrationProfileManager.open(fromController: self, withLayout: document!)
+	}
+}
+
+extension TrackingSidebarController: LayoutDocumentObserver {
+	func layout(_: LayoutDocument, calibrationProfileDidChanged profile: LayoutCalibrationProfile?) {
+		profileUpdated(profile)
+	}
+
+	func profileUpdated(_ newProfile: LayoutCalibrationProfile?) {
+		guard let profile = newProfile else {
+			profileNameField.stringValue = "No Profile"
+			resetAll()
+			return
+		}
+
+		self.profile = profile
+
+		// Set the profile calibration name
+		profileNameField.stringValue = profile.name.capitalized
 	}
 }
 
