@@ -16,8 +16,8 @@ class TrackingSession {
     /// Tell if the session is active
     var isTracking: Bool = false
 
-    /// Reference to the layout document
-    weak var document: LayoutDocument?
+	/// The session delegate
+	weak var delegate: TrackingSessionDelegate?
 
     /// All the users tracked by this session
     private var trackedUsers = [TrackedUser]()
@@ -94,6 +94,14 @@ extension TrackingSession {
 
         return wrapper
     }
+
+	var usersTrackedCount: Int {
+		return existingTrackings.count
+	}
+
+	var usersActivelyTrackedCount: Int {
+		return existingTrackings.count
+	}
 }
 
 // MARK: - UsersEngineDelegate
@@ -102,7 +110,8 @@ extension TrackingSession: UsersEngineDelegate {
         guard isTracking else { return }
 
         trackedUsers.append(TrackedUser(forUser: user))
-        document?.markAsEdited()
+
+		delegate?.sessionDidUpdate(self)
     }
 
     func userEngine(_: UsersEngine, user: User, physicUpdated physic: PhysicalUser) {
@@ -111,7 +120,8 @@ extension TrackingSession: UsersEngineDelegate {
         guard let trackedUser = trackedUser(forUser: user) else { return }
 
         trackedUser.add(physic: physic)
-        document?.markAsEdited()
+
+		delegate?.sessionDidUpdate(self)
     }
 
     func userEngine(_: UsersEngine, mergedUser: User, inUser _: User) {
@@ -119,7 +129,8 @@ extension TrackingSession: UsersEngineDelegate {
 
         // In case of a merging, we discard the merged user and keep only the second one
         trackedUsers.removeAll(where: { $0.user === mergedUser })
-        document?.markAsEdited()
+
+		delegate?.sessionDidUpdate(self)
     }
 
 
@@ -127,8 +138,7 @@ extension TrackingSession: UsersEngineDelegate {
         guard let trackedUser = trackedUser(forUser: user) else { return }
 
         // We will not be tracking this user again, write its file
-        document?.markAsEdited()
-        document?.save(nil)
+		delegate?.session(self, stoppedTrackingUser: user)
 
         // Store the user wrapper
         existingTrackings[trackedUser.fileName] = trackedUser.wrapper

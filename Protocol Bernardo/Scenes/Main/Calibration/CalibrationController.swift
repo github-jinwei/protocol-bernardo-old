@@ -24,10 +24,10 @@ class CalibrationController {
     // MARK: - Calibration Properties
 
     /// Calibration profile used by the controller
-    private var calibrationProfile: LayoutCalibrationProfile?
+    private weak var calibrationProfile: LayoutCalibrationProfile?
 
     /// Device Calibration Profile for the selected layout device
-    private var deviceProfile: DeviceCalibrationProfile?
+    private weak var deviceProfile: DeviceCalibrationProfile?
 
     /// The latest deltas available
     private var latestDeltas: CalibrationDeltas?
@@ -38,10 +38,6 @@ class CalibrationController {
 
     init() {
 		App.pae.addObserver(self)
-    }
-
-    deinit {
-        App.pae.removeObserver(self)
     }
 }
 
@@ -203,34 +199,24 @@ extension CalibrationController {
 extension CalibrationController: PositionAcquisitionEngineObserver {
     func pae(_ pae: PositionAcquisitionEngine, statusUpdated connectedDevices: [AcquisitionMachine]) {
         // Propagate the values to the delegate
-        delegate?.calibration(self, physicalDeviceStateChanged: physicalDeviceState)
-        delegate?.calibration(self, referenceDeviceStateChanged: referenceDeviceState)
+        delegate?.calibration(self, physicalDeviceStateChanged: getDeviceState(self.deviceSerial))
+        delegate?.calibration(self, referenceDeviceStateChanged: getDeviceState(self.referenceSerial))
 
         // And calculate the deltas if possible
         calculateDeltas()
     }
 
-    /// Give the latest state of the selected physical device
-    ///
-    /// - Parameter connectedDevices: Connected devices from the pae
-    var physicalDeviceState: DeviceState {
-        guard let deviceSerial = self.deviceSerial else { return DEVICE_UNKNOWN }
+	/// Gives the latest state of the specified device
+	///
+	/// - Parameter serial: The device's serial
+	/// - Returns: The device's state
+	private func getDeviceState(_ serial: Serial?) -> DeviceState {
+		guard let deviceSerial = serial else { return DEVICE_UNKNOWN }
 
-        guard let physicalDevice = App.pae.devices[deviceSerial] else { return DEVICE_UNKNOWN }
+		guard let physicalDevice = App.pae.devices[deviceSerial] else { return DEVICE_UNKNOWN }
 
-        return physicalDevice.state
-    }
-
-    /// Give the latest state of the selected reference device
-    ///
-    /// - Parameter connectedDevices: Connected devices from the pae
-    var referenceDeviceState: DeviceState {
-        guard let deviceSerial = self.referenceSerial else { return DEVICE_UNKNOWN }
-
-        guard let physicalDevice = App.pae.devices[deviceSerial] else { return DEVICE_UNKNOWN }
-
-        return physicalDevice.state
-    }
+		return physicalDevice.state
+	}
 }
 
 
@@ -240,7 +226,7 @@ extension CalibrationController: PositionAcquisitionEngineObserver {
 extension CalibrationController {
     private func calculateDeltas() {
         // Deltas can only be caclulated if the two devices are active
-        guard physicalDeviceState == DEVICE_ACTIVE && referenceDeviceState == DEVICE_ACTIVE else {
+        guard getDeviceState(self.deviceSerial) == DEVICE_ACTIVE && getDeviceState(self.referenceSerial) == DEVICE_ACTIVE else {
             // Tell the delegate there is no calibration tracking
             delegate?.calibration(self, liveDeltasUpdated: nil)
             return

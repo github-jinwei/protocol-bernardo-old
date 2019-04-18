@@ -28,7 +28,6 @@ class TrackingSidebarController: NSViewController, DocumentHandlerSidebar {
                 return
             }
 
-            trackingSession?.document = document
 			toggleRecordingButton.isEnabled = (profile != nil && trackingSession != nil)
         }
     }
@@ -172,11 +171,29 @@ extension TrackingSidebarController {
 
         sessionsList.itemArray.first!.isEnabled = false
     }
+
+	func updateCounts() {
+		DispatchQueue.main.async {
+			self.usersTrackedLabel.integerValue = self.trackingSession?.usersActivelyTrackedCount ?? 0
+			self.totalUsersTrackedLabel.integerValue = self.trackingSession?.usersTrackedCount ?? 0
+		}
+	}
 }
 
-// MARK: - LayoutSidebar
-extension TrackingSidebarController: LayoutCanvasDelegate {
-	
+// MARK: - TrackingSessionDelegate
+extension TrackingSidebarController: TrackingSessionDelegate {
+	func sessionDidUpdate(_ session: TrackingSession) {
+		document?.markAsEdited()
+
+		updateCounts()
+	}
+
+	func session(_: TrackingSession, stoppedTrackingUser: User) {
+		document?.markAsEdited()
+		document?.save(self)
+
+		updateCounts()
+	}
 }
 
 extension TrackingSidebarController {

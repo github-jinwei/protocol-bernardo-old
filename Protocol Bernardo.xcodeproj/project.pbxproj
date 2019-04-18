@@ -166,6 +166,7 @@
 		39C97BEE22558D7C00E93EC9 /* animatic-file-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BED22558D7C00E93EC9 /* animatic-file-icon.icns */; };
 		39C97BF122564B1700E93EC9 /* Calibration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39C97BF022564B1700E93EC9 /* Calibration.xib */; };
 		39C97BF522564F2200E93EC9 /* EditionSidebarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C97BF422564F2200E93EC9 /* EditionSidebarController.swift */; };
+		39CCEA1F2268D66900AF35E2 /* TrackingSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CCEA1E2268D66900AF35E2 /* TrackingSessionDelegate.swift */; };
 		39D4944922276AA800E89801 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 397B63EC21FD2AE000A71E58 /* libc++.tbd */; };
 		39D4944D222770CA00E89801 /* PBScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39D4944B222770CA00E89801 /* PBScene.cpp */; };
 		39DACC20220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DACC1F220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift */; };
@@ -434,6 +435,7 @@
 		39C97BED22558D7C00E93EC9 /* animatic-file-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "animatic-file-icon.icns"; sourceTree = "<group>"; };
 		39C97BF022564B1700E93EC9 /* Calibration.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Calibration.xib; sourceTree = "<group>"; };
 		39C97BF422564F2200E93EC9 /* EditionSidebarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionSidebarController.swift; sourceTree = "<group>"; };
+		39CCEA1E2268D66900AF35E2 /* TrackingSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingSessionDelegate.swift; sourceTree = "<group>"; };
 		39D4944B222770CA00E89801 /* PBScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PBScene.cpp; sourceTree = "<group>"; };
 		39D4944C222770CA00E89801 /* PBScene.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PBScene.hpp; sourceTree = "<group>"; };
 		39DACC1F220CCFC5002E97F8 /* PositionAcquisitionEngineObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionAcquisitionEngineObserver.swift; sourceTree = "<group>"; };
@@ -831,6 +833,7 @@
 			isa = PBXGroup;
 			children = (
 				39757D9F22209F1800FF6D57 /* TrackingSession.swift */,
+				39CCEA1E2268D66900AF35E2 /* TrackingSessionDelegate.swift */,
 				39F5F58C2221D48D0035B9C1 /* TrackedUser.swift */,
 			);
 			path = Tracking;
@@ -1449,6 +1452,7 @@
 				39C1E907220A201A00F53AC2 /* LayoutCanvasDelegate.swift in Sources */,
 				3976324C2267B73800722F7F /* LayoutElementPropertiesViewController.swift in Sources */,
 				399E7250225A92AA00163147 /* CalibrationProfileManager.swift in Sources */,
+				39CCEA1F2268D66900AF35E2 /* TrackingSessionDelegate.swift in Sources */,
 				3989EAD522037A1F005CF113 /* LayoutLinePropertiesViewController.swift in Sources */,
 				39C97BF522564F2200E93EC9 /* EditionSidebarController.swift in Sources */,
 				399E7252225BC04A00163147 /* NewCalibrationProfileController.swift in Sources */,
