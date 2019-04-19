@@ -145,6 +145,11 @@ extension LayoutCanvasLine {
         // And insert ourselves
         canvas.backLayer.addChild(self)
     }
+
+	override func keyDown(with event: NSEvent) {
+		keyDownActions(with: event)
+	}
+
     func duplicate() {
         delegate.duplicateLineElement(self)
 //        let newLine = Line(from: line)

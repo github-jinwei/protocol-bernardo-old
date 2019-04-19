@@ -220,7 +220,11 @@ extension LayoutCanvasDevice {
         // And insert ourselves
         canvas.frontLayer.addChild(self)
     }
-    
+
+	override func keyDown(with event: NSEvent) {
+		keyDownActions(with: event)
+	}
+
     /// Tell the delegate to duplicate this layout
     internal func duplicate() {
         delegate?.duplicateDeviceElement(self)

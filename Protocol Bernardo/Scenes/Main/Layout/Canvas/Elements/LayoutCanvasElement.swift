@@ -9,7 +9,7 @@
 import SpriteKit
 import AppKit
 
-protocol LayoutCanvasElement: AnyObject {
+protocol LayoutCanvasElement: SKNode {
 
     /// The element delegate
     var delegate: LayoutCanvasElementDelegate! { get set }
@@ -47,8 +47,8 @@ protocol LayoutCanvasElement: AnyObject {
     /// Allows the element to receive keyDown events
     ///
     /// - Parameter event: a KeyDown event
-    func keyDown(with event: NSEvent)
-    
+//    func keyDown(with event: NSEvent)
+
     /// Allos the user to drag the element around
     ///
     /// - Parameter event:
@@ -148,7 +148,11 @@ extension LayoutCanvasElement {
 		delegate?.elementDidChange(self)
 	}
 
-	func keyDown(with event: NSEvent) {
+	/// Actions to execute when a key is pressed. Provides translation, removal and duplication
+	/// by default
+	///
+	/// - Parameter event: A keydown event
+	func keyDownActions(with event: NSEvent) {
 		// Check with our delegate if we can edit the node
 		guard (delegate?.elementCanBeEdited(self) ?? false) && isSelected else {
 			return
