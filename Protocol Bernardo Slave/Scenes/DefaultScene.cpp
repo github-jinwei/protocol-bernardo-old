@@ -151,6 +151,8 @@ void DefaultScene::sceneWillRender() {
 		}
 	}
 
+	PositionAcquisitionEngine::freeCollection(statusCollection);
+
 	_devicesCountLabel->setTitle(std::to_string(devicesCount));
 	_usersCountLabel->setTitle(std::to_string(usersCount));
 	_trackedUsersCountLabel->setTitle(std::to_string(trackedCount));

@@ -26,7 +26,7 @@ class UsersEngine {
     weak var profile: LayoutCalibrationProfile?
 
 
-	// ///////////////
+	// /////////////// 
 	// MARK: Observers
 
 	/// List of all the observers

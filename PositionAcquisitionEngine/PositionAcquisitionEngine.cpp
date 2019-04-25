@@ -239,6 +239,8 @@ void PositionAcquisitionEngine::freeCollection(PAEStatusCollection * collection)
 		collection->status[i] = nullptr;
 	}
 
+	delete collection->status;
+
 	delete collection;
 	collection = nullptr;
 }

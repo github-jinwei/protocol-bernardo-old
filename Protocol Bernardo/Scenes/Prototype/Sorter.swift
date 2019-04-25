@@ -15,7 +15,7 @@ class Sorter {
     private var isSorted: Bool = true                   // table sorting state
     private let chaosThreshold: Double = 0.2            // probability of shuffling a fully sorted table
 
-    var sortLevel: Float {
+    var sortLevel: Double {
         var goodPlace = 0
 
         for i in 0..<workingTable.count {
@@ -24,7 +24,7 @@ class Sorter {
             }
         }
 
-        return Float(goodPlace) / Float(workingTable.count)
+        return Double(goodPlace) / Double(workingTable.count)
     }
     
     

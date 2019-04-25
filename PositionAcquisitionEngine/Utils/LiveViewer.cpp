@@ -57,7 +57,7 @@ void LiveViewer::endViewer(const std::string &serial) {
 }
 
 cv::Mat LiveViewer::prepareFrame(const openni::VideoFrameRef * rgbFrame) const {
-	if(rgbFrame == nullptr) {
+	if(rgbFrame == nullptr || rgbFrame->getData() == nullptr) {
 		return cv::Mat(512, 424, CV_8UC3, cv::Scalar(0,0,0));
 	}
 

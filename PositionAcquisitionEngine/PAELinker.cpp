@@ -156,6 +156,7 @@ void PAELinker::onPaeStateReceived(const sio::event &event) {
     if(foreignStatus->deviceCount == 0) {
         // No device are attached to the received state, ignore it
         PositionAcquisitionEngine::freeStatus(foreignStatus);
+		return;
     }
 
 	// Get the name of the host of the received status

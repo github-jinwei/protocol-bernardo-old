@@ -48,7 +48,7 @@ extension PAEStatusCollection {
 			machines.append(machine)
 
 			// Free the array
-			devicePointer?.deallocate()
+//			devicePointer?.deallocate()
 
 			if i + 1 < statusCount {
 				machinePointer = machinePointer?.successor()

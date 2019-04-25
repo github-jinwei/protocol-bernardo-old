@@ -27,6 +27,10 @@ class MainMenu: NSMenu {
 		App.core.showHomeWindow()
 	}
 
+	@IBAction func showProtoWindow(_: Any) {
+		App.core.showProtoWindow()
+	}
+
 	@IBAction func showlogsWindow(_: Any) {
 		App.core.showLogsWindow()
 	}

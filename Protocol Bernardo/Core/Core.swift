@@ -30,13 +30,33 @@ class Core {
 	}
 
 
+	private weak var protoWindow: NSWindowController?
+
+	func registerProtoWindow(_ window: NSWindowController) {
+		protoWindow = window
+	}
+
+	/// Display the proto window
+	func showProtoWindow() {
+		if protoWindow == nil {
+			protoWindow = NSStoryboard(name: "Prototype", bundle: nil).instantiateInitialController() as? NSWindowController
+		}
+
+		protoWindow?.showWindow(nil)
+	}
+
+	func hideProtoWindow() {
+		protoWindow?.close()
+	}
+
+
 	private weak var logsWindow: NSWindowController?
 
 	func registerLogsWindow(_ window: NSWindowController) {
 		logsWindow = window
 	}
 
-	/// Display the welcome window
+	/// Display the logs window
 	func showLogsWindow() {
 		if logsWindow == nil {
 			logsWindow = NSStoryboard(name: "Logs", bundle: nil).instantiateInitialController() as? NSWindowController

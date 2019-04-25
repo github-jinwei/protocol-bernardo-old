@@ -170,6 +170,13 @@
                                                 <action selector="showHomeWindow:" target="Ict-FC-ORh" id="SEQ-Ic-AU1"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Prototype" keyEquivalent="2" id="PL2-66-Clx">
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="showProtoWindow:" target="Ict-FC-ORh" id="6Hu-N8-VXo"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="8tH-LW-IXg"/>
                                         <menuItem title="Logs" keyEquivalent="0" id="WYb-ZW-uZH">
                                             <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
                                             <connections>

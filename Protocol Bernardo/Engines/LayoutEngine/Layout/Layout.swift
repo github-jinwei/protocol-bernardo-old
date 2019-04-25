@@ -22,6 +22,12 @@ class Layout: Codable {
     /// The calibration profile selected when closing the profile
     /// Used to restart 
     var profile: String?
+
+	/// Ip of the relay server for the PAE
+	var serverIP: String?
+
+	/// Port of the relay server for the PAE
+	var serverPort: String?
 }
 
 

@@ -149,6 +149,7 @@ extension LayoutDocument {
 			obs.layout(self, calibrationProfileDidChanged: profile)
 		}
 
+		App.usersEngine.profile = profile
 		App.logs?.insert(message: "Calibration profile changed to `\(profileName)`", prefix: "Layout")
 	}
 }

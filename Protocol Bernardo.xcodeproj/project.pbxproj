@@ -49,6 +49,8 @@
 		3920892F222A101A001944DA /* PBHorizontalLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3920892E222A101A001944DA /* PBHorizontalLine.cpp */; };
 		39208932222A1199001944DA /* PBVerticalMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39208930222A1199001944DA /* PBVerticalMenu.cpp */; };
 		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
+		392DDB8422716812005829E5 /* Prototype.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 392DDB8322716812005829E5 /* Prototype.storyboard */; };
+		392DDB862271691C005829E5 /* PrototypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DDB852271691C005829E5 /* PrototypeViewController.swift */; };
 		39379A12220FE496004C3815 /* AcquisitionDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* AcquisitionDevice.swift */; };
 		39388AFA2259187500F4AEB2 /* CalibrationProfileManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */; };
 		393ACD2122150C4500306D60 /* CalibrationSidebarLiveDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */; };
@@ -315,6 +317,8 @@
 		3929605421F7BFF30064B808 /* libopencv_highgui.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.4.0.1.dylib; path = ../../../../../usr/local/Cellar/opencv/4.0.1/lib/libopencv_highgui.4.0.1.dylib; sourceTree = "<group>"; };
 		392960B221F7CFDB0064B808 /* libfreenect2-openni2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libfreenect2-openni2.0.dylib"; path = "../../../../../usr/local/lib/libfreenect2-openni2.0.dylib"; sourceTree = "<group>"; };
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
+		392DDB8322716812005829E5 /* Prototype.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Prototype.storyboard; sourceTree = "<group>"; };
+		392DDB852271691C005829E5 /* PrototypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeViewController.swift; sourceTree = "<group>"; };
 		39379A11220FE496004C3815 /* AcquisitionDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquisitionDevice.swift; sourceTree = "<group>"; };
 		39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalibrationProfileManager.xib; sourceTree = "<group>"; };
 		393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationSidebarLiveDeltas.swift; sourceTree = "<group>"; };
@@ -995,6 +999,8 @@
 				39B6C53C2240907200B97C31 /* Sorter.swift */,
 				39B6C53E224094D200B97C31 /* TCPSocket.swift */,
 				390F89CD224694E50038BBD7 /* WebSocket.swift */,
+				392DDB8322716812005829E5 /* Prototype.storyboard */,
+				392DDB852271691C005829E5 /* PrototypeViewController.swift */,
 			);
 			path = Prototype;
 			sourceTree = "<group>";
@@ -1258,6 +1264,7 @@
 				39C97BEE22558D7C00E93EC9 /* animatic-file-icon.icns in Resources */,
 				397194D32253D9F800F46564 /* Main.storyboard in Resources */,
 				39C97BE8225588FB00E93EC9 /* layout-package-icon.icns in Resources */,
+				392DDB8422716812005829E5 /* Prototype.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1486,6 +1493,7 @@
 				3991244D2254417E00E8C4F4 /* PAEStatus.swift in Sources */,
 				39F5F58D2221D48D0035B9C1 /* TrackedUser.swift in Sources */,
 				3991243B2253FF1900E8C4F4 /* DevicesSidebarController.swift in Sources */,
+				392DDB862271691C005829E5 /* PrototypeViewController.swift in Sources */,
 				397195C4220022F800F92C5C /* Comparable.swift in Sources */,
 				39023F99221F5C21005E2C9F /* Quaternion.swift in Sources */,
 				393ACD252215143400306D60 /* CalibrationControllerDelegate.swift in Sources */,

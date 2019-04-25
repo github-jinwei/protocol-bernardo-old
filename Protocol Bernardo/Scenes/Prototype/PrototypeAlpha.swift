@@ -14,7 +14,7 @@ struct SortingData: Codable {
     var positions: [Int]
     var folder: Int
     var coef: Float
-    var sortLevel: Float
+    var sortLevel: Double
 }
 
 class PrototypeAlpha {
@@ -25,6 +25,8 @@ class PrototypeAlpha {
     let maxDistance: Float = 1000.0 // mm
 
     var socket = Socket()
+
+	weak var view: PrototypeViewController?
 
     init() {
         socket.connect(to: "localhost", port: 5000)
@@ -69,5 +71,7 @@ class PrototypeAlpha {
         encoder.nonConformingFloatEncodingStrategy = .convertToString(positiveInfinity: "1.0", negativeInfinity: "0.0", nan: "0.0")
         let data = try! encoder.encode(dataStruct)
         socket.emit(data: data)
+
+		view?.update(chaosRate: Double(acc), sortLevel: sorter.sortLevel, folder: sorter.folderIndex)
     }
 }
