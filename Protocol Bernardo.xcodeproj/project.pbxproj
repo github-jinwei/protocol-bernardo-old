@@ -51,6 +51,11 @@
 		392183CD22138C5E000D5968 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392183CC22138C5E000D5968 /* Typealias.swift */; };
 		392DDB8422716812005829E5 /* Prototype.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 392DDB8322716812005829E5 /* Prototype.storyboard */; };
 		392DDB862271691C005829E5 /* PrototypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DDB852271691C005829E5 /* PrototypeViewController.swift */; };
+		392DDB8822752753005829E5 /* libboost_system.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 39877C82224C07B60072BF43 /* libboost_system.dylib */; };
+		392DDB91227528E4005829E5 /* libopencv_core.4.0.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 392DDB89227528A8005829E5 /* libopencv_core.4.0.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		392DDB92227528E4005829E5 /* libopencv_highgui.4.0.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 392DDB8C227528A9005829E5 /* libopencv_highgui.4.0.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		392DDB93227528E4005829E5 /* libopencv_imgproc.4.0.1.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 392DDB8B227528A9005829E5 /* libopencv_imgproc.4.0.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		392DDB962275292C005829E5 /* libboost_system.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 392DDB9422752922005829E5 /* libboost_system.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		39379A12220FE496004C3815 /* AcquisitionDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39379A11220FE496004C3815 /* AcquisitionDevice.swift */; };
 		39388AFA2259187500F4AEB2 /* CalibrationProfileManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */; };
 		393ACD2122150C4500306D60 /* CalibrationSidebarLiveDeltas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */; };
@@ -61,7 +66,6 @@
 		394D48BB22529BAD007D34FB /* LiveViewer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 394D48B922529BAD007D34FB /* LiveViewer.hpp */; settings = {ATTRIBUTES = (Private, ); }; };
 		394D48BD22529C69007D34FB /* LiveViewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 394D48BC22529C69007D34FB /* LiveViewer.cpp */; };
 		39615AA6223F3C540077E5CB /* libsioclient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA4223F3BED0077E5CB /* libsioclient.a */; };
-		39615AA9223F3C960077E5CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615AA8223F3C960077E5CB /* libboost_system.a */; };
 		396780F32254EDDD006784DE /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396780F22254EDDD006784DE /* MainWindowController.swift */; };
 		396780F62254F222006784DE /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396780F52254F222006784DE /* Home.storyboard */; };
 		396780F82254FA51006784DE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396780F72254FA51006784DE /* HomeViewController.swift */; };
@@ -255,8 +259,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				392DDB92227528E4005829E5 /* libopencv_highgui.4.0.1.dylib in Embed Libraries */,
+				392DDB93227528E4005829E5 /* libopencv_imgproc.4.0.1.dylib in Embed Libraries */,
 				398F627B2219230D003BFC81 /* libOpenNI2.dylib in Embed Libraries */,
 				398F627922192308003BFC81 /* libNiTE2.dylib in Embed Libraries */,
+				392DDB91227528E4005829E5 /* libopencv_core.4.0.1.dylib in Embed Libraries */,
+				392DDB962275292C005829E5 /* libboost_system.dylib in Embed Libraries */,
 			);
 			name = "Embed Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +327,12 @@
 		392960B521F7D0460064B808 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = "../../../../../usr/local/Cellar/openni2/2.2.0-debian/lib/ni2/libOpenNI2.dylib"; sourceTree = "<group>"; };
 		392DDB8322716812005829E5 /* Prototype.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Prototype.storyboard; sourceTree = "<group>"; };
 		392DDB852271691C005829E5 /* PrototypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeViewController.swift; sourceTree = "<group>"; };
+		392DDB8722752734005829E5 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libboost_system.a; sourceTree = "<group>"; };
+		392DDB89227528A8005829E5 /* libopencv_core.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_core.4.0.1.dylib; sourceTree = "<group>"; };
+		392DDB8A227528A9005829E5 /* libsioclient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libsioclient.a; sourceTree = "<group>"; };
+		392DDB8B227528A9005829E5 /* libopencv_imgproc.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_imgproc.4.0.1.dylib; sourceTree = "<group>"; };
+		392DDB8C227528A9005829E5 /* libopencv_highgui.4.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libopencv_highgui.4.0.1.dylib; sourceTree = "<group>"; };
+		392DDB9422752922005829E5 /* libboost_system.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libboost_system.dylib; sourceTree = "<group>"; };
 		39379A11220FE496004C3815 /* AcquisitionDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquisitionDevice.swift; sourceTree = "<group>"; };
 		39388AF92259187500F4AEB2 /* CalibrationProfileManager.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalibrationProfileManager.xib; sourceTree = "<group>"; };
 		393ACD2022150C4500306D60 /* CalibrationSidebarLiveDeltas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationSidebarLiveDeltas.swift; sourceTree = "<group>"; };
@@ -493,7 +507,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39615AA9223F3C960077E5CB /* libboost_system.a in Frameworks */,
+				392DDB8822752753005829E5 /* libboost_system.dylib in Frameworks */,
 				39615AA6223F3C540077E5CB /* libsioclient.a in Frameworks */,
 				3908ABBA2227201300997684 /* libPAE-MacOS.a in Frameworks */,
 				398F627D22192337003BFC81 /* libOpenNI2.dylib in Frameworks */,
@@ -745,6 +759,7 @@
 		396DDFBC21F4285000628070 = {
 			isa = PBXGroup;
 			children = (
+				392DDB8722752734005829E5 /* libboost_system.a */,
 				397E685C21FE57D700FFA678 /* README.md */,
 				39248283221DF29100DE6015 /* PositionAcquisitionEngine */,
 				3908ABA422271B0D00997684 /* PAE-MacOS */,
@@ -868,6 +883,11 @@
 		397B644F21FD321800A71E58 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				392DDB9422752922005829E5 /* libboost_system.dylib */,
+				392DDB89227528A8005829E5 /* libopencv_core.4.0.1.dylib */,
+				392DDB8C227528A9005829E5 /* libopencv_highgui.4.0.1.dylib */,
+				392DDB8B227528A9005829E5 /* libopencv_imgproc.4.0.1.dylib */,
+				392DDB8A227528A9005829E5 /* libsioclient.a */,
 				3900AE5C221DF64E00A38E26 /* NiTE2 */,
 				3900AE5B221DF63900A38E26 /* OpenNI2 */,
 			);
@@ -1899,6 +1919,7 @@
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
+					"$(PROJECT_DIR)/libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1941,6 +1962,7 @@
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
+					"$(PROJECT_DIR)/libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2053,6 +2075,7 @@
 					/usr/local/Cellar/opencv/4.0.1/lib,
 					/usr/local/lib,
 					/usr/local/Cellar/boost/1.68.0_1/lib,
+					"$(PROJECT_DIR)/libs",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "prisme.protocol-bernardo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

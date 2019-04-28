@@ -91,9 +91,9 @@ sio::message::ptr jointToSioMessage(const Joint * j) {
     sio::object_message * m = static_cast<sio::object_message *>(mPtr.get());
 
     m->insert("orientation", quatfToSioMessage(j->orientation));
-    m->insert("orientationConfidence", sio::int_message::create(j->orientationConfidence));
+    m->insert("orientationConfidence", sio::double_message::create(j->orientationConfidence));
     m->insert("position", float3ToSioMessage(j->position));
-    m->insert("positionConfidence", sio::int_message::create(j->positionConfidence));
+    m->insert("positionConfidence", sio::double_message::create(j->positionConfidence));
 
     return mPtr;
 }

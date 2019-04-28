@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="S2T-9u-RXb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +44,7 @@
                                         <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Kl0-Dq-lQy">
                                             <rect key="frame" x="0.0" y="0.0" width="480" height="388"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" red="0.0" green="0.5607843137254902" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" red="0.1176470593" green="0.1176470593" blue="0.1176470593" alpha="0.0" colorSpace="deviceRGB"/>
                                             <size key="minSize" width="480" height="388"/>
                                             <size key="maxSize" width="480" height="10000000"/>

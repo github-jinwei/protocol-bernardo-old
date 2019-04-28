@@ -56,7 +56,7 @@ extension User {
     /// system as inferred from all the tracked physics available.
     /// The 2D coordinates of this position will always be 0
     var position: float3 {
-        return physicsHistory.last!.skeleton.torso.position
+        return physicsHistory.last!.centerOfMass
     }
 
     /// Average, calibrated skeleton of the user (positions and angle) in the global coordinates
@@ -77,7 +77,7 @@ extension User {
                                            state: USER_TRACKED,
                                            skeleton: calculateMergedSkeleton(),
                                            centerOfMass: calculateMergedPosition()))
-//
+
 //        physicsHistory.append(PhysicalUser(userID: 0,
 //                                           frame: (physicsHistory.last?.frame ?? 0) + 1,
 //                                           state: USER_TRACKED,
@@ -146,8 +146,8 @@ extension User {
         }
 
         // Do the medium of the acc props using the acc confs
-        vDSP_vdiv(&confs, 1, &props, 1, &tmp, 1, vdspLength)
-        props = tmp
+		vDSP_vdiv(&confs, 1, &props, 1, &tmp, 1, vdspLength)
+		props = tmp
 
         // Do the medium of confidences
         var confDividers: [Float] = [Float](repeating: availablePhysics, count: length)
