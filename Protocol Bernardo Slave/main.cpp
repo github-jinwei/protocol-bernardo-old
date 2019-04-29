@@ -22,35 +22,42 @@ int main(int argc, const char * argv[]) {
 
     App->core->main();
 
+//	App->pae->start();
+
+//	while(true) {
+//		doThings();
+//	}
+
     return 0;
 }
 
-//void doThings() {
-//    PAEStatus * status = App->pae->getStatus();
-//
-//    if (status->deviceCount == 0) {
-//        App->pae->freeStatus(status);
-//        return;
-//    }
-//
-//    PAEDeviceStatus * device = &(status->connectedDevices[0]);
-//
-//    if (device->state == DEVICE_IDLE) {
-//        std::cout << "Connecting to device : " << device << std::endl;
-//        App->pae->connectToDevice(device->deviceSerial);
-//        App->pae->freeStatus(status);
-//        return;
-//    }
-//
-//    if (device->state == DEVICE_READY) {
-//        std::cout << "Activating device : " << device << std::endl;
-//        App->pae->setDeviceActive(device->deviceSerial);
-//        App->pae->freeStatus(status);
-//        return;
-//    }
-//
-//    App->pae->freeStatus(status);
-//}
+void doThings() {
+    PAEStatusCollection * statusCollection = App->pae->getStatus();
+    PAEStatus * status = statusCollection->status[0];
+
+    if (status->deviceCount == 0) {
+        App->pae->freeStatus(status);
+        return;
+    }
+
+    PAEDeviceStatus * device = &(status->connectedDevices[0]);
+
+    if (device->state == DEVICE_IDLE) {
+        std::cout << "Connecting to device : " << device << std::endl;
+        App->pae->connectToDevice(device->deviceSerial);
+        App->pae->freeStatus(status);
+        return;
+    }
+
+    if (device->state == DEVICE_READY) {
+        std::cout << "Activating device : " << device << std::endl;
+        App->pae->activateDevice(device->deviceSerial);
+        App->pae->freeStatus(status);
+        return;
+    }
+
+    App->pae->freeCollection(statusCollection);
+}
 
 void candenceLoop(const clock_t &loopStart) {
     clock_t loopTime = clock();

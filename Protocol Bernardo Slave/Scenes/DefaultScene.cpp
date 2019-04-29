@@ -8,6 +8,7 @@
 
 #include "DefaultScene.hpp"
 #include "../UI/Elements.hpp"
+#include <sstream>
 
 DefaultScene::DefaultScene(const int argc, const char * argv[]) {
 	// Parse args

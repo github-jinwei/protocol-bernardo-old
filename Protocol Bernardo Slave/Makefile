@@ -16,7 +16,6 @@ TARGET := $(BUILDDIR)$(TARGETNAME)
 # ###########
 # MARK: Setup
 
-CXX := clang++
 SRCDIR := .
 SRCEXT := cpp
 LIBDIR := libs
@@ -43,17 +42,17 @@ GCCOPTIONS = -g -std=c++11 -Wall -pedantic #-O2 -pipe -fno-common -fno-strict-al
 
 # Include Flags
 INCFLAGS = -I../ \
-		   -I/usr/local/include/
+	   -I/usr/local/include/
 
 # Linker Flags
-LDFLAGS = -L/usr/local/lib/
+LDFLAGS = -L/usr/local/lib
 
 # Libraries
 LDLIBS = -lPAE \
          -lsioclient \
-		 -lboost_system \
-		 -lboost_exception \
-		 -lNiTE2
+	 -lboost_system \
+	 -lboost_exception \
+	 -lNiTE2
 
 
 # #######################
@@ -64,32 +63,41 @@ LDLIBS = -lPAE \
 # MARK: - OS X Build Settings
 ifeq ($(UNAME_S),Darwin)
 
+CXX := clang++
+
 INCFLAGS += -I/usr/local/include/ni2/ \
-			-I/usr/local/include/opencv4/ \
-			-I/usr/local/opt/ncurses/include/
+	    -I/usr/local/include/opencv4/ \
+	    -I/usr/local/opt/ncurses/include/
 
 LDFLAGS += -L/usr/local/opt/ncurses/lib/ \
-		   -L../PositionAcquisitionEngine/build/
+	   -L../PositionAcquisitionEngine/build/
 
 LDLIBS += -lopencv_core \
-		  -lopencv_highgui \
-		  -lopencv_imgproc \
-		  -lncursesw \
-		  -lOpenNI2
+	  -lopencv_highgui \
+	  -lopencv_imgproc \
+	  -lncursesw \
+	  -lOpenNI2
 
 
 # MARK: - UNIX Build Settings
 else
 
+CXX := g++
+
 INCFLAGS += `pkg-config opencv --cflags` \
-			`pkg-config libopenni2 --cflags` \
-			-I/usr/include/eigen3/
+	    `pkg-config libopenni2 --cflags` \
+            -I/usr/include/eigen3/
 
-LDFLAGS += `pkg-config opencv --cflags` \
-		   `pkg-config ncursesw --cflags` \
-		   `pkg-config libopenni2 --cflags` \
+LDFLAGS += `pkg-config opencv --libs` \
+	   `pkg-config ncursesw --libs` \
+	   `pkg-config libopenni2 --libs` \
+	   -pthread
 
-LDLIBS +=
+LDLIBS += -lopencv_core \
+	  -lopencv_highgui \
+	  -lopencv_imgproc \
+	  -lncursesw \
+	  -lOpenNI2
 
 endif
 
@@ -117,8 +125,9 @@ linker: $(OBJECTS)
 	@echo "   LINKING $(TARGETNAME) on $(UNAME_S)"
 	@echo "========================================\n"
 	@echo " Working... "; $(CXX) $^ -o $(TARGET) $(LDFLAGS) $(LDLIBS)
-# 	@echo "  Cleaning objects..."
-# 	@$(RM) -r $(OBJECTS)
+	@echo " Done!\n"
+	@echo " Copying Files 1/2"; cp -R "../libs/NiTE2/." "$(BUILDDIR)"
+	@echo " Copying Files 2/2\n"; cp -R "../libs/OpenNI2/." "$(BUILDDIR)"
 	@echo "\n========================================"
 	@echo "   $(TARGETNAME) successfully compiled!"
 	@echo "   Type \"./$(TARGET)\" to launch $(TARGETNAME)"
@@ -126,7 +135,7 @@ linker: $(OBJECTS)
 
 # Remove objects
 clean:
-	@echo " Cleaning..."; $(RM) -r $(OBJECTS) $(TARGET)
+	@echo " Cleaning..."; $(RM) -r $(OBJECTS) $(TARGET) $(BUILDDIR)
 	@echo " Done!\n"
 
 .PHONY: clean
