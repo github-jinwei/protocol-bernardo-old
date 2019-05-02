@@ -88,7 +88,6 @@ public:
     PBControl * getSelectedControl() override;
 
 protected:
-
     std::vector<PBMenuItem *> _items = std::vector<PBMenuItem *>();
 
     PBMenuItem * _selectedItem;

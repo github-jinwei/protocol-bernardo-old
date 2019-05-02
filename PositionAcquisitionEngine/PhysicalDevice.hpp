@@ -127,7 +127,6 @@ public:
     ~PhysicalDevice();
     
 private:
-
 	// MARK: - The device
 
 	/** The OpenNI deviceee */

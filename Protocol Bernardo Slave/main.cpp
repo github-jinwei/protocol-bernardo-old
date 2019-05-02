@@ -16,7 +16,6 @@
 #include "Scenes/DefaultScene.hpp"
 
 int main(int argc, const char * argv[]) {
-
     DefaultScene * defaultScene = new DefaultScene(argc, argv);
     App->core->init(defaultScene);
 
