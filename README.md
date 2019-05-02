@@ -8,7 +8,7 @@ are placed in the real world. It enables the application to track a user as it m
 capture devices. This way, it is possible to have any number of capture devices connected to any
 number of slave machines, connected to the master app using a closed network. 
 
-![Image of Protocol Bernardo Master interface](https://imgur.com/Dbr7nbL)
+![Image of Protocol Bernardo Master interface](https://i.imgur.com/Dbr7nbL.png)
 
 [Protocol Bernardo] *master* application is built using Swift, and thus works only on MacOS. The
 *slave* application can work on MacOS and Linux. A Windows version of the slave is not planned at the moment but
