@@ -184,10 +184,10 @@ extension PositionAcquisitionEngine {
 		App.logs?.insert(message: "Status updated. Dispatching...", prefix: "PAE")
 
         // Copy informations from the status pointer to our own struct
-        machines = statusPointer!.pointee.copyAndDeallocate()
+        machines = statusPointer!.pointee.copyForSwift()
 
-        // Free the memory
-        statusPointer?.deallocate()
+		// Free the memory
+		PAEFreeCollection(statusPointer!)
 
         // Tell all the observes
 		observers.forEach { $0.pae(self, statusUpdated: machines) }

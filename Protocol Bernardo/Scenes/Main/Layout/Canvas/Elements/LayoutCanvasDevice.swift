@@ -130,8 +130,8 @@ class LayoutCanvasDevice: SKNode {
         didSet {
             if liveDeltas != nil {
                 // Update the calibrated center circle position
-                calibratedCenterCircle.position.x = CGFloat(liveDeltas!.xPosition) / 10.0
-                calibratedCenterCircle.position.y = CGFloat(liveDeltas!.yPosition) / 10.0
+                calibratedCenterCircle.position.x = CGFloat(liveDeltas!.xPosition) / -10.0
+                calibratedCenterCircle.position.y = CGFloat(liveDeltas!.yPosition) / -10.0
 
                 showCalibratedPosition()
             }

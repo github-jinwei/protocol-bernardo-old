@@ -14,7 +14,7 @@ import Foundation
 /// receiving.
 extension PAEStatusCollection {
     /// List of all the devices in a Swift friendly format
-    func copyAndDeallocate() -> [AcquisitionMachine] {
+    func copyForSwift() -> [AcquisitionMachine] {
 		var machines = [AcquisitionMachine]()
 
 		// Machine parsing pointer
@@ -36,9 +36,6 @@ extension PAEStatusCollection {
 				// Insert in the map
 				machine.devices[paeDeviceStatus.serial] = AcquisitionDevice(from: paeDeviceStatus)
 
-				// Free it
-				paeDeviceStatus.trackedUsers.deallocate()
-
 				// Check if we can advance
 				if i + 1 < paeStatus.deviceCount {
 					devicePointer = devicePointer?.successor()
@@ -47,17 +44,11 @@ extension PAEStatusCollection {
 
 			machines.append(machine)
 
-			// Free the array
-			devicePointer?.deallocate()
-			machinePointer!.pointee!.deallocate();
-
 			if i + 1 < statusCount {
 				machinePointer = machinePointer?.successor()
 			}
 		}
-
-		status.deallocate()
-
+		
         return machines
     }
 }
