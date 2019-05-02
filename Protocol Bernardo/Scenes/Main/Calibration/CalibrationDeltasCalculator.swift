@@ -21,8 +21,8 @@ class CalibrationDeltasCalculator {
     /// Inner structure to store a couple of position for the same user accross
     /// two devices
     private struct PositionCollection {
-        var device: float3? = nil
-        var reference: float3? = nil
+        var device: float3?
+        var reference: float3?
     }
 
     /// Positions of the primary user on both devices

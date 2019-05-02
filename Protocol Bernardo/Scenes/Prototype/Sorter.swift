@@ -28,7 +28,7 @@ class Sorter {
     }
     
     
-    public func sortTable(_ chaosRate: Double) -> Void {
+    public func sortTable(_ chaosRate: Double) {
         // browsing the working table
         for i in 0..<workingTable.count {
             let currentIndex: Int = i
@@ -69,7 +69,7 @@ class Sorter {
     }
     
     
-    public func shuffleTable(_ chaosRate: Double) -> Void {
+    public func shuffleTable(_ chaosRate: Double) {
         // browsing the working table
         for i in 0..<workingTable.count - 1 {
             let current = workingTable[i]

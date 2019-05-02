@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 	func applicationDidBecomeActive(_ notification: Notification) {
-		if App.layoutEngine.documentsController.documents.count == 0 {
+		if App.layoutEngine.documentsController.documents.isEmpty {
 			App.core.showHomeWindow()
 		}
 	}

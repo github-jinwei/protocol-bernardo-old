@@ -96,7 +96,7 @@ extension LayoutDocument {
 	override func close() {
 		super.close()
 
-		if App.layoutEngine.documentsController.documents.count == 0 {
+		if App.layoutEngine.documentsController.documents.isEmpty {
 			App.core.showHomeWindow()
 		}
 	}

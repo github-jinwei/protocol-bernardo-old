@@ -48,7 +48,6 @@ class PositionAcquisitionEngine:
 	public openni::OpenNI::DeviceConnectedListener,
 	public openni::OpenNI::DeviceDisconnectedListener {
 public:
-
 	// MARK: - Singleton
     
     /**

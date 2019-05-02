@@ -45,7 +45,7 @@ class DevicesSidebarController: NSViewController, DocumentHandlerSidebar {
 	// MARK: - Network
 
 	/// True if this machine is a master or a slave
-	private var isMaster = true;
+	private var isMaster = true
 
 	/// The relay server IP field
 	@IBOutlet weak var serverIPField: NSTextField!
@@ -141,7 +141,7 @@ extension DevicesSidebarController: NSOutlineViewDataSource {
 
 	func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
 		if let machine = item as? AcquisitionMachine {
-			return machine.devices.count > 0
+			return machine.devices.count >= 1
 		}
 
 		return false

@@ -19,7 +19,6 @@ class PBControl;
 
 class PBView {
 public:
-
     PBView() {};
 
     PBView(const PBPoint &aPosition): _frame(PBFrame(aPosition, 0, 0)) {}
@@ -102,8 +101,8 @@ protected:
      @param view The view to remove
      */
     void removeSubview(PBView * view);
-private:
 
+private:
     /**
      The view position in its parent view
      */

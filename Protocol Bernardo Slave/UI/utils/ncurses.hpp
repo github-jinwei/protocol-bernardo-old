@@ -285,7 +285,6 @@ private:
 	 Will update the screen printing colors based on the current ones
 	 */
 	static void updateColors();
-
 };
 
 //Shorthand for nCurses calls

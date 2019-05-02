@@ -38,7 +38,6 @@ private:
 	std::string _port = "5000";
 
 	bool _isSecure = false;
-
 };
 
 

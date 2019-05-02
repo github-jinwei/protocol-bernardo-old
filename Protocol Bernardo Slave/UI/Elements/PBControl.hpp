@@ -67,10 +67,8 @@ public:
     void * value = nullptr;
 
 protected:
-
     /** Tell if the control is currently selected */
     bool _isSelected = false;
-
 };
 
 #endif /* PBControl_hpp */

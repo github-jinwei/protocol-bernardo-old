@@ -116,7 +116,7 @@ extension UsersEngine: PositionAcquisitionEngineObserver {
         guard users.count > 1 else { return }
 
         for user in users {
-            guard user.physicsHistory.count > 0 else { continue }
+            if user.physicsHistory.isEmpty { continue }
             
             let closestUsers = usersByDistance(fromPosition: user.position)
             // If the current user is the first one in the array (like 99% of the time), select the second one
@@ -212,7 +212,7 @@ extension UsersEngine: PositionAcquisitionEngineObserver {
         user.devices.removeValue(forKey: serial)
         
         // if the user is not tracked anymore, remove it
-        if user.trackedPhysics.count == 0 {
+        if user.trackedPhysics.isEmpty {
             users.removeAll { $0 === user }
 
             for obs in observers {
@@ -234,7 +234,7 @@ extension UsersEngine {
     func closestUser(fromPosition position: float3) -> (User?, Float) {
         let users = usersByDistance(fromPosition: position)
         
-        guard users.count > 0 else { return (nil, Float.infinity) }
+        if users.isEmpty { return (nil, Float.infinity) }
         
         // return a tuple with the closest user and its distance from the given position
         return (users[0], simd_distance(position, users[0].position))
@@ -250,7 +250,7 @@ extension UsersEngine {
         let users = self.users
         
         // Get the distance for each user
-        let distances = users.filter { $0.physicsHistory.count > 0 }.map {
+        let distances = users.filter { !$0.physicsHistory.isEmpty }.map {
             return simd_distance(position, $0.position)
         }
         // Sort the array
@@ -280,6 +280,6 @@ extension UsersEngine {
             return user.devices[serial]! == userID
         }
         
-        return foundUsers.count > 0 ? foundUsers[0] : nil
+		return foundUsers.isEmpty ? nil : foundUsers[0]
     }
 }

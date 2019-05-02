@@ -15,7 +15,7 @@ class LayoutCanvasView: SKView {
     override func mouseDown(with event: NSEvent) {
         let elements = getElementsAtPoint(forEvent: event)
         
-        guard elements.count > 0 else {
+        if elements.isEmpty {
             canvas.selectedNode = nil
             return
         }
@@ -62,7 +62,7 @@ class LayoutCanvasView: SKView {
         }
         
         // Return here if we found a node, or if the layoutView isn't editable
-        if frontElements.count > 0 || !canvas.isEditable {
+        if frontElements.count >= 1 || !canvas.isEditable {
             return frontElements
         }
         

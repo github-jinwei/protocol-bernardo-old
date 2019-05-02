@@ -11,7 +11,7 @@ import Foundation
 /// A list of positionning differences betwen two captation devices
 struct CalibrationDeltas: Codable {
     /// Orientation difference (degrees)
-    var orientation: Float? = nil
+    var orientation: Float?
     
     /// X Position difference (in mm)
     var xPosition: Float = 0.0

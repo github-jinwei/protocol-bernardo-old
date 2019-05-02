@@ -50,7 +50,7 @@ class EditionSidebarController: NSViewController, DocumentHandlerSidebar {
     
     /// Remove the currently displayed element paremeters view
     func clear() {
-        guard children.count > 0 else { return }
+        if children.isEmpty { return }
         
         removeChild(at: 0)
         parametersViewHolder.subviews[0].removeFromSuperview()
@@ -76,7 +76,7 @@ extension EditionSidebarController: LayoutCanvasDelegate {
         }
         
         // Are we already displaying something ? If so, clean
-        if parametersViewHolder.subviews.count > 0 {
+        if parametersViewHolder.subviews.count >= 1 {
             clear()
         }
         

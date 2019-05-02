@@ -63,7 +63,7 @@ protocol LayoutCanvasElement: SKNode {
     /// - Returns:
 	var parametersController: NSViewController { get }
 
-	func updatePositionOnParameters() -> Void
+	func updatePositionOnParameters()
     
     /// Tell if the cursor described by the given mouse event falls inside the
     /// device trigger areas

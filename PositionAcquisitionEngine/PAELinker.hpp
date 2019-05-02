@@ -78,7 +78,6 @@ public:
     ~PAELinker();
 
 private:
-
 	PositionAcquisitionEngine * _pae;
 
     /** The socket io client */

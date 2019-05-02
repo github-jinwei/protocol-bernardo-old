@@ -36,7 +36,6 @@ public:
     void render() override;
     
 private:
-
     PBLabel * titleLabel;
 };
 

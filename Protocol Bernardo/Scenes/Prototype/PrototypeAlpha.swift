@@ -57,7 +57,7 @@ class PrototypeAlpha {
             acc += (deltaX + deltaZ) / 2
         }
 
-        if(users.count > 0) {
+        if !users.isEmpty {
             acc /= Float(users.count)
         }
         

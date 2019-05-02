@@ -259,7 +259,7 @@ extension LayoutViewController: SKSceneDelegate {
         
         // For all actively tracked users
         for user in App.usersEngine.users {
-            guard user.physicsHistory.count > 0 else { continue }
+            if user.physicsHistory.isEmpty { continue }
 
             // Create a node for it
             let userNode = LayoutCanvasUser(user: user)

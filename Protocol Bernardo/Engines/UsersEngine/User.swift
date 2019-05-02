@@ -96,7 +96,7 @@ extension User {
 		var userPos = float3(repeating: 0)
 
         // Make sure we have a calibration profile, and that we are actively tracking the user
-        guard trackedPhysics.count > 0, let profile = calibrationProfile else {
+        guard !trackedPhysics.isEmpty, let profile = calibrationProfile else {
             return userPos
         }
 

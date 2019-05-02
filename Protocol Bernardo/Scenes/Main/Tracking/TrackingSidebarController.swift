@@ -133,7 +133,7 @@ extension TrackingSidebarController {
     /// Create a new tracking session with the given name
     ///
     /// - Parameter name: Name of the session to create
-    func createTrackingSession(_ name: String) -> Void {
+    func createTrackingSession(_ name: String) {
         trackingSession = document?.makeTrackingSession(withName: name)
 
         // Refresh the list of sessions
@@ -154,7 +154,7 @@ extension TrackingSidebarController {
         }
 
         if trackingSession.isTracking {
-            trackingSession.endSession();
+            trackingSession.endSession()
 
             toggleRecordingButton.title = "Start"
             return

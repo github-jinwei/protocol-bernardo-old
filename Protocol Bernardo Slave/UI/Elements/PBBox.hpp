@@ -14,7 +14,6 @@
 
 class PBBox: public PBView {
 public:
-
 	PBBox(const PBPoint &aPosition): PBView(PBFrame(aPosition, 1, 1)) {}
 
 	PBBox(const PBFrame &aFrame): PBView(aFrame) {}

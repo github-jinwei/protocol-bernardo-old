@@ -41,7 +41,7 @@ extension CalibrationProfileManager {
 	/// Create a new calibration profile and select it
 	///
 	/// - Parameter name: Name of the calibration profile to create
-	func createCalibrationProfile(_ name: String) -> Void {
+	func createCalibrationProfile(_ name: String) {
 		_ = document.makeCalibrationProfile(withName: name)
 
 		// Refresh the list of available profiles

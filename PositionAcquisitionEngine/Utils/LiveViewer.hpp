@@ -18,7 +18,6 @@ struct Skeleton;
 
 class LiveViewer {
 public:
-
 	/**
 	 Display the tracked skeleton of the given device on the given frame.
 	 If no viewer exist for the given device, this will create it.
@@ -41,7 +40,6 @@ public:
 	~LiveViewer();
 
 private:
-
 	/** The list of opened windows identified by device's status */
 	std::map<std::string, std::string> _windowList;
 

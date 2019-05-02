@@ -19,7 +19,6 @@ class PBMenuItem;
  */
 class PBPopupMenu: public PBButton {
 public:
-
     /**
      Add a new item at the end of the menu with the given title, and holding
      the given value

@@ -34,7 +34,7 @@ class LogsViewController: NSViewController {
 		line += " " + message
 
 		DispatchQueue.main.async {
-			let scroll = NSMaxY(self.textField.visibleRect) == NSMaxY(self.textField.bounds)
+			let scroll = self.textField.visibleRect.maxY == self.textField.bounds.maxY
 
 			self.textField.string += line + "\n"
 

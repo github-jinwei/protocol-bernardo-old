@@ -54,7 +54,6 @@ typedef struct PBFrame {
 
         return frame;
     }
-
 } PBFrame;
 
 #endif /* PBFrame_hpp */

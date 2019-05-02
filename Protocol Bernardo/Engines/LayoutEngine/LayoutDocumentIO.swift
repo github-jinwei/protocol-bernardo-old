@@ -72,7 +72,6 @@ extension LayoutDocument {
 
 			case .trackingSession:
 				trackingSessions[name.fileNameWithoutExtension] = wrapper
-				break
 
 			default: break
 			}

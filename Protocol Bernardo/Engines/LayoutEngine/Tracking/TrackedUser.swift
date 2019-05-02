@@ -59,7 +59,7 @@ extension TrackedUser {
 
 extension TrackedUser {
     func makeBVHFileContent() -> Data {
-        guard motions.count > 0 else { return Data() }
+        if motions.isEmpty { return Data() }
 
         let encoder = JSONEncoder()
 //        encoder.outputFormatting = .prettyPrinted

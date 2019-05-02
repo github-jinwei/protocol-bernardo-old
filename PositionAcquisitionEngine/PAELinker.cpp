@@ -110,7 +110,6 @@ PAELinker::~PAELinker() {
 }
 
 std::string PAELinker::buildURI(const std::string &ip, const std::string &port, const bool &isSecure) {
-
     std::string uri = (isSecure ? "http" : "https");
     uri += "://" + ip + ":" + port;
 
