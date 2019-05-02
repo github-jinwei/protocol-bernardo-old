@@ -1,4 +1,4 @@
-# PRISME Tracking System [Platform](https://img.shields.io/badge/platform-macos%20%7C%20linux-lightgrey.svg) [![CodeFactor](https://www.codefactor.io/repository/github/boisier/protocol-bernardo/badge)](https://www.codefactor.io/repository/github/boisier/protocol-bernardo)
+# PRISME Tracking System [![Platform](https://img.shields.io/badge/platform-macos%20%7C%20linux-lightgrey.svg)] [![CodeFactor](https://www.codefactor.io/repository/github/boisier/protocol-bernardo/badge)](https://www.codefactor.io/repository/github/boisier/protocol-bernardo)
 
 **[Protocol Bernardo]** (Working title) allows for continuous tracking of multiple users using multiple OpenNI2
 compatible capture devices—Tested only with Kinect 2, RealSense under way.
