@@ -80,7 +80,7 @@ quatf sioMessageToQuatf(const sio::message::ptr &mPtr) {
     q.coeffs()(0) = float(m[0]->get_double());
     q.coeffs()(1) = float(m[1]->get_double());
     q.coeffs()(2) = float(m[2]->get_double());
-    q.coeffs()(3) = float(m[3]->get_double()
+    q.coeffs()(3) = float(m[3]->get_double());
 #endif
 
     return q;

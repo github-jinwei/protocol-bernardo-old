@@ -24,7 +24,7 @@ INSTALLDIR := /usr/local/lib/
 # ###########
 # MARK: Setup
 
-CXX := clang++
+CXX := g++
 SRCDIR := .
 SRCEXT := cpp
 
@@ -50,7 +50,7 @@ GCCOPTIONS = -g -std=c++11 -Wall -pedantic -O2 -pipe -fno-common -fno-strict-ali
 
 # Include Flags
 INCFLAGS = -I/usr/local/include/ \
-		   -I/usr/include/eigen3/
+	-I/usr/include/eigen3/
 
 # Linker Flags
 LDFLAGS =
@@ -76,7 +76,7 @@ LDLIBS +=
 else
 
 INCFLAGS += `pkg-config opencv --cflags` \
-			`pkg-config libopenni2 --cflags` \
+			`pkg-config libopenni2 --cflags`
 LDFLAGS += `pkg-config opencv --libs` \
 		   `pkg-config libopenni2 --libs`
 LDLIBS +=

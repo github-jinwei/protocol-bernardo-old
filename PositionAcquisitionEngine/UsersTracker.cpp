@@ -178,12 +178,14 @@ Joint UsersTracker::niteJointToCJoint(const nite::SkeletonJoint &joint) {
 
 	float x2D, y2D;
 
-	_device->getRigTracker()->convertJointCoordinatesToDepth(cJoint.position.x, cJoint.position.y, cJoint.position.z, &x2D, &y2D);
-
 #ifdef __APPLE__
+	_device->getRigTracker()->convertJointCoordinatesToDepth(cJoint.position.x, cJoint.position.y, cJoint.position.z, &x2D, &y2D);
+	
 	cJoint.position2D.x = x2D;
 	cJoint.position2D.y = y2D;
 #else
+	_device->getRigTracker()->convertJointCoordinatesToDepth(cJoint.position(0), cJoint.position(1), cJoint.position(2), &x2D, &y2D);
+	
 	cJoint.position2D(0) = x2D;
 	cJoint.position2D(1) = y2D;
 #endif

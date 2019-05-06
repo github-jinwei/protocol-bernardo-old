@@ -16,17 +16,24 @@
 #include "Scenes/DefaultScene.hpp"
 
 int main(int argc, const char * argv[]) {
+    
+    if(argc >= 2 && argv[argc-1] == "debug") {
+
+     	App->pae->start();
+
+     	while(true) {
+     		doThings();
+     	}
+     	
+     	return 0;
+    }
+      
+    
     DefaultScene * defaultScene = new DefaultScene(argc, argv);
     App->core->init(defaultScene);
-
+    
     App->core->main();
-
-//	App->pae->start();
-
-//	while(true) {
-//		doThings();
-//	}
-
+        
     return 0;
 }
 
@@ -35,6 +42,7 @@ void doThings() {
     PAEStatus * status = statusCollection->status[0];
 
     if (status->deviceCount == 0) {
+        std::cout << "Zero devices found" << std::endl;
         App->pae->freeStatus(status);
         return;
     }
