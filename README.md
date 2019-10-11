@@ -1,5 +1,7 @@
 # PRISME Tracking System ![Platform](https://img.shields.io/badge/platform-macos%20%7C%20linux-lightgrey.svg) [![CodeFactor](https://www.codefactor.io/repository/github/boisier/protocol-bernardo/badge)](https://www.codefactor.io/repository/github/boisier/protocol-bernardo)
 
+**This version of Protocol Bernardo is deprecated. A new version with a better architecture is replacing this one.** 
+
 **[Protocol Bernardo]** (Working title) allows for continuous tracking of multiple users using multiple OpenNI2
 compatible capture devices—Tested only with Kinect 2, RealSense under way.
 [Protocol Bernardo] works by using a layout built inside the application, specifying how the devices 
